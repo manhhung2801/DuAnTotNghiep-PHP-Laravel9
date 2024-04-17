@@ -2,9 +2,17 @@
 
 ## run: 
     composer install
+<<<<<<< HEAD
 ## run: 
     npm install
     npm run dev
+=======
+
+## run: 
+    npm install
+    npm run dev
+
+>>>>>>> origin/manhhung
 # connection Database 
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
@@ -53,7 +61,7 @@ cấp quyền thư mục
     git init
     git add .
     git commit -m "first commit"
-    git branch -M main
+    git branch task1
     git remote add origin https://github.com/manhhung2801/DuAnTotNghiep-PHP-Laravel9.git
     git push -u origin main
 ## ------------------------------------------------------

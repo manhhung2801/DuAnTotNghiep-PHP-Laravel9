@@ -44,3 +44,4 @@ Route::middleware(['auth', 'verified', 'role:user'])->prefix('user')->name('user
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
 });
 /** User Dashboard */
+

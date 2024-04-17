@@ -1,3 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from codervent.com/rocker/demo/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 09:44:13 GMT -->
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+	<!--favicon-->
+	<link rel="icon" href="{{asset('backend/assets/images/favicon-32x32.png')}}" type="image/png"/>
+	<!--plugins-->
+	<link href="{{asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet"/>
+	<link href="{{asset('backend/assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
+	<link href="{{asset('backend/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
+	<link href="{{asset('backend/assets/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet"/>
+	<!-- loader-->
+	<link href="{{asset('backend/assets/css/pace.min.css')}}" rel="stylesheet"/>
+	<script src="{{asset('backend/assets/js/pace.min.js')}}"></script>
+	<!-- Bootstrap CSS -->
+	<link href="{{asset('backend/assets/css/bootstrap.min.css')}}" rel="stylesheet">
+	<link href="{{asset('backend/assets/css/bootstrap-extended.css')}}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+	<link href="{{asset('backend/assets/css/app.css')}}" rel="stylesheet">
+	<link href="{{asset('backend/assets/css/icons.css')}}" rel="stylesheet">
+
+    <!-- font-awesone icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font-awesone icon -->
+
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- Toastr CSS -->
+
+    <!-- Toastr CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Toastr CSS -->
+
+    <!-- Bootstrap-Iconpicker -->
+    <link rel="stylesheet" href="{{ asset('backend/assets/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css') }}"/>
+
+	<!-- Theme Style CSS -->
+	<link rel="stylesheet" href="{{asset('backend/assets/css/dark-theme.css')}}"/>
+	<link rel="stylesheet" href="{{asset('backend/assets/css/semi-dark.css')}}"/>
+	<link rel="stylesheet" href="{{asset('backend/assets/css/header-colors.css')}}"/>
+	<title>Dashboard - Create Category</title>
+</head>
+
+<body>
+
+    <!-- start wrapper-->
+	<div class="wrapper">
+		<!--sidebar wrapper -->
+        @include('admin.layouts.sidebar')
+		<!--end sidebar wrapper -->
+
+		<!--start navbar -->
+        @include('admin.layouts.navbar')
+		<!--end navbar -->
+
+		<!-- Start Main wrapper -->
+		<div class="page-wrapper">
+            <div class="page-content">
+                <!--breadcrumb-->
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <div class="breadcrumb-title pe-3">Categories</div>
+                    <div class="ps-3">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Create Category</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <!--end breadcrumb-->
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="mt-2 mb-0 text-uppercase float-start">Create Category</h6>
+                        <a href="{{ route("admin.category.index") }}" class="btn btn-primary float-end">Back</a>
+                    </div>
+                    <div class="card-body">
+                        <form class="row g-3" action="{{ route("admin.category.store") }}" method="POST">
+                            @csrf
+                            <div class="col-md-12">
+                                <label for="input7" class="form-label">Icon:</label>
+                                <button class="btn btn-primary iconpicker dropdown-toggle" data-selected-class="btn-danger" data-unselected-class="btn-info" role="iconpicker" name="icon"></button>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="input1" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="input1" name="name" placeholder="Name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="input9" class="form-label">Status</label>
+                                <select id="input9" class="form-select" name="status">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="d-grid align-items-center gap-3">
+                                    <button type="submit" class="btn btn-primary px-4">Create</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+		</div>
+		<!-- End Main wrapper -->
+
+		<!--start overlay-->
+		 <div class="overlay toggle-icon"></div>
+		<!--end overlay-->
+		<!--Start Back To Top Button-->
+		  <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<!--End Back To Top Button-->
+		<footer class="page-footer">
+			<p class="mb-0">Copyright © 2024. All right reserved.</p>
+		</footer>
+	</div>
+	<!-- end wrapper-->
+
+<!-- Start Footer wrapper-->
+
 
 	<!-- search modal -->
     <div class="modal" id="SearchModal" tabindex="-1">
@@ -145,8 +272,6 @@
 	</div>
 	<!--end switcher-->
 
-	<!-- Bootstrap JS -->
-	<script src="{{asset('backend/assets/js/bootstrap.bundle.min.js')}}"></script>
 	<!--plugins-->
 	<script src="{{asset('backend/assets/js/jquery.min.js')}}"></script>
 	<script src="{{asset('backend/assets/plugins/simplebar/js/simplebar.min.js')}}"></script>
@@ -161,7 +286,8 @@
 	<!-- Toastr JS-->
 	<script src="{{asset('backend/assets/js/index.js')}}"></script>
 	<!-- Toastr JS-->
-    {{-- <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script> --}}
+
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap-Iconpicker Bundle -->
     <script type="text/javascript" src="{{ asset('backend/assets/bootstrap-iconpicker/js/bootstrap-iconpicker.bundle.min.js') }}"></script>
 
@@ -179,8 +305,10 @@
             @endif
     </script>
 
-    @stack('scripts')
 </body>
 
 <!-- Mirrored from codervent.com/rocker/demo/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 09:44:15 GMT -->
 </html>
+
+<!-- End Footer wrapper-->
+
