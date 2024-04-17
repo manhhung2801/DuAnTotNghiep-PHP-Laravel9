@@ -21,16 +21,16 @@
         <li class="menu-label">UI Elements</li>
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="bx bx-repeat"></i>
+                <div class="parent-icon"><i class="fa-solid fa-layer-group"></i>
                 </div>
-                <div class="menu-title">Content</div>
+                <div class="menu-title">Category</div>
             </a>
             <ul>
-                <li> <a href="content-grid-system.html"><i class='bx bx-radio-circle'></i>Grid System</a>
+                <li> <a href="{{ route("admin.category.index") }}"><i class='bx bx-radio-circle'></i>List Categories</a>
                 </li>
-                <li> <a href="content-typography.html"><i class='bx bx-radio-circle'></i>Typography</a>
+                <li> <a href="{{ route('admin.sub-category.index') }}"><i class='bx bx-radio-circle'></i>Sub Categories</a>
                 </li>
-                <li> <a href="content-text-utilities.html"><i class='bx bx-radio-circle'></i>Text Utilities</a>
+                <li> <a href="{{ route("admin.child-category.index") }}"><i class='bx bx-radio-circle'></i>Child Category</a>
                 </li>
             </ul>
         </li>
