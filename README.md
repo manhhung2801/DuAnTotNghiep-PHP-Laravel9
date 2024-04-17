@@ -2,7 +2,9 @@
 
 ## run: 
     composer install
-
+## run: 
+    npm install
+    npm run dev
 # connection Database 
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
