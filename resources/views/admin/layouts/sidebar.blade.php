@@ -34,6 +34,18 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
+                </div>
+                <div class="menu-title">Products</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('admin.product.index') }}"><i class='bx bx-radio-circle'></i>List Product</a>
+                </li>
+                <li> <a href="{{ route('admin.product.create') }}"><i class='bx bx-radio-circle'></i>Create a Product</a>
+            </ul>
+        </li>
         <li class="menu-label">Info</li>
         <li class="">
             <a href="{{route('admin.profile')}}" aria-expanded="false">

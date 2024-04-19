@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\backend\AdminProductController;
 
 /** Admin Routes */
 
@@ -29,4 +30,8 @@ Route::resource('/sub-category', SubCategoryController::class);
 Route::put('/child-category/change-status', [ChildCategoryController::class, 'changeStatus'])->name('child-category.change-status');
 Route::get('get-subcategory', [ChildCategoryController::class, 'getSubCategories'])->name('get-subcategories');
 Route::resource('/child-category', ChildCategoryController::class);
+
+/** Product */
+Route::put('/product/change-status', [AdminProductController::class, 'changeStatus'])->name('product.change-status');
+Route::resource('product', AdminProductController::class);
 
