@@ -33,5 +33,6 @@ Route::resource('/child-category', ChildCategoryController::class);
 
 /** Product */
 Route::put('/product/change-status', [AdminProductController::class, 'changeStatus'])->name('product.change-status');
+Route::get('get-childcategory', [AdminProductController::class, 'getChildCategories'])->name('get-childcategories');
 Route::resource('product', AdminProductController::class);
 

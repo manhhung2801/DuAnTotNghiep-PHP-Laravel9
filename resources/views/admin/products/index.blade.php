@@ -49,8 +49,8 @@
                         <tr>
                             <td>{{ $product->id }}</td>
                             <td>{{ $product->sku }}</td>
-                            <td>
-                                <img src="{{ asset('uploads/' . $product->image) }}" alt="{{ $product->image }}">
+                            <td class="text-center">
+                                <img src="{{ asset('uploads/products/' . $product->image) }}" width="50px" alt="{{ $product->image }}">
                             </td>
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->qty }}</td>
@@ -90,7 +90,6 @@
         $('body').off('click', '.change-status').on('click', '.change-status', function() {
             let isChecked = $(this).is(':checked');
             let id = $(this).data('id');
-
             $.ajax({
                 method: "PUT",
                 url: "{{route('admin.product.change-status')}}",
@@ -107,5 +106,6 @@
             });
         })
     });
+
 </script>
 @endpush

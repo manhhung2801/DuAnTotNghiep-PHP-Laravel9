@@ -43,7 +43,6 @@
             <ul>
                 <li> <a href="{{ route('admin.product.index') }}"><i class='bx bx-radio-circle'></i>List Product</a>
                 </li>
-                <li> <a href="{{ route('admin.product.create') }}"><i class='bx bx-radio-circle'></i>Create a Product</a>
             </ul>
         </li>
         <li class="menu-label">Info</li>
