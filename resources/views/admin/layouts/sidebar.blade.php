@@ -34,6 +34,18 @@
                 </li>
             </ul>
         </li>
+          <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div class="menu-title">Variant</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route("admin.variant.index") }}"><i class='bx bx-radio-circle'></i>Variant</a>
+                </li>
+            </ul>
+        </li>
         <li class="menu-label">Info</li>
         <li class="">
             <a href="{{route('admin.profile')}}" aria-expanded="false">

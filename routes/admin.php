@@ -6,10 +6,11 @@ use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\VariantController;
 
 /** Admin Routes */
 
-Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('dashboard', [AdminController::class,'dashboard'])->name('dashboard');
 
 /** Profile Routes */
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
@@ -29,4 +30,8 @@ Route::resource('/sub-category', SubCategoryController::class);
 Route::put('/child-category/change-status', [ChildCategoryController::class, 'changeStatus'])->name('child-category.change-status');
 Route::get('get-subcategory', [ChildCategoryController::class, 'getSubCategories'])->name('get-subcategories');
 Route::resource('/child-category', ChildCategoryController::class);
+
+/** Variant */
+Route::resource('/variant',VariantController::class);
+Route::put('/variant/change-status', [ VariantController::class, 'changeStatus'])->name('variant.change-status');
 
