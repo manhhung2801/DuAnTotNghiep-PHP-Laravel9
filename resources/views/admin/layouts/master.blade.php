@@ -48,6 +48,7 @@
             event.preventDefault();
 
             let deleteUrl = $(this).attr('href');
+            let row = $(this).closest('tr');
             console.log(deleteUrl);
             Swal.fire({
                 title: "Are you sure?",
@@ -71,9 +72,7 @@
                                     'success'
                                 );
 
-                                window.setTimeout(() => {
-                                    window.location.reload();
-                                }, 1500);
+                                row.remove();
 
                             }else if(data.status == 'error'){
                                 Swal.fire(
