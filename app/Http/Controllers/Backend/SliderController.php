@@ -27,7 +27,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view("admin.slider.create");
+        return view('admin.slider.create');
     }
 
     /**
@@ -148,6 +148,7 @@ class SliderController extends Controller
         if (unlink($deletes)) {
             $slider->delete();
         }
+
         return response(['status' => 'success', 'Deleted Successfully!']);
     }
     public function changeStatus(Request $request)

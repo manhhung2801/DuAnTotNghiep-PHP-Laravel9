@@ -38,7 +38,7 @@
         </li>
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="fa-solid fa-layer-group"></i>
+                <div class="parent-icon"><i class="fa-solid fa-sliders"></i>
                 </div>
                 <div class="menu-title">Slider</div>
             </a>

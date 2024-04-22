@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">
                 <h6 class="mt-2 mb-0 text-uppercase float-start">Update Category</h6>
-                <a href="{{ route('admin.category.index') }}" class="btn btn-primary float-end">Back</a>
+                <a href="{{ route('admin.slider.index') }}" class="btn btn-primary float-end">Back</a>
             </div>
             <div class="card-body">
                 <form class="row g-3" action="{{ route('admin.slider.update', $slider->id) }}" method="POST"

@@ -25,16 +25,16 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <table id="example" class="table table-striped table-bordered " style="width:100%">
                         <thead>
                             <tr>
                                 <th>Id</th>
                                 <th>Banner</th>
                                 <th>Type</th>
                                 <th>Title</th>
-                                <th>Starting_price</th>
+                                {{-- <th>Starting_price</th>
                                 <th>Url</th>
-                                <th>Serial</th>
+                                <th>Serial</th> --}}
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -48,9 +48,9 @@
                                     </td>
                                     <td>{{ $slider->type }}</td>
                                     <td>{{ $slider->title }}</td>
-                                    <td>{{ $slider->starting_price }}</td>
+                                    {{-- <td>{{ $slider->starting_price }}</td>
                                     <td>{{ $slider->btn_url }}</td>
-                                    <th>{{ $slider->serial }}</th>
+                                    <th>{{ $slider->serial }}</th> --}}
                                     <td>
                                         <div class="form-check form-switch form-check-success">
                                             @if ($slider->status == 1)
