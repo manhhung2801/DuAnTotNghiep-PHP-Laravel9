@@ -13,7 +13,7 @@ use App\Models\SubCategory;
 use App\Models\product_image_galleries;
 use Illuminate\Support\Facades\File;
 
-class AdminProductController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
