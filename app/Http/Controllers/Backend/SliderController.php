@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
-use File;
+use Illuminate\Support\Facades\File;
 
 class SliderController extends Controller
 {
@@ -49,15 +49,11 @@ class SliderController extends Controller
             'banner' => ['required', 'image']
         ]);
         if ($request->hasFile('banner')) {
-
-            if (File::exists(public_path('uploads/' . $slider->banner))) {
-                File::delete(public_path('uploads/' . $slider->banner));
-            }
             $banner = $request->banner;
-            $bannerName = "uploads/" . rand() . '_' . $banner->getClientOriginalName();
-            $banner->move(public_path('uploads'), $bannerName);
-
-            $slider->banner = $bannerName;
+            $ext = $banner->extension();
+            $fileName = 'slider_' . uniqid() . '.' . $ext;
+            $banner->move(public_path('uploads/slider'), $fileName);
+            $slider->banner = $fileName;
         }
         $slider->type = $request->type;
         $slider->title = $request->title;
@@ -105,24 +101,25 @@ class SliderController extends Controller
     {
         $request->validate([
             'type' => ['required', 'max:100'],
-            'title' => ['required',],
-            'starting_price' => ['required',],
-            'btn_url' => ['required',],
-            'serial' => ['required',],
-            'status' => ['required',],
-            'banner' => ['required', 'image']
+            'title' => ['required'],
+            'starting_price' => ['required'],
+            'btn_url' => ['required'],
+            'serial' => ['required'],
+            'status' => ['required'],
+            'banner' => ['image']
         ]);
         $slider = Slider::find($id);
         if ($request->hasFile('banner')) {
-
-            if (File::exists(public_path('uploads/' . $slider->banner))) {
-                File::delete(public_path('uploads/' . $slider->banner));
+            if (File::exists(public_path('uploads/slider/' . $request->banner))) {
+                File::delete(public_path('uploads/slider/' . $request->banner));
+            } else {
+                $slider->banner = $request->banner;
             }
             $banner = $request->banner;
-            $bannerName = "uploads/" . rand() . '_' . $banner->getClientOriginalName();
-            $banner->move(public_path('uploads'), $bannerName);
-
-            $slider->banner = $bannerName;
+            $ext = $banner->extension();
+            $fileName = 'slider_' . uniqid() . '.' . $ext;
+            $banner->move(public_path('uploads/slider'), $fileName);
+            $slider->banner = $fileName;
         }
         $slider->type = $request->type;
         $slider->title = $request->title;
@@ -145,10 +142,12 @@ class SliderController extends Controller
     {
         $slider = Slider::find($id);
         $deletes = $slider->banner;
-        if (unlink($deletes)) {
-            $slider->delete();
+        $banner = public_path('uploads/slider/' . $deletes);
+        if (file_exists($banner)) {
+            if (unlink($banner)) {
+                $slider->delete();
+            }
         }
-
         return response(['status' => 'success', 'Deleted Successfully!']);
     }
     public function changeStatus(Request $request)

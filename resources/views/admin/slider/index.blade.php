@@ -44,7 +44,8 @@
                                 <tr>
                                     <td>{{ $slider->id }}</td>
                                     <td>
-                                        <img src="/{{ $slider->banner }}" alt="" width="50px">
+                                        <img src="{{ asset('uploads/slider') }}/{{ $slider->banner }}" alt=""
+                                            width="50px">
                                     </td>
                                     <td>{{ $slider->type }}</td>
                                     <td>{{ $slider->title }}</td>
