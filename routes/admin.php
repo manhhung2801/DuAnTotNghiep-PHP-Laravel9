@@ -9,6 +9,8 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponsController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VariantController;
+use App\Http\Controllers\backend\VariantItemController;
+use App\Http\Controllers\backend\ProductController;
 
 /** Admin Routes */
 
@@ -41,8 +43,18 @@ Route::resource('/slider', SliderController::class);
 Route::put('/coupons/change-status', [CouponsController::class, 'changeStatus'])->name('coupons.change-status');
 Route::resource('/coupons', CouponsController::class);
 
-//
+
 /** Variant */
 Route::resource('/variant',VariantController::class);
 Route::put('/variant/change-status', [ VariantController::class, 'changeStatus'])->name('variant.change-status');
+
+/** Product */
+Route::put('/product/change-status', [ProductController::class, 'changeStatus'])->name('product.change-status');
+Route::get('get-childcategory', [ProductController::class, 'getChildCategories'])->name('get-childcategories');
+Route::resource('product', ProductController::class);
+
+
+/** VariantItem */
+Route::resource('/variantItem', VariantItemController::class);
+Route::put('/variantItem/change-status/{id?}', [ VariantItemController::class, 'changeStatus'])->name('variantItem.change-status');
 

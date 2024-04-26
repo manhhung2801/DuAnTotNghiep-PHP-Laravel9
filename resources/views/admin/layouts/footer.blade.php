@@ -155,6 +155,7 @@
 	<script src="{{asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
     <script src="{{asset('backend/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
 	<script src="{{asset('backend/assets/plugins/chartjs/js/chart.js')}}"></script>
+	<script src="https://cdn.tiny.cloud/1/z32kzm5sxs07iulda9bbxcqx9h50oatwonihvtt0jrjt72bv/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
