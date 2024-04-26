@@ -14,7 +14,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
 /** Profile Routes */
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/dashboard', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile/update/', [ProfileController::class, 'updateProfile'])->name('profile.update');
 Route::put('/profile/update/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 
@@ -40,4 +40,4 @@ Route::resource('/slider', SliderController::class);
 Route::put('/coupons/change-status', [CouponsController::class, 'changeStatus'])->name('coupons.change-status');
 Route::resource('/coupons', CouponsController::class);
 
-// 
+//
