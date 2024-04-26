@@ -47,6 +47,18 @@
                 </li>
             </ul>
         </li>
+
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="lni lni-sprout"></i>
+                </div>
+                <div class="menu-title">Coupons</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('admin.coupons.index') }}"><i class='bx bx-radio-circle'></i>List Coupons</a>
+                </li>
+            </ul>
+        </li>
         <li class="menu-label">Info</li>
         <li class="">
             <a href="{{ route('admin.profile') }}" aria-expanded="false">
