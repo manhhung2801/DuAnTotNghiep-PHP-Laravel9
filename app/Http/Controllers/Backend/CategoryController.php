@@ -119,7 +119,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
 
         $subCategory = SubCategory::where('category_id', $category->id)->count();
-        if($subCategory > 0){
+        if ($subCategory > 0) {
             return response(['status' => 'error', 'message' => 'This items contain, sub items for delete this you have to delete the sub items first!']);
         }
         $category->delete();
@@ -127,7 +127,8 @@ class CategoryController extends Controller
         return response(['status' => 'success', 'Deleted Successfully!']);
     }
 
-    public function changeStatus(Request $request){
+    public function changeStatus(Request $request)
+    {
 
         $category = Category::findOrFail($request->id);
         $category->status = $request->status == 'true' ? 1 : 0;
