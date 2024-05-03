@@ -8,11 +8,14 @@ use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponsController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\VariantController;
+
 use App\Http\Controllers\backend\ProductController;
+
 
 /** Admin Routes */
 
-Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('dashboard', [AdminController::class,'dashboard'])->name('dashboard');
 
 /** Profile Routes */
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
@@ -33,6 +36,12 @@ Route::put('/child-category/change-status', [ChildCategoryController::class, 'ch
 Route::get('get-subcategory', [ChildCategoryController::class, 'getSubCategories'])->name('get-subcategories');
 Route::resource('/child-category', ChildCategoryController::class);
 
+
+/** Variant */
+Route::resource('/variant',VariantController::class);
+Route::put('/variant/change-status', [ VariantController::class, 'changeStatus'])->name('variant.change-status');
+
+
 /** Slider */
 Route::put('/slider/change-status', [SliderController::class, 'changeStatus'])->name('slider.change-status');
 Route::resource('/slider', SliderController::class);
@@ -46,3 +55,4 @@ Route::resource('/coupons', CouponsController::class);
 Route::put('/product/change-status', [ProductController::class, 'changeStatus'])->name('product.change-status');
 Route::get('get-childcategory', [ProductController::class, 'getChildCategories'])->name('get-childcategories');
 Route::resource('product', ProductController::class);
+
