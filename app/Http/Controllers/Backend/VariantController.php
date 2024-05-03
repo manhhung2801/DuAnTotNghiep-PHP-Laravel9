@@ -33,8 +33,6 @@ class VariantController extends Controller
         $product = Product::all();
         return view('admin.variant.create', compact('product'));
     }
-  
-    
     /**
      * Store a newly created resource in storage.
      *
@@ -73,7 +71,6 @@ class VariantController extends Controller
         return view('admin.variant.edit', compact('variant', 'product'));
     }
 
-   
 
      /**
      * Update the specified resource in storage.
