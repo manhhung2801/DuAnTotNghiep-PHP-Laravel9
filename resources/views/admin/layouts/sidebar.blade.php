@@ -34,6 +34,7 @@
                 </li>
             </ul>
         </li>
+<<<<<<< HEAD
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
@@ -42,6 +43,17 @@
             </a>
             <ul>
                 <li> <a href="{{ route('admin.product.index') }}"><i class='bx bx-radio-circle'></i>List Product</a>
+=======
+          <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div class="menu-title">Variant</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route("admin.variant.index") }}"><i class='bx bx-radio-circle'></i>Variant</a>
+>>>>>>> remotes/origin/hoangminh
                 </li>
             </ul>
         </li>

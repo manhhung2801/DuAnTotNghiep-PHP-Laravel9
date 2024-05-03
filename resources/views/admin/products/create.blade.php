@@ -160,7 +160,7 @@
     $(document).ready(function() {
         $('body').on('change', ".main-category, .sub-category", function(e) {
             let id = $(this).val();
-            
+
             let url = "";
             if ($(this).hasClass('main-category')) {
                 url = "{{ route('admin.get-subcategories') }}"
