@@ -5,6 +5,8 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildCategoryController;
+use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\CouponsController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\backend\ProductController;
 
@@ -36,3 +38,12 @@ Route::put('/product/change-status', [ProductController::class, 'changeStatus'])
 Route::get('get-childcategory', [ProductController::class, 'getChildCategories'])->name('get-childcategories');
 Route::resource('product', ProductController::class);
 
+/** Slider */
+Route::put('/slider/change-status', [SliderController::class, 'changeStatus'])->name('slider.change-status');
+Route::resource('/slider', SliderController::class);
+
+
+Route::put('/coupons/change-status', [CouponsController::class, 'changeStatus'])->name('coupons.change-status');
+Route::resource('/coupons', CouponsController::class);
+
+// 
