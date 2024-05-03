@@ -8,14 +8,16 @@ use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponsController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\VariantController;
+use App\Http\Controllers\backend\VariantItemController;
 use App\Http\Controllers\backend\ProductController;
 
 /** Admin Routes */
 
-Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('dashboard', [AdminController::class,'dashboard'])->name('dashboard');
 
 /** Profile Routes */
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/dashboard', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile/update/', [ProfileController::class, 'updateProfile'])->name('profile.update');
 Route::put('/profile/update/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 
@@ -46,4 +48,11 @@ Route::resource('/slider', SliderController::class);
 Route::put('/coupons/change-status', [CouponsController::class, 'changeStatus'])->name('coupons.change-status');
 Route::resource('/coupons', CouponsController::class);
 
-// 
+/** Variant */
+
+Route::resource('/variant',VariantController::class);
+Route::put('/variant/change-status', [ VariantController::class, 'changeStatus'])->name('variant.change-status');
+
+/** VariantItem */
+Route::resource('/variantItem', VariantItemController::class);
+Route::put('/variantItem/change-status/{id?}', [ VariantItemController::class, 'changeStatus'])->name('variantItem.change-status');

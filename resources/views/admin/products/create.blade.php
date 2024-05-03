@@ -172,7 +172,7 @@
                 method: "GET",
                 url: url,
                 data: {
-                    id: id,
+                    id: id
                 },
                 success: function(data) {
                     targetSelect.html('<option value="">Select</option>')
