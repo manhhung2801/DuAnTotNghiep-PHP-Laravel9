@@ -70,7 +70,6 @@
         $(document).ready(function() {
             $('body').on('change', ".main-category", function(e) {
                 let id = $(this).val();
-
                 $.ajax({
                     method: "GET",
                     url: "{{route('admin.get-subcategories')}}",
