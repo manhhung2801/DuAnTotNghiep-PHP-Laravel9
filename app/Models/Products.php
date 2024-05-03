@@ -21,7 +21,6 @@ class Products extends Model
     {
         return $this->belongsTo(SubCategory::class);
     }
-
     static public function getProduct()
     {
         return self::orderBy('id', 'desc')->paginate(15);

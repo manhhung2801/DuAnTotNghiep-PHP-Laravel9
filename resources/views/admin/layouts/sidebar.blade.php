@@ -56,6 +56,14 @@
             <ul>
                 <li>
                     <a href="{{ route('admin.variant.index') }}"><i class='bx bx-radio-circle'></i>Variant</a>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="lni lni-sprout"></i>
+                </div>
+                <div class="menu-title">Coupons</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('admin.coupons.index') }}"><i class='bx bx-radio-circle'></i>List Coupons</a>
                 </li>
             </ul>
         </li>
@@ -79,6 +87,24 @@
             </a>
             <ul>
                 <li> <a href="{{ route('admin.product.index') }}"><i class='bx bx-radio-circle'></i>List Product</a>
+                <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
+                </div>
+                <div class="menu-title">Products</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('admin.product.index') }}"><i class='bx bx-radio-circle'></i>List Product</a>
+                </li>
+            </ul>
+        </li>
+          <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div class="menu-title">Variant</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route("admin.variant.index") }}"><i class='bx bx-radio-circle'></i>Variant</a>
                 </li>
             </ul>
         </li>

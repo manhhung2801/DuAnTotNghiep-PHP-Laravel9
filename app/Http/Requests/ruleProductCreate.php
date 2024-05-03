@@ -25,6 +25,7 @@ class ruleProductCreate extends FormRequest
     {
         return [
             'name' => 'required|max:255',
+            'name' => 'required|max:255|unique:products,name',
             'qty' => 'required|min:0',
             'image' => 'required|image|mimes:jpeg,jpg,png,gif,webp|max:10240',
             'image_gallery' => 'max:10240',
@@ -39,6 +40,7 @@ class ruleProductCreate extends FormRequest
         return [
             'name.required' => "Product name cannot be empty!",
             'name.max' => "Product name cannot be more than 255 characters!",
+            'name.unique' => "Product name Exists!",
             'qty.required' => "Product quantity cannot be empty!",
             'qty.min' => "Product quantity cannot be less than zero!",
             'image.required' => "Image cannot be empty!",
