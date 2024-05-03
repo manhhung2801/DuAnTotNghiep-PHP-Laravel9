@@ -9,9 +9,6 @@ use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Category;
 use App\Models\ChildCategory;
-use App\Models\SubCategory;
-use App\Models\product_image_galleries;
-use Illuminate\Support\Facades\File;
 use App\Models\product_image_galleries;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\ValidationException;
@@ -247,8 +244,7 @@ class ProductController extends Controller
 
         toastr()->success('Update ' . $request->name . ' Success');
         return redirect()->back();
-        try
-        {
+        try {
             $request->validate([
                 'name' => 'required|max:255',
                 'qty' => 'required|min:0',
@@ -279,7 +275,7 @@ class ProductController extends Controller
             $product->short_description = $request->short_description;
             // thêm slug nếu không tồn tại thì trích xuất từ name bằng method Str::slug
             $product->slug = !empty($request->slug) ? $request->slug : Str::slug($request->name, "-");
-    
+
             // Nếu File image mới tồn tại tiến hành update và xóa ảnh cũ từ thư mục
             if ($request->hasFile('image')) {
                 $product->image = $this->uploadFile($request, 'image', '/products');
@@ -292,7 +288,7 @@ class ProductController extends Controller
                 $product->image = $request->image_old;
             }
             $product->save();
-    
+
             // Nếu image_gallery tồn tại tiến hành update
             if ($request->hasFile('image_gallery')) {
                 // Xóa file ảnh cũ trong uploads
@@ -315,12 +311,11 @@ class ProductController extends Controller
                     $gallery->save();
                 }
             }
-    
+
             toastr()->success('Update ' . $request->name . ' Success');
             return redirect()->back();
-        }
-        catch(ValidationException $e) {
-            toastr()->error('Lỗi: ' .$e);
+        } catch (ValidationException $e) {
+            toastr()->error('Lỗi: ' . $e);
         }
     }
 
@@ -336,12 +331,12 @@ class ProductController extends Controller
         $product->delete();
         return response(['status' => 'success', 'Deleted Successfully!']);
 
-        try{
+        try {
             Products::findOrFail($id)->delete();
             product_image_galleries::where('product_id', $id)->delete();
             return response(['status' => 'success', 'Deleted Successfully!']);
-        }catch(ValidationException $e) {
-            toastr()->error('Lỗi: ' .$e);
+        } catch (ValidationException $e) {
+            toastr()->error('Lỗi: ' . $e);
         }
     }
     public function changeStatus(Request $request)
