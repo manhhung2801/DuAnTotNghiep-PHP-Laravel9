@@ -42,7 +42,7 @@ class VariantController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'product_id' => ['required'],
+            'product_id' => ['required', 'numeric'],
             'name' => ['required', 'max:200', 'unique:sub_categories,name'],
             'status' => ['required']
         ]);
