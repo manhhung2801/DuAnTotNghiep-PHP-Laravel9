@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Variant;
-use App\Models\Products;
+use App\Models\Product;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -30,7 +30,7 @@ class VariantController extends Controller
      */
     public function create()
     {
-        $product = Products::all();
+        $product = Product::all();
         return view('admin.variant.create', compact('product'));
     }
     /**
@@ -66,7 +66,7 @@ class VariantController extends Controller
      */
     public function edit($id)
     {
-        $product = Products::all();
+        $product = Product::all();
         $variant = Variant::findOrFail($id);
         return view('admin.variant.edit', compact('variant', 'product'));
     }
