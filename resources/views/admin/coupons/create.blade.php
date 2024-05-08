@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="input4" class="form-label">Max use</label>
-                    <input type="text" class="form-control" id="input4" name="max_use" value="{{ old('max_use') }}">
+                    <input type="number" class="form-control" id="input4" name="max_use" value="{{ old('max_use') }}">
                 </div>
                 <div class="col-md-6">
                     <label for="input5" class="form-label">Start date</label>
@@ -53,7 +53,7 @@
 
                 <div class="col-md-6">
                     <label for="input8" class="form-label">Discount type</label>
-                    <input type="text" class="form-control" id="input8" name="discount_type" value="{{ old('discount_type') }}">
+                    <input type="number" class="form-control" id="input8" name="discount_type" value="{{ old('discount_type') }}">
                 </div>
 
                 <div class="col-md-6">
