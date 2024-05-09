@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\UserDashboardController;
-
+use App\Http\Controllers\Frontend\TintucController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,4 +44,4 @@ Route::middleware(['auth', 'verified', 'role:user'])->prefix('user')->name('user
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
 });
 /** User Dashboard */
-
+Route::get('/tintuc',[TintucController::class,'index']);
