@@ -135,7 +135,7 @@
                     <!-- user login -->
                     <div class="nav-item dropdown">
                         <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          <i class="fa-regular fa-user fa-lg"></i>
+                          <img src="images/uploaded/logo/login.png" alt="" style="margin-bottom: 4px;">
                         </a>
                     </div>
 
