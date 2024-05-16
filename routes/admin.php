@@ -2,15 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Backend\ProfileController;
-use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponsController;
-use App\Http\Controllers\Backend\SubCategoryController;
-use App\Http\Controllers\Backend\VariantController;
-use App\Http\Controllers\backend\VariantItemController;
 use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\VariantController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\backend\VariantItemController;
+use App\Http\Controllers\Backend\ChildCategoryController;
+use App\Http\Controllers\Backend\UserManagementController;
 
 /** Admin Routes */
 
@@ -56,3 +57,8 @@ Route::put('/variant/change-status', [ VariantController::class, 'changeStatus']
 /** VariantItem */
 Route::resource('/variantItem', VariantItemController::class);
 Route::put('/variantItem/change-status/{id?}', [ VariantItemController::class, 'changeStatus'])->name('variantItem.change-status');
+
+/** user management */
+Route::get("/user-management", [UserManagementController::class, 'index'])->name('user-management.index');
+Route::put("/user-management/change-role", [UserManagementController::class, 'changeRole'])->name('user-management.change-role');
+Route::put("/user-management/change-status", [UserManagementController::class, 'changeStatus'])->name('user-management.change-status');
