@@ -38,6 +38,9 @@ Route::resource('/child-category', ChildCategoryController::class);
 /** Product */
 Route::put('/product/change-status', [ProductController::class, 'changeStatus'])->name('product.change-status');
 Route::get('get-childcategory', [ProductController::class, 'getChildCategories'])->name('get-childcategories');
+Route::get('product/trash-list', [ProductController::class, 'showTrash'])->name('product.trash-list');
+Route::DELETE('product/destroy-trash/{id?}', [ProductController::class, 'destroyTrash'])->name('product.destroy-trash');
+Route::PATCH('product/restore-trash/{id?}', [ProductController::class, 'restoreTrash'])->name('product.restore-trash');
 Route::resource('product', ProductController::class);
 
 /** Slider */
