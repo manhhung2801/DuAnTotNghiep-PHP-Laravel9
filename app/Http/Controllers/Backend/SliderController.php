@@ -140,6 +140,7 @@ class SliderController extends Controller
         ->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
         } 
         return view('admin.slider.trash-list', compact('sliders'));
+        // dfdgbnfn
     }
     public function destroyTrash($id)
     {
