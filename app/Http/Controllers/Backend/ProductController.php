@@ -12,15 +12,10 @@ use App\Models\ChildCategory;
 use App\Models\product_image_galleries;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\ValidationException;
+use Exception;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     public function uploadFile(Request $request, String $inputName, String $path)
     {
         if ($request->hasFile($inputName)) {
@@ -39,23 +34,12 @@ class ProductController extends Controller
         return view('admin.product.index', compact('getProduct'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $category = Category::where('status', 1)->get();
         return view('admin.product.create', compact('category'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(ruleProductCreate $request)
     {
         try {
@@ -102,23 +86,6 @@ class ProductController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $gallery = product_image_galleries::where('product_id', $id)->get('image');
@@ -127,13 +94,6 @@ class ProductController extends Controller
         return view('admin.product.edit', compact('product', 'category', 'gallery'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
 
@@ -280,19 +240,12 @@ class ProductController extends Controller
             toastr()->error('Lỗi: ' . $e);
         }
     }
+    
+    public function show($id) {
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    }
     public function destroy($id)
     {
-        $product = Product::findOrFail($id);
-        $product->delete();
-        return response(['status' => 'success', 'Deleted Successfully!']);
-
         try {
             Product::findOrFail($id)->delete();
             product_image_galleries::where('product_id', $id)->delete();
@@ -301,6 +254,7 @@ class ProductController extends Controller
             toastr()->error('Lỗi: ' . $e);
         }
     }
+
     public function changeStatus(Request $request)
     {
 
@@ -309,9 +263,36 @@ class ProductController extends Controller
         $product->save();
         return response(['message' => 'Status has been updated']);
     }
+
     public function getChildCategories(Request $request)
     {
         $childCategory = ChildCategory::where('sub_category_id', $request->id)->where('status', 1)->get();
         return $childCategory;
+    }
+
+    public function showTrash()
+    {
+        $getProduct = Product::getProductTrashed();
+        return view('admin.product.trash-list', compact('getProduct'));
+    }
+
+    public function destroyTrash($id) {
+        try{
+            Product::destroyTrashedItem($id);
+            return response(['status' => 'success', 'Deleted Forever Successfully!']);
+        }
+        catch(Exception $e) {
+            return response(['status' => 'error', 'Deleted Faild! '.$e.'' ]);
+        }
+    }
+
+    public function restoreTrash($id) {
+        try{
+            Product::restoreTrashed($id);
+            return response(['status' => 'success', 'Successfully!']);
+        }
+        catch(Exception $e) {
+            return response(['status' => 'error', 'message' => 'Restore Faild '.$e.'']);
+        }
     }
 }

@@ -37,6 +37,7 @@ return new class extends Migration
             $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade');
             $table->bigInteger('child_category_id')->nullable()->unsigned()->index();
             $table->foreign('child_category_id')->references('id')->on('child_categories')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
