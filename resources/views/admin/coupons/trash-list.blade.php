@@ -24,10 +24,12 @@
             <div class="action_start float-start d-flex">
                 <h6 class="mt-2 mb-0 text-uppercase">Trashed Soupons</h6>
                 <div class="form-search ms-2">
-                    <div class="input-group">
-                        <input type="text" class="form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm">
-                        <button class="btn btn-outline-primary rounded-end-5" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
+                    <form action="" method="get">
+                        <div class="input-group">
+                            <input type="text" value="{{ Request::get('keyword') }}" name="keyword" class="form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm">
+                            <button class="btn btn-outline-primary rounded-end-5" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <a href="{{ route('admin.coupons.index') }}" class="btn btn-warning float-end">Back</a>

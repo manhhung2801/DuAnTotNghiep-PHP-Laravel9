@@ -17,10 +17,13 @@ class CouponsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $coupons = Coupons::getCoupons();
+        if(!empty($request->get('keyword'))) {
+            $coupons = $coupons->where('name', 'like', '%'.$request->get('keyword').'%');
+        }
         return view("admin.coupons.index", compact('coupons'));
     }
 
@@ -155,9 +158,13 @@ class CouponsController extends Controller
     }
 
 
-    public function showTrash()
+    public function showTrash(Request $request)
     {
         $getCoupons = Coupons::getCouponsTrashed();
+        if (!empty($request->get('keyword'))) {
+            $keyword = $request->get('keyword');
+            $getCoupons = Coupons::where('name', 'like', '%' . $keyword . '%');
+        }
         return view("admin.coupons.trash-list", compact('getCoupons'));
     }
 
