@@ -77,6 +77,18 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
+                </div>
+                <div class="menu-title">Users</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route('admin.user-management.index') }}"><i class='bx bx-radio-circle'></i>List Users</a>
+                </li>
+            </ul>
+        </li>
         <li class="menu-label">Info</li>
         <li class="">
             <a href="{{ route('admin.profile') }}" aria-expanded="false">

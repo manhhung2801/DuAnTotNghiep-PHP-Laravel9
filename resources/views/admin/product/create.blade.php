@@ -55,7 +55,7 @@
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="price" class="form-label">Price</label>
-                        <input type="text" class="form-control" id="price" name="price" placeholder="Price..." value="{{ old('pricgite') }}">
+                        <input type="text" class="form-control" id="price" name="price" placeholder="Price..." value="{{ old('price') }}">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="offer_price" class="form-label">Offer Price</label>
