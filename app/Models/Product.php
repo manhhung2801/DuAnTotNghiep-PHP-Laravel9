@@ -41,7 +41,8 @@ class Product extends Model
     {
         return self::withTrashed()->where('id', $id)->forceDelete();
     }
-    static public function restoreTrashed($id) {
+    static public function restoreTrashed($id)
+    {
         return self::withTrashed()->where('id', $id)->restore();
     }
 }

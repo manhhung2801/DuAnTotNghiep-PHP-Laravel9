@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">
                 <h6 class="mt-2 mb-0 text-uppercase float-start">Child Categories</h6>
-                <a href="{{ route("admin.child-category.create") }}" class="btn btn-warning float-end">Add Child Category</a>
+                <a href="{{ route(admin.child-category.create) }}" class="btn btn-warning float-end">Add Child Category</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

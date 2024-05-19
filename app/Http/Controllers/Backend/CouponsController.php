@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Coupons;
+use App\Http\Requests\ruleProductCreate;
+use Illuminate\Validation\ValidationException;
+use Exception;
+use Illuminate\Support\Str;
 
 class CouponsController extends Controller
 {
@@ -16,7 +20,7 @@ class CouponsController extends Controller
     public function index()
     {
 
-        $coupons = Coupons::paginate(15);
+        $coupons = Coupons::getCoupons();
         return view("admin.coupons.index", compact('coupons'));
     }
 
@@ -77,7 +81,8 @@ class CouponsController extends Controller
      */
     public function show($id)
     {
-        $Coupons = Coupons::findOrFail($id);
+        // $Coupons = Coupons::findOrFail($id);
+        $Coupons = Coupons::getCouponsItem($id);
         return view('admin.coupons.edit', compact('Coupons'));
     }
 
@@ -127,10 +132,17 @@ class CouponsController extends Controller
      */
     public function destroy($id)
     {
-        $Coupons = Coupons::find($id);
-        $Coupons->delete();
-        return response(['status' => 'success', 'Deleted Successfully!']);
+        // $Coupons = Coupons::find($id);
+        // $Coupons->delete();
+        // return response(['status' => 'success', 'Deleted Successfully!']);
 
+
+        try {
+            Coupons::findOrFail($id)->delete();
+            return response(['status' => 'success', 'Deleted Successfully!']);
+        } catch (ValidationException $e) {
+            toastr()->error('Lỗi: ' . $e);
+        }
     }
 
     public function changeStatus(Request $request)
@@ -140,5 +152,32 @@ class CouponsController extends Controller
         $Coupons->status = $request->status == 'true' ? 1 : 0;
         $Coupons->save();
         return response(['message' => 'Status has been updated']);
+    }
+
+
+    public function showTrash()
+    {
+        $getCoupons = Coupons::getCouponsTrashed();
+        return view("admin.coupons.trash-list", compact('getCoupons'));
+    }
+
+    public function destroyTrash($id)
+    {
+        try {
+            Coupons::destroyTrashedItem($id);
+            return response(['status' => 'success', 'Deleted Forever Successfully!']);
+        } catch (Exception $e) {
+            return response(['status' => 'error', 'Deleted Faild! ' . $e . '']);
+        }
+    }
+
+    public function restoreTrash($id)
+    {
+        try {
+            Coupons::restoreTrashed($id);
+            return response(['status' => 'success', 'Successfully!']);
+        } catch (Exception $e) {
+            return response(['status' => 'error', 'message' => 'Restore Faild ' . $e . '']);
+        }
     }
 }

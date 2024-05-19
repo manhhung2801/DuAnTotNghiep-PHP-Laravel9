@@ -15,7 +15,7 @@ use App\Http\Controllers\Backend\UserManagementController;
 
 /** Admin Routes */
 
-Route::get('dashboard', [AdminController::class,'dashboard'])->name('dashboard');
+Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
 /** Profile Routes */
 Route::get('/dashboard', [ProfileController::class, 'index'])->name('profile');
@@ -48,18 +48,22 @@ Route::resource('product', ProductController::class);
 Route::put('/slider/change-status', [SliderController::class, 'changeStatus'])->name('slider.change-status');
 Route::resource('/slider', SliderController::class);
 
+/** Coupons */
 
+Route::get('coupons/trash-list', [CouponsController::class, 'showTrash'])->name('coupons.trash-list');
+Route::DELETE('coupons/destroy-trash/{id?}', [CouponsController::class, 'destroyTrash'])->name('coupons.destroy-trash');
+Route::PATCH('coupons/restore-trash/{id?}', [CouponsController::class, 'restoreTrash'])->name('coupons.restore-trash');
 Route::put('/coupons/change-status', [CouponsController::class, 'changeStatus'])->name('coupons.change-status');
 Route::resource('/coupons', CouponsController::class);
 
 /** Variant */
 
-Route::resource('/variant',VariantController::class);
-Route::put('/variant/change-status', [ VariantController::class, 'changeStatus'])->name('variant.change-status');
+Route::resource('/variant', VariantController::class);
+Route::put('/variant/change-status', [VariantController::class, 'changeStatus'])->name('variant.change-status');
 
 /** VariantItem */
 Route::resource('/variantItem', VariantItemController::class);
-Route::put('/variantItem/change-status/{id?}', [ VariantItemController::class, 'changeStatus'])->name('variantItem.change-status');
+Route::put('/variantItem/change-status/{id?}', [VariantItemController::class, 'changeStatus'])->name('variantItem.change-status');
 
 /** user management */
 Route::get("/user-management", [UserManagementController::class, 'index'])->name('user-management.index');
