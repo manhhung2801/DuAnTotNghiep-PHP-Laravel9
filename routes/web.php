@@ -47,3 +47,4 @@ Route::middleware(['auth', 'verified', 'role:user'])->prefix('user')->name('user
 /** User Dashboard */
 Route::get('/tintuc',[TintucController::class,'index']);
 Route::get('/khieunai',[KhieuNaiController::class,'index']);
+

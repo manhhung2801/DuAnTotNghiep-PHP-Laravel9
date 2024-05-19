@@ -6,13 +6,13 @@
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Variant</div>
+            <div class="breadcrumb-title pe-3">Trash Variant</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Variant</li>
+                        <li class="breadcrumb-item active" aria-current="page">Trash Variant</li>
                     </ol>
                 </nav>
             </div>
@@ -20,8 +20,8 @@
         <!--end breadcrumb-->
         <div class="card">
             <div class="card-header">
-             <div class="action_start float-start d-flex">
-                  <h6 class="mt-2 mb-0 text-uppercase float-start">Variant</h6>
+               <div class="action_start float-start d-flex">
+                  <h6 class="mt-2 mb-0 text-uppercase float-start">Trash Variant</h6>
                 <div class="form-search ms-2">
                     <form action="" method="get">
                         <div class="input-group">
@@ -31,10 +31,9 @@
                     </form>
                 </div>
              </div>
-                <a href="{{ route('admin.variant.trashed-variant') }}" class="btn btn-danger float-end ">Trashed variant</a>
-                <a href="{{ route('admin.variant.create')}}" class="btn btn-warning float-end me-2">Add variant</a>
+                <a href="{{ route('admin.variant.index') }}" class="btn btn-primary float-end">Back</a>
                 <a href="{{ route('admin.variant.index') }}" class="me-2 btn btn-success float-end">Reset</a>
-         </div>
+            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -54,16 +53,17 @@
                                     <td>{{$variant->product_id}}</td>
                                     <td>{{ $variant->name }}</td>
                                     <td>
-                                    <div class="form-check form-switch form-check-success">
-                                    @if($variant->status == 1)
-                                    <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess" checked>
-                                    @elseif($variant->status == 0)
-                                    <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess">
-                                    @endif
-                                </div>
+                                        <div class="form-check form-switch form-check-success">
+                                            @if($variant->status == 1)
+                                                <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess" checked>
+                                            @elseif($variant->status == 0)
+                                                <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess">
+                                            @endif
+                                        </div>
+
                                     <td>
-                                        <a class="btn btn-warning" href="{{ route('admin.variant.edit', $variant->id) }}">Edit</a>
-                                        <a class="btn btn-danger delete-item" href="{{ route("admin.variant.destroy", $variant->id) }}">Delete</a>
+                                     <a class="btn btn-primary " href="{{ route('admin.variant.restore-variant', $variant->id) }}">Restore</a>
+                                    <a class="btn btn-danger" href="{{ route('admin.variant.deleted-variant', $variant->id) }}">Deleted</a>
                                     </td>
                                 </tr>
                             @endforeach
