@@ -20,6 +20,7 @@ class SliderController extends Controller
         }
         $sliders = $sliders->paginate(15);
         return view("admin.slider.index", compact('sliders'));
+        // 
     }
 
 
