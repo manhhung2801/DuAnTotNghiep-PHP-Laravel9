@@ -22,15 +22,16 @@
         <div class="card-header">
             <h6 class="mt-2 mb-0 text-uppercase float-start">List Coupons</h6>
             <div class="action_start float-start d-flex">
-                <div class="form-search ms-2">
+                <form action="" method="get">
                     <div class="input-group">
-                        <input type="text" class="form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm">
-                        <button class="btn btn-outline-primary rounded-end-5" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <input type="text" value="{{ Request::get('keyword') }}" name="keyword" class="form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm">
+                        <button class="btn btn-outline-primary rounded-end-5" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
-                </div>
+                </form>
             </div>
             <a href="{{route('admin.coupons.trash-list')}}" class="btn btn-danger float-end mx-2">Trashed Coupons</a>
             <a href="{{route('admin.coupons.create') }}" class="btn btn-warning float-end">Add Coupons</a>
+            <a href="{{ route("admin.coupons.index") }}" class="me-2 btn btn-success float-end">Reset</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

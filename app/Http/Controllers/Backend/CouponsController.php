@@ -17,15 +17,18 @@ class CouponsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
-
-        $coupons = Coupons::getCoupons();
-        if(!empty($request->get('keyword'))) {
-            $coupons = $coupons->where('name', 'like', '%'.$request->get('keyword').'%');
+        $coupons = Coupons::latest();
+        // search tìm kiếm theo type
+        if (!empty($request->get('keyword'))) {
+            $coupons = Coupons::where('name', 'like', '%' . $request->get('keyword') . '%');
         }
+        $coupons = $coupons->paginate(15);
         return view("admin.coupons.index", compact('coupons'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -158,15 +161,22 @@ class CouponsController extends Controller
     }
 
 
+  
     public function showTrash(Request $request)
     {
-        $getCoupons = Coupons::getCouponsTrashed();
+        $getCoupons = Coupons::onlyTrashed()->latest();
+        // search tìm kiếm theo type
         if (!empty($request->get('keyword'))) {
             $keyword = $request->get('keyword');
-            $getCoupons = Coupons::where('name', 'like', '%' . $keyword . '%');
+            $getCoupons = $getCoupons->where('name', 'like', '%' . $request->get('keyword') . '%');
         }
-        return view("admin.coupons.trash-list", compact('getCoupons'));
+        // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
+        $getCoupons = $getCoupons->paginate(15);
+
+        // Trả về view với dữ liệu các category đã bị xóa
+        return view('admin.coupons.trash-list', compact('getCoupons'));
     }
+
 
     public function destroyTrash($id)
     {
