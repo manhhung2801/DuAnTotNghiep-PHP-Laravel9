@@ -20,8 +20,20 @@
         <!--end breadcrumb-->
         <div class="card">
             <div class="card-header">
-                <h6 class="mt-2 mb-0 text-uppercase float-start">Child Categories</h6>
-                <a href="{{ route("admin.child-category.create") }}" class="btn btn-warning float-end">Add Child Category</a>
+                <div class="action_start float-start d-flex">
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">Child Categories</h6>
+                    <div class="form-search ms-2">
+                        <form action="" method="get">
+                            <div class="input-group">
+                                <input type="text" value="{{ Request::get('keyword') }}" name="keyword" class="form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm">
+                                <button class="btn btn-outline-primary rounded-end-5" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <a href="{{ route("admin.child-category.trash-list") }}" class="btn btn-danger float-end">Trashed Child Categories</a>
+                <a href="{{ route("admin.child-category.create") }}" class="me-2 btn btn-warning float-end">Add Child Category</a>
+                <a href="{{ route("admin.child-category.index") }}" class="me-2 btn btn-success float-end">Reset</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
