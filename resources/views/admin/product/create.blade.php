@@ -28,19 +28,19 @@
                 @csrf
                 <div class="col-md-6 mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ old('name') }}">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="sku" class="form-label">SKU</label>
-                    <input type="text" class="form-control" id="sku" name="sku" placeholder="Sku">
+                    <input type="text" class="form-control" id="sku" name="sku" placeholder="Sku" value="{{ old('sku') }}">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="slug" class="form-label">Slug</label>
-                    <input type="text" class="form-control" id="slug" name="slug" placeholder="slug">
+                    <input type="text" class="form-control" id="slug" name="slug" placeholder="slug" value="{{ old('slug') }}">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="qty" class="form-label">Quantity</label>
-                    <input type="text" class="form-control" id="qty" name="qty" placeholder="Quantity">
+                    <input type="text" class="form-control" id="qty" name="qty" placeholder="Quantity" value="{{ old('qty') }}">
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
@@ -55,19 +55,19 @@
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="price" class="form-label">Price</label>
-                        <input type="text" class="form-control" id="price" name="price" placeholder="Price...">
+                        <input type="text" class="form-control" id="price" name="price" placeholder="Price..." value="{{ old('price') }}">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="offer_price" class="form-label">Offer Price</label>
-                        <input type="text" class="form-control" id="offer_price" name="offer_price" placeholder="Offer Price...">
+                        <input type="text" class="form-control" id="offer_price" name="offer_price" placeholder="Offer Price..." value="{{ old('offer_price') }}">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="offer_start_date" class="form-label">Offer Start Date</label>
-                        <input type="date" class="form-control" id="offer_start_date" name="offer_start_date">
+                        <input type="date" class="form-control" id="offer_start_date" name="offer_start_date" value="{{ old('offer_start_date') }}">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="offer_end_date" class="form-label">Offer End Date</label>
-                        <input type="date" class="form-control" id="offer_end_date" name="offer_end_date">
+                        <input type="date" class="form-control" id="offer_end_date" name="offer_end_date" value="{{ old('offer_end_date') }}">
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -94,11 +94,11 @@
                 <div class="row mt-3">
                     <div class="col-md-4 mb-3">
                         <label for="video_link" class="form-label">Video Upload</label>
-                        <input type="url" class="form-control" id="video_link" name="video_link" placeholder="https://example.com" pattern="https://.*">
+                        <input type="url" class="form-control" id="video_link" name="video_link" placeholder="https://example.com" pattern="https://.*" value="{{ old('video_link') }}">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="product_type" class="form-label">Product Type</label>
-                        <input type="text" class="form-control" id="product_type" name="product_type" placeholder="New or Sale...">
+                        <input type="text" class="form-control" id="product_type" name="product_type" placeholder="New or Sale..." value="{{ old('product_type') }}">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label class="form-label">Status: </label>
@@ -113,20 +113,20 @@
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="seotitle" class="form-label">SEO Title</label>
-                        <input type="text" class="form-control" id="seotitle" name="seo_title">
+                        <input type="text" class="form-control" id="seotitle" name="seo_title" value="{{ old('seo_title') }}">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="seodesc" class="form-label">SEO Description</label>
-                        <input type="text" class="form-control" id="seodesc" name="seo_description">
+                        <input type="text" class="form-control" id="seodesc" name="seo_description" value="{{ old('seo_description') }}">
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="editor" class="form-label">Long Description</label>
-                    <textarea class="form-control description" name="long_description" id="editor"></textarea>
+                    <textarea class="form-control description" name="long_description" id="editor" value="{{ old('long_description') }}"></textarea>
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="short_description" class="form-label">Short Description</label>
-                    <textarea class="form-control description" name="short_description" id="short_description"></textarea>
+                    <textarea class="form-control description" name="short_description" id="short_description" value="{{ old('short_description') }}"></textarea>
                 </div>
                 <div class="col-md-2">
                     <div class="d-grid align-items-center gap-3">
@@ -140,23 +140,6 @@
 @endsection
 @push('scripts')
 <script>
-    tinymce.init({
-        selector: '.description',
-        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-        mergetags_list: [{
-                value: 'First.Name',
-                title: 'First Name'
-            },
-            {
-                value: 'Email',
-                title: 'Email'
-            },
-        ],
-        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
-    });
     $(document).ready(function() {
         $('body').on('change', ".main-category, .sub-category", function(e) {
             let id = $(this).val();
@@ -172,7 +155,7 @@
                 method: "GET",
                 url: url,
                 data: {
-                    id: id,
+                    id: id
                 },
                 success: function(data) {
                     targetSelect.html('<option value="">Select</option>')

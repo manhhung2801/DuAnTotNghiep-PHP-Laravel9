@@ -20,7 +20,7 @@
         <!--end breadcrumb-->
         <div class="card">
             <div class="card-header">
-                <h6 class="mt-2 mb-0 text-uppercase float-start">Update Category</h6>
+                <h6 class="mt-2 mb-0 text-uppercase float-start">Update Slider</h6>
                 <a href="{{ route('admin.slider.index') }}" class="btn btn-primary float-end">Back</a>
             </div>
             <div class="card-body">
@@ -40,13 +40,13 @@
                     </div>
                     <div class="col-md-12">
                         <label for="input3" class="form-label">Banner</label>
-                        <div class="col-sm-9 text-secondary">
+                        <div class="col-sm-12 text-secondary">
                             <input id="input3" type="file" class="form-control" name="banner" />
-                            {{ $slider->banner }}
                         </div>
+                        <img src="{{ asset('uploads/slider/'.$slider->banner) }}" class="mt-2" alt="" width="100px">
                     </div>
                     <div class="col-md-6">
-                        <label for="input4" class="form-label">Starting_price</label>
+                        <label for="input4" class="form-label">Starting price</label>
                         <input type="text" class="form-control" id="input4" name="starting_price"
                             value="{{ $slider->starting_price }}">
                     </div>

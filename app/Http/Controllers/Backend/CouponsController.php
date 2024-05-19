@@ -41,14 +41,14 @@ class CouponsController extends Controller
         $Coupons = new Coupons;
         $request->validate([
             'name' => ['required'],
-            'code' => ['required',],
-            'quantity' => ['required',],
-            'max_use' => ['required',],
-            'start_date' => ['required',],
-            'end_date' => ['required',],
+            'code' => ['required'],
+            'quantity' => ['required', 'numeric'],
+            'max_use' => ['required', 'numeric'],
+            'start_date' => ['required'],
+            'end_date' => ['required'],
             'discount_type' => ['required'],
-            'discount' => ['required'],
-            'total_used' => ['required'],
+            'discount' => ['required', 'numeric'],
+            'total_used' => ['required', 'numeric'],
             'status' => ['required'],
 
         ]);
@@ -63,9 +63,8 @@ class CouponsController extends Controller
         $Coupons->discount = $request->discount;
         $Coupons->total_used = $request->total_used;
         $Coupons->status = $request->status;
-
-
         $Coupons->save();
+
         toastr()->success('Admin successfully added slider');
         return redirect()->back();
     }

@@ -301,8 +301,8 @@
 		new PerfectScrollbar(".app-container")
 	</script>
 	<script>
-		@if($errors - > any())
-		@foreach($errors - > all() as $error)
+		@if($errors-> any())
+		@foreach($errors-> all() as $error)
 		// Set an error toast, with a title
 		toastr.error("{{$error}}", 'Error');
 		@endforeach

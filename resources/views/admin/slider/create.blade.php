@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="input4" class="form-label">Starting_price</label>
+                        <label for="input4" class="form-label">Starting price</label>
                         <input type="text" class="form-control" id="input4" name="starting_price"
                             value="{{ old('starting_price') }}">
                     </div>

@@ -47,7 +47,6 @@
                 </li>
             </ul>
         </li>
-
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="lni lni-sprout"></i>
@@ -59,6 +58,7 @@
                 </li>
             </ul>
         </li>
+        </li>
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
@@ -66,19 +66,26 @@
                 <div class="menu-title">Products</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.product.index') }}"><i class='bx bx-radio-circle'></i>List Product</a>
+                <li>
+                    <a href="{{ route('admin.product.index') }}"><i class='bx bx-radio-circle'></i>List Product</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.variant.index') }}"><i class='bx bx-radio-circle'></i>Variants</a>
+                <li>
+                <li>
+                    <a href="{{ route('admin.variantItem.index') }}"><i class='bx bx-radio-circle'></i>Variants Items</a>
                 </li>
             </ul>
         </li>
-          <li>
+        <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="fa-solid fa-layer-group"></i>
+                <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
                 </div>
-                <div class="menu-title">Variant</div>
+                <div class="menu-title">Users</div>
             </a>
             <ul>
                 <li>
-                    <a href="{{ route("admin.variant.index") }}"><i class='bx bx-radio-circle'></i>Variant</a>
+                    <a href="{{ route('admin.user-management.index') }}"><i class='bx bx-radio-circle'></i>List Users</a>
                 </li>
             </ul>
         </li>
@@ -90,7 +97,6 @@
                 <div class="menu-title">User Profile</div>
             </a>
         </li>
-
     </ul>
     <!--end navigation-->
 </div>

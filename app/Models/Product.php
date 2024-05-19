@@ -8,5 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    protected $table='product';
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    public function childCategory()
+    {
+        return $this->belongsTo(ChildCategory::class);
+    }
+    public function subCategory()
+    {
+        return $this->belongsTo(SubCategory::class);
+    }
+    static public function getProduct()
+    {
+        return self::orderBy('id', 'desc')->paginate(15);
+    }
+    static public function getProductItem($id) {
+        return self::findOrFail($id);
+    }
 }

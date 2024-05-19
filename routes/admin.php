@@ -2,23 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Backend\ProfileController;
-use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponsController;
-use App\Http\Controllers\Backend\SubCategoryController;
-use App\Http\Controllers\Backend\VariantController;
-
 use App\Http\Controllers\backend\ProductController;
-
+use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\VariantController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\backend\VariantItemController;
+use App\Http\Controllers\Backend\ChildCategoryController;
+use App\Http\Controllers\Backend\UserManagementController;
 
 /** Admin Routes */
 
 Route::get('dashboard', [AdminController::class,'dashboard'])->name('dashboard');
 
 /** Profile Routes */
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/dashboard', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile/update/', [ProfileController::class, 'updateProfile'])->name('profile.update');
 Route::put('/profile/update/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 
@@ -36,11 +36,10 @@ Route::put('/child-category/change-status', [ChildCategoryController::class, 'ch
 Route::get('get-subcategory', [ChildCategoryController::class, 'getSubCategories'])->name('get-subcategories');
 Route::resource('/child-category', ChildCategoryController::class);
 
-
-/** Variant */
-Route::resource('/variant',VariantController::class);
-Route::put('/variant/change-status', [ VariantController::class, 'changeStatus'])->name('variant.change-status');
-
+/** Product */
+Route::put('/product/change-status', [ProductController::class, 'changeStatus'])->name('product.change-status');
+Route::get('get-childcategory', [ProductController::class, 'getChildCategories'])->name('get-childcategories');
+Route::resource('product', ProductController::class);
 
 /** Slider */
 Route::put('/slider/change-status', [SliderController::class, 'changeStatus'])->name('slider.change-status');
@@ -50,9 +49,16 @@ Route::resource('/slider', SliderController::class);
 Route::put('/coupons/change-status', [CouponsController::class, 'changeStatus'])->name('coupons.change-status');
 Route::resource('/coupons', CouponsController::class);
 
-// 
-/** Product */
-Route::put('/product/change-status', [ProductController::class, 'changeStatus'])->name('product.change-status');
-Route::get('get-childcategory', [ProductController::class, 'getChildCategories'])->name('get-childcategories');
-Route::resource('product', ProductController::class);
+/** Variant */
 
+Route::resource('/variant',VariantController::class);
+Route::put('/variant/change-status', [ VariantController::class, 'changeStatus'])->name('variant.change-status');
+
+/** VariantItem */
+Route::resource('/variantItem', VariantItemController::class);
+Route::put('/variantItem/change-status/{id?}', [ VariantItemController::class, 'changeStatus'])->name('variantItem.change-status');
+
+/** user management */
+Route::get("/user-management", [UserManagementController::class, 'index'])->name('user-management.index');
+Route::put("/user-management/change-role", [UserManagementController::class, 'changeRole'])->name('user-management.change-role');
+Route::put("/user-management/change-status", [UserManagementController::class, 'changeStatus'])->name('user-management.change-status');

@@ -33,8 +33,6 @@ class VariantController extends Controller
         $product = Product::all();
         return view('admin.variant.create', compact('product'));
     }
-  
-    
     /**
      * Store a newly created resource in storage.
      *
@@ -44,7 +42,7 @@ class VariantController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'product_id' => ['required'],
+            'product_id' => ['required', 'numeric'],
             'name' => ['required', 'max:200', 'unique:sub_categories,name'],
             'status' => ['required']
         ]);
@@ -73,7 +71,6 @@ class VariantController extends Controller
         return view('admin.variant.edit', compact('variant', 'product'));
     }
 
-   
 
      /**
      * Update the specified resource in storage.
