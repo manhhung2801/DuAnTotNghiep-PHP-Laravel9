@@ -24,11 +24,14 @@
             <div class="action_start float-start d-flex">
                 <h6 class="mt-2 mb-0 text-uppercase">Trashed product</h6>
                 <div class="form-search ms-2">
-                    <div class="input-group">
-                        <input type="text" class="form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm">
-                        <button class="btn btn-outline-primary rounded-end-5" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
+                    <form action="" method="get">
+                        <div class="input-group">
+                            <input value="{{ Request::get('keyword') }}" type="text" name="keyword" class="form-control rounded-start-5 focus-ring focus-ring-light querySearch" placeholder="Search">
+                            <button class="btn btn-outline-primary rounded-end-5 buttonSearch" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </form>
                 </div>
+                <a href="{{ route('admin.product.trash-list') }}" class="me-2 btn btn-info ms-2">Reset</a>
             </div>
             <a href="{{ route('admin.product.index') }}" class="btn btn-warning float-end">Back</a>
         </div>
@@ -75,6 +78,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $getProduct->links() }}
             </div>
         </div>
     </div>
