@@ -158,10 +158,10 @@ class VariantItemController extends Controller
         // dd($variantItem);
         return redirect()->route('admin.variantItem.onlyTrashed');
     }
-    public function delete($id = null)
+    public function destroyTrashed($id = null)
     {
         $variantItem = VariantItem::withTrashed()->find($id);
         $variantItem->forceDelete();
-        return redirect()->route('admin.variantItem.onlyTrashed');
+        return response(['status' => 'success', 'Successfully!']); 
     }
 }

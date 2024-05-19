@@ -56,6 +56,6 @@ Route::put('/variant/change-status', [ VariantController::class, 'changeStatus']
 /** VariantItem */
 Route::get('/variantItem/onlyTrashed', [VariantItemController::class, 'onlyTrashed'])->name('variantItem.onlyTrashed');
 Route::get('/variantItem/restore/{id?}', [ VariantItemController::class, 'restore'])->name('variantItem.restore');
-Route::get('/variantItem/delete/{id?}', [ VariantItemController::class, 'delete'])->name('variantItem.delete');
+Route::DELETE('/variantItem/delete/{id?}', [ VariantItemController::class, 'destroyTrashed'])->name('variantItem.destroyTrashed');
 Route::resource('/variantItem', VariantItemController::class);
 Route::put('/variantItem/change-status/{id?}', [ VariantItemController::class, 'changeStatus'])->name('variantItem.change-status');

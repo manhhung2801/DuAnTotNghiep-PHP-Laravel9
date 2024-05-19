@@ -68,7 +68,7 @@
                                             <a class="btn btn-secondary"
                                                 href="{{ route('admin.variantItem.restore', $variantItem->id) }}">Restore</a>
                                             <a class="btn btn-danger delete-item"
-                                                href="{{ route('admin.variantItem.delete', $variantItem->id) }}">Delete</a>
+                                                href="{{ route('admin.variantItem.destroyTrashed', $variantItem->id) }}">Delete</a>
                                         @endif
                                     </td>
                                 </tr>
