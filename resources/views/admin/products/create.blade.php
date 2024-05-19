@@ -158,10 +158,10 @@
                     id: id
                 },
                 success: function(data) {
-                    targetSelect.html('<option value="">Select</option>')
-                    $.each(data, function(i, item) {
-                        targetSelect.append(`<option value="${item.id}">${item.name}</option>`);
-                    })
+                        targetSelect.html('<option value="">Select</option>')
+                        $.each(data, function(i, item) {
+                            targetSelect.append(`<option value="${item.id}">${item.name}</option>`);
+                        })
                 },
                 error: function(xhr, status, error) {
                     console.log(error);

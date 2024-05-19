@@ -37,10 +37,8 @@ class ChildCategoryController extends Controller
      * Get sub categories
      */
     public function getSubCategories(Request $request){
-
         $subCategories = SubCategory::where('category_id', $request->id)->where('status', 1)->get();
         return $subCategories;
-
     }
     /**
      * Store a newly created resource in storage.
