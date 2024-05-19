@@ -25,15 +25,24 @@ Route::put('/profile/update/password', [ProfileController::class, 'updatePasswor
 
 /** Category */
 Route::put('change-status', [CategoryController::class, 'changeStatus'])->name('category.change-status');
+Route::get('category/trash-list', [CategoryController::class, 'showTrash'])->name('category.trash-list');
+Route::DELETE('category/destroy-trash/{id?}', [CategoryController::class, 'destroyTrash'])->name('category.destroy-trash');
+Route::PATCH('category/restore-trash/{id?}', [CategoryController::class, 'restoreTrash'])->name('category.restore-trash');
 Route::resource('/category', CategoryController::class);
 
 /** Sub Category */
 Route::put('/sub-category/change-status', [SubCategoryController::class, 'changeStatus'])->name('sub-category.change-status');
+Route::get('sub-category/trash-list', [SubCategoryController::class, 'showTrash'])->name('sub-category.trash-list');
+Route::DELETE('sub-category/destroy-trash/{id?}', [SubCategoryController::class, 'destroyTrash'])->name('sub-category.destroy-trash');
+Route::PATCH('sub-category/restore-trash/{id?}', [SubCategoryController::class, 'restoreTrash'])->name('sub-category.restore-trash');
 Route::resource('/sub-category', SubCategoryController::class);
 
 /** Child Category */
 Route::put('/child-category/change-status', [ChildCategoryController::class, 'changeStatus'])->name('child-category.change-status');
 Route::get('get-subcategory', [ChildCategoryController::class, 'getSubCategories'])->name('get-subcategories');
+Route::get('child-category/trash-list', [ChildCategoryController::class, 'showTrash'])->name('child-category.trash-list');
+Route::DELETE('child-category/destroy-trash/{id?}', [ChildCategoryController::class, 'destroyTrash'])->name('child-category.destroy-trash');
+Route::PATCH('child-category/restore-trash/{id?}', [ChildCategoryController::class, 'restoreTrash'])->name('child-category.restore-trash');
 Route::resource('/child-category', ChildCategoryController::class);
 
 /** Product */
@@ -60,5 +69,6 @@ Route::put('/variantItem/change-status/{id?}', [ VariantItemController::class, '
 
 /** user management */
 Route::get("/user-management", [UserManagementController::class, 'index'])->name('user-management.index');
+Route::DELETE("/user-management/{id}", [UserManagementController::class, 'destroy'])->name('user-management.destroy');
 Route::put("/user-management/change-role", [UserManagementController::class, 'changeRole'])->name('user-management.change-role');
 Route::put("/user-management/change-status", [UserManagementController::class, 'changeStatus'])->name('user-management.change-status');
