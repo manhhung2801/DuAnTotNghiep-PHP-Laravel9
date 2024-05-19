@@ -18,7 +18,7 @@ class SliderController extends Controller
         if (!empty($request->get('keyword'))) {
             $sliders = Slider::where('type', 'like', '%' . $request->get('keyword') . '%')->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
         }
-        $sliders = $sliders->paginate(5);
+        $sliders = $sliders->paginate(15);
         return view("admin.slider.index", compact('sliders'));
     }
 
@@ -120,27 +120,22 @@ class SliderController extends Controller
         //     }
         // }
         $slider->delete();
-        return response(['status' => 'success','messge'=> 'Deleted Successfully!']);
+        return response(['status' => 'success', 'messge' => 'Deleted Successfully!']);
     }
-    public function changeStatus(Request $request)
-    {
 
-        $slider = Slider::findOrFail($request->id);
-        $slider->status = $request->status == 'true' ? 1 : 0;
-        $slider->save();
-        return response(['message' => 'Status has been updated']);
-    }
     public function showTrash(Request $request)
     {
-        $sliders = Slider::getSliderTrashed();
-         // search tìm kiếm theo type
-         if (!empty($request->get('keyword'))) {
-            $sliders = Slider::onlyTrashed()
-        ->where('type', 'like', '%' . $request->get('keyword') . '%')
-        ->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
-        } 
-        return view('admin.slider.trash-list', compact('sliders'));
-        // dfdgbnfn
+        $getSliders = Slider::onlyTrashed()->latest();
+        // search tìm kiếm theo type
+        if (!empty($request->get('keyword'))) {
+            $keyword = $request->get('keyword');
+            $getSliders = $getSliders->where('type', 'like', '%' . $request->get('keyword') . '%')->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
+        }
+        // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
+        $getSliders = $getSliders->paginate(15);
+
+        // Trả về view với dữ liệu các category đã bị xóa
+        return view('admin.slider.trash-list', compact('getSliders'));
     }
     public function destroyTrash($id)
     {
@@ -159,5 +154,13 @@ class SliderController extends Controller
         } catch (Exception $e) {
             return response(['status' => 'error', 'message' => 'Restore Faild ' . $e . '']);
         }
+    }
+    public function changeStatus(Request $request)
+    {
+
+        $slider = Slider::findOrFail($request->id);
+        $slider->status = $request->status == 'true' ? 1 : 0;
+        $slider->save();
+        return response(['message' => 'Status has been updated']);
     }
 }

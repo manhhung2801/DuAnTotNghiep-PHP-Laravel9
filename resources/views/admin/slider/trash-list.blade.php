@@ -24,7 +24,7 @@
                 <div class="action_start float-start d-flex">
                     <h6 class="mt-2 mb-0 text-uppercase">Trashed slider</h6>
                     <form action="" method="get">
-                        @csrf
+                        {{-- @csrf --}}
                         <div class="form-search ms-2">
                             <div class="input-group">
                                 <input value="{{ Request::get('keyword') }}" type="text"
@@ -37,6 +37,7 @@
                     </form>
                 </div>
                 <a href="{{ route('admin.slider.index') }}" class="btn btn-warning float-end">Back</a>
+                <a href="{{ route("admin.slider.trash-list") }}" class="me-2 btn btn-success float-end">Reset</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -55,7 +56,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($sliders as $slider)
+                            @foreach ($getSliders as $slider)
                                 <tr>
                                     <td>{{ $slider->id }}</td>
                                     <td>
@@ -89,7 +90,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $sliders->links() }}
                 </div>
             </div>
         </div>
