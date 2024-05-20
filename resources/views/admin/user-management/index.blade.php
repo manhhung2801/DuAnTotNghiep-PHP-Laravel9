@@ -20,6 +20,20 @@
         <!--end breadcrumb-->
         <div class="card">
             <div class="card-header">
+                <div class="action_start float-start d-flex">
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">Category Listing</h6>
+                    <div class="form-search ms-2">
+                        <form action="" method="get">
+                            <div class="input-group">
+                                <input type="text" value="{{ Request::get('keyword') }}" name="keyword" class="form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm">
+                                <button class="btn btn-outline-primary rounded-end-5" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <a href="{{ route("admin.user-management.index") }}" class="me-2 btn btn-success float-end">Reset</a>
+            </div>
+            <div class="card-header">
                 <h6 class="mt-2 mb-0 text-uppercase float-start">List Users</h6>
             </div>
             <div class="card-body">
@@ -66,6 +80,7 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-warning" href="">Detail</a>
+                                        <a class="btn btn-danger delete-item" href="{{ route("admin.user-management.destroy", $user->id) }}">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

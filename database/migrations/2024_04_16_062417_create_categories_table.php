@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('icon')->nullable();
             $table->boolean('status');
+            $table->softDeletes('deleted_at');
             $table->timestamps();
         });
     }
