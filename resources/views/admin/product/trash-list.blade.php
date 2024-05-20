@@ -78,7 +78,11 @@
                         @endforeach
                     </tbody>
                 </table>
+<<<<<<< HEAD
                 {{ $getProduct->links() }}
+=======
+                {{$sliders->links()}}
+>>>>>>> remotes/origin/duykhang
             </div>
         </div>
     </div>
