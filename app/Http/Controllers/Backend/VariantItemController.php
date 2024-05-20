@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\VariantItem;
 use App\Models\Variant;
 use App\Models\Product;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class VariantItemController extends Controller
 {
@@ -18,7 +18,7 @@ class VariantItemController extends Controller
      */
     public function index()
     {
-        $variantItem = VariantItem::paginate(15);
+        $variantItem = VariantItem::get();
         return view('admin.variantItem.index',compact('variantItem'));
     }
 
@@ -128,8 +128,9 @@ class VariantItemController extends Controller
      */
     public function destroy($id)
     {
-        $variantItem=VariantItem::findOrFail($id);
-        $variantItem->delete();
+        // $variantItem=VariantItem::findOrFail($id);
+        // $variantItem->delete();
+        $data = VariantItem::find($id)->delete();
        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 
@@ -139,5 +140,28 @@ class VariantItemController extends Controller
         $variantItem->status = $request->status == 'true' ? 1 : 0;
         $variantItem->save();
         return response(['message' =>'Status has been updated']);
+    }
+
+
+    public function onlyTrashed()
+    {
+        // $variantItem = VariantItem::get()->toArray();
+        // $variantItem = VariantItem::paginate(15);
+        $model = new VariantItem();
+        $variantItem = $model::onlyTrashed()->get();
+        // dd($variantItem);
+        return view('admin.variantItem.index',compact('variantItem'));
+    }
+    public function restore($id = null)
+    {
+        $variantItem = VariantItem::withTrashed()->find($id)->restore();
+        // dd($variantItem);
+        return redirect()->route('admin.variantItem.onlyTrashed');
+    }
+    public function destroyTrashed($id = null)
+    {
+        $variantItem = VariantItem::withTrashed()->find($id);
+        $variantItem->forceDelete();
+        return response(['status' => 'success', 'Successfully!']); 
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('variant_items', function (Blueprint $table) {
+        Schema::create('variant_item_recycle_bin', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_variant_id');
             $table->foreign('product_variant_id')->references('id')->on('variant')->onDelete('cascade')->onUpdate('cascade');
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('variant_items');
+        Schema::dropIfExists('variant_item_recycle_bin');
     }
 };
