@@ -18,13 +18,9 @@ return new class extends Migration
             $table->integer('product_id');
             $table->string('name');
             $table->string('status');
+            $table->softDeletes();
             $table->timestamps();
            
-        });
-        
-        Schema::table('variant',function(Blueprint $table)
-        {
-             $table->softDeletes();
         });
     }
 
@@ -37,7 +33,7 @@ return new class extends Migration
     {
          Schema::table('variant',function(Blueprint $table)
         {
-            $table->dropSoftDeletes();
+            Schema::dropIfExists('variant');
         });
     }
 };

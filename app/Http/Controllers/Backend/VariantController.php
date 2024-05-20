@@ -45,7 +45,7 @@ class VariantController extends Controller
          {
             $variant->restore();
          }
-         return redirect()->route('admin.variant.index')->with('success','Variant restored successfully');
+        return response(['status' => 'success', 'message' => 'Successfully!']);
     }
 
     public function deleteVariant($id)
@@ -55,7 +55,7 @@ class VariantController extends Controller
          {
             $variant->forceDelete();
          }
-         return redirect()->route('admin.variant.index')->with('success','Variant deleted successfully');
+         return response(['status' => 'success', 'message' => 'Variant deleted successfully!']);
     }
 
 

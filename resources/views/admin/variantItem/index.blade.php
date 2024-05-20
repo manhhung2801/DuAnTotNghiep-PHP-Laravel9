@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">
                 <h6 class="mt-2 mb-0 text-uppercase float-start">VariantItem</h6>
-                <a href="{{ route('admin.variantItem.onlyTrashed') }}" class="mx-1 btn btn-danger float-end">Recycle Bin</a>
+                <a href="{{ route('admin.variantItem.onlyTrashed') }}" class="mx-1 btn btn-danger float-end">Trashed Variant Item</a>
                 <a href="{{ route('admin.variantItem.index') }}" class="mx-1 btn btn-info float-end">VariantItem List</a>
                 <a href="{{ route('admin.variantItem.create') }}" class="mx-1 btn btn-warning float-end">Add variantItem</a>
             </div>
@@ -65,7 +65,7 @@
                                             <a class="btn btn-danger delete-item"
                                                 href="{{ route('admin.variantItem.destroy', $variantItem->id) }}">Delete</a>
                                         @else
-                                            <a class="btn btn-secondary"
+                                            <a class="btn btn-info restoreTrash-item"
                                                 href="{{ route('admin.variantItem.restore', $variantItem->id) }}">Restore</a>
                                             <a class="btn btn-danger delete-item"
                                                 href="{{ route('admin.variantItem.destroyTrashed', $variantItem->id) }}">Delete</a>

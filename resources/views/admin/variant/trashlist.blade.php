@@ -62,8 +62,8 @@
                                         </div>
 
                                     <td>
-                                     <a class="btn btn-primary " href="{{ route('admin.variant.restore-variant', $variant->id) }}">Restore</a>
-                                    <a class="btn btn-danger" href="{{ route('admin.variant.deleted-variant', $variant->id) }}">Deleted</a>
+                                     <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.variant.restore-variant', $variant->id) }}">Restore</a>
+                                    <a class="btn btn-danger delete-item" href="{{ route('admin.variant.deleted-variant', $variant->id) }}">Deleted</a>
                                     </td>
                                 </tr>
                             @endforeach
