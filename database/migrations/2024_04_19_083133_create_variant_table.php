@@ -19,6 +19,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('status');
             $table->timestamps();
+           
+        });
+        
+        Schema::table('variant',function(Blueprint $table)
+        {
+             $table->softDeletes();
         });
     }
 
@@ -29,6 +35,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('variant');
+         Schema::table('variant',function(Blueprint $table)
+        {
+            $table->dropSoftDeletes();
+        });
     }
 };

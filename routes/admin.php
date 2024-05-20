@@ -74,6 +74,12 @@ Route::resource('/coupons', CouponsController::class);
 
 Route::resource('/variant', VariantController::class);
 Route::put('/variant/change-status', [VariantController::class, 'changeStatus'])->name('variant.change-status');
+Route::get('/variant/trashed-variant',[VariantController::class, 'trashedVariant'])->name('variant.trashed-variant');
+Route::get('/variant/restore/{id}',[VariantController::class,'restore'])->name('variant.restore-variant');
+Route::get('/variant/deleted/{id}',[VariantController::class,'deleteVariant'])->name('variant.deleted-variant');
+Route::put('/variant/change-status',[ VariantController::class,'changeStatus'])->name('variant.change-status');
+Route::resource('/variant',VariantController::class);
+
 
 /** VariantItem */
 Route::resource('/variantItem', VariantItemController::class);
