@@ -25,6 +25,7 @@ return new class extends Migration
             $table->double('discount');
             $table->tinyInteger('status')->default(1);
             $table->integer('total_used');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
