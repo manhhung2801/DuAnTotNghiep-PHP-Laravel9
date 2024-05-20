@@ -33,7 +33,7 @@ class ProductController extends Controller
 
         $getProduct = Product::getProduct();
         if (!empty(Request()->get('keyword'))) {
-            $keyword = trim(strip_tags(Request()->get('keyword')));
+            $keyword = trim(Request()->get('keyword'));
             $getProduct->where('name', 'like', '%' . $keyword . '%');
         }
         $getProduct = $getProduct->paginate(15);
