@@ -55,7 +55,6 @@ Route::resource('product', ProductController::class);
 
 /** Slider */
 Route::put('/slider/change-status', [SliderController::class, 'changeStatus'])->name('slider.change-status');
-
 Route::get('slider/trash-list/', [SliderController::class, 'showTrash'])->name('slider.trash-list');
 Route::DELETE('slider/destroy-trash/{id?}', [SliderController::class, 'destroyTrash'])->name('slider.destroy-trash');
 Route::PATCH('slider/restore-trash/{id?}', [SliderController::class, 'restoreTrash'])->name('slider.restore-trash');

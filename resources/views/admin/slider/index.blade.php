@@ -24,10 +24,10 @@
                     <h6 class="mt-2 mb-0 text-uppercase float-start">List Sliders</h6>
                     <form action="" method="get">
                         {{-- @csrf --}}
-                    <div class="form-search ms-2">
+                    <div class="form-search ms-2 ">
                         <div class="input-group">
-                            <input value="{{ Request::get('keyword')}}" type="text" class="form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm" name="keyword">
-                            <button class="btn btn-outline-primary rounded-end-5" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <input value="{{ Request::get('keyword')}}" type="text" class=" form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm" name="keyword">
+                            <button class="btn btn-outline-primary rounded-end-5 " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                     </div>
                     </form>

@@ -22,8 +22,6 @@ class SliderController extends Controller
         return view("admin.slider.index", compact('sliders'));
         // 
     }
-
-
     public function create()
     {
         return view('admin.slider.create');
@@ -158,7 +156,6 @@ class SliderController extends Controller
     }
     public function changeStatus(Request $request)
     {
-
         $slider = Slider::findOrFail($request->id);
         $slider->status = $request->status == 'true' ? 1 : 0;
         $slider->save();

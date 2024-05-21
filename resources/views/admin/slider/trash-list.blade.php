@@ -28,7 +28,7 @@
                         <div class="form-search ms-2">
                             <div class="input-group">
                                 <input value="{{ Request::get('keyword') }}" type="text"
-                                    class="form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm"
+                                    class="form-control buttonSearch rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm"
                                     name="keyword">
                                 <button class="btn btn-outline-primary rounded-end-5" type="submit"><i
                                         class="fa-solid fa-magnifying-glass"></i></button>
@@ -95,27 +95,3 @@
         </div>
     </div>
 @endsection
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('body').off('click', '.change-status').on('click', '.change-status', function() {
-                let isChecked = $(this).is(':checked');
-                let id = $(this).data('id');
-                $.ajax({
-                    method: "PUT",
-                    url: "{{ route('admin.slider.change-status') }}",
-                    data: {
-                        status: isChecked,
-                        id: id
-                    },
-                    success: function(data) {
-                        toastr.success(data.message);
-                    },
-                    error: function(xhr, status, error) {
-                        console.log(error);
-                    }
-                });
-            })
-        });
-    </script>
-@endpush
