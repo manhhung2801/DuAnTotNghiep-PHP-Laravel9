@@ -15,7 +15,7 @@ use App\Http\Controllers\Backend\UserManagementController;
 
 /** Admin Routes */
 
-Route::get('dashboard', [AdminController::class,'dashboard'])->name('dashboard');
+Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
 /** Profile Routes */
 Route::get('/dashboard', [ProfileController::class, 'index'])->name('profile');
@@ -59,18 +59,29 @@ Route::get('slider/trash-list/', [SliderController::class, 'showTrash'])->name('
 Route::DELETE('slider/destroy-trash/{id?}', [SliderController::class, 'destroyTrash'])->name('slider.destroy-trash');
 Route::PATCH('slider/restore-trash/{id?}', [SliderController::class, 'restoreTrash'])->name('slider.restore-trash');
 Route::resource('slider', SliderController::class);
+
 /** Coupons */
+Route::get('coupons/trash-list', [CouponsController::class, 'showTrash'])->name('coupons.trash-list');
+Route::DELETE('coupons/destroy-trash/{id?}', [CouponsController::class, 'destroyTrash'])->name('coupons.destroy-trash');
+Route::PATCH('coupons/restore-trash/{id?}', [CouponsController::class, 'restoreTrash'])->name('coupons.restore-trash');
 Route::put('/coupons/change-status', [CouponsController::class, 'changeStatus'])->name('coupons.change-status');
 Route::resource('/coupons', CouponsController::class);
 
 /** Variant */
-
+Route::put('/variant/change-status', [VariantController::class, 'changeStatus'])->name('variant.change-status');
+Route::get('/variant/trashed-variant',[VariantController::class, 'trashedVariant'])->name('variant.trashed-variant');
+Route::PATCH('/variant/restore/{id}',[VariantController::class,'restore'])->name('variant.restore-variant');
+Route::DELETE('/variant/deleted/{id}',[VariantController::class,'deleteVariant'])->name('variant.deleted-variant');
+Route::put('/variant/change-status',[ VariantController::class,'changeStatus'])->name('variant.change-status');
 Route::resource('/variant',VariantController::class);
-Route::put('/variant/change-status', [ VariantController::class, 'changeStatus'])->name('variant.change-status');
+
 
 /** VariantItem */
+Route::get('/variantItem/onlyTrashed', [VariantItemController::class, 'onlyTrashed'])->name('variantItem.onlyTrashed');
+Route::PATCH('/variantItem/restore/{id?}', [ VariantItemController::class, 'restore'])->name('variantItem.restore');
+Route::DELETE('/variantItem/delete/{id?}', [ VariantItemController::class, 'destroyTrashed'])->name('variantItem.destroyTrashed');
 Route::resource('/variantItem', VariantItemController::class);
-Route::put('/variantItem/change-status/{id?}', [ VariantItemController::class, 'changeStatus'])->name('variantItem.change-status');
+Route::put('/variantItem/change-status/{id?}', [VariantItemController::class, 'changeStatus'])->name('variantItem.change-status');
 
 /** user management */
 Route::get("/user-management", [UserManagementController::class, 'index'])->name('user-management.index');

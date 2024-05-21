@@ -28,9 +28,15 @@ class ProductController extends Controller
         return null;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+
         $getProduct = Product::getProduct();
+        if (!empty(Request()->get('keyword'))) {
+            $keyword = trim(Request()->get('keyword'));
+            $getProduct->where('name', 'like', '%' . $keyword . '%');
+        }
+        $getProduct = $getProduct->paginate(15);
         return view('admin.product.index', compact('getProduct'));
     }
 
@@ -240,18 +246,18 @@ class ProductController extends Controller
             toastr()->error('Lỗi: ' . $e);
         }
     }
-    
-    public function show($id) {
 
+    public function show($id)
+    {
     }
     public function destroy($id)
     {
         try {
             Product::findOrFail($id)->delete();
             product_image_galleries::where('product_id', $id)->delete();
-            return response(['status' => 'success', 'Deleted Successfully!']);
+            return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
         } catch (ValidationException $e) {
-            toastr()->error('Lỗi: ' . $e);
+            return response(['status' => 'error', 'message' => 'Deleted Failed! ' . $e . '']);
         }
     }
 
@@ -270,29 +276,34 @@ class ProductController extends Controller
         return $childCategory;
     }
 
-    public function showTrash()
+    public function showTrash(Request $request)
     {
         $getProduct = Product::getProductTrashed();
+        if (!empty(Request()->get('keyword'))) {
+            $keyword = trim(Request()->get('keyword'));
+            $getProduct->where('name', 'like', '%' . $keyword . '%');
+        }
+        $getProduct = $getProduct->paginate(15);
         return view('admin.product.trash-list', compact('getProduct'));
     }
 
-    public function destroyTrash($id) {
-        try{
+    public function destroyTrash($id)
+    {
+        try {
             Product::destroyTrashedItem($id);
-            return response(['status' => 'success', 'Deleted Forever Successfully!']);
-        }
-        catch(Exception $e) {
-            return response(['status' => 'error', 'Deleted Faild! '.$e.'' ]);
+            return response(['status' => 'success', 'message' => 'Deleted Forever Successfully!']);
+        } catch (Exception $e) {
+            return response(['status' => 'error', 'Deleted Faild! ' . $e . '']);
         }
     }
 
-    public function restoreTrash($id) {
-        try{
+    public function restoreTrash($id)
+    {
+        try {
             Product::restoreTrashed($id);
             return response(['status' => 'success', 'Successfully!']);
-        }
-        catch(Exception $e) {
-            return response(['status' => 'error', 'message' => 'Restore Faild '.$e.'']);
+        } catch (Exception $e) {
+            return response(['status' => 'error', 'message' => 'Restore Faild ' . $e . '']);
         }
     }
 }

@@ -18,7 +18,9 @@ return new class extends Migration
             $table->integer('product_id');
             $table->string('name');
             $table->string('status');
+            $table->softDeletes();
             $table->timestamps();
+           
         });
     }
 
@@ -29,6 +31,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('variant');
+         Schema::table('variant',function(Blueprint $table)
+        {
+            Schema::dropIfExists('variant');
+        });
     }
 };

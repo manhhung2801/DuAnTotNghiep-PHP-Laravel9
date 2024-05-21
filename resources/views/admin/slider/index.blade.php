@@ -26,15 +26,15 @@
                         {{-- @csrf --}}
                     <div class="form-search ms-2 ">
                         <div class="input-group">
-                            <input value="{{ Request::get('keyword')}}" type="text" class=" form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm" name="keyword">
-                            <button class="btn btn-outline-primary rounded-end-5 " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <input value="{{ Request::get('keyword')}}" type="text" class=" form-control rounded-start-5 focus-ring focus-ring-light querySearch" placeholder="Tìm kiếm" name="keyword">
+                            <button class="btn btn-outline-primary rounded-end-5 buttonSearch " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                     </div>
                     </form>
+                    <a href="{{ route("admin.slider.index") }}" class="me-2 btn btn-success float-end ms-2">Reset</a>
                 </div>
                 <a href="{{route('admin.slider.trash-list')}}" class="btn btn-danger float-end">Trashed Slider</a>
                 <a href="{{ route('admin.slider.create') }}" class="btn btn-warning float-end me-2">Add Slider</a>
-                <a href="{{ route("admin.slider.index") }}" class="me-2 btn btn-success float-end">Reset</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

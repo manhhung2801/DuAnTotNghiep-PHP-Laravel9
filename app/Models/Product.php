@@ -26,7 +26,7 @@ class Product extends Model
     //get all record
     static public function getProduct()
     {
-        return self::orderBy('id', 'desc')->paginate(15);
+        return self::orderBy('id', 'desc');
     }
     // get 1 record by id
     static public function getProductItem($id)
@@ -35,13 +35,14 @@ class Product extends Model
     }
     static public function getProductTrashed()
     {
-        return self::onlyTrashed()->orderBy('deleted_at', 'desc')->paginate(15);
+        return self::onlyTrashed()->orderBy('deleted_at', 'desc');
     }
     static public function destroyTrashedItem($id)
     {
         return self::withTrashed()->where('id', $id)->forceDelete();
     }
-    static public function restoreTrashed($id) {
+    static public function restoreTrashed($id)
+    {
         return self::withTrashed()->where('id', $id)->restore();
     }
 }
