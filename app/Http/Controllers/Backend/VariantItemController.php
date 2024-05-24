@@ -131,7 +131,9 @@ class VariantItemController extends Controller
         // $variantItem=VariantItem::findOrFail($id);
         // $variantItem->delete();
         $data = VariantItem::find($id)->delete();
-       return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
+    //    return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
+       return response(['status' => 'success', 'Successfully!']);
+
     }
 
 
@@ -162,6 +164,6 @@ class VariantItemController extends Controller
     {
         $variantItem = VariantItem::withTrashed()->find($id);
         $variantItem->forceDelete();
-        return response(['status' => 'success', 'Successfully!']); 
+        return response(['status' => 'success', 'Successfully!']);
     }
 }
