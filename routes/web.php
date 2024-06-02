@@ -18,7 +18,40 @@ use App\Http\Controllers\Frontend\KhieuNaiController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.home.index');
+});
+Route::get('product', function () {
+    return view('frontend.products.index');
+});
+Route::get('detail', function () {
+    return view('frontend.products.detail');
+});
+Route::get('cart', function () {
+    return view('frontend.cart.index');
+});
+Route::get('post', function () {
+    return view('frontend.post.index');
+});
+Route::get('post-detail', function () {
+    return view('frontend.post.post');
+});
+Route::get('checkout', function () {
+    return view('frontend.checkout.index');
+});
+Route::get('warranty', function () {
+    return view('frontend.warranty.detail');
+});
+Route::get('introduce', function () {
+    return view('frontend.introduce.index');
+});
+Route::get('payment-method', function () {
+    return view('frontend.paymentMethod.index');
+});
+Route::get('contact', function () {
+    return view('frontend.contact.index');
+});
+Route::get('shipping', function () {
+    return view('frontend.shipping.index');
 });
 
 Route::get('/dashboard', function () {
