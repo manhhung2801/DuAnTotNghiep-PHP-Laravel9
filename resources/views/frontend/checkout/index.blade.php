@@ -50,10 +50,24 @@
                 Vui lòng nhập thông tin giao hàng
             </div>
             <h4>Thanh toán</h4>
-            <div class="form-group" style="border: 2px solid blue ; border-radius: 4px; height:50px">
-                <div class="custom-control custom-radio mt-2 ms-2">
-                    <input type="radio" id="cod" name="paymentMethod" class="custom-control-input" checked>
-                    <label class="custom-control-label" for="cod">Thanh toán khi giao hàng (COD)</label>
+            <div class="shipping_method">
+                <div class="form-check shipping_item">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Giao hàng tiết kiệm
+                    </label>
+                </div>
+                <div class="form-check shipping_item mt-2">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                       Thanh toán khi nhận hàng(COD)
+                    </label>
+                </div>
+                <div class="form-check shipping_item mt-2">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                       
+                    </label>
                 </div>
             </div>
         </div>

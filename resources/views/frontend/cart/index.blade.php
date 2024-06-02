@@ -27,9 +27,9 @@
                     <td class="pt-5 text-danger fw-bold">29.990.000₫</td>
                     <td class="text-center">
                         <div class="input-group mb-3" style="width:150px;padding-top:30px">
-                            <button class="btn btn-outline-secondary"><i class="fa-solid fa-plus"></i></button>
-                            <input type="text" class="form-control text-center" value="1">
-                            <button class="btn btn-outline-secondary"><i class="fa-solid fa-minus"></i></button>
+                            <button onclick="miuns()" class="btn btn-outline-secondary"><i class="fa-solid fa-minus"></i></button>
+                            <input id="qtyProduct" type="number" class="form-control text-center disabled" value="1">
+                            <button onclick="plus()" class="btn btn-outline-secondary"><i class="fa-solid fa-plus"></i></button>
                         </div>
                     </td>
                     <td class="pt-5 text-danger fw-bold">59.980.000₫</td>
@@ -52,3 +52,17 @@
 
 </div>
 @endsection
+@push('script')
+    <script type="text/javascript">
+        function miuns() {
+           var qtyProduct = document.getElementById('qtyProduct').value
+            if(qtyProduct > 1)qtyProduct --;
+            document.getElementById('qtyProduct').value = qtyProduct
+        }
+        function plus () {
+           var qtyProduct = document.getElementById('qtyProduct').value
+            if(qtyProduct < 100) qtyProduct++;
+            document.getElementById('qtyProduct').value = qtyProduct
+        }
+    </script>
+@endpush
