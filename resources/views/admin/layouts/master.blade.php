@@ -134,7 +134,7 @@
         });
         $('body').off('click', '.buttonSearch').on('click', '.buttonSearch', function(e) {
             var querySearch = $('.querySearch').val()
-            if(querySearch === null || querySearch === ''){
+            if (querySearch === null || querySearch === '') {
                 e.preventDefault()
                 alert('Vui lòng nhập kí tự tìm kiếm!')
             }

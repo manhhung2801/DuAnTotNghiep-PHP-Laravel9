@@ -89,6 +89,18 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="menu-title">StoreAddress</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route('admin.storeAddress.index') }}"><i class='bx bx-radio-circle'></i>List StoreAddress</a>
+                </li>
+            </ul>
+        </li>
         <li class="menu-label">Info</li>
         <li class="">
             <a href="{{ route('admin.profile') }}" aria-expanded="false">
