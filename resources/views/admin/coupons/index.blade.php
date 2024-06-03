@@ -28,10 +28,11 @@
                         <button class="btn btn-outline-primary rounded-end-5" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </form>
+                <a href="{{ route("admin.coupons.index") }}" class="me-2 btn btn-success float-end ms-2">Reset</a>
             </div>
             <a href="{{route('admin.coupons.trash-list')}}" class="btn btn-danger float-end mx-2">Trashed Coupons</a>
             <a href="{{route('admin.coupons.create') }}" class="btn btn-warning float-end">Add Coupons</a>
-            <a href="{{ route("admin.coupons.index") }}" class="me-2 btn btn-success float-end">Reset</a>
+          
         </div>
         <div class="card-body">
             <div class="table-responsive">

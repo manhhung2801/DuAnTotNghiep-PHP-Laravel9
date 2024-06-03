@@ -32,7 +32,7 @@
                     </form>
                 </div>
             </div>
-            <a href="{{ route('admin.coupons.index') }}" class="btn btn-warning float-end">Back</a>
+            <a href="{{ route('admin.coupons.index') }}" class="btn btn-primary float-end">Back</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -43,9 +43,6 @@
                             <th>name</th>
                             <th>Code</th>
                             <th>quantity</th>
-                            {{-- <th>start_date</th>
-                                <th>end_date</th> 
-                                <th>discount_type</th>--}}
                             <th>discount</th>
                             <th>Status</th>
                             <th>Action</th>

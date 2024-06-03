@@ -30,10 +30,11 @@
                             </div>
                         </form>
                     </div>
+                    <a href="{{ route("admin.child-category.index") }}" class="me-2 btn btn-success float-end ms-2">Reset</a>
                 </div>
                 <a href="{{ route("admin.child-category.trash-list") }}" class="btn btn-danger float-end">Trashed Child Categories</a>
                 <a href="{{ route("admin.child-category.create") }}" class="me-2 btn btn-warning float-end">Add Child Category</a>
-                <a href="{{ route("admin.child-category.index") }}" class="me-2 btn btn-success float-end">Reset</a>
+               
             </div>
             <div class="card-body">
                 <div class="table-responsive">

@@ -37,7 +37,7 @@
                     </form>
                     <a href="{{ route('admin.storeAddress.trash-list') }}" class="me-2 btn btn-success float-end ms-2">Reset</a>
                 </div>
-                <a href="{{ route('admin.storeAddress.index') }}" class="btn btn-warning float-end">Back</a>
+                <a href="{{ route('admin.storeAddress.index') }}" class="btn btn-primary float-end">Back</a>
                 
             </div>
             <div class="card-body">

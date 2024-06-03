@@ -31,9 +31,10 @@
                         </div>
                     </form>
                 </div>
+                <a href="{{ route("admin.category.trash-list") }}" class="me-2 btn btn-success float-end ms-2">Reset</a>
             </div>
-            <a href="{{ route('admin.category.index') }}" class="btn btn-warning float-end">Back</a>
-            <a href="{{ route("admin.category.trash-list") }}" class="me-2 btn btn-success float-end">Reset</a>
+            <a href="{{ route('admin.category.index') }}" class="btn btn-primary float-end">Back</a>
+           
         </div>
 
         <div class="card-body">

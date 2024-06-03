@@ -30,9 +30,10 @@
                         </div>
                     </form>
                 </div>
+                <a href="{{ route('admin.variant.index') }}" class="me-2 btn btn-success float-end ms-2">Reset</a>
              </div>
                 <a href="{{ route('admin.variant.index') }}" class="btn btn-primary float-end">Back</a>
-                <a href="{{ route('admin.variant.index') }}" class="me-2 btn btn-success float-end">Reset</a>
+                
             </div>
             <div class="card-body">
                 <div class="table-responsive">

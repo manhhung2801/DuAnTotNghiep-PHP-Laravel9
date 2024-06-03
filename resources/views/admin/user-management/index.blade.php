@@ -30,8 +30,9 @@
                             </div>
                         </form>
                     </div>
+                    <a href="{{ route("admin.user-management.index") }}" class="me-2 btn btn-success float-end ms-2">Reset</a>
                 </div>
-                <a href="{{ route("admin.user-management.index") }}" class="me-2 btn btn-success float-end">Reset</a>
+             
             </div>
             <div class="card-header">
                 <h6 class="mt-2 mb-0 text-uppercase float-start">List Users</h6>

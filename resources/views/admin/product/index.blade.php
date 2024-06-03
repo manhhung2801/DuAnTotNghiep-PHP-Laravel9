@@ -31,7 +31,7 @@
                         </div>
                     </form>
                 </div>
-                <a href="{{ route('admin.product.index') }}" class="me-2 btn btn-info ms-2">Reset</a>
+                <a href="{{ route('admin.product.index') }}" class="me-2 btn btn-success ms-2">Reset</a>
             </div>
             
             <a href="{{route('admin.product.trash-list')}}" class="btn btn-danger float-end">Trashed Product</a>

@@ -30,10 +30,11 @@
                         </div>
                     </form>
                 </div>
+                <a href="{{ route('admin.variant.index') }}" class="me-2 btn btn-success float-end ms-2">Reset</a>
              </div>
                 <a href="{{ route('admin.variant.trashed-variant') }}" class="btn btn-danger float-end ">Trashed variant</a>
                 <a href="{{ route('admin.variant.create')}}" class="btn btn-warning float-end me-2">Add variant</a>
-                <a href="{{ route('admin.variant.index') }}" class="me-2 btn btn-success float-end">Reset</a>
+                
          </div>
             <div class="card-body">
                 <div class="table-responsive">
