@@ -34,6 +34,7 @@ class ProductSeeder extends Seeder
                     'seo_title' => 'SEO tile',
                     'seo_description' => 'SEO des',
                     'category_id' => 1,
+                    'weight' => 1.2,
                     'sub_category_id' => 1,
                     'child_category_id' => 1,
                     'created_at'=> now(),

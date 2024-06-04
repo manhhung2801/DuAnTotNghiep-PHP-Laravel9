@@ -63,12 +63,16 @@ class ProductController extends Controller
             $product->video_link = $request->video_link;
             $product->product_type = $request->product_type;
             $product->status = $request->status;
-            $product->seo_title = $request->seo_title;
+            $product->weight = $request->weight;
+            $product->views = $request->views;
             $product->seo_description = $request->seo_description;
             $product->long_description = $request->long_description;
             $product->short_description = $request->short_description;
             // thêm slug nếu không tồn tại thì trích xuất từ name bằng method Str::slug
             $product->slug = !empty($request->slug) ? $request->slug : Str::slug($request->name, "-");
+            // Nếu title SEO null lấy name
+            $product->seo_title = $request->seo_title??$request->name;
+            //update hình ảnh
             $product->image = $this->uploadFile($request, 'image', '/products');
             $product->save();
 
@@ -102,76 +106,6 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-
-        $request->validate([
-            'name' => 'required|max:255',
-            'qty' => 'required|min:0',
-            'image' => 'image|mimes:jpeg,jpg,png,gif,webp|max:10240',
-            'image_gallery' => 'max:10240',
-            'price' => 'required|integer',
-            'offer_price' => 'integer',
-            'sub_category_id' => 'required',
-            'child_category_id' => 'required',
-        ]);
-        $product = Product::findOrFail($id);
-        $product->name = $request->name;
-        $product->sku = $request->sku;
-        $product->qty = $request->qty;
-        $product->price = $request->price;
-        $product->offer_price = $request->offer_price;
-        $product->offer_start_date = $request->offer_start_date;
-        $product->offer_end_date = $request->offer_end_date;
-        $product->category_id = $request->category_id;
-        $product->sub_category_id = $request->sub_category_id;
-        $product->child_category_id = $request->child_category_id;
-        $product->video_link = $request->video_link;
-        $product->product_type = $request->product_type;
-        $product->status = $request->status;
-        $product->seo_title = $request->seo_title;
-        $product->seo_description = $request->seo_description;
-        $product->long_description = $request->long_description;
-        $product->short_description = $request->short_description;
-        // thêm slug nếu không tồn tại thì trích xuất từ name bằng method Str::slug
-        $product->slug = !empty($request->slug) ? $request->slug : Str::slug($request->name, "-");
-
-        // Nếu File image mới tồn tại tiến hành update và xóa ảnh cũ từ thư mục
-        if ($request->hasFile('image')) {
-            $product->image = $this->uploadFile($request, 'image', '/products');
-            //Xóa file ảnh cũ
-            if (File::exists(public_path('uploads/products/' . $request->image_old))) {
-                File::delete(public_path('uploads/products/' . $request->image_old));
-            }
-        } else {
-            // Giữ nguyên ảnh cũ
-            $product->image = $request->image_old;
-        }
-        $product->save();
-
-        // Nếu image_gallery tồn tại tiến hành update
-        if ($request->hasFile('image_gallery')) {
-            // Xóa file ảnh cũ trong uploads
-            if (!empty($request->image_gallery_old)) {
-                foreach (json_decode($request->image_gallery_old) as $gal) {
-                    if (File::exists(public_path('uploads/gallery/' . $gal->image))) {
-                        File::delete(public_path('uploads/gallery/' . $gal->image));
-                    }
-                }
-            }
-            // Lấy gallery của product theo ID và xóa tất cả
-            $galleryDel = product_image_galleries::where('product_id', $id)->delete();
-            foreach ($request->image_gallery as $gal) {
-                $gallery = new product_image_galleries();
-                $ext = $gal->extension();
-                $fileName = 'media_gallery_' . uniqid() . '.' . $ext;
-                $gal->move(public_path('uploads/gallery/'), $fileName);
-                $gallery->image = $fileName;
-                $gallery->product_id = $id;
-                $gallery->save();
-            }
-        }
-
-        toastr()->success('Update ' . $request->name . ' Success');
-        return redirect()->back();
         try {
             $request->validate([
                 'name' => 'required|max:255',
@@ -197,12 +131,14 @@ class ProductController extends Controller
             $product->video_link = $request->video_link;
             $product->product_type = $request->product_type;
             $product->status = $request->status;
-            $product->seo_title = $request->seo_title;
+            $product->weight = $request->weight;
+            $product->status = $request->status;
             $product->seo_description = $request->seo_description;
             $product->long_description = $request->long_description;
             $product->short_description = $request->short_description;
             // thêm slug nếu không tồn tại thì trích xuất từ name bằng method Str::slug
             $product->slug = !empty($request->slug) ? $request->slug : Str::slug($request->name, "-");
+            $product->seo_title = $request->seo_title??$request->name;
 
             // Nếu File image mới tồn tại tiến hành update và xóa ảnh cũ từ thư mục
             if ($request->hasFile('image')) {
