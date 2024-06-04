@@ -31,11 +31,11 @@
                         </div>
                     </form>
                 </div>
-                <a href="{{ route('admin.product.index') }}" class="me-2 btn btn-success ms-2">Reset</a>
+                <a href="{{ route('admin.product.index') }}" class="me-2 btn btn-success ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>                    Reset</a>
             </div>
             
-            <a href="{{route('admin.product.trash-list')}}" class="btn btn-danger float-end">Trashed Product</a>
-            <a href="{{ route('admin.product.create') }}" class="btn btn-warning float-end me-2">Add Product</a>
+            <a href="{{route('admin.product.trash-list')}}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>Trashed Product</a>
+            <a href="{{ route('admin.product.create') }}" class="btn btn-primary float-end me-2"><i class="fa-solid fa-plus text-light fs-6"></i>Add Product</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -83,8 +83,8 @@
                             <td>{{ $product->subCategory->name }}</td>
                             <td>{{ $product->childCategory->name }}</td>
                             <td>
-                                <a class="btn btn-warning" href="{{ route('admin.product.edit', $product->id) }}">Edit</a>
-                                <a class="btn btn-danger delete-item" href="{{ route('admin.product.destroy', $product->id) }}">Delete</a>
+                                <a class="btn btn-primary" href="{{ route('admin.product.edit', $product->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
+                                <a class="btn btn-danger delete-item" href="{{ route('admin.product.destroy', $product->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
                             </td>
                         </tr>
                         @endforeach

@@ -34,11 +34,11 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('admin.storeAddress.index') }}" class="me-2 btn btn-success float-end ms-2">Reset</a>
+                    <a href="{{ route('admin.storeAddress.index') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
                 </div>
-                <a href="{{ route('admin.storeAddress.trash-list') }}" class="btn btn-danger float-end">Trashed
+                <a href="{{ route('admin.storeAddress.trash-list') }}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>Trashed
                     Store-Address</a>
-                <a href="{{ route('admin.storeAddress.create') }}" class="btn btn-warning float-end me-2">Add
+                <a href="{{ route('admin.storeAddress.create') }}" class="btn btn-primary float-end me-2"><i class="fa-solid fa-plus text-light fs-6"></i>Add
                     Store-Address</a>
             </div>
             <div class="card-body">
@@ -49,7 +49,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Store_Name</th>
-                                <th>Address</th>
+                                {{-- <th>Address</th> --}}
                                 <th>Ward</th>
                                 <th>District</th>
                                 <th>Province</th>
@@ -63,7 +63,7 @@
                                 <tr>
                                     <td>{{ $storeAddress->id }}</td>
                                     <td>{{ $storeAddress->store_name }}</td>
-                                    <td>{{ $storeAddress->address }}</td>
+                                    {{-- <td>{{ $storeAddress->address }}</td> --}}
                                     <td>{{ $storeAddress->ward }}</td>
                                     <td>{{ $storeAddress->district }}</td>
                                     <td>{{ $storeAddress->province }}</td>
@@ -80,10 +80,10 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <a class="btn btn-warning"
-                                            href="{{ route('admin.storeAddress.edit', $storeAddress->id) }}">Edit</a>
+                                        <a class="btn btn-primary"
+                                            href="{{ route('admin.storeAddress.edit', $storeAddress->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
                                         <a class="btn btn-danger delete-item"
-                                            href="{{ route('admin.storeAddress.destroy', $storeAddress->id) }}">Delete</a>
+                                            href="{{ route('admin.storeAddress.destroy', $storeAddress->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

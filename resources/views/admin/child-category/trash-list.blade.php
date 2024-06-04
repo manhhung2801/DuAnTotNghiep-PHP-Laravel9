@@ -31,7 +31,7 @@
                         </div>
                     </form>
                 </div>
-                <a href="{{ route("admin.child-category.trash-list") }}" class="me-2 btn btn-success float-end ms-2">Reset</a>
+                <a href="{{ route("admin.child-category.trash-list") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
             </div>
             <a href="{{ route('admin.child-category.index') }}" class="btn btn-primary float-end">Back</a>
           
@@ -57,8 +57,9 @@
                             <td>{{ $childCategory->category->name }}</td>
                             <td>{{ $childCategory->subCategory->name }}</td>
                             <td>
-                                <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.child-category.restore-trash', $childCategory->id) }}">Restore</a>
-                                <a class="btn btn-danger delete-item" href="{{ route('admin.child-category.destroy-trash', $childCategory->id) }}">Delete Forever</a>
+                                <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.child-category.restore-trash', $childCategory->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Restore</a>
+                                <a class="btn btn-danger delete-item" href="{{ route('admin.child-category.destroy-trash', $childCategory->id) }}"><i class="fa-solid fa-trash fs-6"></i>
+                                    Delete Forever</a>
                             </td>
                         </tr>
                         @endforeach

@@ -35,7 +35,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('admin.slider.trash-list') }}" class="me-2 btn btn-success float-end ms-2">Reset</a>
+                    <a href="{{ route('admin.slider.trash-list') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
                 </div>
                 <a href="{{ route('admin.slider.index') }}" class="btn btn-primary float-end">Back</a>
                 
@@ -82,9 +82,9 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-primary restoreTrash-item"
-                                            href="{{ route('admin.slider.restore-trash', $slider->id) }}">Restore</a>
+                                            href="{{ route('admin.slider.restore-trash', $slider->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Restore</a>
                                         <a class="btn btn-danger delete-item"
-                                            href="{{ route('admin.slider.destroy-trash', $slider->id) }}">Delete
+                                            href="{{ route('admin.slider.destroy-trash', $slider->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete
                                             Forever</a>
                                     </td>
                                 </tr>

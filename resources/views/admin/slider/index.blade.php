@@ -34,10 +34,10 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('admin.slider.index') }}" class="me-2 btn btn-success float-end ms-2">Reset</a>
+                    <a href="{{ route('admin.slider.index') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
                 </div>
-                <a href="{{ route('admin.slider.trash-list') }}" class="btn btn-danger float-end">Trashed Slider</a>
-                <a href="{{ route('admin.slider.create') }}" class="btn btn-warning float-end me-2">Add Slider</a>
+                <a href="{{ route('admin.slider.trash-list') }}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i></i>Trashed Slider</a>
+                <a href="{{ route('admin.slider.create') }}" class="btn btn-primary float-end me-2"><i class="fa-solid fa-plus text-light fs-6"></i>Add Slider</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -72,7 +72,7 @@
                                         <div class="form-check form-switch form-check-success">
                                             @if ($slider->status == 1)
                                                 <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                    data-id="{{ $slider->id }}" id="flexSwitchCheckSuccess" checked>
+                                                    data-id="{{ $slider->id }}" id="flexSwitchCheckSuccess" checked >
                                             @elseif($slider->status == 0)
                                                 <input class="form-check-input change-status" type="checkbox" role="switch"
                                                     data-id="{{ $slider->id }}" id="flexSwitchCheckSuccess">
@@ -80,10 +80,10 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <a class="btn btn-warning"
-                                            href="{{ route('admin.slider.edit', $slider->id) }}">Edit</a>
+                                        <a class="btn btn-primary text-light"
+                                            href="{{ route('admin.slider.edit', $slider->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
                                         <a class="btn btn-danger delete-item"
-                                            href="{{ route('admin.slider.destroy', $slider->id) }}">Delete</a>
+                                            href="{{ route('admin.slider.destroy', $slider->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -35,7 +35,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('admin.storeAddress.trash-list') }}" class="me-2 btn btn-success float-end ms-2">Reset</a>
+                    <a href="{{ route('admin.storeAddress.trash-list') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
                 </div>
                 <a href="{{ route('admin.storeAddress.index') }}" class="btn btn-primary float-end">Back</a>
                 
@@ -79,9 +79,9 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-primary restoreTrash-item"
-                                            href="{{ route('admin.storeAddress.restore-trash', $storeAddress->id) }}">Restore</a>
+                                            href="{{ route('admin.storeAddress.restore-trash', $storeAddress->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Restore</a>
                                         <a class="btn btn-danger delete-item"
-                                            href="{{ route('admin.storeAddress.destroy-trash', $storeAddress->id) }}">Delete
+                                            href="{{ route('admin.storeAddress.destroy-trash', $storeAddress->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete
                                             Forever</a>
                                     </td>
                                 </tr>
