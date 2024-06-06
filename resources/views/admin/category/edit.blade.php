@@ -92,10 +92,14 @@
 									<button class="btn btn-primary iconpicker dropdown-toggle" data-icon="{{$category->icon}}" data-selected-class="btn-danger" data-unselected-class="btn-info" role="iconpicker" name="icon"></button>
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<label for="input1" class="form-label">Name</label>
 								<input type="text" class="form-control" id="input1" name="name" value="{{ $category->name }}" placeholder="Name">
 							</div>
+                            <div class="col-md-6">
+                                <label for="input1" class="form-label">Rank</label>
+                                <input type="number" class="form-control" name="rank" placeholder="Rank" value="{{ $category->rank }}">
+                            </div>
 							<div class="col-md-6">
 								<label for="input9" class="form-label">Status</label>
 								<select id="input9" class="form-select" name="status">

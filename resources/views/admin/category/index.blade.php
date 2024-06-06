@@ -42,6 +42,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
+                                <th>Rank</th>
                                 <th>Icon</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -52,6 +53,9 @@
                                 <tr>
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
+                                    <td>
+                                        {{ $category->rank }}
+                                    </td>
                                     <td>
                                         <i class="{{ $category->icon }}"></i>
                                     </td>
