@@ -31,9 +31,11 @@
                         </div>
                     </form>
                 </div>
-                <a href="{{ route('admin.product.trash-list') }}" class="me-2 btn btn-info ms-2">Reset</a>
+                <a href="{{ route('admin.product.trash-list') }}" class="me-2 btn btn-success ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>
+
+                    Reset</a>
             </div>
-            <a href="{{ route('admin.product.index') }}" class="btn btn-warning float-end">Back</a>
+            <a href="{{ route('admin.product.index') }}" class="btn btn-primary float-end">Back</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -71,8 +73,8 @@
                             <td>{{ $product->subCategory->name }}</td>
                             <td>{{ $product->childCategory->name }}</td>
                             <td>
-                                <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.product.restore-trash', $product->id) }}">Restore</a>
-                                <a class="btn btn-danger delete-item" href="{{ route('admin.product.destroy-trash', $product->id) }}">Delete Forever</a>
+                                <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.product.restore-trash', $product->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Restore</a>
+                                <a class="btn btn-danger delete-item" href="{{ route('admin.product.destroy-trash', $product->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete Forever</a>
                             </td>
                         </tr>
                         @endforeach

@@ -31,8 +31,9 @@
                         </div>
                     </form>
                 </div>
+                <a href="{{ route("admin.coupons.trash-list") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
             </div>
-            <a href="{{ route('admin.coupons.index') }}" class="btn btn-warning float-end">Back</a>
+            <a href="{{ route('admin.coupons.index') }}" class="btn btn-primary float-end">Back</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -43,9 +44,6 @@
                             <th>name</th>
                             <th>Code</th>
                             <th>quantity</th>
-                            {{-- <th>start_date</th>
-                                <th>end_date</th> 
-                                <th>discount_type</th>--}}
                             <th>discount</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -71,8 +69,8 @@
                                 </div>
 
                             <td>
-                                <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.coupons.restore-trash', $item->id) }}">Restore</a>
-                                <a class="btn btn-danger delete-item" href="{{ route('admin.coupons.destroy-trash', $item->id) }}">Delete Forever</a>
+                                <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.coupons.restore-trash', $item->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Restore</a>
+                                <a class="btn btn-danger delete-item" href="{{ route('admin.coupons.destroy-trash', $item->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete Forever</a>
                             </td>
                         </tr>
                         @endforeach

@@ -30,10 +30,12 @@
                             </div>
                         </form>
                     </div>
+                    <a href="{{ route("admin.child-category.index") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
                 </div>
-                <a href="{{ route("admin.child-category.trash-list") }}" class="btn btn-danger float-end">Trashed Child Categories</a>
-                <a href="{{ route("admin.child-category.create") }}" class="me-2 btn btn-warning float-end">Add Child Category</a>
-                <a href="{{ route("admin.child-category.index") }}" class="me-2 btn btn-success float-end">Reset</a>
+                <a href="{{ route("admin.child-category.trash-list") }}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>
+                    Trashed Child Categories</a>
+                <a href="{{ route("admin.child-category.create") }}" class="me-2 btn btn-primary float-end"><i class="fa-solid fa-plus text-light fs-6"></i>Add Child Category</a>
+               
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -65,21 +67,14 @@
                                         </div>
 
                                     <td>
-                                        <a class="btn btn-warning" href="{{ route('admin.child-category.edit', $childCategory->id) }}">Edit</a>
-                                        <a class="btn btn-danger delete-item" href="{{ route("admin.child-category.destroy", $childCategory->id) }}">Delete</a>
+                                        <a class="btn btn-primary" href="{{ route('admin.child-category.edit', $childCategory->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
+                                        <a class="btn btn-danger delete-item" href="{{ route("admin.child-category.destroy", $childCategory->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Category</th>
-                                <th>Sub Category</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
+                            
                         </tfoot>
                     </table>
                     {{ $childCategories->links() }}

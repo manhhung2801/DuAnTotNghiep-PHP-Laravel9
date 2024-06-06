@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\backend\VariantItemController;
 use App\Http\Controllers\Backend\ChildCategoryController;
+use App\Http\Controllers\Backend\StoreAddressController;
 use App\Http\Controllers\Backend\UserManagementController;
 
 /** Admin Routes */
@@ -60,12 +61,20 @@ Route::DELETE('slider/destroy-trash/{id?}', [SliderController::class, 'destroyTr
 Route::PATCH('slider/restore-trash/{id?}', [SliderController::class, 'restoreTrash'])->name('slider.restore-trash');
 Route::resource('slider', SliderController::class);
 
+/**  Store Adress */
+Route::put('/storeAddress/change-status', [StoreAddressController::class, 'changeStatus'])->name('storeAddress.change-status');
+Route::get('storeAddress/trash-list/', [StoreAddressController::class, 'showTrash'])->name('storeAddress.trash-list');
+Route::DELETE('storeAddress/destroy-trash/{id?}', [StoreAddressController::class, 'destroyTrash'])->name('storeAddress.destroy-trash');
+Route::PATCH('storeAddress/restore-trash/{id?}', [StoreAddressController::class, 'restoreTrash'])->name('storeAddress.restore-trash');
+Route::resource('/storeAddress', StoreAddressController::class);
+
 /** Coupons */
 Route::get('coupons/trash-list', [CouponsController::class, 'showTrash'])->name('coupons.trash-list');
 Route::DELETE('coupons/destroy-trash/{id?}', [CouponsController::class, 'destroyTrash'])->name('coupons.destroy-trash');
 Route::PATCH('coupons/restore-trash/{id?}', [CouponsController::class, 'restoreTrash'])->name('coupons.restore-trash');
 Route::put('/coupons/change-status', [CouponsController::class, 'changeStatus'])->name('coupons.change-status');
 Route::resource('/coupons', CouponsController::class);
+
 
 /** Variant */
 Route::put('/variant/change-status', [VariantController::class, 'changeStatus'])->name('variant.change-status');
