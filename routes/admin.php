@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\backend\VariantItemController;
 use App\Http\Controllers\Backend\ChildCategoryController;
+use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\StoreAddressController;
 use App\Http\Controllers\Backend\UserManagementController;
 use App\Http\Controllers\Backend\PostCategoriesController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\Backend\PostCategoriesController;
 /** Admin Routes */
 
 Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('', [HomeController::class, 'index'])->name('index');
 
 /** Profile Routes */
 Route::get('/dashboard', [ProfileController::class, 'index'])->name('profile');
