@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\PostsController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponsController;
 use App\Http\Controllers\backend\ProductController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\backend\VariantItemController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\UserManagementController;
+use App\Http\Controllers\Backend\PostCategoriesController;
 
 /** Admin Routes */
 
@@ -65,3 +67,17 @@ Route::put('/variantItem/change-status/{id?}', [ VariantItemController::class, '
 Route::get("/user-management", [UserManagementController::class, 'index'])->name('user-management.index');
 Route::put("/user-management/change-role", [UserManagementController::class, 'changeRole'])->name('user-management.change-role');
 Route::put("/user-management/change-status", [UserManagementController::class, 'changeStatus'])->name('user-management.change-status');
+
+/** post_category */
+Route::get('/post-cate/trashed-post_cate',[PostCategoriesController::class, 'trashedPostcate'])->name('post-cate.trashed-postCate');
+Route::get('/post-cate/restore/{id}',[PostCategoriesController::class,'restore'])->name('post-cate.restore-post_categories');
+Route::get('/post-cate/deleted/{id}',[PostCategoriesController::class,'deleteVariant'])->name('post-cate.deleted-post_categories');
+Route::put('/post-cate/change-status',[PostCategoriesController::class,'changeStatus'])->name('post-cate.change-status');
+Route::resource('/post-cate',PostCategoriesController::class);
+
+/** post */
+Route::get('/post/trashed-post',[PostsController::class, 'trashedPost'])->name('post.trashed-post');
+Route::get('/post/restore/{id}',[PostsController::class,'restore'])->name('post.restore-post');
+Route::get('/post/deleted/{id}',[PostsController::class,'deleteVariant'])->name('post.deleted-post');
+Route::put('/post/change-status',[PostsController::class,'changeStatus'])->name('post.change-status');
+Route::resource('/post',PostsController::class);

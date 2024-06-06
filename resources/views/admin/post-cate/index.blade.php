@@ -6,13 +6,13 @@
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Variant</div>
+            <div class="breadcrumb-title pe-3">Post Categories</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Variant</li>
+                        <li class="breadcrumb-item active" aria-current="page">Post Categories</li>
                     </ol>
                 </nav>
             </div>
@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">
              <div class="action_start float-start d-flex">
-                  <h6 class="mt-2 mb-0 text-uppercase float-start">Variant</h6>
+                  <h6 class="mt-2 mb-0 text-uppercase float-start">Post Category</h6>
                 <div class="form-search ms-2">
                     <form action="" method="get">
                         <div class="input-group">
@@ -31,9 +31,9 @@
                     </form>
                 </div>
              </div>
-                <a href="{{ route('admin.variant.trashed-variant') }}" class="btn btn-danger float-end ">Trashed variant</a>
-                <a href="{{ route('admin.variant.create')}}" class="btn btn-warning float-end me-2">Add variant</a>
-                <a href="{{ route('admin.variant.index') }}" class="me-2 btn btn-success float-end">Reset</a>
+                <a href="{{ route('admin.post-cate.trashed-postCate') }}" class="btn btn-danger float-end ">Trashed Post Cate</a>
+                <a href="{{ route('admin.post-cate.create')}}" class="btn btn-warning float-end me-2">Add Post Cate</a>
+                <a href="{{ route('admin.post-cate.index') }}" class="me-2 btn btn-success float-end">Reset</a>
          </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -41,29 +41,29 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Product_id</th>
                                 <th>Name</th>
+                                <th>Slug</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($variant as $variant)
+                            @foreach ($post_categories as $post_categories)
                                 <tr>
-                                    <td>{{ $variant->id }}</td>
-                                    <td>{{$variant->product_id}}</td>
-                                    <td>{{ $variant->name }}</td>
+                                    <td>{{$post_categories->id }}</td>
+                                    <td>{{$post_categories->name}}</td>
+                                    <td>{{ $post_categories->slug}}</td>
                                     <td>
                                     <div class="form-check form-switch form-check-success">
-                                    @if($variant->status == 1)
-                                    <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess" checked>
-                                    @elseif($variant->status == 0)
-                                    <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess">
+                                    @if($post_categories->status == 1)
+                                    <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post_categories->id }}" id="flexSwitchCheckSuccess" checked>
+                                    @elseif($post_categories->status == 0)
+                                    <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post_categories->id }}" id="flexSwitchCheckSuccess">
                                     @endif
                                 </div>
                                     <td>
-                                        <a class="btn btn-warning" href="{{ route('admin.variant.edit', $variant->id) }}">Edit</a>
-                                        <a class="btn btn-danger delete-item" href="{{ route("admin.variant.destroy", $variant->id) }}">Delete</a>
+                                        <a class="btn btn-warning" href="{{ route('admin.post-cate.edit', $post_categories->id) }}">Edit</a>
+                                        <a class="btn btn-danger delete-item" href="{{ route("admin.post-cate.destroy", $post_categories->id) }}">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -71,8 +71,8 @@
                         <tfoot>
                             <tr>
                                 <th>Id</th>
-                                <th>Product_id</th>
                                 <th>Name</th>
+                                 <th>Slug</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -93,7 +93,7 @@
 
             $.ajax({
                 method: "PUT",
-                url: "{{route('admin.variant.change-status')}}",
+                url: "{{route('admin.post-cate.change-status')}}",
                 data: {
                     status: isChecked,
                     id: id
