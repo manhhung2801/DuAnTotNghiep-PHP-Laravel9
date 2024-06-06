@@ -9,19 +9,19 @@ use Illuminate\Http\Request;
 
 class PostCategoriesController extends Controller
 {
-    
 
-    
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-  
+
       public function trashedPostcate(Request $request)
     {
 
-         
+
           $post_categories = Post_categories::onlyTrashed()->latest();
 
         // Nếu có keyword trong request, thêm điều kiện tìm kiếm
@@ -35,7 +35,7 @@ class PostCategoriesController extends Controller
 
         // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
         return view('admin.post-cate.trashlist',compact('post_categories'));
-    } 
+    }
 
     public function restore($id)
     {
@@ -59,7 +59,7 @@ class PostCategoriesController extends Controller
 
 
      public function index(Request $request)
-    {   
+    {
         $post_categories = Post_categories::latest();
         if(!empty($request->get('keyword'))) {
             $post_categories = Post_categories::where('name', 'like', '%'.$request->get('keyword').'%');
@@ -68,15 +68,15 @@ class PostCategoriesController extends Controller
         $post_categories = $post_categories->paginate(15);
         return view('admin.post-cate.index',compact('post_categories'));
     }
-    
-    
-   
-    
+
+
+
+
     public function show($id)
     {
 
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -97,12 +97,14 @@ class PostCategoriesController extends Controller
     {
         $request->validate([
             'name' => ['required', 'max:200'],
+            'slug' => ['max:200'],
             'status' => ['required']
         ]);
 
+
         $post_categories = new Post_categories();
         $post_categories->name = $request->name;
-        $post_categories->slug = $request->slug;
+        $post_categories->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->name, '-');
         $post_categories->status = $request->status;
         $post_categories->save();
 
@@ -135,12 +137,13 @@ class PostCategoriesController extends Controller
     {
         $request->validate([
             'name' => ['required', 'max:200',],
+            'slug' => ['max:200'],
             'status' => ['required']
         ]);
 
         $post_categories = Post_categories::findOrFail($id);
         $post_categories->name = $request->name;
-        $post_categories->slug = $request->slug;
+        $post_categories->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->name, '-');
         $post_categories->status = $request->status;
         $post_categories->save();
 
@@ -170,5 +173,5 @@ class PostCategoriesController extends Controller
         $post_categories->save();
         return response(['message' =>'Status has been updated']);
     }
-    
+
 }

@@ -31,7 +31,7 @@
                         <input type="text" class="form-control" id="input1" name="name" placeholder="Name">
                     </div>
                     <div class="col-md-6">
-                        <label for="input7" class="form-label">Slug</label>
+                        <label for="input1" class="form-label">Slug</label>
                         <input type="text" class="form-control" id="input1" name="slug" placeholder="slug">
                     </div>
                     <div class="col-md-6">

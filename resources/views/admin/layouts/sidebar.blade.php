@@ -81,6 +81,21 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
                 </div>
+                <div class="menu-title">Post All</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route("admin.post-cate.index") }}"><i class='bx bx-radio-circle'></i>Post Category</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.post.index') }}"><i class='bx bx-radio-circle'></i>Post List</a>
+                <li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
+                </div>
                 <div class="menu-title">Users</div>
             </a>
             <ul>
