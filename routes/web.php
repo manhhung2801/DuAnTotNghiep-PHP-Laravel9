@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\AdminController;
@@ -17,12 +18,10 @@ use App\Http\Controllers\Frontend\KhieuNaiController;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.home.index');
-});
+/** Home */
 
-
-
+Route::get("/", [HomeController::class, 'index'])->name("home");
+/** Home */
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -41,12 +40,11 @@ Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login
 /** Login admin Dashboard */
 
 
-
-
 /** User Dashboard */
 Route::middleware(['auth', 'verified', 'role:user'])->prefix('user')->name('user.')->group(function() {
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
 });
+
 /** User Dashboard */
 Route::get('/tintuc',[TintucController::class,'index']);
 Route::get('/khieunai',[KhieuNaiController::class,'index']);

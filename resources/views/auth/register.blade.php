@@ -1,52 +1,81 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+@extends('frontend.layouts.master')
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+@section('content')
+<div class="wrapper-signin-page container">
+    <div class="page-body">
+        <div class="all_content-signin my-5">
+            <div class="signin-block row px-4 pt-4 pb-5">
+                <div class="signin-form-wrapper col-7">
+                    <img src="https://shopdunk.com/images/uploaded/banner/TND_M402_010%201.jpeg" class="d-block w-100" alt="img">
+                </div>
+                <div class="register-block col-5">
+                    <div class="page-title">
+                        <h4>Đăng ký</h4>
+                    </div>
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+
+                        <!-- Name -->
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label p-0">Họ, tên:</label>
+                            <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control" id="name">
+                            @if ($errors->any())
+                                <span class="text-danger">
+                                    @error('name')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            @endif
+                        </div>
+                        <!-- Email Address -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label p-0">Email:</label>
+                            <input type="email" class="form-control" id="email" ng-model="email" value="{{ old('email') }}" name="email">
+                            @if ($errors->any())
+                                <span class="text-danger">
+                                    @error('email')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            @endif
+                        </div>
+                         <!-- Password -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label p-0">Mật khẩu:</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                            @if ($errors->any())
+                                <span class="text-danger">
+                                    @error('password')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            @endif
+
+                            <div id="passwordHelpBlock" class="form-text">
+                                Lưu ý: Mật khẩu phải có tối thiểu 8 ký tự bao gồm chữ, số và các ký tự đặc biệt
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password_confirmation" class="form-label p-0">Xác nhận mật khẩu:</label>
+                            <input type="password" class="form-control" id="password_confirmation" ng-model="pass2" name="password_confirmation">
+                            @if ($errors->any())
+                                <span class="text-danger">
+                                    @error('password_confirmation')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            @endif
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-3">Đăng ký</button>
+                        <div class="form-link">
+                            <span>Bạn đã có tài khoảng? <a class="text-decoration-none" href="{{ route("login") }}">Đăng nhập
+                                    ngay</a></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+</div>
+@endsection

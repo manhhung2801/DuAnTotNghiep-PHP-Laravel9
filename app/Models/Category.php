@@ -10,6 +10,10 @@ class Category extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public function subCategories() {
+        return $this->hasMany(SubCategory::class, "category_id", "id");
+    }
+
     static public function getCategoryTrashed()
     {
         return self::onlyTrashed()->orderBy('deleted_at', 'desc')->paginate(15);

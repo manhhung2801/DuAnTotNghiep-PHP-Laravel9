@@ -6,15 +6,12 @@
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
+            @foreach ($slides as $slide)
             <div class="carousel-item active" data-bs-interval="2000">
-                <img src="https://shopdunk.com/images/uploaded/banner/banner%202024/thang_6/banner%20iMac%20T6_PC.jpg" class="d-block w-100 object-fit-cover img-fluid" height="400px" alt="...">
+                <img src="{{ asset("uploads/slider/".$slide->banner) }}" class="d-block w-100 object-fit-cover img-fluid" height="400px" alt="...">
             </div>
-            <div class="carousel-item" data-bs-interval="2000">
-                <img src="https://shopdunk.com/images/uploaded/banner/banner%202024/thang_6/banner%20watch%209%20T6_PC.jpg" class="d-block w-100 object-fit-cover img-fluid" height="400px" alt="...">
-            </div>
-            <div class="carousel-item" data-bs-interval="2000">
-                <img src="https://shopdunk.com/images/uploaded/banner/banner%202024/thang_6/banner%20MacBook%20Air%20M1%20T6_PC.jpg" class="d-block w-100 object-fit-cover img-fluid" height="400px" alt="...">
-            </div>
+            @endforeach
+
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

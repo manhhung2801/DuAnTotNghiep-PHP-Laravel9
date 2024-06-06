@@ -26,4 +26,5 @@
 </script>
 
 <!-- script custom -->
+
 @stack('script')

@@ -1,46 +1,47 @@
-@extends('frontend.layouts.master')
+<x-guest-layout>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
 
-@section('content')
-<div class="wrapper-login-page container">
-    <div class="page-body">
-        <div class="all_content-login my-5">
-            <div class="login-block row px-4 pt-4 pb-5">
-                <div class="login-form-wrapper col-7">
-                    <img src="https://shopdunk.com/images/uploaded/banner/TND_M402_010%201.jpeg" class="d-block w-100" alt="img">
-                </div>
-                <div class="register-block col-5">
-                    <div class="page-title">
-                        <h4>Đăng nhập</h4>
-                    </div>
-                    <form name="frmLogin">
-                        <div class="mb-3">
-                            <label for="tendangnhap" class="form-label p-0">Tên đăng nhập:</label>
-                            <input type="text" class="form-control" id="tendangnhap" maxlength="25" ng-model="user" name="txtUser" required>
-                            <span class="text-danger" ng-show="frmLogin.txtUser.$invalid">Vui lòng nhập họ tên</span>
-                        </div>
-                        <div class="mb-3">
-                            <label for="matkhau" class="form-label p-0">Mật khẩu:</label>
-                            <input type="password" class="form-control" id="matkhau" ng-model="pass" name="txtPass" required>
-                            <span class="text-danger" ng-show="frmLogin.txtPass.$invalid">Nhập mật khẩu</span>
-                        </div>
-                        <div class="mb-3 form-check d-flex justify-content-sm-between">
-                            <div class="checkbox">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Nhớ mật khẩu</label>
-                            </div>
-                            <div class="link">
-                                <a class="text-decoration-none" href="#">Quên mật khẩu</a>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100 py-3">Đăng nhập</button>
-                        <div class="form-link">
-                            <span>Bạn chưa có tài khoảng? <a class="text-decoration-none" href="#!sign-in">Tạo tài
-                                    khoảng ngay</a></span>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
+
+        <!-- Email Address -->
+        <div>
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-    </div>
-</div>
-@endsection
+
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
+
+            <x-text-input id="password" class="block mt-1 w-full"
+                            type="password"
+                            name="password"
+                            required autocomplete="current-password" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <!-- Remember Me -->
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
+                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+            </label>
+        </div>
+
+        <div class="flex items-center justify-end mt-4">
+            @if (Route::has('password.request'))
+                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
+            @endif
+
+            <x-primary-button class="ml-3">
+                {{ __('Log in') }}
+            </x-primary-button>
+        </div>
+    </form>
+</x-guest-layout>

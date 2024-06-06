@@ -18,12 +18,18 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::latest();
+        $categories = Category::query(); // Start with a clean query builder
+
         if(!empty($request->get('keyword'))) {
             $categories = $categories->where('name', 'like', '%'.$request->get('keyword').'%');
         }
 
+       // Order by rank in ascending order
+        $categories = $categories->orderBy('rank', 'asc');
+
+        // Paginate with 10 items per page
         $categories = $categories->paginate(10);
+
         return view("admin.category.index", compact('categories'));
     }
 
@@ -48,6 +54,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:200'],
             'icon' => ['required'],
+            'rank' => ['numeric'],
             'status' => ['required'],
         ]);
 
@@ -55,6 +62,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
         $category->icon = $request->icon;
+        $category->rank = $request->rank;
         $category->status = $request->status;
         $category->save();
         // Set a success toast, with a title
