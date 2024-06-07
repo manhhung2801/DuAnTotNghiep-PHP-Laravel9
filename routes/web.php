@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\AdminController;
@@ -52,3 +53,6 @@ Route::get('/tintuc',[TintucController::class,'index']);
 Route::get('/khieunai',[KhieuNaiController::class,'index']);
 Route::get('giohang',[GioHangController::class,'index']);
 Route::get('checkout',[CheckoutController::class, 'index']);
+
+Route::get('san-pham/',[ProductController::class, 'index']);
+Route::get('san-pham/{slug?}',[ProductController::class, 'getSlug']);
