@@ -54,5 +54,5 @@ Route::get('/khieunai',[KhieuNaiController::class,'index']);
 Route::get('giohang',[GioHangController::class,'index']);
 Route::get('checkout',[CheckoutController::class, 'index']);
 
-Route::get('san-pham/',[ProductController::class, 'index']);
-Route::get('san-pham/{slug?}',[ProductController::class, 'getSlug']);
+Route::get('product/',[ProductController::class, 'index']);
+Route::get('product/{slug?}',[ProductController::class, 'getSlug']);
