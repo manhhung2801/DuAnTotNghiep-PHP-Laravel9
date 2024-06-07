@@ -14,6 +14,10 @@ class Category extends Model
         return $this->hasMany(SubCategory::class, "category_id", "id");
     }
 
+    public function product() {
+        return $this->hasMany(Product::class, "product_id");
+    }
+
     static public function getCategoryTrashed()
     {
         return self::onlyTrashed()->orderBy('deleted_at', 'desc')->paginate(15);

@@ -12,7 +12,8 @@ use App\Models\Slider;
 
 class ProductController extends Controller
 {
-    function calculatePercentageChange($arr) {
+    function calculatePercentageChange($arr)
+    {
         $percentageChanges = [];
 
         foreach ($arr as $key => $product) {
@@ -43,13 +44,15 @@ class ProductController extends Controller
     public function getSlug($slug = null)
     {
         $slug = str_replace(".html", "", $slug);
-
         $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
         $product = Product::where("slug", "=", $slug)->first();
-        $product_image_galleries = Product::where("slug", "=", $slug)->first();
-        // $products = $this->calculatePercentageChange($products);
+        $categoryId = $product->ProductHasOneCat->id;
 
-        return view('frontend.products.detail', compact("categories", "product"));
+        $products = Product::where("category_id", "=", $categoryId)->get();
+        $products = $this->calculatePercentageChange($products);
+        $product_image_galleries = $product->product_image_galleries()->get();
+        $variants = $product->variant()->get();
+        return view('frontend.products.detail', compact("categories", "product", "product_image_galleries", "variants", 'products'));
     }
 
 }
