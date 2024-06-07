@@ -20,9 +20,9 @@
 </div>
 <div class="prices d-flex align-items-center my-2">
     <div class="price me-3 d-flex text-primary">
-        <h4 class="fw-bolder">{{ number_format($product->offer_price, 0, '', ',') }}₫</h4><i class="fa-solid fa-dong-sign"></i>
+        <h4 class="fw-bolder">{{ number_format($product->offer_price, 0, '', ',') }}</h4><i class="fa-solid fa-dong-sign"></i>
     </div>
-    <div class="lowPrice text-secondary"><del class="fs-5">{{ number_format($product->price, 0, '', ',') }}₫</del> <i class="fa-light fa-dong-sign fa-xs"></i></div>
+    <div class="lowPrice text-secondary"><del class="fs-5">{{ number_format($product->price, 0, '', ',') }}</del> <i class="fa-light fa-dong-sign fa-xs"></i></div>
 </div>
 <dl class="attributes">
     <dt class="text-prompt">

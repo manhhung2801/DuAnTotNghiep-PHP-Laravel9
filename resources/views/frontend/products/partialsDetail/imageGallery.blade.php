@@ -1,5 +1,5 @@
 <div class="picture p-3 rounded-1" style="background: #ebebefb3">
-    <img src="public/images/product/ipad_01.png" class="w-100 d-block m-0" alt="ảnh iphone">
+    <img src="{{ asset('/images/product/' . $product->image) }}" class="w-100 d-block m-0" alt="ảnh iphone">
 </div>
 <div class="picture-slideshow mt-3">
     <ul class="p-0 d-flex">
