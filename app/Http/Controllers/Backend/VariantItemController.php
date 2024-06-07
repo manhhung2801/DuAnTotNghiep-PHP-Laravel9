@@ -16,9 +16,14 @@ class VariantItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $variantItem = VariantItem::get();
+        $variant = Variant::latest();
+        if (!empty($request->get('keyword'))) {
+            $variant = Variant::where('name', 'like', '%' . $request->get('keyword') . '%');
+        }
+
+        $variantItem = VariantItem::paginate(15);
         return view('admin.variantItem.index',compact('variantItem'));
     }
 
@@ -145,8 +150,18 @@ class VariantItemController extends Controller
     }
 
 
-    public function onlyTrashed()
+    public function onlyTrashed(Request $request)
     {
+
+
+        $variantItem = VariantItem::onlyTrashed()->latest();
+
+        // Nếu có keyword trong request, thêm điều kiện tìm kiếm
+        if (!empty($request->get('keyword'))) {
+            $keyword = $request->get('keyword');
+            $variantItem = $variantItem->where('name', 'like', '%' . $keyword . '%');
+        }
+
         $model = new VariantItem();
         $variantItem = $model::onlyTrashed()->get();
         return view('admin.variantItem.index',compact('variantItem'));

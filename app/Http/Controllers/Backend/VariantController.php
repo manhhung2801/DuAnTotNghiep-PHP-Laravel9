@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
+
 use App\Http\Controllers\Controller;
 use App\Models\Variant;
 use App\Models\Product;
@@ -12,18 +13,18 @@ class VariantController extends Controller
 {
 
 
-    
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-  
-      public function trashedVariant(Request $request)
+
+    public function trashedVariant(Request $request)
     {
 
-         
-          $variant = Variant::onlyTrashed()->latest();
+
+        $variant = Variant::onlyTrashed()->latest();
 
         // Nếu có keyword trong request, thêm điều kiện tìm kiếm
         if (!empty($request->get('keyword'))) {
@@ -35,49 +36,47 @@ class VariantController extends Controller
         $variant = $variant->get();
 
         // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
-        return view('admin.variant.trashlist',compact('variant'));
-    } 
+        return view('admin.variant.trashlist', compact('variant'));
+    }
 
     public function restore($id)
     {
-         $variant = Variant::withTrashed()->findOrFail($id);
-         if(!empty($variant))
-         {
+        $variant = Variant::withTrashed()->findOrFail($id);
+        if (!empty($variant)) {
             $variant->restore();
-         }
+        }
         return response(['status' => 'success', 'message' => 'Successfully!']);
     }
 
     public function deleteVariant($id)
     {
-         $variant = Variant::withTrashed()->findOrFail($id);
-         if(!empty($variant))
-         {
+        $variant = Variant::withTrashed()->findOrFail($id);
+        if (!empty($variant)) {
             $variant->forceDelete();
-         }
-         return response(['status' => 'success', 'message' => 'Variant deleted successfully!']);
+        }
+        return response(['status' => 'success', 'message' => 'Variant deleted successfully!']);
     }
 
 
-     public function index(Request $request)
-    {   
+    public function index(Request $request)
+    {
         $variant = Variant::latest();
-        if(!empty($request->get('keyword'))) {
-            $variant = Variant::where('name', 'like', '%'.$request->get('keyword').'%');
+        if (!empty($request->get('keyword'))) {
+            $variant = Variant::where('name', 'like', '%' . $request->get('keyword') . '%');
         }
 
         $variant = $variant->paginate(15);
-        return view('admin.variant.index',compact('variant'));
+        return view('admin.variant.index', compact('variant'));
     }
-    
-    
-   
-    
+
+
+
+
     public function show($id)
     {
 
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -113,7 +112,7 @@ class VariantController extends Controller
         return redirect()->route('admin.variant.index');
     }
 
-     /**
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -127,7 +126,7 @@ class VariantController extends Controller
     }
 
 
-     /**
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -138,7 +137,7 @@ class VariantController extends Controller
     {
         $request->validate([
             'product_id' => ['required'],
-            'name' => ['required', 'max:200', 'unique:sub_categories,name,'.$id],
+            'name' => ['required', 'max:200', 'unique:sub_categories,name,' . $id],
             'status' => ['required']
         ]);
 
@@ -153,7 +152,7 @@ class VariantController extends Controller
         return redirect()->route('admin.variant.index');
     }
 
-     /**
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -161,18 +160,19 @@ class VariantController extends Controller
      */
     public function destroy($id)
     {
-        $variant=Variant::findOrFail($id);
+        $variant = Variant::findOrFail($id);
         $variant->delete();
-       return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 
 
-    public function changeStatus(Request $request){
+    public function changeStatus(Request $request)
+    {
 
         $variant = Variant::findOrFail($request->id);
         $variant->status = $request->status == 'true' ? 1 : 0;
         $variant->save();
-        return response(['message' =>'Status has been updated']);
+        return response(['message' => 'Status has been updated']);
     }
-    
+
 }
