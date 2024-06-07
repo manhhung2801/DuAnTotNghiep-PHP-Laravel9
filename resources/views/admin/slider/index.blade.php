@@ -20,21 +20,37 @@
         <!--end breadcrumb-->
         <div class="card">
             <div class="card-header">
-                <h6 class="mt-2 mb-0 text-uppercase float-start">List Sliders</h6>
-                <a href="{{ route('admin.slider.create') }}" class="btn btn-warning float-end">Add Slider</a>
+                <div class="action_start float-start d-flex">
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">List Sliders</h6>
+                    <form action="" method="get">
+                        {{-- @csrf --}}
+                        <div class="form-search ms-2 ">
+                            <div class="input-group">
+                                <input value="{{ Request::get('keyword') }}" type="text"
+                                    class=" form-control rounded-start-5 focus-ring focus-ring-light querySearch"
+                                    placeholder="Tìm kiếm" name="keyword">
+                                <button class="btn btn-outline-primary rounded-end-5 buttonSearch " type="submit"><i
+                                        class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    <a href="{{ route('admin.slider.index') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
+                </div>
+                <a href="{{ route('admin.slider.trash-list') }}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i></i>Trashed Slider</a>
+                <a href="{{ route('admin.slider.create') }}" class="btn btn-primary float-end me-2"><i class="fa-solid fa-plus text-light fs-6"></i>Add Slider</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered " style="width:100%">
-                        <thead>
+                        <thead class="text-center">
                             <tr>
                                 <th>Id</th>
                                 <th>Banner</th>
                                 <th>Type</th>
                                 <th>Title</th>
-                                {{-- <th>Starting_price</th>
+                                <th>Price</th>
                                 <th>Url</th>
-                                <th>Serial</th> --}}
+                                <th>Serial</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -49,30 +65,35 @@
                                     </td>
                                     <td>{{ $slider->type }}</td>
                                     <td>{{ $slider->title }}</td>
-                                    {{-- <td>{{ $slider->starting_price }}</td>
+                                    <td>{{ number_format($slider->starting_price) }} VNĐ</td>
                                     <td>{{ $slider->btn_url }}</td>
-                                    <th>{{ $slider->serial }}</th> --}}
+                                    <td>{{ $slider->serial }}</td>
                                     <td>
                                         <div class="form-check form-switch form-check-success">
                                             @if ($slider->status == 1)
                                                 <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                    data-id="{{ $slider->id }}" id="flexSwitchCheckSuccess" checked>
+                                                    data-id="{{ $slider->id }}" id="flexSwitchCheckSuccess" checked >
                                             @elseif($slider->status == 0)
                                                 <input class="form-check-input change-status" type="checkbox" role="switch"
                                                     data-id="{{ $slider->id }}" id="flexSwitchCheckSuccess">
                                             @endif
                                         </div>
-
+                                    </td>
                                     <td>
-                                        <a class="btn btn-warning"
-                                            href="{{ route('admin.slider.edit', $slider->id) }}">Edit</a>
+                                        <a class="btn btn-primary text-light"
+                                            href="{{ route('admin.slider.edit', $slider->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
                                         <a class="btn btn-danger delete-item"
-                                            href="{{ route('admin.slider.destroy', $slider->id) }}">Delete</a>
+                                            href="{{ route('admin.slider.destroy', $slider->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    @if (session('message'))
+                        <div class="text-gray">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     {{ $sliders->links() }}
                 </div>
             </div>

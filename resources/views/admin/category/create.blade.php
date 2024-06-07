@@ -88,9 +88,13 @@
                                 <label for="input7" class="form-label">Icon:</label>
                                 <button class="btn btn-primary iconpicker dropdown-toggle" data-selected-class="btn-danger" data-unselected-class="btn-info" role="iconpicker" name="icon"></button>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <label for="input1" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="input1" name="name" placeholder="Name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="input1" class="form-label">Rank</label>
+                                <input type="number" class="form-control" name="rank" placeholder="Rank">
                             </div>
                             <div class="col-md-6">
                                 <label for="input9" class="form-label">Status</label>

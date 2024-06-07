@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\VariantItem;
 use App\Models\Variant;
-use App\Models\Products;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class VariantItemController extends Controller
@@ -147,18 +147,14 @@ class VariantItemController extends Controller
 
     public function onlyTrashed()
     {
-        // $variantItem = VariantItem::get()->toArray();
-        // $variantItem = VariantItem::paginate(15);
         $model = new VariantItem();
         $variantItem = $model::onlyTrashed()->get();
-        // dd($variantItem);
         return view('admin.variantItem.index',compact('variantItem'));
     }
     public function restore($id = null)
     {
         $variantItem = VariantItem::withTrashed()->find($id)->restore();
-        // dd($variantItem);
-        return redirect()->route('admin.variantItem.onlyTrashed');
+        return response(['status' => 'succses', 'message' => 'Deleted successfully']);
     }
     public function destroyTrashed($id = null)
     {

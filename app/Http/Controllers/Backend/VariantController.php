@@ -3,26 +3,81 @@
 namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Variant;
-use App\Models\Products;
+use App\Models\Product;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class VariantController extends Controller
 {
+
+
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-     public function index()
+  
+      public function trashedVariant(Request $request)
     {
-        $variant = Variant::paginate(15);
-        return view('admin.variant.index',compact('variant'));
+
+         
+          $variant = Variant::onlyTrashed()->latest();
+
+        // Nếu có keyword trong request, thêm điều kiện tìm kiếm
+        if (!empty($request->get('keyword'))) {
+            $keyword = $request->get('keyword');
+            $variant = $variant->where('name', 'like', '%' . $keyword . '%');
+        }
+
+        // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
+        $variant = $variant->get();
+
+        // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
+        return view('admin.variant.trashlist',compact('variant'));
+    } 
+
+    public function restore($id)
+    {
+         $variant = Variant::withTrashed()->findOrFail($id);
+         if(!empty($variant))
+         {
+            $variant->restore();
+         }
+        return response(['status' => 'success', 'message' => 'Successfully!']);
+    }
+
+    public function deleteVariant($id)
+    {
+         $variant = Variant::withTrashed()->findOrFail($id);
+         if(!empty($variant))
+         {
+            $variant->forceDelete();
+         }
+         return response(['status' => 'success', 'message' => 'Variant deleted successfully!']);
     }
 
 
+     public function index(Request $request)
+    {   
+        $variant = Variant::latest();
+        if(!empty($request->get('keyword'))) {
+            $variant = Variant::where('name', 'like', '%'.$request->get('keyword').'%');
+        }
+
+        $variant = $variant->paginate(15);
+        return view('admin.variant.index',compact('variant'));
+    }
+    
+    
+   
+    
+    public function show($id)
+    {
+
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +85,7 @@ class VariantController extends Controller
      */
     public function create()
     {
-        $product = Products::all();
+        $product = Product::all();
         return view('admin.variant.create', compact('product'));
     }
     /**
@@ -66,7 +121,7 @@ class VariantController extends Controller
      */
     public function edit($id)
     {
-        $product = Products::all();
+        $product = Product::all();
         $variant = Variant::findOrFail($id);
         return view('admin.variant.edit', compact('variant', 'product'));
     }
@@ -119,4 +174,5 @@ class VariantController extends Controller
         $variant->save();
         return response(['message' =>'Status has been updated']);
     }
+    
 }

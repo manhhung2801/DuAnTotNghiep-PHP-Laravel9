@@ -21,9 +21,9 @@
         <div class="card">
             <div class="card-header">
                 <h6 class="mt-2 mb-0 text-uppercase float-start">VariantItem</h6>
-                <a href="{{ route('admin.variantItem.onlyTrashed') }}" class="mx-1 btn btn-danger float-end">Recycle Bin</a>
-                <a href="{{ route('admin.variantItem.index') }}" class="mx-1 btn btn-info float-end">VariantItem List</a>
-                <a href="{{ route('admin.variantItem.create') }}" class="mx-1 btn btn-warning float-end">Add variantItem</a>
+                <a href="{{ route('admin.variantItem.onlyTrashed') }}" class="mx-1 btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>Trashed Variant Item</a>
+                <a href="{{ route('admin.variantItem.index') }}" class="mx-1 btn btn-info float-end"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
+                <a href="{{ route('admin.variantItem.create') }}" class="mx-1 btn btn-primary float-end"><i class="fa-solid fa-plus text-light fs-6"></i>Add variantItem</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -60,30 +60,22 @@
                                     </td>
                                     <td>
                                         @if ($variantItem->deleted_at == null)
-                                            <a class="btn btn-warning"
-                                                href="{{ route('admin.variantItem.edit', $variantItem->id) }}">Edit</a>
+                                            <a class="btn btn-primary"
+                                                href="{{ route('admin.variantItem.edit', $variantItem->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
                                             <a class="btn btn-danger delete-item"
-                                                href="{{ route('admin.variantItem.destroy', $variantItem->id) }}">Delete</a>
+                                                href="{{ route('admin.variantItem.destroy', $variantItem->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
                                         @else
-                                            <a class="btn btn-secondary"
-                                                href="{{ route('admin.variantItem.restore', $variantItem->id) }}">Restore</a>
+                                            <a class="btn btn-info restoreTrash-item"
+                                                href="{{ route('admin.variantItem.restore', $variantItem->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Restore</a>
                                             <a class="btn btn-danger delete-item"
-                                                href="{{ route('admin.variantItem.destroyTrashed', $variantItem->id) }}">Delete</a>
+                                                href="{{ route('admin.variantItem.destroyTrashed', $variantItem->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
                                         @endif
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
-                            <tr>
-                                <th>Id</th>
-                                <th>Product Variant Id</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Is Default</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
+                           
                         </tfoot>
                     </table>
                 </div>

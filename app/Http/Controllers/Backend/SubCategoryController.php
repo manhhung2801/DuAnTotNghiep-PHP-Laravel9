@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Exception;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Support\Str;
@@ -16,9 +17,14 @@ class SubCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $subCategories = SubCategory::paginate(15);
+        $subCategories = SubCategory::latest();
+        if(!empty($request->get('keyword'))) {
+            $subCategories = $subCategories->where('name', 'like', '%'.$request->get('keyword').'%');
+        }
+
+        $subCategories = $subCategories->paginate(10);
         return view('admin.sub-category.index', compact('subCategories'));
     }
 
@@ -135,5 +141,45 @@ class SubCategoryController extends Controller
         $category->status = $request->status == 'true' ? 1 : 0;
         $category->save();
         return response(['message' => 'Status has been updated']);
+    }
+
+    // show trash list and search
+    public function showTrash(Request $request)
+    {
+        // Lấy tất cả các category đã bị xóa, sắp xếp theo thứ tự mới nhất
+        $getSubCategories = SubCategory::onlyTrashed()->latest();
+
+        // Nếu có keyword trong request, thêm điều kiện tìm kiếm
+        if (!empty($request->get('keyword'))) {
+            $keyword = $request->get('keyword');
+            $getSubCategories = $getSubCategories->where('name', 'like', '%' . $keyword . '%');
+        }
+
+        // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
+        $getSubCategories = $getSubCategories->get();
+
+        // Trả về view với dữ liệu các category đã bị xóa
+        return view('admin.sub-category.trash-list', compact('getSubCategories'));
+    }
+
+    // delete in trash
+    public function destroyTrash($id) {
+        try{
+            SubCategory::destroyTrashed($id);
+            return response(['status' => 'success', 'Deleted Forever Successfully!']);
+        }
+        catch(Exception $e) {
+            return response(['status' => 'error', 'Deleted Faild! '.$e.'' ]);
+        }
+    }
+
+    public function restoreTrash($id) {
+        try{
+            SubCategory::restoreTrashed($id);
+            return response(['status' => 'success', 'Successfully!']);
+        }
+        catch(Exception $e) {
+            return response(['status' => 'error', 'message' => 'Restore Faild '.$e.'']);
+        }
     }
 }
