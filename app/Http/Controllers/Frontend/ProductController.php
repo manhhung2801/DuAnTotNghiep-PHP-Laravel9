@@ -46,7 +46,9 @@ class ProductController extends Controller
 
         $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
         $product = Product::where("slug", "=", $slug)->first();
+        $product_image_galleries = Product::where("slug", "=", $slug)->first();
         // $products = $this->calculatePercentageChange($products);
+
         return view('frontend.products.detail', compact("categories", "product"));
     }
 

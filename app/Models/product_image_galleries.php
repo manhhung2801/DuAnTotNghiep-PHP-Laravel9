@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class product_image_galleries extends Model
 {
     use HasFactory;
+
+    public function product()
+    {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
 }
