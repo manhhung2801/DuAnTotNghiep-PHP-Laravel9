@@ -33,6 +33,7 @@ class ruleProductCreate extends FormRequest
             'offer_price' => 'integer',
             'sub_category_id' => 'required',
             'child_category_id' => 'required',
+            'weight' => 'required'
         ];
     }
     public function messages()
@@ -53,6 +54,7 @@ class ruleProductCreate extends FormRequest
             'offer_price.integer' => "Offer Price must be a number!",
             'sub_category_id' => 'sub_category_id cannot be empty!',
             'child_category_id' => 'child_category_id cannot be empty!',
+            'weight' => 'Weight cannot be empty!'
         ];
     }
 }

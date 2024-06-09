@@ -4,38 +4,39 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
 class SliderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $sliders = Slider::paginate(15);
-        return view("admin.slider.index", compact('sliders'));
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index(Request $request)
+    {
+        $message = session('message');
+        $sliders = Slider::latest();
+        // search tìm kiếm theo type
+        if (!empty($request->get('keyword'))) {
+            $sliders = Slider::where('type', 'like', '%' . $request->get('keyword') . '%')->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
+            if ($sliders->count() == 0) {
+                session()->flash('message', 'Record Not Found');
+            } else {
+                session()->forget('message');
+            }
+        } else {
+            session()->forget('message');
+        }
+        $sliders = $sliders->paginate(15);
+
+        return view("admin.slider.index", compact('sliders', 'message'));
+        // 
+    }
     public function create()
     {
         return view('admin.slider.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $slider = new Slider;
@@ -67,36 +68,19 @@ class SliderController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $slider = Slider::findOrFail($id);
         return view('admin.slider.edit', compact('slider'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -132,27 +116,68 @@ class SliderController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $slider = Slider::find($id);
-        $deletes = $slider->banner;
-        $banner = public_path('uploads/slider/' . $deletes);
-        if (file_exists($banner)) {
-            if (unlink($banner)) {
-                $slider->delete();
+        // $deletes = $slider->banner;
+        // $banner = public_path('uploads/slider/' . $deletes);
+        // if (file_exists($banner)) {
+        //     if (unlink($banner)) {
+        //         $slider->delete();
+        //     }
+        // }
+        $slider->delete();
+        return response(['status' => 'success', 'messge' => 'Deleted Successfully!']);
+    }
+
+    public function showTrash(Request $request)
+    {
+        $message = session('message');
+        $getSliders = Slider::onlyTrashed()->latest();
+
+        // search tìm kiếm theo type
+        if (!empty($request->get('keyword'))) {
+            $keyword = $request->get('keyword');
+            $getSliders = $getSliders->where('type', 'like', '%' . $request->get('keyword') . '%')->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
+            if ($getSliders->count() == 0) {
+                session()->flash('message', 'Record Not Found');
+            } else {
+                session()->forget('message');
             }
+        } else {
+            session()->forget('message');
         }
-        return response(['status' => 'success', 'Deleted Successfully!']);
+        // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
+        $getSliders = $getSliders->paginate(15);
+        // Nếu $getSliders rỗngz
+        if ($getSliders->isEmpty()) {
+            session()->flash('message', 'Record Not Found');
+            return view('admin.slider.trash-list', compact('getSliders'));
+        }
+        // Trả về view với dữ liệu các category đã bị xóa
+        return view('admin.slider.trash-list', compact('getSliders'));
+    }
+    public function destroyTrash($id)
+    {
+        try {
+            Slider::destroyTrashedItem($id);
+            return response(['status' => 'success', 'Deleted Forever Successfully!']);
+        } catch (Exception $e) {
+            return response(['status' => 'error', 'Deleted Faild! ' . $e . '']);
+        }
+    }
+    public function restoreTrash($id)
+    {
+        try {
+            Slider::restoreTrashed($id);
+            return response(['status' => 'success', 'Successfully!']);
+        } catch (Exception $e) {
+            return response(['status' => 'error', 'message' => 'Restore Faild ' . $e . '']);
+        }
     }
     public function changeStatus(Request $request)
     {
-
         $slider = Slider::findOrFail($request->id);
         $slider->status = $request->status == 'true' ? 1 : 0;
         $slider->save();

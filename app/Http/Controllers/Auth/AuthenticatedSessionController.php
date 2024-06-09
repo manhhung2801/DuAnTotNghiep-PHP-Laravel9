@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use App\Providers\RouteServiceProvider;
+use App\Http\Requests\Auth\LoginRequest;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -17,7 +18,10 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        // category show menu
+        $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
+
+        return view('auth.login', compact("categories"));
     }
 
     /**
@@ -31,7 +35,7 @@ class AuthenticatedSessionController extends Controller
         if($request->user()->role === 'admin'){
             return redirect()->intended('/admin/dashboard');
         }else if($request->user()->role === 'user'){
-            return redirect()->intended('/user/dashboard');
+            return redirect()->intended('/dashboard');
         }
 
         return redirect()->intended(RouteServiceProvider::HOME);

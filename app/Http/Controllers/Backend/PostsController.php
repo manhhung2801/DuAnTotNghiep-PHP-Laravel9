@@ -23,17 +23,17 @@ class PostsController extends Controller
         }
         return null;
     }
-    
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-  
+
       public function trashedPost(Request $request)
     {
 
-         
+
           $post = Post::onlyTrashed()->latest();
 
         // Nếu có keyword trong request, thêm điều kiện tìm kiếm
@@ -47,7 +47,7 @@ class PostsController extends Controller
 
         // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
         return view('admin.post.trashlist',compact('post'));
-    } 
+    }
 
     public function restore($id)
     {
@@ -71,7 +71,7 @@ class PostsController extends Controller
 
 
      public function index(Request $request)
-    {   
+    {
         $post = Post::latest();
         if(!empty($request->get('keyword'))) {
             $post = Post::where('title', 'like', '%'.$request->get('keyword').'%');
@@ -80,15 +80,15 @@ class PostsController extends Controller
         $post = $post->paginate(15);
         return view('admin.post.index',compact('post'));
     }
-    
-    
-   
-    
+
+
+
+
     public function show($id)
     {
 
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -108,6 +108,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+
         
           $request->validate([
             'category_id' => 'required',
@@ -118,12 +119,15 @@ class PostsController extends Controller
             'seo_description' => 'required',
             'seo_title' => 'required',
     ]);
+
         $post = new Post();
         $post->category_id = $request->category_id;
         $post->user_id = $request->user_id;
         $post->image = $this->uploadFile($request, 'image','/post');
         $post->title = $request->title;
-        $post->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->name, '-');
+      
+        $post->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->title, '-');
+
         $post->description = $request->description;
         $post->seo_title = $request->seo_title;
         $post->seo_description = $request->seo_description;
@@ -142,7 +146,7 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
+    {
         $post = Post::findOrFail($id);
         $user = User::all();
         $post_categories= Post_categories::all();
@@ -153,10 +157,11 @@ class PostsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response 
      */
     public function update(Request $request, $id)
     {
+
           $request->validate([
             'category_id' => 'required',
             'user_id' => 'required',
@@ -171,7 +176,9 @@ class PostsController extends Controller
         $post->category_id = $request->category_id;
         $post->user_id = $request->user_id;
         $post->title = $request->title;
-        $post->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->name, '-');
+
+        $post->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->title, '-');
+
         $post->description = $request->description;
         $post->seo_title = $request->seo_title;
         $post->seo_description = $request->seo_description;
@@ -189,7 +196,7 @@ class PostsController extends Controller
             }
         $post->save();
 
-        
+
         toastr('Updated Successfully!', 'success');
 
         return redirect()->route('admin.post.index');
@@ -205,7 +212,7 @@ class PostsController extends Controller
     {
         $post=Post::findOrFail($id);
         $post->delete();
-        
+
        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 

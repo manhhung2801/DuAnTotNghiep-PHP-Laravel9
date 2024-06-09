@@ -30,9 +30,10 @@
                         </div>
                     </form>
                 </div>
+                <a href="{{ route('admin.variant.index') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
              </div>
                 <a href="{{ route('admin.variant.index') }}" class="btn btn-primary float-end">Back</a>
-                <a href="{{ route('admin.variant.index') }}" class="me-2 btn btn-success float-end">Reset</a>
+                
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -62,8 +63,8 @@
                                         </div>
 
                                     <td>
-                                     <a class="btn btn-primary " href="{{ route('admin.variant.restore-variant', $variant->id) }}">Restore</a>
-                                    <a class="btn btn-danger" href="{{ route('admin.variant.deleted-variant', $variant->id) }}">Deleted</a>
+                                     <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.variant.restore-variant', $variant->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Restore</a>
+                                    <a class="btn btn-danger delete-item" href="{{ route('admin.variant.deleted-variant', $variant->id) }}"><i class="fa-solid fa-trash fs-6"></i>Deleted</a>
                                     </td>
                                 </tr>
                             @endforeach

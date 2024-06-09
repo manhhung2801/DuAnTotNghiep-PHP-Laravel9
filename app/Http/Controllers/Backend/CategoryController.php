@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use Str;
+use Exception;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
@@ -15,9 +16,20 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::paginate(15);
+        $categories = Category::query(); // Start with a clean query builder
+
+        if(!empty($request->get('keyword'))) {
+            $categories = $categories->where('name', 'like', '%'.$request->get('keyword').'%');
+        }
+
+       // Order by rank in ascending order
+        $categories = $categories->orderBy('rank', 'asc');
+
+        // Paginate with 10 items per page
+        $categories = $categories->paginate(10);
+
         return view("admin.category.index", compact('categories'));
     }
 
@@ -42,6 +54,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:200'],
             'icon' => ['required'],
+            'rank' => ['numeric'],
             'status' => ['required'],
         ]);
 
@@ -49,6 +62,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
         $category->icon = $request->icon;
+        $category->rank = $request->rank;
         $category->status = $request->status;
         $category->save();
         // Set a success toast, with a title
@@ -92,6 +106,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:200'],
             'icon' => ['required'],
+            'rank' => ['numeric'],
             'status' => ['required'],
         ]);
 
@@ -99,6 +114,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
         $category->icon = $request->icon;
+        $category->rank = $request->rank;
         $category->status = $request->status;
         $category->save();
 
@@ -134,5 +150,45 @@ class CategoryController extends Controller
         $category->status = $request->status == 'true' ? 1 : 0;
         $category->save();
         return response(['message' => 'Status has been updated']);
+    }
+
+    // show trash list and search
+    public function showTrash(Request $request)
+    {
+        // Lấy tất cả các category đã bị xóa, sắp xếp theo thứ tự mới nhất
+        $getCategories = Category::onlyTrashed()->latest();
+
+        // Nếu có keyword trong request, thêm điều kiện tìm kiếm
+        if (!empty($request->get('keyword'))) {
+            $keyword = $request->get('keyword');
+            $getCategories = $getCategories->where('name', 'like', '%' . $keyword . '%');
+        }
+
+        // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
+        $getCategories = $getCategories->get();
+
+        // Trả về view với dữ liệu các category đã bị xóa
+        return view('admin.category.trash-list', compact('getCategories'));
+    }
+
+    // delete in trash
+    public function destroyTrash($id) {
+        try{
+            Category::destroyTrashed($id);
+            return response(['status' => 'success', 'Deleted Forever Successfully!']);
+        }
+        catch(Exception $e) {
+            return response(['status' => 'error', 'Deleted Faild! '.$e.'' ]);
+        }
+    }
+
+    public function restoreTrash($id) {
+        try{
+            Category::restoreTrashed($id);
+            return response(['status' => 'success', 'Successfully!']);
+        }
+        catch(Exception $e) {
+            return response(['status' => 'error', 'message' => 'Restore Faild '.$e.'']);
+        }
     }
 }

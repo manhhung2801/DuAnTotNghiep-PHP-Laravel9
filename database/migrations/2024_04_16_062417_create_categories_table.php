@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('icon')->nullable();
+            $table->integer('rank')->nullable()->comment("rank = 1, 2, 3 ,4, 5");
             $table->boolean('status');
+            $table->softDeletes('deleted_at');
             $table->timestamps();
         });
     }

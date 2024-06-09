@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('serial');
             $table->boolean('status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -20,8 +20,20 @@
         <!--end breadcrumb-->
         <div class="card">
             <div class="card-header">
-                <h6 class="mt-2 mb-0 text-uppercase float-start">List Categories</h6>
-                <a href="{{ route("admin.category.create") }}" class="btn btn-warning float-end">Add Category</a>
+                <div class="action_start float-start d-flex">
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">Category Listing</h6>
+                    <div class="form-search ms-2">
+                        <form action="" method="get">
+                            <div class="input-group">
+                                <input type="text" value="{{ Request::get('keyword') }}" name="keyword" class="form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm">
+                                <button class="btn btn-outline-primary rounded-end-5" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <a href="{{ route("admin.category.index") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
+                </div>
+                <a href="{{ route("admin.category.trash-list") }}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>Trashed Categories</a>
+                <a href="{{ route("admin.category.create") }}" class="me-2 btn btn-primary float-end"><i class="fa-solid fa-plus text-light fs-6"></i>Add Category</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -30,6 +42,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
+                                <th>Rank</th>
                                 <th>Icon</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -40,6 +53,9 @@
                                 <tr>
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
+                                    <td>
+                                        {{ $category->rank }}
+                                    </td>
                                     <td>
                                         <i class="{{ $category->icon }}"></i>
                                     </td>
@@ -53,19 +69,14 @@
                                         </div>
 
                                     <td>
-                                        <a class="btn btn-warning" href="{{ route('admin.category.edit', $category->id) }}">Edit</a>
-                                        <a class="btn btn-danger delete-item" href="{{ route("admin.category.destroy", $category->id) }}">Delete</a>
+                                        <a class="btn btn-primary" href="{{ route('admin.category.edit', $category->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
+                                        <a class="btn btn-danger delete-item" href="{{ route("admin.category.destroy", $category->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
+                           
                         </tfoot>
                     </table>
                     {{ $categories->links() }}

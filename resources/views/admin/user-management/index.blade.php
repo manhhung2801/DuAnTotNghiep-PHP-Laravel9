@@ -20,6 +20,21 @@
         <!--end breadcrumb-->
         <div class="card">
             <div class="card-header">
+                <div class="action_start float-start d-flex">
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">Category Listing</h6>
+                    <div class="form-search ms-2">
+                        <form action="" method="get">
+                            <div class="input-group">
+                                <input type="text" value="{{ Request::get('keyword') }}" name="keyword" class="form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm">
+                                <button class="btn btn-outline-primary rounded-end-5" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <a href="{{ route("admin.user-management.index") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
+                </div>
+             
+            </div>
+            <div class="card-header">
                 <h6 class="mt-2 mb-0 text-uppercase float-start">List Users</h6>
             </div>
             <div class="card-body">
@@ -65,21 +80,14 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <a class="btn btn-warning" href="">Detail</a>
+                                        <a class="btn btn-primary" href=""><i class="fa-solid fa-pen fs-6 text-light"></i>Detail</a>
+                                        <a class="btn btn-danger delete-item" href="{{ route("admin.user-management.destroy", $user->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Image</th>
-                                <th>Role</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
+                            
                         </tfoot>
                     </table>
                     {{ $users->links() }}

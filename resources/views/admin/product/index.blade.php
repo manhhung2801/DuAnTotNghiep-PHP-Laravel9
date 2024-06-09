@@ -21,8 +21,21 @@
     <!--end breadcrumb-->
     <div class="card">
         <div class="card-header">
-            <h6 class="mt-2 mb-0 text-uppercase float-start">Product Listing</h6>
-            <a href="{{ route('admin.product.create') }}" class="btn btn-warning float-end">Add Product</a>
+            <div class="action_start float-start d-flex">
+                <h6 class="mt-2 mb-0 text-uppercase float-start">Product Listing</h6>
+                <div class="form-search ms-2">
+                    <form action="" method="get">
+                        <div class="input-group">
+                            <input value="{{ Request::get('keyword') }}" type="text" name="keyword" class="form-control rounded-start-5 focus-ring focus-ring-light querySearch" placeholder="Search">
+                            <button class="btn btn-outline-primary rounded-end-5 buttonSearch" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <a href="{{ route('admin.product.index') }}" class="me-2 btn btn-success ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>                    Reset</a>
+            </div>
+            
+            <a href="{{route('admin.product.trash-list')}}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>Trashed Product</a>
+            <a href="{{ route('admin.product.create') }}" class="btn btn-primary float-end me-2"><i class="fa-solid fa-plus text-light fs-6"></i>Add Product</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -70,8 +83,8 @@
                             <td>{{ $product->subCategory->name }}</td>
                             <td>{{ $product->childCategory->name }}</td>
                             <td>
-                                <a class="btn btn-warning" href="{{ route('admin.product.edit', $product->id) }}">Edit</a>
-                                <a class="btn btn-danger delete-item" href="{{ route('admin.product.destroy', $product->id) }}">Delete</a>
+                                <a class="btn btn-primary" href="{{ route('admin.product.edit', $product->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
+                                <a class="btn btn-danger delete-item" href="{{ route('admin.product.destroy', $product->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
                             </td>
                         </tr>
                         @endforeach
@@ -106,6 +119,5 @@
             });
         })
     });
-
 </script>
 @endpush

@@ -32,11 +32,14 @@ return new class extends Migration
             $table->string('seo_title', 255)->nullable();
             $table->text('seo_description')->nullable();
             $table->bigInteger('category_id')->unsigned()->index();
+            $table->double('weight');
+            $table->integer('views')->default(0);
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->bigInteger('sub_category_id')->nullable()->unsigned()->index();
             $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade');
             $table->bigInteger('child_category_id')->nullable()->unsigned()->index();
             $table->foreign('child_category_id')->references('id')->on('child_categories')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

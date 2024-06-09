@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Exception;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Support\Str;
@@ -16,9 +17,14 @@ class ChildCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $childCategories = ChildCategory::paginate(15);
+        $childCategories = ChildCategory::latest();
+        if(!empty($request->get('keyword'))) {
+            $childCategories = $childCategories->where('name', 'like', '%'.$request->get('keyword').'%');
+        }
+
+        $childCategories = $childCategories->paginate(10);
         return view('admin.child-category.index', compact('childCategories'));
     }
 
@@ -37,10 +43,8 @@ class ChildCategoryController extends Controller
      * Get sub categories
      */
     public function getSubCategories(Request $request){
-
         $subCategories = SubCategory::where('category_id', $request->id)->where('status', 1)->get();
         return $subCategories;
-
     }
     /**
      * Store a newly created resource in storage.
@@ -144,5 +148,42 @@ class ChildCategoryController extends Controller
         $childCategory->status = $request->status == 'true' ? 1 : 0;
         $childCategory->save();
         return response(['message' => 'Status has been updated']);
+    }
+
+    // show trash list and search
+    public function showTrash(Request $request)
+    {
+
+        $getChildCategories = ChildCategory::onlyTrashed()->latest();
+
+        if (!empty($request->get('keyword'))) {
+            $keyword = $request->get('keyword');
+            $getChildCategories = $getChildCategories->where('name', 'like', '%' . $keyword . '%');
+        }
+
+        $getChildCategories = $getChildCategories->get();
+
+        return view('admin.child-category.trash-list', compact('getChildCategories'));
+    }
+
+    // delete in trash
+    public function destroyTrash($id) {
+        try{
+            ChildCategory::destroyTrashed($id);
+            return response(['status' => 'success', 'Deleted Forever Successfully!']);
+        }
+        catch(Exception $e) {
+            return response(['status' => 'error', 'Deleted Faild! '.$e.'' ]);
+        }
+    }
+
+    public function restoreTrash($id) {
+        try{
+            ChildCategory::restoreTrashed($id);
+            return response(['status' => 'success', 'Successfully!']);
+        }
+        catch(Exception $e) {
+            return response(['status' => 'error', 'message' => 'Restore Faild '.$e.'']);
+        }
     }
 }

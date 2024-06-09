@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\AdminController;
@@ -19,15 +20,16 @@ use App\Http\Controllers\Frontend\CheckoutController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/** Home */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get("/", [HomeController::class, 'index'])->name("home");
+/** Home */
 
-Route::middleware('auth')->group(function () {
+/** User Dashboard */
+Route::middleware(['auth', 'verified', 'role:user'])->group(function () {
+
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -41,11 +43,6 @@ Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login
 
 
 
-
-/** User Dashboard */
-Route::middleware(['auth', 'verified', 'role:user'])->prefix('user')->name('user.')->group(function() {
-    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
-});
 /** User Dashboard */
 Route::get('/tintuc',[TintucController::class,'index']);
 Route::get('/khieunai',[KhieuNaiController::class,'index']);
