@@ -26,4 +26,8 @@ class Category extends Model
     static public function restoreTrashed($id) {
         return self::withTrashed()->where('id', $id)->restore();
     }
+
+    static public function getCategory() {
+        return self::where('status', '=', 1)->orderBy('rank', 'asc');
+    }
 }

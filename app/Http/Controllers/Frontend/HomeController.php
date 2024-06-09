@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Category;
 use App\Models\Slider;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use GuzzleHttp\Handler\Proxy;
 
 class HomeController extends Controller
 {
@@ -13,9 +15,23 @@ class HomeController extends Controller
 
         // category show menu
         $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
+        $slides = Slider::where("status", "=", 1)->orderBy("serial", "asc")->take(3)->get();
 
-        $slides = Slider::where("status", "=", 1)->orderBy("serial", "asc")->get();
-
-        return view('frontend.home.index', compact("categories", 'slides'));
+        // Show danh mục nổi bật
+        $categoryHot = $categories->take(6);
+        //Giới hạn của category show
+        $getCategory = $categories->take(4);
+        $getProducts = []; //mảng chưa product
+        foreach($getCategory as $cate){
+            $product = [
+                $cate->name => Product::getProduct()->where('status', '=', 1)
+                                        ->where('qty', '>', 0)
+                                        ->where('category_id', $cate->id)
+                                        ->orderBy('created_at', 'desc')
+                                        ->take(4)->get()
+            ];
+            $getProducts[] = $product;
+        }
+        return view('frontend.home.index', compact("categories", 'slides', 'categoryHot', 'getProducts'));
     }
 }
