@@ -106,6 +106,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:200'],
             'icon' => ['required'],
+            'rank' => ['numeric'],
             'status' => ['required'],
         ]);
 
@@ -113,6 +114,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
         $category->icon = $request->icon;
+        $category->rank = $request->rank;
         $category->status = $request->status;
         $category->save();
 

@@ -31,10 +31,6 @@
                         <label for="input1" class="form-label">Name</label>
                         <input type="text" class="form-control" value="{{ $post_categories->name }}" id="input1" name="name" placeholder="Name">
                     </div>
-                     <div class="col-md-6">
-                        <label for="input7" class="form-label">Slug</label>
-                        <input type="text" class="form-control" value="{{ $post_categories->slug }}" id="input1" name="slug" placeholder="slug">
-                    </div>
                     <div class="col-md-6">
                         <label for="input9" class="form-label">Status</label>
                         <select id="input9" class="form-select" name="status">

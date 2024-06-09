@@ -52,6 +52,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
+    /** form show update password */
+    Route::get('form-password', [PasswordController::class, 'formUpdate'])->name('form.password.update');
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
