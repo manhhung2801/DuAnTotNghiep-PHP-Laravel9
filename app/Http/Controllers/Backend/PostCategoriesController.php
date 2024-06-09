@@ -102,7 +102,7 @@ class PostCategoriesController extends Controller
 
         $post_categories = new Post_categories();
         $post_categories->name = $request->name;
-        $post_categories->slug = $request->slug;
+        $post_categories->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->name, '-');
         $post_categories->status = $request->status;
         $post_categories->save();
 
@@ -140,7 +140,7 @@ class PostCategoriesController extends Controller
 
         $post_categories = Post_categories::findOrFail($id);
         $post_categories->name = $request->name;
-        $post_categories->slug = $request->slug;
+        $post_categories->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->name, '-');
         $post_categories->status = $request->status;
         $post_categories->save();
 
