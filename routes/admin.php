@@ -19,11 +19,11 @@ use App\Http\Controllers\Backend\PostCategoriesController;
 
 /** Admin Routes */
 
-Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-Route::get('', [HomeController::class, 'index'])->name('index');
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+// Route::get('', [HomeController::class, 'index'])->name('index');
 
 /** Profile Routes */
-Route::get('/dashboard', [ProfileController::class, 'index'])->name('profile');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile/update/', [ProfileController::class, 'updateProfile'])->name('profile.update');
 Route::put('/profile/update/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 
