@@ -55,10 +55,6 @@
                     <label for="name" class="form-label">Title</label>
                     <input type="text" class="form-control" id="name" name="title" placeholder="title" value="{{ $post->title }}">
                      </div>
-                     <div class="col-md-6">
-                        <label for="input7" class="form-label">Slug</label>
-                        <input type="text" class="form-control" value="{{ $post->slug }}" id="input1" name="slug" placeholder="slug">
-                    </div>
                     <div class="col-md-6">
                         <label for="input9" class="form-label">Status</label>
                         <select id="input9" class="form-select" name="status">

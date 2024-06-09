@@ -109,12 +109,25 @@ class PostsController extends Controller
     public function store(Request $request)
     {
 
+        
+          $request->validate([
+            'category_id' => 'required',
+            'user_id' => 'required',
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'image' => 'image|mimes:jpeg,jpg,png,gif,webp|max:10240',
+            'seo_description' => 'required',
+            'seo_title' => 'required',
+    ]);
+
         $post = new Post();
         $post->category_id = $request->category_id;
         $post->user_id = $request->user_id;
         $post->image = $this->uploadFile($request, 'image','/post');
         $post->title = $request->title;
+      
         $post->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->title, '-');
+
         $post->description = $request->description;
         $post->seo_title = $request->seo_title;
         $post->seo_description = $request->seo_description;
@@ -149,12 +162,23 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
 
+          $request->validate([
+            'category_id' => 'required',
+            'user_id' => 'required',
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'image' => 'image|mimes:jpeg,jpg,png,gif,webp|max:10240',
+            'seo_description' => 'required',
+            'seo_title' => 'required',
+        ]);
 
         $post = Post::findOrFail($id);
         $post->category_id = $request->category_id;
         $post->user_id = $request->user_id;
         $post->title = $request->title;
+
         $post->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->title, '-');
+
         $post->description = $request->description;
         $post->seo_title = $request->seo_title;
         $post->seo_description = $request->seo_description;

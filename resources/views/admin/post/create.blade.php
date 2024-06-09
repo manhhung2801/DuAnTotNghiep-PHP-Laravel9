@@ -53,10 +53,6 @@
                         <input type="text" class="form-control" id="input1" name="title" placeholder="title">
                     </div>
                     <div class="col-md-6">
-                        <label for="input7" class="form-label">Slug</label>
-                        <input type="text" class="form-control" id="input1" name="slug" placeholder="slug">
-                    </div>
-                    <div class="col-md-6">
                         <label for="input9" class="form-label">Status</label>
                         <select id="input9" class="form-select" name="status">
                             <option value="1">Active</option>
