@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
             ChildCategorySeeder::class,
             SliderSeeder::class,
             StoreAdressSeeder::class,
+            CouponsSeeder::class,
+            PostCategoriesSeeder::class,
         ]);
     }
 }
