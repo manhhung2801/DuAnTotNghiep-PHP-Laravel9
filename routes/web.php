@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Frontend\AddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\TintucController;
 use App\Http\Controllers\Frontend\GioHangController;
@@ -25,6 +26,9 @@ use App\Http\Controllers\Frontend\CheckoutController;
 
 Route::get("/", [HomeController::class, 'index'])->name("home");
 /** Home */
+/** Addresss */
+Route::get('/address', [AddressController::class,'index'])->name('address');
+/** End Addresss */
 
 /** User Dashboard */
 Route::middleware(['auth', 'verified', 'role:user'])->group(function () {

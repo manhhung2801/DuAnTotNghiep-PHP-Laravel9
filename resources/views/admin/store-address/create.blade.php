@@ -27,10 +27,15 @@
                 <form class="row g-3" action="{{ route('admin.storeAddress.store') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <label for="input1" class="form-label">Store_name</label>
                         <input type="text" class="form-control" id="input1" name="store_name"
                             value="{{ old('store_name') }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="input8" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="input8" name="email"
+                            value="{{ old('email') }}">
                     </div>
                     <div class="col-md-4">
                         <label for="input2" class="form-label">Address</label>
@@ -60,8 +65,8 @@
                     <div class="col-md-4">
                         <label for="input7" class="form-label">Status</label>
                         <select id="input7" class="form-select" name="status">
-                            <option selected="" value="active">Active</option>
-                            <option value="inactive">Inactive</option>
+                            <option selected="" value="1">Active</option>
+                            <option value="0">Inactive</option>
                         </select>
                     </div>
                     <div class="col-md-2">

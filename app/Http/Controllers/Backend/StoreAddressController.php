@@ -45,6 +45,7 @@ class StoreAddressController extends Controller
             'ward' => ['required'],
             'district' => ['required'],
             'province' => ['required'],
+            'email'=>['required'],
             'phone' => ['required'],
             'status' => ['required'],
         ]);
@@ -53,6 +54,7 @@ class StoreAddressController extends Controller
         $storeAddress->ward = $request->ward;
         $storeAddress->district = $request->district;
         $storeAddress->province = $request->province;
+        $storeAddress->email = $request->email;
         $storeAddress->phone = $request->phone;
         $storeAddress->status = $request->status;
         $storeAddress->save();
@@ -83,6 +85,7 @@ class StoreAddressController extends Controller
             'ward' => ['required'],
             'district' => ['required'],
             'province' => ['required'],
+            'email'=>['required'],
             'phone' => ['required'],
             'status' => ['required'],
         ]);
@@ -92,6 +95,7 @@ class StoreAddressController extends Controller
         $storeAddress->ward = $request->ward;
         $storeAddress->district = $request->district;
         $storeAddress->province = $request->province;
+        $storeAddress->email = $request->email;
         $storeAddress->phone = $request->phone;
         $storeAddress->status = $request->status;
         $storeAddress->save();
@@ -157,7 +161,7 @@ class StoreAddressController extends Controller
     public function changeStatus(Request $request)
     {
         $storeAddress = StoreAddress::findOrFail($request->id);
-        $storeAddress->status = $request->status == 'true' ? 'active' : 'inactive';
+        $storeAddress->status = $request->status == 'true' ? 1 : 0;
         $storeAddress->save();
         return response(['message' => 'Status has been updated']);
     }

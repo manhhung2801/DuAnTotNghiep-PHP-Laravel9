@@ -20,8 +20,9 @@ return new class extends Migration
             $table->string('district');
             $table->string('ward');
             $table->string('address');
+            $table->string('email')->unique();
             $table->string('phone')->nullable();
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
