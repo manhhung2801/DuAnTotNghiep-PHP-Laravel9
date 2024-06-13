@@ -4,10 +4,12 @@
     </h2>
     <nav class="nav-category ">
         <ul class=" navbar-pills ">
+            @foreach($newsCate as $key => $value)
             <li class="nav-item  ">
-                <a class="nav-link " href="#">Tin công nghệ</a>
+                <a class="nav-link " href="#">{{$value->name}}</a>
             </li>
-            <li class="nav-item  ">
+            @endforeach
+            <!-- <li class="nav-item  ">
                 <a class="nav-link " href="#">Đánh giá</a>
             </li>
             <li class="nav-item  ">
@@ -15,7 +17,7 @@
             </li>
             <li class="nav-item  ">
                 <a class="nav-link " href="# ">Khuyến mãi</a>
-            </li>
+            </li> -->
         </ul>
     </nav>
 </div>
