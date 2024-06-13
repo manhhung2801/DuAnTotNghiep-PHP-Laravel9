@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\ChildCategory;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class SubCategoryController extends Controller
 {
@@ -49,6 +50,7 @@ class SubCategoryController extends Controller
     {
         $request->validate([
             'category' => ['required'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'name' => ['required', 'max:200', 'unique:sub_categories,name'],
             'status' => ['required']
         ]);
@@ -58,6 +60,14 @@ class SubCategoryController extends Controller
         $subcategory->name = $request->name;
         $subcategory->status = $request->status;
         $subcategory->slug = Str::slug($request->name);
+
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time().'.'.$image->extension();
+            $image->move(public_path('uploads/subcategory'), $imageName);
+            $subcategory->image = $imageName;
+        }
+
         $subcategory->save();
 
         toastr('Created Successfully!', 'success');
@@ -100,6 +110,7 @@ class SubCategoryController extends Controller
     {
         $request->validate([
             'category' => ['required'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'name' => ['required', 'max:200', 'unique:sub_categories,name,'.$id],
             'status' => ['required']
         ]);
@@ -109,11 +120,19 @@ class SubCategoryController extends Controller
         $subcategory->name = $request->name;
         $subcategory->status = $request->status;
         $subcategory->slug = Str::slug($request->name);
+
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time().'.'.$image->extension();
+            $image->move(public_path('uploads/subcategory'), $imageName);
+            $subcategory->image = $imageName;
+        }
+
         $subcategory->save();
 
         toastr('Updated Successfully!', 'success');
 
-        return redirect()->route('admin.sub-category.index');
+        return redirect()->back();
     }
 
     /**
@@ -165,6 +184,12 @@ class SubCategoryController extends Controller
     // delete in trash
     public function destroyTrash($id) {
         try{
+            $subCategory = SubCategory::withTrashed()->findOrFail($id);
+
+            if (File::exists(public_path("uploads/subcategory/{$subCategory->image}"))) {
+                File::delete(public_path("uploads/subcategory/{$subCategory->image}"));
+            }
+
             SubCategory::destroyTrashed($id);
             return response(['status' => 'success', 'Deleted Forever Successfully!']);
         }

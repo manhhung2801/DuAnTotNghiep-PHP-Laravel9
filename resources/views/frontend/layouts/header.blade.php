@@ -5,8 +5,8 @@
                     <i class="fa-regular fa-bars fa-lg" style="color: #ffffff;"></i>
                 </button>
 
-                <a class="navbar-brand ps-md-5" href="#">
-                    <span class="fs-1 text-white fw-bold ps-md-4">CYBERMART</span>
+                <a class="navbar-brand ps-md-5 ms-md-5" href="#">
+                    <span class="fs-1 text-white fw-bold ps-md-5">CYBERMART</span>
                 </a>
                 <p class="navbar-toggler border-0 ps-2 icon-cart">
                     <i class="fa-solid fa-cart-shopping fa-lg mt-4" style="color: #ffffff;"></i>

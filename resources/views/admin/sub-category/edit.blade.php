@@ -24,10 +24,26 @@
                 <a href="{{ route("admin.sub-category.index") }}" class="btn btn-primary float-end">Back</a>
             </div>
             <div class="card-body">
-                <form class="row g-3" action="{{ route("admin.sub-category.update", $subCategory->id) }}" method="POST">
+                <form class="row g-3" action="{{ route("admin.sub-category.update", $subCategory->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="col-md-12">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @if ($subCategory->image)
+                                    <img src="{{ asset('uploads/subcategory/' . $subCategory->image) }}" alt="{{ $subCategory->name }}" class="ms-1" style="width: 70px; height: 70px;object-fit: cover;">
+                                @else
+                                @endif
+                            </div>
+                            <div class="col-md-9">
+                                <label for="input7" class="form-label">Image</label>
+                                <input type="file" class="form-control" id="image" name="image" placeholder="Image">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
                         <label for="input1" class="form-label">Name</label>
                         <input type="text" class="form-control" value="{{ $subCategory->name }}" id="input1" name="name" placeholder="Name">
                     </div>

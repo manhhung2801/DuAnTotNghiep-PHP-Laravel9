@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Log;
 use Str;
 use Exception;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class CategoryController extends Controller
 {
@@ -53,7 +56,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:200'],
-            'icon' => ['required'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'rank' => ['numeric'],
             'status' => ['required'],
         ]);
@@ -61,9 +64,16 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
-        $category->icon = $request->icon;
+
         $category->rank = $request->rank;
         $category->status = $request->status;
+
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time().'.'.$image->extension();
+            $image->move(public_path('uploads/category'), $imageName);
+            $category->image = $imageName;
+        }
         $category->save();
         // Set a success toast, with a title
         toastr()->success('Add New Category Successfully!', 'Success');
@@ -105,7 +115,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:200'],
-            'icon' => ['required'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'rank' => ['numeric'],
             'status' => ['required'],
         ]);
@@ -113,9 +123,19 @@ class CategoryController extends Controller
         $category =  Category::findOrFail($id);
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
-        $category->icon = $request->icon;
         $category->rank = $request->rank;
         $category->status = $request->status;
+
+        if($request->hasFile('image')) {
+            if (File::exists(public_path("uploads/{$category->image}"))) {
+                File::delete(public_path("uploads/{$category->image}"));
+            }
+            $image = $request->file('image');
+            $imageName = time().'.'.$image->extension();
+            $image->move(public_path('uploads/category'), $imageName);
+            $category->image = $imageName;
+        }
+
         $category->save();
 
         // Set a success toast, with a title
@@ -134,10 +154,12 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
+
         $subCategory = SubCategory::where('category_id', $category->id)->count();
         if ($subCategory > 0) {
             return response(['status' => 'error', 'message' => 'This items contain, sub items for delete this you have to delete the sub items first!']);
         }
+
         $category->delete();
 
         return response(['status' => 'success', 'Deleted Successfully!']);
@@ -155,30 +177,33 @@ class CategoryController extends Controller
     // show trash list and search
     public function showTrash(Request $request)
     {
-        // Lấy tất cả các category đã bị xóa, sắp xếp theo thứ tự mới nhất
         $getCategories = Category::onlyTrashed()->latest();
 
-        // Nếu có keyword trong request, thêm điều kiện tìm kiếm
         if (!empty($request->get('keyword'))) {
             $keyword = $request->get('keyword');
             $getCategories = $getCategories->where('name', 'like', '%' . $keyword . '%');
         }
 
-        // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
         $getCategories = $getCategories->get();
 
-        // Trả về view với dữ liệu các category đã bị xóa
         return view('admin.category.trash-list', compact('getCategories'));
     }
 
     // delete in trash
     public function destroyTrash($id) {
         try{
+            $category = Category::withTrashed()->findOrFail($id);
+
+            if (File::exists(public_path("uploads/category/{$category->image}"))) {
+                File::delete(public_path("uploads/category/{$category->image}"));
+            }
+
             Category::destroyTrashed($id);
+
             return response(['status' => 'success', 'Deleted Forever Successfully!']);
         }
         catch(Exception $e) {
-            return response(['status' => 'error', 'Deleted Faild! '.$e.'' ]);
+            return response(['status' => 'error', 'Deleted Failed! '.$e.'' ]);
         }
     }
 
