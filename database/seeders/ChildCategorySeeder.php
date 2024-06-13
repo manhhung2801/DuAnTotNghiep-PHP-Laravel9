@@ -366,6 +366,12 @@ class ChildCategorySeeder extends Seeder
                 "name" => "Samsung",
                 "slug" => "samsung",
                 "status" => 1
+            ],[
+                "category_id" => 6,
+                "sub_category_id" => 52,
+                "name" => "Ôp lưng",
+                "slug" => "op-lung",
+                "status" => 1
             ],
         ];
 
