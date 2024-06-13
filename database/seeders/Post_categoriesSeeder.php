@@ -35,11 +35,6 @@ class Post_categoriesSeeder extends Seeder
                  'slug' => 'kham-pha',
                 'status' => 'active',
             ],
-            [   
-                'name' => 'Công nghệ',
-                 'slug' => 'cong-nghe',
-                'status' => 'active',
-            ]
         ]);
     }
 }
