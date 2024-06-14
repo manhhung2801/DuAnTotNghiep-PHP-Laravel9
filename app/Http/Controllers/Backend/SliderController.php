@@ -120,13 +120,6 @@ class SliderController extends Controller
     public function destroy($id)
     {
         $slider = Slider::find($id);
-        // $deletes = $slider->banner;
-        // $banner = public_path('uploads/slider/' . $deletes);
-        // if (file_exists($banner)) {
-        //     if (unlink($banner)) {
-        //         $slider->delete();
-        //     }
-        // }
         $slider->delete();
         return response(['status' => 'success', 'messge' => 'Deleted Successfully!']);
     }
