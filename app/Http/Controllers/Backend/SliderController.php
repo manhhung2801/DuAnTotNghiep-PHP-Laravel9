@@ -39,29 +39,41 @@ class SliderController extends Controller
 
     public function store(Request $request)
     {
-        $slider = new Slider;
+     
         $request->validate([
-            'type' => ['required', 'max:100'],
-            'title' => ['required',],
+            'type' => ['required','string', 'max:200'],
+            'title' => ['required','string', 'max:200'],
             'starting_price' => ['required',],
             'btn_url' => ['required',],
             'serial' => ['required',],
             'status' => ['required',],
-            'banner' => ['required', 'image']
+            'banner' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048']
+        ],[
+            'type.required'=>'Type không được để trống ',
+            'title.required'=>'Nội dung không được để trống ',
+            'starting_price.required'=>'Giá không được để trống ',
+            'serial.required'=>'Serial không được để trống ',
+            'banner.required'=>'Hình ảnh không được để trống ',
+            'banner.mimes'=>'Hình ảnh bắt buộc có đuôi jpeg,png,jpg,gif,svg,webp',
+            'banner.max'=>'Hình ảnh không được quá kích thước 2048',
+            'btn_url.required'=>'Đường dẫn không được để trống',
         ]);
-        if ($request->hasFile('banner')) {
-            $banner = $request->banner;
-            $ext = $banner->extension();
-            $fileName = 'slider_' . uniqid() . '.' . $ext;
-            $banner->move(public_path('uploads/slider'), $fileName);
-            $slider->banner = $fileName;
-        }
+
+        $slider = new Slider;
         $slider->type = $request->type;
         $slider->title = $request->title;
         $slider->starting_price = $request->starting_price;
         $slider->btn_url = $request->btn_url;
         $slider->serial = $request->serial;
         $slider->status = $request->status;
+
+        if ($request->hasFile('banner')) {
+            $image = $request->file('banner');
+            $imageName = 'slider_' .time(). '.' . $image->extension();
+            $image->move(public_path('uploads/slider'), $imageName);
+            $slider->banner = $imageName;
+        }
+      
         $slider->save();
         // Set a success toast, with a title
         toastr()->success('Admin successfully added slider');
@@ -84,33 +96,41 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'type' => ['required', 'max:100'],
-            'title' => ['required'],
-            'starting_price' => ['required'],
-            'btn_url' => ['required'],
-            'serial' => ['required'],
-            'status' => ['required'],
-            'banner' => ['image']
+            'type' => ['required','string', 'max:200'],
+            'title' => ['required','string', 'max:200'],
+            'starting_price' => ['required',],
+            'btn_url' => ['required',],
+            'serial' => ['required',],
+            'status' => ['required',],
+            'banner' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048']
+        ] ,[
+                'type.required'=>'Type không được để trống ',
+                'title.required'=>'Nội dung không được để trống ',
+                'starting_price.required'=>'Giá không được để trống ',
+                'serial.required'=>'Serial không được để trống ',
+                'banner.required'=>'Hình ảnh không được để trống ',
+                'banner.mimes'=>'Hình ảnh bắt buộc có đuôi jpeg,png,jpg,gif,svg,webp',
+                'banner.max'=>'Hình ảnh không được quá kích thước 2048',
+                'btn_url.required'=>'Đường dẫn không được để trống',
         ]);
-        $slider = Slider::find($id);
-        if ($request->hasFile('banner')) {
-            if (File::exists(public_path('uploads/slider/' . $request->banner))) {
-                File::delete(public_path('uploads/slider/' . $request->banner));
-            } else {
-                $slider->banner = $request->banner;
-            }
-            $banner = $request->banner;
-            $ext = $banner->extension();
-            $fileName = 'slider_' . uniqid() . '.' . $ext;
-            $banner->move(public_path('uploads/slider'), $fileName);
-            $slider->banner = $fileName;
-        }
+        $slider = Slider::findOrFail($id);
         $slider->type = $request->type;
         $slider->title = $request->title;
         $slider->starting_price = $request->starting_price;
         $slider->btn_url = $request->btn_url;
         $slider->serial = $request->serial;
         $slider->status = $request->status;
+      
+        if ($request->hasFile('banner')) {
+            if (File::exists(public_path("uploads/slider/{$slider->banner}"))) {
+                File::delete(public_path("uploads/slider/{$slider->banner}"));
+            }
+            $image = $request->file('banner');
+            $imageName  = 'slider_' .time(). '.' . $image->extension();
+            $image->move(public_path('uploads/slider'), $imageName );
+            $slider->banner = $imageName ;
+        }
+
         $slider->save();
         toastr()->success('Admin updated slider successfully');
         return redirect()->back();
@@ -119,7 +139,7 @@ class SliderController extends Controller
 
     public function destroy($id)
     {
-        $slider = Slider::find($id);
+        $slider = Slider::findOrFail($id);
         $slider->delete();
         return response(['status' => 'success', 'messge' => 'Deleted Successfully!']);
     }
@@ -154,7 +174,14 @@ class SliderController extends Controller
     public function destroyTrash($id)
     {
         try {
+            $slider = Slider::withTrashed()->findOrFail($id);
+
+            if (File::exists(public_path("uploads/slider/{$slider->banner}"))) {
+                File::delete(public_path("uploads/slider/{$slider->banner}"));
+            }
+
             Slider::destroyTrashedItem($id);
+
             return response(['status' => 'success', 'Deleted Forever Successfully!']);
         } catch (Exception $e) {
             return response(['status' => 'error', 'Deleted Faild! ' . $e . '']);

@@ -40,14 +40,25 @@ class StoreAddressController extends Controller
     {
         $storeAddress = new StoreAddress;
         $request->validate([
-            'store_name' => ['required'],
+            'store_name' => ['required', 'string', 'max:200'],
             'address' => ['required'],
             'ward' => ['required'],
             'district' => ['required'],
             'province' => ['required'],
-            'email'=>['required'],
-            'phone' => ['required'],
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'min:10'],
             'status' => ['required'],
+        ], [
+            'store_name.required' => 'Tên công ty không được để trống',
+            'address.required' => 'Địa chỉ không được để trống',
+            'ward.required' => 'Phường, xã không được để trống',
+            'district.required' => 'Quận, huyện không được để trống',
+            'province.required' => 'Tỉnh, thành phố không được để trống',
+            'email.required' => 'Email không được để trống',
+            'phone.required' => 'Số điện thoại không được để trống',
+            // 'phone.regex' => 'Số điện thoại bắt đầu bằng 0',
+            'phone.min' => 'Số điện thoại tối thiểu 10 số',
+
         ]);
         $storeAddress->store_name = $request->store_name;
         $storeAddress->address = $request->address;
@@ -80,14 +91,25 @@ class StoreAddressController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'store_name' => ['required'],
+            'store_name' => ['required', 'string', 'max:200'],
             'address' => ['required'],
             'ward' => ['required'],
             'district' => ['required'],
             'province' => ['required'],
-            'email'=>['required'],
-            'phone' => ['required'],
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'min:10'],
             'status' => ['required'],
+        ], [
+            'store_name.required' => 'Tên công ty không được để trống',
+            'address.required' => 'Địa chỉ không được để trống',
+            'ward.required' => 'Phường, xã không được để trống',
+            'district.required' => 'Quận, huyện không được để trống',
+            'province.required' => 'Tỉnh, thành phố không được để trống',
+            'email.required' => 'Email không được để trống',
+            'phone.required' => 'Số điện thoại không được để trống',
+            // 'phone.regex' => 'Số điện thoại bắt đầu bằng 0',
+            'phone.min' => 'Số điện thoại tối thiểu 10 số',
+
         ]);
         $storeAddress =  StoreAddress::find($id);
         $storeAddress->store_name = $request->store_name;
