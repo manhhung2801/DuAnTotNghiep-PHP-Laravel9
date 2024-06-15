@@ -17,13 +17,26 @@ class PostsController extends Controller
         if ($request->hasFile($inputName)) {
             $file = $request->file($inputName);
             $ext = $file->extension();
-            $fileName = 'media_' . uniqid() . '.' . $ext;
+            $fileName = 'media_' .uniqid() . '.' . $ext;
             $file->move(public_path('/uploads' . $path), $fileName);
             return $fileName;
         }
         return null;
     }
+      
+     public function upload(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+            $originName= $request->file('upload')->getClientOriginalName();
+            $fileName=pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $fileName = $fileName . '_' . time().'.'.$extension;
+            $request->file('uploads')->move(public_path('post'),$fileName);
+            $url = asset('post/'.$fileName);
+            return response()->json(['fileName'=>$fileName,'uploaded'=>1,'url'=>$url]);
+        }
 
+    }
     /**
      * Display a listing of the resource.
      *
@@ -56,7 +69,7 @@ class PostsController extends Controller
          {
             $post->restore();
          }
-         return redirect()->route('admin.post.index')->with('success','Post restored successfully');
+         return redirect()->route('admin.post.index')->with('success','Đã khôi phục bài viết thành công');
     }
 
     public function deleteVariant($id)
@@ -66,7 +79,7 @@ class PostsController extends Controller
          {
             $post->forceDelete();
          }
-         return redirect()->route('admin.post.index')->with('success','Post deleted successfully');
+         return redirect()->route('admin.post.index')->with('success','Đã xóa bài viết thành công');
     }
 
 
@@ -125,16 +138,17 @@ class PostsController extends Controller
         $post->user_id = $request->user_id;
         $post->image = $this->uploadFile($request, 'image','/post');
         $post->title = $request->title;
-      
+        $post->content = $request->content;
         $post->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->title, '-');
 
         $post->description = $request->description;
         $post->seo_title = $request->seo_title;
         $post->seo_description = $request->seo_description;
+        $post->type = $request->type;
         $post->status = $request->status;
         $post->save();
 
-        toastr('Created Successfully!', 'success');
+        toastr('Đã tạo thành công!', 'success');
 
         return redirect()->route('admin.post.index');
     }
@@ -176,12 +190,13 @@ class PostsController extends Controller
         $post->category_id = $request->category_id;
         $post->user_id = $request->user_id;
         $post->title = $request->title;
-
+        $post->content = $request->content;
         $post->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->title, '-');
 
         $post->description = $request->description;
         $post->seo_title = $request->seo_title;
         $post->seo_description = $request->seo_description;
+        $post->type=$post->type;
         $post->status = $request->status;
 
         if ($request->hasFile('image')) {
@@ -197,7 +212,7 @@ class PostsController extends Controller
         $post->save();
 
 
-        toastr('Updated Successfully!', 'success');
+        toastr('Cập nhật thành công!', 'success');
 
         return redirect()->route('admin.post.index');
     }
@@ -213,7 +228,7 @@ class PostsController extends Controller
         $post=Post::findOrFail($id);
         $post->delete();
 
-       return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
+       return response(['status' => 'success', 'message' => 'Đã xoá thành công!']);
     }
 
 
@@ -222,7 +237,7 @@ class PostsController extends Controller
         $post= Post::findOrFail($request->id);
         $post->status = $request->status == 'true' ? 1 : 0;
         $post->save();
-        return response(['message' =>'Status has been updated']);
+        return response(['message' =>'Trạng thái đã được cập nhật']);
     }
 
 }

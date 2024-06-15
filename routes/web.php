@@ -59,7 +59,6 @@ Route::get('checkout', [CheckoutController::class, 'index']);
 Route::get('product/', [ProductController::class, 'index']);
 Route::get('product/{slug?}', [ProductController::class, 'getSlug']);
 
-
 Route::get('/tin-tuc', [NewsController::class, 'index'])->name("news");
 Route::get('/tin-tuc/{slugs}', [NewsController::class, 'newsSiteType'])->name("news.newsSiteType");
 Route::get('/tin-tuc/{slugs_cate}/{slugs}', [NewsController::class, 'details'])->name("news.details");
