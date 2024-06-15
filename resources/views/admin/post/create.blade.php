@@ -89,13 +89,7 @@
 
 <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
 <script>
-    CKEDITOR.config.filebrowserImageBrowseUrl = 'http://127.0.0.1:8000/uploads/slider?type=Files';
-    CKEDITOR.config.filebrowserImageUploadUrl = 'http://127.0.0.1:8000/uploads/slider?type=Images&_token={{ csrf_token() }}';
-    CKEDITOR.config.filebrowserBrowseUrl = '/admin/laravel-filemanager?type=Files';
-    CKEDITOR.config.filebrowserUploadUrl = '/admin/laravel-filemanager/upload?type=Files&_token=';
-
     CKEDITOR.replaceAll('description');
-
 </script>
 
 @endsection

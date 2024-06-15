@@ -22,9 +22,9 @@ return new class extends Migration
             $table->text('image');
             $table->string('title', 255);
             $table->string('slug', 255);
-            $table->text('description');
+            $table->longText('description');
             $table->string('seo_title', 255)->nullable();
-            $table->text('seo_description')->nullable();
+            $table->longText('seo_description')->nullable();
             $table->string('status');
             $table->timestamps();
         });
