@@ -22,7 +22,7 @@
                         <li class="nav-item mb-2"><b>Địa chỉ:</b> {{$item->address}}, {{$item->ward}}, {{$item->district}}, {{$item->province}}</li>
                         <li class="nav-item mb-2"><b>Điện thoại:</b> {{$item->phone}}</li>
                         <li class="nav-item mb-2"><b>Email:</b> {{$item->email}}</li>
-                    </ul>        
+                    </ul>
                     @endforeach
                 </div>
                 <div class="col-lg-2 col-sm-12 col-md-4 footer-item">
