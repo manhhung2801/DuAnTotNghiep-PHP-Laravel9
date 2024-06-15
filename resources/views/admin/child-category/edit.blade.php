@@ -20,13 +20,27 @@
         <!--end breadcrumb-->
         <div class="card">
             <div class="card-header">
-                <h6 class="mt-2 mb-0 text-uppercase float-start">Create Child Category</h6>
+                <h6 class="mt-2 mb-0 text-uppercase float-start">Edit Child Category</h6>
                 <a href="{{ route("admin.child-category.index") }}" class="btn btn-primary float-end">Back</a>
             </div>
             <div class="card-body">
-                <form class="row g-3" action="{{ route("admin.child-category.update", $childCategory->id) }}" method="POST">
+                <form class="row g-3" action="{{ route("admin.child-category.update", $childCategory->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @if ($childCategory->image)
+                                    <img src="{{ asset('uploads/childcategory/' . $childCategory->image) }}" alt="{{ $childCategory->name }}" class="ms-1" style="width: 70px; height: 70px;object-fit: cover;">
+                                @else
+                                @endif
+                            </div>
+                            <div class="col-md-9">
+                                <label for="input7" class="form-label">Image</label>
+                                <input type="file" class="form-control" id="image" name="image" placeholder="Image">
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-md-6">
                         <label for="input1" class="form-label">Name</label>
                         <input type="text" class="form-control" id="input1" value="{{ $childCategory->name }}" name="name" placeholder="Name">
@@ -34,7 +48,6 @@
                     <div class="col-md-6">
                         <label for="input7" class="form-label">Categories</label>
                         <select id="input9" class="form-select main-category" name="category">
-                            <option>Select</option>
                             @foreach ($categories as $category)
                                 <option {{ $childCategory->category_id == $category->id ? "selected" : "" }} value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
@@ -55,9 +68,13 @@
                             <option {{ $childCategory->status == 0 ? "selected" : "" }} value="0">Inactive</option>
                         </select>
                     </div>
-                    <div class="col-md-2">
-                        <div class="d-grid align-items-center gap-3">
-                            <button type="submit" class="btn btn-primary px-4">Update</button>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="d-grid align-items-center gap-3">
+                                    <button type="submit" class="btn btn-primary px-4">Update</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>

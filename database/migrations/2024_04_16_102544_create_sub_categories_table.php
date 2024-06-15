@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id');
             $table->string('name');
+            $table->string('image')->nullable();
             $table->string('slug');
             $table->boolean('status');
             $table->softDeletes('deleted_at');
