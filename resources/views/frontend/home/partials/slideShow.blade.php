@@ -8,7 +8,7 @@
         <div class="carousel-inner">
             @foreach ($slides as $slide)
             <div class="carousel-item active" data-bs-interval="2000">
-                <img src="{{ asset("uploads/slider/".$slide->banner) }}" class="d-block w-100 object-fit-cover img-fluid" height="400px" alt="...">
+                <img src="{{ asset('uploads/slider/'.$slide->banner) }}" class="d-block w-100 object-fit-cover img-fluid" height="400px" alt="...">
             </div>
             @endforeach
 

@@ -21,5 +21,9 @@ class Post extends Model
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
+
+    static function getPost() {
+        return self::where('status', '=', 1);
+    }
 }
 
