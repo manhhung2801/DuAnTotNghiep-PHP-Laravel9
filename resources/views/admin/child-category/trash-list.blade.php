@@ -34,7 +34,7 @@
                 <a href="{{ route("admin.child-category.trash-list") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
             </div>
             <a href="{{ route('admin.child-category.index') }}" class="btn btn-primary float-end">Back</a>
-          
+
         </div>
 
         <div class="card-body">
@@ -44,6 +44,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
+                            <th>Image</th>
                             <th>Category</th>
                             <th>Sub Category</th>
                             <th>Action</th>
@@ -54,6 +55,13 @@
                         <tr>
                             <td>{{ $childCategory->id }}</td>
                             <td>{{ $childCategory->name }}</td>
+                            <td>
+                                @if ($childCategory->image)
+                                    <img src="{{ asset('uploads/childcategory/' . $childCategory->image) }}" alt="{{ $childCategory->name }}" style="width: 50px; height: 50px; object-fit: cover;">
+                                @else
+                                     <span>empty</span>
+                                @endif
+                            </td>
                             <td>{{ $childCategory->category->name }}</td>
                             <td>{{ $childCategory->subCategory->name }}</td>
                             <td>

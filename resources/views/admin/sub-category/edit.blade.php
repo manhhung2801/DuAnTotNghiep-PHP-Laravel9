@@ -50,7 +50,6 @@
                     <div class="col-md-6">
                         <label for="input7" class="form-label">Categories</label>
                         <select id="input9" class="form-select" name="category">
-                            <option>Select</option>
                             @foreach ($categories as $category)
                                 <option {{ $subCategory->category_id == $category->id ? "selected" : "" }} value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach

@@ -53,6 +53,16 @@ class SubCategoryController extends Controller
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'name' => ['required', 'max:200', 'unique:sub_categories,name'],
             'status' => ['required']
+        ],[
+            'category.required' => 'Danh mục không được để trống.',
+            'image.required' => 'Hình ảnh không được để trống.',
+            'image.image' => 'Định dạng không hợp lệ. Yêu cầu hình ảnh.',
+            'image.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
+            'image.max' => 'Hình ảnh không thể vượt quá 2048 kilobytes.',
+            'name.required' => 'Tên không được để trống.',
+            'name.max' => 'Tên không thể vượt quá 200 ký tự.',
+            'name.unique' => 'Tên phải là duy nhất trong danh mục con.',
+            'status.required' => 'Trạng thái không được để trống.',
         ]);
 
         $subcategory = new SubCategory();
@@ -70,7 +80,7 @@ class SubCategoryController extends Controller
 
         $subcategory->save();
 
-        toastr('Created Successfully!', 'success');
+        toastr('Tạo SubCategory thành công!', 'success');
 
         return redirect()->route('admin.sub-category.index');
     }
@@ -113,6 +123,15 @@ class SubCategoryController extends Controller
             'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'name' => ['required', 'max:200', 'unique:sub_categories,name,'.$id],
             'status' => ['required']
+        ],[
+            'category.required' => 'Danh mục không được để trống.',
+            'image.image' => 'Định dạng không hợp lệ. Yêu cầu hình ảnh.',
+            'image.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
+            'image.max' => 'Hình ảnh không thể vượt quá 2048 kilobytes.',
+            'name.required' => 'Tên không được để trống.',
+            'name.max' => 'Tên không thể vượt quá 200 ký tự.',
+            'name.unique' => 'Tên phải là duy nhất trong danh mục con.',
+            'status.required' => 'Trạng thái không được để trống.',
         ]);
 
         $subcategory = SubCategory::findOrFail($id);
@@ -130,7 +149,7 @@ class SubCategoryController extends Controller
 
         $subcategory->save();
 
-        toastr('Updated Successfully!', 'success');
+        toastr('Cập nhật SubCategory thành công!', 'success');
 
         return redirect()->back();
     }
@@ -147,11 +166,11 @@ class SubCategoryController extends Controller
         $childCategory = ChildCategory::where('sub_category_id', $subCategory->id)->count();
 
         if($childCategory > 0){
-            return response(['status' => 'error', 'message' => 'This items contain, sub items for delete this you have to delete the sub items first!']);
+            return response(['status' => 'error', 'message' => 'Mục này chứa, các Child Category để xóa mục này bạn phải xóa các mục phụ trước!']);
         }
         $subCategory->delete();
 
-    return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
+    return response(['status' => 'success', 'message' => 'Xoá Sub Category thành công!']);
     }
 
     public function changeStatus(Request $request){
@@ -159,7 +178,7 @@ class SubCategoryController extends Controller
         $category = SubCategory::findOrFail($request->id);
         $category->status = $request->status == 'true' ? 1 : 0;
         $category->save();
-        return response(['message' => 'Status has been updated']);
+        return response(['message' => 'Thay đổi status thái thành công!']);
     }
 
     // show trash list and search
@@ -191,20 +210,20 @@ class SubCategoryController extends Controller
             }
 
             SubCategory::destroyTrashed($id);
-            return response(['status' => 'success', 'Deleted Forever Successfully!']);
+            return response(['status' => 'success', 'Đã xóa vĩnh viễn thành công!']);
         }
         catch(Exception $e) {
-            return response(['status' => 'error', 'Deleted Faild! '.$e.'' ]);
+            return response(['status' => 'error', 'Xoá thất bại! '.$e.'' ]);
         }
     }
 
     public function restoreTrash($id) {
         try{
             SubCategory::restoreTrashed($id);
-            return response(['status' => 'success', 'Successfully!']);
+            return response(['status' => 'success', 'Khôi phục thành công!']);
         }
         catch(Exception $e) {
-            return response(['status' => 'error', 'message' => 'Restore Faild '.$e.'']);
+            return response(['status' => 'error', 'message' => 'Khôi phục không thành công '.$e.'']);
         }
     }
 }

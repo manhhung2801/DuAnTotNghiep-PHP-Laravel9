@@ -32,7 +32,6 @@
                 @foreach ($categories as $category)
                     <li class="nav-item mxc ct-hove">
                         <div class="dropdown-center rounded-0">
-                            <img src="{{ asset("uploads/category/".$category->image) }}" class="bg-white border-white" style="width: 22px; height: 22px; object-fit: cover;" alt="">
                             <span class="text-white fs-6 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 
                                 {{ $category->name }}

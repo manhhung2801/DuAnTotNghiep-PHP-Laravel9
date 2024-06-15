@@ -24,6 +24,7 @@ class CategoryController extends Controller
         $categories = Category::query(); // Start with a clean query builder
 
         if(!empty($request->get('keyword'))) {
+
             $categories = $categories->where('name', 'like', '%'.$request->get('keyword').'%');
         }
 
@@ -59,6 +60,13 @@ class CategoryController extends Controller
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'rank' => ['numeric'],
             'status' => ['required'],
+        ], [
+            'name.required' => 'Name không được để trống.',
+            'image.required' => 'Image không được để trống.',
+            'image.image' => 'Định dạng không hợp lệ. Yêu cầu Image.',
+            'image.mimes' => 'Image phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
+            'image.max' => 'Image không thể vượt quá 2048 kilobytes.',
+            'rank.numeric' => 'Rank phải là một số.',
         ]);
 
         $category = new Category();
@@ -76,7 +84,7 @@ class CategoryController extends Controller
         }
         $category->save();
         // Set a success toast, with a title
-        toastr()->success('Add New Category Successfully!', 'Success');
+        toastr()->success('Thêm Category mới thành công!', 'Thành Công');
 
         return redirect()->back();
     }
@@ -118,6 +126,12 @@ class CategoryController extends Controller
             'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'rank' => ['numeric'],
             'status' => ['required'],
+        ], [
+            'name.required' => 'Name không được để trống.',
+            'image.image' => 'Định dạng không hợp lệ. Yêu cầu Image.',
+            'image.mimes' => 'Image phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
+            'image.max' => 'Image không thể vượt quá 2048 kilobytes.',
+            'rank.numeric' => 'Rank phải là một số.',
         ]);
 
         $category =  Category::findOrFail($id);
@@ -139,7 +153,7 @@ class CategoryController extends Controller
         $category->save();
 
         // Set a success toast, with a title
-        toastr()->success('Updated Category Successfully!', 'Success');
+        toastr()->success('Cập nhật Category thành công!', 'success');
 
         return redirect()->back();
     }
@@ -157,12 +171,12 @@ class CategoryController extends Controller
 
         $subCategory = SubCategory::where('category_id', $category->id)->count();
         if ($subCategory > 0) {
-            return response(['status' => 'error', 'message' => 'This items contain, sub items for delete this you have to delete the sub items first!']);
+            return response(['status' => 'error', 'message' => 'Mục này chứa, các Sub Category để xóa mục này bạn phải xóa các mục phụ trước!']);
         }
 
         $category->delete();
 
-        return response(['status' => 'success', 'Deleted Successfully!']);
+        return response(['status' => 'success', 'Đã xóa Category thành công!']);
     }
 
     public function changeStatus(Request $request)
@@ -171,7 +185,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($request->id);
         $category->status = $request->status == 'true' ? 1 : 0;
         $category->save();
-        return response(['message' => 'Status has been updated']);
+        return response(['message' => 'Thay đổi status thái thành công!']);
     }
 
     // show trash list and search
@@ -200,20 +214,20 @@ class CategoryController extends Controller
 
             Category::destroyTrashed($id);
 
-            return response(['status' => 'success', 'Deleted Forever Successfully!']);
+            return response(['status' => 'success', 'Đã xóa vĩnh viễn thành công!']);
         }
         catch(Exception $e) {
-            return response(['status' => 'error', 'Deleted Failed! '.$e.'' ]);
+            return response(['status' => 'error', 'Xoá thất bại! '.$e.'' ]);
         }
     }
 
     public function restoreTrash($id) {
         try{
             Category::restoreTrashed($id);
-            return response(['status' => 'success', 'Successfully!']);
+            return response(['status' => 'success', 'Khôi phục thành công!']);
         }
         catch(Exception $e) {
-            return response(['status' => 'error', 'message' => 'Restore Faild '.$e.'']);
+            return response(['status' => 'error', 'message' => 'Khôi phục không thành công '.$e.'']);
         }
     }
 }
