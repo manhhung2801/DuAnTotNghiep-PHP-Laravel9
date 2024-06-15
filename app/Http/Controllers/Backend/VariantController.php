@@ -107,7 +107,7 @@ class VariantController extends Controller
         $variant->status = $request->status;
         $variant->save();
 
-        toastr('Created Successfully!', 'success');
+        toastr('Đã tạo thành công!', 'success');
 
         return redirect()->route('admin.variant.index');
     }
@@ -147,7 +147,7 @@ class VariantController extends Controller
         $variant->status = $request->status;
         $variant->save();
 
-        toastr('Updated Successfully!', 'success');
+        toastr('Cập nhật thành công!', 'success');
 
         return redirect()->route('admin.variant.index');
     }
@@ -162,7 +162,7 @@ class VariantController extends Controller
     {
         $variant = Variant::findOrFail($id);
         $variant->delete();
-        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
+        return response(['status' => 'success', 'message' => 'Đã xoá thành công!']);
     }
 
 
@@ -172,7 +172,7 @@ class VariantController extends Controller
         $variant = Variant::findOrFail($request->id);
         $variant->status = $request->status == 'true' ? 1 : 0;
         $variant->save();
-        return response(['message' => 'Status has been updated']);
+        return response(['message' => 'Trạng thái đã được cập nhật']);
     }
 
 }

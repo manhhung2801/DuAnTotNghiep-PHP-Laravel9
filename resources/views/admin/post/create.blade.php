@@ -48,9 +48,21 @@
                         <label for="image" class="form-label">Image</label>
                         <input type="file" class="form-control" id="image" name="image" accept="image/*">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="input7" class="form-label">Title</label>
                         <input type="text" class="form-control" id="input1" name="title" placeholder="title">
+                    </div>
+                     <div class="col-md-6">
+                        <label for="input7" class="form-label">Content</label>
+                        <input type="text" class="form-control" id="input1" name="content" placeholder="title">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="input9" class="form-label">Hot</label>
+                        <select id="input9" class="form-select" name="type">
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
+                        </select>
                     </div>
                     <div class="col-md-6">
                         <label for="input9" class="form-label">Status</label>
@@ -72,7 +84,7 @@
                     </div>
                     
                       <div class="col-md-12 mb-3">
-                        <label for="editor" class="form-label">Long Description</label>
+                        <label for="editor" class="form-label">Description</label>
                         <textarea class="form-control description" name="description" id="editor" value="{{ old('description') }}"></textarea>
                     </div>
                     <div class="col-md-2">
@@ -84,6 +96,23 @@
             </div>
         </div>
     </div>
+<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+
+<script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ),
+        {  
+          
+            image: {
+            toolbar: [ 'toggleImageCaption', 'imageTextAlternative', 'ckboxImageEdit' ]
+        }
+        } )
+            .catch( error => {
+                console.error( error );
+            } );
+</script>
+
 @endsection
+
 
 

@@ -53,3 +53,4 @@ Route::get('checkout',[CheckoutController::class, 'index']);
 Route::get('product/',[ProductController::class, 'index']);
 Route::get('product/{slug?}',[ProductController::class, 'getSlug']);
 
+
