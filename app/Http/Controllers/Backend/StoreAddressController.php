@@ -40,19 +40,32 @@ class StoreAddressController extends Controller
     {
         $storeAddress = new StoreAddress;
         $request->validate([
-            'store_name' => ['required'],
+            'store_name' => ['required', 'string', 'max:200'],
             'address' => ['required'],
             'ward' => ['required'],
             'district' => ['required'],
             'province' => ['required'],
-            'phone' => ['required'],
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'min:10'],
             'status' => ['required'],
+        ], [
+            'store_name.required' => 'Tên công ty không được để trống',
+            'address.required' => 'Địa chỉ không được để trống',
+            'ward.required' => 'Phường, xã không được để trống',
+            'district.required' => 'Quận, huyện không được để trống',
+            'province.required' => 'Tỉnh, thành phố không được để trống',
+            'email.required' => 'Email không được để trống',
+            'phone.required' => 'Số điện thoại không được để trống',
+            // 'phone.regex' => 'Số điện thoại bắt đầu bằng 0',
+            'phone.min' => 'Số điện thoại tối thiểu 10 số',
+
         ]);
         $storeAddress->store_name = $request->store_name;
         $storeAddress->address = $request->address;
         $storeAddress->ward = $request->ward;
         $storeAddress->district = $request->district;
         $storeAddress->province = $request->province;
+        $storeAddress->email = $request->email;
         $storeAddress->phone = $request->phone;
         $storeAddress->status = $request->status;
         $storeAddress->save();
@@ -78,13 +91,25 @@ class StoreAddressController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'store_name' => ['required'],
+            'store_name' => ['required', 'string', 'max:200'],
             'address' => ['required'],
             'ward' => ['required'],
             'district' => ['required'],
             'province' => ['required'],
-            'phone' => ['required'],
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'min:10'],
             'status' => ['required'],
+        ], [
+            'store_name.required' => 'Tên công ty không được để trống',
+            'address.required' => 'Địa chỉ không được để trống',
+            'ward.required' => 'Phường, xã không được để trống',
+            'district.required' => 'Quận, huyện không được để trống',
+            'province.required' => 'Tỉnh, thành phố không được để trống',
+            'email.required' => 'Email không được để trống',
+            'phone.required' => 'Số điện thoại không được để trống',
+            // 'phone.regex' => 'Số điện thoại bắt đầu bằng 0',
+            'phone.min' => 'Số điện thoại tối thiểu 10 số',
+
         ]);
         $storeAddress =  StoreAddress::find($id);
         $storeAddress->store_name = $request->store_name;
@@ -92,6 +117,7 @@ class StoreAddressController extends Controller
         $storeAddress->ward = $request->ward;
         $storeAddress->district = $request->district;
         $storeAddress->province = $request->province;
+        $storeAddress->email = $request->email;
         $storeAddress->phone = $request->phone;
         $storeAddress->status = $request->status;
         $storeAddress->save();
@@ -157,7 +183,7 @@ class StoreAddressController extends Controller
     public function changeStatus(Request $request)
     {
         $storeAddress = StoreAddress::findOrFail($request->id);
-        $storeAddress->status = $request->status == 'true' ? 'active' : 'inactive';
+        $storeAddress->status = $request->status == 'true' ? 1 : 0;
         $storeAddress->save();
         return response(['message' => 'Status has been updated']);
     }

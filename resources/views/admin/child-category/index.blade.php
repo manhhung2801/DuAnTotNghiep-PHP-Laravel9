@@ -35,7 +35,7 @@
                 <a href="{{ route("admin.child-category.trash-list") }}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>
                     Trashed Child Categories</a>
                 <a href="{{ route("admin.child-category.create") }}" class="me-2 btn btn-primary float-end"><i class="fa-solid fa-plus text-light fs-6"></i>Add Child Category</a>
-               
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -44,6 +44,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
+                                <th>Image</th>
                                 <th>Category</th>
                                 <th>Sub Category</th>
                                 <th>Status</th>
@@ -55,6 +56,13 @@
                                 <tr>
                                     <td>{{ $childCategory->id }}</td>
                                     <td>{{ $childCategory->name }}</td>
+                                    <td>
+                                        @if ($childCategory->image)
+                                            <img src="{{ asset('uploads/childcategory/' . $childCategory->image) }}" alt="{{ $childCategory->name }}" style="width: 50px; height: 50px; object-fit: cover;">
+                                        @else
+                                             <span>empty</span>
+                                        @endif
+                                     </td>
                                     <td>{{ $childCategory->category->name }}</td>
                                     <td>{{ $childCategory->subCategory->name }}</td>
                                     <td>
@@ -74,7 +82,7 @@
                             @endforeach
                         </tbody>
                         <tfoot>
-                            
+
                         </tfoot>
                     </table>
                     {{ $childCategories->links() }}

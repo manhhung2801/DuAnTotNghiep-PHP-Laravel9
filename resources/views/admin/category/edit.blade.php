@@ -83,19 +83,29 @@
 						<a href="{{ route("admin.category.index") }}" class="btn btn-primary float-end">Back</a>
 					</div>
 					<div class="card-body">
-						<form class="row g-3" action="{{ route("admin.category.update", $category->id) }}" method="POST">
+						<form class="row g-3" action="{{ route("admin.category.update", $category->id) }}" method="POST" enctype="multipart/form-data">
 							@csrf
 							@method('PUT')
-							<div class="col-md-12">
-								<label for="input7" class="form-label">Icon</label>
-								<div>
-									<button class="btn btn-primary iconpicker dropdown-toggle" data-icon="{{$category->icon}}" data-selected-class="btn-danger" data-unselected-class="btn-info" role="iconpicker" name="icon"></button>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<label for="input1" class="form-label">Name</label>
-								<input type="text" class="form-control" id="input1" name="name" value="{{ $category->name }}" placeholder="Name">
-							</div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        @if ($category->image)
+                                            <img src="{{ asset('uploads/category/' . $category->image) }}" alt="{{ $category->name }}" class="ms-1" style="width: 70px; height: 70px;object-fit: cover;">
+                                        @else
+                                        @endif
+                                    </div>
+                                    <div class="col-md-9">
+                                        <label for="input7" class="form-label">Image</label>
+                                        <input type="file" class="form-control" id="image" name="image" placeholder="Image">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="input1" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="input1" name="name" value="{{ $category->name }}" placeholder="Name">
+                            </div>
+
                             <div class="col-md-6">
                                 <label for="input1" class="form-label">Rank</label>
                                 <input type="number" class="form-control" name="rank" placeholder="Rank" value="{{ $category->rank }}">
