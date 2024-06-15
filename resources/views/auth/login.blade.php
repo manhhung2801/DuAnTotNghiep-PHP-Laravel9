@@ -44,7 +44,9 @@
                                 <label class="form-check-label" for="exampleCheck1">Nhớ mật khẩu</label>
                             </div>
                             <div class="link">
-                                <a class="text-decoration-none" href="#">Quên mật khẩu</a>
+                                @if (Route::has('password.request'))
+                                    <a class="text-decoration-none" href="{{ route('password.request') }}">Quên mật khẩu</a>
+                                @endif
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary w-100 py-3">Đăng nhập</button>

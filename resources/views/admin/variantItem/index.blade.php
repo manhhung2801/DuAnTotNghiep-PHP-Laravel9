@@ -19,12 +19,31 @@
         </div>
         <!--end breadcrumb-->
         <div class="card">
+
             <div class="card-header">
-                <h6 class="mt-2 mb-0 text-uppercase float-start">VariantItem</h6>
-                <a href="{{ route('admin.variantItem.onlyTrashed') }}" class="mx-1 btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>Trashed Variant Item</a>
-                <a href="{{ route('admin.variantItem.index') }}" class="mx-1 btn btn-info float-end"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
-                <a href="{{ route('admin.variantItem.create') }}" class="mx-1 btn btn-primary float-end"><i class="fa-solid fa-plus text-light fs-6"></i>Add variantItem</a>
+                <div class="action_start float-start d-flex">
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">VariantItem</h6>
+                    <div class="form-search ms-2">
+                        <form action="" method="get">
+                            <div class="input-group">
+                                <input type="text" value="{{ Request::get('keyword') }}" name="keyword"
+                                    class="form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm">
+                                <button class="btn btn-outline-primary rounded-end-5" type="submit"><i
+                                        class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <a href="{{ route('admin.variantItem.index') }}" class="me-2 btn btn-success float-end ms-2"><i
+                            class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
+                </div>
+                <a href="{{ route('admin.variantItem.onlyTrashed') }}" class="mx-1 btn btn-danger float-end"><i
+                        class="fa-solid fa-trash-can fs-6"></i>Trashed Variant Item</a>
+                <a href="{{ route('admin.variantItem.create') }}" class="mx-1 btn btn-primary float-end"><i
+                        class="fa-solid fa-plus text-light fs-6"></i>Add variantItem</a>
             </div>
+
+
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -61,21 +80,25 @@
                                     <td>
                                         @if ($variantItem->deleted_at == null)
                                             <a class="btn btn-primary"
-                                                href="{{ route('admin.variantItem.edit', $variantItem->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
+                                                href="{{ route('admin.variantItem.edit', $variantItem->id) }}"><i
+                                                    class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
                                             <a class="btn btn-danger delete-item"
-                                                href="{{ route('admin.variantItem.destroy', $variantItem->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
+                                                href="{{ route('admin.variantItem.destroy', $variantItem->id) }}"><i
+                                                    class="fa-solid fa-trash fs-6"></i>Delete</a>
                                         @else
                                             <a class="btn btn-info restoreTrash-item"
-                                                href="{{ route('admin.variantItem.restore', $variantItem->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Restore</a>
+                                                href="{{ route('admin.variantItem.restore', $variantItem->id) }}"><i
+                                                    class="fa-solid fa-trash-can-arrow-up fs-6"></i>Restore</a>
                                             <a class="btn btn-danger delete-item"
-                                                href="{{ route('admin.variantItem.destroyTrashed', $variantItem->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
+                                                href="{{ route('admin.variantItem.destroyTrashed', $variantItem->id) }}"><i
+                                                    class="fa-solid fa-trash fs-6"></i>Delete</a>
                                         @endif
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
-                           
+
                         </tfoot>
                     </table>
                 </div>

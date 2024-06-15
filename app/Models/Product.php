@@ -45,4 +45,19 @@ class Product extends Model
     {
         return self::withTrashed()->where('id', $id)->restore();
     }
+
+    public function product_image_galleries()
+    {
+        return $this->hasMany(product_image_galleries::class, 'product_id');
+    }
+
+    public function variant()
+    {
+        return $this->hasMany(Variant::class, 'product_id');
+    }
+
+    public function ProductHasOneCat()
+    {
+        return $this->hasOne(Category::class, 'id', 'category_id');
+    }
 }
