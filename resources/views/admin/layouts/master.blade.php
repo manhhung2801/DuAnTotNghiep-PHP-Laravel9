@@ -2,7 +2,6 @@
 @include('admin.layouts.header')
 <!-- End Header -->
 
-
 <!-- start wrapper-->
 <div class="wrapper">
     <!--sidebar wrapper -->
@@ -34,7 +33,6 @@
 <!-- Start Footer wrapper-->
 @include('admin.layouts.footer')
 <!-- End Footer wrapper-->
-
 <script>
     $(document).ready(function() {
         $.ajaxSetup({

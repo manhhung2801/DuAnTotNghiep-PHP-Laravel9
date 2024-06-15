@@ -16,19 +16,21 @@
             <div class="row">
                 <div class="col-lg-4 col-sm-12 col-md-12 footer-item">
                     <h5 class="mb-3">Logo</h5>
+                    @foreach ($storeAddress as $item)
                     <ul class="nav flex-column ">
                         <li class="nav-item mb-2">Hệ thống cửa hàng Sudes Phone chuyên bán lẻ điện thoại, máy tính laptop, smartwatch, smarthome, phụ kiện chính hãng - Giá tốt, giao miễn phí.</li>
-                        <li class="nav-item mb-2"><b>Địa chỉ:</b> 70 Lữ Gia, Phường 15, Quận 11, Tp.HCM</li>
-                        <li class="nav-item mb-2"><b>Điện thoại:</b> 1900 6750</li>
-                        <li class="nav-item mb-2"><b>Email:</b> support@sapo.vn</li>
+                        <li class="nav-item mb-2"><b>Địa chỉ:</b> {{$item->address}}, {{$item->ward}}, {{$item->district}}, {{$item->province}}</li>
+                        <li class="nav-item mb-2"><b>Điện thoại:</b> {{$item->phone}}</li>
+                        <li class="nav-item mb-2"><b>Email:</b> {{$item->email}}</li>
                     </ul>
+                    @endforeach
                 </div>
                 <div class="col-lg-2 col-sm-12 col-md-4 footer-item">
                     <h5 class="mb-3">CHÍNH SÁCH</h5>
                     <ul class="nav flex-column itemCard">
                         <li class="nav-item mb-2 text-light"><a href="">Chính sách mua hàng</a></li>
                         <li class="nav-item mb-2"><a href="">chính sách đổi trả</a></li>
-                        <li class="nav-item mb-2"><a href="">Chính sách vận chuyển</a></li>
+                        <li class="nav-item mb-2"><a href="{{route('address')}}">Địa chỉ cửa hàng</a></li>
                         <li class="nav-item mb-2"><a href="">Chính sách bảo mật</a></li>
                         <li class="nav-item mb-2"><a href="">Chính sách cam kết</a></li>
                     </ul>

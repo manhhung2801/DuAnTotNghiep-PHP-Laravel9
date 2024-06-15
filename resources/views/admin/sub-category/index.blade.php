@@ -34,7 +34,7 @@
                 </div>
                 <a href="{{ route("admin.sub-category.trash-list") }}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>Trashed Sub Categories</a>
                 <a href="{{ route("admin.sub-category.create") }}" class="me-2 btn btn-primary float-end"><i class="fa-solid fa-plus text-light fs-6"></i>Add Sub Category</a>
-               
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -43,6 +43,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
+                                <th>Image</th>
                                 <th>Category</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -53,6 +54,13 @@
                                 <tr>
                                     <td>{{ $subCategory->id }}</td>
                                     <td>{{ $subCategory->name }}</td>
+                                    <td>
+                                        @if ($subCategory->image)
+                                            <img src="{{ asset('uploads/subcategory/' . $subCategory->image) }}" alt="{{ $subCategory->name }}" style="width: 50px; height: 50px; object-fit: cover;">
+                                        @else
+                                             <span>empty</span>
+                                        @endif
+                                     </td>
                                     <td>{{ $subCategory->category->name }}</td>
                                     <td>
                                         <div class="form-check form-switch form-check-success">
@@ -71,7 +79,7 @@
                             @endforeach
                         </tbody>
                         <tfoot>
-                           
+
                         </tfoot>
                     </table>
                     {{ $subCategories->links() }}

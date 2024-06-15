@@ -116,14 +116,7 @@
                 </li>
             </ul>
         </li>
-        <li class="menu-label">Info</li>
-        <li class="">
-            <a href="{{ route('admin.profile') }}" aria-expanded="false">
-                <div class="parent-icon"><i class="bx bx-user-circle"></i>
-                </div>
-                <div class="menu-title">User Profile</div>
-            </a>
-        </li>
+
     </ul>
     <!--end navigation-->
 </div>

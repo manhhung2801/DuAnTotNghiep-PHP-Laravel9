@@ -25,8 +25,8 @@ return new class extends Migration
             $table->date('offer_end_date')->nullable();
             $table->string('sku', 255)->nullable();
             $table->text('video_link')->nullable();
-            $table->text('long_description');
-            $table->text('short_description');
+            $table->longText('long_description');
+            $table->longText('short_description');
             $table->string('product_type', 255)->nullable();
             $table->tinyInteger('status')->default(1);
             $table->string('seo_title', 255)->nullable();

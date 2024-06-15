@@ -37,10 +37,10 @@
                 </li>
 
                 @foreach ($categories as $category)
-                    <li class="nav-item mxc ct-hover">
+                    <li class="nav-item mxc ct-hove">
                         <div class="dropdown-center rounded-0">
-                            <span class="text-white fs-6 dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <span class="text-white fs-6 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
                                 {{ $category->name }}
                             </span>
                             @if ($category->subCategories->count() > 0)

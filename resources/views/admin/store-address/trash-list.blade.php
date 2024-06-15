@@ -35,24 +35,26 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('admin.storeAddress.trash-list') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
+                    <a href="{{ route('admin.storeAddress.trash-list') }}" class="me-2 btn btn-success float-end ms-2"><i
+                            class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
                 </div>
                 <a href="{{ route('admin.storeAddress.index') }}" class="btn btn-primary float-end">Back</a>
-                
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
-                        <thead class="text-center">
+                        <thead >
                             <tr>
                                 <th>Id</th>
-                                <th>Store_Name</th>
-                                <th>Address</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                {{-- <th>Address</th>
                                 <th>Ward</th>
                                 <th>District</th>
-                                <th>Province</th>
+                                <th>Province</th> --}}
                                 <th>Phone</th>
-                                <th>Status</th>
+                                {{-- <th>Status</th> --}}
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -61,27 +63,30 @@
                                 <tr>
                                     <td>{{ $storeAddress->id }}</td>
                                     <td>{{ $storeAddress->store_name }}</td>
-                                    <td>{{ $storeAddress->address }}</td>
+                                    {{-- <td>{{ $storeAddress->address }}</td>
                                     <td>{{ $storeAddress->ward }}</td>
                                     <td>{{ $storeAddress->district }}</td>
-                                    <td>{{ $storeAddress->province }}</td>
+                                    <td>{{ $storeAddress->province }}</td> --}}
+                                    <td>{{ $storeAddress->email }}</td>
                                     <td>{{ $storeAddress->phone }}</td>
-                                    <td>
+                                    {{-- <td>
                                         <div class="form-check form-switch form-check-success">
-                                            @if ($storeAddress->status == 'active')
+                                            @if ($storeAddress->status == '1')
                                                 <input class="form-check-input change-status" type="checkbox" role="switch"
                                                     data-id="{{ $storeAddress->id }}" id="flexSwitchCheckSuccess" checked>
-                                            @elseif($storeAddress->status == 'inactive')
+                                            @elseif($storeAddress->status == '0')
                                                 <input class="form-check-input change-status" type="checkbox" role="switch"
                                                     data-id="{{ $storeAddress->id }}" id="flexSwitchCheckSuccess">
                                             @endif
                                         </div>
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         <a class="btn btn-primary restoreTrash-item"
-                                            href="{{ route('admin.storeAddress.restore-trash', $storeAddress->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Restore</a>
+                                            href="{{ route('admin.storeAddress.restore-trash', $storeAddress->id) }}"><i
+                                                class="fa-solid fa-trash-can-arrow-up fs-6"></i>Restore</a>
                                         <a class="btn btn-danger delete-item"
-                                            href="{{ route('admin.storeAddress.destroy-trash', $storeAddress->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete
+                                            href="{{ route('admin.storeAddress.destroy-trash', $storeAddress->id) }}"><i
+                                                class="fa-solid fa-trash fs-6"></i>Delete
                                             Forever</a>
                                     </td>
                                 </tr>

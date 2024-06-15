@@ -17,13 +17,14 @@ class StoreAdressSeeder extends Seeder
     {
         DB::table('store_addresses')->insert([
             [
-            'store_name' => 'Công ty 1 thành viên',
+            'store_name' => 'Cửa hàng CYBERMART',
             'province' => 'TP. Hồ Chí Minh',
             'district' => 'quận Tân Bình',
             'ward' => 'phường 14',
             'address' => '492/1 đường Trường Chinh',
+            'email'=>'cyber.mart@gmail.com',
             'phone' => '0905263042',
-            'status' => 'active',
+            'status' => 1,
             'created_at' => now(),
         ],[
             'store_name' => 'Công ty 2 thành viên',
@@ -31,8 +32,9 @@ class StoreAdressSeeder extends Seeder
             'district' => 'quận Cầu Giấy',
             'ward' => 'Phạm Hùng',
             'address' => 'Tầng 11 của Tòa nhà Keangnam Landmark Tower - E6 ',
+            'email'=> 'congty2@gmail.com',
             'phone' => '0905263042',
-            'status' => 'active',
+            'status' => 0,
             'created_at' => now(),
         ],[
             'store_name' => 'Công ty 3 thành viên',
@@ -40,8 +42,9 @@ class StoreAdressSeeder extends Seeder
             'district' => 'Thuận Bắc',
             'ward' => 'Xã Bắc Sơn',
             'address' => 'Thôn Láng Me',
+            'email'=> 'congty3@gmail.com',
             'phone' => '0905263042',
-            'status' => 'active',
+            'status' => 0,
             'created_at' => now(),
         ],[
             'store_name' => 'Công ty 4 thành viên',
@@ -49,8 +52,9 @@ class StoreAdressSeeder extends Seeder
             'district' => 'Lý Thái Tổ',
             'ward' => ' P. Võ Cường',
             'address' => 'Tầng 5, Số 76',
+            'email'=> 'congty4@gmail.com',
             'phone' => '0905263042',
-            'status' => 'active',
+            'status' => 0,
             'created_at' => now(),
         ],[
             'store_name' => 'Công ty 5 thành viên',
@@ -58,8 +62,9 @@ class StoreAdressSeeder extends Seeder
             'district' => 'Quận Gò Vấp',
             'ward' => 'Phường 10',
             'address' => '340/46 Quang Trung',
+            'email'=> 'congty5@gmail.com',
             'phone' => '0905263042',
-            'status' => 'active',
+            'status' => 0,
             'created_at' => now(),
         ]
     ]);

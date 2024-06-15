@@ -45,10 +45,12 @@
                                 <th>User_id</th>
                                 <th>Image</th>
                                 <th>Title</th>
+                                <th>Content</th>
                                 <th>Slug</th>
                                 <th>Description</th>
                                 <th>Seo_title</th>
                                 <th>Seo_description</th>
+                                <th>Hot</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -61,10 +63,20 @@
                                     <td>{{$post->user_id}}</td>
                                     <td><img src="{{ asset('uploads/post/' . $post->image) }}" width="50px" alt="{{ $post->image }}"></td>
                                     <td>{{$post->title}}</td>
+                                    <td>{{$post->content}}</td>
                                     <td>{{$post->slug}}</td>
                                     <td>{{$post->description}}</td>
                                     <td>{{$post->seo_title}}</td>
                                     <td>{{$post->seo_description}}</td>
+                                    <td>
+                                        <div class="form-check form-switch form-check-success">
+                                            @if($post->type == 1)
+                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post->id }}" id="flexSwitchCheckSuccess" checked>
+                                            @elseif($post->type == 0)
+                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post->id }}" id="flexSwitchCheckSuccess">
+                                            @endif
+                                        </div>
+                                    </td>
                                     <td>
                                         <div class="form-check form-switch form-check-success">
                                             @if($post->status == 1)
@@ -74,6 +86,7 @@
                                             @endif
                                         </div>
                                     </td>
+
                                     <td>
                                         <a class="btn btn-warning" href="{{ route('admin.post.edit',$post->id) }}">Edit</a>
                                         <a class="btn btn-danger delete-item" href="{{ route("admin.post.destroy", $post->id) }}">Delete</a>
@@ -88,10 +101,12 @@
                                 <th>User_id</th>
                                 <th>Image</th>
                                 <th>Title</th>
+                                <th>Content</th>
                                 <th>Slug</th>
                                 <th>Description</th>
                                 <th>Seo_title</th>
                                 <th>Seo_description</th>
+                                <th>Hot</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>

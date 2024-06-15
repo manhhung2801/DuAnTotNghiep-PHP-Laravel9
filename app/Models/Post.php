@@ -10,7 +10,7 @@ class Post extends Model
     use HasFactory,SoftDeletes;
      protected $table='posts';
      public $primaryKey = 'id';
-     public $fillable = ['category_id','user_id','image','title','slug','description','seo_title','seo_description','status','created_at','updated_at',];
+     public $fillable = ['category_id','user_id','image','title','content','slug','description','seo_title','seo_description','type','status','created_at','updated_at',];
 
     public function Post_categories()
     {
@@ -20,6 +20,10 @@ class Post extends Model
        public function User()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    static function getPost() {
+        return self::where('status', '=', 1);
     }
 }
 

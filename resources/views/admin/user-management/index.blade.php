@@ -32,7 +32,7 @@
                     </div>
                     <a href="{{ route("admin.user-management.index") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
                 </div>
-             
+
             </div>
             <div class="card-header">
                 <h6 class="mt-2 mb-0 text-uppercase float-start">List Users</h6>
@@ -58,7 +58,11 @@
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>
-                                        <img src="{{asset('uploads/'. ($user->image == "") ? "uploads/avatar-user.jpeg" : $user->image )}}" alt="" width="50px" height="50px">
+                                        @if($user->image)
+                                            <img src="{{ asset('uploads/' . $user->image) }}" alt="{{ $user->name }}" style="width: 50px; height: 50px; object-fit: cover;">
+                                        @else
+                                            <img src="{{ asset('uploads/avatar-user.jpeg') }}" alt="" width="50px" height="50px">
+                                        @endif
                                     </td>
                                     <td>
                                         <div class="form-check form-switch form-check-success">
@@ -87,7 +91,7 @@
                             @endforeach
                         </tbody>
                         <tfoot>
-                            
+
                         </tfoot>
                     </table>
                     {{ $users->links() }}
