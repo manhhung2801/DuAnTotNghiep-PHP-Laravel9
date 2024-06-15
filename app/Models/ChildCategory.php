@@ -18,6 +18,10 @@ class ChildCategory extends Model
         return $this->belongsTo(SubCategory::class);
     }
 
+    public function products() {
+        return $this->hasMany(Product::class);
+    }
+
     static public function getCategoryTrashed()
     {
         return self::onlyTrashed()->orderBy('deleted_at', 'desc')->paginate(15);

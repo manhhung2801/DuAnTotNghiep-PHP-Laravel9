@@ -50,6 +50,9 @@ Route::get('/khieunai',[KhieuNaiController::class,'index']);
 Route::get('giohang',[GioHangController::class,'index']);
 Route::get('checkout',[CheckoutController::class, 'index']);
 
-Route::get('product/',[ProductController::class, 'index']);
-Route::get('product/{slug?}',[ProductController::class, 'getSlug']);
+// Route::get('product/',[ProductController::class, 'index']);
+// Route::get('product/{slug?}',[ProductController::class, 'getSlug']);
+
+Route::get('product/{cat?}/{sub?}/{child?}/{slug?}',[ProductController::class, 'getWhereParam']);
+// http://127.0.0.1:8000/dien-thoai-tablet/iphone/iphone-15-series/iphone-lo
 

@@ -10,8 +10,25 @@ class SubCategory extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'category_id',
+        'name',
+        'slug',
+        'status',
+        'deleted_at',
+        'created_at',
+        'updated_at',
+    ];
+    
     public function category() {
         return $this->belongsTo(Category::class);
+    }
+    public function childCategory() {
+        return $this->hasMany(ChildCategory::class, "sub_category_id", "id");
+    }
+
+    public function products() {
+        return $this->hasMany(Product::class, "sub_category_id");
     }
 
     static public function getCategoryTrashed()

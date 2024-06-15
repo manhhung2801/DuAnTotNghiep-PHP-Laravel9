@@ -1,26 +1,15 @@
 <div class="menu-list d-flex justify-content-center ">
-    <a class="cate-item text-decoration-none text-center flex-grow-0 flex-shrink-0 flex-basis-auto" href="#">
-        <div class="cate-img ">
-            <img width="100" height="100" src="//bizweb.dktcdn.net/thumb/large/100/480/632/collections/230223022516-thiet-ke-chua-co-te.png" class="  ">
-        </div>
-        <div class="cate-info-title ">iPhone 14 Series</div>
-    </a>
-    <a class="cate-item text-decoration-none text-center flex-grow-0 flex-shrink-0 flex-basis-auto" href="#">
-        <div class="cate-img ">
-            <img width="100" height="100" src="//bizweb.dktcdn.net/thumb/large/100/480/632/collections/230223022516-thiet-ke-chua-co-te.png" class="  ">
-        </div>
-        <div class="cate-info-title ">iPhone 14 Series</div>
-    </a>
-    <a class="cate-item text-decoration-none text-center flex-grow-0 flex-shrink-0 flex-basis-auto" href="#">
-        <div class="cate-img ">
-            <img width="100" height="100" src="//bizweb.dktcdn.net/thumb/large/100/480/632/collections/230223022516-thiet-ke-chua-co-te.png" class="  ">
-        </div>
-        <div class="cate-info-title ">iPhone 14 Series</div>
-    </a>
-    <a class="cate-item text-decoration-none text-center flex-grow-0 flex-shrink-0 flex-basis-auto" href="#">
-        <div class="cate-img ">
-            <img width="100" height="100" src="//bizweb.dktcdn.net/thumb/large/100/480/632/collections/230223022516-thiet-ke-chua-co-te.png" class="  ">
-        </div>
-        <div class="cate-info-title ">iPhone 14 Series</div>
-    </a>
+    @if (isset($category) && $category->subCategories->count() > 0)
+        @foreach ($category->subCategories as $item)
+            <a class="cate-item text-decoration-none text-center flex-grow-0 flex-shrink-0 flex-basis-auto"
+                href="/{{ $category->slug }}/{{ $item->slug }}">
+                <div class="cate-img ">
+                    <img width="100" height="100"
+                        src="//bizweb.dktcdn.net/thumb/large/100/480/632/collections/230223022516-thiet-ke-chua-co-te.png"
+                        class="  ">
+                </div>
+                <div class="cate-info-title ">{{ $item->name }}</div>
+            </a>
+        @endforeach
+    @endif
 </div>
