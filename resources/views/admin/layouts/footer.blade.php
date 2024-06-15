@@ -164,8 +164,6 @@
     {{-- <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script> --}}
     <!-- Bootstrap-Iconpicker Bundle -->
     <script type="text/javascript" src="{{ asset('backend/assets/bootstrap-iconpicker/js/bootstrap-iconpicker.bundle.min.js') }}"></script>
-	<!-- Editor -->
-	<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 	<!--app JS-->
 	<script src="{{asset('backend/assets/js/app.js')}}"></script>
 	<script>

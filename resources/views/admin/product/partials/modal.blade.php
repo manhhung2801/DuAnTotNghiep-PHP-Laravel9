@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <div class="container">
                     <div class="row">
-                        <div class="col text-center">
+                        <div class="col-12 text-center">
                             <div class="modal-product-img">
                                 <img id="modal_img" alt="modal-img">
                             </div>
@@ -18,7 +18,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-12">
                             <h2>Thông số </h2>
                             <div class="product-info">
                                 <table class="table table table-striped table-bordered">
