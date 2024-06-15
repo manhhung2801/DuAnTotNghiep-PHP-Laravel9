@@ -44,7 +44,7 @@ class PostCategoriesController extends Controller
          {
             $post_categories->restore();
          }
-         return redirect()->route('admin.post-cate.index')->with('success','Post Category restored successfully');
+         return redirect()->route('admin.post-cate.index')->with('success','Danh mục bài đăng được khôi phục thành công');
     }
 
     public function deleteVariant($id)
@@ -54,7 +54,7 @@ class PostCategoriesController extends Controller
          {
             $post_categories->forceDelete();
          }
-         return redirect()->route('admin.post-cate.index')->with('success','Post Category deleted successfully');
+         return redirect()->route('admin.post-cate.index')->with('success','Danh mục bài viết đã được xóa thành công');
     }
 
 
@@ -147,7 +147,7 @@ class PostCategoriesController extends Controller
         $post_categories->status = $request->status;
         $post_categories->save();
 
-        toastr('Updated Successfully!', 'success');
+        toastr('Cập nhật thành công!', 'success');
 
         return redirect()->route('admin.post-cate.index');
     }
@@ -162,7 +162,7 @@ class PostCategoriesController extends Controller
     {
         $post_categories=Post_categories::findOrFail($id);
         $post_categories->delete();
-       return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
+       return response(['status' => 'success', 'message' => 'Đã xoá thành công!']);
     }
 
 
@@ -171,7 +171,7 @@ class PostCategoriesController extends Controller
         $post_categories = Post_categories::findOrFail($request->id);
         $post_categories->status = $request->status == 'true' ? 1 : 0;
         $post_categories->save();
-        return response(['message' =>'Status has been updated']);
+        return response(['message' =>'Trạng thái đã được cập nhật']);
     }
 
 }

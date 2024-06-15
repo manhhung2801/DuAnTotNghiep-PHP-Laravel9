@@ -34,7 +34,7 @@
                 <a href="{{ route("admin.category.trash-list") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
             </div>
             <a href="{{ route('admin.category.index') }}" class="btn btn-primary float-end">Back</a>
-           
+
         </div>
 
         <div class="card-body">
@@ -44,7 +44,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Icon</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -54,7 +54,11 @@
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
                             <td>
-                                <i class="{{ $category->icon }}"></i>
+                                @if ($category->image)
+                                    <img src="{{ asset('uploads/category/' . $category->image) }}" alt="{{ $category->name }}" style="width: 50px; height: 50px; object-fit: cover;">
+                                @else
+                                    <span>Empty</span>
+                                @endif
                             </td>
                             <td>
                                 <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.category.restore-trash', $category->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Restore</a>

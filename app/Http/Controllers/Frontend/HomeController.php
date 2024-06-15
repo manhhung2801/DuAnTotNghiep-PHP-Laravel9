@@ -9,10 +9,12 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Handler\Proxy;
+use App\Models\StoreAddress;
 
 class HomeController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         // category show menu
         $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
         $slides = Slider::where("status", "=", 1)->orderBy("serial", "asc")->take(3)->get();
@@ -34,6 +36,7 @@ class HomeController extends Controller
         }
         // show tin tức (post)
         $getPosts = Post::getPost()->orderBy('created_at', 'desc')->take(4)->get();
-        return view('frontend.home.index', compact('categories', 'slides', 'categoryHot', 'getProducts','getPosts'));
+        $storeAddress = StoreAddress::where("status", "=", 1)->orderBy("id", "asc")->limit(1)->get();
+        return view('frontend.home.index', compact("categories", 'slides', 'storeAddress', 'categoryHot', 'getProducts','getPosts'));
     }
 }

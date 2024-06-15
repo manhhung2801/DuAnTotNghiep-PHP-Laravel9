@@ -28,10 +28,15 @@
                     enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <label for="input1" class="form-label">Store_name</label>
                         <input type="text" class="form-control" id="input1" name="store_name"
                             value="{{ $storeAddress->store_name }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="input8" class="form-label">Emial</label>
+                        <input type="email" class="form-control" id="input8" name="email"
+                            value="{{ $storeAddress->email }}">
                     </div>
                     <div class="col-md-4">
                         <label for="input2" class="form-label">Address</label>
@@ -61,8 +66,8 @@
                     <div class="col-md-4">
                         <label for="input7" class="form-label">Status</label>
                         <select id="input7" class="form-select" name="status">
-                            <option {{ $storeAddress->status == 'active' ? 'selected' : '' }} value="active">Active</option>
-                            <option {{ $storeAddress->status == 'inactive' ? 'selected' : '' }} value="inactive">Inactive</option>
+                            <option {{ $storeAddress->status == 1 ? 'selected' : '' }} value="1">Active</option>
+                            <option {{ $storeAddress->status == 0 ? 'selected' : '' }} value="0">Inactive</option>
                         </select>
                     </div>
                     <div class="col-md-2">

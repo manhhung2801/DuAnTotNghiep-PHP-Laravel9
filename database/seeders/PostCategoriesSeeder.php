@@ -34,7 +34,7 @@ class PostCategoriesSeeder extends Seeder
                 'name' => 'Khám phá',
                  'slug' => 'kham-pha',
                 'status' => 'active',
-            ]
+            ],
         ]);
     }
 }

@@ -1,12 +1,12 @@
 <header class="header-bg-101">
     <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
+        <div class="container">
                 <button class="navbar-toggler icon-menu border-0 border-white"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa-regular fa-bars fa-lg" style="color: #ffffff;"></i>
                 </button>
 
-                <a class="navbar-brand ps-md-5" href="#">
-                    <span class="fs-1 text-white fw-bold ps-md-4">CYBERMART</span>
+                <a class="navbar-brand" href="#">
+                    <span class="fs-1 text-white fw-bold">CYBERMART</span>
                 </a>
                 <p class="navbar-toggler border-0 ps-2 icon-cart">
                     <i class="fa-solid fa-cart-shopping fa-lg mt-4" style="color: #ffffff;"></i>

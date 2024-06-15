@@ -21,10 +21,12 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->text('image');
             $table->string('title', 255);
+            $table->text('content');
             $table->string('slug', 255);
-            $table->text('description');
+            $table->longText('description');
             $table->string('seo_title', 255)->nullable();
-            $table->text('seo_description')->nullable();
+            $table->string('type');
+            $table->longText('seo_description')->nullable();
             $table->string('status');
             $table->timestamps();
         });

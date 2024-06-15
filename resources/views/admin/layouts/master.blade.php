@@ -1,7 +1,7 @@
 <!-- Start Header -->
 @include('admin.layouts.header')
 <!-- End Header -->
-
+<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 
 <!-- start wrapper-->
 <div class="wrapper">
@@ -34,7 +34,6 @@
 <!-- Start Footer wrapper-->
 @include('admin.layouts.footer')
 <!-- End Footer wrapper-->
-
 <script>
     $(document).ready(function() {
         $.ajaxSetup({
