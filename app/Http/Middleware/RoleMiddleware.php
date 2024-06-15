@@ -22,7 +22,7 @@ class RoleMiddleware
                     return redirect()->route('admin.dashboard');
                 break;
                 case 'user':
-                    return redirect()->route('user.dashboard');
+                    return redirect()->route('dashboard');
                 break;
                 default: return redirect()->route('/');
             }

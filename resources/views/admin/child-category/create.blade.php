@@ -24,8 +24,13 @@
                 <a href="{{ route("admin.child-category.index") }}" class="btn btn-primary float-end">Back</a>
             </div>
             <div class="card-body">
-                <form class="row g-3" action="{{ route("admin.child-category.store") }}" method="POST">
+                <form class="row g-3" action="{{ route("admin.child-category.store") }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <div class="col-md-6">
+                        <label for="input7" class="form-label">Image</label>
+                        <input type="file" class="form-control" id="image" name="image" placeholder="Image">
+                    </div>
+
                     <div class="col-md-6">
                         <label for="input1" class="form-label">Name</label>
                         <input type="text" class="form-control" id="input1" name="name" placeholder="Name">
@@ -33,7 +38,6 @@
                     <div class="col-md-6">
                         <label for="input7" class="form-label">Categories</label>
                         <select id="input9" class="form-select main-category" name="category">
-                            <option>Select</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
@@ -52,9 +56,14 @@
                             <option value="0">Inactive</option>
                         </select>
                     </div>
-                    <div class="col-md-2">
-                        <div class="d-grid align-items-center gap-3">
-                            <button type="submit" class="btn btn-primary px-4">Create</button>
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="d-grid align-items-center gap-3">
+                                    <button type="submit" class="btn btn-primary px-4">Create</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>

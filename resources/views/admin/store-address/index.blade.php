@@ -45,35 +45,37 @@
                 <div class="table-responsive">
 
                     <table id="example" class="table table-striped table-bordered " style="width:100%">
-                        <thead class="text-center">
+                        <thead >
                             <tr>
                                 <th>Id</th>
-                                <th>Store_Name</th>
-                                {{-- <th>Address</th> --}}
+                                <th>Name</th>
+                                <th>Address</th>
                                 <th>Ward</th>
                                 <th>District</th>
                                 <th>Province</th>
+                                <th>Email</th>
                                 <th>Phone</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody >
                             @foreach ($storeAddress as $storeAddress)
                                 <tr>
                                     <td>{{ $storeAddress->id }}</td>
                                     <td>{{ $storeAddress->store_name }}</td>
-                                    {{-- <td>{{ $storeAddress->address }}</td> --}}
+                                    <td>{{ $storeAddress->address }}</td>
                                     <td>{{ $storeAddress->ward }}</td>
                                     <td>{{ $storeAddress->district }}</td>
                                     <td>{{ $storeAddress->province }}</td>
+                                    <td>{{ $storeAddress->email }}</td>
                                     <td>{{ $storeAddress->phone }}</td>
                                     <td>
                                         <div class="form-check form-switch form-check-success">
-                                            @if ($storeAddress->status == 'active')
+                                            @if ($storeAddress->status == 1)
                                                 <input class="form-check-input change-status" type="checkbox" role="switch"
                                                     data-id="{{ $storeAddress->id }}" id="flexSwitchCheckSuccess" checked>
-                                            @elseif($storeAddress->status == 'inactive')
+                                            @elseif($storeAddress->status == 0)
                                                 <input class="form-check-input change-status" type="checkbox" role="switch"
                                                     data-id="{{ $storeAddress->id }}" id="flexSwitchCheckSuccess">
                                             @endif

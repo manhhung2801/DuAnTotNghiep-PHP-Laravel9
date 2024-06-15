@@ -14,19 +14,53 @@ class SliderSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 10; $i++) {
-            DB::table('sliders')->insert([
-                [
-                    'banner' => 'sliders_'.rand(1, 10).'.png',
-                    'type' => 'iphone '. rand(11, 15). collect([' ', ' Pro', ' ProMax'])->random(). collect([' 64', ' 128', ' 256', ' 512', ' 1TB'])->random(),
-                    'title'=>'đẹp_'.rand(1,100),
-                    'starting_price' => round(rand(29000000, 33900000)/10) *10,
-                    'btn_url' => 'http://localhost:8000/admin/slider/'.rand(1,100),
-                    'serial' =>rand(1, 100),
-                    'status' => rand(0, 1),
-                    'created_at'=> now(),
-                ]
-            ]);
-        }
+        DB::table('sliders')->insert([
+            [
+                'banner' => 'slider_1.webp',
+                'type' => 'Slider-1',
+                'title'=>'Iphone 14 Pro Max',
+                'starting_price' => 28190000,
+                'btn_url' => 'http://localhost:8000/admin/slider/'.rand(1,100),
+                'serial' =>rand(1, 100),
+                'status' => rand(0, 1),
+                'created_at'=> now(),
+            ],[
+                'banner' => 'slider_2.webp',
+                'type' => 'Slider-2',
+                'title'=>'Mua kèm giảm giá',
+                'starting_price' => 28190000,
+                'btn_url' => 'http://localhost:8000/admin/slider/'.rand(1,100),
+                'serial' =>rand(1, 100),
+                'status' => rand(0, 1),
+                'created_at'=> now(),
+            ],[
+                'banner' => 'slider_3.webp',
+                'type' => 'Slider-3',
+                'title'=>'IPHONE 15 PROMAX',
+                'starting_price' => 28190000,
+                'btn_url' => 'http://localhost:8000/admin/slider/'.rand(1,100),
+                'serial' =>rand(1, 100),
+                'status' => rand(0, 1),
+                'created_at'=> now(),
+            ],[
+                'banner' => 'slider_4.webp',
+                'type' => 'Slider-4',
+                'title'=>'GALAXY S24 ULTRA<br>Giá tốt chốt ngay',
+                'starting_price' => 28190000,
+                'btn_url' => 'http://localhost:8000/admin/slider/'.rand(1,100),
+                'serial' =>rand(1, 100),
+                'status' => rand(0, 1),
+                'created_at'=> now(),
+            ],[
+                'banner' => 'slider_5.webp',
+                'type' => 'Slider-5',
+                'title'=>'Ơ RÔ Ơ RẺ!<br>Giảm đến 60%',
+                'starting_price' => 28190000,
+                'btn_url' => 'http://localhost:8000/admin/slider/'.rand(1,100),
+                'serial' =>rand(1, 100),
+                'status' => rand(0, 1),
+                'created_at'=> now(),
+            ]
+        ]);
     }
 }

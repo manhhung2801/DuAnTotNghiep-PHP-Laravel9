@@ -24,31 +24,36 @@
                 <a href="{{ route("admin.sub-category.index") }}" class="btn btn-primary float-end">Back</a>
             </div>
             <div class="card-body">
-                <form class="row g-3" action="{{ route("admin.sub-category.store") }}" method="POST">
+                <form class="g-3" action="{{ route("admin.sub-category.store") }}" method="POST" enctype="multipart/form-data">>
                     @csrf
-                    <div class="col-md-12">
-                        <label for="input1" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="input1" name="name" placeholder="Name">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="input7" class="form-label">Categories</label>
-                        <select id="input9" class="form-select" name="category">
-                            <option>Select</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="input9" class="form-label">Status</label>
-                        <select id="input9" class="form-select" name="status">
-                            <option value="1">Active</option>
-                            <option value="0">Inactive</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="d-grid align-items-center gap-3">
-                            <button type="submit" class="btn btn-primary px-4">Create</button>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="input7" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="image" name="image" placeholder="Image">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="input1" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="input1" name="name" placeholder="Name">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="input7" class="form-label">Categories</label>
+                            <select id="input9" class="form-select" name="category">
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="input9" class="form-label">Status</label>
+                            <select id="input9" class="form-select" name="status">
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 mt-4">
+                            <div class="d-grid align-items-center gap-3">
+                                <button type="submit" class="btn btn-primary px-4">Create</button>
+                            </div>
                         </div>
                     </div>
                 </form>

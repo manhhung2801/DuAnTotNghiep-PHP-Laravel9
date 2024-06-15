@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Log;
 use Str;
 use Exception;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class CategoryController extends Controller
 {
@@ -21,6 +24,7 @@ class CategoryController extends Controller
         $categories = Category::query(); // Start with a clean query builder
 
         if(!empty($request->get('keyword'))) {
+
             $categories = $categories->where('name', 'like', '%'.$request->get('keyword').'%');
         }
 
@@ -53,20 +57,34 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:200'],
-            'icon' => ['required'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'rank' => ['numeric'],
             'status' => ['required'],
+        ], [
+            'name.required' => 'Name không được để trống.',
+            'image.required' => 'Image không được để trống.',
+            'image.image' => 'Định dạng không hợp lệ. Yêu cầu Image.',
+            'image.mimes' => 'Image phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
+            'image.max' => 'Image không thể vượt quá 2048 kilobytes.',
+            'rank.numeric' => 'Rank phải là một số.',
         ]);
 
         $category = new Category();
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
-        $category->icon = $request->icon;
+
         $category->rank = $request->rank;
         $category->status = $request->status;
+
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time().'.'.$image->extension();
+            $image->move(public_path('uploads/category'), $imageName);
+            $category->image = $imageName;
+        }
         $category->save();
         // Set a success toast, with a title
-        toastr()->success('Add New Category Successfully!', 'Success');
+        toastr()->success('Thêm Category mới thành công!', 'Thành Công');
 
         return redirect()->back();
     }
@@ -105,19 +123,37 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:200'],
-            'icon' => ['required'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'rank' => ['numeric'],
             'status' => ['required'],
+        ], [
+            'name.required' => 'Name không được để trống.',
+            'image.image' => 'Định dạng không hợp lệ. Yêu cầu Image.',
+            'image.mimes' => 'Image phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
+            'image.max' => 'Image không thể vượt quá 2048 kilobytes.',
+            'rank.numeric' => 'Rank phải là một số.',
         ]);
 
         $category =  Category::findOrFail($id);
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
-        $category->icon = $request->icon;
+        $category->rank = $request->rank;
         $category->status = $request->status;
+
+        if($request->hasFile('image')) {
+            if (File::exists(public_path("uploads/{$category->image}"))) {
+                File::delete(public_path("uploads/{$category->image}"));
+            }
+            $image = $request->file('image');
+            $imageName = time().'.'.$image->extension();
+            $image->move(public_path('uploads/category'), $imageName);
+            $category->image = $imageName;
+        }
+
         $category->save();
 
         // Set a success toast, with a title
-        toastr()->success('Updated Category Successfully!', 'Success');
+        toastr()->success('Cập nhật Category thành công!', 'success');
 
         return redirect()->back();
     }
@@ -132,13 +168,15 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
+
         $subCategory = SubCategory::where('category_id', $category->id)->count();
         if ($subCategory > 0) {
-            return response(['status' => 'error', 'message' => 'This items contain, sub items for delete this you have to delete the sub items first!']);
+            return response(['status' => 'error', 'message' => 'Mục này chứa, các Sub Category để xóa mục này bạn phải xóa các mục phụ trước!']);
         }
+
         $category->delete();
 
-        return response(['status' => 'success', 'Deleted Successfully!']);
+        return response(['status' => 'success', 'Đã xóa Category thành công!']);
     }
 
     public function changeStatus(Request $request)
@@ -147,46 +185,49 @@ class CategoryController extends Controller
         $category = Category::findOrFail($request->id);
         $category->status = $request->status == 'true' ? 1 : 0;
         $category->save();
-        return response(['message' => 'Status has been updated']);
+        return response(['message' => 'Thay đổi status thái thành công!']);
     }
 
     // show trash list and search
     public function showTrash(Request $request)
     {
-        // Lấy tất cả các category đã bị xóa, sắp xếp theo thứ tự mới nhất
         $getCategories = Category::onlyTrashed()->latest();
 
-        // Nếu có keyword trong request, thêm điều kiện tìm kiếm
         if (!empty($request->get('keyword'))) {
             $keyword = $request->get('keyword');
             $getCategories = $getCategories->where('name', 'like', '%' . $keyword . '%');
         }
 
-        // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
         $getCategories = $getCategories->get();
 
-        // Trả về view với dữ liệu các category đã bị xóa
         return view('admin.category.trash-list', compact('getCategories'));
     }
 
     // delete in trash
     public function destroyTrash($id) {
         try{
+            $category = Category::withTrashed()->findOrFail($id);
+
+            if (File::exists(public_path("uploads/category/{$category->image}"))) {
+                File::delete(public_path("uploads/category/{$category->image}"));
+            }
+
             Category::destroyTrashed($id);
-            return response(['status' => 'success', 'Deleted Forever Successfully!']);
+
+            return response(['status' => 'success', 'Đã xóa vĩnh viễn thành công!']);
         }
         catch(Exception $e) {
-            return response(['status' => 'error', 'Deleted Faild! '.$e.'' ]);
+            return response(['status' => 'error', 'Xoá thất bại! '.$e.'' ]);
         }
     }
 
     public function restoreTrash($id) {
         try{
             Category::restoreTrashed($id);
-            return response(['status' => 'success', 'Successfully!']);
+            return response(['status' => 'success', 'Khôi phục thành công!']);
         }
         catch(Exception $e) {
-            return response(['status' => 'error', 'message' => 'Restore Faild '.$e.'']);
+            return response(['status' => 'error', 'message' => 'Khôi phục không thành công '.$e.'']);
         }
     }
 }

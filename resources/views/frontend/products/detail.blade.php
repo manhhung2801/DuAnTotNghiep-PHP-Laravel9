@@ -53,7 +53,7 @@
                                     <!-- Thông số kỹ thuật end -->
                                     <!-- Hỏi đáp -->
                                     <div id="select2" class="tab-pane">
-                                        @include('frontend.products.partialsDetail.comment')
+                                        {{-- @include('frontend.products.partialsDetail.comment') --}}
                                     </div>
                                     <!-- Hỏi đáp end-->
 

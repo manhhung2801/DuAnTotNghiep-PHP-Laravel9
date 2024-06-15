@@ -1,3 +1,3 @@
 <div class="product-anotherinfo-wrapper">
-    dsadssadsdaád
+    {{ $product->long_description }}
 </div>

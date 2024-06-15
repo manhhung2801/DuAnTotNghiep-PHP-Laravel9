@@ -43,7 +43,7 @@
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>Rank</th>
-                                <th>Icon</th>
+                                <th>Image</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -57,7 +57,11 @@
                                         {{ $category->rank }}
                                     </td>
                                     <td>
-                                        <i class="{{ $category->icon }}"></i>
+                                       @if ($category->image)
+                                           <img src="{{ asset('uploads/category/' . $category->image) }}" alt="{{ $category->name }}" style="width: 50px; height: 50px; object-fit: cover;">
+                                       @else
+                                            <span>empty</span>
+                                       @endif
                                     </td>
                                     <td>
                                         <div class="form-check form-switch form-check-success">
@@ -76,7 +80,7 @@
                             @endforeach
                         </tbody>
                         <tfoot>
-                           
+
                         </tfoot>
                     </table>
                     {{ $categories->links() }}

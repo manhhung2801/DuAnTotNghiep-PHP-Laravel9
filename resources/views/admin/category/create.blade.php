@@ -82,13 +82,13 @@
                         <a href="{{ route("admin.category.index") }}" class="btn btn-primary float-end">Back</a>
                     </div>
                     <div class="card-body">
-                        <form class="row g-3" action="{{ route("admin.category.store") }}" method="POST">
+                        <form class="row g-3" action="{{ route("admin.category.store") }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="col-md-12">
-                                <label for="input7" class="form-label">Icon:</label>
-                                <button class="btn btn-primary iconpicker dropdown-toggle" data-selected-class="btn-danger" data-unselected-class="btn-info" role="iconpicker" name="icon"></button>
+                            <div class="col-md-6">
+                                <label for="input7" class="form-label">Image</label>
+                                <input type="file" class="form-control" id="image" name="image" placeholder="Image">
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label for="input1" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="input1" name="name" placeholder="Name">
                             </div>

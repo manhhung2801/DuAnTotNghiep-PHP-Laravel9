@@ -1,12 +1,12 @@
 <header class="header-bg-101">
     <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
+        <div class="container">
                 <button class="navbar-toggler icon-menu border-0 border-white"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa-regular fa-bars fa-lg" style="color: #ffffff;"></i>
                 </button>
 
-                <a class="navbar-brand ps-md-5" href="#">
-                    <span class="fs-1 text-white fw-bold ps-md-4">CYBERMART</span>
+                <a class="navbar-brand" href="#">
+                    <span class="fs-1 text-white fw-bold">CYBERMART</span>
                 </a>
                 <p class="navbar-toggler border-0 ps-2 icon-cart">
                     <i class="fa-solid fa-cart-shopping fa-lg mt-4" style="color: #ffffff;"></i>
@@ -43,8 +43,24 @@
                                     Tài khoản
                                 </span>
                                 <ul class="dropdown-menu rounded-0 p-0" aria-labelledby="dropdownMenuButton1">
-                                  <li><a class="dropdown-item border border-top-1 border-bottom-1" href="{{ route("login") }}">Đăng nhập</a></li>
-                                  <li><a class="dropdown-item border border-top-1 border-bottom-1" href="{{ route("register") }}">Đăng ký</a></li>
+                                  @if(!empty(Auth::check()))
+                                    <li><a class="dropdown-item border border-top-1 border-bottom-1" href="{{ route("dashboard") }}">Tài khoản của tôi</a></li>
+                                    <li>
+                                        <!-- Authentication -->
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <a class="dropdown-item border border-top-1 border-bottom-1"
+                                                href="{{route('logout')}}"
+                                                onclick="event.preventDefault();
+                                                this.closest('form').submit();">Đăng xuất
+                                            </a>
+                                        </form>
+                                    </li>
+                                    @else
+                                    <li><a class="dropdown-item border border-top-1 border-bottom-1" href="{{ route("login") }}">Đăng nhập</a></li>
+                                    <li><a class="dropdown-item border border-top-1 border-bottom-1" href="{{ route("register") }}">Đăng ký</a></li>
+                                  @endif
+
                                   <li><a class="dropdown-item border border-top-1 border-bottom-1" href="#">Dang sách yêu thích (0)</a></li>
                                   <li><a class="dropdown-item border border-top-1 border-bottom-1" href="#">So sánh sản phẩm (0)</a></li>
                                 </ul>
