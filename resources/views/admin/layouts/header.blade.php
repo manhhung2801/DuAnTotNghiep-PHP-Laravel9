@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 
 
 <!-- Mirrored from codervent.com/rocker/demo/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 09:44:13 GMT -->
@@ -37,6 +37,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Toastr CSS -->
 
+	<!-- css customer -->
+	 <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
     <!-- Bootstrap-Iconpicker -->
     <link rel="stylesheet" href="{{ asset('backend/assets/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css') }}"/>
 

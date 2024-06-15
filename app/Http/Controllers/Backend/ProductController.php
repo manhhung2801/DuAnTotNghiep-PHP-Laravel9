@@ -71,7 +71,7 @@ class ProductController extends Controller
             // thêm slug nếu không tồn tại thì trích xuất từ name bằng method Str::slug
             $product->slug = !empty($request->slug) ? $request->slug : Str::slug($request->name, "-");
             // Nếu title SEO null lấy name
-            $product->seo_title = $request->seo_title??$request->name;
+            $product->seo_title = $request->seo_title ?? $request->name;
             //update hình ảnh
             $product->image = $this->uploadFile($request, 'image', '/products');
             $product->save();
@@ -138,7 +138,7 @@ class ProductController extends Controller
             $product->short_description = $request->short_description;
             // thêm slug nếu không tồn tại thì trích xuất từ name bằng method Str::slug
             $product->slug = !empty($request->slug) ? $request->slug : Str::slug($request->name, "-");
-            $product->seo_title = $request->seo_title??$request->name;
+            $product->seo_title = $request->seo_title ?? $request->name;
 
             // Nếu File image mới tồn tại tiến hành update và xóa ảnh cũ từ thư mục
             if ($request->hasFile('image')) {
@@ -176,7 +176,7 @@ class ProductController extends Controller
                 }
             }
 
-            toastr()->success('Update ' . $request->name . ' Success');
+            toastr()->success('Cập nhật ' . $request->name . ' Thành công');
             return redirect()->back();
         } catch (ValidationException $e) {
             toastr()->error('Lỗi: ' . $e);
@@ -185,15 +185,18 @@ class ProductController extends Controller
 
     public function show($id)
     {
+        $getGallery = product_image_galleries::where('product_id', '=', $id)->get('image');
+        $getProduct = Product::getProductItem($id);
+
+        return response()->json([$getProduct, $getGallery]);
     }
     public function destroy($id)
     {
         try {
             Product::findOrFail($id)->delete();
-            product_image_galleries::where('product_id', $id)->delete();
-            return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
+            return response(['status' => 'success', 'message' => 'Xóa thành công!']);
         } catch (ValidationException $e) {
-            return response(['status' => 'error', 'message' => 'Deleted Failed! ' . $e . '']);
+            return response(['status' => 'error', 'message' => 'Xóa thất bại! ' . $e . '']);
         }
     }
 
@@ -227,9 +230,16 @@ class ProductController extends Controller
     {
         try {
             Product::destroyTrashedItem($id);
-            return response(['status' => 'success', 'message' => 'Deleted Forever Successfully!']);
+            $image_gallery = product_image_galleries::where('product_id', $id);
+            foreach ($image_gallery->get() as $img) {
+                if (File::exists(public_path('uploads/gallery/' . $img->image))) {
+                    File::delete(public_path('uploads/gallery/' . $img->image));
+                }
+            }
+            $image_gallery->delete();
+            return response(['status' => 'success', 'message' => 'Xóa vĩnh viễn thành công!']);
         } catch (Exception $e) {
-            return response(['status' => 'error', 'Deleted Faild! ' . $e . '']);
+            return response(['status' => 'error', 'Xóa thất bại! ' . $e . '']);
         }
     }
 

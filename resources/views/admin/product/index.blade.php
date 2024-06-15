@@ -31,9 +31,9 @@
                         </div>
                     </form>
                 </div>
-                <a href="{{ route('admin.product.index') }}" class="me-2 btn btn-success ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>                    Reset</a>
+                <a href="{{ route('admin.product.index') }}" class="me-2 btn btn-success ms-2"><i class="fa-solid fa-rotate-left fs-6"></i> Reset</a>
             </div>
-            
+
             <a href="{{route('admin.product.trash-list')}}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>Trashed Product</a>
             <a href="{{ route('admin.product.create') }}" class="btn btn-primary float-end me-2"><i class="fa-solid fa-plus text-light fs-6"></i>Add Product</a>
         </div>
@@ -43,17 +43,12 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>SKU</th>
                             <th>Image</th>
                             <th>Name</th>
                             <th>Quantity</th>
                             <th>Price</th>
                             <th>Offer Price</th>
-                            <th>Product Type</th>
                             <th>Status</th>
-                            <th>Category</th>
-                            <th>Sub Category</th>
-                            <th>Child Category</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -61,15 +56,13 @@
                         @foreach ($getProduct as $product)
                         <tr>
                             <td>{{ $product->id }}</td>
-                            <td>{{ $product->sku }}</td>
                             <td class="text-center">
                                 <img src="{{ asset('uploads/products/' . $product->image) }}" width="50px" alt="{{ $product->image }}">
                             </td>
-                            <td>{{ $product->name }}</td>
+                            <td >{{ $product->name }}</td>
                             <td>{{ $product->qty }}</td>
                             <td>{{ number_format($product->price) }} VNĐ</td>
                             <td>{{ number_format($product->offer_price) }} VNĐ</td>
-                            <td>{{ $product->product_type }}</td>
                             <td>
                                 <div class="form-check form-switch form-check-success">
                                     @if($product->status == 1)
@@ -79,12 +72,14 @@
                                     @endif
                                 </div>
                             </td>
-                            <td>{{ $product->category->name }}</td>
-                            <td>{{ $product->subCategory->name }}</td>
-                            <td>{{ $product->childCategory->name }}</td>
                             <td>
                                 <a class="btn btn-primary" href="{{ route('admin.product.edit', $product->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
                                 <a class="btn btn-danger delete-item" href="{{ route('admin.product.destroy', $product->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
+                                <!-- Button trigger modal -->
+                                <button id="modal_product_show" data-url="{{ route('admin.product.show', $product->id) }}" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#productDetails">
+                                    Chi tiết
+                                </button>
+                                @include('admin.product.partials.modal')
                             </td>
                         </tr>
                         @endforeach
@@ -100,6 +95,44 @@
 @push('scripts')
 <script>
     $(document).ready(function() {
+        $('body').off('click', '#modal_product_show').on('click', '#modal_product_show', function() {
+            var baseURL = "{{ asset('uploads/gallery/') }}";
+            var url = $(this).attr('data-url');
+            $.ajax({
+                url: url,
+                method: 'GET',
+                success: function(data) {
+                    $('#modal_img').attr('src', `{{ asset('uploads/products') }}` + '/' + data[0].image)
+                    $('#modal_name').text(data[0].name)
+                    $('#modal_id').text(data[0].id)
+                    $('#modal_sku').text(data[0].sku)
+                    $('#modal_slug').text(data[0].slug)
+                    $('#modal_quantity').text(data[0].qty)
+                    $('#modal_weight').text(data[0].weight)
+                    $('#modal_price').text(data[0].price)
+                    $('#modal_offer_price').text(data[0].offer_price)
+                    $('#modal_offer_start_date').text(data[0].offer_start_date)
+                    $('#modal_product_type').text(data[0].product_type)
+                    $('#modal_views').text(data[0].views)
+                    $('#modal_category').text(data[0].category_id)
+                    $('#modal_sub_category').text(data[0].sub_category_id)
+                    $('#modal_child_category').text(data[0].child_category_id)
+                    $('#modal_status').text(data[0].status)
+                    $('#modal_video_link').text(data[0].video_link)
+                    $('#modal_seo_title').text(data[0].seo_title)
+                    $('#modal_seo_description').text(data[0].seo_description)
+                    $('#modal_short_description').html(data[0].short_description)
+                    $('#modal_long_description').html(data[0].long_description)
+                    $('#modal_created_date').text(data[0].created_at)
+
+                    $('#modal_gallery').html(``);
+                    data[1].forEach(img => {
+                        var imgURL = baseURL + '/' + img.image;
+                        $('#modal_gallery').append(`<img class="modal_image_gallery" src="${imgURL}">`);
+                    });
+                }
+            })
+        })
         $('body').off('click', '.change-status').on('click', '.change-status', function() {
             let isChecked = $(this).is(':checked');
             let id = $(this).data('id');
