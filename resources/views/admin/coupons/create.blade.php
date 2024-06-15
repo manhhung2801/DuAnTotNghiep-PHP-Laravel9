@@ -27,46 +27,46 @@
             <form class="row g-3" action="{{ route('admin.coupons.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-6">
-                    <label for="input1" class="form-label">Name</label>
+                    <label for="input1" class="form-label">Tên phiếu giảm giá</label>
                     <input type="text" class="form-control" id="input1" name="name" value="{{ old('name') }}">
                 </div>
                 <div class="col-md-6">
-                    <label for="input2" class="form-label">Code</label>
+                    <label for="input2" class="form-label">Mã Code</label>
                     <input type="text" class="form-control" id="input2" name='code' value="{{ old('code') }}">
                 </div>
                 <div class="col-md-6">
-                    <label for="input3" class="form-label">Quantity</label>
+                    <label for="input3" class="form-label">Số Lượng</label>
                     <input id="input3" type="number" class="form-control" name="quantity" value="{{ old('quantity') }}" />
                 </div>
                 <div class="col-md-6">
-                    <label for="input4" class="form-label">Max use</label>
+                    <label for="input4" class="form-label">Sử dụng tối đa</label>
                     <input type="number" class="form-control" id="input4" name="max_use" value="{{ old('max_use') }}">
                 </div>
                 <div class="col-md-6">
-                    <label for="input5" class="form-label">Start date</label>
+                    <label for="input5" class="form-label">Ngày bắt đầu</label>
                     <input type="date" class="form-control" id="input5" name='start_date' value="{{ old('start_date') }}">
                 </div>
                 <div class="col-md-6">
-                    <label for="input6" class="form-label">End date</label>
+                    <label for="input6" class="form-label">Ngày cuối</label>
                     <input type="date" class="form-control" id="input6" name="end_date" value="{{ old('end_date') }}">
                 </div>
 
                 <div class="col-md-6">
-                    <label for="input8" class="form-label">Discount type</label>
+                    <label for="input8" class="form-label">Loại giảm giá</label>
                     <input type="number" class="form-control" id="input8" name="discount_type" value="{{ old('discount_type') }}">
                 </div>
 
                 <div class="col-md-6">
-                    <label for="input9" class="form-label">Discount</label>
+                    <label for="input9" class="form-label">Giảm giá</label>
                     <input type="number" class="form-control" id="input9" name="discount" value="{{ old('discount') }}">
                 </div>
 
                 <div class="col-md-6">
-                    <label for="input9" class="form-label">Total used</label>
+                    <label for="input9" class="form-label">Tổng số đã sử dụng</label>
                     <input type="number" class="form-control" id="input9" name="total_used" value="{{ old('total_used') }}">
                 </div>
                 <div class="col-md-6">
-                    <label for="input7" class="form-label">Status</label>
+                    <label for="input7" class="form-label">Trạng thái</label>
                     <select id="input7" class="form-select" name="status">
                         <option selected="" value="1">Active</option>
                         <option value="0">Inactive</option>

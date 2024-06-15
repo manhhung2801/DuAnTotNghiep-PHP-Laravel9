@@ -75,7 +75,7 @@
                     <label for="editor" class="form-label">Long Description</label>
 
 
-                    <textarea class="form-control description" name="description" id="editor" value="{{ old('description') }}"></textarea>
+                    <textarea class="form-control description" name="description" id="description" value="{{ old('description') }}"></textarea>
                 </div>
                 <div class="col-md-2">
                     <div class="d-grid align-items-center gap-3">
@@ -87,23 +87,15 @@
     </div>
 </div>
 
-<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
 <script>
-  ClassicEditor
-    .create(document.querySelector('#editor'), {
-      ckfinder: {
-        uploadUrl: 'public/uploads', // Replace with the URL of your server-side image upload handler
-        headers: {
-          'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if applicable for your backend framework
-        }
-      }
-    })
-    .then(editor => {
-      console.log(editor);
-    })
-    .catch(error => {
-      console.error(error);
-    });
+    CKEDITOR.config.filebrowserImageBrowseUrl = 'http://127.0.0.1:8000/uploads/slider?type=Files';
+    CKEDITOR.config.filebrowserImageUploadUrl = 'http://127.0.0.1:8000/uploads/slider?type=Images&_token={{ csrf_token() }}';
+    CKEDITOR.config.filebrowserBrowseUrl = '/admin/laravel-filemanager?type=Files';
+    CKEDITOR.config.filebrowserUploadUrl = '/admin/laravel-filemanager/upload?type=Files&_token=';
+
+    CKEDITOR.replaceAll('description');
+
 </script>
 
 @endsection
