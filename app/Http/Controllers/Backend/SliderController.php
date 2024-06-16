@@ -94,8 +94,8 @@ class SliderController extends Controller
         ]);
         $slider = Slider::find($id);
         if ($request->hasFile('banner')) {
-            if (File::exists(public_path('uploads/slider/' . $request->banner))) {
-                File::delete(public_path('uploads/slider/' . $request->banner));
+            if (File::exists(public_path('uploads/slider/' . $slider->banner))) {
+                File::delete(public_path('uploads/slider/' . $slider->banner));
             } else {
                 $slider->banner = $request->banner;
             }
