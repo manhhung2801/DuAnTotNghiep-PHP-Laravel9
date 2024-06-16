@@ -48,15 +48,6 @@ class SliderController extends Controller
             'serial' => ['required',],
             'status' => ['required',],
             'banner' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048']
-        ],[
-            'type.required'=>'Type không được để trống ',
-            'title.required'=>'Nội dung không được để trống ',
-            'starting_price.required'=>'Giá không được để trống ',
-            'serial.required'=>'Serial không được để trống ',
-            'banner.required'=>'Hình ảnh không được để trống ',
-            'banner.mimes'=>'Hình ảnh bắt buộc có đuôi jpeg,png,jpg,gif,svg,webp',
-            'banner.max'=>'Hình ảnh không được quá kích thước 2048',
-            'btn_url.required'=>'Đường dẫn không được để trống',
         ]);
 
         $slider = new Slider;
@@ -103,16 +94,7 @@ class SliderController extends Controller
             'serial' => ['required',],
             'status' => ['required',],
             'banner' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048']
-        ] ,[
-                'type.required'=>'Type không được để trống ',
-                'title.required'=>'Nội dung không được để trống ',
-                'starting_price.required'=>'Giá không được để trống ',
-                'serial.required'=>'Serial không được để trống ',
-                'banner.required'=>'Hình ảnh không được để trống ',
-                'banner.mimes'=>'Hình ảnh bắt buộc có đuôi jpeg,png,jpg,gif,svg,webp',
-                'banner.max'=>'Hình ảnh không được quá kích thước 2048',
-                'btn_url.required'=>'Đường dẫn không được để trống',
-        ]);
+        ] );
         $slider = Slider::findOrFail($id);
         $slider->type = $request->type;
         $slider->title = $request->title;

@@ -1,129 +1,4 @@
 <?php
-
-// namespace App\Http\Controllers\Frontend;
-
-// use App\Http\Controllers\Controller;
-// use App\Models\SubCategory;
-// use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\DB;
-
-// use App\Models\Category;
-// use App\Models\subCategories;
-// use App\Models\ChildCategory;
-// use App\Models\Product;
-// use App\Models\Slider;
-
-// class ProductController extends Controller
-// {
-//     function calculatePercentageChange($arr)
-//     {
-//         $percentageChanges = [];
-
-//         foreach ($arr as $key => $product) {
-//             // dd($key, $product, $arr);
-//             $price = $product->price;
-//             $offerPrice = $product->offer_price;
-
-//             if ($price > 0) {
-//                 $percentageChange = ($price - $offerPrice) / $price * 100;
-//                 $percentageChanges[$key] = number_format($percentageChange, 0);
-//                 $product['percent'] = $percentageChanges[$key];
-//             } else {
-//                 $percentageChanges[$key] = 0;
-//             }
-//         }
-
-//         return $arr;
-//     }
-
-
-//     function getRowsWhereCol($data, $col, $value)
-//     {
-//         // dd($data);
-//         if (!empty($data)) {
-//             foreach ($data as $row) {
-//                 if ($row->$col == $value)
-//                     return $row;
-//                 else
-//                     null;
-//             }
-//         }
-//     }
-
-//     function filterParam($paramArr)
-//     {
-//         $data = [];
-//         $temp = null;
-
-//         foreach ($paramArr as $key => $value) {
-//             if ($key == null) {
-//                 $key = 'categories';
-//                 $temp = $key;
-//                 $data[$key] = $this->getRowsWhereCol(Category::where('slug', '=', $value)->get(), 'slug', $value);
-//             } else {
-//                 $data[$key] = $this->getRowsWhereCol(empty($data[$temp]) ? null : $data[$temp]->$key, 'slug', $value);
-//                 $temp = $key;
-//             }
-//         }
-
-//         foreach ($data as $key => $value) {
-//             if ($data[$key] == null) unset($data[$key]);
-//         }
-
-//         return $data;
-//     }
-
-//     public function getWhereParam($cat = null, $sub = null, $child = null, $slug = null)
-//     {
-//         $params = [
-//             null => $cat,
-//             'subCategories' => $sub,
-//             'childCategory' => $child,
-//             'products' => $slug
-//         ];
-//         $d = $this->filterParam($params);
-//         // dd($d);
-
-//         $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
-
-//         if (count($d) == 1) {
-//             $category = $d['categories'];
-//             $products = $category->products()->paginate(15);
-//             $products = $this->calculatePercentageChange($products);
-//             return view('frontend.products.index', compact("categories", "category", "products"));
-//         } else if (count($d) == 2) {
-//             $subCategory = $d['subCategories'];
-//             $products = $subCategory->products()->paginate(15);
-//             $products = $this->calculatePercentageChange($products);
-//             // dd($categories);
-//             return view('frontend.products.index', compact("categories","subCategory", "products"));
-//         } else if (count($d) == 3) {
-//             $childCategory = $d['childCategory'];
-//             $products = $childCategory->products()->paginate(15);
-//             $products = $this->calculatePercentageChange($products);
-//             // dd($categories);
-//             return view('frontend.products.index', compact("categories", "childCategory", "products"));
-//         } else if (count($d) == 4) {
-//             $product = $d['products'];
-//             $categoryId = $product->ProductHasOneCat->id;
-
-//             $products = Product::where("category_id", "=", $categoryId)->get();
-//             $products = $this->calculatePercentageChange($products);
-//             $product_image_galleries = $product->product_image_galleries()->get();
-//             $variants = $product->variant()->get();
-//             return view('frontend.products.detail', compact("categories", "product", "product_image_galleries", "variants", 'products'));
-//         } else if (count($d) == 0) {
-//             $products = Product::paginate(15);
-//             $products = $this->calculatePercentageChange($products);
-//             return view('frontend.products.index', compact("categories", "products"));
-//         }
-//     }
-
-// }
-
-
-
-
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
@@ -132,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\ChildCategory;
+use App\Models\StoreAddress;
 
 class ProductController extends Controller
 {
@@ -160,7 +36,7 @@ class ProductController extends Controller
 
         // Get categories ordered by rank
         $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
-
+        $storeAddress = StoreAddress::where("status", "=",1)->orderBy("id","asc")->limit(1)->get();
         // Initialize products query
         $productsQuery = Product::query();
 
@@ -216,20 +92,20 @@ class ProductController extends Controller
         // Determine which view to render based on filtered parameters
         switch (count(array_filter($filters))) {
             case 1:
-                return view('frontend.products.index', compact("categories", "category", "products"));
+                return view('frontend.products.index', compact("categories", "category", "products","storeAddress"));
             case 2:
-                return view('frontend.products.index', compact("categories", "subCategory", "products"));
+                return view('frontend.products.index', compact("categories", "subCategory", "products","storeAddress"));
             case 3:
-                return view('frontend.products.index', compact("categories", "childCategory", "products"));
+                return view('frontend.products.index', compact("categories", "childCategory", "products","storeAddress"));
             case 4:
                 // Assuming only one product is filtered
                 $product = $products->first();
                 $product_image_galleries = $product->product_image_galleries()->get();
                 $variants = $product->variant()->get();
-                return view('frontend.products.detail', compact("categories", "product", "product_image_galleries", "variants", 'products'));
+                return view('frontend.products.detail', compact("categories", "product", "product_image_galleries", "variants", 'products',"storeAddress"));
             default:
                 // No filters applied
-                return view('frontend.products.index', compact("categories", "products"));
+                return view('frontend.products.index', compact("categories", "products","storeAddress"));
         }
     }
 }
