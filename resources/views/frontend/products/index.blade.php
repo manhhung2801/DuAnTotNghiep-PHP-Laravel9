@@ -10,7 +10,6 @@
         <div class="row">
             <div class="col-md-12 col-title text-center mb-1">
                 <h1 class="fs-3">
-                    Tất cả sản phẩm
                     {{ $category->name ?? $subCategory->name ?? $childCategory->name ?? $product->name ?? "" }}
                 </h1>
             </div>

@@ -61,20 +61,6 @@ class CouponsController extends Controller
             'total_used' => ['required', 'numeric'],
             'status' => ['required'],
 
-        ],[
-            'name.required'=> "không được để trống",
-            'name.max'=> "Tối da không lượt quá 20 ký tự",
-
-            'code.required'=> "không được để trống",
-            'code.max'=> "Tối da không lượt quá 10 ký tự",
-
-            'max_use.required'=> "không được để trống",
-            'start_date.required'=> "không được để trống",
-            'end_date.required'=> "không được để trống",
-            'discount_type.required'=> "không được để trống",
-            'discount.required'=> "không được để trống",
-            'total_used.required'=> "không được để trống",
-
         ]
     );
 
