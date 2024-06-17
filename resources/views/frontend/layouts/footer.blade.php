@@ -16,14 +16,14 @@
             <div class="row">
                 <div class="col-lg-4 col-sm-12 col-md-12 footer-item">
                     <h5 class="mb-3">Logo</h5>
-                    @foreach ($storeAddress as $item)
+                    {{-- @foreach ($storeAddress as $item)
                     <ul class="nav flex-column ">
                         <li class="nav-item mb-2">Hệ thống cửa hàng Sudes Phone chuyên bán lẻ điện thoại, máy tính laptop, smartwatch, smarthome, phụ kiện chính hãng - Giá tốt, giao miễn phí.</li>
                         <li class="nav-item mb-2"><b>Địa chỉ:</b> {{$item->address}}, {{$item->ward}}, {{$item->district}}, {{$item->province}}</li>
                         <li class="nav-item mb-2"><b>Điện thoại:</b> {{$item->phone}}</li>
                         <li class="nav-item mb-2"><b>Email:</b> {{$item->email}}</li>
                     </ul>
-                    @endforeach
+                    @endforeach --}}
                 </div>
                 <div class="col-lg-2 col-sm-12 col-md-4 footer-item">
                     <h5 class="mb-3">CHÍNH SÁCH</h5>
