@@ -57,7 +57,7 @@ class StoreAddressController extends Controller
             'email.required' => 'Email không được để trống',
             'phone.required' => 'Số điện thoại không được để trống',
             // 'phone.regex' => 'Số điện thoại bắt đầu bằng 0',
-            'phone.min' => 'Số điện thoại tối thiểu 10 số',
+            'phone.min' => 'Số điện thoại tối thiểu 11 số',
 
         ]);
         $storeAddress->store_name = $request->store_name;
