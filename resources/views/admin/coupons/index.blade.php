@@ -6,13 +6,13 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Coupons</div>
+        <div class="breadcrumb-title pe-3">Phiếu giảm giá </div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">List Coupons</li>
+                    <li class="breadcrumb-item active" aria-current="page">Danh sách phiếu giảm giá</li>
                 </ol>
             </nav>
         </div>
@@ -20,7 +20,7 @@
     <!--end breadcrumb-->
     <div class="card">
         <div class="card-header">
-            <h6 class="mt-2 mb-0 text-uppercase float-start">List Coupons</h6>
+            <h6 class="mt-2 mb-0 text-uppercase float-start mx-2">Danh sách phiếu giảm giá</h6>
             <div class="action_start float-start d-flex">
                 <form action="" method="get">
                     <div class="input-group">
@@ -40,12 +40,12 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>name</th>
-                            <th>Code</th>
-                            <th>quantity</th>
-                            <th>discount</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>Tên giảm giá</th>
+                            <th>Mã code</th>
+                            <th>Số lượng</th>
+                            <th>Giảm giá</th>
+                            <th>Trạng thái</th>
+                            <th>Hoạt động</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -6,13 +6,13 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Couponss</div>
+        <div class="breadcrumb-title pe-3">Phiếu giảm giá</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Update Coupons</li>
+                    <li class="breadcrumb-item active" aria-current="page">Cập nhật phiếu giảm giá</li>
                 </ol>
             </nav>
         </div>
@@ -20,7 +20,7 @@
     <!--end breadcrumb-->
     <div class="card">
         <div class="card-header">
-            <h6 class="mt-2 mb-0 text-uppercase float-start">Update Category</h6>
+            <h6 class="mt-2 mb-0 text-uppercase float-start">Cập nhật phiếu giảm giá</h6>
             <a href="{{ route('admin.coupons.index') }}" class="btn btn-primary float-end">Back</a>
         </div>
         <div class="card-body">
