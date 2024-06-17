@@ -109,7 +109,6 @@ Route::put('/post-cate/change-status',[PostCategoriesController::class,'changeSt
 Route::resource('/post-cate',PostCategoriesController::class);
 
 /** post */
-Route::post('/post/upload',[PostsController::class,'upload'])->name('[post.upload');
 Route::get('/post/trashed-post',[PostsController::class, 'trashedPost'])->name('post.trashed-post');
 Route::get('/post/restore/{id}',[PostsController::class,'restore'])->name('post.restore-post');
 Route::get('/post/deleted/{id}',[PostsController::class,'deleteVariant'])->name('post.deleted-post');

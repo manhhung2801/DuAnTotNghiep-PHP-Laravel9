@@ -8,6 +8,7 @@ use App\Models\User;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class PostsController extends Controller
@@ -24,7 +25,7 @@ class PostsController extends Controller
         return null;
     }
       
-     public function upload(Request $request)
+     /*public function upload(Request $request)
     {
         if ($request->hasFile('upload')) {
             $originName= $request->file('upload')->getClientOriginalName();
@@ -36,7 +37,7 @@ class PostsController extends Controller
             return response()->json(['fileName'=>$fileName,'uploaded'=>1,'url'=>$url]);
         }
 
-    }
+    }*/
     /**
      * Display a listing of the resource.
      *
@@ -111,7 +112,7 @@ class PostsController extends Controller
     {
         $user = User::all();
         $post_categories= Post_categories::all();
-        return view('admin.post.create', compact('post_categories','user'));
+        return view('admin.post.create',compact('post_categories','user'));
     }
     /**
      * Store a newly created resource in storage.

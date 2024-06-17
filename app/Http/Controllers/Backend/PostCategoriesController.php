@@ -85,7 +85,7 @@ class PostCategoriesController extends Controller
     public function create()
     {
         $post_categories = Post_categories::all();
-        return view('admin.post-cate.create', compact('post_categories'));
+        return view('admin.post-cate.create',compact('post_categories'));
     }
     /**
      * Store a newly created resource in storage.
