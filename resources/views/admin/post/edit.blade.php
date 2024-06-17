@@ -57,7 +57,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="name" class="form-label">Content</label>
-                    <input type="text" class="form-control" id="name" name="title" placeholder="title" value="{{ $post->content }}">
+                    <input type="text" class="form-control" name="content" placeholder="title" value="{{ $post->content }}">
                 </div>
 
                 <div class="col-md-6">
