@@ -6,13 +6,13 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Coupons</div>
+        <div class="breadcrumb-title pe-3">Phiếu giảm giá</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Create coupons</li>
+                    <li class="breadcrumb-item active" aria-current="page">Tạo mới</li>
                 </ol>
             </nav>
         </div>
@@ -20,8 +20,8 @@
     <!--end breadcrumb-->
     <div class="card">
         <div class="card-header">
-            <h6 class="mt-2 mb-0 text-uppercase float-start">Create coupons</h6>
-            <a href="{{ route('admin.coupons.index') }}" class="btn btn-primary float-end">Back</a>
+            <h6 class="mt-2 mb-0 text-uppercase float-start">Tạo mới</h6>
+            <a href="{{ route('admin.coupons.index') }}" class="btn btn-primary float-end">Quay lại</a>
         </div>
         <div class="card-body">
             <form class="row g-3" action="{{ route('admin.coupons.store') }}" method="POST" enctype="multipart/form-data">
@@ -68,13 +68,13 @@
                 <div class="col-md-6">
                     <label for="input7" class="form-label">Trạng thái</label>
                     <select id="input7" class="form-select" name="status">
-                        <option selected="" value="1">Active</option>
-                        <option value="0">Inactive</option>
+                        <option selected="" value="1">Hoạt động</option>
+                        <option value="0">Không hoạt động</option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <div class="d-grid align-items-center gap-3">
-                        <button type="submit" class="btn btn-primary px-4">Create</button>
+                        <button type="submit" class="btn btn-primary px-4">Tạo mới</button>
                     </div>
                 </div>
             </form>

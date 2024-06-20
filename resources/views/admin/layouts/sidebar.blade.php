@@ -49,10 +49,10 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="lni lni-sprout"></i>
                 </div>
-                <div class="menu-title">Coupons</div>
+                <div class="menu-title">Phiếu giảm giá</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.coupons.index') }}"><i class='bx bx-radio-circle'></i>List Coupons</a>
+                <li> <a href="{{ route('admin.coupons.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Phiếu Giảm Giá</a>
                 </li>
             </ul>
         </li>
@@ -79,14 +79,14 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
                 </div>
-                <div class="menu-title">Post All</div>
+                <div class="menu-title">Tin tức</div>
             </a>
             <ul>
                 <li>
-                    <a href="{{ route("admin.post-cate.index") }}"><i class='bx bx-radio-circle'></i>Post Category</a>
+                    <a href="{{ route("admin.post-cate.index") }}"><i class='bx bx-radio-circle'></i>Loại Tin Tức</a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.post.index') }}"><i class='bx bx-radio-circle'></i>Post List</a>
+                    <a href="{{ route('admin.post.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Tin Tức</a>
                 <li>
             </ul>
         </li>
