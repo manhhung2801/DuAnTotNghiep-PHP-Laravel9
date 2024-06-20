@@ -6,13 +6,13 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Post Categories</div>
+        <div class="breadcrumb-title pe-3">Loại bài biết</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Post Categories</li>
+                    <li class="breadcrumb-item active" aria-current="page">Danh sách loại bài biết</li>
                 </ol>
             </nav>
         </div>
@@ -21,7 +21,7 @@
     <div class="card">
         <div class="card-header">
             <div class="action_start float-start d-flex">
-                <h6 class="mt-2 mb-0 text-uppercase float-start">Post Category</h6>
+                <h6 class="mt-2 mb-0 text-uppercase float-start">Danh sách loại bài viết</h6>
                 <div class="form-search ms-2">
                     <form action="" method="get">
                         <div class="input-group">
@@ -31,9 +31,9 @@
                     </form>
                 </div>
             </div>
-            <a href="{{ route('admin.post-cate.trashed-postCate') }}" class="btn btn-danger float-end ">Trashed Post Cate</a>
-            <a href="{{ route('admin.post-cate.create')}}" class="btn btn-warning float-end me-2">Add Post Cate</a>
-            <a href="{{ route('admin.post-cate.index') }}" class="me-2 btn btn-success float-end">Reset</a>
+            <a href="{{ route('admin.post-cate.trashed-postCate') }}" class="btn btn-danger float-end ">Thùng rác</a>
+            <a href="{{ route('admin.post-cate.create')}}" class="btn btn-warning float-end me-2">Thêm mới loại bài viết</a>
+            <a href="{{ route('admin.post-cate.index') }}" class="me-2 btn btn-success float-end">Làm mới</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -42,7 +42,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Tên</th>
-                            <th>Slug</th>
+                            <th>Đường dẫn</th>
                             <th>Trạng thái</th>
                             <th>Hoạt động</th>
                         </tr>
@@ -62,8 +62,8 @@
                                     @endif
                                 </div>
                             <td>
-                                <a class="btn btn-warning" href="{{ route('admin.post-cate.edit', $item->id) }}">Edit</a>
-                                <a class="btn btn-danger delete-item" href="{{ route("admin.post-cate.destroy", $item->id) }}">Delete</a>
+                                <a class="btn btn-warning" href="{{ route('admin.post-cate.edit', $item->id) }}">Chỉnh sửa</a>
+                                <a class="btn btn-danger delete-item" href="{{ route("admin.post-cate.destroy", $item->id) }}">Xóa</a>
                             </td>
                         </tr>
                         @endforeach
@@ -72,7 +72,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Tên</th>
-                            <th>Slug</th>
+                            <th>Đường dẫn</th>
                             <th>Trạng thái</th>
                             <th>Hoạt động</th>
                         </tr>

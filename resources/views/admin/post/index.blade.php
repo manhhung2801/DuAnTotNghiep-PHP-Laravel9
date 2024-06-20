@@ -6,13 +6,13 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Post</div>
+        <div class="breadcrumb-title pe-3">Tin tức</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Post</li>
+                    <li class="breadcrumb-item active" aria-current="page">Dang sách tin tức</li>
                 </ol>
             </nav>
         </div>
@@ -21,7 +21,7 @@
     <div class="card">
         <div class="card-header">
             <div class="action_start float-start d-flex">
-                <h6 class="mt-2 mb-0 text-uppercase float-start">Post</h6>
+                <h6 class="mt-2 mb-0 text-uppercase float-start">Dang sách tin tức</h6>
                 <div class="form-search ms-2">
                     <form action="" method="get">
                         <div class="input-group">
@@ -30,27 +30,27 @@
                         </div>
                     </form>
                 </div>
+                <a href="{{ route('admin.post.index') }}" class="me-2 btn btn-success float-end">Làm mới</a>
             </div>
-            <a href="{{ route('admin.post.trashed-post') }}" class="btn btn-danger float-end ">Trashed Post Cate</a>
-            <a href="{{ route('admin.post.create')}}" class="btn btn-warning float-end me-2">Add Post Cate</a>
-            <a href="{{ route('admin.post.index') }}" class="me-2 btn btn-success float-end">Reset</a>
+            <a href="{{ route('admin.post.trashed-post') }}" class="btn btn-danger float-end ">Thùng rác</a>
+            <a href="{{ route('admin.post.create')}}" class="btn btn-warning float-end me-2">Thêm mới tin tức</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>ID</th>
                             <th>Tên loại</th>
                             <th>Người đăng </th>
                             <th>Hình ảnh </th>
                             <th>Tiêu đề</th>
                             <th>Nội dung</th>
-                            <th>Slug</th>
+                            <th>Đường dẫn</th>
                             <th>Mô tả</th>
-                            <th>Seo tiêu đề</th>
-                            <th>Seo Mô tả</th>
-                            <th>Hot</th>
+                            <th>Tiêu đề SEO</th>
+                            <th>Mô tả SEO</th>
+                            <th>Nổi bật</th>
                             <th>Trạng thái</th>
                             <th>Hoạt động</th>
                         </tr>
@@ -88,28 +88,26 @@
                             </td>
 
                             <td>
-                                <a class="btn btn-warning" href="{{ route('admin.post.edit',$post->id) }}">Edit</a>
-                                <a class="btn btn-danger delete-item" href="{{ route("admin.post.destroy", $post->id) }}">Delete</a>
+                                <a class="btn btn-warning" href="{{ route('admin.post.edit',$post->id) }}">Chỉnh sửa</a>
+                                <a class="btn btn-danger delete-item" href="{{ route("admin.post.destroy", $post->id) }}">Xóa bỏ</a>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                     <tfoot>
-                        <tr>
-                            <th>Id</th>
-                            <th>Tên loại</th>
-                            <th>Người đăng </th>
-                            <th>Hình ảnh </th>
-                            <th>Tiêu đề</th>
-                            <th>Nội dung</th>
-                            <th>Slug</th>
-                            <th>Mô tả</th>
-                            <th>Seo tiêu đề</th>
-                            <th>Seo Mô tả</th>
-                            <th>Hot</th>
-                            <th>Trạng thái</th>
-                            <th>Hoạt động</th>
-                        </tr>
+                        <th>ID</th>
+                        <th>Tên loại</th>
+                        <th>Người đăng </th>
+                        <th>Hình ảnh </th>
+                        <th>Tiêu đề</th>
+                        <th>Nội dung</th>
+                        <th>Đường dẫn</th>
+                        <th>Mô tả</th>
+                        <th>Tiêu đề SEO</th>
+                        <th>Mô tả SEO</th>
+                        <th>Nổi bật</th>
+                        <th>Trạng thái</th>
+                        <th>Hoạt động</th>
                     </tfoot>
                 </table>
             </div>

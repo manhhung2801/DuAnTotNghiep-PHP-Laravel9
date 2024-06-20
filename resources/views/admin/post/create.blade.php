@@ -6,13 +6,13 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Đăng bài</div>
+        <div class="breadcrumb-title pe-3">Tin tức</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Khởi tạo đằng bài</li>
+                    <li class="breadcrumb-item active" aria-current="page">Tạo mới</li>
                 </ol>
             </nav>
         </div>
@@ -20,7 +20,7 @@
     <!--end breadcrumb-->
     <div class="card">
         <div class="card-header">
-            <h6 class="mt-2 mb-0 text-uppercase float-start">Khởi tạo đằng bài</h6>
+            <h6 class="mt-2 mb-0 text-uppercase float-start">Tạo mới</h6>
             <a href="{{ route("admin.post.index") }}" class="btn btn-primary float-end">Quay tại</a>
         </div>
         <div class="card-body">
@@ -58,17 +58,17 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="input9" class="form-label">Hot</label>
+                    <label for="input9" class="form-label">Nổi bật</label>
                     <select id="input9" class="form-select" name="type">
-                        <option value="1">Active</option>
-                        <option value="0">Inactive</option>
+                        <option value="1">Nổi bật</option>
+                        <option value="0">không nổi bật</option>
                     </select>
                 </div>
                 <div class="col-md-6">
                     <label for="input9" class="form-label">Trạng thái</label>
                     <select id="input9" class="form-select" name="status">
-                        <option value="1">Active</option>
-                        <option value="0">Inactive</option>
+                        <option value="1">Hoạt động</option>
+                        <option value="0">Không hoạt động</option>
                     </select>
                 </div>
                 <div class="row mt-3">
@@ -88,7 +88,7 @@
                 </div>
                 <div class="col-md-2">
                     <div class="d-grid align-items-center gap-3">
-                        <button type="submit" class="btn btn-primary px-4">Create</button>
+                        <button type="submit" class="btn btn-primary px-4">Tạo mới</button>
                     </div>
                 </div>
             </form>

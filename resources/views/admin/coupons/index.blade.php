@@ -28,10 +28,10 @@
                         <button class="btn btn-outline-primary rounded-end-5" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </form>
-                <a href="{{ route("admin.coupons.index") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
+                <a href="{{ route("admin.coupons.index") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
             </div>
-            <a href="{{route('admin.coupons.trash-list')}}" class="btn btn-danger float-end mx-2"><i class="fa-solid fa-trash-can fs-6"></i>Trashed Coupons</a>
-            <a href="{{route('admin.coupons.create') }}" class="btn btn-primary float-end"><i class="fa-solid fa-plus text-light fs-6"></i>Add Coupons</a>
+            <a href="{{route('admin.coupons.trash-list')}}" class="btn btn-danger float-end mx-2"><i class="fa-solid fa-trash-can fs-6"></i>Thùng rác</a>
+            <a href="{{route('admin.coupons.create') }}" class="btn btn-primary float-end"><i class="fa-solid fa-plus text-light fs-6"></i>Thêm mới giảm giá</a>
           
         </div>
         <div class="card-body">
@@ -39,9 +39,9 @@
                 <table id="example" class="table table-striped table-bordered " style="width:100%">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>ID</th>
                             <th>Tên giảm giá</th>
-                            <th>Mã code</th>
+                            <th>Mã giảm giá</th>
                             <th>Số lượng</th>
                             <th>Giảm giá</th>
                             <th>Trạng thái</th>
@@ -68,8 +68,8 @@
                                 </div>
 
                             <td>
-                                <a class="btn btn-primary" href="{{ route('admin.coupons.show', $item->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
-                                <a class="btn btn-danger delete-item" href="{{ route('admin.coupons.destroy', $item->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
+                                <a class="btn btn-primary" href="{{ route('admin.coupons.show', $item->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
+                                <a class="btn btn-danger delete-item" href="{{ route('admin.coupons.destroy', $item->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>
                             </td>
                         </tr>
                         @endforeach
