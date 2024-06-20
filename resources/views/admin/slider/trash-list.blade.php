@@ -35,7 +35,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('admin.slider.trash-list') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Cài lại</a>
+                    <a href="{{ route('admin.slider.trash-list') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
                 </div>
                 <a href="{{ route('admin.slider.index') }}" class="btn btn-primary float-end">Quay lại</a>
                 
@@ -53,7 +53,7 @@
                                 <th>Đường dẫn</th>
                                 <th>Số Seri</th>
                                 <th>Trạng thái</th>
-                                <th>Tuỳ chọn</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>

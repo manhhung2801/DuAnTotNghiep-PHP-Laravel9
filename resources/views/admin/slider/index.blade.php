@@ -34,7 +34,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('admin.slider.index') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Cài lại</a>
+                    <a href="{{ route('admin.slider.index') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
                 </div>
                 <a href="{{ route('admin.slider.trash-list') }}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i></i>Thùng rác</a>
                 <a href="{{ route('admin.slider.create') }}" class="btn btn-primary float-end me-2"><i class="fa-solid fa-plus text-light fs-6"></i>Thêm mới</a>
@@ -52,7 +52,7 @@
                                 <th>Đường dẫn</th>
                                 <th>Số seri</th>
                                 <th>Trạng thái</th>
-                                <th>Tuỳ chọn</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody class=" justify-content-center">

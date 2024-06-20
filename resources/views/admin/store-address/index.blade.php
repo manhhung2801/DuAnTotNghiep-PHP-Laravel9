@@ -34,7 +34,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('admin.storeAddress.index') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Cài lại</a>
+                    <a href="{{ route('admin.storeAddress.index') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
                 </div>
                 <a href="{{ route('admin.storeAddress.trash-list') }}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>Thùng rác</a>
                 <a href="{{ route('admin.storeAddress.create') }}" class="btn btn-primary float-end me-2"><i class="fa-solid fa-plus text-light fs-6"></i>Thêm mới</a>
@@ -45,7 +45,7 @@
                         <thead >
                             <tr class="text-center">
                                 <th>Stt</th>
-                                <th>Tên</th>
+                                <th>Tên cửa hàng</th>
                                 <th>Địa chỉ</th>
                                 <th>Phường, Xã</th>
                                 <th>Quận, Huyện</th>
@@ -53,7 +53,7 @@
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
                                 <th>Trạng thái</th>
-                                <th>Tuỳ chọn</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody >
