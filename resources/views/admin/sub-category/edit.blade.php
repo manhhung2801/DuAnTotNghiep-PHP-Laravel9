@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Update Sub Category')
+@section('title', 'Danh Mục Phụ')
 
 @section('content')
     <div class="page-content">
@@ -12,7 +12,8 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Update Sub Category</li>
+                        <li class="breadcrumb-item active" aria-current="page">Danh Mục Phụ</li>
+                        <li class="breadcrumb-item active" aria-current="page">Cập Nhật</li>
                     </ol>
                 </nav>
             </div>
@@ -20,8 +21,8 @@
         <!--end breadcrumb-->
         <div class="card">
             <div class="card-header">
-                <h6 class="mt-2 mb-0 text-uppercase float-start">Update Sub Category</h6>
-                <a href="{{ route("admin.sub-category.index") }}" class="btn btn-primary float-end">Back</a>
+                <h6 class="mt-2 mb-0 text-uppercase float-start">Cập Nhật</h6>
+                <a href="{{ route("admin.sub-category.index") }}" class="btn btn-primary float-end">Quay Lại</a>
             </div>
             <div class="card-body">
                 <form class="row g-3" action="{{ route("admin.sub-category.update", $subCategory->id) }}" method="POST" enctype="multipart/form-data">
@@ -36,19 +37,19 @@
                                 @endif
                             </div>
                             <div class="col-md-9">
-                                <label for="input7" class="form-label">Image</label>
-                                <input type="file" class="form-control" id="image" name="image" placeholder="Image">
+                                <label for="input7" class="form-label">Hình Ảnh</label>
+                                <input type="file" class="form-control" id="image" name="image">
                             </div>
 
                         </div>
                     </div>
 
                     <div class="col-md-6">
-                        <label for="input1" class="form-label">Name</label>
-                        <input type="text" class="form-control" value="{{ $subCategory->name }}" id="input1" name="name" placeholder="Name">
+                        <label for="input1" class="form-label">Tên</label>
+                        <input type="text" class="form-control" value="{{ $subCategory->name }}" id="input1" name="name" placeholder="Nhập Tên">
                     </div>
                     <div class="col-md-6">
-                        <label for="input7" class="form-label">Categories</label>
+                        <label for="input7" class="form-label">Danh Mục</label>
                         <select id="input9" class="form-select" name="category">
                             @foreach ($categories as $category)
                                 <option {{ $subCategory->category_id == $category->id ? "selected" : "" }} value="{{ $category->id }}">{{ $category->name }}</option>
@@ -56,15 +57,15 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="input9" class="form-label">Status</label>
+                        <label for="input9" class="form-label">Trạng Thái</label>
                         <select id="input9" class="form-select" name="status">
-                            <option {{ $subCategory->status == 1 ? "selected" : ""  }}  value="1">Active</option>
-                            <option {{ $subCategory->status == 0 ? "selected" : ""  }}  value="0">Inactive</option>
+                            <option {{ $subCategory->status == 1 ? "selected" : ""  }}  value="1">Hoạt Động</option>
+                            <option {{ $subCategory->status == 0 ? "selected" : ""  }}  value="0">Không Hoạt Động</option>
                         </select>
                     </div>
                     <div class="col-md-2">
                         <div class="d-grid align-items-center gap-3">
-                            <button type="submit" class="btn btn-primary px-4">Update</button>
+                            <button type="submit" class="btn btn-primary px-4">Cập Nhật</button>
                         </div>
                     </div>
                 </form>

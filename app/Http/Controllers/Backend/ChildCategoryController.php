@@ -64,7 +64,7 @@ class ChildCategoryController extends Controller
         ],[
             'category.required' => 'Danh mục không được để trống.',
             'sub_category.required' => 'Danh mục con không được để trống.',
-            'image.required' => 'Image không được để trống.',
+            'image.required' => 'Hình ảnh không được để trống.',
             'image.image' => 'Định dạng không hợp lệ. Yêu cầu hình ảnh.',
             'image.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
             'image.max' => 'Hình ảnh không thể vượt quá 2048 kilobytes.',
@@ -90,7 +90,7 @@ class ChildCategoryController extends Controller
 
         $childCategory->save();
 
-        toastr('Thêm Child Category mới thành công!', 'success');
+        toastr('Tạo mới thành công!', 'success');
 
         return redirect()->route('admin.child-category.index');
     }
@@ -167,7 +167,7 @@ class ChildCategoryController extends Controller
 
         $childCategory->save();
 
-        toastr('Cập nhật Child Category thành công!', 'success');
+        toastr('Cập nhật thành công!', 'success');
         return redirect()->route('admin.child-category.index');
     }
 
@@ -182,7 +182,7 @@ class ChildCategoryController extends Controller
         $childCategory = ChildCategory::findOrFail($id);
         $childCategory->delete();
 
-        return response(['status' => 'success', 'message' => 'Đã xóa Child Category thành công!!']);
+        return response(['status' => 'success', 'message' => 'Xóa thành công!!']);
     }
 
     public function changeStatus(Request $request){
@@ -190,7 +190,7 @@ class ChildCategoryController extends Controller
         $childCategory = ChildCategory::findOrFail($request->id);
         $childCategory->status = $request->status == 'true' ? 1 : 0;
         $childCategory->save();
-        return response(['message' => 'Thay đổi status thái thành công!']);
+        return response(['message' => 'Thay đổi trạng thái thành công!']);
     }
 
     // show trash list and search
@@ -220,10 +220,10 @@ class ChildCategoryController extends Controller
 
 
             ChildCategory::destroyTrashed($id);
-            return response(['status' => 'success', 'Đã xóa vĩnh viễn thành công!']);
+            return response(['status' => 'success', 'Xóa vĩnh viễn thành công!']);
         }
         catch(Exception $e) {
-            return response(['status' => 'error', 'Deleted Faild! '.$e.'' ]);
+            return response(['status' => 'error', 'Xoá thất bại! '.$e.'' ]);
         }
     }
 
