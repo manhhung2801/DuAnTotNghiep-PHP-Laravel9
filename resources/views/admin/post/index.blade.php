@@ -50,7 +50,7 @@
                                 <th>Description</th>
                                 <th>Seo_title</th>
                                 <th>Seo_description</th>
-                                <th>Hot</th>
+                                <th>Type</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -68,15 +68,9 @@
                                     <td>{{$post->description}}</td>
                                     <td>{{$post->seo_title}}</td>
                                     <td>{{$post->seo_description}}</td>
-                                    <td>
-                                        <div class="form-check form-switch form-check-success">
-                                            @if($post->type == 1)
-                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post->id }}" id="flexSwitchCheckSuccess" checked>
-                                            @elseif($post->type == 0)
-                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post->id }}" id="flexSwitchCheckSuccess">
-                                            @endif
-                                        </div>
-                                    </td>
+                                   <td>
+                                    {{$post->type}}
+                                   </td>
                                     <td>
                                         <div class="form-check form-switch form-check-success">
                                             @if($post->status == 1)

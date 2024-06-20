@@ -48,7 +48,7 @@
                     <label for="image" class="form-label">Image</label>
                     <input type="file" class="form-control" id="image" name="image" accept="image/*">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <label for="input7" class="form-label">Title</label>
                     <input type="text" class="form-control" id="input1" name="title" placeholder="title">
                 </div>
@@ -58,10 +58,10 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="input9" class="form-label">Hot</label>
+                    <label for="input9" class="form-label">Type</label>
                     <select id="input9" class="form-select" name="type">
-                        <option value="1">Active</option>
-                        <option value="0">Inactive</option>
+                        <option value="1">Bài Viết</option>
+                        <option value="0">Banner</option>
                     </select>
                 </div>
                 <div class="col-md-6">
@@ -144,7 +144,7 @@
                         class: 'ck-heading_heading6'
                     }]
                 },
-                placeholder: 'Long description!',
+             
                 fontFamily: {
                     options: ['default', 'Arial, Helvetica, sans-serif', 'Courier New, Courier, monospace', 'Georgia, serif', 'Lucida Sans Unicode, Lucida Grande, sans-serif', 'Tahoma, Geneva, sans-serif', 'Times New Roman, Times, serif', 'Trebuchet MS, Helvetica, sans-serif', 'Verdana, Geneva, sans-serif'],
                     supportAllValues: true
@@ -189,5 +189,8 @@
             CKEDITOR.ClassicEditor.create(document.getElementById("editor1"), editorConfig).catch(error => {
                 console.error(error);
             });
+            CKEDITOR.ClassicEditor.create(document.getElementById("input1"), editorConfig).catch(error => {
+        console.error(error);
+    });
         </script>
         @endsection

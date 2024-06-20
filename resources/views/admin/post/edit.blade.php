@@ -70,9 +70,9 @@
 
                 <div class="col-md-6">
                     <label for="input9" class="form-label">Hot</label>
-                    <select id="input9" class="form-select" name="status">
-                        <option {{ $post->type == 1 ? "selected" : ""  }} value="1">Active</option>
-                        <option {{ $post->type == 0 ? "selected" : ""  }} value="0">Inactive</option>
+                    <select id="input9" class="form-select" name="type">
+                        <option {{ $post->type == 1 ? "selected" : ""  }} value="1">Bài Viết</option>
+                        <option {{ $post->type == 0 ? "selected" : ""  }} value="0">Banner</option>
                     </select>
                 </div>
 
