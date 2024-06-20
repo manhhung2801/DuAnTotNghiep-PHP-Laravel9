@@ -47,13 +47,13 @@
             let row = $(this).closest('tr');
             console.log(deleteUrl);
             Swal.fire({
-                title: "Are you sure?",
+                title: "Bạn có chắc không?",
                 text: "You won't be able to revert this!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
+                confirmButtonText: "Có, xóa nó đi!"
             }).then((result) => {
                 if (result.isConfirmed) {
 
@@ -72,7 +72,7 @@
 
                             } else if (data.status == 'error') {
                                 Swal.fire(
-                                    "Can't Delete",
+                                    "Không thể xóa",
                                     data.message,
                                     'error'
                                 );

@@ -17,7 +17,7 @@ class StoreAddressController extends Controller
         if (!empty($request->get('keyword'))) {
             $storeAddress = StoreAddress::where('store_name', 'like', '%' . $request->get('keyword') . '%')->orWhere('phone', 'like', '%' . $request->get('keyword') . '%');
             if ($storeAddress->count() == 0) {
-                session()->flash('message', 'Record Not Found');
+                session()->flash('message', 'Không tìm thấy bản ghi');
             } else {
                 session()->forget('message');
             }
@@ -70,7 +70,7 @@ class StoreAddressController extends Controller
         $storeAddress->status = $request->status;
         $storeAddress->save();
         // Set a success toast, with a title
-        toastr()->success('Admin successfully added storeAddress');
+        toastr()->success('Thêm địa chỉ cửa hàng thành công!', 'Thành Công');
         return redirect()->back();
     }
 
@@ -122,7 +122,7 @@ class StoreAddressController extends Controller
         $storeAddress->status = $request->status;
         $storeAddress->save();
         // Set a success toast, with a title
-        toastr()->success('Admin updated slider successfully');
+        toastr()->success('Cập nhật địa chỉ cửa hàng thành công ','Thành công');
         return redirect()->back();
     }
 
@@ -131,7 +131,7 @@ class StoreAddressController extends Controller
         $storeAddress = StoreAddress::find($id);
 
         $storeAddress->delete();
-        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
+        return response(['status' => 'success', 'message' => 'Xoá thành công!']);
     }
 
     public function showTrash(Request $request)
@@ -144,7 +144,7 @@ class StoreAddressController extends Controller
             $keyword = $request->get('keyword');
             $getStoreAddress = $getStoreAddress->where('store_name', 'like', '%' . $request->get('keyword') . '%')->orWhere('phone', 'like', '%' . $request->get('keyword') . '%');
             if ($getStoreAddress->count() == 0) {
-                session()->flash('message', 'Record Not Found');
+                session()->flash('message', 'Không tìm thấy bản ghi');
             } else {
                 session()->forget('message');
             }
@@ -155,7 +155,7 @@ class StoreAddressController extends Controller
         $getStoreAddress = $getStoreAddress->paginate(15);
         // Nếu $getStoreAddress rỗng
         if ($getStoreAddress->isEmpty()) {
-            session()->flash('message', 'Record Not Found');
+            session()->flash('message', 'Không tìm thấy bản ghi');
             return view('admin.store-address.trash-list', compact('getStoreAddress'));
         }
         // Trả về view với dữ liệu các category đã bị xóa
@@ -165,18 +165,18 @@ class StoreAddressController extends Controller
     {
         try {
             StoreAddress::destroyTrashedItem($id);
-            return response(['status' => 'success', 'Deleted Forever Successfully!']);
+            return response(['status' => 'success', 'Xóa vĩnh viễn thành công!']);
         } catch (Exception $e) {
-            return response(['status' => 'error', 'Deleted Faild! ' . $e . '']);
+            return response(['status' => 'error', 'Xóa vĩnh viễn thất bại! ' . $e . '']);
         }
     }
     public function restoreTrash($id)
     {
         try {
             StoreAddress::restoreTrashed($id);
-            return response(['status' => 'success', 'Successfully!']);
+            return response(['status' => 'success', 'Khôi phục thành công!']);
         } catch (Exception $e) {
-            return response(['status' => 'error', 'message' => 'Restore Faild ' . $e . '']);
+            return response(['status' => 'error', 'message' => 'Khôi phục thất bại ' . $e . '']);
         }
     }
 
@@ -185,6 +185,6 @@ class StoreAddressController extends Controller
         $storeAddress = StoreAddress::findOrFail($request->id);
         $storeAddress->status = $request->status == 'true' ? 1 : 0;
         $storeAddress->save();
-        return response(['message' => 'Status has been updated']);
+        return response(['message' => 'Trạng thái đã được cập nhật']);
     }
 }
