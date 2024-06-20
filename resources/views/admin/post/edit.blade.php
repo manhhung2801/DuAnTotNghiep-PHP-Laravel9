@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label for="editor" class="form-label">Nội dung</label>
+                    <label for="editor" class="form-label">Nội dung bài viết</label>
                     <textarea class="form-control description" name="description" id="editor">{!! $post->description !!}</textarea>
                 </div>
                 <div class="col-md-2">

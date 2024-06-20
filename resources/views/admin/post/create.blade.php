@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label class="form-label">Nội dung</label>
+                    <label class="form-label">Nội dung bài viết</label>
                     <textarea id="editor1" class="form-control description" name="description" ></textarea>
                 </div>
                 <div class="col-md-2">
