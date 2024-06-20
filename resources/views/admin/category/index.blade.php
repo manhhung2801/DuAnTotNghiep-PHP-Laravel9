@@ -42,10 +42,10 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Tên</th>
-                                <th>Thứ Hạng</th>
-                                <th>Hình Ảnh</th>
-                                <th>Trạng Thái</th>
-                                <th>Hành Động</th>
+                                <th>Thứ hạng</th>
+                                <th>Hình ảnh</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -73,8 +73,8 @@
                                         </div>
 
                                     <td>
-                                        <a class="btn btn-primary" href="{{ route('admin.category.edit', $category->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh Sửa</a>
-                                        <a class="btn btn-danger delete-item" href="{{ route("admin.category.destroy", $category->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa Bỏ</a>
+                                        <a class="btn btn-primary" href="{{ route('admin.category.edit', $category->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
+                                        <a class="btn btn-danger delete-item" href="{{ route("admin.category.destroy", $category->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>
                                     </td>
                                 </tr>
                             @endforeach

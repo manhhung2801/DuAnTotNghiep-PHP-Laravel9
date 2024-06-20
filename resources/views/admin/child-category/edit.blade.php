@@ -47,7 +47,7 @@
                         <input type="text" class="form-control" id="input1" value="{{ $childCategory->name }}" name="name" placeholder="Nhập tên">
                     </div>
                     <div class="col-md-6">
-                        <label for="input7" class="form-label">Danh Mục</label>
+                        <label for="input7" class="form-label">Danh mục</label>
                         <select id="input9" class="form-select main-category" name="category">
                             @foreach ($categories as $category)
                                 <option {{ $childCategory->category_id == $category->id ? "selected" : "" }} value="{{ $category->id }}">{{ $category->name }}</option>
@@ -55,7 +55,7 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="input7" class="form-label">Danh Mục Phụ</label>
+                        <label for="input7" class="form-label">Danh mục phụ</label>
                         <select id="input9" class="form-select sub-category" name="sub_category">
                             @foreach ($subCategories as $subCategory)
                                 <option {{$subCategory->id == $childCategory->sub_category_id ? 'selected' : '' }} value="{{$subCategory->id}}">{{$subCategory->name}}</option>
@@ -65,8 +65,8 @@
                     <div class="col-md-6">
                         <label for="input9" class="form-label">Trạng Thái</label>
                         <select id="input9" class="form-select" name="status">
-                            <option {{ $childCategory->status == 1 ? "selected" : "" }} value="1">Hoạt Động</option>
-                            <option {{ $childCategory->status == 0 ? "selected" : "" }} value="0">Không Hoạt Động</option>
+                            <option {{ $childCategory->status == 1 ? "selected" : "" }} value="1">Hoạt động</option>
+                            <option {{ $childCategory->status == 0 ? "selected" : "" }} value="0">Không hoạt động</option>
                         </select>
                     </div>
                     <div class="col-md-12">

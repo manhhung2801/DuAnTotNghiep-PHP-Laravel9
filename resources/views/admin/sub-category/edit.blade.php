@@ -37,7 +37,7 @@
                                 @endif
                             </div>
                             <div class="col-md-9">
-                                <label for="input7" class="form-label">Hình Ảnh</label>
+                                <label for="input7" class="form-label">Hình ảnh</label>
                                 <input type="file" class="form-control" id="image" name="image">
                             </div>
 
@@ -46,10 +46,10 @@
 
                     <div class="col-md-6">
                         <label for="input1" class="form-label">Tên</label>
-                        <input type="text" class="form-control" value="{{ $subCategory->name }}" id="input1" name="name" placeholder="Nhập Tên">
+                        <input type="text" class="form-control" value="{{ $subCategory->name }}" id="input1" name="name" placeholder="Nhập tên">
                     </div>
                     <div class="col-md-6">
-                        <label for="input7" class="form-label">Danh Mục</label>
+                        <label for="input7" class="form-label">Danh mục</label>
                         <select id="input9" class="form-select" name="category">
                             @foreach ($categories as $category)
                                 <option {{ $subCategory->category_id == $category->id ? "selected" : "" }} value="{{ $category->id }}">{{ $category->name }}</option>
@@ -57,10 +57,10 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="input9" class="form-label">Trạng Thái</label>
+                        <label for="input9" class="form-label">Trạng thái</label>
                         <select id="input9" class="form-select" name="status">
-                            <option {{ $subCategory->status == 1 ? "selected" : ""  }}  value="1">Hoạt Động</option>
-                            <option {{ $subCategory->status == 0 ? "selected" : ""  }}  value="0">Không Hoạt Động</option>
+                            <option {{ $subCategory->status == 1 ? "selected" : ""  }}  value="1">Hoạt động</option>
+                            <option {{ $subCategory->status == 0 ? "selected" : ""  }}  value="0">Không hoạt động</option>
                         </select>
                     </div>
                     <div class="col-md-2">

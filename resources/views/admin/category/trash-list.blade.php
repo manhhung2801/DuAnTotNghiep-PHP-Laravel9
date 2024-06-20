@@ -45,8 +45,8 @@
                         <tr>
                             <th>ID</th>
                             <th>Tên</th>
-                            <th>Hình Ảnh</th>
-                            <th>Hành Động</th>
+                            <th>Hình ảnh</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,7 +63,7 @@
                             </td>
                             <td>
                                 <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.category.restore-trash', $category->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Khôi phục</a>
-                                <a class="btn btn-danger delete-item" href="{{ route('admin.category.destroy-trash', $category->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa Vĩnh Viễn</a>
+                                <a class="btn btn-danger delete-item" href="{{ route('admin.category.destroy-trash', $category->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa vĩnh viễn</a>
                             </td>
                         </tr>
                         @endforeach

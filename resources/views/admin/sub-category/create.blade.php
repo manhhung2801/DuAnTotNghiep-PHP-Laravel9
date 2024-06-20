@@ -29,15 +29,15 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="input7" class="form-label">Hình Ảnh</label>
+                            <label for="input7" class="form-label">Hình ảnh</label>
                             <input type="file" class="form-control" id="image" name="image">
                         </div>
                         <div class="col-md-6">
                             <label for="input1" class="form-label">Tên</label>
-                            <input type="text" class="form-control" id="input1" name="name" placeholder="Nhập Tên">
+                            <input type="text" class="form-control" id="input1" name="name" placeholder="Nhập tên">
                         </div>
                         <div class="col-md-6 mt-3">
-                            <label for="input7" class="form-label">Danh Mục</label>
+                            <label for="input7" class="form-label">Danh mục</label>
                             <select id="input9" class="form-select" name="category">
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -45,10 +45,10 @@
                             </select>
                         </div>
                         <div class="col-md-6 mt-3">
-                            <label for="input9" class="form-label">Trạng Thái</label>
+                            <label for="input9" class="form-label">Trạng thái</label>
                             <select id="input9" class="form-select" name="status">
-                                <option value="1">Hoạt Động</option>
-                                <option value="0">Không Hoạt Động</option>
+                                <option value="1">Hoạt động</option>
+                                <option value="0">Không hoạt động</option>
                             </select>
                         </div>
                         <div class="col-md-2 mt-4">

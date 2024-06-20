@@ -95,7 +95,7 @@
                                         @endif
                                     </div>
                                     <div class="col-md-9">
-                                        <label for="input7" class="form-label">Hình Ảnh</label>
+                                        <label for="input7" class="form-label">Hình ảnh</label>
                                         <input type="file" class="form-control" id="image" name="image">
                                     </div>
                                 </div>
@@ -103,18 +103,18 @@
 
                             <div class="col-md-6">
                                 <label for="input1" class="form-label">Tên</label>
-                                <input type="text" class="form-control" id="input1" name="name" value="{{ $category->name }}" placeholder="Nhập Tên">
+                                <input type="text" class="form-control" id="input1" name="name" value="{{ $category->name }}" placeholder="Nhập tên">
                             </div>
 
                             <div class="col-md-6">
-                                <label for="input1" class="form-label">Thứ Hạng</label>
+                                <label for="input1" class="form-label">Thứ hạng</label>
                                 <input type="number" class="form-control" name="rank" placeholder="Nhập Thứ Hạng" value="{{ $category->rank }}">
                             </div>
 							<div class="col-md-6">
-								<label for="input9" class="form-label">Trạng Thái</label>
+								<label for="input9" class="form-label">Trạng thái</label>
 								<select id="input9" class="form-select" name="status">
-									<option {{ $category->status == 1 ? "selected" : ""  }} value="1">Hoạt Động</option>
-									<option {{ $category->status == 0 ? "selected" : ""  }} value="0">Không Hoạt Động</option>
+									<option {{ $category->status == 1 ? "selected" : ""  }} value="1">Hoạt động</option>
+									<option {{ $category->status == 0 ? "selected" : ""  }} value="0">Không hoạt động</option>
 								</select>
 							</div>
 							<div class="col-md-2">
