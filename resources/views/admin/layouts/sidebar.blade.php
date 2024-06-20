@@ -40,10 +40,10 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-sliders"></i>
                 </div>
-                <div class="menu-title">Slider</div>
+                <div class="menu-title">Thanh trượt</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.slider.index') }}"><i class='bx bx-radio-circle'></i>List Sliders</a>
+                <li> <a href="{{ route('admin.slider.index') }}"><i class='bx bx-radio-circle'></i>Danh sách thanh trượt</a>
                 </li>
             </ul>
         </li>
@@ -108,11 +108,11 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-location-dot"></i>
                 </div>
-                <div class="menu-title">StoreAddress</div>
+                <div class="menu-title">Địa chỉ cửa hàng</div>
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('admin.storeAddress.index') }}"><i class='bx bx-radio-circle'></i>List StoreAddress</a>
+                    <a href="{{ route('admin.storeAddress.index') }}"><i class='bx bx-radio-circle'></i>Danh sách cửa hàng</a>
                 </li>
             </ul>
         </li>

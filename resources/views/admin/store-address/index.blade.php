@@ -1,18 +1,18 @@
 @extends('admin.layouts.master')
 
-@section('title', 'List StoreAddress')
+@section('title', 'Danh sách địa chỉ cửa hàng')
 
 @section('content')
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Sliders</div>
+            <div class="breadcrumb-title pe-3">Địa chỉ cửa hàng</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">List StoreAddress</li>
+                        <li class="breadcrumb-item active" aria-current="page">Danh sách địa chỉ cửa hàng</li>
                     </ol>
                 </nav>
             </div>
@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="action_start float-start d-flex">
-                    <h6 class="mt-2 mb-0 text-uppercase float-start">List Store-Address</h6>
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">Danh sách địa chỉ cửa hàng</h6>
                     <form action="" method="get">
                         {{-- @csrf --}}
                         <div class="form-search ms-2 ">
@@ -34,29 +34,26 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('admin.storeAddress.index') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
+                    <a href="{{ route('admin.storeAddress.index') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Cài lại</a>
                 </div>
-                <a href="{{ route('admin.storeAddress.trash-list') }}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>Trashed
-                    Store-Address</a>
-                <a href="{{ route('admin.storeAddress.create') }}" class="btn btn-primary float-end me-2"><i class="fa-solid fa-plus text-light fs-6"></i>Add
-                    Store-Address</a>
+                <a href="{{ route('admin.storeAddress.trash-list') }}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>Thùng rác</a>
+                <a href="{{ route('admin.storeAddress.create') }}" class="btn btn-primary float-end me-2"><i class="fa-solid fa-plus text-light fs-6"></i>Thêm mới</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-
                     <table id="example" class="table table-striped table-bordered " style="width:100%">
                         <thead >
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>Ward</th>
-                                <th>District</th>
-                                <th>Province</th>
+                            <tr class="text-center">
+                                <th>Stt</th>
+                                <th>Tên</th>
+                                <th>Địa chỉ</th>
+                                <th>Phường, Xã</th>
+                                <th>Quận, Huyện</th>
+                                <th>Tỉnh, Thành phố</th>
                                 <th>Email</th>
-                                <th>Phone</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Số điện thoại</th>
+                                <th>Trạng thái</th>
+                                <th>Tuỳ chọn</th>
                             </tr>
                         </thead>
                         <tbody >
@@ -81,11 +78,11 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td>
+                                    <td class="text-end">
                                         <a class="btn btn-primary"
-                                            href="{{ route('admin.storeAddress.edit', $storeAddress->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
+                                            href="{{ route('admin.storeAddress.edit', $storeAddress->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Sửa</a>
                                         <a class="btn btn-danger delete-item"
-                                            href="{{ route('admin.storeAddress.destroy', $storeAddress->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
+                                            href="{{ route('admin.storeAddress.destroy', $storeAddress->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xoá</a>
                                     </td>
                                 </tr>
                             @endforeach
