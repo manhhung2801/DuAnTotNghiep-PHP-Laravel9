@@ -61,12 +61,12 @@ class CategoryController extends Controller
             'rank' => ['numeric'],
             'status' => ['required'],
         ], [
-            'name.required' => 'Name không được để trống.',
-            'image.required' => 'Image không được để trống.',
-            'image.image' => 'Định dạng không hợp lệ. Yêu cầu Image.',
-            'image.mimes' => 'Image phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
-            'image.max' => 'Image không thể vượt quá 2048 kilobytes.',
-            'rank.numeric' => 'Rank phải là một số.',
+            'name.required' => 'Tên không được để trống.',
+            'image.required' => 'Hình ảnh không được để trống.',
+            'image.image' => 'Định dạng không hợp lệ. Yêu cầu Hình ảnh.',
+            'image.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
+            'image.max' => 'Hình ảnh không thể vượt quá 2048 kilobytes.',
+            'rank.numeric' => 'Thứ hạng phải là một số.',
         ]);
 
         $category = new Category();
@@ -84,7 +84,7 @@ class CategoryController extends Controller
         }
         $category->save();
         // Set a success toast, with a title
-        toastr()->success('Thêm Category mới thành công!', 'Thành Công');
+        toastr()->success('Tạo mới thành công!', 'success');
 
         return redirect()->back();
     }
@@ -127,11 +127,11 @@ class CategoryController extends Controller
             'rank' => ['numeric'],
             'status' => ['required'],
         ], [
-            'name.required' => 'Name không được để trống.',
-            'image.image' => 'Định dạng không hợp lệ. Yêu cầu Image.',
-            'image.mimes' => 'Image phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
-            'image.max' => 'Image không thể vượt quá 2048 kilobytes.',
-            'rank.numeric' => 'Rank phải là một số.',
+            'name.required' => 'Tên không được để trống.',
+            'image.image' => 'Định dạng không hợp lệ. Yêu cầu Hình ảnh.',
+            'image.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
+            'image.max' => 'Hình ảnh không thể vượt quá 2048 kilobytes.',
+            'rank.numeric' => 'Thứ hạng phải là một số.',
         ]);
 
         $category =  Category::findOrFail($id);
@@ -153,7 +153,7 @@ class CategoryController extends Controller
         $category->save();
 
         // Set a success toast, with a title
-        toastr()->success('Cập nhật Category thành công!', 'success');
+        toastr()->success('Cập nhật thành công!', 'success');
 
         return redirect()->back();
     }
@@ -176,7 +176,7 @@ class CategoryController extends Controller
 
         $category->delete();
 
-        return response(['status' => 'success', 'Đã xóa Category thành công!']);
+        return response(['status' => 'success', 'Đã xóa thành công!']);
     }
 
     public function changeStatus(Request $request)
@@ -185,7 +185,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($request->id);
         $category->status = $request->status == 'true' ? 1 : 0;
         $category->save();
-        return response(['message' => 'Thay đổi status thái thành công!']);
+        return response(['message' => 'Thay đổi trạng thái thành công!']);
     }
 
     // show trash list and search

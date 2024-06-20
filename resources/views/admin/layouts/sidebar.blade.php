@@ -18,21 +18,19 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
-        <li class="menu-label">UI Elements</li>
+        <li class="menu-label">Quản Lý</li>
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-layer-group"></i>
                 </div>
-                <div class="menu-title">Category</div>
+                <div class="menu-title">Danh Mục</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.category.index') }}"><i class='bx bx-radio-circle'></i>List Categories</a>
+                <li> <a href="{{ route('admin.category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh Mục</a>
                 </li>
-                <li> <a href="{{ route('admin.sub-category.index') }}"><i class='bx bx-radio-circle'></i>Sub
-                        Categories</a>
+                <li> <a href="{{ route('admin.sub-category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh Phụ</a>
                 </li>
-                <li> <a href="{{ route('admin.child-category.index') }}"><i class='bx bx-radio-circle'></i>Child
-                        Category</a>
+                <li> <a href="{{ route('admin.child-category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh Con</a>
                 </li>
             </ul>
         </li>
@@ -96,11 +94,11 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
                 </div>
-                <div class="menu-title">Users</div>
+                <div class="menu-title">Người Dùng</div>
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('admin.user-management.index') }}"><i class='bx bx-radio-circle'></i>List Users</a>
+                    <a href="{{ route('admin.user-management.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Người Dùng</a>
                 </li>
             </ul>
         </li>
