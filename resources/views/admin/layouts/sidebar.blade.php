@@ -28,9 +28,9 @@
             <ul>
                 <li> <a href="{{ route('admin.category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh Mục</a>
                 </li>
-                <li> <a href="{{ route('admin.sub-category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh Phụ</a>
+                <li> <a href="{{ route('admin.sub-category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh Mục Phụ</a>
                 </li>
-                <li> <a href="{{ route('admin.child-category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh Con</a>
+                <li> <a href="{{ route('admin.child-category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh Mục Con</a>
                 </li>
             </ul>
         </li>

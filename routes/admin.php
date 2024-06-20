@@ -114,3 +114,7 @@ Route::get('/post/restore/{id}',[PostsController::class,'restore'])->name('post.
 Route::get('/post/deleted/{id}',[PostsController::class,'deleteVariant'])->name('post.deleted-post');
 Route::put('/post/change-status',[PostsController::class,'changeStatus'])->name('post.change-status');
 Route::resource('/post',PostsController::class);
+
+// Route::fallback(function () {
+//     return route("admin.login");
+// });
