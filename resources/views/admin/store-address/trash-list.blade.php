@@ -50,9 +50,9 @@
                                 <th>Tên cửa hàng</th>
                                 <th>Email</th>
                                 <th>Địa chỉ</th>
-                                <th>Phường, Xã</th>
+                                {{-- <th>Phường, Xã</th>
                                 <th>Quận, Huyện</th>
-                                <th>Tỉnh, Thành phố</th>
+                                <th>Tỉnh, Thành phố</th> --}}
                                 <th>Số điện thoại</th>
                                 <th>Trạng thái</th>
                                 <th>Hành động</th>
@@ -64,9 +64,9 @@
                                     <td>{{ $storeAddress->id }}</td>
                                     <td>{{ $storeAddress->store_name }}</td>
                                     <td>{{ $storeAddress->address }}</td>
-                                    <td>{{ $storeAddress->ward }}</td>
+                                    {{-- <td>{{ $storeAddress->ward }}</td>
                                     <td>{{ $storeAddress->district }}</td>
-                                    <td>{{ $storeAddress->province }}</td>
+                                    <td>{{ $storeAddress->province }}</td> --}}
                                     <td>{{ $storeAddress->email }}</td>
                                     <td>{{ $storeAddress->phone }}</td>
                                     <td>

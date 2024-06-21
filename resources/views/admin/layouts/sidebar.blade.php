@@ -77,16 +77,16 @@
         </li>
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
+                <div class="parent-icon"><i class="fa-solid fa-newspaper"></i>
                 </div>
-                <div class="menu-title">Tin tức</div>
+                <div class="menu-title">Bài viết</div>
             </a>
             <ul>
                 <li>
-                    <a href="{{ route("admin.post-cate.index") }}"><i class='bx bx-radio-circle'></i>Loại Tin Tức</a>
+                    <a href="{{ route("admin.post-category.index") }}"><i class='bx bx-radio-circle'></i>Loại bài viết</a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.post.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Tin Tức</a>
+                    <a href="{{ route('admin.post.index') }}"><i class='bx bx-radio-circle'></i>Danh sách bài viết</a>
                 <li>
             </ul>
         </li>
