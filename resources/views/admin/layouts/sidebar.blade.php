@@ -61,11 +61,11 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
                 </div>
-                <div class="menu-title">Products</div>
+                <div class="menu-title">Sản phẩm</div>
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('admin.product.index') }}"><i class='bx bx-radio-circle'></i>List Product</a>
+                    <a href="{{ route('admin.product.index') }}"><i class='bx bx-radio-circle'></i>Danh sách sản phẩm</a>
                 </li>
                 <li>
                     <a href="{{ route('admin.variant.index') }}"><i class='bx bx-radio-circle'></i>Variants</a>
