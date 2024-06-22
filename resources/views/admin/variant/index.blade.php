@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Variant')
+@section('title', 'Biến thể')
 
 @section('content')
     <div class="page-content">
@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="action_start float-start d-flex">
-                    <h6 class="mt-2 mb-0 text-uppercase float-start">Biến thể</h6>
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">Danh sách biến thể</h6>
                     <div class="form-search ms-2">
                         <form action="" method="get">
                             <div class="input-group">
@@ -33,12 +33,12 @@
                         </form>
                     </div>
                     <a href="{{ route('admin.variant.index') }}" class="me-2 btn btn-success float-end ms-2"><i
-                            class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
+                            class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
                 </div>
                 <a href="{{ route('admin.variant.trashed-variant') }}" class="btn btn-danger float-end "><i
-                        class="fa-solid fa-trash-can fs-6"></i>Các biến thể tạm xóa</a>
+                        class="fa-solid fa-trash-can fs-6"></i>Thùng rác</a>
                 <a href="{{ route('admin.variant.create') }}" class="btn btn-primary float-end me-2"><i
-                        class="fa-solid fa-plus text-light fs-6"></i>Thêm mới biến thể</a>
+                        class="fa-solid fa-plus text-light fs-6"></i>Thêm mới</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

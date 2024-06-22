@@ -57,14 +57,14 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:200'],
-            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048'],
             'rank' => ['numeric'],
             'status' => ['required'],
         ], [
             'name.required' => 'Tên không được để trống.',
             'image.required' => 'Hình ảnh không được để trống.',
             'image.image' => 'Định dạng không hợp lệ. Yêu cầu Hình ảnh.',
-            'image.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
+            'image.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg, webp.',
             'image.max' => 'Hình ảnh không thể vượt quá 2048 kilobytes.',
             'rank.numeric' => 'Thứ hạng phải là một số.',
         ]);
@@ -123,13 +123,13 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:200'],
-            'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048'],
             'rank' => ['numeric'],
             'status' => ['required'],
         ], [
             'name.required' => 'Tên không được để trống.',
             'image.image' => 'Định dạng không hợp lệ. Yêu cầu Hình ảnh.',
-            'image.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
+            'image.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg, webp',
             'image.max' => 'Hình ảnh không thể vượt quá 2048 kilobytes.',
             'rank.numeric' => 'Thứ hạng phải là một số.',
         ]);
