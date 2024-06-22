@@ -87,7 +87,6 @@
                                     @endif
                                 </div>
                             </td>
-
                             <td class="text-end">
                                 <a class="btn btn-primary" href="{{ route('admin.post.edit',$post->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
                                 <a class="btn btn-danger delete-item" href="{{ route("admin.post.destroy", $post->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>

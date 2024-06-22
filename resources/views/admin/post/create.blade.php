@@ -48,6 +48,7 @@
                     <label for="image" class="form-label">Hình ảnh</label>
                     <input type="file" class="form-control" id="image" name="image" accept="image/*">
                 </div>
+
                 <div class="col-md-6">
                     <label for="input7" class="form-label">Tiêu đề</label>
                     <input type="text" class="form-control" id="input1" name="title" placeholder="title">
@@ -144,7 +145,7 @@
                         class: 'ck-heading_heading6'
                     }]
                 },
-                placeholder: 'Long description!',
+             
                 fontFamily: {
                     options: ['default', 'Arial, Helvetica, sans-serif', 'Courier New, Courier, monospace', 'Georgia, serif', 'Lucida Sans Unicode, Lucida Grande, sans-serif', 'Tahoma, Geneva, sans-serif', 'Times New Roman, Times, serif', 'Trebuchet MS, Helvetica, sans-serif', 'Verdana, Geneva, sans-serif'],
                     supportAllValues: true
@@ -189,5 +190,8 @@
             CKEDITOR.ClassicEditor.create(document.getElementById("editor1"), editorConfig).catch(error => {
                 console.error(error);
             });
+            CKEDITOR.ClassicEditor.create(document.getElementById("input1"), editorConfig).catch(error => {
+        console.error(error);
+    });
         </script>
         @endsection
