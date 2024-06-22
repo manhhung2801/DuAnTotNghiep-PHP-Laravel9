@@ -72,17 +72,16 @@
                         <option value="0">Ngừng hoạt động</option>
                     </select>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-6">
                         <label for="seotitle" class="form-label">Tiêu đề SEO</label>
                         <input type="text" class="form-control" id="seotitle" name="seo_title" >
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="seodesc" class="form-label">Mô tả SEO</label>
                         <input type="text" class="form-control" id="seodesc" name="seo_description">
                     </div>
-                </div>
+              
                 <div class="col-md-12 mb-3">
                     <label class="form-label">Nội dung bài viết</label>
                     <textarea id="editor1" class="form-control description" name="description" ></textarea>
@@ -190,8 +189,6 @@
             CKEDITOR.ClassicEditor.create(document.getElementById("editor1"), editorConfig).catch(error => {
                 console.error(error);
             });
-            CKEDITOR.ClassicEditor.create(document.getElementById("input1"), editorConfig).catch(error => {
-        console.error(error);
-    });
+   
         </script>
         @endsection
