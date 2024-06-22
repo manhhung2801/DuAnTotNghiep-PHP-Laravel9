@@ -4,9 +4,9 @@
     </div>
     <div class="scroll_animation row">
         @foreach ($categoryHot as $cate )
-        <div class="category_hot_item col-lg-2 col-md-2 col-sm-4 col-4 mb-3">
+        <div class="category_hot_item col-lg-2 col-md-2 col-sm-4 col-4 mb-3 px-2">
             <div class="card border-0 rounded-4">
-                <div class="card-body">
+                <div class="card-body px-1">
                     <a href="#" title="iPhone" class="cate-item list-group-item">
                         <div class="box-cate text-center">
                             <div class="cate-image_home ">
