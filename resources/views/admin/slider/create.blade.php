@@ -1,18 +1,18 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Create Slider')
+@section('title', 'Thêm thanh trượt')
 
 @section('content')
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Sliders</div>
+            <div class="breadcrumb-title pe-3">Thanh trượt</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Create Slider</li>
+                        <li class="breadcrumb-item active" aria-current="page">Thêm thanh trượt</li>
                     </ol>
                 </nav>
             </div>
@@ -20,56 +20,56 @@
         <!--end breadcrumb-->
         <div class="card">
             <div class="card-header">
-                <h6 class="mt-2 mb-0 text-uppercase float-start">Create Slider</h6>
-                <a href="{{ route('admin.slider.index') }}" class="btn btn-primary float-end">Back</a>
+                <h6 class="mt-2 mb-0 text-uppercase float-start">Thêm thanh trượt</h6>
+                <a href="{{ route('admin.slider.index') }}" class="btn btn-primary float-end">Quay lại</a>
             </div>
             <div class="card-body">
                 <form class="row g-3" action="{{ route('admin.slider.store') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-4">
-                        <label for="input1" class="form-label">Type</label>
+                        <label for="input1" class="form-label">Kiểu</label>
                         <input type="text" class="form-control" id="input1" name="type"
                             value="{{ old('type') }}">
                     </div>
                     <div class="col-md-4">
-                        <label for="input2" class="form-label">Title</label>
+                        <label for="input2" class="form-label">Tiêu đề</label>
                         <input type="text" class="form-control" id="input2" name='title'
                             value="{{ old('title') }}">
                     </div>
                     <div class="col-md-4">
-                        <label for="input3" class="form-label">Banner</label>
+                        <label for="input3" class="form-label">Hình ảnh</label>
                         <div class="col-sm-9 text-secondary">
                             <input id="input3" type="file" class="form-control" name="banner" />
                             {{ old('banner') }}
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="input4" class="form-label">Starting price</label>
-                        <input type="text" class="form-control" id="input4" name="starting_price"
+                        <label for="input4" class="form-label">Giá</label>
+                        <input type="number" class="form-control" id="input4" name="starting_price"
                             value="{{ old('starting_price') }}">
                     </div>
                     <div class="col-md-4">
-                        <label for="input5" class="form-label">Serial</label>
+                        <label for="input5" class="form-label">Số seri</label>
                         <input type="number" class="form-control" id="input5" name='serial'
                             value="{{ old('serial') }}">
                     </div>
                     <div class="col-md-4">
-                        <label for="input7" class="form-label">Status</label>
+                        <label for="input7" class="form-label">Trạng thái</label>
                         <select id="input7" class="form-select" name="status">
-                            <option selected="" value="1">Active</option>
-                            <option value="0">Inactive</option>
+                            <option selected="" value="1">Đang hoạt động</option>
+                            <option value="0">Ngừng hoạt động</option>
                         </select>
                     </div>
                     <div class="col-md-12">
-                        <label for="input6" class="form-label">Url</label>
+                        <label for="input6" class="form-label">Đường dẫn</label>
                         <input type="text" class="form-control" id="input6" name="btn_url"
                             value="{{ old('btn_url') }}">
                     </div>
                     
                     <div class="col-md-2">
                         <div class="d-grid align-items-center gap-3">
-                            <button type="submit" class="btn btn-primary px-4">Create</button>
+                            <button type="submit" class="btn btn-primary px-4">Thêm</button>
                         </div>
                     </div>
                 </form>

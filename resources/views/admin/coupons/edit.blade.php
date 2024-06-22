@@ -6,13 +6,13 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Couponss</div>
+        <div class="breadcrumb-title pe-3">Phiếu giảm giá</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Update Coupons</li>
+                    <li class="breadcrumb-item active" aria-current="page">Cập nhật</li>
                 </ol>
             </nav>
         </div>
@@ -20,8 +20,8 @@
     <!--end breadcrumb-->
     <div class="card">
         <div class="card-header">
-            <h6 class="mt-2 mb-0 text-uppercase float-start">Update Category</h6>
-            <a href="{{ route('admin.coupons.index') }}" class="btn btn-primary float-end">Back</a>
+            <h6 class="mt-2 mb-0 text-uppercase float-start">Cập nhật</h6>
+            <a href="{{ route('admin.coupons.index') }}" class="btn btn-primary float-end">Quay lại</a>
         </div>
         <div class="card-body">
             <form class="row g-3" action="{{ route('admin.coupons.update', $Coupons->id) }}" method="POST" enctype="multipart/form-data">
@@ -75,7 +75,7 @@
                 </div>
                 <div class="col-md-2">
                     <div class="d-grid align-items-center gap-3">
-                        <button type="submit" class="btn btn-primary px-4">Update</button>
+                        <button type="submit" class="btn btn-primary px-4">Cập nhật</button>
                     </div>
                 </div>
             </form>

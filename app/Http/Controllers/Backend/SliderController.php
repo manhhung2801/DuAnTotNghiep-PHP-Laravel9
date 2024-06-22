@@ -19,7 +19,7 @@ class SliderController extends Controller
         if (!empty($request->get('keyword'))) {
             $sliders = Slider::where('type', 'like', '%' . $request->get('keyword') . '%')->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
             if ($sliders->count() == 0) {
-                session()->flash('message', 'Record Not Found');
+                session()->flash('message', 'Không tìm thấy bản ghi');
             } else {
                 session()->forget('message');
             }
@@ -39,15 +39,26 @@ class SliderController extends Controller
 
     public function store(Request $request)
     {
-     
+
         $request->validate([
-            'type' => ['required','string', 'max:200'],
-            'title' => ['required','string', 'max:200'],
-            'starting_price' => ['required',],
+            'type' => ['required', 'string', 'max:200'],
+            'title' => ['required', 'string', 'max:200'],
+            'starting_price' => ['required', 'numeric'],
             'btn_url' => ['required',],
-            'serial' => ['required',],
-            'status' => ['required',],
+            'serial' => ['required', 'numeric'],
+            'status' => ['required'],
             'banner' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048']
+        ],[
+            'type.required'=> 'Kiểu không được để trống',
+            'type.max'=> 'Kiểu không được quá 200 từ',
+            'title.required'=> 'Tiêu đề không được để trống',
+            'title.max'=> 'Tiêu đề không được quá 200 từ',
+            'starting_price.required'=> 'Giá không được để trống',
+            'btn_url.required'=> 'Đường dẫn không được để trống',
+            'serial.required'=> 'Số seri không được để trống',
+            'banner.required'=> 'Hình ảnh không được để trống',
+            'banner.mimes'=> 'Hình ảnh phải là một trong các định dạng sau: jpeg,png,jpg,gif,svg,webp',
+            'banner.max'=> 'Kích thước hình ảnh không được quá 2048',
         ]);
 
         $slider = new Slider;
@@ -60,14 +71,14 @@ class SliderController extends Controller
 
         if ($request->hasFile('banner')) {
             $image = $request->file('banner');
-            $imageName = 'slider_' .time(). '.' . $image->extension();
+            $imageName = 'slider_' . time() . '.' . $image->extension();
             $image->move(public_path('uploads/slider'), $imageName);
             $slider->banner = $imageName;
         }
-      
+
         $slider->save();
         // Set a success toast, with a title
-        toastr()->success('Admin successfully added slider');
+        toastr()->success('Thêm Thanh trượt thành công!', 'Thành Công');
         return redirect()->back();
     }
 
@@ -87,14 +98,24 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'type' => ['required','string', 'max:200'],
-            'title' => ['required','string', 'max:200'],
-            'starting_price' => ['required',],
+            'type' => ['required', 'string', 'max:200'],
+            'title' => ['required', 'string', 'max:200'],
+            'starting_price' => ['required', 'numeric'],
             'btn_url' => ['required',],
-            'serial' => ['required',],
-            'status' => ['required',],
-            'banner' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048']
-        ] );
+            'serial' => ['required', 'numeric'],
+            'status' => ['required'],
+            'banner' => [ 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048']
+        ],[
+            'type.required'=> 'Kiểu không được để trống',
+            'type.max'=> 'Kiểu không được quá 200 từ',
+            'title.required'=> 'Tiêu đề không được để trống',
+            'title.max'=> 'Tiêu đề không được quá 200 từ',
+            'starting_price.required'=> 'Giá không được để trống',
+            'btn_url.required'=> 'Đường dẫn không được để trống',
+            'serial.required'=> 'Số seri không được để trống',
+            'banner.mimes'=> 'Hình ảnh phải là một trong các định dạng sau: jpeg,png,jpg,gif,svg,webp',
+            'banner.max'=> 'Kích thước hình ảnh không được quá 2048',
+        ]);
         $slider = Slider::findOrFail($id);
         $slider->type = $request->type;
         $slider->title = $request->title;
@@ -102,19 +123,18 @@ class SliderController extends Controller
         $slider->btn_url = $request->btn_url;
         $slider->serial = $request->serial;
         $slider->status = $request->status;
-      
+
         if ($request->hasFile('banner')) {
             if (File::exists(public_path("uploads/slider/{$slider->banner}"))) {
                 File::delete(public_path("uploads/slider/{$slider->banner}"));
-            }
+            } 
             $image = $request->file('banner');
-            $imageName  = 'slider_' .time(). '.' . $image->extension();
-            $image->move(public_path('uploads/slider'), $imageName );
-            $slider->banner = $imageName ;
+            $imageName  = 'slider_' . time() . '.' . $image->extension();
+            $image->move(public_path('uploads/slider'), $imageName);
+            $slider->banner = $imageName;
         }
-
         $slider->save();
-        toastr()->success('Admin updated slider successfully');
+        toastr()->success('Cập nhật thanh trượt thành công ','Thành công');
         return redirect()->back();
     }
 
@@ -123,7 +143,7 @@ class SliderController extends Controller
     {
         $slider = Slider::findOrFail($id);
         $slider->delete();
-        return response(['status' => 'success', 'messge' => 'Deleted Successfully!']);
+        return response(['status' => 'success', 'message' => 'Xoá thành công!']);
     }
 
     public function showTrash(Request $request)
@@ -136,7 +156,7 @@ class SliderController extends Controller
             $keyword = $request->get('keyword');
             $getSliders = $getSliders->where('type', 'like', '%' . $request->get('keyword') . '%')->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
             if ($getSliders->count() == 0) {
-                session()->flash('message', 'Record Not Found');
+                session()->flash('message', 'Không tìm thấy bản ghi');
             } else {
                 session()->forget('message');
             }
@@ -147,7 +167,7 @@ class SliderController extends Controller
         $getSliders = $getSliders->paginate(15);
         // Nếu $getSliders rỗngz
         if ($getSliders->isEmpty()) {
-            session()->flash('message', 'Record Not Found');
+            session()->flash('message', 'Không tìm thấy bản ghi');
             return view('admin.slider.trash-list', compact('getSliders'));
         }
         // Trả về view với dữ liệu các category đã bị xóa
@@ -164,18 +184,18 @@ class SliderController extends Controller
 
             Slider::destroyTrashedItem($id);
 
-            return response(['status' => 'success', 'Deleted Forever Successfully!']);
+            return response(['status' => 'success', 'Xóa vĩnh viễn thành công!']);
         } catch (Exception $e) {
-            return response(['status' => 'error', 'Deleted Faild! ' . $e . '']);
+            return response(['status' => 'error', 'Xóa vĩnh viễn thất bại! ' . $e . '']);
         }
     }
     public function restoreTrash($id)
     {
         try {
             Slider::restoreTrashed($id);
-            return response(['status' => 'success', 'Successfully!']);
+            return response(['status' => 'success', 'Khôi phục thành công!']);
         } catch (Exception $e) {
-            return response(['status' => 'error', 'message' => 'Restore Faild ' . $e . '']);
+            return response(['status' => 'error', 'message' => 'Khôi phục thất bại ' . $e . '']);
         }
     }
     public function changeStatus(Request $request)
@@ -183,6 +203,6 @@ class SliderController extends Controller
         $slider = Slider::findOrFail($request->id);
         $slider->status = $request->status == 'true' ? 1 : 0;
         $slider->save();
-        return response(['message' => 'Status has been updated']);
+        return response(['message' => 'Trạng thái đã được cập nhật']);
     }
 }

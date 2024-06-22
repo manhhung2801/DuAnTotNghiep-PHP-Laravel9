@@ -20,14 +20,14 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->text('image');
-            $table->string('title', 255);
+            $table->longText('title');
             $table->text('content');
             $table->string('slug', 255);
             $table->longText('description');
             $table->string('seo_title', 255)->nullable();
-            $table->string('type');
+            $table->boolean('type');
             $table->longText('seo_description')->nullable();
-            $table->string('status');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

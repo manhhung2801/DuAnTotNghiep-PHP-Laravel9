@@ -29,6 +29,7 @@ class LoginRequest extends FormRequest
         return [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
+            'user_type' => ['required', 'in:admin,user'],
         ];
     }
 
@@ -41,11 +42,22 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        $credentials = $this->only('email', 'password');
+        $userType = $this->input('user_type');
+
+        if ($userType === 'admin' && !Auth::attempt(array_merge($credentials, ['role' => 'admin']), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => 'Những thông tin xác thực này không khớp với hồ sơ của chúng tôi.',
+            ]);
+        }
+
+        if ($userType === 'user' && !Auth::attempt(array_merge($credentials, ['role' => 'user']), $this->boolean('remember'))) {
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'email' => 'Những thông tin xác thực này không khớp với hồ sơ của chúng tôi.',
             ]);
         }
 
@@ -59,7 +71,7 @@ class LoginRequest extends FormRequest
      */
     public function ensureIsNotRateLimited(): void
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 

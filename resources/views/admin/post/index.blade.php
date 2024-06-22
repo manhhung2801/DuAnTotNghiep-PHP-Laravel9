@@ -1,27 +1,27 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Variant')
+@section('title', 'Danh sách bài viết')
 
 @section('content')
-    <div class="page-content">
-        <!--breadcrumb-->
-        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Post</div>
-            <div class="ps-3">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Post</li>
-                    </ol>
-                </nav>
-            </div>
+<div class="page-content">
+    <!--breadcrumb-->
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="breadcrumb-title pe-3">Bài viết</div>
+        <div class="ps-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 p-0">
+                    <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Danh sách bài viết</li>
+                </ol>
+            </nav>
         </div>
-        <!--end breadcrumb-->
-        <div class="card">
-            <div class="card-header">
-             <div class="action_start float-start d-flex">
-                  <h6 class="mt-2 mb-0 text-uppercase float-start">Post</h6>
+    </div>
+    <!--end breadcrumb-->
+    <div class="card">
+        <div class="card-header">
+            <div class="action_start float-start d-flex">
+                <h6 class="mt-2 mb-0 text-uppercase float-start">Danh sách bài viết</h6>
                 <div class="form-search ms-2">
                     <form action="" method="get">
                         <div class="input-group">
@@ -30,92 +30,75 @@
                         </div>
                     </form>
                 </div>
-             </div>
-                <a href="{{ route('admin.post.trashed-post') }}" class="btn btn-danger float-end ">Trashed Post Cate</a>
-                <a href="{{ route('admin.post.create')}}" class="btn btn-warning float-end me-2">Add Post Cate</a>
-                <a href="{{ route('admin.post.index') }}" class="me-2 btn btn-success float-end">Reset</a>
-         </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Category_id</th>
-                                <th>User_id</th>
-                                <th>Image</th>
-                                <th>Title</th>
-                                <th>Content</th>
-                                <th>Slug</th>
-                                <th>Description</th>
-                                <th>Seo_title</th>
-                                <th>Seo_description</th>
-                                <th>Hot</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($post as $post)
-                                <tr>
-                                    <td>{{$post->id }}</td>
-                                    <td>{{$post->category_id}}</td>
-                                    <td>{{$post->user_id}}</td>
-                                    <td><img src="{{ asset('uploads/post/' . $post->image) }}" width="50px" alt="{{ $post->image }}"></td>
-                                    <td>{{$post->title}}</td>
-                                    <td>{{$post->content}}</td>
-                                    <td>{{$post->slug}}</td>
-                                    <td>{{$post->description}}</td>
-                                    <td>{{$post->seo_title}}</td>
-                                    <td>{{$post->seo_description}}</td>
-                                    <td>
-                                        <div class="form-check form-switch form-check-success">
-                                            @if($post->type == 1)
-                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post->id }}" id="flexSwitchCheckSuccess" checked>
-                                            @elseif($post->type == 0)
-                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post->id }}" id="flexSwitchCheckSuccess">
-                                            @endif
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="form-check form-switch form-check-success">
-                                            @if($post->status == 1)
-                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post->id }}" id="flexSwitchCheckSuccess" checked>
-                                            @elseif($post->status == 0)
-                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post->id }}" id="flexSwitchCheckSuccess">
-                                            @endif
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <a class="btn btn-warning" href="{{ route('admin.post.edit',$post->id) }}">Edit</a>
-                                        <a class="btn btn-danger delete-item" href="{{ route("admin.post.destroy", $post->id) }}">Delete</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Id</th>
-                                <th>Category_id</th>
-                                <th>User_id</th>
-                                <th>Image</th>
-                                <th>Title</th>
-                                <th>Content</th>
-                                <th>Slug</th>
-                                <th>Description</th>
-                                <th>Seo_title</th>
-                                <th>Seo_description</th>
-                                <th>Hot</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
+                <a href="{{ route('admin.post.index') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
+            </div>
+            <a href="{{ route('admin.post.trashed-post') }}" class="btn btn-danger float-end "><i class="fa-solid fa-trash-can fs-6"></i>Thùng rác</a>
+            <a href="{{ route('admin.post.create')}}" class="btn btn-primary float-end me-2"><i class="fa-solid fa-plus text-light fs-6"></i>
+                Thêm mới</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <thead class="text-center">
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên loại</th>
+                            <th>Người đăng </th>
+                            <th>Hình ảnh </th>
+                            <th>Tiêu đề</th>
+                            <th>Nội dung</th>
+                            <th>Đường dẫn</th>
+                            <th>Mô tả</th>
+                            <th>Tiêu đề SEO</th>
+                            <th>Mô tả SEO</th>
+                            <th>Nổi bật</th>
+                            <th>Trạng thái</th>
+                            <th>Hoạt động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($post as $post)
+                        <tr>
+                            <td>{{$post->id }}</td>
+                            <td>{{$post->category_id}}</td>
+                            <td>{{$post->user_id}}</td>
+                            <td><img src="{{ asset('uploads/post/' . $post->image) }}" width="50px" alt="{{ $post->image }}"></td>
+                            <td>{{$post->title}}</td>
+                            <td>{{$post->content}}</td>
+                            <td>{{$post->slug}}</td>
+                            <td>{{$post->description}}</td>
+                            <td>{{$post->seo_title}}</td>
+                            <td>{{$post->seo_description}}</td>
+                            <td>
+                                <div class="form-check form-switch form-check-success">
+                                    @if($post->type == 1)
+                                    <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post->id }}" id="flexSwitchCheckSuccess" checked>
+                                    @elseif($post->type == 0)
+                                    <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post->id }}" id="flexSwitchCheckSuccess">
+                                    @endif
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-switch form-check-success">
+                                    @if($post->status == 1)
+                                    <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post->id }}" id="flexSwitchCheckSuccess" checked>
+                                    @elseif($post->status == 0)
+                                    <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post->id }}" id="flexSwitchCheckSuccess">
+                                    @endif
+                                </div>
+                            </td>
+                            <td class="text-end">
+                                <a class="btn btn-primary" href="{{ route('admin.post.edit',$post->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
+                                <a class="btn btn-danger delete-item" href="{{ route("admin.post.destroy", $post->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 @push('scripts')
@@ -127,19 +110,20 @@
 
             $.ajax({
                 method: "PUT",
-                url: "{{route('admin.sub-category.change-status')}}",
+                url: "{{route('admin.post.change-status')}}",
                 data: {
                     status: isChecked,
                     id: id
                 },
-                success: function (data) {
+                success: function(data) {
                     toastr.success(data.message);
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     console.log(error);
                 }
             });
         })
     });
+    
 </script>
 @endpush
