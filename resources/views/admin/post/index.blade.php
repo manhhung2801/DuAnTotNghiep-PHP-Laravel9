@@ -83,7 +83,7 @@
 
                                     <td>
                                         <a class="btn btn-warning" href="{{ route('admin.post.edit',$post->id) }}">Edit</a>
-                                        <a class="btn btn-danger delete-item" href="{{ route("admin.post.destroy", $post->id) }}">Delete</a>
+                                        <a class="btn btn-danger delete-item" href="{{ route("admin.post.destroy", $post->id)}}">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
