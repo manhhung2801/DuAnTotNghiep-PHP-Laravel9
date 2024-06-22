@@ -102,16 +102,21 @@ Route::put("/user-management/change-role", [UserManagementController::class, 'ch
 Route::put("/user-management/change-status", [UserManagementController::class, 'changeStatus'])->name('user-management.change-status');
 
 /** post_category */
-Route::get('/post-cate/trashed-post_cate',[PostCategoriesController::class, 'trashedPostcate'])->name('post-cate.trashed-postCate');
-Route::get('/post-cate/restore/{id}',[PostCategoriesController::class,'restore'])->name('post-cate.restore-post_categories');
-Route::get('/post-cate/deleted/{id}',[PostCategoriesController::class,'deleteVariant'])->name('post-cate.deleted-post_categories');
-Route::put('/post-cate/change-status',[PostCategoriesController::class,'changeStatus'])->name('post-cate.change-status');
-Route::resource('/post-cate',PostCategoriesController::class);
+Route::put('/post-category/change-status',[PostCategoriesController::class,'changeStatus'])->name('post-category.change-status');
+Route::get('/post-category/trashed-postCategory',[PostCategoriesController::class, 'trashedPostcate'])->name('post-category.trashed-postCate');
+Route::get('/post-category/restore/{id}',[PostCategoriesController::class,'restore'])->name('post-category.restore-post_categories');
+Route::get('/post-category/deleted/{id}',[PostCategoriesController::class,'deleteVariant'])->name('post-category.deleted-post_categories');
+Route::resource('/post-category',PostCategoriesController::class);
+
+
 
 /** post */
-Route::post('/post/upload',[PostsController::class,'upload'])->name('[post.upload');
+Route::put('/post/change-status',[PostsController::class,'changeStatus'])->name('post.change-status');
 Route::get('/post/trashed-post',[PostsController::class, 'trashedPost'])->name('post.trashed-post');
 Route::get('/post/restore/{id}',[PostsController::class,'restore'])->name('post.restore-post');
 Route::get('/post/deleted/{id}',[PostsController::class,'deleteVariant'])->name('post.deleted-post');
-Route::put('/post/change-status',[PostsController::class,'changeStatus'])->name('post.change-status');
 Route::resource('/post',PostsController::class);
+
+// Route::fallback(function () {
+//     return route("admin.login");
+// });

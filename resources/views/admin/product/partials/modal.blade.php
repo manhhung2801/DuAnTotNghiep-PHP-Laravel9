@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="productDetails">Product Detail</h1>
+                <h1 class="modal-title fs-5" id="productDetails">Chi tiết sản phẩm</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -30,45 +30,47 @@
                                             <td>SP145</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Name</th>
+                                            <th scope="row">Tên Sản phẩm</th>
                                             <td id="modal_name"></td>
                                             <th scope="row">Slug</th>
                                             <td id="modal_slug"></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Quantity</th>
+                                            <th scope="row">Số lượng</th>
                                             <td id="modal_quantity"></td>
-                                            <th scope="row">Weight</th>
+                                            <th scope="row">Cân nặng</th>
                                             <td id="modal_weight"></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Price</th>
+                                            <th scope="row">Giá</th>
                                             <td id="modal_price"></td>
-                                            <th scope="row">Offer Price</th>
+                                            <th scope="row">Giảm giá</th>
                                             <td id="modal_offer_price"></td>
                                         </tr>
+                                        <tr id="variant_item">
+                                        </tr>
                                         <tr>
-                                            <th scope="row">Offer Start Date</th>
+                                            <th scope="row">Ngày bắt đầu giảm</th>
                                             <td id="modal_offer_start_date"></td>
-                                            <th scope="row">Offer End Date</th>
+                                            <th scope="row">Ngày kết thúc giảm</th>
                                             <td id="modal_offer_end_date"></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Product Type</th>
+                                            <th scope="row">Kiểu sản phẩm</th>
                                             <td id="modal_product_type"></td>
-                                            <th scope="row">Views</th>
+                                            <th scope="row">Lượt xem</th>
                                             <td id="modal_views"></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Category</th>
+                                            <th scope="row">Danh mục</th>
                                             <td id="modal_category"></td>
-                                            <th scope="row">Sub Category</th>
+                                            <th scope="row">Danh mục phụ</th>
                                             <td id="modal_sub_category"></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Child Category</th>
+                                            <th scope="row">Danh mục con</th>
                                             <td id="modal_child_category"></td>
-                                            <th scope="row">status</th>
+                                            <th scope="row">Trạng thái</th>
                                             <td id="modal_status"></td>
                                         </tr>
                                         <tr>
@@ -78,19 +80,19 @@
                                             <td id="modal_seo_title" colspan="3"></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">SEO Description</th>
+                                            <th scope="row">SEO meta</th>
                                             <td class="text_description" id="modal_seo_description" colspan="3"></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Short Description</th>
+                                            <th scope="row">Mô tả ngắn</th>
                                             <td class="text_description" id="modal_short_description" colspan="3"></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Long Descriptiom</th>
+                                            <th scope="row">Mô tả</th>
                                             <td class="text_description" id="modal_long_description" colspan="3"></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Created Date</th>
+                                            <th scope="row">Ngày tạo</th>
                                             <td id="modal_created_date" colspan="3"></td>
                                         </tr>
                                     </tbody>

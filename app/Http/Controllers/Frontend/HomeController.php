@@ -21,8 +21,8 @@ class HomeController extends Controller
 
         // Show danh mục nổi bật
         $categoryHot = $categories->take(6);
-        //Giới hạn của category show
-        $getCategory = $categories->take(4);
+        //Giới hạn của category show // has product lấy category có ít nhất 1 product
+        $getCategory = Category::where("status", "=", 1)->has('products')->take(4)->get();
         $getProducts = []; //mảng chưa product
         foreach($getCategory as $cate){
             $product = [
@@ -35,7 +35,7 @@ class HomeController extends Controller
             $getProducts[] = $product;
         }
         // show tin tức (post)
-        $getPosts = Post::getPost()->orderBy('created_at', 'desc')->take(4)->get();
+        $getPosts = Post::getPost()->where('type', '=', 'post')->orderBy('created_at', 'desc')->take(4)->get();
         $storeAddress = StoreAddress::where("status", "=", 1)->orderBy("id", "asc")->limit(1)->get();
         return view('frontend.home.index', compact("categories", 'slides', 'storeAddress', 'categoryHot', 'getProducts','getPosts'));
     }

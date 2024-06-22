@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AdminLoginController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,9 @@ require __DIR__ . '/auth.php';
 
 /** Login admin Dashboard */
 Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
+
+Route::get('/admin',  [AdminController::class, 'login']);
+Route::post('/admin/login', [AdminLoginController::class, 'store'])->name("admin.login.store");
 /** Login admin Dashboard */
 
 

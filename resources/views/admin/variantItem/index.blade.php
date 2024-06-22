@@ -1,18 +1,18 @@
 @extends('admin.layouts.master')
 
-@section('title', 'VariantItem')
+@section('title', 'Mục biến thể')
 
 @section('content')
     <div class="page-content">
         <!--breadcrumb-->
         <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
-            <div class="breadcrumb-title pe-3">VariantItem</div>
+            <div class="breadcrumb-title pe-3">Mục biến thể</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="p-0 mb-0 breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">VariantItem</li>
+                        <li class="breadcrumb-item active" aria-current="page">Danh sách mục biến thể</li>
                     </ol>
                 </nav>
             </div>
@@ -22,7 +22,7 @@
 
             <div class="card-header">
                 <div class="action_start float-start d-flex">
-                    <h6 class="mt-2 mb-0 text-uppercase float-start">VariantItem</h6>
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">Mục biến thể</h6>
                     <div class="form-search ms-2">
                         <form action="" method="get">
                             <div class="input-group">
@@ -37,9 +37,9 @@
                             class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
                 </div>
                 <a href="{{ route('admin.variantItem.onlyTrashed') }}" class="mx-1 btn btn-danger float-end"><i
-                        class="fa-solid fa-trash-can fs-6"></i>Trashed Variant Item</a>
+                        class="fa-solid fa-trash-can fs-6"></i>Mục biến thể xóa tạm</a>
                 <a href="{{ route('admin.variantItem.create') }}" class="mx-1 btn btn-primary float-end"><i
-                        class="fa-solid fa-plus text-light fs-6"></i>Add variantItem</a>
+                        class="fa-solid fa-plus text-light fs-6"></i>Thêm mới mục biến thể</a>
             </div>
 
 
@@ -50,12 +50,12 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Product Variant Id</th>
-                                <th>Name</th>
-                                <th>Price</th>
+                                <th>Mã biến thể sản phẩm</th>
+                                <th>Tên</th>
+                                <th>Giá</th>
                                 <th>Is Default</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>

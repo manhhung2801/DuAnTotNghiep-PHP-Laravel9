@@ -69,7 +69,7 @@ class ProductController extends Controller
             $product->long_description = $request->long_description;
             $product->short_description = $request->short_description;
             // thêm slug nếu không tồn tại thì trích xuất từ name bằng method Str::slug
-            $product->slug = !empty($request->slug) ? $request->slug : Str::slug($request->name, "-");
+            $product->slug = !empty($request->slug) ? Str::slug($request->slug, "-") : Str::slug($request->name, "-");
             // Nếu title SEO null lấy name
             $product->seo_title = $request->seo_title ?? $request->name;
             //update hình ảnh
@@ -89,7 +89,7 @@ class ProductController extends Controller
                     $image_gallery->save();
                 }
             }
-            toastr()->success("Add " . $request->name . " Success");
+            toastr()->success("Thêm " . $request->name . " Thành công");
             return redirect()->back();
         } catch (ValidationException $e) {
             toastr()->error('Lỗi: ' . $e);
@@ -106,17 +106,48 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|max:255',
+            'qty' => 'required|min:0',
+            'image' => 'image|mimes:jpeg,jpg,png,gif,webp|max:10240',
+            'image_gallery' => 'max:10240',
+            'price' => 'required|integer',
+            'offer_price' => 'integer',
+            'sub_category_id' => 'required',
+            'child_category_id' => 'required',
+        ], [
+            'name' => [
+                'required' => 'Tên sản phẩm là bắt buộc.',
+                'max' => 'Tên sản phẩm không được dài quá :max ký tự.',
+            ],
+            'qty' => [
+                'required' => 'Số lượng sản phẩm là bắt buộc.',
+                'min' => 'Số lượng sản phẩm phải lớn hơn 0.',
+            ],
+            'image' => [
+                'image' => 'File phải là một hình ảnh.',
+                'mimes' => 'Hình ảnh phải có định dạng: jpeg,jpg,png,gif,webp.',
+                'max' => 'Kích thước hình ảnh không được vượt quá 10MB.',
+            ],
+            'image_gallery' => [
+                'max' => 'Kích thước của thư viện hình ảnh không được vượt quá 10MB.',
+            ],
+            'price' => [
+                'required' => 'Giá sản phẩm là bắt buộc.',
+                'integer' => 'Giá sản phẩm phải là một số nguyên.',
+            ],
+            'offer_price' => [
+                'integer' => 'Giá khuyến mãi phải là một số nguyên.',
+            ],
+            'sub_category_id' => [
+                'required' => 'Danh mục phụ là bắt buộc.',
+            ],
+            'child_category_id' => [
+                'required' => 'Danh mục con là bắt buộc.',
+            ],
+        ]);
+
         try {
-            $request->validate([
-                'name' => 'required|max:255',
-                'qty' => 'required|min:0',
-                'image' => 'image|mimes:jpeg,jpg,png,gif,webp|max:10240',
-                'image_gallery' => 'max:10240',
-                'price' => 'required|integer',
-                'offer_price' => 'integer',
-                'sub_category_id' => 'required',
-                'child_category_id' => 'required',
-            ]);
             $product = Product::findOrFail($id);
             $product->name = $request->name;
             $product->sku = $request->sku;
@@ -185,36 +216,30 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $getGallery = product_image_galleries::where('product_id', '=', $id)->get('image');
-        $getProduct = Product::getProductItem($id);
-
-        return response()->json([$getProduct, $getGallery]);
+        $getProduct = Product::with(['variant.variantItem', 'product_image_galleries'])->findOrFail($id);
+        return response()->json([$getProduct]);
     }
     public function destroy($id)
     {
         try {
             Product::findOrFail($id)->delete();
-            return response(['status' => 'success', 'message' => 'Xóa thành công!']);
+            return response(['status' => 'success', 'message' => 'Xóa sản phẩm thành công!']);
         } catch (ValidationException $e) {
             return response(['status' => 'error', 'message' => 'Xóa thất bại! ' . $e . '']);
         }
     }
-
     public function changeStatus(Request $request)
     {
-
         $product = Product::getProductItem($request->id);
         $product->status = $request->status == 'true' ? 1 : 0;
         $product->save();
-        return response(['message' => 'Status has been updated']);
+        return response(['message' => 'Trạng thái đã thay đổi']);
     }
-
     public function getChildCategories(Request $request)
     {
         $childCategory = ChildCategory::where('sub_category_id', $request->id)->where('status', 1)->get();
         return $childCategory;
     }
-
     public function showTrash(Request $request)
     {
         $getProduct = Product::getProductTrashed();
@@ -247,9 +272,9 @@ class ProductController extends Controller
     {
         try {
             Product::restoreTrashed($id);
-            return response(['status' => 'success', 'Successfully!']);
+            return response(['status' => 'success', 'Khôi phục sản phẩm thành công!']);
         } catch (Exception $e) {
-            return response(['status' => 'error', 'message' => 'Restore Faild ' . $e . '']);
+            return response(['status' => 'error', 'message' => 'Khôi phục sản phẩm thất bại!' . $e . '']);
         }
     }
 }

@@ -1,18 +1,18 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Variant')
+@section('title', 'Biến thể')
 
 @section('content')
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Variant</div>
+            <div class="breadcrumb-title pe-3">Biến thể</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Variant</li>
+                        <li class="breadcrumb-item active" aria-current="page">Danh sách biến thể</li>
                     </ol>
                 </nav>
             </div>
@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="action_start float-start d-flex">
-                    <h6 class="mt-2 mb-0 text-uppercase float-start">Variant</h6>
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">Danh sách biến thể</h6>
                     <div class="form-search ms-2">
                         <form action="" method="get">
                             <div class="input-group">
@@ -33,12 +33,12 @@
                         </form>
                     </div>
                     <a href="{{ route('admin.variant.index') }}" class="me-2 btn btn-success float-end ms-2"><i
-                            class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
+                            class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
                 </div>
                 <a href="{{ route('admin.variant.trashed-variant') }}" class="btn btn-danger float-end "><i
-                        class="fa-solid fa-trash-can fs-6"></i>Trashed variant</a>
+                        class="fa-solid fa-trash-can fs-6"></i>Thùng rác</a>
                 <a href="{{ route('admin.variant.create') }}" class="btn btn-primary float-end me-2"><i
-                        class="fa-solid fa-plus text-light fs-6"></i>Add variant</a>
+                        class="fa-solid fa-plus text-light fs-6"></i>Thêm mới</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -46,10 +46,10 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Product_id</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Mã sản phẩm</th>
+                                <th>Tên</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -70,10 +70,10 @@
                                         </div>
                                     <td>
                                         <a class="btn btn-primary" href="{{ route('admin.variant.edit', $variant->id) }}"><i
-                                                class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
+                                                class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
                                         <a class="btn btn-danger delete-item"
                                             href="{{ route('admin.variant.destroy', $variant->id) }}"><i
-                                                class="fa-solid fa-trash fs-6"></i>Delete</a>
+                                                class="fa-solid fa-trash fs-6"></i>Xóa</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -18,22 +18,22 @@ class PostCategoriesSeeder extends Seeder
             [
                 'name' => 'Tin tức',
                 'slug' => 'tin-tuc',
-                'status' => 'active',
+                'status' => 1,
             ],
             [
                 'name' => 'Khuyến mãi',
                 'slug' => 'khuyen-mai',
-                'status' => 'active',
+                'status' => 1,
             ],
             [
                 'name' => 'Thủ thuật',
                  'slug' => 'thu-thuat',
-                'status' => 'active',
+                'status' => 1,
             ],
             [   
                 'name' => 'Khám phá',
                  'slug' => 'kham-pha',
-                'status' => 'active',
+                'status' => 1,
             ],
         ]);
     }

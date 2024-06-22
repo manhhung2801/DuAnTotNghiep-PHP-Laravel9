@@ -14,20 +14,20 @@
         <ul style="margin-bottom: 0px;padding-left: 0px" class="sort-options p-2">
             <li class="btn-quick-sort alpha-asc list-group-item p-0">
                 <a
-                    href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'az'])) }}">Tên
+                    href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'az'])) }}" class="text-decoration-none">Tên
                     A-Z</a>
             </li>
             <li class="btn-quick-sort alpha-asc list-group-item p-0">
-                <a href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'za'])) }}">Tên
+                <a class="text-decoration-none" href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'za'])) }}">Tên
                     Z-A</a>
             </li>
             <li class="btn-quick-sort price-asc list-group-item p-0">
-                <a
+                <a class="text-decoration-none"
                     href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'price_low_high'])) }}">Giá
                     thấp đến cao</a>
             </li>
             <li class="btn-quick-sort price-asc list-group-item p-0">
-                <a
+                <a class="text-decoration-none"
                     href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'price_high_low'])) }}">Giá cao xuống thấp</a>
             </li>
         </ul>

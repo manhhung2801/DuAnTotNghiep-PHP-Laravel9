@@ -17,7 +17,7 @@
                                 <img class="lazyload duration-300 loaded" src="{{ asset('uploads/products/'.$pro->image) }}">
                             </a>
                         </div>
-                        <div class="product-info">
+                        <div class="product-info mt-3">
                             <h3 class="product-name line-clamp line-clamp-2 ">
                                 <a href="#" title="" class="text-decoration-none ">{{ $pro->name }}</a>
                             </h3>

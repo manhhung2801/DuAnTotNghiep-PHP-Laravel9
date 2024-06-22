@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             StoreAdressSeeder::class,
             CouponsSeeder::class,
             PostCategoriesSeeder::class,
+            PostsSeeder::class,
         ]);
     }
 }
