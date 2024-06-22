@@ -25,9 +25,9 @@ return new class extends Migration
             $table->string('slug', 255);
             $table->longText('description');
             $table->string('seo_title', 255)->nullable();
-            $table->string('type');
+            $table->boolean('type');
             $table->longText('seo_description')->nullable();
-            $table->string('status');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

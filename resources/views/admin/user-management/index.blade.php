@@ -1,18 +1,18 @@
 @extends('admin.layouts.master')
 
-@section('title', 'List Categories')
+@section('title', 'Người Dùng')
 
 @section('content')
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Users</div>
+            <div class="breadcrumb-title pe-3">Người Dùng</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">List Users</li>
+                        <li class="breadcrumb-item active" aria-current="page">Danh Sách Người Dùng</li>
                     </ol>
                 </nav>
             </div>
@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="action_start float-start d-flex">
-                    <h6 class="mt-2 mb-0 text-uppercase float-start">Category Listing</h6>
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">Danh Sách Người Dùng</h6>
                     <div class="form-search ms-2">
                         <form action="" method="get">
                             <div class="input-group">
@@ -30,25 +30,22 @@
                             </div>
                         </form>
                     </div>
-                    <a href="{{ route("admin.user-management.index") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
+                    <a href="{{ route("admin.user-management.index") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Làm Mới</a>
                 </div>
 
-            </div>
-            <div class="card-header">
-                <h6 class="mt-2 mb-0 text-uppercase float-start">List Users</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Image</th>
-                                <th>Role Admin</th>
+                                <th>ID</th>
+                                <th>Tên</th>
+                                <th>Hình Ảnh</th>
+                                <th>Vai Trò Quản Trị Viên</th>
                                 <th>Email</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Trạng Thái</th>
+                                <th>Hành Động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -84,8 +81,8 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" href=""><i class="fa-solid fa-pen fs-6 text-light"></i>Detail</a>
-                                        <a class="btn btn-danger delete-item" href="{{ route("admin.user-management.destroy", $user->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
+                                        <a class="btn btn-primary" href=""><i class="fa-solid fa-pen fs-6 text-light"></i>Chi Tiết</a>
+                                        <a class="btn btn-danger delete-item" href="{{ route("admin.user-management.destroy", $user->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xoá Bỏ</a>
                                     </td>
                                 </tr>
                             @endforeach

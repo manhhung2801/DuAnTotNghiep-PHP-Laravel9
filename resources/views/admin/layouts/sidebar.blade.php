@@ -18,21 +18,19 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
-        <li class="menu-label">UI Elements</li>
+        <li class="menu-label">Quản Lý</li>
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-layer-group"></i>
                 </div>
-                <div class="menu-title">Category</div>
+                <div class="menu-title">Danh Mục</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.category.index') }}"><i class='bx bx-radio-circle'></i>List Categories</a>
+                <li> <a href="{{ route('admin.category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh Mục</a>
                 </li>
-                <li> <a href="{{ route('admin.sub-category.index') }}"><i class='bx bx-radio-circle'></i>Sub
-                        Categories</a>
+                <li> <a href="{{ route('admin.sub-category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh Mục Phụ</a>
                 </li>
-                <li> <a href="{{ route('admin.child-category.index') }}"><i class='bx bx-radio-circle'></i>Child
-                        Category</a>
+                <li> <a href="{{ route('admin.child-category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh Mục Con</a>
                 </li>
             </ul>
         </li>
@@ -40,10 +38,10 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-sliders"></i>
                 </div>
-                <div class="menu-title">Slider</div>
+                <div class="menu-title">Thanh trượt</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.slider.index') }}"><i class='bx bx-radio-circle'></i>List Sliders</a>
+                <li> <a href="{{ route('admin.slider.index') }}"><i class='bx bx-radio-circle'></i>Danh sách thanh trượt</a>
                 </li>
             </ul>
         </li>
@@ -51,10 +49,10 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="lni lni-sprout"></i>
                 </div>
-                <div class="menu-title">Coupons</div>
+                <div class="menu-title">Phiếu giảm giá</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.coupons.index') }}"><i class='bx bx-radio-circle'></i>List Coupons</a>
+                <li> <a href="{{ route('admin.coupons.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Phiếu Giảm Giá</a>
                 </li>
             </ul>
         </li>
@@ -79,16 +77,16 @@
         </li>
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
+                <div class="parent-icon"><i class="fa-solid fa-newspaper"></i>
                 </div>
-                <div class="menu-title">Post All</div>
+                <div class="menu-title">Bài viết</div>
             </a>
             <ul>
                 <li>
-                    <a href="{{ route("admin.post-cate.index") }}"><i class='bx bx-radio-circle'></i>Post Category</a>
+                    <a href="{{ route("admin.post-category.index") }}"><i class='bx bx-radio-circle'></i>Loại bài viết</a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.post.index') }}"><i class='bx bx-radio-circle'></i>Post List</a>
+                    <a href="{{ route('admin.post.index') }}"><i class='bx bx-radio-circle'></i>Danh sách bài viết</a>
                 <li>
             </ul>
         </li>
@@ -96,11 +94,11 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
                 </div>
-                <div class="menu-title">Users</div>
+                <div class="menu-title">Người Dùng</div>
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('admin.user-management.index') }}"><i class='bx bx-radio-circle'></i>List Users</a>
+                    <a href="{{ route('admin.user-management.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Người Dùng</a>
                 </li>
             </ul>
         </li>
@@ -108,11 +106,11 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-location-dot"></i>
                 </div>
-                <div class="menu-title">StoreAddress</div>
+                <div class="menu-title">Địa chỉ cửa hàng</div>
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('admin.storeAddress.index') }}"><i class='bx bx-radio-circle'></i>List StoreAddress</a>
+                    <a href="{{ route('admin.storeAddress.index') }}"><i class='bx bx-radio-circle'></i>Danh sách cửa hàng</a>
                 </li>
             </ul>
         </li>

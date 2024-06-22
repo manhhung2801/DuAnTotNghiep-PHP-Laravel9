@@ -1,18 +1,18 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Create Post')
+@section('title', 'Thêm mới bài viết')
 
 @section('content')
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Post</div>
+        <div class="breadcrumb-title pe-3">Danh sách bài viết</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Create Post</li>
+                    <li class="breadcrumb-item active" aria-current="page">Thêm mới bài viết</li>
                 </ol>
             </nav>
         </div>
@@ -20,14 +20,14 @@
     <!--end breadcrumb-->
     <div class="card">
         <div class="card-header">
-            <h6 class="mt-2 mb-0 text-uppercase float-start">Create Post_Cate</h6>
-            <a href="{{ route("admin.post.index") }}" class="btn btn-primary float-end">Back</a>
+            <h6 class="mt-2 mb-0 text-uppercase float-start">Thêm mới bài viết</h6>
+            <a href="{{ route("admin.post.index") }}" class="btn btn-primary float-end">Quay lại</a>
         </div>
         <div class="card-body">
             <form class="row g-3" action="{{ route("admin.post.store") }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-6">
-                    <label for="category" class="form-label">Post Categories</label>
+                    <label for="category" class="form-label">Danh mục bài đăng</label>
                     <select id="category" class="form-select main-category" name="category_id">
                         <option>Select</option>
                         @foreach ($post_categories as $post_categories )
@@ -36,7 +36,7 @@
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <label for="user" class="form-label">User Id</label>
+                    <label for="user" class="form-label">Tên người đăng bài</label>
                     <select id="user" class="form-select" name="user_id">
                         <option>Select</option>
                         @foreach ($user as $user )
@@ -45,50 +45,51 @@
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <label for="image" class="form-label">Image</label>
+                    <label for="image" class="form-label">Hình ảnh</label>
                     <input type="file" class="form-control" id="image" name="image" accept="image/*">
                 </div>
-                <div class="col-md-12">
-                    <label for="input7" class="form-label">Title</label>
+
+                <div class="col-md-6">
+                    <label for="input7" class="form-label">Tiêu đề</label>
                     <input type="text" class="form-control" id="input1" name="title" placeholder="title">
                 </div>
                 <div class="col-md-6">
-                    <label for="input7" class="form-label">Content</label>
+                    <label for="input7" class="form-label">Nội dung</label>
                     <input type="text" class="form-control" id="input1" name="content" placeholder="title">
                 </div>
 
                 <div class="col-md-6">
-                    <label for="input9" class="form-label">Type</label>
+                    <label for="input9" class="form-label">Nổi bật</label>
                     <select id="input9" class="form-select" name="type">
-                        <option value="1">Bài Viết</option>
-                        <option value="0">Banner</option>
+                        <option value="1">Nổi bật</option>
+                        <option value="0">Không nổi bật</option>
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <label for="input9" class="form-label">Status</label>
+                    <label for="input9" class="form-label">Trạng thái</label>
                     <select id="input9" class="form-select" name="status">
-                        <option value="1">Active</option>
-                        <option value="0">Inactive</option>
+                        <option value="1">Đang hoạt động</option>
+                        <option value="0">Ngừng hoạt động</option>
                     </select>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
-                        <label for="seotitle" class="form-label">SEO Title</label>
+                        <label for="seotitle" class="form-label">Tiêu đề SEO</label>
                         <input type="text" class="form-control" id="seotitle" name="seo_title" >
                     </div>
 
                     <div class="col-md-6">
-                        <label for="seodesc" class="form-label">SEO Description</label>
+                        <label for="seodesc" class="form-label">Mô tả SEO</label>
                         <input type="text" class="form-control" id="seodesc" name="seo_description">
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label class="form-label">Description</label>
+                    <label class="form-label">Nội dung bài viết</label>
                     <textarea id="editor1" class="form-control description" name="description" ></textarea>
                 </div>
                 <div class="col-md-2">
                     <div class="d-grid align-items-center gap-3">
-                        <button type="submit" class="btn btn-primary px-4">Create</button>
+                        <button type="submit" class="btn btn-primary px-4">Thêm mới</button>
                     </div>
                 </div>
             </form>

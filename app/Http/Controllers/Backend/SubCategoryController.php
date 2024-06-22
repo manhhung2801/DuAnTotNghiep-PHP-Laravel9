@@ -149,7 +149,7 @@ class SubCategoryController extends Controller
 
         $subcategory->save();
 
-        toastr('Cập nhật SubCategory thành công!', 'success');
+        toastr('Cập nhật thành công!', 'success');
 
         return redirect()->back();
     }
@@ -166,11 +166,11 @@ class SubCategoryController extends Controller
         $childCategory = ChildCategory::where('sub_category_id', $subCategory->id)->count();
 
         if($childCategory > 0){
-            return response(['status' => 'error', 'message' => 'Mục này chứa, các Child Category để xóa mục này bạn phải xóa các mục phụ trước!']);
+            return response(['status' => 'error', 'message' => 'Mục này chứa, các Danh Mục Con để xóa mục này bạn phải xóa các mục phụ trước!']);
         }
         $subCategory->delete();
 
-    return response(['status' => 'success', 'message' => 'Xoá Sub Category thành công!']);
+    return response(['status' => 'success', 'message' => 'Xoá thành công!']);
     }
 
     public function changeStatus(Request $request){
@@ -178,7 +178,7 @@ class SubCategoryController extends Controller
         $category = SubCategory::findOrFail($request->id);
         $category->status = $request->status == 'true' ? 1 : 0;
         $category->save();
-        return response(['message' => 'Thay đổi status thái thành công!']);
+        return response(['message' => 'Thay đổi trạng thái thành công!']);
     }
 
     // show trash list and search
@@ -210,7 +210,7 @@ class SubCategoryController extends Controller
             }
 
             SubCategory::destroyTrashed($id);
-            return response(['status' => 'success', 'Đã xóa vĩnh viễn thành công!']);
+            return response(['status' => 'success', 'Xóa vĩnh viễn thành công!']);
         }
         catch(Exception $e) {
             return response(['status' => 'error', 'Xoá thất bại! '.$e.'' ]);

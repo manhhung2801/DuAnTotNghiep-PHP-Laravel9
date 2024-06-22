@@ -43,8 +43,9 @@
 										<p class="mb-0">Please log in to your account</p>
 									</div>
 									<div class="form-body">
-										<form method="POST" action="{{ route('login') }}" class="row g-3">
+										<form method="POST" action="{{ route("admin.login.store") }}" class="row g-3">
                                             @csrf
+                                            <input type="hidden" name="user_type" value="admin">
                                             <!-- Email Address -->
 											<div class="col-12">
 												<label for="inputEmailAddress" class="form-label">Email</label>
