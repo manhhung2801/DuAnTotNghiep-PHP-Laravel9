@@ -23,7 +23,6 @@ class VariantSeeder extends Seeder
             ]);
         }
 
-        // Check if the variant with product_id 2 and name 'Variant C' already exists
         $existingVariant = Variant::where('product_id', 2)
                             ->where('name', 'Variant C')
                             ->first();
