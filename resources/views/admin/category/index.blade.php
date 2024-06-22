@@ -1,18 +1,18 @@
 @extends('admin.layouts.master')
 
-@section('title', 'List Categories')
+@section('title', 'Danh Mục')
 
 @section('content')
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Categories</div>
+            <div class="breadcrumb-title pe-3">Danh Mục</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">List Categories</li>
+                        <li class="breadcrumb-item active" aria-current="page">Danh Sách Danh Mục</li>
                     </ol>
                 </nav>
             </div>
@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="action_start float-start d-flex">
-                    <h6 class="mt-2 mb-0 text-uppercase float-start">Category Listing</h6>
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">Danh Sách Danh Mục</h6>
                     <div class="form-search ms-2">
                         <form action="" method="get">
                             <div class="input-group">
@@ -30,22 +30,22 @@
                             </div>
                         </form>
                     </div>
-                    <a href="{{ route("admin.category.index") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
+                    <a href="{{ route("admin.category.index") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Làm Mới</a>
                 </div>
-                <a href="{{ route("admin.category.trash-list") }}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>Trashed Categories</a>
-                <a href="{{ route("admin.category.create") }}" class="me-2 btn btn-primary float-end"><i class="fa-solid fa-plus text-light fs-6"></i>Add Category</a>
+                <a href="{{ route("admin.category.trash-list") }}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>Thùng Rác</a>
+                <a href="{{ route("admin.category.create") }}" class="me-2 btn btn-primary float-end"><i class="fa-solid fa-plus text-light fs-6"></i>Thêm Mới Danh Mục</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Rank</th>
-                                <th>Image</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>ID</th>
+                                <th>Tên</th>
+                                <th>Thứ hạng</th>
+                                <th>Hình ảnh</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -60,7 +60,7 @@
                                        @if ($category->image)
                                            <img src="{{ asset('uploads/category/' . $category->image) }}" alt="{{ $category->name }}" style="width: 50px; height: 50px; object-fit: cover;">
                                        @else
-                                            <span>empty</span>
+                                            <span>Trống</span>
                                        @endif
                                     </td>
                                     <td>
@@ -73,8 +73,8 @@
                                         </div>
 
                                     <td>
-                                        <a class="btn btn-primary" href="{{ route('admin.category.edit', $category->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
-                                        <a class="btn btn-danger delete-item" href="{{ route("admin.category.destroy", $category->id) }}"><i class="fa-solid fa-trash fs-6"></i>Delete</a>
+                                        <a class="btn btn-primary" href="{{ route('admin.category.edit', $category->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
+                                        <a class="btn btn-danger delete-item" href="{{ route("admin.category.destroy", $category->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>
                                     </td>
                                 </tr>
                             @endforeach

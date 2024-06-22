@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function login(){
+        if (!empty(\Auth::check()) && \Auth::user()->role == "admin") {
+            return redirect()->route('admin.dashboard');
+        }
         return view('admin.auth.login');
     }
     public function dashboard(){
