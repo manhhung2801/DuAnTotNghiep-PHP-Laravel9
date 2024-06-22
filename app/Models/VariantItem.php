@@ -8,13 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class VariantItem extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
-
+    use HasFactory, SoftDeletes;
 
     protected $table = 'variant_items';
-
+    public $primaryKey = 'id';
     protected $fillable = [
+        'id',
         'product_variant_id',
         'name',
         'price',
@@ -22,10 +21,28 @@ class VariantItem extends Model
         'status',
     ];
 
-    // Các phương thức, quan hệ và logic khác trong model
-    public function Variant()
+    protected $casts = [
+        'is_default' => 'boolean',
+    ];
+
+    public function variant()
     {
-        return $this->hasOne(Variant::class, 'id', 'product_variant_id');
+        return $this->belongsTo(Variant::class, 'product_variant_id');
     }
 
+    public function product()
+    {
+        return $this->variant->product;
+    }
+
+    public function getDiscountedPriceAttribute()
+    {
+        $discount = $this->product->discount;
+        return $this->price * (1 - $discount);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'active');
+    }
 }

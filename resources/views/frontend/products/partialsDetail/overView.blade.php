@@ -28,44 +28,34 @@
             class="fa-light fa-dong-sign fa-xs"></i></div>
 </div>
 <dl class="attributes">
-    <dt class="text-prompt">
-        <label class="form-label fw-lighter mb-2">Dung lượng</label>
-    </dt>
-    <dd>
-        <ul class="d-flex mb-3">
 
-            @foreach ($variants as $item)
-                @if ($item->name == 'Dung lượng')
-                    @foreach ($item->variantItem as $i)
-                        <li class="list-group-item py-1 px-3 border border-dark-subtle me-2 rounded-2">
-                            <a class="nav-link text-secondary" href="#">{{ $i->name }}</a>
-                        </li>
+    @if (count($product->variant) > 0)
+        @foreach ($product->variant as $variant)
+            <dt class="text-prompt">
+                <label class="form-label fw-lighter mb-2">{{ $variant->name }}</label>
+            </dt>
+
+            <dd>
+                <ul class="d-flex mb-3">
+
+                    @foreach ($variant->variantItem as $i)
+                        @if ($variant->name == 'Màu sắc')
+                            <li class="list-group-item " ng-show="">
+                                <span class="me-3 rounded-circle d-inline-block"
+                                    style="width: 30px; height: 30px; background: {{ $i->name }};">&nbsp;
+                                </span>
+                            </li>
+                        @else
+                            <li class="list-group-item py-1 px-3 border border-dark-subtle me-2 rounded-2">
+                                <a class="nav-link text-secondary" href="#">{{ $i->name }}</a>
+                            </li>
+                        @endif
                     @endforeach
-                @endif
-            @endforeach
 
-
-        </ul>
-    </dd>
-    <dt class="text-prompt">
-        <label class="form-label fw-lighter mb-2">Màu sắc</label>
-    </dt>
-    <dd>
-        <ul class="d-flex mb-3">
-
-            @foreach ($variants as $item)
-                @if ($item->name == 'Màu sắc')
-                    @foreach ($item->variantItem as $i)
-                        <li class="list-group-item " ng-show="">
-                            <span class="me-3 rounded-circle d-inline-block"
-                                style="width: 30px; height: 30px; background: {{ $i->name }};">&nbsp;
-                            </span>
-                        </li>
-                    @endforeach
-                @endif
-            @endforeach
-        </ul>
-    </dd>
+                </ul>
+            </dd>
+        @endforeach
+    @endif
 </dl>
 
 <div class="call-action">
