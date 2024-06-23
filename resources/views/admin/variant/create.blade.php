@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Tạo mới biến thể')
+@section('title', 'Thêm mới biến thể')
 
 @section('content')
     <div class="page-content">
@@ -12,7 +12,7 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Tạo mới biến thể</li>
+                        <li class="breadcrumb-item active" aria-current="page">Thêm mới biến thể</li>
                     </ol>
                 </nav>
             </div>
@@ -20,20 +20,20 @@
         <!--end breadcrumb-->
         <div class="card">
             <div class="card-header">
-                <h6 class="mt-2 mb-0 text-uppercase float-start">Tạo mới biến thể</h6>
-                <a href="{{ route("admin.variant.index") }}" class="btn btn-primary float-end">Trở về</a>
+                <h6 class="mt-2 mb-0 text-uppercase float-start">Thêm mới biến thể</h6>
+                <a href="{{ route("admin.variant.index") }}" class="btn btn-primary float-end">Quay lại</a>
             </div>
             <div class="card-body">
                 <form class="row g-3" action="{{ route("admin.variant.store") }}" method="POST">
                     @csrf
                     <div class="col-md-12">
-                        <label for="input1" class="form-label">Têm</label>
+                        <label for="input1" class="form-label">Tên</label>
                         <input type="text" class="form-control" id="input1" name="name" placeholder="Name">
                     </div>
                     <div class="col-md-6">
                         <label for="input7" class="form-label">Mã sản phẩm</label>
                         <select id="input9" class="form-select" name="product_id">
-                            <option>Select</option>
+                            <option>Chọn</option>
                             @foreach ($product as $product)
                                 <option value="{{ $product->id }}">{{ $product->name}}</option>
                             @endforeach
@@ -42,13 +42,13 @@
                     <div class="col-md-6">
                         <label for="input9" class="form-label">Trạng thái</label>
                         <select id="input9" class="form-select" name="status">
-                            <option value="1">Active</option>
-                            <option value="0">Inactive</option>
+                            <option value="1">Hoạt động</option>
+                            <option value="0">Không hoạt động</option>
                         </select>
                     </div>
                     <div class="col-md-2">
                         <div class="d-grid align-items-center gap-3">
-                            <button type="submit" class="btn btn-primary px-4">Tạo mới</button>
+                            <button type="submit" class="btn btn-primary px-4">Thêm mới</button>
                         </div>
                     </div>
                 </form>

@@ -48,7 +48,7 @@
                         <th>Mô tả</th>
                         <th>Tiêu đề SEO</th>
                         <th>Mô tả SEO</th>
-                        <th>Nổi bật</th>
+                        <th>Kiểu</th>
                         <th>Trạng thái</th>
                         <th>Hoạt động</th>
                     </thead>
