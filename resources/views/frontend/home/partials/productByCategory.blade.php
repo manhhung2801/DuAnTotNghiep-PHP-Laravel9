@@ -10,24 +10,24 @@
                 <div class="item_product_main">
                     <form action="#" method="post" class="variants product-action item-product-main duration-300" data-cart-form="" data-id="product-actions-30510614" enctype="multipart/form-data">
                         <span class="flash-sale">Giảm
-                            {{ number_format((($pro->price - $pro->offer_price)/ $pro->price) * 100) }}%
+                            {{ number_format((($pro->price - $pro->offer_price)/ $pro->price) * 100,0) }}%
                         </span>
                         <div class="product-thumbnail">
-                            <a class="image_thumb scale_hover" href="#" title="iPhone 13 Pro Max 1TB - Chính Hãng VN/A">
+                            <a class="image_thumb scale_hover" href="/product/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html" title="iPhone 13 Pro Max 1TB - Chính Hãng VN/A">
                                 <img class="lazyload duration-300 loaded" src="{{ asset('uploads/products/'.$pro->image) }}">
                             </a>
                         </div>
-                        <div class="product-info mt-3">
+                        <div class="product-info mt-2">
                             <h3 class="product-name line-clamp line-clamp-2 ">
-                                <a href="#" title="" class="text-decoration-none ">{{ $pro->name }}</a>
+                                <a href="/product/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html" title="" class="text-decoration-none ">{{ $pro->name }}</a>
                             </h3>
                             <div class="product-price-cart">
                                 <div class="price-box">
-                                    <span class="compare-price">{{ number_format($pro->price) }} ₫</span>
-                                    <span class="price">{{ number_format($pro->offer_price) }} ₫</span>
+                                    <span class="compare-price">{{ number_format($pro->price,0,'.', '.') }}<i class="fa-regular fa-dong-sign"></i></span>
+                                    <span class="price">{{ number_format($pro->offer_price,0,'.','.') }}<i class="fa-solid fa-dong-sign"></i></span>
                                 </div>
                                 <div class="product-button ">
-                                    <button class="btn-cart btn-views rounded border-0 px-2" title="Tùy chọn" type="submit">
+                                    <button class="btn-cart btn-views rounded border-0 px-2" title="Mua ngay" type="submit">
                                         <i class="fa-sharp fa-regular fa-cart-shopping"></i>
                                     </button>
                                 </div>
@@ -44,7 +44,7 @@
             @endforeach
         </div>
         <div class="scroll_animation show-all text-center mt-2">
-            <a class="px-5 py-2 btn btn-outline-dark " href="{{ $pro->category_id }}">Xem tất cả <i class="fa-regular fa-chevron-right"></i></a>
+            <a class="px-5 py-2 btn btn-outline-dark " href="/product/{{ $pro->category->slug}}.html">Xem tất cả <i class="fa-regular fa-chevron-right"></i></a>
         </div>
         @endforeach
     @endforeach
