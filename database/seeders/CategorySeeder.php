@@ -19,56 +19,58 @@ class CategorySeeder extends Seeder
             [
                 "name"=> "Điện thoại, Tablet",
                 "slug" => "dien-thoai-tablet",
-                "image" => "dienthoai.svg",
+                "image" => "cate_dienthoai.webp",
                 "rank" => 1,
                 "status" => 1
             ],
             [
                 "name"=> "Laptop",
                 "slug" => "laptop",
-                "image" => "laptop.svg",
+                "image" => "cate_laptop.webp",
                 "rank" => 2,
                 "status" => 1
             ],
             [
                 "name"=> "Âm thanh",
                 "slug" => "am-thanh",
-                "image" => "amthanh.svg",
+                "image" => "cate_amthanh.webp",
                 "rank" => 3,
                 "status" => 1
             ],
             [
-                "name"=> "Đồng Hồ, Camera",
-                "slug" => "dong-ho-camera",
-                "image" => "dongho.svg",
+                "name"=> "Đồng Hồ",
+                "slug" => "dong-ho",
+                "image" => "cate_dongho.webp",
                 "rank" => 4,
                 "status" => 1
             ],
             [
                 "name"=> "Gia Dụng, Smarthome",
                 "slug" => "gia-dung-smarthome",
-                "image" => "giadung.svg",
+                "image" => "cate_giadung.webp",
                 "rank" => 5,
                 "status" => 1
             ],
             [
                 "name"=> "Phụ Kiện",
                 "slug" => "phu-kien",
-                "image" => "phukien.svg",
+                "image" => "cate_phukien.webp",
                 "rank" => 6,
                 "status" => 1
             ],
+            // c
             [
                 "name"=> "PC, Màn Hình",
                 "slug" => "pc-man-hinh",
-                "image" => "pc.png",
+                "image" => "cate_pc.webp",
                 "rank" => 7,
                 "status" => 1
             ],
+            // c
             [
                 "name"=> "Tivi",
                 "slug" => "tivi",
-                "image" => "tivi.png",
+                "image" => "cate_tivi.webp",
                 "rank" => 8,
                 "status" => 1
             ]
