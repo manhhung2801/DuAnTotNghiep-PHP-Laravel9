@@ -11,7 +11,7 @@
                         <img src="{{ asset('uploads/post/'. $post->image) }}" class="card-img-top" alt="{{$post->image}}">
                         <div class="card-body px-3">
                             <h3 class="news-title line-clamp line-clamp-2 fw-semibold">{{ $post->title }}</h3>
-                            <p class="news-desc line-clamp line-clamp-3 mb-1">{{ $post->seo_description }}</p>
+                            <p class="news-desc line-clamp line-clamp-3 mb-1">{{ $post->description }}</p>
                             <span class="news-desc_item"><i class="fa-solid fa-clock"></i> {{ $post->created_at }}<span />
                         </div>
                     </div>

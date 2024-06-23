@@ -1,14 +1,16 @@
 <?php
+
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\VariantItem;
 use App\Models\SubCategory;
 use App\Models\ChildCategory;
 use App\Models\StoreAddress;
-
+use DB;
 class ProductController extends Controller
 {
     public function calculatePercentageChange($products)
@@ -36,7 +38,7 @@ class ProductController extends Controller
 
         // Get categories ordered by rank
         $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
-        $storeAddress = StoreAddress::where("status", "=",1)->orderBy("id","asc")->limit(1)->get();
+        $storeAddress = StoreAddress::where("status", "=", 1)->orderBy("id", "asc")->limit(1)->get();
         // Initialize products query
         $productsQuery = Product::query();
 
@@ -92,20 +94,21 @@ class ProductController extends Controller
         // Determine which view to render based on filtered parameters
         switch (count(array_filter($filters))) {
             case 1:
-                return view('frontend.products.index', compact("categories", "category", "products","storeAddress"));
+                return view('frontend.products.index', compact("categories", "category", "products", "storeAddress"));
             case 2:
-                return view('frontend.products.index', compact("categories", "subCategory", "products","storeAddress"));
+                return view('frontend.products.index', compact("categories", "subCategory", "products", "storeAddress"));
             case 3:
-                return view('frontend.products.index', compact("categories", "childCategory", "products","storeAddress"));
+                return view('frontend.products.index', compact("categories", "childCategory", "products", "storeAddress"));
             case 4:
                 // Assuming only one product is filtered
                 $product = $products->first();
                 $product_image_galleries = $product->product_image_galleries()->get();
                 $variants = $product->variant()->get();
-                return view('frontend.products.detail', compact("categories", "product", "product_image_galleries", "variants", 'products',"storeAddress"));
+
+                return view('frontend.products.detail', compact("categories", "product", "product_image_galleries", "variants", 'products', "storeAddress"));
             default:
                 // No filters applied
-                return view('frontend.products.index', compact("categories", "products","storeAddress"));
+                return view('frontend.products.index', compact("categories", "products", "storeAddress"));
         }
     }
 }

@@ -129,7 +129,7 @@ class CategoryController extends Controller
         ], [
             'name.required' => 'Tên không được để trống.',
             'image.image' => 'Định dạng không hợp lệ. Yêu cầu Hình ảnh.',
-            'image.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg, webp.',
+            'image.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg, webp',
             'image.max' => 'Hình ảnh không thể vượt quá 2048 kilobytes.',
             'rank.numeric' => 'Thứ hạng phải là một số.',
         ]);

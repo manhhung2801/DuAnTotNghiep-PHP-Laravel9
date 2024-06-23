@@ -48,6 +48,7 @@ class Product extends Model
     {
         return $this->belongsTo(SubCategory::class);
     }
+
     //get all record
     static public function getProduct()
     {

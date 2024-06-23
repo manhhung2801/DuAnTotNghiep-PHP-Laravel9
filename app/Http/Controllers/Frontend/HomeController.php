@@ -21,8 +21,8 @@ class HomeController extends Controller
 
         // Show danh mục nổi bật
         $categoryHot = $categories->take(6);
-        //Giới hạn của category show
-        $getCategory = $categories->take(4);
+        //Giới hạn của category show // has product lấy category có ít nhất 1 product
+        $getCategory = Category::where("status", "=", 1)->has('products')->take(4)->get();
         $getProducts = []; //mảng chưa product
         foreach($getCategory as $cate){
             $product = [
