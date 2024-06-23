@@ -21,10 +21,10 @@
         <div class="card">
             <div class="card-header">
                 <h6 class="mt-2 mb-0 text-uppercase float-start">Cập nhật</h6>
-                <a href="{{ route("admin.post-cate.index") }}" class="btn btn-primary float-end">Quay lại</a>
+                <a href="{{ route("admin.post-category.index") }}" class="btn btn-primary float-end">Quay lại</a>
             </div>
             <div class="card-body">
-                <form class="row g-3" action="{{ route("admin.post-cate.update", $post_categories->id) }}" method="POST">
+                <form class="row g-3" action="{{ route("admin.post-category.update", $post_categories->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="col-md-6">

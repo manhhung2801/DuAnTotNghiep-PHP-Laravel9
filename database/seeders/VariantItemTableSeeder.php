@@ -20,7 +20,7 @@ class VariantItemTableSeeder extends Seeder
 
         foreach ($variants as $variant) {
             VariantItem::factory()->create([
-                'parent_id' => $variant->id,
+                'product_variant_id' => $variant->id,
             ]);
         }
 

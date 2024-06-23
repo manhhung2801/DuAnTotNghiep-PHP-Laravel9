@@ -13,7 +13,7 @@
                             <a class="image_thumb scale_hover" href="/product/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html"
                                 title="{{ $pro->name }}">
                                 <img class="lazyload duration-300 loaded"
-                                    src="//bizweb.dktcdn.net/thumb/large/100/480/632/products/13-pm-la-221119025651-2211191456.jpg?v=1681769956803">
+                                    src="{{asset('uploads/products/'.$pro->image)}}" >
                             </a>
                         </div>
                         <div class="product-info">

@@ -108,7 +108,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $user = User::all();
+        $user = User::where('role','admin')->get();
         $post_categories = Post_categories::all();
         return view('admin.post.create', compact('post_categories', 'user'));
     }
@@ -176,7 +176,7 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        $user = User::all();
+        $user = User::where('role','admin')->get();
         $post_categories = Post_categories::all();
         return view('admin.post.edit', compact('post', 'user', 'post_categories'));
     }
@@ -225,7 +225,7 @@ class PostsController extends Controller
         $post->description = $request->description;
         $post->seo_title = $request->seo_title;
         $post->seo_description = $request->seo_description;
-        $post->type = $post->type;
+        $post->type = $request->type;
         $post->status = $request->status;
 
         if ($request->hasFile('image')) {
