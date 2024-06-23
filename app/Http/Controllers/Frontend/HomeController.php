@@ -36,7 +36,6 @@ class HomeController extends Controller
         }
         // show tin tức (post)
         $getPosts = Post::getPost()->orderBy('created_at', 'desc')->take(4)->get();
-        $storeAddress = StoreAddress::where("status", "=", 1)->orderBy("id", "asc")->limit(1)->get();
-        return view('frontend.home.index', compact("categories", 'slides', 'storeAddress', 'categoryHot', 'getProducts','getPosts'));
+        return view('frontend.home.index', compact('slides', 'categoryHot', 'getProducts','getPosts'));
     }
 }
