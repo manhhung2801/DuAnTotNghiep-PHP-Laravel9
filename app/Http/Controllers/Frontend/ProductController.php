@@ -35,7 +35,7 @@ class ProductController extends Controller
         // Filter parameters
         $filters = compact('cat', 'sub', 'child', 'slug');
         $sortBy = $request->query('sort');
-
+        $slug = str_replace('.html','', $slug);
         // Get categories ordered by rank
         $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
         $storeAddress = StoreAddress::where("status", "=", 1)->orderBy("id", "asc")->limit(1)->get();
@@ -87,7 +87,6 @@ class ProductController extends Controller
 
         // Paginate the products
         $products = $productsQuery->paginate(15);
-
         // Calculate percentage change for products
         $products = $this->calculatePercentageChange($products);
 
@@ -101,11 +100,11 @@ class ProductController extends Controller
                 return view('frontend.products.index', compact("categories", "childCategory", "products", "storeAddress"));
             case 4:
                 // Assuming only one product is filtered
-                $product = $products->first();
-                $product_image_galleries = $product->product_image_galleries()->get();
-                $variants = $product->variant()->get();
+                $product = Product::with('product_image_galleries')->findOrFail($product->id);
+                $product_image_galleries = $product->product_image_galleries;
 
-                return view('frontend.products.detail', compact("categories", "product", "product_image_galleries", "variants", 'products', "storeAddress"));
+                $variants = $product->variant()->get();
+                return view('frontend.products.detail', compact("categories", "product", "variants", "product_image_galleries", "product_image_galleries", "products", "storeAddress"));
             default:
                 // No filters applied
                 return view('frontend.products.index', compact("categories", "products", "storeAddress"));

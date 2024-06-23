@@ -1,6 +1,6 @@
 <div class="wrapper-info py-2 border-bottom">
     <div class="product-name">
-        <h3 class="fw-medium">Iphone 15 ProMax</h3>
+        <h3 class="fw-medium">{{ $product->name }}</h3>
     </div>
     <div class="product-review-box d-flex align-items-center justify-content-between">
         <div class="d-flex">
