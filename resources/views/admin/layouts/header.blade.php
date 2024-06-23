@@ -45,7 +45,7 @@
 	<link rel="stylesheet" href="{{asset('backend/assets/css/semi-dark.css')}}" />
 	<link rel="stylesheet" href="{{asset('backend/assets/css/header-colors.css')}}" />
 	<title>Dashboard - @yield('title')</title>
-
+    @yield('style')
 
 </head>
 
