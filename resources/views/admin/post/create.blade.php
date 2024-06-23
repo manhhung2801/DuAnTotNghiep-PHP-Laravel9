@@ -59,10 +59,10 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="input9" class="form-label">Nổi bật</label>
+                    <label for="input9" class="form-label">Kiểu</label>
                     <select id="input9" class="form-select" name="type">
-                        <option value="1">Nổi bật</option>
-                        <option value="0">Không nổi bật</option>
+                        <option value="1">Bài Viết</option>
+                        <option value="0">Banner</option>
                     </select>
                 </div>
                 <div class="col-md-6">
