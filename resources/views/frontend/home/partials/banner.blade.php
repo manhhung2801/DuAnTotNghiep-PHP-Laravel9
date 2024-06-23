@@ -1,4 +1,5 @@
-<div class="bg-banner">
+<div class="bg-banner overflow-hidden" 
+    style="background: url('//bizweb.dktcdn.net/100/480/632/themes/900313/assets/section_banner_new_bg.jpg?1706429501594') center/cover no-repeat;">
     <div class="container">
         <div class="section_title text-center mb-3">
             <h4 class="text-uppercase">THÔNG TIN SẢN PHẨM MỚI</h>

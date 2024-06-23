@@ -49,7 +49,7 @@ class VariantItemController extends Controller
     {
         //
         $request->validate([
-            'product_variant_id' => ['required'],
+            'product_variant_id' => ['required', 'numeric', 'min:0'],
             'name' => ['required', 'max:200', 'unique:sub_categories,name'],
             'price' => ['required', 'numeric', 'min:0'],
             'is_default' => ['required'],
@@ -105,7 +105,7 @@ class VariantItemController extends Controller
     {
         //
         $request->validate([
-            'product_variant_id' => ['required'],
+            'product_variant_id' => ['required', 'numeric', 'min:0'],
             'name' => ['required', 'max:200', 'unique:sub_categories,name'],
             'price' => ['required', 'numeric', 'min:0'],
             'is_default' => ['required'],

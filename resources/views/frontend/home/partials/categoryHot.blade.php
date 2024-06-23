@@ -7,7 +7,7 @@
         <div class="category_hot_item col-lg-2 col-md-2 col-sm-4 col-4 mb-3 px-2">
             <div class="card border-0 rounded-4">
                 <div class="card-body px-1">
-                    <a href="#" title="iPhone" class="cate-item list-group-item">
+                    <a href="/product/{{$cate->slug}}" title="iPhone" class="cate-item list-group-item">
                         <div class="box-cate text-center">
                             <div class="cate-image_home ">
                                 <img alt="iphone" width="80px" height="80px" src="//bizweb.dktcdn.net/100/480/632/themes/900313/assets/cate_1.png?1712897547805">
