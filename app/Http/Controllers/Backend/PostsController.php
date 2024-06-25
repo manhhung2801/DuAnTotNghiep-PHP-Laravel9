@@ -89,42 +89,33 @@ class PostsController extends Controller
     {
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
         $user = User::where('role','admin')->get();
         $post_categories = Post_categories::all();
         return view('admin.post.create', compact('post_categories', 'user'));
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+  
     public function store(Request $request)
     {
-
-      try{
         $request->validate(
             [
-                'category_id' => 'required',
-                'user_id' => 'required',
-                'title' => 'required|max:255',
-                'description' => 'required',
-                'content' => 'required',
-                'image' => 'image|mimes:jpeg,jpg,png,gif,webp|max:10240',
-                'seo_description' => 'required',
-                'seo_title' => 'required',
+                'category_id' => ['required'],
+                'user_id' => ['required'],
+                'title' => ['required','max:255'],
+                'description' => ['required'],
+                'content' => ['required'],
+                'image' => ['required','image','mimes:jpeg,jpg,png,gif,webp','max:10240'],
+                'seo_description' => ['required'],
+                'seo_title' => ['required'],
+                'type' => ['required'],
             ],[
                 'category_id.required' => "Danh mục bài đăng không được để trống. ",
                 'user_id.required' => "Tên người đăng bài không được để trống. ",
                 'title.required' => "Tiêu đề không được để trống. ",
                 'content.required' => "Nội dung không được để trống. ",
+                'type.required' => "Kiểu không được để trống. ",
                 'seo_description.required' => "Mô tả SEO không được để trống. ",
                 'seo_title.required' => "Tiêu đề SEO không được để trống. ",
                 'description.required' => "Nội dung bài viết không được để trống. ",
@@ -152,7 +143,7 @@ class PostsController extends Controller
      
         if ($request->hasFile('image_gallery')) {
                 foreach ($request->file('image_gallery') as $gallery) {
-                    $file_name = 'media_gallery_' . uniqid() . '.' . $gallery->extension(); //uniqid() giúp tạo ra một ID duy nhất
+                    $file_name = 'media_post_gallery_' . uniqid() . '.' . $gallery->extension(); //uniqid() giúp tạo ra một ID duy nhất
                     $gallery->move(public_path('/uploads/post_gallery'), $file_name);
 
                     //Update vào table gallery
@@ -163,26 +154,17 @@ class PostsController extends Controller
                 }
             }
             toastr()->success("Thêm " . $request->name . " Thành công");
-            return redirect()->back();
-        } catch (ValidationException $e) {
-            toastr()->error('Lỗi: ' . $e);
-        }
-       
+            return redirect()->back(); 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($id)
     {   
         $gallery = Post_image_galleries::where('post_id', $id)->get('image');
         $post = Post::findOrFail($id);
         $user = User::where('role','admin')->get();
         $post_categories = Post_categories::all();
-        return view('admin.post.edit', compact('post', 'user', 'post_categories'));
+        return view('admin.post.edit', compact('post', 'user', 'post_categories','gallery'));
     }
     /**
      * Update the specified resource in storage.
@@ -196,19 +178,21 @@ class PostsController extends Controller
 
         $request->validate(
             [
-                'category_id' => 'required',
-                'user_id' => 'required',
-                'title' => 'required|max:255',
-                'description' => 'required',
-                'content' => 'required',
-                'image' => 'image|mimes:jpeg,jpg,png,gif,webp|max:10240',
-                'seo_description' => 'required',
-                'seo_title' => 'required',
+                'category_id' => ['required'],
+                'user_id' => ['required'],
+                'title' => ['required','max:255'],
+                'description' => ['required'],
+                'content' => ['required'],
+                'image' => ['image','mimes:jpeg,jpg,png,gif,webp','max:10240'],
+                'seo_description' => ['required'],
+                'seo_title' => ['required'],
+                'type' => ['required'],
             ],[
                 'category_id.required' => "Danh mục bài đăng không được để trống. ",
                 'user_id.required' => "Tên người đăng bài không được để trống. ",
                 'title.required' => "Tiêu đề không được để trống. ",
                 'content.required' => "Nội dung không được để trống. ",
+                'type.required' => "Kiểu không được để trống. ",
                 'seo_description.required' => "Mô tả SEO không được để trống. ",
                 'seo_title.required' => "Tiêu đề SEO không được để trống. ",
                 'description.required' => "Nội dung bài viết không được để trống. ",
@@ -248,8 +232,8 @@ class PostsController extends Controller
                 // Xóa file ảnh cũ trong uploads
                 if (!empty($request->image_gallery_old)) {
                     foreach (json_decode($request->image_gallery_old) as $gal) {
-                        if (File::exists(public_path('uploads/gallery/' . $gal->image))) {
-                            File::delete(public_path('uploads/gallery/' . $gal->image));
+                        if (File::exists(public_path('uploads/post_gallery/' . $gal->image))) {
+                            File::delete(public_path('uploads/post_gallery/' . $gal->image));
                         }
                     }
                 }
@@ -258,8 +242,8 @@ class PostsController extends Controller
                 foreach ($request->image_gallery as $gal) {
                     $gallery = new Post_image_galleries();
                     $ext = $gal->extension();
-                    $fileName = 'media_gallery_' . uniqid() . '.' . $ext;
-                    $gal->move(public_path('uploads/gallery/'), $fileName);
+                    $fileName = 'media_post_gallery_' . uniqid() . '.' . $ext;
+                    $gal->move(public_path('uploads/post_gallery/'), $fileName);
                     $gallery->image = $fileName;
                     $gallery->product_id = $id;
                     $gallery->save();

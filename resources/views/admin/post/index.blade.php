@@ -66,7 +66,7 @@
                             <td>{{$post->title}}</td>
                             <td>{{$post->content}}</td>
                             <td>{{$post->slug}}</td>
-                            <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 200px;display: block;">{{$post->description}}</td>
+                            <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 200px;">{{$post->description}}</td>
                             <td>{{$post->seo_title}}</td>
                             <td>{{$post->seo_description}}</td>
                             <td>
