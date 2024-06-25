@@ -50,6 +50,11 @@
                 </div>
 
                 <div class="col-md-6">
+                    <label for="image" class="form-label">Danh mục banner</label>
+                    <input type="file" class="form-control" id="image" name="image_gallery[]" accept="image/*">
+                </div>
+
+                <div class="col-md-6">
                     <label for="input7" class="form-label">Tiêu đề</label>
                     <input type="text" class="form-control" id="input1" name="title" placeholder="title">
                 </div>
