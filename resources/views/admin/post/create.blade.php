@@ -29,7 +29,6 @@
                 <div class="col-md-6">
                     <label for="category" class="form-label">Danh mục bài đăng</label>
                     <select id="category" class="form-select main-category" name="category_id">
-                        <option>Select</option>
                         @foreach ($post_categories as $post_categories )
                         <option value="{{$post_categories->id}}">{{$post_categories->name}}</option>
                         @endforeach
@@ -38,7 +37,6 @@
                 <div class="col-md-6">
                     <label for="user" class="form-label">Tên người đăng bài</label>
                     <select id="user" class="form-select" name="user_id">
-                        <option>Select</option>
                         @foreach ($user as $user )
                         <option value="{{$user->id}}">{{$user->name}}</option>
                         @endforeach
@@ -56,11 +54,11 @@
 
                 <div class="col-md-6">
                     <label for="input7" class="form-label">Tiêu đề</label>
-                    <input type="text" class="form-control" id="input1" name="title" placeholder="title">
+                    <input type="text" class="form-control" id="input1" name="title" placeholder="Nhập tiêu đề">
                 </div>
                 <div class="col-md-6">
                     <label for="input7" class="form-label">Nội dung</label>
-                    <input type="text" class="form-control" id="input1" name="content" placeholder="title">
+                    <input type="text" class="form-control" id="input1" name="content" placeholder="Nhập nội dung">
                 </div>
 
                 <div class="col-md-6">
@@ -82,7 +80,7 @@
                         <input type="text" class="form-control" id="seotitle" name="seo_title" >
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <label for="seodesc" class="form-label">Mô tả SEO</label>
                         <input type="text" class="form-control" id="seodesc" name="seo_description">
                     </div>

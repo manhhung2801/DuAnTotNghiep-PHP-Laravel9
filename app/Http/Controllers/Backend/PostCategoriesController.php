@@ -77,14 +77,6 @@ class PostCategoriesController extends Controller
         return view('admin.post-category.edit', compact('post_categories'));
     }
 
-
-     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $request->validate([
