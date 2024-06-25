@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Post_categories;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Post_image_galleries;
+use Illuminate\Validation\ValidationException;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -25,20 +27,6 @@ class PostsController extends Controller
         }
         return null;
     }
-
-    /*public function upload(Request $request)
-    {
-        if ($request->hasFile('upload')) {
-            $originName= $request->file('upload')->getClientOriginalName();
-            $fileName=pathinfo($originName, PATHINFO_FILENAME);
-            $extension = $request->file('upload')->getClientOriginalExtension();
-            $fileName = $fileName . '_' . time().'.'.$extension;
-            $request->file('uploads')->move(public_path('post'),$fileName);
-            $url = asset('post/'.$fileName);
-            return response()->json(['fileName'=>$fileName,'uploaded'=>1,'url'=>$url]);
-        }
-
-    }*/
     /**
      * Display a listing of the resource.
      *
@@ -121,7 +109,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
 
-
+      try{
         $request->validate(
             [
                 'category_id' => 'required',
@@ -161,10 +149,25 @@ class PostsController extends Controller
         $post->type = $request->type;
         $post->status = $request->status;
         $post->save();
+     
+        if ($request->hasFile('image_gallery')) {
+                foreach ($request->file('image_gallery') as $gallery) {
+                    $file_name = 'media_gallery_' . uniqid() . '.' . $gallery->extension(); //uniqid() giúp tạo ra một ID duy nhất
+                    $gallery->move(public_path('/uploads/post_gallery'), $file_name);
 
-        toastr('Đã tạo thành công!', 'success');
-
-        return redirect()->route('admin.post.index');
+                    //Update vào table gallery
+                    $image_gallery = new Post_image_galleries();
+                    $image_gallery->image = $file_name;
+                    $image_gallery->post_id = $post->id; //product_id lấy từ Product vừa thêm ở trên
+                    $image_gallery->save();
+                }
+            }
+            toastr()->success("Thêm " . $request->name . " Thành công");
+            return redirect()->back();
+        } catch (ValidationException $e) {
+            toastr()->error('Lỗi: ' . $e);
+        }
+       
     }
 
     /**
@@ -174,7 +177,8 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   
+        $gallery = Post_image_galleries::where('post_id', $id)->get('image');
         $post = Post::findOrFail($id);
         $user = User::where('role','admin')->get();
         $post_categories = Post_categories::all();
@@ -239,7 +243,28 @@ class PostsController extends Controller
             $post->image = $request->image_old;
         }
         $post->save();
-
+        
+        if ($request->hasFile('image_gallery')) {
+                // Xóa file ảnh cũ trong uploads
+                if (!empty($request->image_gallery_old)) {
+                    foreach (json_decode($request->image_gallery_old) as $gal) {
+                        if (File::exists(public_path('uploads/gallery/' . $gal->image))) {
+                            File::delete(public_path('uploads/gallery/' . $gal->image));
+                        }
+                    }
+                }
+                // Lấy gallery của product theo ID và xóa tất cả
+                $galleryDel = Post_image_galleries::where('product_id', $id)->delete();
+                foreach ($request->image_gallery as $gal) {
+                    $gallery = new Post_image_galleries();
+                    $ext = $gal->extension();
+                    $fileName = 'media_gallery_' . uniqid() . '.' . $ext;
+                    $gal->move(public_path('uploads/gallery/'), $fileName);
+                    $gallery->image = $fileName;
+                    $gallery->product_id = $id;
+                    $gallery->save();
+                }
+            }
 
         toastr('Cập nhật thành công!', 'success');
 
