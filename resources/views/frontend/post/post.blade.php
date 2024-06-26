@@ -39,12 +39,11 @@
                                 <div class="article-image ">
                                     <img class="img-fluid loaded" src="{{asset('uploads/post')}}/{{ $newsdetai->image}}">
                                 </div>
-                                <div class="rte">
+                                <div class="rte w-100 d-block">
                                     {!! $newsdetai->description !!}
-
                                 </div>
                             </div>
-                            <div class="blog_related">
+                            <div class="blog_related" style="margin: 20vh 0;">
                                 <div class="title" style="font-size: 1.8rem; font-weight: 700; margin-bottom: 20px">Tin tức liên quan</div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-3 col-ms-6 col-6 mb-4">

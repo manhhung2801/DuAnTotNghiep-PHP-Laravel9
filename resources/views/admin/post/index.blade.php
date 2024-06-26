@@ -1,8 +1,8 @@
 @extends('admin.layouts.master')
 
 @section('title', 'Danh sách bài viết')
-
 @section('content')
+
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
@@ -47,11 +47,11 @@
                             <th>Hình ảnh </th>
                             <th>Tiêu đề</th>
                             <th>Nội dung</th>
-                            <th>Đường dẫn</th>
+                            <th>Slug</th>
                             <th>Mô tả</th>
                             <th>Tiêu đề SEO</th>
                             <th>Mô tả SEO</th>
-                            <th>Nổi bật</th>
+                            <th>Kiểu</th>
                             <th>Trạng thái</th>
                             <th>Hoạt động</th>
                         </tr>
@@ -66,17 +66,11 @@
                             <td>{{$post->title}}</td>
                             <td>{{$post->content}}</td>
                             <td>{{$post->slug}}</td>
-                            <td>{{$post->description}}</td>
+                            <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 200px;">{{$post->description}}</td>
                             <td>{{$post->seo_title}}</td>
                             <td>{{$post->seo_description}}</td>
                             <td>
-                                <div class="form-check form-switch form-check-success">
-                                    @if($post->type == 1)
-                                    <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post->id }}" id="flexSwitchCheckSuccess" checked>
-                                    @elseif($post->type == 0)
-                                    <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $post->id }}" id="flexSwitchCheckSuccess">
-                                    @endif
-                                </div>
+                                {{($post->type==1)?"Bài Viết":"Banner"}}
                             </td>
                             <td>
                                 <div class="form-check form-switch form-check-success">
