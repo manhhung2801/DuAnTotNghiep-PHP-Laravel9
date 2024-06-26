@@ -73,10 +73,11 @@
                                 </div>
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="{{ route('admin.product.edit', $product->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Sửa</a>
-                                <a class="btn btn-danger delete-item" href="{{ route('admin.product.destroy', $product->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa</a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('admin.product.edit', $product->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Sửa</a>
+                                <a class="btn btn-danger btn-sm delete-item" href="{{ route('admin.product.destroy', $product->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa</a>
+                                <a class="btn btn-warning btn-sm" href="{{ route('admin.product.variant', $product->id) }}"><i class="fa-solid fa-wand-magic-sparkles fs-6"></i>Biến Thể</a>
                                 <!-- Button trigger modal -->
-                                <button id="modal_product_show" data-url="{{ route('admin.product.show', $product->id) }}" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#productDetails">
+                                <button id="modal_product_show" data-url="{{ route('admin.product.show', $product->id) }}" type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#productDetails">
                                     Chi tiết
                                 </button>
                                 @include('admin.product.partials.modal')

@@ -12,7 +12,8 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa biến thể</li>
+                        <li class="breadcrumb-item" aria-current="page">{{ $product->name }}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $variant->name }}</li>
                     </ol>
                 </nav>
             </div>
@@ -21,24 +22,15 @@
         <div class="card">
             <div class="card-header">
                 <h6 class="mt-2 mb-0 text-uppercase float-start">Chỉnh sửa biến thể</h6>
-                <a href="{{ route("admin.variant.index") }}" class="btn btn-primary float-end">Trở về</a>
+                <a href="{{ route('admin.product.variant', $variant->product_id) }}" class="btn btn-primary float-end">Trở về</a>
             </div>
             <div class="card-body">
                 <form class="row g-3" action="{{ route("admin.variant.update", $variant->id) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <label for="input1" class="form-label">Tên</label>
                         <input type="text" class="form-control" value="{{ $variant->name }}" id="input1" name="name" placeholder="Name">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="input7" class="form-label">Mã sản phẩm</label>
-                        <select id="input9" class="form-select" name="product_id">
-                            <option>Select</option>
-                            @foreach ($product as $product)
-                                <option {{ $variant->product_id == $product->id ? "selected" : "" }} value="{{ $product->id }}">{{ $product->name }}</option>
-                            @endforeach
-                        </select>
                     </div>
                     <div class="col-md-6">
                         <label for="input9" class="form-label">Trạng thái</label>

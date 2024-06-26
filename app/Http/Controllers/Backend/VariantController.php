@@ -57,16 +57,22 @@ class VariantController extends Controller
         return response(['status' => 'success', 'message' => 'Variant deleted successfully!']);
     }
 
-
-    public function index(Request $request)
+    public function getVariantByProductId($id, Request $request)
     {
-        $variant = Variant::latest();
+        $product = Product::findOrFail($id);
+
+        $filteredVariant = Variant::where('product_id', $id)->latest();
         if (!empty($request->get('keyword'))) {
-            $variant = Variant::where('name', 'like', '%' . $request->get('keyword') . '%');
+            $filteredVariant = $filteredVariant->where('name', 'like', '%' . $request->get('keyword') . '%');
         }
 
-        $variant = $variant->paginate(15);
-        return view('admin.variant.index', compact('variant'));
+        $variant = $filteredVariant->where('product_id', $id)->paginate(15);
+        return view('admin.variant.index', compact('variant', 'product'));
+    }
+
+    public function index()
+    {
+
     }
 
 
@@ -109,7 +115,7 @@ class VariantController extends Controller
 
         toastr('Đã tạo thành công!', 'success');
 
-        return redirect()->route('admin.variant.index');
+        return redirect()->back();
     }
 
     /**
@@ -120,8 +126,9 @@ class VariantController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::all();
+
         $variant = Variant::findOrFail($id);
+        $product = Product::findOrFail($variant->product_id);
         return view('admin.variant.edit', compact('variant', 'product'));
     }
 
@@ -136,20 +143,18 @@ class VariantController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'product_id' => ['required'],
             'name' => ['required', 'max:200', 'unique:sub_categories,name,' . $id],
             'status' => ['required']
         ]);
 
         $variant = Variant::findOrFail($id);
-        $variant->product_id = $request->product_id;
         $variant->name = $request->name;
         $variant->status = $request->status;
         $variant->save();
 
         toastr('Cập nhật thành công!', 'success');
 
-        return redirect()->route('admin.variant.index');
+        return redirect()->route('admin.product.variant', $variant->product_id);
     }
 
     /**
