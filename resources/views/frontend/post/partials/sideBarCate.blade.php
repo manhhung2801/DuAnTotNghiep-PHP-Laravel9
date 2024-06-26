@@ -12,7 +12,7 @@
         ]
         ?>
         @foreach($newsCate as $key => $value)
-        <div class="slidebar_list-tem">
+        <div class="slidebar_list-tem mt-3">
             <a href="{{route('news.newsSiteType',['slugs' =>$value->slug ])}}" class="list-group-item list-group-item-action border-0 fw-semibold">
             {!! $icon[$key][0] !!}
             <!-- <i class="me-2 fa-regular fa-newspaper"></i> -->
