@@ -16,15 +16,27 @@ class VariantItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+
+    public function getVariantItemByVariantId($variant_id, Request $request)
     {
-        $variant = Variant::latest();
+        $variant = Variant::where('id', $variant_id)->first();;
+
+        $product = Product::where('id', $variant->product_id)->first();
+
+        $filteredVariantItem = VariantItem::where('product_variant_id', $variant->id)->latest();
+
         if (!empty($request->get('keyword'))) {
-            $variant = Variant::where('name', 'like', '%' . $request->get('keyword') . '%');
+            $filteredVariantItem = $filteredVariantItem->where('name', 'like', '%' . $request->get('keyword') . '%');
         }
 
-        $variantItem = VariantItem::paginate(15);
-        return view('admin.variantItem.index',compact('variantItem'));
+        $variantItem = $filteredVariantItem->where('product_variant_id', $variant->id)->paginate(15);
+
+        return view('admin.variantItem.index',compact('variantItem', 'product', 'variant'));
+    }
+
+    public function index(Request $request)
+    {
+
     }
 
     /**
@@ -51,7 +63,7 @@ class VariantItemController extends Controller
         $request->validate([
             'product_variant_id' => ['required'],
             'name' => ['required', 'max:200', 'unique:sub_categories,name'],
-            'price' => ['required', 'numeric', 'min:0'],
+            'price' => ['numeric', 'min:0'],
             'is_default' => ['required'],
             'status' => ['required']
         ]);
@@ -66,7 +78,7 @@ class VariantItemController extends Controller
 
         toastr('Created Successfully!', 'success');
 
-        return redirect()->route('admin.variantItem.index');
+        return redirect()->back();
     }
 
     /**
@@ -88,10 +100,10 @@ class VariantItemController extends Controller
      */
     public function edit($id)
     {
-        //
-        $variant = Variant::all();
         $variantItem = variantItem::findOrFail($id);
-        return view('admin.variantItem.edit', compact('variantItem', 'variant'));
+        $variant = Variant::findOrFail($variantItem->product_variant_id);
+        $product = Product::findOrFail($variant->product_id);
+        return view('admin.variantItem.edit', compact('variantItem', 'variant', 'product'));
     }
 
     /**
@@ -105,15 +117,13 @@ class VariantItemController extends Controller
     {
         //
         $request->validate([
-            'product_variant_id' => ['required'],
             'name' => ['required', 'max:200', 'unique:sub_categories,name'],
-            'price' => ['required', 'numeric', 'min:0'],
+            'price' => ['numeric', 'min:0'],
             'is_default' => ['required'],
             'status' => ['required']
         ]);
 
         $variantItem = VariantItem::findOrFail($id);
-        $variantItem->product_variant_id = $request->product_variant_id;
         $variantItem->name = $request->name;
         $variantItem->price = $request->price;
         $variantItem->is_default = $request->is_default;
@@ -122,7 +132,7 @@ class VariantItemController extends Controller
 
         toastr('Updated Successfully!', 'success');
 
-        return redirect()->route('admin.variantItem.index');
+        return redirect()->back();
     }
 
     /**

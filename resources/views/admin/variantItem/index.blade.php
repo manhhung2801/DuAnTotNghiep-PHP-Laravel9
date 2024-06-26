@@ -1,28 +1,70 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Mục biến thể')
+@section('title', 'Biến thể nhỏ')
 
 @section('content')
     <div class="page-content">
         <!--breadcrumb-->
         <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
-            <div class="breadcrumb-title pe-3">Mục biến thể</div>
+            <div class="breadcrumb-title pe-3">Biến thể nhỏ</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="p-0 mb-0 breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Danh sách mục biến thể</li>
+                        <li class="breadcrumb-item" aria-current="page">{{ $product->name }}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $variant->name }}</li>
                     </ol>
                 </nav>
             </div>
         </div>
         <!--end breadcrumb-->
         <div class="card">
+            <div class="card-header">
+                <h6 class="mt-2 mb-0 text-uppercase float-start">Tạo mới biến thể nhỏ</h6>
+                <a href="{{ route("admin.product.variant", $product->id) }}" class="btn btn-primary float-end">Trở về</a>
+            </div>
+            <div class="card-body">
+                <form class="row g-3" action="{{ route("admin.variantItem.store") }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_variant_id" value="{{ $variant->id }}">
+                    <div class="col-md-6">
+                        <label for="input1" class="form-label">Tên</label>
+                        <input type="text" class="form-control" id="input1" name="name" placeholder="Name">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="input1" class="form-label">Giá</label>
+                        <input type="number" class="form-control" id="input1" name="price" placeholder="Price">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="input9" class="form-label">Is Default</label>
+                        <select id="input9" class="form-select" name="is_default">
+                            <option value="1">True</option>
+                            <option value="0">False</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="input9" class="form-label">Trạng thái</label>
+                        <select id="input9" class="form-select" name="status">
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="gap-3 d-grid align-items-center">
+                            <button type="submit" class="px-4 btn btn-primary">Tạo mới</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="card">
 
             <div class="card-header">
                 <div class="action_start float-start d-flex">
-                    <h6 class="mt-2 mb-0 text-uppercase float-start">Mục biến thể</h6>
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">Danh sách biến thể</h6>
                     <div class="form-search ms-2">
                         <form action="" method="get">
                             <div class="input-group">
@@ -33,13 +75,9 @@
                             </div>
                         </form>
                     </div>
-                    <a href="{{ route('admin.variantItem.index') }}" class="me-2 btn btn-success float-end ms-2"><i
+                    <a href="{{ route("admin.product.variant.variant-item", $variant->id) }}" class="me-2 btn btn-success float-end ms-2"><i
                             class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
                 </div>
-                <a href="{{ route('admin.variantItem.onlyTrashed') }}" class="mx-1 btn btn-danger float-end"><i
-                        class="fa-solid fa-trash-can fs-6"></i>Mục biến thể xóa tạm</a>
-                <a href="{{ route('admin.variantItem.create') }}" class="mx-1 btn btn-primary float-end"><i
-                        class="fa-solid fa-plus text-light fs-6"></i>Thêm mới mục biến thể</a>
             </div>
 
 
@@ -50,7 +88,6 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Mã biến thể sản phẩm</th>
                                 <th>Tên</th>
                                 <th>Giá</th>
                                 <th>Is Default</th>
@@ -62,7 +99,6 @@
                             @foreach ($variantItem as $variantItem)
                                 <tr>
                                     <td>{{ $variantItem->id }}</td>
-                                    <td>{{ $variantItem->product_variant_id }}</td>
                                     <td>{{ $variantItem->name }}</td>
                                     <td>{{ $variantItem->price }}</td>
                                     <td>{{ $variantItem->is_default }}</td>
@@ -78,21 +114,15 @@
                                         </div>
                                     </td>
                                     <td>
-                                        @if ($variantItem->deleted_at == null)
-                                            <a class="btn btn-primary"
-                                                href="{{ route('admin.variantItem.edit', $variantItem->id) }}"><i
-                                                    class="fa-solid fa-pen fs-6 text-light"></i>Edit</a>
-                                            <a class="btn btn-danger delete-item"
-                                                href="{{ route('admin.variantItem.destroy', $variantItem->id) }}"><i
-                                                    class="fa-solid fa-trash fs-6"></i>Delete</a>
-                                        @else
-                                            <a class="btn btn-info restoreTrash-item"
-                                                href="{{ route('admin.variantItem.restore', $variantItem->id) }}"><i
-                                                    class="fa-solid fa-trash-can-arrow-up fs-6"></i>Restore</a>
-                                            <a class="btn btn-danger delete-item"
-                                                href="{{ route('admin.variantItem.destroyTrashed', $variantItem->id) }}"><i
-                                                    class="fa-solid fa-trash fs-6"></i>Delete</a>
-                                        @endif
+
+                                            <a class="btn btn-primary" href="{{ route('admin.variantItem.edit', $variantItem->id) }}">
+                                                <i class="fa-solid fa-pen fs-6 text-light"></i>
+                                                Edit
+                                            </a>
+                                            <a class="btn btn-danger delete-item" href="{{ route('admin.variantItem.destroy', $variantItem->id) }}">
+                                                <i class="fa-solid fa-trash fs-6"></i>
+                                                Delete
+                                            </a>
                                     </td>
                                 </tr>
                             @endforeach
