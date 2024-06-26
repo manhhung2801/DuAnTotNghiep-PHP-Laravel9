@@ -51,6 +51,14 @@
                     <img src="{{ asset('uploads/post/'.$post->image) }}" alt="{{$post->image}}" width="50px">
                     <input type="hidden" value="{{$post->image}}" name="image_old">
                 </div>
+                <div class="col-lg-6 mb-3">
+                        <label for="image_gallery" class="form-label">Hình ảnh Banner</label>
+                        <input type="file" class="form-control" id="image_gallery" name="image_gallery[]" multiple accept="image/*">
+                        <input type="hidden" value="{{$gallery}}" name="image_gallery_old">
+                        @foreach ($gallery as $gall)
+                        <img src="{{ asset('uploads/post_gallery/'.$gall->image) }}" alt="{{$gall->image}}" width="50px">
+                        @endforeach
+                </div>
                 <div class="col-md-6 mb-3">
                     <label for="name" class="form-label">Tiêu đề</label>
                     <input type="text" class="form-control" id="name" name="title" placeholder="title" value="{{ $post->title }}">
@@ -70,7 +78,7 @@
 
                 <div class="col-md-6">
                     <label for="input9" class="form-label">Kiểu</label>
-                    <select id="input9" class="form-select" name="status">
+                    <select id="input9" class="form-select" name="type">
                         <option {{ $post->type == 1 ? "selected" : ""  }} value="1">Bài Viết</option>
                         <option {{ $post->type == 0 ? "selected" : ""  }} value="0">Banner</option>
                     </select>

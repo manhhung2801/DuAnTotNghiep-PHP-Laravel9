@@ -29,6 +29,7 @@ return new class extends Migration
             $table->longText('seo_description')->nullable();
             $table->boolean('status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

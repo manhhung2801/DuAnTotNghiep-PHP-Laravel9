@@ -28,5 +28,9 @@ class Post extends Model
         return self::where('status', '=', 1);
     }
 
+    static public function destroyTrashedItem($id)
+    {
+        return self::withTrashed()->where('id', $id)->forceDelete();
+    }
 }
 
