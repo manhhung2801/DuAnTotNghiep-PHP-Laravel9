@@ -56,10 +56,7 @@
                     </li>
                 @endforeach
                 <li class="nav-item mxc">
-                    <a class="nav-link text-white" aria-current="page" href="#">Chính sách</a>
-                </li>
-                <li class="nav-item mxc">
-                    <a class="nav-link text-white" aria-current="page" href="#">Tin tức</a>
+                    <a class="nav-link text-white" aria-current="page" href="/tin-tuc">Tin tức</a>
                 </li>
                 <li class="nav-item mxc">
                     <a class="nav-link text-white" aria-current="page" href="#">Liên hệ</a>

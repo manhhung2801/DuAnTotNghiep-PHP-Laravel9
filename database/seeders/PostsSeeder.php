@@ -17,9 +17,8 @@ class PostsSeeder extends Seeder
     {
         DB::table('posts')->insert([
             [
-                'id' => 1,
                 'category_id' => 1,
-                'type' => '',
+                 'type' => 0,
                 'user_id' => 1,
                 'image' => 'post.jpg',
                 'title' => "'Thò thụt': iPhone đã đúng khi không đụng đến tính năng này suốt những năm qua - Đình đám một thời nay đã chết yểu",
@@ -38,9 +37,8 @@ Những hãng sản xuất khác như Samsung đã thực hiện các giải ph�
                 'deleted_at' => NULL,
             ],
             [
-                'id' => 2,
                 'category_id' => 1,
-                'type' => '',
+                 'type' => 0,
                 'user_id' => 1,
                 'image' => 'post1.jpg',
                 'title' => "Apple 'in tiền' đỉnh thế nào: Cá kiếm từ cả điện thoại cũ lẫn mới, đến iPhone 8 lỗi thời vẫn tạo doanh thu, 1 máy qua tay tới 3 chủ",
@@ -59,9 +57,8 @@ Thực tế, người Mỹ ngày càng có xu hướng sử dụng lại các th
                 'deleted_at' => NULL,
             ],
             [
-                'id' => 3,
                 'category_id' => 1,
-                'type' => '',
+                 'type' => 0,
                 'user_id' => 1,
                 'image' => 'post2.jpg',
                 'title' => 'Đây là mẫu iPhone chính hãng \'phá giá\' chưa từng có tại Việt Nam, chỉ cần 10 triệu đồng có ngay máy mới!',
@@ -76,9 +73,8 @@ Thực tế, người Mỹ ngày càng có xu hướng sử dụng lại các th
                 'deleted_at' => NULL,
             ],
             [
-                'id' => 4,
                 'category_id' => 1,
-                'type' => '',
+                 'type' => 0,
                 'user_id' => 1,
                 'image' => 'post3.jpg',
                 'title' => 'Người giàu cũng khóc: iPhone 15 lộ giá bán cao đến khó tin, phiên bản Pro Max gần 70 triệu đồng?',
