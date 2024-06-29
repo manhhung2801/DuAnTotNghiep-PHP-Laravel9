@@ -23,6 +23,7 @@ class Product extends Model
         'video_link',
         'long_description',
         'short_description',
+        'specifications',
         'product_type',
         'status',
         'seo_title',
