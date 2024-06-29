@@ -18,50 +18,77 @@
                     <h5 class="mb-3">Logo</h5>
                     @foreach ($storeAddress as $item)
                         <ul class="nav flex-column ">
-                            <li class="nav-item mb-2">Hệ thống cửa hàng Sudes Phone chuyên bán lẻ điện thoại, máy tính laptop, smartwatch, smarthome, phụ kiện chính hãng - Giá tốt, giao miễn phí.</li>
-                            <li class="nav-item mb-2"><b>Địa chỉ:</b> {{$item->address}}, {{$item->ward}}, {{$item->district}}, {{$item->province}}</li>
-                            <li class="nav-item mb-2"><b>Điện thoại:</b> {{$item->phone}}</li>
-                            <li class="nav-item mb-2"><b>Email:</b> {{$item->email}}</li>
+                            <li class="nav-item mb-2">Hệ thống cửa hàng Sudes Phone chuyên bán lẻ điện thoại, máy tính
+                                laptop, smartwatch, smarthome, phụ kiện chính hãng - Giá tốt, giao miễn phí.</li>
+                            <li class="nav-item mb-2"><b>Địa chỉ:</b> {{ $item->address }}, {{ $item->ward }},
+                                {{ $item->district }}, {{ $item->province }}</li>
+                            <li class="nav-item mb-2"><b>Điện thoại:</b> {{ $item->phone }}</li>
+                            <li class="nav-item mb-2"><b>Email:</b> {{ $item->email }}</li>
                         </ul>
                     @endforeach
                 </div>
-                <div class="col-lg-2 col-sm-12 col-md-4 footer-item">
-                    <h5 class="mb-3">CHÍNH SÁCH</h5>
-                    <ul class="nav flex-column itemCard">
-                        <li class="nav-item mb-2 text-light"><a href="">Chính sách mua hàng</a></li>
-                        <li class="nav-item mb-2"><a href="">chính sách đổi trả</a></li>
-                        <li class="nav-item mb-2"><a href="{{route('address')}}">Địa chỉ cửa hàng</a></li>
-                        <li class="nav-item mb-2"><a href="">Chính sách bảo mật</a></li>
-                        <li class="nav-item mb-2"><a href="">Chính sách cam kết</a></li>
-                    </ul>
-                </div>
 
                 <div class="col-lg-2 col-sm-12 col-md-4 footer-item">
-                    <h5 class="mb-3">HƯỚNG DẪN</h5>
-                    <ul class="nav flex-column itemCard">
-                        <li class="nav-item mb-2"><a href="">Hướng dẫn mua hàng</a></li>
-                        <li class="nav-item mb-2"><a href="">Hướng dẫn đổi trả</a></li>
-                        <li class="nav-item mb-2"><a href="">Hướng dẫn chuyển khoản</a></li>
-                        <li class="nav-item mb-2"><a href="">Hướng dẫn trả góp</a></li>
-                        <li class="nav-item mb-2"><a href="">Hướng dẫn hoàn hàng</a></li>
-                    </ul>
+                    @php
+                        $currentInformation = null;
+                    @endphp
+                    @foreach ($pages as $page)
+                        @if ($currentInformation !== $page->information->name)
+                            <h5 class="mb-3 text-uppercase">{{ $page->information->name }}</h5>
+                            @php
+                                $currentInformation = $page->information->name;
+                            @endphp
+                        @endif
+                        <ul class="nav flex-column itemCard">
+                            <li class="nav-item mb-2 text-light"><a href="{{$page->slug}}">{{ $page->name }}</a>
+                            </li>
+                        </ul>
+                    @endforeach
                 </div>
+
+
+                <div class="col-lg-2 col-sm-12 col-md-4 footer-item">
+                    @php
+                        $currentInformation = null;
+                    @endphp
+                    @foreach ($pages_2 as $item)
+                        @if ($currentInformation !== $item->information->name)
+                            <h5 class="mb-3 text-uppercase">{{ $item->information->name }}</h5>
+                            @php
+                                $currentInformation = $item->information->name;
+                            @endphp
+                        @endif
+                        <ul class="nav flex-column itemCard">
+                            <li class="nav-item mb-2 text-light"><a href="{{$item->slug}}">{{ $item->name }}</a>
+                            </li>
+                        </ul>
+                    @endforeach
+                </div>
+
                 <div class="col-lg-4 col-sm-12 col-md-4 p-0 m-0 footer-item">
                     <ul class="row itemCard p-0 m-0">
                         <li class="mb-3">
                             <h5>KẾT NỐI VỚI CHÚNG TÔI</h5>
                         </li>
                         <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2 ">
-                            <a href=""><img src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/facebook_2.svg?1712897547805" alt=""></a>
+                            <a href=""><img
+                                    src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/facebook_2.svg?1712897547805"
+                                    alt=""></a>
                         </li>
                         <li class="nav-item mb-2  col-lg-2  col-sm-2 col-2 ">
-                            <a href=""><img src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/instagram_1.svg?1712897547805" alt=""></a>
+                            <a href=""><img
+                                    src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/instagram_1.svg?1712897547805"
+                                    alt=""></a>
                         </li>
                         <li class="nav-item mb-2  col-lg-2  col-sm-2 col-2">
-                            <a href=""><img src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/lazada.svg?1712897547805" alt=""></a>
+                            <a href=""><img
+                                    src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/lazada.svg?1712897547805"
+                                    alt=""></a>
                         </li>
                         <li class="nav-item mb-2  col-lg-2  col-sm-2 col-2">
-                            <a href=""><img src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/lazada.svg?1712897547805" alt=""></a>
+                            <a href=""><img
+                                    src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/lazada.svg?1712897547805"
+                                    alt=""></a>
                         </li>
 
                     </ul>
@@ -70,23 +97,33 @@
                             <h5>HỖ TRỢ THANH TOÁN</h5>
                         </li>
                         <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2 ">
-                            <a href=""><img class="border" src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805" alt=""></a>
+                            <a href=""><img class="border"
+                                    src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805"
+                                    alt=""></a>
                         </li>
                         <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2">
-                            <a href=""><img class="border" src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805" alt=""></a>
+                            <a href=""><img class="border"
+                                    src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805"
+                                    alt=""></a>
                         </li>
                         <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2">
-                            <a href=""><img class="border" src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805" alt=""></a>
+                            <a href=""><img class="border"
+                                    src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805"
+                                    alt=""></a>
                         </li>
                         <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2">
-                            <a href=""><img class="border" src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805" alt=""></a>
+                            <a href=""><img class="border"
+                                    src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805"
+                                    alt=""></a>
                         </li>
                         <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2">
-                            <a href=""><img class="border" src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805" alt=""></a>
+                            <a href=""><img class="border"
+                                    src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805"
+                                    alt=""></a>
                         </li>
                     </ul>
                 </div>
             </div>
         </footer>
     </div>
-</div> --}}
+</div> 

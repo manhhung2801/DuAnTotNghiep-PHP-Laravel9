@@ -32,6 +32,9 @@ class DatabaseSeeder extends Seeder
             CouponsSeeder::class,
             PostCategoriesSeeder::class,
             PostsSeeder::class,
+            InformationSeeder::class,
+            SubInformationSeeder::class,
+            PageSeeder::class,
         ]);
     }
 }
