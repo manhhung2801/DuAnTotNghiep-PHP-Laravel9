@@ -73,4 +73,4 @@ Route::get('/tin-tuc', [NewsController::class, 'index'])->name("news");
 Route::get('/tin-tuc/{slugs}', [NewsController::class, 'newsSiteType'])->name("news.newsSiteType");
 Route::get('/tin-tuc/{slugs_cate}/{slugs}', [NewsController::class, 'details'])->name("news.details");
 /** các trang thông tin */
-Route::get('/{slug}', [InformationController::class, 'showPages'])->name("showPages");
+Route::get('thong-tin/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");

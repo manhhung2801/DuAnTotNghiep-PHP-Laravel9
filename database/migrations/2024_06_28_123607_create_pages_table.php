@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('slug', 255);
             $table->unsignedBigInteger('information_id');
             $table->foreign('information_id')->references('id')->on('information');
-            $table->unsignedBigInteger('sub_information_id');
-            $table->foreign('sub_information_id')->references('id')->on('sub_information');
             $table->longText('long_description');
             $table->boolean('status');
             $table->timestamps();

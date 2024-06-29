@@ -41,36 +41,38 @@
                             <tr class="text-center">
                                 <th>Stt</th>
                                 <th>Tên trang</th>
+                                <th>Slug</th>
                                 <th>Thứ hạng</th>
                                 <th>Trạng thái</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($information as $information)
+                            @foreach ($information as $infor)
                                 <tr>
-                                    <td>{{ $information->id }}</td>
-                                    <td>{{ $information->name }}</td>
+                                    <td>{{ $infor->id }}</td>
+                                    <td>{{ $infor->name }}</td>
+                                    <td>{{ $infor->slug }}</td>
                                     <td>
-                                        {{ $information->rank }}
+                                        {{ $infor->rank }}
                                     </td>
                                     <td>
                                         <div class="form-check form-switch form-check-success">
-                                            @if($information->status == 1)
-                                                <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $information->id }}" id="flexSwitchCheckSuccess" checked>
-                                            @elseif($information->status == 0)
-                                                <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $information->id }}" id="flexSwitchCheckSuccess">
+                                            @if($infor->status == 1)
+                                                <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $infor->id }}" id="flexSwitchCheckSuccess" checked>
+                                            @elseif($infor->status == 0)
+                                                <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $infor->id }}" id="flexSwitchCheckSuccess">
                                             @endif
                                         </div>
                                     <td class="text-end">
-                                        <a class="btn btn-primary" href="{{ route('admin.information.edit', $information->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
-                                        <a class="btn btn-danger delete-item" href="{{ route("admin.information.destroy", $information->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>
+                                        <a class="btn btn-primary" href="{{ route('admin.information.edit', $infor->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
+                                        <a class="btn btn-danger delete-item" href="{{ route("admin.information.destroy", $infor->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    {{-- {{ $information->links() }} --}}
+                    {{ $information->links() }}
                 </div>
             </div>
         </div>

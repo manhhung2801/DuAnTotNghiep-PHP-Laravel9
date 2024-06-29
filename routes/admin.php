@@ -18,9 +18,9 @@ use App\Http\Controllers\Backend\PagesController;
 use App\Http\Controllers\Backend\StoreAddressController;
 use App\Http\Controllers\Backend\UserManagementController;
 use App\Http\Controllers\Backend\PostCategoriesController;
-use App\Http\Controllers\Backend\SubInformationController;
+
 use App\Models\Information;
-use App\Models\SubInformation;
+
 
 /** Admin Routes */
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -58,13 +58,10 @@ Route::resource('/child-category', ChildCategoryController::class);
 Route::put('/information/change-status', [InformationController::class, 'changeStatus'])->name('information.change-status');
 Route::resource('/information',InformationController::class);
 
-/** Sub Information */
-Route::put('/sub-information/change-status', [SubInformationController::class, 'changeStatus'])->name('sub-information.change-status');
-Route::resource('/sub-information',SubInformationController::class);
+
 
 /**Pages */
 Route::put('/pages/change-status', [PagesController::class, 'changeStatus'])->name('pages.change-status');
-Route::get('get-subinformation', [PagesController::class, 'getSubInformation'])->name('get-subinformation');
 Route::resource('/pages',PagesController::class);
 
 /** Product */

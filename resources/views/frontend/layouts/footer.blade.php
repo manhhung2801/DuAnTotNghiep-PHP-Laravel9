@@ -18,8 +18,7 @@
                     <h5 class="mb-3">Logo</h5>
                     @foreach ($storeAddress as $item)
                         <ul class="nav flex-column ">
-                            <li class="nav-item mb-2">Hệ thống cửa hàng Sudes Phone chuyên bán lẻ điện thoại, máy tính
-                                laptop, smartwatch, smarthome, phụ kiện chính hãng - Giá tốt, giao miễn phí.</li>
+                            <li class="nav-item mb-2">{!!$item->description!!}</li>
                             <li class="nav-item mb-2"><b>Địa chỉ:</b> {{ $item->address }}, {{ $item->ward }},
                                 {{ $item->district }}, {{ $item->province }}</li>
                             <li class="nav-item mb-2"><b>Điện thoại:</b> {{ $item->phone }}</li>
@@ -27,45 +26,22 @@
                         </ul>
                     @endforeach
                 </div>
+                @foreach ($ListInformation as $ItemInformation)
+                    <div class="col-lg-2 col-sm-12 col-md-4 footer-item text-left">
+                        <h5 class="mb-3 text-uppercase">{{ $ItemInformation->name }}</h5>
+                        @foreach ($ListPage as $ItemPage)
+                            @if ($ItemInformation->id === $ItemPage->information_id)
+                                <ul class="nav flex-column itemCard">
+                                    <li class="nav-item mb-2 text-light"><a
+                                            href="{{route('showPages', [ 'slug1' => $ItemPage->information->slug, 'slug2' =>$ItemPage->slug ])}}">{{ $ItemPage->name }}</a>
+                                    </li>
+                                </ul>
+                            @endif
+                        @endforeach
+                    </div>
+                @endforeach
 
-                <div class="col-lg-2 col-sm-12 col-md-4 footer-item">
-                    @php
-                        $currentInformation = null;
-                    @endphp
-                    @foreach ($pages as $page)
-                        @if ($currentInformation !== $page->information->name)
-                            <h5 class="mb-3 text-uppercase">{{ $page->information->name }}</h5>
-                            @php
-                                $currentInformation = $page->information->name;
-                            @endphp
-                        @endif
-                        <ul class="nav flex-column itemCard">
-                            <li class="nav-item mb-2 text-light"><a href="{{$page->slug}}">{{ $page->name }}</a>
-                            </li>
-                        </ul>
-                    @endforeach
-                </div>
-
-
-                <div class="col-lg-2 col-sm-12 col-md-4 footer-item">
-                    @php
-                        $currentInformation = null;
-                    @endphp
-                    @foreach ($pages_2 as $item)
-                        @if ($currentInformation !== $item->information->name)
-                            <h5 class="mb-3 text-uppercase">{{ $item->information->name }}</h5>
-                            @php
-                                $currentInformation = $item->information->name;
-                            @endphp
-                        @endif
-                        <ul class="nav flex-column itemCard">
-                            <li class="nav-item mb-2 text-light"><a href="{{$item->slug}}">{{ $item->name }}</a>
-                            </li>
-                        </ul>
-                    @endforeach
-                </div>
-
-                <div class="col-lg-4 col-sm-12 col-md-4 p-0 m-0 footer-item">
+                <div class="col-lg-3 col-sm-12 col-md-4 p-0 m-0 footer-item">
                     <ul class="row itemCard p-0 m-0">
                         <li class="mb-3">
                             <h5>KẾT NỐI VỚI CHÚNG TÔI</h5>
@@ -126,4 +102,4 @@
             </div>
         </footer>
     </div>
-</div> 
+</div>

@@ -33,7 +33,6 @@ class DatabaseSeeder extends Seeder
             PostCategoriesSeeder::class,
             PostsSeeder::class,
             InformationSeeder::class,
-            SubInformationSeeder::class,
             PageSeeder::class,
         ]);
     }

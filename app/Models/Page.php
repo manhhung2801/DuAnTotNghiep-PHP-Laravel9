@@ -13,8 +13,5 @@ class Page extends Model
     {
         return $this->belongsTo(Information::class);
     }
-    public function subInformation()
-    {
-        return $this->belongsTo(SubInformation::class);
-    }
+   
 }

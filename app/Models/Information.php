@@ -9,11 +9,7 @@ class Information extends Model
 {
     use HasFactory;
     protected $table = 'information';
-    public function SubInformation()
-    {
-        return $this->hasMany(SubInformation::class, 'information_id', 'id');
-    }
-    public function pages()
+       public function pages()
     {
         return $this->hasMany(Page::class, "information_id");
     }

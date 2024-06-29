@@ -26,12 +26,12 @@
             <div class="card-body">
                 <form class="row g-3" action="{{ route('admin.pages.store') }}" method="POST">
                     @csrf
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="input1" class="form-label">Tên trang</label>
                         <input type="text" class="form-control" id="input1" name="name"
                             value="{{ old('name') }}">
                     </div>
-                    <div class="col-md-6 ">
+                    <div class="col-md-4 ">
                         <label for="input2" class="form-label">Danh mục trang</label>
                         <select id="input2" class="form-select main-information" name="information_id">
                             <option>Chọn danh mục</option>
@@ -41,13 +41,7 @@
                         </select>
                         </select>
                     </div>
-                    <div class="col-md-6 ">
-                        <label for="input3" class="form-label">Danh mục trang phụ</label>
-                        <select id="input3" class="form-select sub-information" name="sub_information_id">
-                        </select>
-                    </div>
-
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="input7" class="form-label">Trạng thái</label>
                         <select id="input7" class="form-select" name="status">
                             <option selected="" value="1">Đang hoạt động</option>
@@ -189,30 +183,4 @@
        
     </script>
 @endsection
-@push('scripts')
-<script>
-    $(document).ready(function() {
-        $('body').on('change', ".main-information", function(e) {
-            let id = $(this).val();
 
-            $.ajax({
-                method: "GET",
-                url: "{{route('admin.get-subinformation')}}",
-                data: {
-                    id: id
-                },
-                success: function (data) {
-                    // Clear existing options
-                    $('.sub-information').html('<option value="">Select</option>');
-                    $.each(data, function(i, item){
-                            $('.sub-information').append(`<option value="${item.id}">${item.name}</option>`);
-                    })
-                },
-                error: function(xhr, status, error) {
-                    console.log(error);
-                }
-            });
-        })
-    })
-</script>
-@endpush

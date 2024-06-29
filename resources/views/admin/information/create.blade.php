@@ -32,7 +32,7 @@
 					</div>
 					<div class="col-md-4">
 						<label for="input1" class="form-label">Thứ hạng</label>
-						<input type="number" class="form-control" name="rank" placeholder="Nhập thứ hạng">
+						<input type="number" class="form-control" name="rank" placeholder="Nhập thứ hạng" min="0">
 					</div>
 					<div class="col-md-4">
 						<label for="input9" class="form-label">Trạng thái</label>

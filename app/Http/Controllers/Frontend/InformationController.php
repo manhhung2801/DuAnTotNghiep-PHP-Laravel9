@@ -9,10 +9,27 @@ use Illuminate\Http\Request;
 
 class InformationController extends Controller
 {
-    public function showPages($slug)
+    public function showPages($slug1, $slug2)
     {
-        $page = Page::where('slug', $slug)->firstOrFail();
-        $pages_2 = Page::where('slug', $slug)->firstOrFail();
-        return view("frontend.information.index", compact('page','pages_2'));
+        $ListInformation = Information::all();
+        $ListPage = Page::all();
+        $ckeckIdListInformation = Information::where("slug", $slug1)->first();
+
+        if ($ckeckIdListInformation) {
+            $Informationdetai = Page::where("slug", $slug2)
+                ->where("information_id", $ckeckIdListInformation->id)
+                ->first();
+
+            return view("frontend.information.index", [
+                'ListInformation' => $ListInformation,
+                'ListPage' => $ListPage,
+                'Informationdetai' => $Informationdetai,
+                'ckeckIdListInformation' => $ckeckIdListInformation->id,
+
+            ]);
+        } else {
+            // Handle the case when $ckeckIdListInformation is null
+            return redirect()->back()->with('error', 'No information found for the given slug.');
+        }
     }
 }
