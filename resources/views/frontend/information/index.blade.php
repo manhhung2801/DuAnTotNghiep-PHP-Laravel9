@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title', $page->name)
+@section('title', $Informationdetai->name)
 @section('content')
 <style>
     a{
@@ -26,8 +26,8 @@
             <div class="layout-contact">
                 <div class="container">
                     <div class="row">
-                        <h1 class="fs-3"><a href="" class="text-decoration-none " >{{ $page->name }}</a></h1>
-                        {!! $page->long_description !!}
+                        <h1 class="fs-3"><a href="" class="text-decoration-none " >{{ $Informationdetai->name }}</a></h1>
+                        {!! $Informationdetai->long_description !!}
                     </div>
                 </div>
             </div>

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('information', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug', 255);
             $table->integer('rank')->nullable()->comment("rank = 1, 2, 3 ,4, 5");
             $table->boolean('status');
             $table->timestamps();

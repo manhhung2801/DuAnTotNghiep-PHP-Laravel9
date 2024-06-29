@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Information;
+use App\Models\Page;
 use App\Models\SubInformation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class InformationController extends Controller
 {
@@ -39,15 +41,18 @@ class InformationController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:200'],
-            'rank' => ['numeric'],
+            'rank' => ['required', 'numeric', 'unique:information,rank' ],
             'status' => ['required'],
         ], [
             'name.required' => 'Tên trang không được để trống.',
+            'rank.required' => 'Thứ hạng không được để trống.',
             'rank.numeric' => 'Thứ hạng phải là một số.',
+            'rank.unique' => 'Thứ hạng đã tồn tại.',
         ]);
 
         $information = new Information();
         $information->name = $request->name;
+        $information->slug = Str::slug($request->name);
         $information->rank = $request->rank;
         $information->status = $request->status;
         $information->save();
@@ -91,8 +96,9 @@ class InformationController extends Controller
             'rank.unique' => 'Thứ hạng đã được sử dụng.',
         ]);
 
-        $information = new Information();
+        $information = Information::findOrFail($id);
         $information->name = $request->name;
+        $information->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->name, '-');
         $information->rank = $request->rank;
         $information->status = $request->status;
         $information->save();
@@ -106,9 +112,9 @@ class InformationController extends Controller
     public function destroy($id)
     {
         $information = Information::findOrFail($id);
-        $subInformation = SubInformation::where('information_id', $information->id)->count();
-        if ($subInformation > 0) {
-            return response(['status' => 'error', 'message' => 'Mục này chứa, các Sub Information để xóa mục này bạn phải xóa các mục phụ trước!']);
+        $pages = Page::where('information_id', $information->id)->count();
+        if ($pages > 0) {
+            return response(['status' => 'error', 'message' => 'Mục này chứa, các trang không thể xoá!']);
         }
 
         $information->delete();

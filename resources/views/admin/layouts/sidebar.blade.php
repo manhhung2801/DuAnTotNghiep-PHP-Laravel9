@@ -43,8 +43,6 @@
             <ul>
                 <li> <a href="{{ route('admin.information.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Trang</a>
                 </li>
-                <li> <a href="{{ route('admin.sub-information.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Trang Phụ</a>
-                </li>
             </ul>
         </li>
         <li>
@@ -80,12 +78,12 @@
                 <li>
                     <a href="{{ route('admin.product.index') }}"><i class='bx bx-radio-circle'></i>Danh sách sản phẩm</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{ route('admin.variant.index') }}"><i class='bx bx-radio-circle'></i>Biến thể</a>
                 <li>
                 <li>
                     <a href="{{ route('admin.variantItem.index') }}"><i class='bx bx-radio-circle'></i>Biến thể nhỏ</a>
-                </li>
+                </li> --}}
             </ul>
         </li>
         <li>

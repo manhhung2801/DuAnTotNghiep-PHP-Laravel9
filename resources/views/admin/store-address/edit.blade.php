@@ -70,6 +70,10 @@
                             <option {{ $storeAddress->status == 0 ? 'selected' : '' }} value="0">Ngừng hoạt động</option>
                         </select>
                     </div>
+                    <div class="col-md-12 ">
+                        <label for="input8" class="form-label">Mô tả</label>
+                        <textarea class="form-control " name="description" id="input8">{!! $storeAddress->description !!}</textarea>
+                    </div>
                     <div class="col-md-2">
                         <div class="d-grid align-items-center gap-3">
                             <button type="submit" class="btn btn-primary px-4">Cập nhật</button>

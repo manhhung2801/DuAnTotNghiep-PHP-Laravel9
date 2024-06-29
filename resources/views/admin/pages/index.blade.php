@@ -80,8 +80,8 @@
                         <div class="text-gray">
                             {{ session('message') }}
                         </div>
-                    @endif
-                    {{ $sliders->links() }} --}}
+                    @endif --}}
+                    {{ $pages->links() }}
                 </div>
             </div>
         </div>

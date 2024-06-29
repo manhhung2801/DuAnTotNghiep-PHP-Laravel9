@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Information;
 use App\Models\Page;
-use App\Models\SubInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 class PagesController extends Controller
@@ -33,25 +32,18 @@ class PagesController extends Controller
         return view("admin.pages.create",compact('information'));
     }
 
-    public function getSubInformation(Request $request)
-    {
-        $subInformation = SubInformation::where('information_id', $request->id)->where('status', 1)->get();
-        return $subInformation;
-    }
-
+   
     public function store(Request $request)
     {
         $request->validate(
             [
                 'information_id' => ['required'],
-                'sub_information_id' => ['required'],
                 'name' => ['required', 'max:255'],
                 'long_description' => ['required'],
 
             ],
             [
                 'information_id.required' => "Danh mục trang không được để trống. ",
-                'sub_information_id.required' => "Danh mục trang phụ không được để trống. ",
                 'long_description.required' => "Nội dung không được để trống. ",
                 "name.required" => "Tên không được để trống",
             ]
@@ -60,7 +52,6 @@ class PagesController extends Controller
         $pages = new Page();
         $pages->name = $request->name;
         $pages->information_id = $request->information_id;
-        $pages->sub_information_id = $request->sub_information_id;
         $pages->slug = Str::slug($request->name);
         $pages->long_description = $request->long_description;
         $pages->status = $request->status;
@@ -92,14 +83,14 @@ class PagesController extends Controller
         $request->validate(
             [
                 'information_id' => ['required'],
-                'sub_information_id' => ['required'],
+              
                 'name' => ['required', 'max:255'],
                 'long_description' => ['required'],
 
             ],
             [
                 'information_id.required' => "Danh mục trang không được để trống. ",
-                'sub_information_id.required' => "Danh mục trang phụ không được để trống. ",
+                
                 'long_description.required' => "Nội dung không được để trống. ",
                 "name.required" => "Tên không được để trống",
             ]
@@ -109,7 +100,6 @@ class PagesController extends Controller
         $pages->name = $request->name;
         $pages->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->name, '-');
         $pages->information_id = $request->information_id;
-        $pages->sub_information_id = $request->sub_information_id;
         $pages->slug = Str::slug($request->name);
         $pages->long_description = $request->long_description;
         $pages->status = $request->status;

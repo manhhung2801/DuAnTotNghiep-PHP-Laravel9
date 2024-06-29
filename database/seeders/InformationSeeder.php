@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class InformationSeeder extends Seeder
 {
@@ -18,12 +19,20 @@ class InformationSeeder extends Seeder
         DB::table('information')->insert([
             [
                 'name' => 'Chính sách',
+                'slug' => Str::slug('Chính sách', '-'),
                 'rank' => 0,
                 'status' => 1,
                 'created_at' => now(),
             ],[
                 'name' => 'Hướng dẫn',
+                'slug' => Str::slug('Hướng dẫn', '-'),
                 'rank' => 1,
+                'status' => 1,
+                'created_at' => now(),
+            ],[
+                'name' => 'Giới thiệu',
+                'slug' => Str::slug('Giới thiệu', '-'),
+                'rank' => 2,
                 'status' => 1,
                 'created_at' => now(),
             ]

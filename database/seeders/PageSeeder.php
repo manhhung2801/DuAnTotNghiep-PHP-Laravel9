@@ -21,7 +21,6 @@ class PageSeeder extends Seeder
                 'name' => 'Chính sách mua hàng',
                 'slug' => Str::slug('Chính sách mua hàng', '-'),
                 'information_id' => 1,
-                'sub_information_id' => 1,
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont,;" segoe="" color="" ui="">
     <strong style="box-sizing:border-box;font-weight:bolder;">Chính sách thanh toán:</strong>
@@ -86,7 +85,6 @@ class PageSeeder extends Seeder
                 'name' => 'Chính sách đổi trả',
                 'slug' => Str::slug('Chính sách đổi trả', '-'),
                 'information_id' => 1,
-                'sub_information_id	' => 2,
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     - Quý khách sử dụng gói bảo hành nào sẽ được hỗ trợ theo chính sách của gói đó, bảo hành áp dụng cho các lỗi từ nhà sản xuất (Là các lỗi hư hỏng về linh kiện, không phải các lỗi về ứng dụng hay tính năng)<br>
@@ -116,7 +114,6 @@ class PageSeeder extends Seeder
                 'name' => 'Chính sách vận chuyển',
                 'slug' => Str::slug('Chính sách vận chuyển', '-'),
                 'information_id' => 1,
-                'sub_information_id	' => 3,
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     <strong style="box-sizing:border-box;font-weight:bolder;">I. HÌNH THỨC VẬN CHUYỂN &amp; GIAO NHẬN HÀNG HÓA</strong>
@@ -148,7 +145,7 @@ class PageSeeder extends Seeder
                 'name' => 'Chính sách bảo mật',
                 'slug' => Str::slug('Chính sách bảo mật', '-'),
                 'information_id' => 1,
-                'sub_information_id	' => 4,
+                
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     Cám ơn quý khách đã quan tâm và truy cập vào website. Chúng tôi tôn trọng và cam kết sẽ bảo mật những thông tin mang tính riêng tư của Quý khách.
@@ -216,7 +213,7 @@ class PageSeeder extends Seeder
                 'name' => 'Cam kết cửa hàng',
                 'slug' => Str::slug('Cam kết cửa hàng', '-'),
                 'information_id' => 1,
-                'sub_information_id	' => 5,
+               
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     CyberMart cam kết tất cả các sản phẩm bán ra tại CyberMart đều là sản phẩm chính hãng, và nhận được các chế độ bảo hành chính hãng.
@@ -234,7 +231,7 @@ class PageSeeder extends Seeder
                 'name' => 'Hướng dẫn mua hàng',
                 'slug' => Str::slug('Hướng dẫn mua hàng', '-'),
                 'information_id' => 2,
-                'sub_information_id	' => 1,
+        
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     <strong style="box-sizing:border-box;font-weight:bolder;">Bước 1</strong>: Truy cập website và lựa chọn sản phẩm cần mua để mua hàng
@@ -281,7 +278,7 @@ class PageSeeder extends Seeder
                 'name' => 'Hướng dẫn đổi trả',
                 'slug' => Str::slug('Hướng dẫn đổi trả', '-'),
                 'information_id' => 2,
-                'sub_information_id	' => 2,
+                
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     <strong style="box-sizing:border-box;font-weight:bolder;">Bước 1</strong>: Truy cập website và lựa chọn sản phẩm cần mua để mua hàng
@@ -328,7 +325,7 @@ class PageSeeder extends Seeder
                 'name' => 'Hướng dẫn trả góp',
                 'slug' => Str::slug('Hướng dẫn trả góp', '-'),
                 'information_id' => 2,
-                'sub_information_id	' => 3,
+               
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     Để thuận tiện và dễ dàng hơn cho khách hàng khi mua hàng online, CyberMart tích hợp hình thức trả góp với sự đa dạng về cổng thanh toán, kỳ hạn, lãi suất ưu đãi đi kè với nhiều chương trình hấp dẫn.
@@ -371,7 +368,7 @@ class PageSeeder extends Seeder
                 'name' => 'Hướng dẫn chuyển khoản',
                 'slug' => Str::slug('Hướng dẫn chuyển khoản', '-'),
                 'information_id' => 2,
-                'sub_information_id	' => 4,
+                
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     <strong style="box-sizing:border-box;font-weight:bolder;">Khách hàng thanh toán trực tiếp tại cửa hàng&nbsp;</strong><br>
@@ -396,12 +393,25 @@ class PageSeeder extends Seeder
                 'name' => 'Hướng dẫn hoàn hàng',
                 'slug' => Str::slug('Hướng dẫn hoàn hàng', '-'),
                 'information_id' => 2,
-                'sub_information_id	' => 5,
+               
                 'long_description' => '
 <p>
     <span style="background-color:rgb(255,255,255);color:rgb(51,51,51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;"><span style="-webkit-text-stroke-width:0px;display:inline !important;float:none;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">- Trả máy trong 7 ngày đầu trừ phí 10% (Giá thu lại tính theo giá máy đã qua sử dụng tại thời điểm trả máy, với điều kiện tình trạng và ngoại hình máy phải như ban đầu).</span></span><br>
     <span style="background-color:rgb(255,255,255);color:rgb(51,51,51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;"><span style="-webkit-text-stroke-width:0px;display:inline !important;float:none;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">- Sau 7 ngày tính theo giá thu máy thông thường tại thời điểm lúc đó.</span></span><br>
     <span style="background-color:rgb(255,255,255);color:rgb(51,51,51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;"><span style="-webkit-text-stroke-width:0px;display:inline !important;float:none;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">- Gói bảo hành thu lại 50% trong 7 ngày, sau 7 ngày không hỗ trợ thu lại</span></span>
+</p>',
+                'status' => 1,
+                'created_at' => now(),
+            ], [
+                'name' => 'Giới thiệu',
+                'slug' => Str::slug('Giới thiệu', '-'),
+                'information_id' => 3,
+                'long_description' => '
+<p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
+    <strong style="box-sizing:border-box;font-weight:bolder;">CyberMart</strong>&nbsp;nhà bán lẻ hàng đầu, chuyên cung cấp các sản phẩm điện thoại,&nbsp;công nghệ chính hãng tại thị trường Việt Nam. Năm 2023, <strong style="box-sizing:border-box;font-weight:bolder;">CyberMart</strong> được thành lập, từng bước trở thành địa chỉ đáng tin cậy của người tiêu dùng Việt.&nbsp;Chúng tôi đã, đang và sẽ tiếp tục nỗ lực đem đến các sản phẩm công nghệ chính hãng đa dạng, phong phú đi kèm mức giá tốt nhất phục vụ nhu cầu của quý khách hàng.&nbsp;
+</p>
+<p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
+    <strong style="box-sizing:border-box;font-weight:bolder;">CyberMart&nbsp;</strong>hiện&nbsp;đã trở thành cái tên không còn xa lạ với người tiêu dùng trong nước. Hiện nay chúng tôi đang sở hữu mạng lưới hơn 7chi nhánh phủ trên khắp cả nước, trong đó bao gồm hai trung tâm bảo hành tại Hà Nội và một trung tâm bảo hành tại thành phố Hồ Chí Minh. Đến với chuỗi cửa hàng của <strong style="box-sizing:border-box;font-weight:bolder;">CyberMart</strong>, quý khách có thể hoàn toàn yên tâm về uy tín, chất lượng sản phẩm với mức giá rẻ hơn khoảng 15-20% so với giá bán trên thị trường. Song song với đó, chúng tôi cũng luôn nỗ lực phục vụ đem đến trải nghiệm dịch vụ tốt nhất cho khách hàng.
 </p>',
                 'status' => 1,
                 'created_at' => now(),
