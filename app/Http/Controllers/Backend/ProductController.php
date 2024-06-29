@@ -68,6 +68,8 @@ class ProductController extends Controller
             $product->seo_description = $request->seo_description;
             $product->long_description = $request->long_description;
             $product->short_description = $request->short_description;
+            $product->specifications = $request->specifications;
+
             // thêm slug nếu không tồn tại thì trích xuất từ name bằng method Str::slug
             $product->slug = !empty($request->slug) ? Str::slug($request->slug, "-") : Str::slug($request->name, "-");
             // Nếu title SEO null lấy name
@@ -115,6 +117,7 @@ class ProductController extends Controller
             'offer_price' => 'integer',
             'sub_category_id' => 'required',
             'child_category_id' => 'required',
+            'specifications' => 'required',
         ], [
             'name' => [
                 'required' => 'Tên sản phẩm là bắt buộc.',
@@ -145,6 +148,9 @@ class ProductController extends Controller
             'child_category_id' => [
                 'required' => 'Danh mục con là bắt buộc.',
             ],
+            'specifications' => [
+                'required' => 'Thông tin sản phẩm không được để trống.',
+            ],
         ]);
 
         try {
@@ -167,6 +173,7 @@ class ProductController extends Controller
             $product->seo_description = $request->seo_description;
             $product->long_description = $request->long_description;
             $product->short_description = $request->short_description;
+            $product->specifications = $request->specifications;
             // thêm slug nếu không tồn tại thì trích xuất từ name bằng method Str::slug
             $product->slug = !empty($request->slug) ? $request->slug : Str::slug($request->name, "-");
             $product->seo_title = $request->seo_title ?? $request->name;

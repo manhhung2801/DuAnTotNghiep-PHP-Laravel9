@@ -27,6 +27,7 @@ return new class extends Migration
             $table->text('video_link')->nullable();
             $table->longText('long_description');
             $table->longText('short_description');
+            $table->longText('specifications')->nullable();
             $table->string('product_type', 255)->nullable();
             $table->tinyInteger('status')->default(1);
             $table->string('seo_title', 255)->nullable();
