@@ -17,7 +17,7 @@
               
                 
                 <li class="nav-item mxc">
-                    <a class="nav-link text-white" aria-current="page" href="{{route('')}}">Giới thiều</a>
+                    <a class="nav-link text-white" aria-current="page" href="">Giới thiều</a>
                 </li>
            
                
