@@ -69,6 +69,10 @@
                             <option value="0">Ngừng hoạt động</option>
                         </select>
                     </div>
+                    <div class="col-lg-12 mb-3">
+                        <label for="input8" class="form-label">Mô tả</label>
+                        <textarea class="form-control" name="description" id="input8" value="{{ old('description') }}"></textarea>
+                    </div>
                     <div class="col-md-2">
                         <div class="d-grid align-items-center gap-3">
                             <button type="submit" class="btn btn-primary px-4">Thêm</button>

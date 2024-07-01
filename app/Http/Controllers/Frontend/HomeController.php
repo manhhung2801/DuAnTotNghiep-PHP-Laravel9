@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Information;
 use GuzzleHttp\Handler\Proxy;
 use App\Models\StoreAddress;
 

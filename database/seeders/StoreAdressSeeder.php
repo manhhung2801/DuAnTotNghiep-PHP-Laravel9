@@ -24,6 +24,7 @@ class StoreAdressSeeder extends Seeder
             'address' => '492/1 đường Trường Chinh',
             'email'=>'cyber.mart@gmail.com',
             'phone' => '0905263042',
+            'description'=>'Hệ thống cửa hàng CyberMart chuyên bán lẻ điện thoại, máy tính laptop, smartwatch, smarthome, phụ kiện chính hãng - Giá tốt, giao miễn phí.',
             'status' => 1,
             'created_at' => now(),
         ],[
@@ -34,6 +35,7 @@ class StoreAdressSeeder extends Seeder
             'address' => 'Tầng 11 của Tòa nhà Keangnam Landmark Tower - E6 ',
             'email'=> 'congty2@gmail.com',
             'phone' => '0905263042',
+            'description'=> 'cdfvd',
             'status' => 0,
             'created_at' => now(),
         ],[
@@ -44,6 +46,7 @@ class StoreAdressSeeder extends Seeder
             'address' => 'Thôn Láng Me',
             'email'=> 'congty3@gmail.com',
             'phone' => '0905263042',
+            'description'=> 'fvg dfd',
             'status' => 0,
             'created_at' => now(),
         ],[
@@ -54,6 +57,7 @@ class StoreAdressSeeder extends Seeder
             'address' => 'Tầng 5, Số 76',
             'email'=> 'congty4@gmail.com',
             'phone' => '0905263042',
+            'description'=> 'fvds',
             'status' => 0,
             'created_at' => now(),
         ],[
@@ -64,6 +68,7 @@ class StoreAdressSeeder extends Seeder
             'address' => '340/46 Quang Trung',
             'email'=> 'congty5@gmail.com',
             'phone' => '0905263042',
+            'description'=> 'dvfbdcs',
             'status' => 0,
             'created_at' => now(),
         ]

@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Frontend\InformationController;
 use App\Http\Controllers\Frontend\AddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\TintucController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Frontend\KhieuNaiController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Models\Information;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +33,7 @@ use App\Http\Controllers\Frontend\CartController;
 Route::get("/", [HomeController::class, 'index'])->name("home");
 /** Home */
 /** Addresss */
-Route::get('/address', [AddressController::class,'index'])->name('address');
+Route::get('/dia-chi', [AddressController::class,'index'])->name('address');
 /** End Addresss */
 
 /** User Dashboard */
@@ -67,6 +69,7 @@ Route::get('checkout', [CheckoutController::class, 'index']);
 Route::get('product/{cat?}/{sub?}/{child?}/{slug?}',[ProductController::class, 'getWhereParam']);
 // http://127.0.0.1:8000/dien-thoai-tablet/iphone/iphone-15-series/iphone-lo
 
+
 Route::get('/tin-tuc', [NewsController::class, 'index'])->name("news");
 Route::get('/tin-tuc/{slugs}', [NewsController::class, 'newsSiteType'])->name("news.newsSiteType");
 Route::get('/tin-tuc/{slugs_cate}/{slugs}', [NewsController::class, 'details'])->name("news.details");
@@ -74,4 +77,8 @@ Route::get('/tin-tuc/{slugs_cate}/{slugs}', [NewsController::class, 'details'])-
 // Route Cart
 Route::resource('cart', CartController::class);
 Route::resource('checkout', CheckoutController::class);
+
+
+/** các trang thông tin */
+Route::get('thong-tin/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");
 

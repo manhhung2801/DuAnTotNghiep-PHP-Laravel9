@@ -13,9 +13,14 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\backend\VariantItemController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\HomeController;
+use App\Http\Controllers\Backend\InformationController;
+use App\Http\Controllers\Backend\PagesController;
 use App\Http\Controllers\Backend\StoreAddressController;
 use App\Http\Controllers\Backend\UserManagementController;
 use App\Http\Controllers\Backend\PostCategoriesController;
+
+use App\Models\Information;
+
 
 /** Admin Routes */
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -48,6 +53,16 @@ Route::get('child-category/trash-list', [ChildCategoryController::class, 'showTr
 Route::DELETE('child-category/destroy-trash/{id?}', [ChildCategoryController::class, 'destroyTrash'])->name('child-category.destroy-trash');
 Route::PATCH('child-category/restore-trash/{id?}', [ChildCategoryController::class, 'restoreTrash'])->name('child-category.restore-trash');
 Route::resource('/child-category', ChildCategoryController::class);
+
+/** Information */
+Route::put('/information/change-status', [InformationController::class, 'changeStatus'])->name('information.change-status');
+Route::resource('/information',InformationController::class);
+
+
+
+/**Pages */
+Route::put('/pages/change-status', [PagesController::class, 'changeStatus'])->name('pages.change-status');
+Route::resource('/pages',PagesController::class);
 
 /** Product */
 Route::put('/product/change-status', [ProductController::class, 'changeStatus'])->name('product.change-status');
@@ -85,6 +100,9 @@ Route::get('/variant/trashed-variant',[VariantController::class, 'trashedVariant
 Route::PATCH('/variant/restore/{id}',[VariantController::class,'restore'])->name('variant.restore-variant');
 Route::DELETE('/variant/deleted/{id}',[VariantController::class,'deleteVariant'])->name('variant.deleted-variant');
 Route::put('/variant/change-status',[ VariantController::class,'changeStatus'])->name('variant.change-status');
+
+/** add variant of product */
+Route::get('product/{id}/variant',[VariantController::class, 'getVariantByProductId'])->name('product.variant');
 Route::resource('/variant',VariantController::class);
 
 
@@ -92,6 +110,9 @@ Route::resource('/variant',VariantController::class);
 Route::get('/variantItem/onlyTrashed', [VariantItemController::class, 'onlyTrashed'])->name('variantItem.onlyTrashed');
 Route::PATCH('/variantItem/restore/{id?}', [ VariantItemController::class, 'restore'])->name('variantItem.restore');
 Route::DELETE('/variantItem/delete/{id?}', [ VariantItemController::class, 'destroyTrashed'])->name('variantItem.destroyTrashed');
+/** add variantItem of variant */
+Route::get('product/variant/{id}/variant-item/',[VariantItemController::class, 'getVariantItemByVariantId'])->name('product.variant.variant-item');
+
 Route::resource('/variantItem', VariantItemController::class);
 Route::put('/variantItem/change-status/{id?}', [VariantItemController::class, 'changeStatus'])->name('variantItem.change-status');
 

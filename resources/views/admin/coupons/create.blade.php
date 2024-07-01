@@ -53,7 +53,8 @@
 
                 <div class="col-md-6">
                     <label for="input8" class="form-label">Loại giảm giá</label>
-                    <input type="number" class="form-control" id="input8" name="discount_type" value="{{ old('discount_type') }}">
+                    <input type="text" class="form-control" id="input8" name="" value="percent" disabled>
+                    <input type="hidden" class="form-control" id="input8" name="discount_type" value="percent">
                 </div>
 
                 <div class="col-md-6">
