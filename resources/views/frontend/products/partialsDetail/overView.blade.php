@@ -58,22 +58,28 @@
     @endif
 </dl>
 
-<div class="call-action">
-    <div class="btn-buy my-3">
-        <button class="btn text-bg-primary w-100 py-3 fw-bold text-uppercase" ng-click="addCart(product)">Mua
-            ngay</button>
-    </div>
-    <div class="btn-all row">
-        <div class="col-6">
-            <button class="btn btn-outline-primary w-100 py-3 fw-bold text-uppercase">Trả
-                góp</button>
+<!-- Form addtocart product -->
+<form class="formCart" method="post">
+    <input class="productId" type="hidden" value="{{ $product->id }}">
+    <div class="call-action">
+        <div class="btn-buy my-3">
+            <button type="button" class="btn-addToCart btn text-bg-primary w-100 py-3 fw-bold text-uppercase">Mua
+                ngay</button>
         </div>
-        <div class="col-6">
-            <button class="btn btn-outline-primary w-100 py-3 fw-bold text-uppercase"><i class="fa-solid fa-rotate"></i>
-                Thu cũ đổi mới</button>
+        <div class="btn-all row">
+            <div class="col-6">
+                <button class="btn btn-outline-primary w-100 py-3 fw-bold text-uppercase">Trả
+                    góp</button>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-outline-primary w-100 py-3 fw-bold text-uppercase"><i class="fa-solid fa-rotate"></i>
+                    Thu cũ đổi mới</button>
+            </div>
         </div>
     </div>
-</div>
+</form>
+<!-- end form -->
+
 <div class="service py-2 border border-dark-subtle rounded-2 mt-3">
     <ul>
         <li class="list-group-item"><i class="fa-solid fa-circle-check" style="color: #0066cc;"></i> Bộ sản phẩm gồm:
