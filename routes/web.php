@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\GioHangController;
 use App\Http\Controllers\Frontend\KhieuNaiController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\NewsController;
+use App\Http\Controllers\Frontend\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,3 +70,8 @@ Route::get('product/{cat?}/{sub?}/{child?}/{slug?}',[ProductController::class, '
 Route::get('/tin-tuc', [NewsController::class, 'index'])->name("news");
 Route::get('/tin-tuc/{slugs}', [NewsController::class, 'newsSiteType'])->name("news.newsSiteType");
 Route::get('/tin-tuc/{slugs_cate}/{slugs}', [NewsController::class, 'details'])->name("news.details");
+
+// Route Cart
+Route::resource('cart', CartController::class);
+Route::resource('checkout', CheckoutController::class);
+
