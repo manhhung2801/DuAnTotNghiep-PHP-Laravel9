@@ -13,4 +13,5 @@ class product_image_galleries extends Model
     {
         return $this->hasOne(Product::class, 'id', 'product_id');
     }
+    
 }
