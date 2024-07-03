@@ -34,7 +34,7 @@
         const inputField = button.previousElementSibling;
         const text = inputField.value;
         navigator.clipboard.writeText(text);
-        // 
+        //
         button.textContent = 'Copied';
         button.classList.add('copied');
 
