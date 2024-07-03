@@ -2,7 +2,19 @@
 
 @section('title', 'Danh sách bài viết')
 @section('content')
-
+<style>
+     .tr-table{
+        width: 100%;
+     }
+    .tr-table>td>.p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 200px;
+        display: block;
+        /* line-height: ; */
+    }
+</style>
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
@@ -58,17 +70,17 @@
                     </thead>
                     <tbody>
                         @foreach ($post as $post)
-                        <tr>
+                        <tr class="tr-table">
                             <td>{{$post->id }}</td>
                             <td>{{$post->category_id}}</td>
-                            <td>{{$post->user_id}}</td>
+                            <td>{{$post->User->name}}</td>
                             <td><img src="{{ asset('uploads/post/' . $post->image) }}" width="50px" alt="{{ $post->image }}"></td>
-                            <td>{{$post->title}}</td>
-                            <td>{{$post->content}}</td>
-                            <td>{{$post->slug}}</td>
-                            <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 200px;">{{$post->description}}</td>
-                            <td>{{$post->seo_title}}</td>
-                            <td>{{$post->seo_description}}</td>
+                            <td><p class="p">{{$post->title}}</p></td>
+                            <td><p class="p">{{$post->content}}</p></td>
+                            <td><p class="p">{{$post->slug}}</p></td>
+                            <td><p class="p">{{$post->description}}</p></td>
+                            <td><p class="p">{{$post->seo_title}}</p></td>
+                            <td><p class="p">{{$post->seo_description}}</p></td>
                             <td>
                                 {{($post->type==1)?"Bài Viết":"Banner"}}
                             </td>
