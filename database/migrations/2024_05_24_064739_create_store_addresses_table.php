@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('district');
             $table->string('ward');
             $table->string('address');
+            $table->longText('description');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
             $table->tinyInteger('status')->default(1);

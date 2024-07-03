@@ -45,6 +45,7 @@ class StoreAddressController extends Controller
             'ward' => ['required'],
             'district' => ['required'],
             'province' => ['required'],
+            'description' => ['required'],
             'email' => ['required', 'email'],
             'phone' => ['required', 'min:10'],
             'status' => ['required'],
@@ -55,6 +56,7 @@ class StoreAddressController extends Controller
             'district.required' => 'Quận, huyện không được để trống',
             'province.required' => 'Tỉnh, thành phố không được để trống',
             'email.required' => 'Email không được để trống',
+            'description.required' => 'Mô tả không được để trống',
             'phone.required' => 'Số điện thoại không được để trống',
             // 'phone.regex' => 'Số điện thoại bắt đầu bằng 0',
             'phone.min' => 'Số điện thoại tối thiểu 11 số',
@@ -64,6 +66,7 @@ class StoreAddressController extends Controller
         $storeAddress->address = $request->address;
         $storeAddress->ward = $request->ward;
         $storeAddress->district = $request->district;
+        $storeAddress->description = $request->description;
         $storeAddress->province = $request->province;
         $storeAddress->email = $request->email;
         $storeAddress->phone = $request->phone;
@@ -96,7 +99,9 @@ class StoreAddressController extends Controller
             'ward' => ['required'],
             'district' => ['required'],
             'province' => ['required'],
+            'description' => ['required'],
             'email' => ['required', 'email'],
+            'description.required' => 'Mô tả không được để trống',
             'phone' => ['required', 'min:10'],
             'status' => ['required'],
         ], [
@@ -116,6 +121,7 @@ class StoreAddressController extends Controller
         $storeAddress->address = $request->address;
         $storeAddress->ward = $request->ward;
         $storeAddress->district = $request->district;
+        $storeAddress->description = $request->description;
         $storeAddress->province = $request->province;
         $storeAddress->email = $request->email;
         $storeAddress->phone = $request->phone;

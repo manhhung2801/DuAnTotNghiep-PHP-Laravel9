@@ -13,8 +13,7 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
-        $slides = Slider::where("status", "=", 1)->orderBy("serial", "asc")->get();
+       
 
         $newsCate = Post_categories::all();
 
@@ -26,8 +25,6 @@ class NewsController extends Controller
 
 
         return view('frontend.post.home-post', [
-            'categories' => $categories,
-            'slides' => $slides,
             'newsCate' => $newsCate,
             'newsDetail' => $newsDetail,
         ]);
@@ -35,18 +32,12 @@ class NewsController extends Controller
 
     function newsSiteType($slugs)
     {
-        $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
-
-        $slides = Slider::where("status", "=", 1)->orderBy("serial", "asc")->get();
-
         $newsCate = Post_categories::all();
         $newCatePost = Post_categories::where('slug', $slugs)->get();
         $newCatefind = Post_categories::where('slug', $slugs)->first();
         if ($newCatePost) {
             $newsDetail = Post::where('category_id', $newCatePost[0]['id'])->paginate(8);
             return view('frontend.post.index', [
-                'categories' => $categories,
-                'slides' => $slides,
                 'newsCate' => $newsCate,
                 'newsDetail' => $newsDetail,
                 'newCatefind' => $newCatefind,
@@ -59,9 +50,6 @@ class NewsController extends Controller
     public function details($slugs_cate, $lugs)
     {
 
-        $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
-
-        $slides = Slider::where("status", "=", 1)->orderBy("serial", "asc")->get();
 
         $newsCate = Post_categories::all();
         // $newsCateDetail = Post_categories::where("slug",$slugs_cate);
@@ -69,9 +57,6 @@ class NewsController extends Controller
 
 
         return view('frontend.post.post', [
-
-            'categories' => $categories,
-            'slides' => $slides,
             'newsdetai' => $newsdetai,
             'newsCate' => $newsCate,
             // 'newsCateDetail' => $newsCateDetail,

@@ -12,11 +12,15 @@
                     </div>
                 </li>
                 <li class="nav-item mxc">
-                    <a class="nav-link text-white" aria-current="page" href="#">Trang chủ</a>
+                    <a class="nav-link text-white" aria-current="page" href="/">Trang chủ</a>
                 </li>
+              
+                
                 <li class="nav-item mxc">
-                    <a class="nav-link text-white" aria-current="page" href="#">Giới thiệu</a>
+                    <a class="nav-link text-white" aria-current="page" href="">Giới thiều</a>
                 </li>
+           
+               
                 <li class="navbar-toggler nav-item mxc border-0">
                     <div class="dropdown">
                         <span class="dropdown-toggle text-white fs-6" id="dropdownMenuButton1" data-bs-toggle="dropdown"
@@ -56,10 +60,7 @@
                     </li>
                 @endforeach
                 <li class="nav-item mxc">
-                    <a class="nav-link text-white" aria-current="page" href="#">Chính sách</a>
-                </li>
-                <li class="nav-item mxc">
-                    <a class="nav-link text-white" aria-current="page" href="#">Tin tức</a>
+                    <a class="nav-link text-white" aria-current="page" href="/tin-tuc">Tin tức</a>
                 </li>
                 <li class="nav-item mxc">
                     <a class="nav-link text-white" aria-current="page" href="#">Liên hệ</a>

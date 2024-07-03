@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Frontend\InformationController;
 use App\Http\Controllers\Frontend\AddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\TintucController;
@@ -13,6 +14,8 @@ use App\Http\Controllers\Frontend\GioHangController;
 use App\Http\Controllers\Frontend\KhieuNaiController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\NewsController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Models\Information;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +33,7 @@ use App\Http\Controllers\Frontend\NewsController;
 Route::get("/", [HomeController::class, 'index'])->name("home");
 /** Home */
 /** Addresss */
-Route::get('/address', [AddressController::class,'index'])->name('address');
+Route::get('/dia-chi', [AddressController::class,'index'])->name('address');
 /** End Addresss */
 
 /** User Dashboard */
@@ -71,6 +74,7 @@ Route::get('/tin-tuc', [NewsController::class, 'index'])->name("news");
 Route::get('/tin-tuc/{slugs}', [NewsController::class, 'newsSiteType'])->name("news.newsSiteType");
 Route::get('/tin-tuc/{slugs_cate}/{slugs}', [NewsController::class, 'details'])->name("news.details");
 
+
 /** user dashboard order */
 Route::get('/order', function(){
     return view('frontend.dashboard.page.orders');
@@ -79,3 +83,12 @@ Route::get('/order', function(){
 Route::get('/order-detail', function(){
     return view('frontend.dashboard.page.order-detail');
 });
+
+// Route Cart
+Route::resource('cart', CartController::class);
+Route::resource('checkout', CheckoutController::class);
+
+
+/** các trang thông tin */
+Route::get('thong-tin/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");
+

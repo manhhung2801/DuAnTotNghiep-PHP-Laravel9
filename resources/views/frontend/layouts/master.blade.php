@@ -16,8 +16,6 @@
 
         @include('frontend.layouts.footer')
     </div>
-
-
     @include('frontend.layouts.scripts')
 </body>
 </html>

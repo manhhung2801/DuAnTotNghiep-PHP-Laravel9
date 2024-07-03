@@ -33,7 +33,8 @@ class ruleProductCreate extends FormRequest
             'offer_price' => 'integer',
             'sub_category_id' => 'required',
             'child_category_id' => 'required',
-            'weight' => 'required'
+            'weight' => 'required',
+            'specifications' => 'required'
         ];
     }
     public function messages() {
@@ -71,6 +72,9 @@ class ruleProductCreate extends FormRequest
             ],
             'weight' => [
                 'required' => 'Trọng lượng sản phẩm là bắt buộc.',
+            ],
+            'specifications' => [
+                'required' => 'Thông tin sản phẩm không được để trống.',
             ],
         ];
     }
