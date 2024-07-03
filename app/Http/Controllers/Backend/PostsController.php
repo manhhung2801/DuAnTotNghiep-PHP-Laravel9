@@ -238,14 +238,14 @@ class PostsController extends Controller
                     }
                 }
                 // Lấy gallery của product theo ID và xóa tất cả
-                $galleryDel = Post_image_galleries::where('product_id', $id)->delete();
+                // $galleryDel = Post_image_galleries::where('product_id', $id)->delete();
                 foreach ($request->image_gallery as $gal) {
                     $gallery = new Post_image_galleries();
                     $ext = $gal->extension();
                     $fileName = 'media_post_gallery_' . uniqid() . '.' . $ext;
                     $gal->move(public_path('uploads/post_gallery/'), $fileName);
                     $gallery->image = $fileName;
-                    $gallery->product_id = $id;
+                    // $gallery->product_id = $id;
                     $gallery->save();
                 }
             }

@@ -2,6 +2,17 @@
 @section('title', 'Bài viết')
 
 @section('content')
+<style>
+    .eidt-description {
+        border: 3px solid #c7abab;        ;
+        padding: 20px;
+        border-radius: 20px;
+    }
+    .eidt-description div p span{
+     line-height: 25px;
+
+    }
+</style>
 <div class="bread-crumb">
     <section class="bread-crumb">
         <div class="container ">
@@ -23,7 +34,7 @@
             <div class="bg_blog">
                 <article class="article-main">
                     <div class="row d-flex">
-                        <div class="right-content col-lg-9 col-12">
+                        <div class="right-content col-lg-12 col-12">
                             <div class="article-details clearfix">
                                 <h1 class="article-title fs-3">{{$newsdetai->title}}</h1>
                                 <div class="posts d-flex mb-3">
@@ -36,10 +47,10 @@
                                         <span>{{$newsdetai->User->name }}</span>
                                     </div>
                                 </div>
-                                <div class="article-image ">
-                                    <img class="img-fluid loaded" src="{{asset('uploads/post')}}/{{ $newsdetai->image}}">
+                                <div class="article-image " style="text-align: center;">
+                                    <img class="img-fluid loaded" style="width: 100%; border-radius: 16px;max-height: 415px;object-fit: cover;" src="{{asset('uploads/post')}}/{{ $newsdetai->image}}">
                                 </div>
-                                <div class="rte w-100 d-block">
+                                <div class="rte w-100 d-block mt-5 eidt-description">
                                     {!! $newsdetai->description !!}
                                 </div>
                             </div>

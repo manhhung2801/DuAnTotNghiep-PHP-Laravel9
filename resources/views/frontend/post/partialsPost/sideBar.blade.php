@@ -1,4 +1,4 @@
-<div class="aside-content aside-content-blog ">
+<!-- <div class="aside-content aside-content-blog ">
     <h2 class="title-head ">
         <a class="text-light text-decoration-none" style="font-size: 16px;">Danh mục tin tức</a>
     </h2>
@@ -9,19 +9,11 @@
                 <a class="nav-link " href="#">{{$value->name}}</a>
             </li>
             @endforeach
-            <!-- <li class="nav-item  ">
-                <a class="nav-link " href="#">Đánh giá</a>
-            </li>
-            <li class="nav-item  ">
-                <a class="nav-link " href="# ">Mẹo hay</a>
-            </li>
-            <li class="nav-item  ">
-                <a class="nav-link " href="# ">Khuyến mãi</a>
-            </li> -->
+   
         </ul>
     </nav>
-</div>
-<div class="blog_noibat ">
+</div> -->
+<!-- <div class="blog_noibat ">
     <h2 class="h2_sidebar_blog ">
         <a href="#" class="text-decoration-none" style="font-size: 16px;">Tin tức nổi bật</a>
     </h2>
@@ -120,4 +112,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
