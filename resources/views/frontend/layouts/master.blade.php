@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('frontend.layouts.head')
+    @yield('styles')
 </head>
 <body>
     <div class="wrapper-page">

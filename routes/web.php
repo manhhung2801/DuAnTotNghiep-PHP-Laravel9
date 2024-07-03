@@ -70,3 +70,12 @@ Route::get('product/{cat?}/{sub?}/{child?}/{slug?}',[ProductController::class, '
 Route::get('/tin-tuc', [NewsController::class, 'index'])->name("news");
 Route::get('/tin-tuc/{slugs}', [NewsController::class, 'newsSiteType'])->name("news.newsSiteType");
 Route::get('/tin-tuc/{slugs_cate}/{slugs}', [NewsController::class, 'details'])->name("news.details");
+
+/** user dashboard order */
+Route::get('/order', function(){
+    return view('frontend.dashboard.page.orders');
+});
+
+Route::get('/order-detail', function(){
+    return view('frontend.dashboard.page.order-detail');
+});
