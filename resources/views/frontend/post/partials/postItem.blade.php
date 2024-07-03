@@ -4,7 +4,7 @@
     <div class="news-item">
         <a href="{{route('news.details', [ 'slugs_cate' =>$value->Post_categories->slug, 'slugs' =>$value->slug ])}}" class="list-group-item">
             <div class="card border-0">
-                <img src="{{asset('uploads/post')}}/{{ $value->image}}" class="card-img-top" style="height: 165px;" alt="iphone">
+                <img src="{{asset('uploads/post')}}/{{ $value->image}}" class="card-img-top" style="height: 165px;">
                 <div class="card-body px-3">
                     <h3 class="news-title line-clamp ">
                         {{ $value->title}}
