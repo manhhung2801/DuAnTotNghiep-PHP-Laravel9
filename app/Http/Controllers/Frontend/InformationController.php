@@ -27,9 +27,6 @@ class InformationController extends Controller
                 'ckeckIdListInformation' => $ckeckIdListInformation->id,
 
             ]);
-        } else {
-            // Handle the case when $ckeckIdListInformation is null
-            return redirect()->back()->with('error', 'No information found for the given slug.');
-        }
+        } 
     }
 }

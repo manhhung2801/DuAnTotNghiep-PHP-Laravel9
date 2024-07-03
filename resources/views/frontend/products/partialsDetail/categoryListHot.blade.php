@@ -14,8 +14,6 @@
             </div>
             <div id="formList">
                 <div id="list">
-
-
                     @foreach ($products as $pro)
                         <div class="item item_product_main">
                             <form action="#" method="post"
