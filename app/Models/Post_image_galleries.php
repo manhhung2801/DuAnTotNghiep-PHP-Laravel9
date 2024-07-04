@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post_image_galleries extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-      public function post()
-    {
-        return $this->hasOne(Product::class, 'id', 'post_id');
-    }
+  public function post()
+  {
+    return $this->hasOne(Product::class, 'id', 'post_id');
+  }
 }

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Information;
 use App\Models\Page;
 use App\Models\StoreAddress;
+use Darryldecode\Cart\Cart;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -33,11 +34,13 @@ class ViewServiceProvider extends ServiceProvider
             $categories = Category::where('status', 1)->orderBy('rank', 'asc')->get();
             $storeAddress = StoreAddress::where("status", "=", 1)->limit(1)->get();
             $ListInformation = Information::where('name', '!=', 'Giới thiệu')->get();
+            $qtyCart = \Cart::getTotalQuantity();
             $ListPage = Page::where("status", "=", 1) ->get();
             $view->with('categories', $categories)
                 ->with('storeAddress', $storeAddress)
                 ->with('ListInformation', $ListInformation)
-                ->with('ListPage', $ListPage);
+                ->with('ListPage', $ListPage)
+                ->with('qtyCart', $qtyCart);
         });
     }
 }

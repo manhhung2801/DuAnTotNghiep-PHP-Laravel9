@@ -30,7 +30,7 @@ class CartController extends Controller
             \Cart::add([
                 'id' => $id,
                 'name' => $product->name,
-                'price' => $product->price,
+                'price' => $product->offer_price,
                 'quantity' => $qtyProduct,
                 'attributes' => [
                     'color' => 'red',
