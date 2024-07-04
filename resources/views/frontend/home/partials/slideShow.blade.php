@@ -1,25 +1,26 @@
-<div class="container-fluid p-0">
-    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-            @foreach ($slides as $slide)
-            <div class="carousel-item active" data-bs-interval="2000">
-                <img src="{{ asset('uploads/slider/'.$slide->banner) }}" class="d-block object-fit-cover img-fluid" alt="...">
-            </div>
-            @endforeach
-
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+@if($slides->isNotEmpty())
+<div id="carouselExampleDark" class="carousel carousel-dark slide">
+    <div class="carousel-indicators">
+        @foreach ($slides as $index =>$slide )
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{$index}}" class="{{$index===0 ? 'active' : ''}}" aria-current="{{$index===0 ? 'true' : 'false'}}"
+        aria-label="Slide {{$index + 1}}">
+    </button>   
+        @endforeach    
     </div>
+    <div class="carousel-inner">
+        @foreach ($slides as $index => $slide)
+        <div class="carousel-item {{$index===0 ? 'active' : '' }}" data-bs-interval="10000">
+            <img src="{{ asset('uploads/slider/'.$slide->banner) }}" class="d-block w-100 img-fluid" >
+        </div>
+        @endforeach
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
+@endif
