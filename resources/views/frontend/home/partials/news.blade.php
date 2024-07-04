@@ -1,6 +1,6 @@
 @if ($getPosts == true)
     <div class="container">
-        <div class="section_title text-center mt-4">
+        <div class="section_title text-center mt-1">
             <h4 class="text-uppercase">Tin tức công nghệ</h4>
         </div>
         <div class="row">
@@ -18,7 +18,7 @@
                                     <h3 class="news-title line-clamp line-clamp-2 fw-semibold">{{ $post->title }}</h3>
                                     <p class="news-desc line-clamp line-clamp-3 mb-1">{{ $post->description }}</p>
                                     <span class="news-desc_item"><i class="fa-solid fa-clock"></i>
-                                        {{ $post->created_at }}<span />
+                                        {{ $post->created_at }}<span>
                                 </div>
                             </div>
                         </a>
