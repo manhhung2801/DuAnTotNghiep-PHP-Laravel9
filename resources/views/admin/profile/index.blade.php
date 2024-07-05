@@ -6,7 +6,7 @@
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Profile</div>
+            <div class="breadcrumb-title pe-3">Hồ sơ</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
@@ -29,7 +29,7 @@
                                     <div class="mt-3">
                                         <h4>{{Auth::user()->name}}</h4>
                                         <p class="text-secondary mb-1">{{Auth::user()->email}}</p>
-                                        <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                        <p class="text-muted font-size-sm">Quận 12, Thành Phố Hồ chí Minh</p>
                                     </div>
                                 </div>
                             </div>
@@ -40,10 +40,10 @@
                             <div class="card-body">
                                 <form action="{{route('admin.profile.update')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <h5 class="d-flex align-items-center mb-4">Update Profile</h5>
+                                    <h5 class="d-flex align-items-center mb-4">Cập nhật hồ sơ</h5>
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Image</h6>
+                                            <h6 class="mb-0">Hình ảnh</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input type="file" class="form-control" name="image" />
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Name</h6>
+                                            <h6 class="mb-0">Họa và tên</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input type="text" class="form-control" name="name" value="{{Auth::user()->name}}" />
@@ -68,7 +68,7 @@
                                     <div class="row">
                                         <div class="col-sm-3"></div>
                                         <div class="col-sm-9 text-secondary">
-                                            <button type="submit" class="btn btn-primary px-4">Update</button>
+                                            <button type="submit" class="btn btn-primary px-4">Cập nhật</button>
                                         </div>
                                     </div>
                                 </form>
@@ -84,35 +84,35 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="card-body">
-                                            <h5 class="d-flex align-items-center mb-4">Update Password</h5>
+                                            <h5 class="d-flex align-items-center mb-4">Cập nhật lại mật khẩu</h5>
                                             <div class="row mb-3">
                                                 <div class="col-sm-3">
-                                                    <h6 class="mb-0">Current Password</h6>
+                                                    <h6 class="mb-0">Mật khẩu hiện tại</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                    <input type="password" class="form-control" name="current_password" placeholder="Current Password" />
+                                                    <input type="password" class="form-control" name="current_password" placeholder="Mật khẩu hiện tại" />
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-3">
-                                                    <h6 class="mb-0">New Password</h6>
+                                                    <h6 class="mb-0">Mật khẩu mới</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                    <input type="password" class="form-control" name="password"  placeholder="New Password"/>
+                                                    <input type="password" class="form-control" name="password"  placeholder="Mật khẩu mới"/>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-3">
-                                                    <h6 class="mb-0">Confirm Password</h6>
+                                                    <h6 class="mb-0">Xác nhận mật khẩu </h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                    <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" />
+                                                    <input type="password" class="form-control" name="password_confirmation" placeholder="Xác nhận mật khẩu" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-3"></div>
                                                 <div class="col-sm-9 text-secondary">
-                                                    <button type="submit" class="btn btn-primary px-4">Update</button>
+                                                    <button type="submit" class="btn btn-primary px-4">cập nhật</button>
                                                 </div>
                                             </div>
                                         </div>

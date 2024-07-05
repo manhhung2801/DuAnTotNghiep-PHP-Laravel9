@@ -2,9 +2,10 @@
     <div class="sidebar-header">
         <div>
             <img src="{{ asset('backend/assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
+            <!-- <span class="fs-1 text-black fw-bold"><h2>CYBERMART</h2></span> -->
         </div>
         <div>
-            <h4 class="logo-text">Rocker</h4>
+            <p class="logo-text text-black fw-bold">CYBERMART</p>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
         </div>
