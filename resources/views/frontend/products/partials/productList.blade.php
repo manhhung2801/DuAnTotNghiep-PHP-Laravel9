@@ -4,7 +4,7 @@
         @foreach ($products as $pro)
             <div class="col-6 col-md-3">
                 <div class="item_product_main">
-                    <form action="#" method="post" class="variants product-action item-product-main duration-300"
+                    <div class="variants product-action item-product-main duration-300"
                         data-cart-form="" data-id="product-actions-30510614" enctype="multipart/form-data">
                         <span class="flash-sale">
                             Giảm {{ $pro->percent }}%
@@ -26,13 +26,16 @@
 
                                     <span class="price">{{ number_format($pro->offer_price, 0, '', ',') }}₫</span>
                                 </div>
-                                <div class="product-button ">
-                                    <input class="hidden" type="hidden" name="variantId" value="86286440">
-                                    <button class="btn-cart btn-views rounded border-0 px-2" title="Tùy chọn"
-                                        type="button">
-                                        <i class="fa-sharp fa-regular fa-cart-shopping"></i>
-                                    </button>
-                                </div>
+                                <form class="formCart" method="post">
+                                    <div class="product-button ">
+                                        <input class="hidden" type="hidden" name="variantId" value="86286440">
+                                        <input type="hidden" class="productId" value="{{ $pro->id }}">
+                                        <button class="btn-addToCart btn-cart btn-views rounded border-0 px-2" title="Mua ngay"
+                                            type="button">
+                                            <i class="fa-sharp fa-regular fa-cart-shopping"></i>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <div class="promotion-content">
@@ -40,7 +43,7 @@
                                 <p>Thu cũ đổi mới: Thu giá cao trợ giá đến 90%</p>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
 

@@ -8,23 +8,34 @@
     </tr>
 </thead>
 <tbody>
+    @forelse ($getCart as $item)
     <tr class="cart-item">
         <td class="d-flex">
-            <img class="img-thumbnail" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_3.png" alt="iPhone 13 Pro Max">
+            <img class="img-thumbnail" src="{{ asset('uploads/products/'). '/'. $item->associatedModel->image }}" alt="{{ $item->associatedModel->image }}">
             <div class="ml-3">
-                <h6 class="ps-2 fw-normal">iPhone 13 Pro Max 1TB - Chính Hãng VN/A</h6>
+                <h6 class="ps-2 fw-normal">{{ $item->name }}</h6>
                 <p class="ps-2 fw-light">Vàng</p>
-                <span class="btn-delete ps-2 py-3">Xóa</span>
+                <span data-url="{{ route('cart.destroy', $item->id) }}" class="btn-delete btn_delete_cart ps-2 py-3">Xóa</span>
             </div>
         </td>
-        <td class="pt-5 text-danger fw-bold">29.990.000₫</td>
+        <td class="pt-5 text-danger fw-bold">{{ number_format($item->price,0,'', '.') }}₫</td>
         <td class="text-center">
-            <div class="input-group mb-3" style="width:150px;padding-top:30px">
-                <button onclick="miuns()" class="btn btn-outline-secondary"><i class="fa-solid fa-minus"></i></button>
-                <input id="qtyProduct" type="number" class="form-control text-center disabled" value="1">
-                <button onclick="plus()" class="btn btn-outline-secondary"><i class="fa-solid fa-plus"></i></button>
-            </div>
+            <form method="post" data-url="{{ route('cart.update', $item->id) }}">
+                @csrf @method('PUT')
+                <div class="input-group mb-3" style="width:150px;padding-top:30px">
+                    <button class="btn-minus btn btn-outline-secondary"><i class="fa-solid fa-minus"></i></button>
+                    <input id="qtyProduct" type="number" class="qtyProduct form-control text-center" maxlength="100" value="{{ $item->quantity }}">
+                    <button class="btn-plus btn btn-outline-secondary"><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </form>
         </td>
-        <td class="pt-5 text-danger fw-bold">59.980.000₫</td>
+        <td id="priceItemCart" class="pt-5 text-danger fw-bold">{{ number_format($item->price * $item->quantity, 0, '', '.') }}₫</td>
     </tr>
+    @empty
+    <tr>
+        <td colspan="4" class="text-center border-0 mt-3">
+            <h3>Không có sản phẩm</h3>
+        </td>
+    </tr>
+    @endforelse
 </tbody>
