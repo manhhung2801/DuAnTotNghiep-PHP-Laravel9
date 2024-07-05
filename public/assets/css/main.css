@@ -1,7 +1,8 @@
  /*------------------------------------ Product ------------------------------------- */
  :root {
-    --color-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+     --color-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
  }
+
  .item_product_main {
      display: block;
      height: 100%;
@@ -342,6 +343,12 @@
      box-shadow: 0px 0px 6px 0px rgba(50, 50, 93, 0.15), 1px 1px 5px rgba(0, 0, 0, 0.05);
  }
 
+ .news-item .card .news_image {
+     width: 100%;
+     height: 180px;
+     object-fit: cover;
+     
+ }
  .news-item .card img {
      border-radius: 10px 10px 0 0;
      transition-duration: 0.8s;
@@ -612,35 +619,39 @@
      display: inline-block
  }
 
- 
+
  @media (max-width: 991px) {
-    .services-icon img{
-            width: 40px;
-            height: 40px;
-    }
+     .services-icon img {
+         width: 40px;
+         height: 40px;
+     }
+
      .services-info {
          text-align: center !important;
-         & h3, span {
-            font-size: 0.8rem;
+
+         & h3,
+         span {
+             font-size: 0.8rem;
          }
      }
 
-    .cate-image_home img {
-        max-width: 50px;
-        max-height: 50px;
-    }
-    .box-cate .cate-name {
-        font-size: 0.8rem;
-        -webkit-line-clamp: 1;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-    }
+     .cate-image_home img {
+         max-width: 50px;
+         max-height: 50px;
+     }
 
-    .item_product_main .product-action .product-info .product-price-cart .price-box .price {
-        font-size: 0.95rem;
-        font-weight: 600;
-    }
+     .box-cate .cate-name {
+         font-size: 0.8rem;
+         -webkit-line-clamp: 1;
+         overflow: hidden;
+         display: -webkit-box;
+         -webkit-box-orient: vertical;
+     }
+
+     .item_product_main .product-action .product-info .product-price-cart .price-box .price {
+         font-size: 0.95rem;
+         font-weight: 600;
+     }
 
      .layout-collection .sort-cate .sort-cate-right {
          position: relative;

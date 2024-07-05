@@ -16,3 +16,6 @@ let callAPI = (host) => {
             throw error;
         })
 }
+callAPI('resources\js\API\Provinces.json').then((res => {
+    console.log(res);
+}))

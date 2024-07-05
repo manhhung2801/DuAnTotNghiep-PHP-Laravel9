@@ -25,7 +25,15 @@ class Post extends Model
     }
 
     static function getPost() {
-        return self::where('status', '=', 1);
+        return self::where('status', '=', 1)->where('type', '=', 0)->orderBy('created_at', 'desc');
+    }
+    static function getBanner() {
+        return self::where('status', '=', 1)->where('type', '=', 1)->orderBy('created_at', 'desc');
+    }
+
+    public function post_image_galleries()
+    {
+        return $this->hasMany(post_image_galleries::class, 'post_id', 'id');
     }
 
     static public function destroyTrashedItem($id)

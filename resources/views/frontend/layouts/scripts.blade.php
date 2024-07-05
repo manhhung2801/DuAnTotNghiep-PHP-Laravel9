@@ -33,4 +33,55 @@
     });
 </script>
 <!-- script custom -->
+<script>
+    let bigImg = document.querySelector('.big-img img');
+
+    function showImg(pic) {
+        bigImg.src = pic;
+        document.querySelectorAll('.small-img img').forEach(img => {
+            img.classList.remove('active');
+        });
+        event.target.classList.add('active');
+    }
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var showMoreBtn = document.querySelector('.btn--view-more');
+        var productReviewContent = document.querySelector('.ba-text-fpt.has-height');
+        var moreText = document.querySelector('.more-text');
+        var lessText = document.querySelector('.less-text');
+
+        showMoreBtn.addEventListener('click', function() {
+            if (productReviewContent.style.height === '360px' || productReviewContent.style.height === '') {
+                productReviewContent.style.height = 'auto';
+                moreText.classList.add('d-none');
+                lessText.classList.remove('d-none');
+            } else {
+                productReviewContent.style.height = '360px';
+                moreText.classList.remove('d-none');
+                lessText.classList.add('d-none');
+            }
+        });
+    });
+</script>
+<script>
+    function changeColor(element) {
+        // Lấy giá trị màu sắc từ thuộc tính data-value của div được bấm
+        var color = element.getAttribute('data-value');
+
+        // Đổi màu cho header theo màu sắc mới được chọn
+        var header = document.querySelector('.header .value-properties');
+        header.textContent = color;
+
+        // Cập nhật màu và border cho các label
+        var labels = document.querySelectorAll('.swatch-element label');
+        labels.forEach(function(label) {
+            if (label.getAttribute('for') === element.querySelector('input').id) {
+                label.style.border = "2px solid black";
+            } else {
+                label.style.border = "none";
+            }
+        });
+    }
+</script>
 @stack('script')
