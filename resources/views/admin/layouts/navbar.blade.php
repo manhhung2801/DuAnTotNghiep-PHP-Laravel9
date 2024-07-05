@@ -92,10 +92,10 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="{{ route("admin.profile") }}"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
+                        <a class="dropdown-item d-flex align-items-center" href="{{ route("admin.profile") }}"><i class="bx bx-user fs-5"></i><span>Hồ sơ</span></a>
                     </li>
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
+                        <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-cog fs-5"></i><span>Cài đặt</span></a>
                     </li>
                     <li>
                         <div class="dropdown-divider mb-0"></div>
@@ -109,7 +109,7 @@
                                 href="{{route('logout')}}"
                                 onclick="event.preventDefault();
                                 this.closest('form').submit();">
-                                <i class="bx bx-log-out-circle"></i><span>Logout</span>
+                                <i class="bx bx-log-out-circle"></i><span>Thoát ra</span>
                             </a>
                         </form>
 

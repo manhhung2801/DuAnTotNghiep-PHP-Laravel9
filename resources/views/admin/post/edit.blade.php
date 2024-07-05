@@ -64,8 +64,8 @@
                     <input type="text" class="form-control" id="name" name="title" placeholder="title" value="{{ $post->title }}">
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="name" class="form-label">Nội dung</label>
-                    <input type="text" class="form-control" name="content" placeholder="title" value="{{ $post->content }}">
+                    <label for="name" class="form-label">Mô tả</label>
+                    <input type="text" class="form-control" name="description" placeholder="title" value="{{ $post->description  }}">
                 </div>
 
                 <div class="col-md-6">
@@ -79,8 +79,8 @@
                 <div class="col-md-6">
                     <label for="input9" class="form-label">Kiểu</label>
                     <select id="input9" class="form-select" name="type">
-                        <option {{ $post->type == 1 ? "selected" : ""  }} value="1">Bài Viết</option>
-                        <option {{ $post->type == 0 ? "selected" : ""  }} value="0">Banner</option>
+                        <option {{ $post->type == 1 ? "selected" : ""  }} value="0">Bài Viết</option>
+                        <option {{ $post->type == 0 ? "selected" : ""  }} value="1">Banner</option>
                     </select>
                 </div>
 
@@ -96,7 +96,7 @@
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="editor" class="form-label">Nội dung bài viết</label>
-                    <textarea class="form-control description" name="description" id="editor">{!! $post->description !!}</textarea>
+                    <textarea class="form-control " name="content" id="editor">{!! $post->content !!}</textarea>
                 </div>
                 <div class="col-md-2">
                     <div class="d-grid align-items-center gap-3">

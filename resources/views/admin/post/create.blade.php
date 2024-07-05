@@ -57,15 +57,15 @@
                     <input type="text" class="form-control" id="input1" name="title" placeholder="Nhập tiêu đề">
                 </div>
                 <div class="col-md-6">
-                    <label for="input7" class="form-label">Nội dung</label>
-                    <input type="text" class="form-control" id="input1" name="content" placeholder="Nhập nội dung">
+                    <label for="input7" class="form-label">Mô tả</label>
+                    <input type="text" class="form-control" id="input1" name="description" placeholder="Nhập mô tả">
                 </div>
 
                 <div class="col-md-6">
                     <label for="input9" class="form-label">Kiểu</label>
                     <select id="input9" class="form-select" name="type">
-                        <option value="1">Bài Viết</option>
-                        <option value="0">Banner</option>
+                        <option value="0">Bài Viết</option>
+                        <option value="1">Banner</option>
                     </select>
                 </div>
                 <div class="col-md-6">
@@ -87,7 +87,7 @@
               
                 <div class="col-md-12 mb-3">
                     <label class="form-label">Nội dung bài viết</label>
-                    <textarea id="editor1" class="form-control description" name="description" ></textarea>
+                    <textarea id="editor1" class="form-control" name="content" ></textarea>
                 </div>
                 <div class="col-md-2">
                     <div class="d-grid align-items-center gap-3">

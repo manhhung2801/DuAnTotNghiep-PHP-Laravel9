@@ -9,7 +9,8 @@
         border-radius: 20px;
     }
     .eidt-description div p span{
-     line-height: 25px;
+     line-height: 27px;
+     font-size: 20px;
 
     }
 </style>
@@ -36,7 +37,7 @@
                     <div class="row d-flex">
                         <div class="right-content col-lg-12 col-12">
                             <div class="article-details clearfix">
-                                <h1 class="article-title fs-3">{{$newsdetai->title}}</h1>
+                                <p class="article-title fs-3" style="text-align: center; "><b style="font-size: 27px;">{{$newsdetai->title}}</b></p>
                                 <div class="posts d-flex mb-3">
                                     <div class="time-post ">
                                         <i class="fa-regular fa-clock"></i>
@@ -51,7 +52,7 @@
                                     <img class="img-fluid loaded" style="width: 100%; border-radius: 16px;max-height: 415px;object-fit: cover;" src="{{asset('uploads/post')}}/{{ $newsdetai->image}}">
                                 </div>
                                 <div class="rte w-100 d-block mt-5 eidt-description">
-                                    {!! $newsdetai->description !!}
+                                    {!! $newsdetai->content !!}
                                 </div>
                             </div>
                             <div class="blog_related" style="margin: 20vh 0;">

@@ -36,11 +36,12 @@
 							<div class="card-body">
 								<div class="p-4">
 									<div class="mb-3 text-center">
-										<img src="{{asset('backend/assets/images/logo-icon.png')}}" width="60" alt="" />
+									<span class="fs-1 text-black fw-bold">CYBERMART</span>
 									</div>
 									<div class="text-center mb-4">
-										<h5 class="">Rocker Admin</h5>
-										<p class="mb-0">Please log in to your account</p>
+										<h5 class="">
+										Admin </h5>
+										<p class="mb-0">Xin hãy đăng nhập vào tài khoản của bạn</p>
 									</div>
 									<div class="form-body">
 										<form method="POST" action="{{ route("admin.login.store") }}" class="row g-3">
@@ -49,7 +50,7 @@
                                             <!-- Email Address -->
 											<div class="col-12">
 												<label for="inputEmailAddress" class="form-label">Email</label>
-												<input type="email" id="email" name="email" class="form-control" id="inputEmailAddress" value="{{old('email')}}" placeholder="Emaill address">
+												<input type="email" id="email" name="email" class="form-control" id="inputEmailAddress" value="{{old('email')}}" placeholder="Nhập email">
                                                 @if($errors->has('email'))
                                                     <code>{{ $errors->first('email') }}</code>
                                                 @endif
@@ -57,9 +58,9 @@
 
                                              <!-- Password -->
 											<div class="col-12">
-												<label for="inputChoosePassword" class="form-label">Password</label>
+												<label for="inputChoosePassword" class="form-label">Mật khẩu</label>
 												<div class="input-group" id="show_hide_password">
-													<input type="password" id="password" name="password" class="form-control border-end-0" id="inputChoosePassword" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+													<input type="password" id="password" name="password" class="form-control border-end-0" id="inputChoosePassword" placeholder="Nhập mật khẩu"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
                                                     @if($errors->has('password'))
                                                         <code>{{ $errors->first('password') }}</code>
                                                     @endif
@@ -69,22 +70,22 @@
 											<div class="col-md-6">
 												<div class="form-check form-switch">
 													<input class="form-check-input" type="checkbox" id="remember_me" name="remember">
-													<label class="form-check-label" for="flexSwitchCheckChecked">Remember Me</label>
+													<label class="form-check-label" for="flexSwitchCheckChecked">Ghi nhớ </label>
 												</div>
 											</div>
-											<div class="col-md-6 text-end">	<a href="authentication-forgot-password.html">Forgot Password ?</a>
+											<div class="col-md-6 text-end">	<a href="authentication-forgot-password.html">Quên mật khẩu ?</a>
 											</div>
 											<div class="col-12">
 												<div class="d-grid">
-													<button type="submit" class="btn btn-primary">Sign in</button>
+													<button type="submit" class="btn btn-primary">Đăng nhập</button>
 												</div>
 											</div>
-											<div class="col-12">
+											<!-- <div class="col-12">
 												<div class="text-center ">
 													<p class="mb-0">Don't have an account yet? <a href="authentication-signup.html">Sign up here</a>
 													</p>
 												</div>
-											</div>
+											</div> -->
 										</form>
 									</div>
 								</div>
