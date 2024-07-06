@@ -8,7 +8,7 @@
     </tr>
 </thead>
 <tbody>
-    @forelse ($getCart as $item)
+    @foreach ($getCart as $item)
     <tr class="cart-item">
         <td class="d-flex">
             <img class="img-thumbnail" src="{{ asset('uploads/products/'). '/'. $item->associatedModel->image }}" alt="{{ $item->associatedModel->image }}">
@@ -31,11 +31,5 @@
         </td>
         <td id="priceItemCart" class="pt-5 text-danger fw-bold">{{ number_format($item->price * $item->quantity, 0, '', '.') }}₫</td>
     </tr>
-    @empty
-    <tr>
-        <td colspan="4" class="text-center border-0 mt-3">
-            <h3>Không có sản phẩm</h3>
-        </td>
-    </tr>
-    @endforelse
+    @endforeach
 </tbody>

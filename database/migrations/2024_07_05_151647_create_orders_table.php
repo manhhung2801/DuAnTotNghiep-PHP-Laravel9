@@ -25,12 +25,12 @@ return new class extends Migration
             $table->double('qty_total');
             $table->string('payment_method');
             $table->integer('payment_status');
-            $table->text('order_address');
+            $table->text('order_address')->nullable();
             $table->text('shipping_method');
             $table->string('coupon')->nullable();
             $table->tinyInteger('order_status')->default(0);
-            $table->text('admin_note');
-            $table->text('user_note');
+            $table->text('admin_note')->nullable();
+            $table->text('user_note')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

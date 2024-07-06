@@ -33,7 +33,7 @@ class CartController extends Controller
                 'price' => $product->offer_price,
                 'quantity' => $qtyProduct,
                 'attributes' => [
-                    'color' => 'red',
+                    'color' => ' Đỏ',
                 ],
                 'associatedModel' => $product,
             ]);
