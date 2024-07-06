@@ -72,7 +72,7 @@
             <h2 class=""><b>{{$cate->name}}</b></h2>
             <div class="row row-cols-2">
                 @foreach($newsDetail[$cate->id] as $postsNews)
-            
+
                 <div class="col mt-3">
                     <div class="row">
                         <div class="col-lg-6">
@@ -91,15 +91,23 @@
                                         text-overflow: ellipsis;">
                                 <b>{{$postsNews->title}}</b>
                             </a>
+
+                            <div style="margin-top:10px;">
+                                <span> <i class="fa-regular fa-user"></i> {{$postsNews->User->name}}</span>
+                            </div>
+                            <div style="margin-top:10px;">
+                                <span><i class="fa-solid fa-calendar-days"></i> {{ date('d/m/Y', strtotime($postsNews->created_at)) }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-          
+
                 @endforeach
             </div>
-            <p class="text-center mt-5">
-                <a href="{{route('news.newsSiteType',['slugs' =>$cate->slug ])}}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Xem tất cả {{$cate->name}}</a>
-            </p>
+            <div class=" show-all text-center mt-5 show">
+                <a class="px-5 py-2 btn btn-outline-dark " href="{{route('news.newsSiteType',['slugs' =>$cate->slug ])}}">Xem tất cả <i class="fa-regular fa-chevron-right"></i></a>
+            </div>
+        
         </div>
         @endif
         @endforeach
