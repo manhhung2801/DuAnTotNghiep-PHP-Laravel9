@@ -10,7 +10,9 @@
     <div class="carousel-inner">
         @foreach ($slides as $index => $slide)
         <div class="carousel-item {{$index===0 ? 'active' : '' }}" data-bs-interval="10000">
-            <img src="{{ asset('uploads/slider/'.$slide->banner) }}" class="d-block w-100 img-fluid" >
+          
+            <img  width="1920" height="533" src="{{ asset('uploads/slider/'.$slide->banner) }}" class="img-fluid" >
+        
         </div>
         @endforeach
     </div>

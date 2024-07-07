@@ -18,7 +18,7 @@
                     <img alt="Banner top" width="1300" height="300" class="img-fluid lazyload loaded rounded-4" data-src="//bizweb.dktcdn.net/100/480/632/files/iphone.jpg" src="//bizweb.dktcdn.net/100/480/632/files/iphone.jpg">
                 </a>
             </div>
-            <div class="col-list-cate col-md-12 mt-4 ">
+            <div class="col-list-cate col-md-12 mt-4 mb-3" style="overflow-y: auto;">
                 @include('frontend.products.partials.menuList')
             </div>
             <div class="block-collection col-lg-12 col-12">
