@@ -87,4 +87,24 @@
         });
     }
 </script>
-@stack('script')
+
+<script>
+    // ẩn hiện nút + responsize footer
+    document.addEventListener("DOMContentLoaded", function() {
+        var showButtons = document.querySelectorAll(".show-pages");
+        showButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                var itemWrapper = button.closest(".footer-item");
+                var itemList = itemWrapper.querySelector("ul.itemCard");
+                if (itemList) {
+                    itemList.classList.toggle("d-none");
+                }else{
+                    itemList.classList.toggle("d-block");
+                }
+            });
+        });
+    });
+</script>
+
+
+

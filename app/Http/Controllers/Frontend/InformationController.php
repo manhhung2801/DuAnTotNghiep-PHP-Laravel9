@@ -15,18 +15,19 @@ class InformationController extends Controller
         $ListPage = Page::all();
         $ckeckIdListInformation = Information::where("slug", $slug1)->first();
 
-        if ($ckeckIdListInformation) {
-            $Informationdetai = Page::where("slug", $slug2)
-                ->where("information_id", $ckeckIdListInformation->id)
-                ->first();
 
-            return view("frontend.information.index", [
-                'ListInformation' => $ListInformation,
-                'ListPage' => $ListPage,
-                'Informationdetai' => $Informationdetai,
-                'ckeckIdListInformation' => $ckeckIdListInformation->id,
+            if ($ckeckIdListInformation) {
+                $Informationdetai = Page::where("slug", $slug2)
+                    ->where("information_id", $ckeckIdListInformation->id)
+                    ->first();
 
-            ]);
-        } 
+                return view("frontend.information.index", [
+                    'ListInformation' => $ListInformation,
+                    'ListPage' => $ListPage,
+                    'Informationdetai' => $Informationdetai,
+                    'ckeckIdListInformation' => $ckeckIdListInformation->id,
+
+                ]);
+        }
     }
 }

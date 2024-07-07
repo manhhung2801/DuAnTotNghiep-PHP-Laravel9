@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index()  {
-
         $countUser = User::get()->count();
         $coutProuduct = User::get()->count();
         $coutCoupon = Coupons::get()->count();
@@ -22,6 +21,5 @@ class HomeController extends Controller
             'coutCoupon' => $coutCoupon,
             'coutSlider' => $coutSlider,
         ]);
-
     }
 }
