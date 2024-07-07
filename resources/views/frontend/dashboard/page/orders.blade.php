@@ -89,6 +89,7 @@
                             @endforelse
                         </tbody>
                     </table>
+                    {{$getOrders->links()}}
                 </div>
             </div>
         </div>

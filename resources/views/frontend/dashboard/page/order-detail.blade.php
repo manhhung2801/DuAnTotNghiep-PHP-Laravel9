@@ -21,7 +21,8 @@
                 <div class="col-lg-10 col-xl-8">
                     <div class="card" style="border-radius: 10px;">
                         <div class="card-header px-4 py-5">
-                            <h5 class="text-muted mb-0">Cảm ơn bạn đã đặt hàng, <span style="color: #1A2130;">{{ \Auth::user()->name }}</span>!
+                            <h5 class="text-muted mb-0">Cảm ơn bạn đã đặt hàng, <span
+                                    style="color: #1A2130;">{{ \Auth::user()->name }}</span>!
                             </h5>
                         </div>
                         <div class="card-body p-4">
@@ -57,35 +58,38 @@
                                             </div>
                                         </div>
                                         <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
-                                        <div class="row d-flex align-items-center">
-                                            <div class="col-md-2">
-                                                <p class="text-muted mb-0 small">Theo dõi thứ tự</p>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <div class="progress" style="height: 6px; border-radius: 16px;">
-                                                    <div class="progress-bar" role="progressbar"
-                                                        style="width: 65%; border-radius: 16px; background-color: #1A2130;"
-                                                        aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <div class="d-flex justify-content-around mb-1">
-                                                    <p class="text-muted mt-1 mb-0 small ms-xl-5">Ra ngoài để giao hàng</p>
-                                                    <p class="text-muted mt-1 mb-0 small ms-xl-5">Đã giao hàng</p>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             @empty
                             @endforelse
+                            <div class="row d-flex align-items-center">
+                                <div class="col-md-2">
+                                    <p class="text-muted mb-0 small">Theo dõi thứ tự</p>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="progress" style="height: 6px; border-radius: 16px;">
+                                        <div class="progress-bar" role="progressbar"
+                                            style="width: 65%; border-radius: 16px; background-color: #1A2130;"
+                                            aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="d-flex justify-content-around mb-1">
+                                        <p class="text-muted mt-1 mb-0 small ms-xl-5">Ra ngoài để giao hàng</p>
+                                        <p class="text-muted mt-1 mb-0 small ms-xl-5">Đã giao hàng</p>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="d-flex justify-content-between pt-2">
                                 <p class="fw-bold mb-0">Chi tiết đơn hàng</p>
-                                <p class="text-muted mb-0"><span class="fw-bold me-4">Tổng cộng</span> {{ number_format($orderDetail->total, 0, '', '.') }}
+                                <p class="text-muted mb-0"><span class="fw-bold me-4">Tổng cộng</span>
+                                    {{ number_format($orderDetail->total, 0, '', '.') }}
                                     VNĐ</p>
                             </div>
 
                             <div class="d-flex justify-content-between pt-2">
                                 <p class="text-muted mb-0">Số hóa đơn: 788152</p>
-                                <p class="text-muted mb-0"><span class="fw-bold me-4">Giảm giá</span> {{$orderDetail->coupon != null? number_format($orderDetail->coupon, 0, '', '.'):0}} VNĐ</p>
+                                <p class="text-muted mb-0"><span class="fw-bold me-4">Giảm giá</span>
+                                    {{ $orderDetail->coupon != null ? number_format($orderDetail->coupon, 0, '', '.') : 0 }}
+                                    VNĐ</p>
                             </div>
 
                             <div class="d-flex justify-content-between">
@@ -102,7 +106,8 @@
                         <div class="card-footer border-0 px-4 py-5"
                             style="background-color: #1A2130; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                             <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">TỔNG SỐ
-                                CHI TRẢ: <span class="h2 mb-0 ms-2">{{ number_format($orderDetail->total, 0, '', '.') }} VNĐ</span></h5>
+                                CHI TRẢ: <span class="h2 mb-0 ms-2">{{ number_format($orderDetail->total, 0, '', '.') }}
+                                    VNĐ</span></h5>
                         </div>
                     </div>
                 </div>
