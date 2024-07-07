@@ -41,7 +41,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-secondary">Tổng Phiếu giảm</p>
+                            <p class="mb-0 text-secondary">Tổng phiếu giảm giá</p>
                             <h4 class="my-1 text-success">{{$coutCoupon}}</h4>
                             <p class="mb-0 font-13">-4.5% from last week</p>
                         </div>
