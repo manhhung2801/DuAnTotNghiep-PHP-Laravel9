@@ -41,4 +41,9 @@ class Order extends Model
     static function getOrder($id) {
         return self::findOrFail($id);
     }
+    static function getOrderAll() {
+        return self::orderBy('id', 'desc');
+    }
+
+
 }
