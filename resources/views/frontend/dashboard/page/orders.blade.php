@@ -19,7 +19,7 @@
     <section class="h-100 gradient-custom">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <h1 class="fs-4">#Đơn hàng của <em>{{ \Auth::user()->name}}</em></h1>
+                <h1 class="fs-4">#Đơn hàng của <em>{{ \Auth::user()->name }}</em></h1>
                 <div class="page account-page customer-info-page mt-3">
                     <table class="table align-middle mb-0 bg-white table-striped justify-content-center">
                         <thead class="bg-light">
@@ -41,10 +41,10 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="ms-3">
-                                                <p class="fw-bold mb-1">{{ $order->order_name }}</p>
+                                                <p class="fw-bold mb-1">Tên: {{ $order->order_name }}</p>
                                                 <p style="font-size: 12px" class="text-muted mb-0 order_info">SĐT:
-                                                    {{ $order->order_phone }}</p>
-                                                <p style="font-size: 12px" class="text-muted mb-0 order_info">ĐC:
+                                                    {{ $order->order_phone }} - Email: {{ $order->order_email }}</p>
+                                                <p style="font-size: 12px" class="text-muted mb-0 order_info">Địa chỉ:
                                                     {{ $order->order_address }}
                                                     {{ $order->order_ward }}, {{ $order->order_district }},
                                                     {{ $order->order_province }}</p>
@@ -56,6 +56,11 @@
                                             <p class="fw-normal mb-1">Thanh toán khi nhận hàng</p>
                                         @elseif ($order->payment_status == 1)
                                             <p class="fw-normal mb-1">Thanh toán qua ngân hàng</p>
+                                        @endif
+                                        
+                                        @if ($order->payment_status == 0)
+                                            <p style="font-size: 12px"><em>Chưa thanh toán</em></p>
+                                        @elseif($order->payment_status == 1)
                                             <p class="text-success" style="font-size: 12px"><em>Đã thanh toán</em></p>
                                         @endif
                                     </td>
@@ -82,14 +87,15 @@
                                     </td>
                                     <td><strong>{{ number_format($order->total, 0, '', '.') }} VNĐ</strong></td>
                                     <td>
-                                        <a href="{{ route('order.show', $order->id) }}" class="btn btn-primary btn-rounded px-3 py-1">Xem</a>
+                                        <a href="{{ route('order.show', $order->id) }}"
+                                            class="btn btn-primary btn-rounded px-3 py-1">Xem</a>
                                     </td>
                                 </tr>
                             @empty
                             @endforelse
                         </tbody>
                     </table>
-                    {{$getOrders->links()}}
+                    {{ $getOrders->links() }}
                 </div>
             </div>
         </div>

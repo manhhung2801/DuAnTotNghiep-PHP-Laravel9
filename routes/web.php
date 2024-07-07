@@ -15,7 +15,7 @@ use App\Http\Controllers\Frontend\KhieuNaiController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Frontend\OrderController;
 use App\Models\Information;
 
 /*
