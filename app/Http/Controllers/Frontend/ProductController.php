@@ -86,7 +86,7 @@ class ProductController extends Controller
         }
 
         // Paginate the products
-        $products = $productsQuery->paginate(15);
+        $products = $productsQuery->paginate(16);
         // Calculate percentage change for products
         $products = $this->calculatePercentageChange($products);
 
