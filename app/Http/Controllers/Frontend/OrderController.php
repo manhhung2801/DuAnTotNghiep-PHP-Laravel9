@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Order_detail;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class OrderController extends Controller
     public function index()
     {
         $idUser = \Auth::user()->id;
-        $getOrders = Order::getOrderUser($idUser)->paginate(10);
+        $getOrders = Order::getOrderUser($idUser)->paginate(5);
         return view('frontend.dashboard.page.orders', compact('getOrders'));
     }
 

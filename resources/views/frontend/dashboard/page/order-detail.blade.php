@@ -20,10 +20,13 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-lg-10 col-xl-8">
                     <div class="card" style="border-radius: 10px;">
-                        <div class="card-header px-4 py-5">
+                        <div class="card-header px-4 py-5 d-flex justify-content-between">
                             <h5 class="text-muted mb-0">Cảm ơn bạn đã đặt hàng, <span
                                     style="color: #1A2130;">{{ \Auth::user()->name }}</span>!
                             </h5>
+                            <div>
+                                <a href="{{route('order.index')}}"><i class="fa-solid fa-arrow-left"></i> Trở lại đơn hàng</a>
+                            </div>
                         </div>
                         <div class="card-body p-4">
                             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -36,22 +39,21 @@
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <img src="{{ asset('uploads/products/' . $order->product->image) }}"
-                                                    class="img-fluid" alt="Phone">
+                                                   width="100px" alt="Phone">
                                             </div>
                                             <div
-                                                class="col-md-3 text-center d-flex justify-content-center align-items-center">
-                                                <p class="text-muted mb-0"><strong>{{ $order->product_name }}</strong></p>
+                                                class="col-md-4 d-flex align-items-center">
+                                                <div>
+                                                    <p class="text-muted mb-0"><strong>{{ $order->product_name }}</strong></p>
+                                                    <p class="text-muted mb-0 small">Màu sắc: {{ $order->variants }}</p>
+                                                </div>
                                             </div>
                                             <div
                                                 class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                                <p class="text-muted mb-0 small">Màu sắc: {{ $order->variants }}</p>
+                                                <p class="text-muted mb-0 small">x{{ $order->qty }}</p>
                                             </div>
                                             <div
-                                                class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                                <p class="text-muted mb-0 small">SL: {{ $order->qty }}</p>
-                                            </div>
-                                            <div
-                                                class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                                class="col-md-4 text-center d-flex justify-content-center align-items-center">
                                                 <strong
                                                     class="text-muted mb-0 small">{{ number_format($order->price, 0, '', '.') }}
                                                     VNĐ</strong>
