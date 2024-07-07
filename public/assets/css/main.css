@@ -335,13 +335,14 @@
  }
  
  .news-item .card .news_image {
-     width: 100%;
-     object-fit: cover;
+     max-width: 100%;
+     overflow: hidden;
  }
  
- .news-item .card img {
+ .news-item .card .news_image img {
      border-radius: 10px 10px 0 0;
      transition-duration: 0.8s;
+     width: 100%;
  }
  
  .news-item .card:hover img {
