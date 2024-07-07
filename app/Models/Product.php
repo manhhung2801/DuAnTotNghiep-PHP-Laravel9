@@ -77,6 +77,11 @@ class Product extends Model
     {
         return $this->hasMany(product_image_galleries::class, 'product_id', 'id');
     }
+    
+    public function order_detail()
+    {
+        return $this->hasMany(Order_detail::class, 'product_id', 'id');
+    }
 
     public function variant()
     {
