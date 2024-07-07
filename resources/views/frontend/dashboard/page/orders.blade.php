@@ -57,11 +57,11 @@
                                         @elseif ($order->payment_status == 1)
                                             <p class="fw-normal mb-1">Thanh toán qua ngân hàng</p>
                                         @endif
-                                        
+
                                         @if ($order->payment_status == 0)
-                                            <p style="font-size: 12px"><em>Chưa thanh toán</em></p>
+                                            <p class="m-0 badge text-bg-danger"><em>Chưa thanh toán</em></p>
                                         @elseif($order->payment_status == 1)
-                                            <p class="text-success" style="font-size: 12px"><em>Đã thanh toán</em></p>
+                                            <p class="m-0 badge text-bg-success"><em>Đã thanh toán</em></p>
                                         @endif
                                     </td>
                                     <td>

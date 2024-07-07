@@ -151,8 +151,6 @@
             </form>
         </div>
     </div>
-@endsection
-@push('script')
     <script>
         (() => {
 
@@ -168,7 +166,7 @@
             })
         })()
     </script>
-@endpush
+@endsection
 @push('script_lib-js')
     <script src="{{ asset('assets/js/app.js') }}"></script>
 @endpush
