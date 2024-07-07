@@ -3,7 +3,8 @@
 <script defer src="https://cdn.jsdelivr.net/gh/artru-git/artru-aio@latest/artru-smoothscroll.min.js"></script>
 
 <!-- Jquery -->
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
 
 <!-- Alert Sweet -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.1/dist/sweetalert2.all.min.js"></script>
@@ -12,6 +13,7 @@
 
 <!-- chứa các ajax -->
 @include('frontend.layouts.ajax')
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -52,7 +54,8 @@
         var lessText = document.querySelector('.less-text');
 
         showMoreBtn.addEventListener('click', function() {
-            if (productReviewContent.style.height === '360px' || productReviewContent.style.height === '') {
+            if (productReviewContent.style.height === '360px' || productReviewContent.style.height ===
+                '') {
                 productReviewContent.style.height = 'auto';
                 moreText.classList.add('d-none');
                 lessText.classList.remove('d-none');
@@ -84,6 +87,7 @@
         });
     }
 </script>
+
 <script>
     // ẩn hiện nút + responsize footer
     document.addEventListener("DOMContentLoaded", function() {
@@ -102,4 +106,5 @@
     });
 </script>
 
-@stack('script')
+
+
