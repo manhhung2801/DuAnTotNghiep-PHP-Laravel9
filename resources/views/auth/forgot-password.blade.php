@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
         {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
     </div>
@@ -22,10 +22,10 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> --}}
 
 
-{{-- @extends('frontend.layouts.master')
+@extends('frontend.layouts.master')
 
 @section('content')
 <div class="wrapper-login-page container">
@@ -39,9 +39,9 @@
                     <div class="page-title">
                         <p>Quên mật khẩu? Không có gì. Chỉ cần cho chúng tôi biết địa chỉ email của bạn và chúng tôi sẽ gửi cho bạn liên kết đặt lại mật khẩu qua email để cho phép bạn chọn địa chỉ mới.</p>
                     </div>
-                    @if(session('status'))
+                    @if (session('status') == 'reset-password')
                         <p class="alert alert-success">
-                            {{ session('status') }}
+                            Chúng tôi đã gửi email liên kết đặt lại mật khẩu của bạn!
                         </p>
                     @endif
                     <form method="POST" action="{{  route('password.email') }}">
@@ -60,4 +60,4 @@
         </div>
     </div>
 </div>
-@endsection --}}
+@endsection

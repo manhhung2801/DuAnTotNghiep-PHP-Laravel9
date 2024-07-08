@@ -16,10 +16,8 @@ class PasswordResetLinkController extends Controller
      */
     public function create(): View
     {
-        // category show menu
-        $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
 
-        return view('auth.forgot-password', compact('categories'));
+        return view('auth.forgot-password');
     }
 
     /**
@@ -41,8 +39,8 @@ class PasswordResetLinkController extends Controller
         );
 
         return $status == Password::RESET_LINK_SENT
-                    ? back()->with('status', __($status))
+                    ? back()->with('status', 'reset-password')
                     : back()->withInput($request->only('email'))
-                            ->withErrors(['email' => __($status)]);
+                            ->withErrors(['email' => 'Chúng tôi không thể tìm thấy người dùng có địa chỉ email đó.']);
     }
 }

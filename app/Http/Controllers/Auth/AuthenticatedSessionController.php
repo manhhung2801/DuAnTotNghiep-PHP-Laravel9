@@ -18,10 +18,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        // category show menu
-        $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
-
-        return view('auth.login', compact("categories"));
+        return view('auth.login');
     }
 
     /**
