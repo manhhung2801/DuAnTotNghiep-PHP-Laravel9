@@ -13,10 +13,8 @@ class PasswordController extends Controller
 {
     public function formUpdate()
     {
-        // category show menu
-        $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
 
-        return view('frontend.dashboard.page.changePass', compact('categories'));
+        return view('frontend.dashboard.page.changePass');
     }
 
     /**
