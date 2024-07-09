@@ -1,9 +1,10 @@
+
 <h1 class="title-product fs-4 mt-3">{{ $product->name }}</h1>
 <div class="inventory_quantity">
     <span class="mb-break">
         <span class="stock-brand-title">Thương hiệu:</span>
         <span class="a-vendor">
-            Apple
+            {{ $product->subCategory->name }}
         </span>
     </span>
     <span class="line">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
@@ -15,57 +16,54 @@
 <hr>
 <div class="price-box ">
     <span class="special-price">
-        <span class="price product-price fs-4 text-danger">19.490.000₫</span>
+        <span class="price product-price fs-4 text-danger">{{ number_format($product->offer_price, 0, '', ',') }}</span>
     </span>
     <!-- Giá Khuyến mại -->
     <span class="old-price">
-        <del class="price product-price-old mx-1">21.990.000₫</del>
+        <del class="price product-price-old mx-1">{{ number_format($product->price, 0, '', ',') }}</del>
     </span>
+    
     <!-- Giá gốca -->
 </div>
 
 <div class="form-product ">
-    <div class="select-swatch mb-3 ">
-        <div class="header">Màu sắc: <span class="value-properties">Xám</span></div>
-        <div class="swatch d-flex">
-            <div data-value="Đỏ" title="Đỏ" class="swatch-element color " onclick="changeColor(this)">
-                <div class="tooltip">Đỏ</div>
-                <input id="swatch-0-den" type="radio" name="option" class="d-none" value="red" checked="">
-                <label for="swatch-0-den" style="background-color: red"></label>
-            </div>
-            <div data-value="Xanh" title="Xanh" class="swatch-element color " onclick="changeColor(this)">
-                <div class="tooltip">Xanh</div>
-                <input id="swatch-0-xanh" type="radio" name="option" class="d-none" value="xanh">
-                <label for="swatch-0-xanh" style="background-color: blue">
-                </label>
-            </div>
-            <div data-value="Vàng" title="Vàng" class="swatch-element color " onclick="changeColor(this)">
-                <div class="tooltip">Vàng</div>
-                <input id="swatch-0-vang" type="radio" name="option" class="d-none" value="vàng">
-                <label for="swatch-0-vang" style="background-color: yellow">
-                </label>
-            </div>
-        </div>
+    <div class="select-swatch ">
+        @if (!empty($product->variant))
+            @foreach ($product->variant as $variant)
+                <div class="header">Màu sắc: <span class="value-properties">{{$variant->name}}</span>
+                </div>
+                <div class="swatch d-flex mt-2">
+                    @foreach ($variant->variantItem as $i)
+                        <div data-value="{{ $i->name }}" title="{{ $i->name }}" class="swatch-element color"
+                            onclick="changeColor(this)">
+                            <div class="tooltip">{{ $i->name }}</div>
+                            <input id="{{ $i->name }}" type="radio" name="option" class="d-none"
+                                value="{{ $i->name }}" checked>
+                            <label for="{{ $i->name }}" style="background-color: {{ $i->name }}"></label>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+        @endif
     </div>
-    <div class="product-summary">
-        <div class="rte">
-            <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br> ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có
-                lỗi từ nhà sản xuất<br> ✔️Bảo hành chính hãng Apple 12 tháng</p>
+    <div class="product-summary mt-3">
+        <div class="rte ">
+            {!! $product->short_description !!}
         </div>
     </div>
     <div class="boz-form mb-3">
         <div class="flex-quantity">
-            <div class="custom custom-btn-number  ">
-                <span>Số lượng: </span>
-                <div class="input_number_product ">
-                    <button class="btn_num num_1 button button_qty"><span>-</span></button>
-                    <input type="text" id="qtym" name="quantity" value="1" maxlength="3"
-                        class="form-control prd_quantity">
-                    <button class="btn_num num_2 button button_qty"><span>+</span></button>
-                </div>
-            </div>
+
             <form class="formCart" method="post">
                 <input class="productId" type="hidden" value="{{ $product->id }}">
+                <div class="custom custom-btn-number  ">
+                    <span>Số lượng: </span>
+                    <span class="quantity-controls">
+                        <span class="btn_num num_1 decrease-btn">-</span>
+                        <input type="number" id="qtym" class="qtym form-control prd_quantity" name="qtym" value="1" min="1" max="{{ $product->qty }}">
+                        <span class="btn_num btn-plus increase-btn">+</span>
+                    </span>                    
+                </div>
                 <div class="btn-mua button_actions col-md-12 col">
                     <button type="button" class="btn-buyNow btn col-12 btn-addToCart">
                         <span class="txt-main text-white">Mua ngay</span>

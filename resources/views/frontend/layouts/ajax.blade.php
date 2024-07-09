@@ -10,12 +10,14 @@
             // closest form gần nút addcart nhất
             let form = $(this).closest('.formCart');
             let id = form.find('.productId').val();
-            console.log(id);
+            let quantity = form.find('.qtym').val()
             $.ajax({
                 url: "{{ route('cart.store') }}",
                 type: 'POST',
                 data: {
-                    id: id
+                    id: id,
+                    quantity: quantity,
+                    color: window.selectedColor
                 },
                 success: function(data) {
                     const Toast = Swal.mixin({
@@ -38,6 +40,7 @@
                         });
                     }
                     $('.cart-count').text(data.cart_count);
+                 
                 },
                 error: function(error) {
                     alert('Lỗi: '.error)
