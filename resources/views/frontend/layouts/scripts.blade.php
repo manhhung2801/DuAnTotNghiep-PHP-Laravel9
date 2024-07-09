@@ -76,13 +76,18 @@
         var header = document.querySelector('.header .value-properties');
         header.textContent = color;
 
-        // Cập nhật màu và border cho các label
+        // Cập nhật thuộc tính màu sắc được chọn cho biến toàn cục (ví dụ: selectedColor)
+        window.selectedColor = color; // Lưu trữ màu sắc được chọn vào biến toàn cục
+
+        // Đặt lại border cho các label
         var labels = document.querySelectorAll('.swatch-element label');
         labels.forEach(function(label) {
+            // Xóa border của tất cả các label
+            label.style.border = "none";
+
+            // Nếu label tương ứng với màu sắc được chọn, đặt lại border
             if (label.getAttribute('for') === element.querySelector('input').id) {
                 label.style.border = "2px solid black";
-            } else {
-                label.style.border = "none";
             }
         });
     }
@@ -98,13 +103,10 @@
                 var itemList = itemWrapper.querySelector("ul.itemCard");
                 if (itemList) {
                     itemList.classList.toggle("d-none");
-                }else{
+                } else {
                     itemList.classList.toggle("d-block");
                 }
             });
         });
     });
 </script>
-
-
-

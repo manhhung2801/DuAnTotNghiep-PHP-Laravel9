@@ -14,7 +14,7 @@
             <img class="img-thumbnail" src="{{ asset('uploads/products/'). '/'. $item->associatedModel->image }}" alt="{{ $item->associatedModel->image }}">
             <div class="ml-3">
                 <h6 class="ps-2 fw-normal">{{ $item->name }}</h6>
-                <p class="ps-2 fw-light">Vàng</p>
+                <p class="ps-2 fw-light">{{$item->attributes->color ?? '' }}</p>
                 <span data-url="{{ route('cart.destroy', $item->id) }}" class="btn-delete btn_delete_cart ps-2 py-3">Xóa</span>
             </div>
         </td>

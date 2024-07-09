@@ -25,18 +25,21 @@ class CartController extends Controller
     {
         try {
             $id = $request->id;
+            $cartNumber = $request->quantity ;
             $product = Product::getProductItem($id);
-            $qtyProduct = $request->qty ?? 1;
+            $qtyProduct = $request->qty ??  $cartNumber;
+            $selectedColor = $request->color;
             \Cart::add([
                 'id' => $id,
                 'name' => $product->name,
                 'price' => $product->offer_price,
                 'quantity' => $qtyProduct,
                 'attributes' => [
-                    'color' => ' Đỏ',
+                    'color' => $selectedColor,
                 ],
                 'associatedModel' => $product,
             ]);
+        
             $cart_count = \Cart::getTotalQuantity();
             return response()->json(['status' => true, 'message' => 'Thêm ' . $product->name . ' vào giỏ hàng thành công!', 'cart_count' => $cart_count]);
         } catch (Exception $e) {

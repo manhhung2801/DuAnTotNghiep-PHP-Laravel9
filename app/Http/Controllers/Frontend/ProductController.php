@@ -11,6 +11,7 @@ use App\Models\SubCategory;
 use App\Models\ChildCategory;
 use App\Models\StoreAddress;
 use DB;
+
 class ProductController extends Controller
 {
     public function calculatePercentageChange($products)
@@ -35,7 +36,7 @@ class ProductController extends Controller
         // Filter parameters
         $filters = compact('cat', 'sub', 'child', 'slug');
         $sortBy = $request->query('sort');
-        $slug = str_replace('.html','', $slug);
+        $slug = str_replace('.html', '', $slug);
         // Get categories ordered by rank
         $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
         $storeAddress = StoreAddress::where("status", "=", 1)->orderBy("id", "asc")->limit(1)->get();
@@ -102,9 +103,17 @@ class ProductController extends Controller
                 // Assuming only one product is filtered
                 $product = Product::with('product_image_galleries')->findOrFail($product->id);
                 $product_image_galleries = $product->product_image_galleries;
-
                 $variants = $product->variant()->get();
-                return view('frontend.products.detail', compact("categories", "product", "variants", "product_image_galleries", "product_image_galleries", "products", "storeAddress"));
+                // Lấy danh sách các id của các sản phẩm liên quan (cùng danh mục) trừ sản phẩm ban đầu
+                $relatedProductIds = Product::where('category_id', $product->category_id)
+                    ->where('id', '!=', $product->id) // Loại trừ sản phẩm ban đầu
+                    ->pluck('id');
+                // Lấy các sản phẩm liên quan dựa trên danh sách id đã lấy được
+                $relatedProducts = Product::whereIn('id', $relatedProductIds)
+                ->orderBy('created_at','desc')
+                    ->limit(4)
+                    ->get();
+                return view('frontend.products.detail', compact("categories", "product", "variants", "product_image_galleries", "product_image_galleries", "products", "storeAddress", "relatedProducts"));
             default:
                 // No filters applied
                 return view('frontend.products.index', compact("categories", "products", "storeAddress"));
