@@ -53,7 +53,7 @@ class Product extends Model
     //get all record
     static public function getProduct()
     {
-        return self::orderBy('id', 'desc');
+        return self::orderBy('created_at', 'desc');
     }
     // get 1 record by id
     static public function getProductItem($id)

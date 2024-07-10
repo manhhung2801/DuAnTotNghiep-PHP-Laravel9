@@ -33,7 +33,6 @@ class HomeController extends Controller
                 $cate->name => Product::getProduct()->where('status', '=', 1)
                                         ->where('qty', '>', 0)
                                         ->where('category_id', $cate->id)
-                                        ->orderBy('created_at', 'desc')
                                         ->take(4)->get()
             ];
             $getProducts[] = $product;
