@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Order_detail;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Database\QueryException;
 use Cart;
 use Illuminate\Http\Request;
@@ -16,23 +17,44 @@ class CheckoutController extends Controller
         if (\Cart::isEmpty()) {
             return redirect()->back()->with(['error' => 'Đơn hàng không được để trống!']);
         }
+
         $getCart = \Cart::getContent();
+        // Update giá khi có sự thay đổi giá
+        foreach ($getCart as $cart) {
+            $getProduct = Product::findOrFail($cart->id);
+            $productPrice = $getProduct->offer_price ?? $getProduct->price;
+            if ($cart->price != $productPrice) {
+                \Cart::update($cart->id, [
+                    'price' => $productPrice,
+                ]);
+            }
+        }
+
         $getSubTotal = number_format(\Cart::getSubTotal(), 0, '', '.');
         $getTotal = number_format(\Cart::getTotal(), 0, '', '.');
         $getTotalQuantity = \Cart::getTotalQuantity();
         return view('frontend.checkout.index', compact('getCart', 'getSubTotal', 'getTotal', 'getTotalQuantity'));
-        
     }
 
     function store(Request $request)
     {
-        // $request->validate([
-        //     'email' => 'required|email|ends_with:@gmail.com',
-        //     'name' => 'required',
-        //     'phone' => 'required|integer',
-        // ]);
         try {
+            // thêm order và order detail
             if (!\Cart::isEmpty()) {
+
+                $getCart = \Cart::getContent();
+                //check số lượng còn lại trong kho
+                foreach ($getCart as $cart) {
+                    // lấy ra product từ id trong cart
+                    $getQtyProduct = Product::getProductItem($cart->id);
+                    if ($cart->quantity > $getQtyProduct->qty) {
+                        return redirect()->route('cart.index')->with(['error' => 'Sản phẩm không còn đủ số lượng bạn đặt!']);
+                    }
+                    // trừ số lượng sản phẩm trong databse
+                    $getQtyProduct->qty -= $cart->quantity;
+                    $getQtyProduct->save();
+                }
+
                 $order = new Order();
                 $order->order_name = trim($request->name);
                 $order->order_phone = trim($request->phone);
@@ -51,23 +73,23 @@ class CheckoutController extends Controller
                 $order->user_id = \Auth::user()->id;
                 $order->save();
 
-                $getCart = \Cart::getContent();
-                foreach ($getCart as $key => $product) {
+                foreach ($getCart as $key => $proCart) {
                     $order_detail = new Order_detail();
-                    $order_detail->product_name = $product->name;
-                    $order_detail->variants = $product->attributes->color;
-                    $order_detail->price = $product->price;
-                    $order_detail->qty = $product->quantity;
+                    $order_detail->product_name = $proCart->name;
+                    $order_detail->variants = $proCart->attributes->color;
+                    $order_detail->price = $proCart->price;
+                    $order_detail->qty = $proCart->quantity;
                     $order_detail->order_id = $order->id;
-                    $order_detail->product_id = $product->id;
+                    $order_detail->product_id = $proCart->id;
                     $order_detail->save();
                 }
+                // xóa toàn bộ giỏ hàng
                 \Cart::clear();
                 return view('frontend.thankyou.index');
             }
             return redirect()->back()->with(['error' => 'Đã xảy ra lỗi !!!']);
         } catch (QueryException $e) {
-            return redirect()->back()->with(['error' => 'Đã xảy ra lỗi !!!'. $e]);
+            return redirect()->back()->with(['error' => 'Đã xảy ra lỗi !!!' . $e]);
         }
     }
 }

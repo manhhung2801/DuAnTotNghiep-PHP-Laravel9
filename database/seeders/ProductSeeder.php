@@ -26,19 +26,20 @@ class ProductSeeder extends Seeder
             DB::table('products')->insert([
                 [
                     'name' => $nameIP,
-                    'slug' => Str::slug($nameIP, '-'),
+                    'slug' => Str::slug($nameIP .rand(1,990), '-'),
                     'image' => 'iphone_0'.rand(1, 9).'.png',
                     'qty' => 200,
-                    'price' => round(rand(29000000, 33900000)/10) *10,
-                    'offer_price' => round(rand(10900000, 25900000)/10) *10,
+                    'price' => round(rand(29000000, 33900000)/100000) *100000,
+                    'offer_price' => round(rand(10900000, 25900000)/100000) *100000,
                     'offer_start_date' => now(),
-                    'sku' => 'SPIP'. rand(100, 120),
+                    'sku' => 'SPIP'. rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'long_description' => 'mô tả',
                     'short_description' => 'mô tả',
+                    'specifications' => 'Thông số kĩ thuật',
                     'product_type' => 'new',
-                    'seo_title' => 'SEO tile',
-                    'seo_description' => 'SEO des',
+                    'seo_title' => '',
+                    'seo_description' => '',
                     'category_id' => 1,
                     'weight' => 0.5,
                     'sub_category_id' => 1,
@@ -49,7 +50,7 @@ class ProductSeeder extends Seeder
             DB::table('products')->insert([
                 [
                     'name' => $nameLap,
-                    'slug' => Str::slug($nameLap, '-'),
+                    'slug' => Str::slug($nameLap .rand(1,990), '-'),
                     'image' => 'mac_0'.rand(1, 9).'.png',
                     'qty' => 200,
                     'price' => round(rand(29000000, 33900000)/10000) *10000,
@@ -72,7 +73,7 @@ class ProductSeeder extends Seeder
             DB::table('products')->insert([
                 [
                     'name' => $nameSound,
-                    'slug' => Str::slug($nameSound, '-'),
+                    'slug' => Str::slug($nameSound .rand(1,990), '-'),
                     'image' => 'sound_0'.rand(1, 9).'.png',
                     'qty' => 200,
                     'price' => round(rand(29000000, 33900000)/10000) *10000,
@@ -95,7 +96,7 @@ class ProductSeeder extends Seeder
             DB::table('products')->insert([
                 [
                     'name' => $namePhukien,
-                    'slug' => Str::slug($namePhukien, '-'),
+                    'slug' => Str::slug($namePhukien .rand(1,990), '-'),
                     'image' => 'phukien_0'.rand(1, 9).'.png',
                     'qty' => 200,
                     'price' => round(rand(29000000, 33900000)/10000) *10000,

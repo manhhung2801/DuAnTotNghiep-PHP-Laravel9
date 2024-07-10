@@ -113,8 +113,7 @@ class ProductController extends Controller
             'qty' => 'required|min:0',
             'image' => 'image|mimes:jpeg,jpg,png,gif,webp|max:10240',
             'image_gallery' => 'max:10240',
-            'price' => 'required|integer',
-            'offer_price' => 'integer',
+            'price' => 'required',
             'sub_category_id' => 'required',
             'child_category_id' => 'required',
             'specifications' => 'required',
@@ -137,10 +136,6 @@ class ProductController extends Controller
             ],
             'price' => [
                 'required' => 'Giá sản phẩm là bắt buộc.',
-                'integer' => 'Giá sản phẩm phải là một số nguyên.',
-            ],
-            'offer_price' => [
-                'integer' => 'Giá khuyến mãi phải là một số nguyên.',
             ],
             'sub_category_id' => [
                 'required' => 'Danh mục phụ là bắt buộc.',
