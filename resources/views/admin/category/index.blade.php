@@ -38,7 +38,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
-                        <thead>
+                        <thead >
                             <tr>
                                 <th>ID</th>
                                 <th>Tên</th>
@@ -49,39 +49,39 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $category)
-                                <tr>
-                                    <td>{{ $category->id }}</td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>
-                                        {{ $category->rank }}
-                                    </td>
-                                    <td>
-                                       @if ($category->image)
-                                           <img src="{{ asset('uploads/category/' . $category->image) }}" alt="{{ $category->name }}" style="width: 50px; height: 50px; object-fit: cover;">
-                                       @else
-                                            <span>Trống</span>
-                                       @endif
-                                    </td>
-                                    <td>
-                                        <div class="form-check form-switch form-check-success">
-                                            @if($category->status == 1)
-                                                <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $category->id }}" id="flexSwitchCheckSuccess" checked>
-                                            @elseif($category->status == 0)
-                                                <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $category->id }}" id="flexSwitchCheckSuccess">
-                                            @endif
-                                        </div>
-
-                                    <td>
-                                        <a class="btn btn-primary" href="{{ route('admin.category.edit', $category->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
-                                        <a class="btn btn-danger delete-item" href="{{ route("admin.category.destroy", $category->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                            @forelse ( $categories as $category )
+                            <tr>
+                                <td>{{ $category->id }}</td>
+                                <td>{{ $category->name }}</td>
+                                <td>
+                                    {{ $category->rank }}
+                                </td>
+                                <td>
+                                   @if ($category->image)
+                                       <img src="{{ asset('uploads/category/' . $category->image) }}" alt="{{ $category->name }}" style="width: 50px; height: 50px; object-fit: cover;">
+                                   @else
+                                        <span>Trống</span>
+                                   @endif
+                                </td>
+                                <td>
+                                    <div class="form-check form-switch form-check-success">
+                                        @if($category->status == 1)
+                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $category->id }}" id="flexSwitchCheckSuccess" checked>
+                                        @elseif($category->status == 0)
+                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $category->id }}" id="flexSwitchCheckSuccess">
+                                        @endif
+                                    </div>
+                                <td class="text-end">
+                                    <a class="btn btn-primary" href="{{ route('admin.category.edit', $category->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
+                                    <a class="btn btn-danger delete-item" href="{{ route("admin.category.destroy", $category->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="12">Không có dữ liệu danh mục</td>
+                            </tr>
+                            @endforelse
                         </tbody>
-                        <tfoot>
-
-                        </tfoot>
                     </table>
                     {{ $categories->links() }}
                 </div>

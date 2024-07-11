@@ -37,7 +37,6 @@
 <!-- script custom -->
 <script>
     let bigImg = document.querySelector('.big-img img');
-
     function showImg(pic) {
         bigImg.src = pic;
         document.querySelectorAll('.small-img img').forEach(img => {
@@ -45,6 +44,7 @@
         });
         event.target.classList.add('active');
     }
+
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {

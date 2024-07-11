@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Backend;
+
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Exception;
@@ -11,22 +13,14 @@ class SliderController extends Controller
 
     public function index(Request $request)
     {
-        $message = session('message');
         $sliders = Slider::latest();
         // search tìm kiếm theo type
         if (!empty($request->get('keyword'))) {
             $sliders = Slider::where('type', 'like', '%' . $request->get('keyword') . '%')->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
-            if ($sliders->count() == 0) {
-                session()->flash('message', 'Không tìm thấy bản ghi');
-            } else {
-                session()->forget('message');
-            }
-        } else {
-            session()->forget('message');
         }
         $sliders = $sliders->paginate(15);
 
-        return view("admin.slider.index", compact('sliders', 'message'));
+        return view("admin.slider.index", compact('sliders'));
         // 
     }
     public function create()
@@ -46,17 +40,17 @@ class SliderController extends Controller
             'serial' => ['required', 'numeric'],
             'status' => ['required'],
             'banner' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048']
-        ],[
-            'type.required'=> 'Kiểu không được để trống',
-            'type.max'=> 'Kiểu không được quá 200 từ',
-            'title.required'=> 'Tiêu đề không được để trống',
-            'title.max'=> 'Tiêu đề không được quá 200 từ',
-            'starting_price.required'=> 'Giá không được để trống',
-            'btn_url.required'=> 'Đường dẫn không được để trống',
-            'serial.required'=> 'Số seri không được để trống',
-            'banner.required'=> 'Hình ảnh không được để trống',
-            'banner.mimes'=> 'Hình ảnh phải là một trong các định dạng sau: jpeg,png,jpg,gif,svg,webp',
-            'banner.max'=> 'Kích thước hình ảnh không được quá 2048',
+        ], [
+            'type.required' => 'Kiểu không được để trống',
+            'type.max' => 'Kiểu không được quá 200 từ',
+            'title.required' => 'Tiêu đề không được để trống',
+            'title.max' => 'Tiêu đề không được quá 200 từ',
+            'starting_price.required' => 'Giá không được để trống',
+            'btn_url.required' => 'Đường dẫn không được để trống',
+            'serial.required' => 'Số seri không được để trống',
+            'banner.required' => 'Hình ảnh không được để trống',
+            'banner.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg,png,jpg,gif,svg,webp',
+            'banner.max' => 'Kích thước hình ảnh không được quá 2048',
         ]);
 
         $slider = new Slider;
@@ -102,17 +96,17 @@ class SliderController extends Controller
             'btn_url' => ['required',],
             'serial' => ['required', 'numeric'],
             'status' => ['required'],
-            'banner' => [ 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048']
-        ],[
-            'type.required'=> 'Kiểu không được để trống',
-            'type.max'=> 'Kiểu không được quá 200 từ',
-            'title.required'=> 'Tiêu đề không được để trống',
-            'title.max'=> 'Tiêu đề không được quá 200 từ',
-            'starting_price.required'=> 'Giá không được để trống',
-            'btn_url.required'=> 'Đường dẫn không được để trống',
-            'serial.required'=> 'Số seri không được để trống',
-            'banner.mimes'=> 'Hình ảnh phải là một trong các định dạng sau: jpeg,png,jpg,gif,svg,webp',
-            'banner.max'=> 'Kích thước hình ảnh không được quá 2048',
+            'banner' => ['image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048']
+        ], [
+            'type.required' => 'Kiểu không được để trống',
+            'type.max' => 'Kiểu không được quá 200 từ',
+            'title.required' => 'Tiêu đề không được để trống',
+            'title.max' => 'Tiêu đề không được quá 200 từ',
+            'starting_price.required' => 'Giá không được để trống',
+            'btn_url.required' => 'Đường dẫn không được để trống',
+            'serial.required' => 'Số seri không được để trống',
+            'banner.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg,png,jpg,gif,svg,webp',
+            'banner.max' => 'Kích thước hình ảnh không được quá 2048',
         ]);
         $slider = Slider::findOrFail($id);
         $slider->type = $request->type;
@@ -125,14 +119,14 @@ class SliderController extends Controller
         if ($request->hasFile('banner')) {
             if (File::exists(public_path("uploads/slider/{$slider->banner}"))) {
                 File::delete(public_path("uploads/slider/{$slider->banner}"));
-            } 
+            }
             $image = $request->file('banner');
             $imageName  = 'slider_' . time() . '.' . $image->extension();
             $image->move(public_path('uploads/slider'), $imageName);
             $slider->banner = $imageName;
         }
         $slider->save();
-        toastr()->success('Cập nhật thanh trượt thành công ','Thành công');
+        toastr()->success('Cập nhật thanh trượt thành công ', 'Thành công');
         return redirect()->back();
     }
 
@@ -146,28 +140,16 @@ class SliderController extends Controller
 
     public function showTrash(Request $request)
     {
-        $message = session('message');
         $getSliders = Slider::onlyTrashed()->latest();
 
         // search tìm kiếm theo type
         if (!empty($request->get('keyword'))) {
             $keyword = $request->get('keyword');
             $getSliders = $getSliders->where('type', 'like', '%' . $request->get('keyword') . '%')->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
-            if ($getSliders->count() == 0) {
-                session()->flash('message', 'Không tìm thấy bản ghi');
-            } else {
-                session()->forget('message');
-            }
-        } else {
-            session()->forget('message');
         }
         // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
         $getSliders = $getSliders->paginate(15);
         // Nếu $getSliders rỗngz
-        if ($getSliders->isEmpty()) {
-            session()->flash('message', 'Không tìm thấy bản ghi');
-            return view('admin.slider.trash-list', compact('getSliders'));
-        }
         // Trả về view với dữ liệu các category đã bị xóa
         return view('admin.slider.trash-list', compact('getSliders'));
     }

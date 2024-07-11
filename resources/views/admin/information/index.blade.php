@@ -48,28 +48,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($information as $infor)
-                                <tr>
-                                    <td>{{ $infor->id }}</td>
-                                    <td>{{ $infor->name }}</td>
-                                    <td>{{ $infor->slug }}</td>
-                                    <td>
-                                        {{ $infor->rank }}
-                                    </td>
-                                    <td>
-                                        <div class="form-check form-switch form-check-success">
-                                            @if($infor->status == 1)
-                                                <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $infor->id }}" id="flexSwitchCheckSuccess" checked>
-                                            @elseif($infor->status == 0)
-                                                <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $infor->id }}" id="flexSwitchCheckSuccess">
-                                            @endif
-                                        </div>
-                                    <td class="text-end">
-                                        <a class="btn btn-primary" href="{{ route('admin.information.edit', $infor->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
-                                        <a class="btn btn-danger delete-item" href="{{ route("admin.information.destroy", $infor->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                            @forelse ( $information as $infor )
+                            <tr>
+                                <td>{{ $infor->id }}</td>
+                                <td>{{ $infor->name }}</td>
+                                <td>{{ $infor->slug }}</td>
+                                <td>
+                                    {{ $infor->rank }}
+                                </td>
+                                <td>
+                                    <div class="form-check form-switch form-check-success">
+                                        @if($infor->status == 1)
+                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $infor->id }}" id="flexSwitchCheckSuccess" checked>
+                                        @elseif($infor->status == 0)
+                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $infor->id }}" id="flexSwitchCheckSuccess">
+                                        @endif
+                                    </div>
+                                <td class="text-end">
+                                    <a class="btn btn-primary" href="{{ route('admin.information.edit', $infor->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
+                                    <a class="btn btn-danger delete-item" href="{{ route("admin.information.destroy", $infor->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="12">Trang thông tin không có dữ liệu</td>
+                            </tr>
+                            @endforelse
                         </tbody>
                     </table>
                     {{ $information->links() }}

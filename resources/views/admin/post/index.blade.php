@@ -69,7 +69,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($post as $post)
+                        @forelse ( $post as $post )
                         <tr class="tr-table">
                             <td>{{$post->id }}</td>
                             <td>{{$post->category_id}}</td>
@@ -98,7 +98,11 @@
                                 <a class="btn btn-danger delete-item" href="{{ route("admin.post.destroy", $post->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="12">Bài viết không có dữ liệu</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

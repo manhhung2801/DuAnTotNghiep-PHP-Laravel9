@@ -37,9 +37,6 @@ class ProductController extends Controller
         $filters = compact('cat', 'sub', 'child', 'slug');
         $sortBy = $request->query('sort');
         $slug = str_replace('.html', '', $slug);
-        // Get categories ordered by rank
-        $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
-        $storeAddress = StoreAddress::where("status", "=", 1)->orderBy("id", "asc")->limit(1)->get();
         // Initialize products query
         $productsQuery = Product::query();
 
@@ -94,11 +91,11 @@ class ProductController extends Controller
         // Determine which view to render based on filtered parameters
         switch (count(array_filter($filters))) {
             case 1:
-                return view('frontend.products.index', compact("categories", "category", "products", "storeAddress"));
+                return view('frontend.products.index', compact( "category", "products"));
             case 2:
-                return view('frontend.products.index', compact("categories", "subCategory", "products", "storeAddress"));
+                return view('frontend.products.index', compact("subCategory", "products"));
             case 3:
-                return view('frontend.products.index', compact("categories", "childCategory", "products", "storeAddress"));
+                return view('frontend.products.index', compact( "childCategory", "products"));
             case 4:
                 // Assuming only one product is filtered
                 $product = Product::with('product_image_galleries')->findOrFail($product->id);
@@ -113,10 +110,10 @@ class ProductController extends Controller
                 ->orderBy('created_at','desc')
                     ->limit(4)
                     ->get();
-                return view('frontend.products.detail', compact("categories", "product", "variants", "product_image_galleries", "product_image_galleries", "products", "storeAddress", "relatedProducts"));
+                return view('frontend.products.detail', compact( "product", "variants", "product_image_galleries", "product_image_galleries", "products", "relatedProducts"));
             default:
                 // No filters applied
-                return view('frontend.products.index', compact("categories", "products", "storeAddress"));
+                return view('frontend.products.index', compact( "products"));
         }
     }
 }
