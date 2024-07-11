@@ -53,7 +53,7 @@
                         <th>Hoạt động</th>
                     </thead>
                     <tbody>
-                        @foreach ($post as $post)
+                        @forelse ( $post as $post )
                         <tr>
                             <td>{{$post->id }}</td>
                             <td>{{$post->category_id}}</td>
@@ -82,7 +82,11 @@
                                 <a class="btn btn-danger" href="{{ route('admin.post.deleted-post', $post->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa vĩnh viễn</a>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="12">Thùng rác đang rỗng</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

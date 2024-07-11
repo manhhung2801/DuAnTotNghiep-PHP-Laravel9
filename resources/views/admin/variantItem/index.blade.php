@@ -22,10 +22,10 @@
         <div class="card">
             <div class="card-header">
                 <h6 class="mt-2 mb-0 text-uppercase float-start">Tạo mới biến thể nhỏ</h6>
-                <a href="{{ route("admin.product.variant", $product->id) }}" class="btn btn-primary float-end">Trở về</a>
+                <a href="{{ route('admin.product.variant', $product->id) }}" class="btn btn-primary float-end">Trở về</a>
             </div>
             <div class="card-body">
-                <form class="row g-3" action="{{ route("admin.variantItem.store") }}" method="POST">
+                <form class="row g-3" action="{{ route('admin.variantItem.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_variant_id" value="{{ $variant->id }}">
                     <div class="col-md-6">
@@ -75,8 +75,8 @@
                             </div>
                         </form>
                     </div>
-                    <a href="{{ route("admin.product.variant.variant-item", $variant->id) }}" class="me-2 btn btn-success float-end ms-2"><i
-                            class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
+                    <a href="{{ route('admin.product.variant.variant-item', $variant->id) }}"
+                        class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
                 </div>
             </div>
 
@@ -85,7 +85,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
-                        <thead>
+                        <thead class="text-center">
                             <tr>
                                 <th>Id</th>
                                 <th>Tên</th>
@@ -96,7 +96,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($variantItem as $variantItem)
+                            @forelse ($variantItem as $variantItem)
                                 <tr>
                                     <td>{{ $variantItem->id }}</td>
                                     <td>{{ $variantItem->name }}</td>
@@ -113,19 +113,24 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td>
-
-                                            <a class="btn btn-primary" href="{{ route('admin.variantItem.edit', $variantItem->id) }}">
-                                                <i class="fa-solid fa-pen fs-6 text-light"></i>
-                                                Edit
-                                            </a>
-                                            <a class="btn btn-danger delete-item" href="{{ route('admin.variantItem.destroy', $variantItem->id) }}">
-                                                <i class="fa-solid fa-trash fs-6"></i>
-                                                Delete
-                                            </a>
+                                    <td class="text-end">
+                                        <a class="btn btn-primary"
+                                            href="{{ route('admin.variantItem.edit', $variantItem->id) }}">
+                                            <i class="fa-solid fa-pen fs-6 text-light"></i>
+                                            Edit
+                                        </a>
+                                        <a class="btn btn-danger delete-item"
+                                            href="{{ route('admin.variantItem.destroy', $variantItem->id) }}">
+                                            <i class="fa-solid fa-trash fs-6"></i>
+                                            Delete
+                                        </a>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="12">Không có dữ liệu biến thể con </td>
+                                </tr>
+                            @endforelse
                         </tbody>
                         <tfoot>
 

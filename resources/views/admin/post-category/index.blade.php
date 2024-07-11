@@ -50,7 +50,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($post_categories as $item)
+                        @forelse ( $post_categories as $item )
                         <tr>
                             <td>{{$item->id }}</td>
                             <td>{{$item->name}}</td>
@@ -68,7 +68,11 @@
                                 <a class="btn btn-danger delete-item" href="{{ route("admin.post-category.destroy", $item->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa</a>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="12">Danh mục bài viết không có dữ liệu</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

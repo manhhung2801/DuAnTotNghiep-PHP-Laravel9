@@ -22,6 +22,31 @@
         <li class="menu-label">Quản Lý</li>
         <li>
             <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="fa-solid fa-cart-plus"></i>
+                </div>
+                <div class="menu-title">Đơn hàng</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route('admin.order.index') }}"><i class='bx bx-radio-circle'></i>Danh sách đơn hàng</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
+                </div>
+                <div class="menu-title">Sản phẩm</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route('admin.product.index') }}"><i class='bx bx-radio-circle'></i>Danh sách sản
+                        phẩm</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-layer-group"></i>
                 </div>
                 <div class="menu-title">Danh Mục</div>
@@ -71,37 +96,6 @@
             <ul>
                 <li> <a href="{{ route('admin.coupons.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Phiếu Giảm
                         Giá</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
-                </div>
-                <div class="menu-title">Sản phẩm</div>
-            </a>
-            <ul>
-                <li>
-                    <a href="{{ route('admin.product.index') }}"><i class='bx bx-radio-circle'></i>Danh sách sản
-                        phẩm</a>
-                </li>
-                {{-- <li>
-                    <a href="{{ route('admin.variant.index') }}"><i class='bx bx-radio-circle'></i>Biến thể</a>
-                <li>
-                <li>
-                    <a href="{{ route('admin.variantItem.index') }}"><i class='bx bx-radio-circle'></i>Biến thể nhỏ</a>
-                </li> --}}
-            </ul>
-        </li>
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="fa-solid fa-cart-plus"></i>
-                </div>
-                <div class="menu-title">Đơn hàng</div>
-            </a>
-            <ul>
-                <li>
-                    <a href="{{ route('admin.order.index') }}"><i class='bx bx-radio-circle'></i>Danh sách đơn hàng</a>
                 </li>
             </ul>
         </li>

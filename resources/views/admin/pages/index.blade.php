@@ -50,37 +50,36 @@
                             </tr>
                         </thead>
                         <tbody class=" justify-content-center">
-                            @foreach ($pages as $page)
-                                <tr>
-                                    <td>{{ $page->id }}</td>
-                                    <td>{{ $page->name }}</td>
-                                    <td>{{ $page->slug }}</td>
-                                    <td>
-                                        <div class="form-check form-switch form-check-success">
-                                            @if ($page->status == 1)
-                                                <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                    data-id="{{ $page->id }}" id="flexSwitchCheckSuccess" checked >
-                                            @elseif($page->status == 0)
-                                                <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                    data-id="{{ $page->id }}" id="flexSwitchCheckSuccess">
-                                            @endif
-                                        </div>
-                                    </td>
-                                    <td class="text-end">
-                                        <a class="btn btn-primary text-light"
-                                            href="{{ route('admin.pages.edit', $page->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Sửa</a>
-                                        <a class="btn btn-danger delete-item"
-                                            href="{{ route('admin.pages.destroy', $page->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xoá</a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                            @forelse ( $pages as $page )
+                            <tr>
+                                <td>{{ $page->id }}</td>
+                                <td>{{ $page->name }}</td>
+                                <td>{{ $page->slug }}</td>
+                                <td>
+                                    <div class="form-check form-switch form-check-success">
+                                        @if ($page->status == 1)
+                                            <input class="form-check-input change-status" type="checkbox" role="switch"
+                                                data-id="{{ $page->id }}" id="flexSwitchCheckSuccess" checked >
+                                        @elseif($page->status == 0)
+                                            <input class="form-check-input change-status" type="checkbox" role="switch"
+                                                data-id="{{ $page->id }}" id="flexSwitchCheckSuccess">
+                                        @endif
+                                    </div>
+                                </td>
+                                <td class="text-end">
+                                    <a class="btn btn-primary text-light"
+                                        href="{{ route('admin.pages.edit', $page->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Sửa</a>
+                                    <a class="btn btn-danger delete-item"
+                                        href="{{ route('admin.pages.destroy', $page->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xoá</a>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="12">Không có dữ liệu trang</td>
+                            </tr>
+                            @endforelse     
                         </tbody>
                     </table>
-                    {{-- @if (session('message'))
-                        <div class="text-gray">
-                            {{ session('message') }}
-                        </div>
-                    @endif --}}
                     {{ $pages->links() }}
                 </div>
             </div>

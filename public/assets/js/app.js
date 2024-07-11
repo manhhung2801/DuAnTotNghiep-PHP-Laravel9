@@ -12,7 +12,7 @@ callAPI('assets/API/Provinces.json').then(res => {
     var provinces = document.getElementById('provinces')
     var districts = document.getElementById('districts')
     var wards = document.getElementById('wards')
-    // insert provinces vào select
+        // insert provinces vào select
     provincesData.map(provin => provinces.innerHTML += `<option value='${provin.name_with_type}' data-id='${provin.code}'>${provin.name_with_type}</option>}`)
 
     // lăng nghe sự kiện onchange của option provinces

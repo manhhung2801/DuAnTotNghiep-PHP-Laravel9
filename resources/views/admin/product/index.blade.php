@@ -53,7 +53,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($getProduct as $product)
+                        @forelse ( $getProduct as $product )
                         <tr>
                             <td>{{ $product->id }}</td>
                             <td class="text-center">
@@ -72,7 +72,7 @@
                                     @endif
                                 </div>
                             </td>
-                            <td>
+                            <td class="text-end">
                                 <a class="btn btn-primary btn-sm" href="{{ route('admin.product.edit', $product->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Sửa</a>
                                 <a class="btn btn-danger btn-sm delete-item" href="{{ route('admin.product.destroy', $product->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa</a>
                                 <a class="btn btn-warning btn-sm" href="{{ route('admin.product.variant', $product->id) }}"><i class="fa-solid fa-wand-magic-sparkles fs-6"></i>Biến Thể</a>
@@ -83,7 +83,12 @@
                                 @include('admin.product.partials.modal')
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="12">Không có dữ liệu sản phẩm</td>
+                        </tr>
+                        @endforelse
+                       
                     </tbody>
                 </table>
                 {{ $getProduct->links() }}

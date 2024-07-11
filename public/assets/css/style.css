@@ -538,12 +538,10 @@ label.luu_y {
 
 .product-image {
     width: 100%;
-    max-width: 500px;
     margin: 0 auto;
 }
 
 .big-img {
-    width: 100%;
     max-width: 500px;
     height: 300px;
     overflow: hidden;
@@ -555,19 +553,13 @@ label.luu_y {
     height: 100%;
     object-fit: contain;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    overflow: hidden;
 }
 
 .images {
     justify-content: space-between;
     margin-top: 20px;
-}
-
-.small-img:hover {
-    border: 1px solid #000;
-    border-radius: 5px;
+    gap: 5px;
 }
 
 .small-img img.active {
