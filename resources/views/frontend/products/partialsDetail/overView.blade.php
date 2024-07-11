@@ -39,9 +39,10 @@
                     @foreach ($variant->variantItem as $i)
                         <div data-value="{{ $i->name }}" title="{{ $i->name }}" class="swatch-element color "
                             onclick="changeColor(this)">
-                            <input id="{{ $i->name }}" type="radio" name="option" class="d-none"
-                                value="{{ $i->name }}" checked>
-                            <label class="me-2" for="{{ $i->name }}" style="background-color: {{ $i->name }}"></label>
+                            <div class="tooltip d-none">{{ $i->name }}</div>
+                            <input id="{{ $i->name }}" data-id="{{$i->id}}" id="selectInputColor" type="radio" name="selectInputColor" class="d-none"
+                                value="{{ $i->name }}">
+                            <label class=" me-2" for="{{ $i->name }}" style="background-color: {{ $i->name }}"></label>
                         </div>
                     @endforeach
                 </div>

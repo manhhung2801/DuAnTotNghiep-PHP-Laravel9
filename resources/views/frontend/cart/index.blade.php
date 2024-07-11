@@ -101,6 +101,8 @@
                     var qtyInput = container.find('#qtyProduct');
                     var qtyProduct = parseInt(qtyInput.val());
 
+                    var productInput = container.find('#productInStock');
+                    var productInStock = parseInt(productInput.attr('data-qty'));
                     // Tăng giảm số lượng sản phẩm khi bấm nút
                     if ($(this).hasClass('btn-minus')) {
                         if (qtyProduct <= 1) {
@@ -108,9 +110,12 @@
                         }
                         qtyProduct--;
                     } else if ($(this).hasClass('btn-plus')) {
-                        if (qtyProduct >= 99) {
+                        if (qtyProduct >= productInStock) {
+                            Toast.fire({
+                                icon: "error",
+                                title: "Sản phẩm trong kho không đủ"
+                            });
                             return;
-                            console.log('ac');
                         }
                         qtyProduct++;
                     }
