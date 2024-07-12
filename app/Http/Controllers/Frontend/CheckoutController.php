@@ -14,6 +14,7 @@ class CheckoutController extends Controller
 {
     function index()
     {
+        // kiểm tra đơn hàng trống
         if (\Cart::isEmpty()) {
             return redirect()->back()->with(['error' => 'Đơn hàng không được để trống!']);
         }
@@ -54,6 +55,7 @@ class CheckoutController extends Controller
                     $getQtyProduct->qty -= $cart->quantity;
                     $getQtyProduct->save();
                 }
+                // end check số lương
 
                 $order = new Order();
                 $order->order_name = trim($request->name);
@@ -65,6 +67,7 @@ class CheckoutController extends Controller
                 $order->order_address = trim($request->address);
                 $order->total = \Cart::getTotal();
                 $order->qty_total = \Cart::getTotalQuantity();
+                // thanh toán
                 $order->payment_method = $request->payment_method;
                 $order->payment_status = $request->payment_method;
                 $order->shipping_method = trim($request->shipping_method);
@@ -76,7 +79,7 @@ class CheckoutController extends Controller
                 foreach ($getCart as $key => $proCart) {
                     $order_detail = new Order_detail();
                     $order_detail->product_name = $proCart->name;
-                    $order_detail->variants = $proCart->attributes->color;
+                    $order_detail->variants = $proCart->attributes;
                     $order_detail->price = $proCart->price;
                     $order_detail->qty = $proCart->quantity;
                     $order_detail->order_id = $order->id;

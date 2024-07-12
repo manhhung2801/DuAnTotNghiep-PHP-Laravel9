@@ -69,28 +69,36 @@
 </script>
 <script>
     function changeColor(element) {
-        // Lấy giá trị màu sắc từ thuộc tính data-value của div được bấm
-        var color = element.getAttribute('data-value');
+            var color = element.getAttribute('data-value');
+            var header = document.querySelector('.header .value-properties');
+            header.textContent = color;
+            window.selectedColor = color;
 
-        // Đổi màu cho header theo màu sắc mới được chọn
-        var header = document.querySelector('.header .value-properties');
-        header.textContent = color;
+            var labels = document.querySelectorAll('.swatch-element input[type="radio"]');
+            labels.forEach(function(input) {
+                input.checked = false;
+                if (input.id === color) {
+                    input.checked = true;
+                }
+            });
 
-        // Cập nhật thuộc tính màu sắc được chọn cho biến toàn cục (ví dụ: selectedColor)
-        window.selectedColor = color; // Lưu trữ màu sắc được chọn vào biến toàn cục
+            var swatches = document.querySelectorAll('.swatch-element label');
+            swatches.forEach(function(label) {
+                label.style.border = "none";
+                if (label.getAttribute('for') === color) {
+                    label.style.border = "2px solid black";
+                }
+            });
+        }
 
-        // Đặt lại border cho các label
-        var labels = document.querySelectorAll('.swatch-element label');
-        labels.forEach(function(label) {
-            // Xóa border của tất cả các label
-            label.style.border = "none";
-
-            // Nếu label tương ứng với màu sắc được chọn, đặt lại border
-            if (label.getAttribute('for') === element.querySelector('input').id) {
-                label.style.border = "2px solid black";
+        // Gọi hàm changeColor khi trang được tải
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lấy màu sắc mặc định
+            var defaultColorElement = document.querySelector('.swatch-element.color');
+            if (defaultColorElement) {
+                changeColor(defaultColorElement);
             }
         });
-    }
 </script>
 
 <script>

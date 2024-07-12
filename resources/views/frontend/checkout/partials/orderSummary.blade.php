@@ -42,7 +42,11 @@
                                     <p class="product__description__name tenchung mb-0">{{ $cart->name }}
                                     <p>
                                         @if(!$cart->attributes->isEmpty())
-                                        <span class="product__description__property">Màu sắc:{{ $cart->attributes->color }}</span>
+
+                                        @foreach ($cart->attributes as $key => $value)
+                                        <span class="product__description__property variant__cart">{{$key}}:{{ $value }}</span>
+                                        @endforeach
+
                                         @endif
                                 </th>
                                 <td class="product__quantity visually-hidden"><em>Số lượng:</em>{{ $cart->quantity }}</td>

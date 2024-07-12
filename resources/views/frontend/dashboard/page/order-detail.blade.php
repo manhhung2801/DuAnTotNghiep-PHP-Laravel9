@@ -25,7 +25,8 @@
                                     style="color: #1A2130;">{{ \Auth::user()->name }}</span>!
                             </h5>
                             <div>
-                                <a href="{{route('order.index')}}"><i class="fa-solid fa-arrow-left"></i> Trở lại đơn hàng</a>
+                                <a href="{{ route('order.index') }}"><i class="fa-solid fa-arrow-left"></i> Trở lại đơn
+                                    hàng</a>
                             </div>
                         </div>
                         <div class="card-body p-4">
@@ -39,13 +40,24 @@
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <img src="{{ asset('uploads/products/' . $order->product->image) }}"
-                                                   width="100px" alt="Phone">
+                                                    width="100px" alt="Phone">
                                             </div>
-                                            <div
-                                                class="col-md-4 d-flex align-items-center">
+                                            <div class="col-md-4 d-flex align-items-center">
                                                 <div>
-                                                    <p class="text-muted mb-0"><strong>{{ $order->product_name }}</strong></p>
-                                                    <p class="text-muted mb-0 small">Màu sắc: {{ $order->variants }}</p>
+                                                    <p class="text-muted mb-0"><strong>{{ $order->product_name }}</strong>
+                                                    </p>
+                                                    @if (isset($order->variants))
+                                                    {{-- Chuyển dổi json thành mảng --}}
+                                                        @php
+                                                            $variants = json_decode($order->variants);
+                                                        @endphp
+
+                                                        {{-- Lặp các variant --}}
+                                                        @foreach ($variants as $key => $value)
+                                                            <p class="text-muted mb-0 small">{{ $key }}:
+                                                                {{ $value }}</p>
+                                                        @endforeach
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div
