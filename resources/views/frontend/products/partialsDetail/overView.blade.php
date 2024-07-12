@@ -10,7 +10,7 @@
     <span class="mb-break">
         <span class="stock-brand-title">Tình trạng:</span>
         <?php if($product->qty >0) :?>
-        <span class="a-stock">Còn {{$product->qty}} sản phẩm</span>
+        <span class="a-stock">Còn {{ $product->qty }} sản phẩm</span>
         <?php else: ?>
         <span class="a-stock">Hết hàng</span>
         <?php endif; ?>
@@ -19,7 +19,8 @@
 <hr>
 <div class="price-box ">
     <span class="special-price">
-        <span class="price product-price fs-4 text-danger">{{ number_format($product->offer_price, 0, '', ',') }} đ</span>
+        <span class="price product-price fs-4 text-danger">{{ number_format($product->offer_price, 0, '', ',') }}
+            đ</span>
     </span>
     <!-- Giá Khuyến mại -->
     <span class="old-price">
@@ -40,9 +41,10 @@
                         <div data-value="{{ $i->name }}" title="{{ $i->name }}" class="swatch-element color "
                             onclick="changeColor(this)">
                             <div class="tooltip d-none">{{ $i->name }}</div>
-                            <input id="{{ $i->name }}" data-id="{{$i->id}}" id="selectInputColor" type="radio" name="selectInputColor" class="d-none"
-                                value="{{ $i->name }}">
-                            <label class=" me-2" for="{{ $i->name }}" style="background-color: {{ $i->name }}"></label>
+                            <input id="{{ $i->name }}" data-id="{{ $i->id }}" id="selectInputColor"
+                                type="radio" name="selectInputColor" class="d-none" value="{{ $i->name }}">
+                            <label class=" me-2" for="{{ $i->name }}"
+                                style="background-color: {{ $i->name }}"></label>
                         </div>
                     @endforeach
                 </div>

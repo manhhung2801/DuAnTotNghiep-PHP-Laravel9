@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Order_detail;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -76,7 +77,17 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         $order = Order::getOrder($id);
-        if($order==true) {
+
+        if ($order == true) {
+            $refundQty = Order_detail::where('order_id', $id)->get();
+            foreach ($refundQty as $re) {
+                $product = Product::findOrFail($re->product_id);
+                if ($product->id == $re->product_id) {
+                    $product->qty += $re->qty;
+                }
+                $product->save();
+            }
+
             $order->order_status = 3;
             $order->save();
             return response()->json(['status' => true, 'message' => 'Hủy đơn hàng thành công!']);

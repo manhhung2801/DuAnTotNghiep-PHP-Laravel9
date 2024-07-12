@@ -205,6 +205,9 @@ label.luu_y {
     padding: 2px 5px;
     font-size: 12px;
 }
+.variant__cart {
+    font-size: 12px;
+}
 
 
 /* Extra small devices (phones, 600px and down) */
@@ -557,7 +560,6 @@ label.luu_y {
 }
 
 .images {
-    justify-content: space-between;
     margin-top: 20px;
     gap: 5px;
 }

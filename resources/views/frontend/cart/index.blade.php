@@ -100,7 +100,7 @@
                     //tìm element có id qtyProduct trong container input-group
                     var qtyInput = container.find('#qtyProduct');
                     var qtyProduct = parseInt(qtyInput.val());
-
+                    //Lấy số lượng để so sánh
                     var productInput = container.find('#productInStock');
                     var productInStock = parseInt(productInput.attr('data-qty'));
                     // Tăng giảm số lượng sản phẩm khi bấm nút

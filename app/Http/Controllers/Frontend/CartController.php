@@ -48,6 +48,8 @@ class CartController extends Controller
                 $getVariant = VariantItem::with('variant')->findOrFail($request->color);
                 if (!empty($getVariant)) {
                     $attributes[$getVariant->variant->name] = $getVariant->name;
+                }else {
+                    $attributes[$getVariant->variant->name] = null;
                 }
             }
 
