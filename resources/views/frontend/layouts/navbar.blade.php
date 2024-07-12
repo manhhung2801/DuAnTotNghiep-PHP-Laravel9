@@ -12,16 +12,16 @@
                     </div>
                 </li>
                 <li class="nav-item mxc">
-                    <a class="nav-link text-white" aria-current="page" href="/">Trang chủ</a>
+                    <a class="nav-link text-white fs-4" aria-current="page" href="/">Trang chủ</a>
                 </li>
-              
-                
+
+
                 <li class="nav-item mxc">
-                    <a class="nav-link text-white" aria-current="page">Giới thiều</a>
+                    <a class="nav-link text-white fs-4" aria-current="page">Giới thiệu</a>
 
                 </li>
-           
-               
+
+
                 <li class="navbar-toggler nav-item mxc border-0">
                     <div class="dropdown">
                         <span class="dropdown-toggle text-white fs-6" id="dropdownMenuButton1" data-bs-toggle="dropdown"
@@ -29,13 +29,13 @@
                             Tài khoản
                         </span>
                         <ul class="dropdown-menu dropdown-menu-end rounded-0 p-0" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item border border-top-1 border-bottom-1" href="#">Đăng
+                            <li><a class="dropdown-item" href="#">Đăng
                                     nhập</a></li>
-                            <li><a class="dropdown-item border border-top-1 border-bottom-1" href="#">Đăng ký</a>
+                            <li><a class="dropdown-item" href="#">Đăng ký</a>
                             </li>
-                            <li><a class="dropdown-item border border-top-1 border-bottom-1" href="#">Dang sách
+                            <li><a class="dropdown-item" href="#">Dang sách
                                     yêu thích (0)</a></li>
-                            <li><a class="dropdown-item border border-top-1 border-bottom-1" href="#">So sánh sản
+                            <li><a class="dropdown-item" href="#">So sánh sản
                                     phẩm (0)</a></li>
                         </ul>
                     </div>
@@ -44,14 +44,14 @@
                 @foreach ($categories as $category)
                     <li class="nav-item mxc ct-hove">
                         <div class="dropdown-center rounded-0">
-                            <span class="text-white fs-6 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="text-white fs-4 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 
                                 {{ $category->name }}
                             </span>
                             @if ($category->subCategories->count() > 0)
-                                <ul class="dropdown-menu dropdown-menu-end rounded-0 p-0">
+                                <ul class="dropdown-menu dropdown-menu-end p-0">
                                     @foreach ($category->subCategories as $subCategory)
-                                        <li class="m-0"><a class="dropdown-item border border-bottom-1"
+                                        <li class="m-0"><a class="dropdown-item"
                                                 href="/product/{{ $category->slug }}/{{ $subCategory->slug }}">{{ $subCategory->name }}</a>
                                         </li>
                                     @endforeach
@@ -61,10 +61,10 @@
                     </li>
                 @endforeach
                 <li class="nav-item mxc">
-                    <a class="nav-link text-white" aria-current="page" href="/tin-tuc">Tin tức</a>
+                    <a class="nav-link text-white fs-4" aria-current="page" href="/tin-tuc">Tin tức</a>
                 </li>
                 <li class="nav-item mxc">
-                    <a class="nav-link text-white" aria-current="page" href="#">Liên hệ</a>
+                    <a class="nav-link text-white fs-4" aria-current="page" href="#">Liên hệ</a>
                 </li>
             </ul>
         </div>
