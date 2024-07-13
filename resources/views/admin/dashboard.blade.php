@@ -67,7 +67,7 @@
         </div>
     </div>
     <!--end row-->
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-12 col-lg-12 d-flex">
             <div class="card radius-10 w-100">
                 <div class="card-header">
@@ -121,6 +121,58 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div> --}}
+    <!--end row-->
+    <div class="row">
+        <div class="col-12 col-lg-12 d-flex">
+            <div class="card radius-10 w-100">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="mb-0">Biểu đồ thống kê</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class=" col-4  ">
+                        <html>
+                            <head>
+                              <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                              <script type="text/javascript">
+                                google.charts.load('current', {'packages':['corechart']});
+                                google.charts.setOnLoadCallback(drawChart);
+                          
+                                function drawChart() {
+                          
+                                  var data = google.visualization.arrayToDataTable([
+                                    ['Task', 'Hours per Day'],
+                                    ['Work',     11],
+                                    ['Eat',      2],
+                                    ['Commute',  2],
+                                    ['Watch TV', 2],
+                                    ['Sleep',    7]
+                                  ]);
+                          
+                                  var options = {
+                                    title: 'My Daily Activities'
+                                  };
+                          
+                                  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                          
+                                  chart.draw(data, options);
+                                }
+                              </script>
+                            </head>
+                            <body>
+                              <div id="piechart" style="width: 900px; height: 500px;"></div>
+                            </body>
+                          </html>
+                          
+                    </div>
+                </div>
+              
             </div>
         </div>
     </div>

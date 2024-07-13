@@ -142,28 +142,15 @@ class StoreAddressController extends Controller
 
     public function showTrash(Request $request)
     {
-        $message = session('message');
         $getStoreAddress = StoreAddress::onlyTrashed()->latest();
 
         // search tìm kiếm theo type
         if (!empty($request->get('keyword'))) {
             $keyword = $request->get('keyword');
             $getStoreAddress = $getStoreAddress->where('store_name', 'like', '%' . $request->get('keyword') . '%')->orWhere('phone', 'like', '%' . $request->get('keyword') . '%');
-            if ($getStoreAddress->count() == 0) {
-                session()->flash('message', 'Không tìm thấy bản ghi');
-            } else {
-                session()->forget('message');
-            }
-        } else {
-            session()->forget('message');
-        }
+        } 
         // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
         $getStoreAddress = $getStoreAddress->paginate(15);
-        // Nếu $getStoreAddress rỗng
-        if ($getStoreAddress->isEmpty()) {
-            session()->flash('message', 'Không tìm thấy bản ghi');
-            return view('admin.store-address.trash-list', compact('getStoreAddress'));
-        }
         // Trả về view với dữ liệu các category đã bị xóa
         return view('admin.store-address.trash-list', compact('getStoreAddress'));
     }

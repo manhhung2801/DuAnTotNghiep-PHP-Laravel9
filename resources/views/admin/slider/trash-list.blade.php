@@ -35,10 +35,11 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('admin.slider.trash-list') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
+                    <a href="{{ route('admin.slider.trash-list') }}" class="me-2 btn btn-success float-end ms-2"><i
+                            class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
                 </div>
                 <a href="{{ route('admin.slider.index') }}" class="btn btn-primary float-end">Quay lại</a>
-                
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -57,7 +58,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($getSliders as $slider)
+                            @forelse ($getSliders as $slider)
                                 <tr>
                                     <td>{{ $slider->id }}</td>
                                     <td>
@@ -82,19 +83,20 @@
                                     </td>
                                     <td class="text-end">
                                         <a class="btn btn-primary restoreTrash-item"
-                                            href="{{ route('admin.slider.restore-trash', $slider->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Khôi phục</a>
+                                            href="{{ route('admin.slider.restore-trash', $slider->id) }}"><i
+                                                class="fa-solid fa-trash-can-arrow-up fs-6"></i>Khôi phục</a>
                                         <a class="btn btn-danger delete-item"
-                                            href="{{ route('admin.slider.destroy-trash', $slider->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xoá vĩnh viễn</a>
+                                            href="{{ route('admin.slider.destroy-trash', $slider->id) }}"><i
+                                                class="fa-solid fa-trash fs-6"></i>Xoá vĩnh viễn</a>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="12">Thùng rác đang rỗng</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
-                    @if (session('message'))
-                        <div class="text-gray">
-                            {{ session('message') }}
-                        </div>
-                    @endif
                 </div>
             </div>
         </div>

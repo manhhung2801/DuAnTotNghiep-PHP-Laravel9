@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAM Options</title>
+    <style>
+        .selected-label {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="select-swatch mt-3">
+        <div class="header">Dung lượng: <span class="value-ram"></span></div>
+        <div class="swatch d-flex mt-2">
+            <div id="ram-options">
+                <input style="display: none;" id="ram-option-1" type="radio" name="ram" value="4GB" checked>
+                <label for="ram-option-1" class="me-2">4GB</label>
+            </div>
+            <div id="ram-options">
+                <input style="display: none;" id="ram-option-2" type="radio" name="ram" value="8GB">
+                <label for="ram-option-2" class="me-2">8GB</label>
+            </div>
+            <div id="ram-options">
+                <input style="display: none;" id="ram-option-3" type="radio" name="ram" value="10GB">
+                <label for="ram-option-3" class="me-2">10GB</label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var ramOptions = document.querySelectorAll('input[name="ram"]');
+
+            ramOptions.forEach(function(option) {
+                option.addEventListener("change", function() {
+                    var labels = document.querySelectorAll('.me-2');
+                    labels.forEach(function(label) {
+                        label.classList.remove('selected-label');
+                    });
+
+                    var checkedLabel = document.querySelector('label[for="' + option.id + '"]');
+                    if (checkedLabel) {
+                        checkedLabel.classList.add('selected-label');
+                    }
+                });
+            });
+
+            var checkedOption = document.querySelector('input[name="ram"]:checked');
+            if (checkedOption) {
+                var checkedLabel = document.querySelector('label[for="' + checkedOption.id + '"]');
+                if (checkedLabel) {
+                    checkedLabel.classList.add('selected-label');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -59,7 +59,7 @@
                                     <li><a class="dropdown-item border border-top-1 border-bottom-1" href="{{ route("register") }}">Đăng ký</a></li>
                                     @endif
 
-                                    <li><a class="dropdown-item border border-top-1 border-bottom-1" href="#">Dang sách yêu thích (0)</a></li>
+                                    <li><a class="dropdown-item border border-top-1 border-bottom-1" href="/order">Đơn hàng của tôi</a></li>
                                     <li><a class="dropdown-item border border-top-1 border-bottom-1" href="#">So sánh sản phẩm (0)</a></li>
                                 </ul>
                             </div>

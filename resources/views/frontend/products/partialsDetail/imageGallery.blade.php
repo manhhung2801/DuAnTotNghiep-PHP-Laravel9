@@ -2,12 +2,14 @@
     <div class="big-img">
         <img src="{{ asset('uploads/products/' . $product->image) }}">
     </div>
-    <div class="images d-flex">
-        @foreach($product_image_galleries as $item)
-        <div class="small-img mx-2">
-            <img src="{{ asset('uploads/gallery/' . $item->image) }}" class="img-thumbnail" onclick="showImg(this.src)">
+    <div class="images d-flex mt-3">
+        <div class="small-img overflow-auto text-nowrap">
+            <img src="{{ asset('uploads/products/' . $product->image) }}" class="img-thumbnail img-fluid"
+                onclick="showImg(this.src)" width="58" height="58">
+            @foreach ($product_image_galleries as $item)
+                <img src="{{ asset('uploads/gallery/' . $item->image) }}" class="img-thumbnail img-fluid"
+                    onclick="showImg(this.src)" width="58" height="58">
+            @endforeach
         </div>
-        @endforeach
-       
     </div>
 </div>

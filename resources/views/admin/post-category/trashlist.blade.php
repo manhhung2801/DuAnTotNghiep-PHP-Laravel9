@@ -48,7 +48,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($post_categories as $post_categories)
+                        @forelse ( $post_categories as $post_categories )
                         <tr>
                             <td>{{ $post_categories->id }}</td>
                             <td>{{ $post_categories->name }}</td>
@@ -68,7 +68,11 @@
                                 <a class="btn btn-danger" href="{{ route('admin.post-category.deleted-post_categories', $post_categories->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa vĩnh viễn</a>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="12">Thùng rác đang rỗng</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

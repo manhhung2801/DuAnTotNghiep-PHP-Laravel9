@@ -13,7 +13,7 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="javascript:;">
+            <a href="{{route('dashboard')}}">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
@@ -22,16 +22,44 @@
         <li class="menu-label">Quản Lý</li>
         <li>
             <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="fa-solid fa-cart-plus"></i>
+                </div>
+                <div class="menu-title">Đơn hàng</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route('admin.order.index') }}"><i class='bx bx-radio-circle'></i>Danh sách đơn hàng</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
+                </div>
+                <div class="menu-title">Sản phẩm</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route('admin.product.index') }}"><i class='bx bx-radio-circle'></i>Danh sách sản
+                        phẩm</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-layer-group"></i>
                 </div>
                 <div class="menu-title">Danh Mục</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh Mục</a>
+                <li> <a href="{{ route('admin.category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh
+                        Mục</a>
                 </li>
-                <li> <a href="{{ route('admin.sub-category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh Mục Phụ</a>
+                <li> <a href="{{ route('admin.sub-category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh
+                        Mục Phụ</a>
                 </li>
-                <li> <a href="{{ route('admin.child-category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Danh Mục Con</a>
+                <li> <a href="{{ route('admin.child-category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách
+                        Danh Mục Con</a>
                 </li>
             </ul>
         </li>
@@ -42,7 +70,8 @@
                 <div class="menu-title">Danh Mục Thông tin</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.information.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Trang</a>
+                <li> <a href="{{ route('admin.information.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách
+                        Trang</a>
                 </li>
             </ul>
         </li>
@@ -53,7 +82,8 @@
                 <div class="menu-title">Thanh trượt</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.slider.index') }}"><i class='bx bx-radio-circle'></i>Danh sách thanh trượt</a>
+                <li> <a href="{{ route('admin.slider.index') }}"><i class='bx bx-radio-circle'></i>Danh sách thanh
+                        trượt</a>
                 </li>
             </ul>
         </li>
@@ -64,27 +94,9 @@
                 <div class="menu-title">Phiếu giảm giá</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.coupons.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Phiếu Giảm Giá</a>
+                <li> <a href="{{ route('admin.coupons.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Phiếu Giảm
+                        Giá</a>
                 </li>
-            </ul>
-        </li>
-        </li>
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
-                </div>
-                <div class="menu-title">Sản phẩm</div>
-            </a>
-            <ul>
-                <li>
-                    <a href="{{ route('admin.product.index') }}"><i class='bx bx-radio-circle'></i>Danh sách sản phẩm</a>
-                </li>
-                {{-- <li>
-                    <a href="{{ route('admin.variant.index') }}"><i class='bx bx-radio-circle'></i>Biến thể</a>
-                <li>
-                <li>
-                    <a href="{{ route('admin.variantItem.index') }}"><i class='bx bx-radio-circle'></i>Biến thể nhỏ</a>
-                </li> --}}
             </ul>
         </li>
         <li>
@@ -107,7 +119,8 @@
             </a>
             <ul>
                 <li>
-                    <a href="{{ route("admin.post-category.index") }}"><i class='bx bx-radio-circle'></i>Loại bài viết</a>
+                    <a href="{{ route('admin.post-category.index') }}"><i class='bx bx-radio-circle'></i>Loại bài
+                        viết</a>
                 </li>
                 <li>
                     <a href="{{ route('admin.post.index') }}"><i class='bx bx-radio-circle'></i>Danh sách bài viết</a>
@@ -122,7 +135,8 @@
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('admin.user-management.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách Người Dùng</a>
+                    <a href="{{ route('admin.user-management.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách
+                        Người Dùng</a>
                 </li>
             </ul>
         </li>
@@ -134,7 +148,8 @@
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('admin.storeAddress.index') }}"><i class='bx bx-radio-circle'></i>Danh sách cửa hàng</a>
+                    <a href="{{ route('admin.storeAddress.index') }}"><i class='bx bx-radio-circle'></i>Danh sách cửa
+                        hàng</a>
                 </li>
             </ul>
         </li>

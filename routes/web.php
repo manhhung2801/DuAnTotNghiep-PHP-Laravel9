@@ -16,6 +16,8 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\frontend\ErrorController;
+use App\Http\Controllers\Frontend\OrderController;
 use App\Models\Information;
 
 /*
@@ -64,7 +66,6 @@ Route::post('/admin/login', [AdminLoginController::class, 'store'])->name("admin
 // Route::get('/tintuc',[TintucController::class,'index']);
 Route::get('/khieunai', [KhieuNaiController::class, 'index']);
 Route::get('giohang', [GioHangController::class, 'index']);
-Route::get('checkout', [CheckoutController::class, 'index']);
 
 // Route::get('product/',[ProductController::class, 'index']);
 // Route::get('product/{slug?}',[ProductController::class, 'getSlug']);
@@ -78,20 +79,18 @@ Route::get('/tin-tuc/{slugs}', [NewsController::class, 'newsSiteType'])->name("n
 Route::get('/tin-tuc/{slugs_cate}/{slugs}', [NewsController::class, 'details'])->name("news.details");
 
 
-/** user dashboard order */
-Route::get('/order', function(){
-    return view('frontend.dashboard.page.orders');
-});
-
-Route::get('/order-detail', function(){
-    return view('frontend.dashboard.page.order-detail');
-});
-
 // Route Cart
 Route::resource('cart', CartController::class);
-Route::resource('checkout', CheckoutController::class);
+
+// Route Checkout
+Route::resource('checkout', CheckoutController::class)->middleware('checkLogin');
+
+// Order customer
+Route::resource('order', OrderController::class)->middleware('checkLogin');
 
 
 /** các trang thông tin */
 Route::get('thong-tin/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");
 
+/** trang 404  */
+Route::get("page-not-found", [ErrorController::class,'index'])->name("index");

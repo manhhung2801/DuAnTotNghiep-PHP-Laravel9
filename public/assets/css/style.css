@@ -206,6 +206,10 @@ label.luu_y {
     font-size: 12px;
 }
 
+.variant__cart {
+    font-size: 12px;
+}
+
 
 /* Extra small devices (phones, 600px and down) */
 
@@ -538,12 +542,10 @@ label.luu_y {
 
 .product-image {
     width: 100%;
-    max-width: 500px;
     margin: 0 auto;
 }
 
 .big-img {
-    width: 100%;
     max-width: 500px;
     height: 300px;
     overflow: hidden;
@@ -555,19 +557,12 @@ label.luu_y {
     height: 100%;
     object-fit: contain;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    overflow: hidden;
 }
 
 .images {
-    justify-content: space-between;
     margin-top: 20px;
-}
-
-.small-img:hover {
-    border: 1px solid #000;
-    border-radius: 5px;
+    gap: 5px;
 }
 
 .small-img img.active {
@@ -595,6 +590,11 @@ label.luu_y {
     line-height: 30px;
 }
 
+.selected-label {
+    background-color: black;
+    color: white;
+}
+
 .details-pro .select-swatch .swatch .swatch-element.color {
     position: relative;
 }
@@ -604,8 +604,31 @@ label.luu_y {
 }
 
 .details-pro .select-swatch .swatch .swatch-element {
-    display: inline-block;
-    margin: 0px 5px 5px 0;
+    display: inherit;
+}
+
+
+/* ram */
+
+.selected-label {
+    border: 1px solid black;
+}
+
+.details-pro .select-swatch .swatch #ram-options label {
+    min-width: 70px;
+    height: 30px;
+    /* display: inline-flex; */
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ebebeb;
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 0 5px;
+    position: relative;
+    margin-bottom: 0;
+    text-align: center;
+    border-radius: 5px;
+    line-height: 30px;
 }
 
 .product-col-right .block-promotion {
@@ -934,4 +957,77 @@ label.luu_y {
     font-size: 1.6rem;
     transition-duration: .3s;
     line-height: initial;
+}
+
+
+/* nút tăng giảm só lượng cho tiết sản phẩm */
+
+.quantity-controls {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 120px;
+    /* Adjust width as needed */
+}
+
+.quantity-controls .btn_num {
+    display: block;
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    color: #333;
+    user-select: none;
+}
+
+.quantity-controls .btn_num:hover {
+    background-color: #e0e0e0;
+}
+
+.quantity-controls input {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    text-align: center;
+    font-size: 14px;
+    outline: none;
+    appearance: textfield;
+    /* Remove number input arrows in Firefox */
+}
+
+.quantity-controls input::-webkit-outer-spin-button,
+.quantity-controls input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantity-controls input[type=number] {
+    -moz-appearance: textfield;
+    /* Firefox fix */
+}
+
+.decrease-btn {
+    border-right: 1px solid #ccc;
+}
+
+.increase-btn {
+    border-left: 1px solid #ccc;
+}
+
+
+/* button trang error */
+
+.btn_pagenotfound {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn_pagenotfound:hover {
+    background-color: #0056b3;
 }

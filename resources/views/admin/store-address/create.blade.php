@@ -24,8 +24,7 @@
                 <a href="{{ route('admin.storeAddress.index') }}" class="btn btn-primary float-end">Quay lại</a>
             </div>
             <div class="card-body">
-                <form class="row g-3" action="{{ route('admin.storeAddress.store') }}" method="POST"
-                    enctype="multipart/form-data">
+                <form class="row g-3" action="{{ route('admin.storeAddress.store') }}" method="POST">
                     @csrf
                     <div class="col-md-6">
                         <label for="input1" class="form-label">Tên cửa hàng</label>
@@ -43,19 +42,22 @@
                             value="{{ old('address') }}">
                     </div>
                     <div class="col-md-4">
-                        <label for="input1" class="form-label">Phường, Xã</label>
-                        <input type="text" class="form-control" id="input1" name="ward"
-                            value="{{ old('ward') }}">
+                        <label for="provinces" class="form-label">Tỉnh, Thành phố</label>
+                        <select id="provinces" name="provinces" class="form-control" required>
+                            <option value="">Chọn tỉnh thành</option>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                        <label for="input2" class="form-label">Quận, Huyện</label>
-                        <input type="text" class="form-control" id="input2" name='district'
-                            value="{{ old('district') }}">
+                        <label for="districts" class="form-label">Quận, Huyện</label>
+                        <select id="districts" name="districts" class="form-control" required>
+                            <option value="">Chọn quận huyện</option>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                        <label for="input4" class="form-label">Tỉnh, Thành phố</label>
-                        <input type="text" class="form-control" id="input4" name="province"
-                            value="{{ old('province') }}">
+                        <label for="wards" class="form-label">Phường, Xã</label>
+                        <select id="wards" name="wards" class="form-control" required>
+                            <option value="">Chọn xã phường</option>
+                        </select>
                     </div>
                     <div class="col-md-4">
                         <label for="input5" class="form-label">Số điện thoại</label>
@@ -82,6 +84,6 @@
             </div>
         </div>
     </div>
-    </div>
 
 @endsection
+

@@ -70,7 +70,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
-                        <thead>
+                        <thead class="text-center">
                             <tr>
                                 <th width="100">Id</th>
                                 <th width="200">Tên</th>
@@ -79,30 +79,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($variant as $variant)
-                                <tr>
-                                    <td>{{ $variant->id }}</td>
-                                    <td>{{ $variant->name }}</td>
-                                    <td>
-                                        <div class="form-check form-switch form-check-success">
-                                            @if ($variant->status == 1)
-                                                <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                    data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess" checked>
-                                            @elseif($variant->status == 0)
-                                                <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                    data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess">
-                                            @endif
-                                        </div>
-                                    <td class="text-center">
-                                        <a class="btn btn-warning btn-sm" href="{{ route("admin.product.variant.variant-item", $variant->id) }}"><i class="fa-solid fa-wand-magic-sparkles fs-6"></i>Biến Thể Con</a>
-                                        <a class="btn btn-primary" href="{{ route('admin.variant.edit', $variant->id) }}"><i
-                                                class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
-                                        <a class="btn btn-danger delete-item"
-                                            href="{{ route('admin.variant.destroy', $variant->id) }}"><i
-                                                class="fa-solid fa-trash fs-6"></i>Xóa</a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                            @forelse ( $variant as $variant )
+                            <tr>
+                                <td>{{ $variant->id }}</td>
+                                <td>{{ $variant->name }}</td>
+                                <td>
+                                    <div class="form-check form-switch form-check-success">
+                                        @if ($variant->status == 1)
+                                            <input class="form-check-input change-status" type="checkbox" role="switch"
+                                                data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess" checked>
+                                        @elseif($variant->status == 0)
+                                            <input class="form-check-input change-status" type="checkbox" role="switch"
+                                                data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess">
+                                        @endif
+                                    </div>
+                                <td class="text-center">
+                                    <a class="btn btn-warning btn-sm" href="{{ route("admin.product.variant.variant-item", $variant->id) }}"><i class="fa-solid fa-wand-magic-sparkles fs-6"></i>Biến Thể Con</a>
+                                    <a class="btn btn-primary" href="{{ route('admin.variant.edit', $variant->id) }}"><i
+                                            class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
+                                    <a class="btn btn-danger delete-item"
+                                        href="{{ route('admin.variant.destroy', $variant->id) }}"><i
+                                            class="fa-solid fa-trash fs-6"></i>Xóa</a>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="12">Không có dữ liệu biến thể</td>
+                            </tr>
+                            @endforelse
                         </tbody>
                         <tfoot>
 

@@ -8,14 +8,19 @@
         $('body').on('click', '.btn-addToCart', function(e) {
             e.preventDefault();
             // closest form gần nút addcart nhất
-            let form = $(this).closest('.formCart');
-            let id = form.find('.productId').val();
-            console.log(id);
+            let form = $(this).closest('.formCart')
+            let id = form.find('.productId').val()
+            let qty = form.find('.qtym').val()
+            // lấy id variant item
+            var color = $('input[name="selectInputColor"]:checked').attr('data-id');
+            console.log(color);
             $.ajax({
                 url: "{{ route('cart.store') }}",
                 type: 'POST',
                 data: {
-                    id: id
+                    id: id,
+                    qty: qty,
+                    color: color !== undefined ? color : null,
                 },
                 success: function(data) {
                     const Toast = Swal.mixin({
@@ -38,6 +43,7 @@
                         });
                     }
                     $('.cart-count').text(data.cart_count);
+                 
                 },
                 error: function(error) {
                     alert('Lỗi: '.error)

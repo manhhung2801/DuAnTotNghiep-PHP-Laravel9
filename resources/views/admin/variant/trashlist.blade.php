@@ -48,36 +48,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($variant as $variant)
-                                <tr>
-                                    <td>{{ $variant->id }}</td>
-                                    <td>{{$variant->product_id}}</td>
-                                    <td>{{ $variant->name }}</td>
-                                    <td>
-                                        <div class="form-check form-switch form-check-success">
-                                            @if($variant->status == 1)
-                                                <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess" checked>
-                                            @elseif($variant->status == 0)
-                                                <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess">
-                                            @endif
-                                        </div>
-
-                                    <td>
-                                     <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.variant.restore-variant', $variant->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Khôi phục</a>
-                                    <a class="btn btn-danger delete-item" href="{{ route('admin.variant.deleted-variant', $variant->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot>
+                            @forelse ( $variant as $variant )
                             <tr>
-                                <th>Id</th>
-                                <th>Mã sản phẩm</th>
-                                <th>Tên</th>
-                                <th>Trạng thái</th>
-                                <th>Hành động</th>
+                                <td>{{ $variant->id }}</td>
+                                <td>{{$variant->product_id}}</td>
+                                <td>{{ $variant->name }}</td>
+                                <td>
+                                    <div class="form-check form-switch form-check-success">
+                                        @if($variant->status == 1)
+                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess" checked>
+                                        @elseif($variant->status == 0)
+                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess">
+                                        @endif
+                                    </div>
+
+                                <td class="text-end">
+                                 <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.variant.restore-variant', $variant->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Khôi phục</a>
+                                <a class="btn btn-danger delete-item" href="{{ route('admin.variant.deleted-variant', $variant->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa</a>
+                                </td>
+                            </tr>  
+                            @empty
+                            <tr>
+                                <td colspan="12">Thùng rác đang rỗng</td>
                             </tr>
-                        </tfoot>
+                            @endforelse
+                        </tbody>
                     </table>
                 </div>
             </div>
