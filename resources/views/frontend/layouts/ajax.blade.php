@@ -21,7 +21,7 @@
             let id = form.find('.productId').val()
             let qty = form.find('.qtym').val()
             // lấy id variant item
-            var color = $('input[name="selectInputColor"]:checked').attr('data-id');
+            var color = $('input[name="git selectInputColor"]:checked').attr('data-id');
             $.ajax({
                 url: "{{ route('cart.store') }}",
                 type: 'POST',

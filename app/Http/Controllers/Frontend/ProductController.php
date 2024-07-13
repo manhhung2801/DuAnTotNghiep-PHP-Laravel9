@@ -39,7 +39,6 @@ class ProductController extends Controller
         $slug = str_replace('.html', '', $slug);
         // Initialize products query
         $productsQuery = Product::query();
-
         // Apply filters based on provided parameters
         if ($cat) {
             $category = Category::where('slug', $cat)->first();
@@ -85,35 +84,36 @@ class ProductController extends Controller
 
         // Paginate the products
         $products = $productsQuery->paginate(16);
+      
         // Calculate percentage change for products
         $products = $this->calculatePercentageChange($products);
-
+      
         // Determine which view to render based on filtered parameters
         switch (count(array_filter($filters))) {
             case 1:
-                return view('frontend.products.index', compact( "category", "products"));
+                return view('frontend.products.index', compact("category", "products"));
             case 2:
                 return view('frontend.products.index', compact("subCategory", "products"));
             case 3:
-                return view('frontend.products.index', compact( "childCategory", "products"));
+                return view('frontend.products.index', compact("childCategory", "products"));
             case 4:
                 // Assuming only one product is filtered
                 $product = Product::with('product_image_galleries')->findOrFail($product->id);
                 $product_image_galleries = $product->product_image_galleries;
-                $variants = $product->variant()->get();
+                $variants = $product->variant();
                 // Lấy danh sách các id của các sản phẩm liên quan (cùng danh mục) trừ sản phẩm ban đầu
                 $relatedProductIds = Product::where('category_id', $product->category_id)
                     ->where('id', '!=', $product->id) // Loại trừ sản phẩm ban đầu
                     ->pluck('id');
                 // Lấy các sản phẩm liên quan dựa trên danh sách id đã lấy được
                 $relatedProducts = Product::whereIn('id', $relatedProductIds)
-                ->orderBy('created_at','desc')
+                    ->orderBy('created_at', 'desc')
                     ->limit(4)
                     ->get();
-                return view('frontend.products.detail', compact( "product", "variants", "product_image_galleries", "product_image_galleries", "products", "relatedProducts"));
+                return view('frontend.products.detail', compact("product", "variants", "product_image_galleries", "product_image_galleries", "products", "relatedProducts"));
             default:
                 // No filters applied
-                return view('frontend.products.index', compact( "products"));
+                return view('frontend.products.index', compact("products"));
         }
     }
 }

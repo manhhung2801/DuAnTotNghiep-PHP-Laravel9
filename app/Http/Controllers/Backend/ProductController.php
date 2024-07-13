@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Validation\ValidationException;
 use Exception;
 
+
 class ProductController extends Controller
 {
     public function uploadFile(Request $request, String $inputName, String $path)
@@ -30,14 +31,23 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-
+        $list = Product::get();
         $getProduct = Product::getProduct();
         if (!empty(Request()->get('keyword'))) {
             $keyword = trim(Request()->get('keyword'));
             $getProduct->where('name', 'like', '%' . $keyword . '%');
         }
         $getProduct = $getProduct->paginate(15);
-        return view('admin.product.index', compact('getProduct'));
+
+        // đường dẫn tới public json_file
+        $productsJson = $list->toJson();
+        $path = public_path("json_file/");
+        if (!is_dir($path)) {
+            mkdir($path, 0777, true);
+        }
+        File::put($path . 'products.json', $productsJson);
+
+        return view('admin.product.index', compact('getProduct','list'));
     }
 
     public function create()

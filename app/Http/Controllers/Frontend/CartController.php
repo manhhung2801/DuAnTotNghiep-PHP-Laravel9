@@ -16,7 +16,6 @@ class CartController extends Controller
     {
         $getCart = \Cart::getContent();
         $subTotal = \Cart::getSubTotal();
-
         foreach ($getCart as $cart) {
             $getProduct = Product::findOrFail($cart->id);
             $productPrice = $getProduct->offer_price ?? $getProduct->price;

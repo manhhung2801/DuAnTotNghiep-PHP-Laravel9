@@ -34,44 +34,46 @@
     <div class="select-swatch ">
         @if (!empty($product->variant))
             @foreach ($product->variant as $variant)
-                <div class="header">Màu sắc: <span class="value-properties">{{ $variant->name }}</span>
-                </div>
-                <div class="swatch d-flex mt-2">
-                    @foreach ($variant->variantItem as $i)
-                        <div data-value="{{ $i->name }}" title="{{ $i->name }}" class="swatch-element color "
-                            onclick="changeColor(this)">
-                            <div class="tooltip d-none">{{ $i->name }}</div>
-                            <input id="{{ $i->name }}" data-id="{{ $i->id }}" id="selectInputColor"
-                                type="radio" name="selectInputColor" class="d-none" value="{{ $i->name }}">
-                            <label class=" me-2" for="{{ $i->name }}"
-                                style="background-color: {{ $i->name }}"></label>
-                        </div>
-                    @endforeach
-                </div>
+                @if ($variant->name == 'color')
+                    <div class="header">Màu sắc: <span class="value-properties">{{ $variant->name }}</span>
+                    </div>
+                    <div class="swatch d-flex mt-2">
+                        @foreach ($variant->variantItem as $i)
+                            <div data-value="{{ $i->name }}" title="{{ $i->name }}"
+                                class="swatch-element color " onclick="changeColor(this)">
+                                <div class="tooltip d-none">{{ $i->name }}</div>
+                                <input id="{{ $i->name }}" data-id="{{ $i->id }}" id="selectInputColor"
+                                    type="radio" name="selectInputColor" class="d-none" value="{{ $i->name }}">
+                                <label class=" me-2" for="{{ $i->name }}"
+                                    style="background-color: {{ $i->name }}"></label>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             @endforeach
         @endif
     </div>
     {{-- ram --}}
-   
+
     <div class="select-swatch mt-3">
-        <div class="header">Dung lượng: <span class="value-ram"></span></div>
-        <div class="swatch d-flex mt-2">
-            <div id="ram-options" >
-                <input class="d-none"  id="ram-option-1" type="radio" name="ram" value="4GB" checked>
-                <label for="ram-option-1" class="me-2 bg__ram selected-label">4 GB</label>
-            </div>
-            <div id="ram-options">
-                <input class="d-none" id="ram-option-2" type="radio" name="ram" value="8GB">
-                <label for="ram-option-2" class="me-2 bg__ram">8 GB</label>
-            </div>
-            <div id="ram-options">
-                <input class="d-none" id="ram-option-3" type="radio" name="ram" value="10GB">
-                <label for="ram-option-3" class="me-2 bg__ram">10 GB</label>
-            </div>
-        </div>
-        
+        @if (!empty($product->variant))
+            @foreach ($product->variant as $variant)
+                @if ($variant->name == 'ram')
+                    <div class="header">Dung lượng: <span class="value-ram"></span></div>
+                    <div class="swatch d-flex mt-2">
+                        @foreach ($variant->variantItem as $i)
+                            <div id="ram-options">
+                                <input  id="{{$i->name}}" type="radio" class="d-none" name="{{$variant->name}}" value="{{$i->name}}" checked>
+                                <label for="{{$i->name}}" class="me-2 bg__ram ">{{$i->name}}</label>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            @endforeach
+        @endif
     </div>
-   
+
+
     <div class="product-summary mt-3">
         <div class="rte ">
             {!! $product->short_description !!}
