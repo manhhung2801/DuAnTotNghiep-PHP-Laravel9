@@ -51,6 +51,27 @@
             @endforeach
         @endif
     </div>
+    {{-- ram --}}
+   
+    <div class="select-swatch mt-3">
+        <div class="header">Dung lượng: <span class="value-ram"></span></div>
+        <div class="swatch d-flex mt-2">
+            <div id="ram-options" >
+                <input class="d-none"  id="ram-option-1" type="radio" name="ram" value="4GB" checked>
+                <label for="ram-option-1" class="me-2 bg__ram selected-label">4 GB</label>
+            </div>
+            <div id="ram-options">
+                <input class="d-none" id="ram-option-2" type="radio" name="ram" value="8GB">
+                <label for="ram-option-2" class="me-2 bg__ram">8 GB</label>
+            </div>
+            <div id="ram-options">
+                <input class="d-none" id="ram-option-3" type="radio" name="ram" value="10GB">
+                <label for="ram-option-3" class="me-2 bg__ram">10 GB</label>
+            </div>
+        </div>
+        
+    </div>
+   
     <div class="product-summary mt-3">
         <div class="rte ">
             {!! $product->short_description !!}
