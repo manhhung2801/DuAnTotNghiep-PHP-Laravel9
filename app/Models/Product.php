@@ -53,7 +53,7 @@ class Product extends Model
     //get all record
     static public function getProduct()
     {
-        return self::orderBy('id', 'desc');
+        return self::orderBy('created_at', 'desc');
     }
     // get 1 record by id
     static public function getProductItem($id)
@@ -76,6 +76,11 @@ class Product extends Model
     public function product_image_galleries()
     {
         return $this->hasMany(product_image_galleries::class, 'product_id', 'id');
+    }
+    
+    public function order_detail()
+    {
+        return $this->hasMany(Order_detail::class, 'product_id', 'id');
     }
 
     public function variant()

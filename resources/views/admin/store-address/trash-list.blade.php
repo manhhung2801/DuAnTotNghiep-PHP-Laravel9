@@ -50,53 +50,46 @@
                                 <th>Tên cửa hàng</th>
                                 <th>Email</th>
                                 <th>Địa chỉ</th>
-                                {{-- <th>Phường, Xã</th>
-                                <th>Quận, Huyện</th>
-                                <th>Tỉnh, Thành phố</th> --}}
                                 <th>Số điện thoại</th>
                                 <th>Trạng thái</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($getStoreAddress as $storeAddress)
-                                <tr>
-                                    <td>{{ $storeAddress->id }}</td>
-                                    <td>{{ $storeAddress->store_name }}</td>
-                                    <td>{{ $storeAddress->address }}</td>
-                                    {{-- <td>{{ $storeAddress->ward }}</td>
-                                    <td>{{ $storeAddress->district }}</td>
-                                    <td>{{ $storeAddress->province }}</td> --}}
-                                    <td>{{ $storeAddress->email }}</td>
-                                    <td>{{ $storeAddress->phone }}</td>
-                                    <td>
-                                        <div class="form-check form-switch form-check-success">
-                                            @if ($storeAddress->status == '1')
-                                                <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                    data-id="{{ $storeAddress->id }}" id="flexSwitchCheckSuccess" checked>
-                                            @elseif($storeAddress->status == '0')
-                                                <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                    data-id="{{ $storeAddress->id }}" id="flexSwitchCheckSuccess">
-                                            @endif
-                                        </div>
-                                    </td>
-                                    <td class="text-end">
-                                        <a class="btn btn-primary restoreTrash-item "
-                                            href="{{ route('admin.storeAddress.restore-trash', $storeAddress->id) }}"><i
-                                                class="fa-solid fa-trash-can-arrow-up fs-6"></i>Khôi phục</a>
-                                        <a class="btn btn-danger delete-item"
-                                            href="{{ route('admin.storeAddress.destroy-trash', $storeAddress->id) }}"><i
-                                                class="fa-solid fa-trash fs-6"></i>Xoá vĩnh viễn</a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                            @forelse ( $getStoreAddress as $storeAddress )
+                            <tr>
+                                <td>{{ $storeAddress->id }}</td>
+                                <td>{{ $storeAddress->store_name }}</td>
+                                <td>{{ $storeAddress->address }}</td>
+                                <td>{{ $storeAddress->email }}</td>
+                                <td>{{ $storeAddress->phone }}</td>
+                                <td>
+                                    <div class="form-check form-switch form-check-success">
+                                        @if ($storeAddress->status == '1')
+                                            <input class="form-check-input change-status" type="checkbox" role="switch"
+                                                data-id="{{ $storeAddress->id }}" id="flexSwitchCheckSuccess" checked>
+                                        @elseif($storeAddress->status == '0')
+                                            <input class="form-check-input change-status" type="checkbox" role="switch"
+                                                data-id="{{ $storeAddress->id }}" id="flexSwitchCheckSuccess">
+                                        @endif
+                                    </div>
+                                </td>
+                                <td class="text-end">
+                                    <a class="btn btn-primary restoreTrash-item "
+                                        href="{{ route('admin.storeAddress.restore-trash', $storeAddress->id) }}"><i
+                                            class="fa-solid fa-trash-can-arrow-up fs-6"></i>Khôi phục</a>
+                                    <a class="btn btn-danger delete-item"
+                                        href="{{ route('admin.storeAddress.destroy-trash', $storeAddress->id) }}"><i
+                                            class="fa-solid fa-trash fs-6"></i>Xoá vĩnh viễn</a>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="12">Thùng rác đang rỗng</td>
+                            </tr>
+                            @endforelse
                         </tbody>
                     </table>
-                    @if (session('message'))
-                        <div class="text-gray">
-                            {{ session('message') }}
-                        </div>
-                    @endif
                 </div>
             </div>
         </div>

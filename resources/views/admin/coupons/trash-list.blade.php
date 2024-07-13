@@ -51,7 +51,7 @@
                     </thead>
                     <tbody>
                         @php $stt = 1; @endphp
-                        @foreach ($getCoupons as $item)
+                        @forelse ( $getCoupons as $item )
                         <tr>
                             <td> @php echo $stt++; @endphp</td>
                             <td>{{ $item->name }}</td>
@@ -68,12 +68,16 @@
                                     @endif
                                 </div>
 	 
-                            <td>
+                            <td class="text-end">
                                 <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.coupons.restore-trash', $item->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Khôi phục</a>
                                 <a class="btn btn-danger delete-item" href="{{ route('admin.coupons.destroy-trash', $item->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa vĩnh viễn</a>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="12">Thùng rác đang rỗng</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

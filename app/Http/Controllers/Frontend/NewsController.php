@@ -54,11 +54,13 @@ class NewsController extends Controller
         $newsCate = Post_categories::all();
         // $newsCateDetail = Post_categories::where("slug",$slugs_cate);
         $newsdetai = Post::where("slug", $lugs)->first();
+        $list_related_news = Post::take(4)->get();
 
 
         return view('frontend.post.post', [
             'newsdetai' => $newsdetai,
             'newsCate' => $newsCate,
+            'list_related_news' => $list_related_news,
             // 'newsCateDetail' => $newsCateDetail,
 
         ]);

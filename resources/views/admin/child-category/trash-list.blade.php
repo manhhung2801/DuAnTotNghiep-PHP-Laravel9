@@ -52,7 +52,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($getChildCategories as $childCategory)
+                        @forelse ( $getChildCategories as $childCategory )
                         <tr>
                             <td>{{ $childCategory->id }}</td>
                             <td>{{ $childCategory->name }}</td>
@@ -65,13 +65,17 @@
                             </td>
                             <td>{{ $childCategory->category->name }}</td>
                             <td>{{ $childCategory->subCategory->name }}</td>
-                            <td>
+                            <td class="text-end">
                                 <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.child-category.restore-trash', $childCategory->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Khôi phục</a>
                                 <a class="btn btn-danger delete-item" href="{{ route('admin.child-category.destroy-trash', $childCategory->id) }}"><i class="fa-solid fa-trash fs-6"></i>
                                     Xoá vĩnh viễn</a>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="12">Thùng rác đang rỗng</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

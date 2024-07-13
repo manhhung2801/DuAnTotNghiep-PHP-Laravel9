@@ -52,38 +52,38 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($childCategories as $childCategory)
-                                <tr>
-                                    <td>{{ $childCategory->id }}</td>
-                                    <td>{{ $childCategory->name }}</td>
-                                    <td>
-                                        @if ($childCategory->image)
-                                            <img src="{{ asset('uploads/childcategory/' . $childCategory->image) }}" alt="{{ $childCategory->name }}" style="width: 50px; height: 50px; object-fit: cover;">
-                                        @else
-                                             <span>Trống</span>
+                            @forelse( $childCategories as $childCategory )
+                            <tr>
+                                <td>{{ $childCategory->id }}</td>
+                                <td>{{ $childCategory->name }}</td>
+                                <td>
+                                    @if ($childCategory->image)
+                                        <img src="{{ asset('uploads/childcategory/' . $childCategory->image) }}" alt="{{ $childCategory->name }}" style="width: 50px; height: 50px; object-fit: cover;">
+                                    @else
+                                         <span>Trống</span>
+                                    @endif
+                                 </td>
+                                <td>{{ $childCategory->category->name }}</td>
+                                <td>{{ $childCategory->subCategory->name }}</td>
+                                <td>
+                                    <div class="form-check form-switch form-check-success">
+                                        @if($childCategory->status == 1)
+                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $childCategory->id }}" id="flexSwitchCheckSuccess" checked>
+                                        @elseif($childCategory->status == 0)
+                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $childCategory->id }}" id="flexSwitchCheckSuccess">
                                         @endif
-                                     </td>
-                                    <td>{{ $childCategory->category->name }}</td>
-                                    <td>{{ $childCategory->subCategory->name }}</td>
-                                    <td>
-                                        <div class="form-check form-switch form-check-success">
-                                            @if($childCategory->status == 1)
-                                                <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $childCategory->id }}" id="flexSwitchCheckSuccess" checked>
-                                            @elseif($childCategory->status == 0)
-                                                <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $childCategory->id }}" id="flexSwitchCheckSuccess">
-                                            @endif
-                                        </div>
-
-                                    <td>
-                                        <a class="btn btn-primary" href="{{ route('admin.child-category.edit', $childCategory->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
-                                        <a class="btn btn-danger delete-item" href="{{ route("admin.child-category.destroy", $childCategory->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xoá bỏ</a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                    </div>
+                                <td class="text-end">
+                                    <a class="btn btn-primary" href="{{ route('admin.child-category.edit', $childCategory->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
+                                    <a class="btn btn-danger delete-item" href="{{ route("admin.child-category.destroy", $childCategory->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xoá bỏ</a>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="12">Không có dữ liệu danh mục con</td>
+                            </tr>
+                            @endforelse
                         </tbody>
-                        <tfoot>
-
-                        </tfoot>
                     </table>
                     {{ $childCategories->links() }}
                 </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\backend\AdminOderController;
 use App\Http\Controllers\Backend\PostsController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponsController;
@@ -14,11 +15,11 @@ use App\Http\Controllers\backend\VariantItemController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\InformationController;
+use App\Http\Controllers\backend\OrderController;
 use App\Http\Controllers\Backend\PagesController;
 use App\Http\Controllers\Backend\StoreAddressController;
 use App\Http\Controllers\Backend\UserManagementController;
 use App\Http\Controllers\Backend\PostCategoriesController;
-
 use App\Models\Information;
 
 
@@ -141,3 +142,5 @@ Route::resource('/post',PostsController::class);
 // Route::fallback(function () {
 //     return route("admin.login");
 // });
+
+Route::resource('/order', OrderController::class);

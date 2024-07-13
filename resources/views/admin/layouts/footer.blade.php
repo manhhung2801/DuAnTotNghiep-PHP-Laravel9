@@ -179,6 +179,7 @@
     </script>
 
     @stack('scripts')
+	
 </body>
 
 <!-- Mirrored from codervent.com/rocker/demo/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 09:44:15 GMT -->
