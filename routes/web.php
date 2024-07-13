@@ -15,6 +15,7 @@ use App\Http\Controllers\Frontend\KhieuNaiController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Models\Information;
 
 /*
@@ -35,6 +36,8 @@ Route::get("/", [HomeController::class, 'index'])->name("home");
 /** Addresss */
 Route::get('/dia-chi', [AddressController::class,'index'])->name('address');
 /** End Addresss */
+Route::get('/lien-he', [ContactController::class,'index'])->name('contact');
+
 
 /** User Dashboard */
 Route::middleware(['auth', 'verified', 'role:user'])->group(function () {

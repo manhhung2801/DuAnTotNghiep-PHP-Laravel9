@@ -14,7 +14,7 @@ class CartController extends Controller
     {
         $getCart = \Cart::getContent();
         $subTotal = \Cart::getSubTotal();
-        return view('frontend.cart.index', compact('getCart', 'subTotal'));
+        return view('frontend.cart.index', compact('getCart', 'subTotal')); 
     }
 
     public function create()
