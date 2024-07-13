@@ -15,6 +15,7 @@ use App\Http\Controllers\Frontend\KhieuNaiController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\frontend\ErrorController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Models\Information;
 
@@ -88,3 +89,5 @@ Route::resource('order', OrderController::class)->middleware('checkLogin');
 /** các trang thông tin */
 Route::get('thong-tin/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");
 
+/** trang 404  */
+Route::get("page-not-found", [ErrorController::class,'index'])->name("index");
