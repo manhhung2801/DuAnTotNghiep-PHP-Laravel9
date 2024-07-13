@@ -41,14 +41,29 @@ class CartController extends Controller
         try {
             $id = $request->id;
             $product = Product::getProductItem($id);
+            
+            if (!$product) {
+                return response()->json(['status' => false, 'message' => 'Sản phẩm không tồn tại!'], 404);
+            }
+            
+            $getCart = \Cart::getContent();
+            // check quantity
+            foreach ($getCart as $item) {
+                if ($product->qty >= $item->quantity) {
+                    return response()->json(['status' => false, 'message' => 'Trong kho không còn đủ sản phẩm!'], 404);
+                }
+            }
+
+
             $qtyProduct = $request->qty ??  1;
 
+            // Variant
             $attributes = [];
-            if (isset($request->color) && $request->color!=null) {
+            if (isset($request->color) && $request->color != null) {
                 $getVariant = VariantItem::with('variant')->findOrFail($request->color);
                 if (!empty($getVariant)) {
                     $attributes[$getVariant->variant->name] = $getVariant->name;
-                }else {
+                } else {
                     $attributes[$getVariant->variant->name] = null;
                 }
             }
@@ -65,7 +80,7 @@ class CartController extends Controller
             $cart_count = \Cart::getTotalQuantity();
             return response()->json(['status' => true, 'message' => 'Thêm ' . $product->name . ' vào giỏ hàng thành công!', 'cart_count' => $cart_count]);
         } catch (Exception $e) {
-            return response()->json(['status' => false, 'message' => 'Có lỗi khi thêm vào giỏ hàng ' . $e]);
+            return response()->json(['status' => false, 'message' => 'Có lỗi khi thêm vào giỏ hàng: ' . $e->getMessage()], 404);
         }
     }
 
@@ -91,7 +106,7 @@ class CartController extends Controller
             $subTotal = number_format(\Cart::getSubTotal(), 0, '', '.');
             return response()->json(['status' => true, 'message' => 'Cập nhập sản phẩm thành công!', 'summedPrice' => $summedPrice, 'subTotal' => $subTotal]);
         } else {
-            return response()->json(['status' => false, 'message' => 'Cập nhập sản phẩm thất bại!']);
+            return response()->json(['status' => false, 'message' => 'Cập nhập sản phẩm thất bại!'], 404);
         }
     }
 
