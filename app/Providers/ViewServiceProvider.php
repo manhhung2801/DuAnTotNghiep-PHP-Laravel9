@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Category;
 use App\Models\Information;
 use App\Models\Page;
+use App\Models\Product;
 use App\Models\StoreAddress;
 use Darryldecode\Cart\Cart;
 use Illuminate\Support\Facades\View;

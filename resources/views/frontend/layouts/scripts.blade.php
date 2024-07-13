@@ -115,6 +115,7 @@
                   //Xóa lớp 'selected-label' khỏi tất cả các nhãn".
                     var labels = document.querySelectorAll('.bg__ram');
                     labels.forEach(function(label) {
+
                         label.classList.remove('selected-label');
                     });
 
@@ -147,3 +148,14 @@
         });
     });
 </script>
+<script >
+    console.log('vnfv');
+    // $(document).ready(function() {
+    //     console.log('vnfv');
+    //     $('#body').on('change','tim_kiem',function() {
+    //         alert('oki');
+    //     })
+    // })
+</script>
+
+
