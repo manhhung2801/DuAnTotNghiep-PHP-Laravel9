@@ -86,6 +86,7 @@
                             <a href="{{ route('cart.index') }}" class="list-group-item">
                                 <i class="fa-solid fa-cart-shopping fa-2xl mt-4" style="color: #ffffff;"></i>
                                 <span class="cart-count">{{ $qtyCart ?? '0' }}</span>
+
                                 <span class="text-white ps-2 fs-navbar-2">Giỏ hàng</span>
                             </a>
                         </div>
