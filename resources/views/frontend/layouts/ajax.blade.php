@@ -7,13 +7,21 @@
         });
         $('body').on('click', '.btn-addToCart', function(e) {
             e.preventDefault();
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+            });
+
             // closest form gần nút addcart nhất
             let form = $(this).closest('.formCart')
             let id = form.find('.productId').val()
             let qty = form.find('.qtym').val()
             // lấy id variant item
-            var color = $('input[name="selectInputColor"]:checked').attr('data-id');
-            console.log(color);
+            var color = $('input[name="git selectInputColor"]:checked').attr('data-id');
             $.ajax({
                 url: "{{ route('cart.store') }}",
                 type: 'POST',
@@ -23,13 +31,6 @@
                     color: color !== undefined ? color : null,
                 },
                 success: function(data) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 1000,
-                        timerProgressBar: true,
-                    });
                     if (data.status == true) {
                         Toast.fire({
                             icon: "success",
@@ -43,10 +44,12 @@
                         });
                     }
                     $('.cart-count').text(data.cart_count);
-                 
                 },
-                error: function(error) {
-                    alert('Lỗi: '.error)
+                error: function(xhr, status, error) {
+                    Toast.fire({
+                        icon: "error",
+                        title: xhr.responseJSON.message
+                    });
                 }
             })
         })
