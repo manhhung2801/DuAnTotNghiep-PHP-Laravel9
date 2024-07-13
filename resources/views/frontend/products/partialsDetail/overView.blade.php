@@ -63,7 +63,7 @@
                     <div class="swatch d-flex mt-2">
                         @foreach ($variant->variantItem as $i)
                             <div id="ram-options">
-                                <input class="d-none" id="{{$i->name}}" type="radio" name="ram" value="{{$i->name}}" checked>
+                                <input  id="{{$i->name}}" type="radio" class="d-none" name="{{$variant->name}}" value="{{$i->name}}" checked>
                                 <label for="{{$i->name}}" class="me-2 bg__ram ">{{$i->name}}</label>
                             </div>
                         @endforeach

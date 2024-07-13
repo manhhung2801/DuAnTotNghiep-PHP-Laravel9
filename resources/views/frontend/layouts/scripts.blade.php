@@ -103,33 +103,44 @@
 </script>
 {{-- ram --}}
 <script>
-   document.addEventListener("DOMContentLoaded", function() {
-            var ramOptions = document.querySelectorAll('input[name="ram"]');
-            var valueRamElement = document.querySelector('.value-ram');
+  document.addEventListener("DOMContentLoaded", function() {
+    var ramOptions = document.querySelectorAll('input[name="ram"]');
+    var valueRamElement = document.querySelector('.value-ram');
 
-            ramOptions.forEach(function(option) {
-                option.addEventListener("change", function() {
-                    var selectedValue = document.querySelector('input[name="ram"]:checked').value;
-                    valueRamElement.textContent = selectedValue;
+    // Lặp qua từng radio button và thêm sự kiện change
+    ramOptions.forEach(function(option) {
+        option.addEventListener("change", function() {
+            // Lấy giá trị của radio button được chọn
+            var selectedValue = option.value;
+            valueRamElement.textContent = selectedValue;
 
-                  //Xóa lớp 'selected-label' khỏi tất cả các nhãn".
-                    var labels = document.querySelectorAll('.bg__ram');
-                    labels.forEach(function(label) {
-
-                        label.classList.remove('selected-label');
-                    });
-
-                    //Thêm lớp 'selected-label' vào nhãn của radio button được chọn".
-                    var checkedLabel = document.querySelector('label[for="' + option.id + '"]');
-                    if (checkedLabel) {
-                        checkedLabel.classList.add('selected-label');
-                    }
-                });
+            // Xóa lớp 'selected-label' khỏi tất cả các nhãn
+            var labels = document.querySelectorAll('.bg__ram');
+            labels.forEach(function(label) {
+                label.classList.remove('selected-label');
             });
-            // Hiển thị giá trị ban đầu
-            var initialValue = document.querySelector('input[name="ram"]').value;
-            valueRamElement.textContent = initialValue;
+
+            // Thêm lớp 'selected-label' vào nhãn của radio button được chọn
+            var checkedLabel = document.querySelector('label[for="' + option.id + '"]');
+            if (checkedLabel) {
+                checkedLabel.classList.add('selected-label');
+            }
         });
+    });
+
+    // Hiển thị giá trị ban đầu khi trang tải xong
+    var ramValue = document.querySelector('input[name="ram"]:checked');
+    if (ramValue) {
+        valueRamElement.textContent = ramValue.value;
+
+        // Đảm bảo nhãn của radio button được chọn có lớp 'selected-label'
+        var checkedLabel = document.querySelector('label[for="' + ramValue.id + '"]');
+        if (checkedLabel) {
+            checkedLabel.classList.add('selected-label');
+        }
+    }
+});
+
    </script>
 <script>
     // ẩn hiện nút + responsize footer
