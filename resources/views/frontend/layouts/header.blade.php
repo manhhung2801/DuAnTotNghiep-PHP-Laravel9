@@ -49,15 +49,15 @@
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Tài khoản
                                 </span>
-                                <ul class="dropdown-menu rounded-0 p-0" aria-labelledby="dropdownMenuButton1">
+                                <ul class="dropdown-menu p-0" aria-labelledby="dropdownMenuButton1">
                                     @if (!empty(Auth::check()))
-                                        <li><a class="dropdown-item border border-top-1 border-bottom-1"
+                                        <li><a class="dropdown-item"
                                                 href="{{ route('dashboard') }}">Tài khoản của tôi</a></li>
                                         <li>
                                             <!-- Authentication -->
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
-                                                <a class="dropdown-item border border-top-1 border-bottom-1"
+                                                <a class="dropdown-item"
                                                     href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">Đăng
@@ -66,13 +66,13 @@
                                             </form>
                                         </li>
                                     @else
-                                        <li><a class="dropdown-item border border-top-1 border-bottom-1"
+                                        <li><a class="dropdown-item"
                                                 href="{{ route('login') }}">Đăng nhập</a></li>
-                                        <li><a class="dropdown-item border border-top-1 border-bottom-1"
+                                        <li><a class="dropdown-item"
                                                 href="{{ route('register') }}">Đăng ký</a></li>
                                     @endif
 
-                                    <li><a class="dropdown-item border border-top-1 border-bottom-1" href="{{ url('/order') }}">Đơn
+                                    <li><a class="dropdown-item" href="{{ url('/order') }}">Đơn
                                             hàng của tôi</a>
                                     </li>
                                 </ul>
