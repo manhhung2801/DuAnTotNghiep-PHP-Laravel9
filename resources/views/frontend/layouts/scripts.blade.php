@@ -104,7 +104,7 @@
 {{-- ram --}}
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    var ramOptions = document.querySelectorAll('input[name="ram"]');
+    var ramOptions = document.querySelectorAll('input[name="selectInputRam"]');
     var valueRamElement = document.querySelector('.value-ram');
 
     // Lặp qua từng radio button và thêm sự kiện change
@@ -129,7 +129,7 @@
     });
 
     // Hiển thị giá trị ban đầu khi trang tải xong
-    var ramValue = document.querySelector('input[name="ram"]:checked');
+    var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
     if (ramValue) {
         valueRamElement.textContent = ramValue.value;
 

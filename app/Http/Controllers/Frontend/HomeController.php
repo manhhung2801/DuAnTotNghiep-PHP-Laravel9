@@ -31,7 +31,6 @@ class HomeController extends Controller
         foreach($getCategory as $cate){
             $product = [
                 $cate->name => Product::getProduct()->where('status', '=', 1)
-                                        ->where('qty', '>', 0)
                                         ->where('category_id', $cate->id)
                                         ->take(4)->get()
             ];

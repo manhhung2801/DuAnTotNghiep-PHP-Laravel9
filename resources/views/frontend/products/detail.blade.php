@@ -36,6 +36,7 @@
             const decreaseBtn = document.querySelector('.decrease-btn');
             const increaseBtn = document.querySelector('.increase-btn');
             const quantityInput = document.querySelector('.qtym');
+            var qtyCart = document.querySelector('#getQtyCart').value
     
             decreaseBtn.addEventListener('click', function() {
                 let currentValue = parseInt(quantityInput.value);
@@ -46,10 +47,9 @@
     
             increaseBtn.addEventListener('click', function() {
                 let currentValue = parseInt(quantityInput.value);
-                let maxValue = parseInt(quantityInput.getAttribute('max')) ||
-                100; // Default max value is 100
-    
-                if (currentValue < maxValue) {
+                let maxValue = parseInt(quantityInput.getAttribute('max'))
+                var qtyAdd = parseInt(qtyCart) + currentValue;
+                if (qtyAdd < maxValue) {
                     quantityInput.value = currentValue + 1;
                 }
             });
