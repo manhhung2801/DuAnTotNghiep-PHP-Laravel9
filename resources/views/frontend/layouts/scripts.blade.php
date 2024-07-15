@@ -16,6 +16,28 @@
 
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const productLink = document.getElementById('product-link');
+        const dropdownMenu = productLink.nextElementSibling;
+
+        productLink.addEventListener('mouseover', function(event) {
+            dropdownMenu.classList.add('show');
+        });
+
+        productLink.addEventListener('click', function(event) {
+            window.location.href = this.href;
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!productLink.contains(event.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+    });
+</script>
+
+<script>
+
     document.addEventListener("DOMContentLoaded", function() {
         const boxes = document.querySelectorAll('.scroll_animation');
 
