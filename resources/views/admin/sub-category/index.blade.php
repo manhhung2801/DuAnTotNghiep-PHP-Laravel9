@@ -71,7 +71,7 @@
                                         @endif
                                     </div>
 
-                                <td>
+                                <td class="text-end">
                                     <a class="btn btn-primary" href="{{ route('admin.sub-category.edit', $subCategory->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
                                     <a class="btn btn-danger delete-item" href="{{ route("admin.sub-category.destroy", $subCategory->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xoá bỏ</a>
                                 </td>
