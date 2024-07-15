@@ -9,16 +9,21 @@
                     <a class="nav-link text-white" href="#">Giới thiệu</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2 dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="{{ url('/product') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="product-link">
+                    <a class="nav-link dropdown-toggle text-white" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="product-link">
                         Sản Phẩm
                     </a>
                     <ul class="dropdown-menu mt-1 nav_sub_dropdown p-0">
+                            <li class="nav_sub_cate">
+                                <a class="dropdown-item item_nav_name py-2" href="{{ url('/product') }}">
+                                    Tất cả sản phẩm <span class="float-end ms-5"><i class="fa-solid fa-layer-group"></i></span>
+                                </a>
+                            </li>
                         @foreach ($categories as $category)
                             <li class="nav_sub_cate">
                                 <a class="dropdown-item item_nav_name py-2" href="{{ url('/product/'.$category->slug) }}">
                                     {{ $category->name }}
                                     @if ($category->subCategories->count() > 0)
-                                    <span class="float-end"><i class="fa-solid fa-chevron-right"></i></span>
+                                    <span class="float-end ms-5"><i class="fa-solid fa-chevron-right"></i></span>
                                     @endif
                                 </a>
                                 @if ($category->subCategories->count() > 0)
@@ -55,6 +60,12 @@
 </nav>
 
 <style>
+    .dropdown-item.item_nav_name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     /* Ẩn tất cả các dropdown menu con */
     .nav-item .dropdown-menu {
         display: none;
