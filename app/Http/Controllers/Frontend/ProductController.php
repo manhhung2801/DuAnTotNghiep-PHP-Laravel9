@@ -104,6 +104,9 @@ class ProductController extends Controller
             case 3:
                 return view('frontend.products.index', compact("childCategory", "products"));
             case 4:
+                //Lấy quantity để check
+                $getQtyCart = \Cart::get($product->id);
+
                 // Assuming only one product is filtered
                 $product = Product::with('product_image_galleries')->findOrFail($product->id);
                 $product_image_galleries = $product->product_image_galleries;
@@ -117,7 +120,7 @@ class ProductController extends Controller
                     ->orderBy('created_at', 'desc')
                     ->limit(4)
                     ->get();
-                return view('frontend.products.detail', compact("product", "variants", "product_image_galleries", "product_image_galleries", "products", "relatedProducts"));
+                return view('frontend.products.detail', compact("product", "variants", "product_image_galleries", "product_image_galleries", "products", "relatedProducts", "getQtyCart"));
             default:
                 // No filters applied
                 return view('frontend.products.index', compact("products"));

@@ -63,7 +63,11 @@
                     <div class="swatch d-flex mt-2">
                         @foreach ($variant->variantItem as $i)
                             <div id="ram-options">
+<<<<<<< HEAD
                                 <input  id="{{$i->name}}" type="radio" class=" button_ram" name="ram"  value="{{$i->name}}" >
+=======
+                                <input  id="{{$i->name}}" type="radio" class="d-none" name="selectInputRam" data-id="{{$i->id}}" value="{{$i->name}}" checked>
+>>>>>>> 87bc705b597fa57551da49fbda6f91a8fb2e2a33
                                 <label for="{{$i->name}}" class="me-2 bg__ram ">{{$i->name}}</label>
                             </div>
                         @endforeach
@@ -93,6 +97,8 @@
                         <span class="btn_num btn-plus increase-btn">+</span>
                     </span>
                 </div>
+                {{-- input để nhận giá trị quatity hiện có trong cart --}}
+                <input id="getQtyCart" type="hidden" value="{{$getQtyCart->quantity ?? 0 }}">
                 @if ($product->qty > 0)
                     <div class="btn-mua button_actions col-md-12 col">
                         <button type="button" class="btn-buyNow btn col-12 btn-addToCart">

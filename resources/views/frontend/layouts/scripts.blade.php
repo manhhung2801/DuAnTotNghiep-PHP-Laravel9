@@ -16,6 +16,28 @@
 
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const productLink = document.getElementById('product-link');
+        const dropdownMenu = productLink.nextElementSibling;
+
+        productLink.addEventListener('mouseover', function(event) {
+            dropdownMenu.classList.add('show');
+        });
+
+        productLink.addEventListener('click', function(event) {
+            window.location.href = this.href;
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!productLink.contains(event.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+    });
+</script>
+
+<script>
+
     document.addEventListener("DOMContentLoaded", function() {
         const boxes = document.querySelectorAll('.scroll_animation');
 
@@ -103,9 +125,15 @@
 </script>
 {{-- ram --}}
 <script>
+<<<<<<< HEAD
     document.addEventListener("DOMContentLoaded", function() {
         var ramOptions = document.querySelectorAll('input[name="ram"]');
         var valueRamElement = document.querySelector('.value-ram');
+=======
+  document.addEventListener("DOMContentLoaded", function() {
+    var ramOptions = document.querySelectorAll('input[name="selectInputRam"]');
+    var valueRamElement = document.querySelector('.value-ram');
+>>>>>>> 87bc705b597fa57551da49fbda6f91a8fb2e2a33
 
         ramOptions.forEach(function(option) {
             option.addEventListener("change", function() {
@@ -129,7 +157,25 @@
         var initialValue = document.querySelector('input[name="ram"].checked').value;
         valueRamElement.textContent = initialValue;
     });
+<<<<<<< HEAD
 </script>
+=======
+
+    // Hiển thị giá trị ban đầu khi trang tải xong
+    var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
+    if (ramValue) {
+        valueRamElement.textContent = ramValue.value;
+
+        // Đảm bảo nhãn của radio button được chọn có lớp 'selected-label'
+        var checkedLabel = document.querySelector('label[for="' + ramValue.id + '"]');
+        if (checkedLabel) {
+            checkedLabel.classList.add('selected-label');
+        }
+    }
+});
+
+   </script>
+>>>>>>> 87bc705b597fa57551da49fbda6f91a8fb2e2a33
 <script>
     // ẩn hiện nút + responsize footer
     document.addEventListener("DOMContentLoaded", function() {

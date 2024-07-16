@@ -24,7 +24,7 @@
                 <div class="action_start float-start d-flex">
                     <h6 class="mt-2 mb-0 text-uppercase">Địa chỉ cửa hàng</h6>
                     <form action="" method="get">
-                        {{-- @csrf --}}
+                        @csrf
                         <div class="form-search ms-2">
                             <div class="input-group">
                                 <input value="{{ Request::get('keyword') }}" type="text"

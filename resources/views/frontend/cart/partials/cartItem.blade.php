@@ -15,11 +15,11 @@
                 <img class="object-fit-contain" width="100px" height="100px" src="{{ asset('uploads/products/') . '/' . $item->associatedModel->image }}"
                     alt="{{ $item->associatedModel->image }}">
                 <div class="ml-3">
-                    <h6 class="ps-2 fw-normal">{{ $item->name }}</h6>
+                    <h5 class="ps-2 fw-normal">{{ $item->name }}</h5>
                     {{-- Lấy ra các attrbute và color --}}
                     @if (!$item->attributes->isEmpty())
                         @foreach ($item->attributes as $attr => $value)
-                            <p class="ps-2 fw-light m-0 variant__cart">{{ $attr }}: {{ $value }}</p>
+                            <p class="ps-2 fw-light m-0 variant__cart text-capitalize">{{ $attr }}: {{ $value }}</p>
                         @endforeach
                     @endif
 
