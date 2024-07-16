@@ -42,7 +42,7 @@
                             <div data-value="{{ $i->name }}" title="{{ $i->name }}"
                                 class="swatch-element color " onclick="changeColor(this)">
                                 <div class="tooltip d-none">{{ $i->name }}</div>
-                                <input id="{{ $i->name }}" data-id="{{ $i->id }}" id="selectInputColor"
+                                <input id="{{ $i->name }}" data-id="{{ $i->id }}" 
                                     type="radio" name="selectInputColor" class="d-none" value="{{ $i->name }}">
                                 <label class=" me-2" for="{{ $i->name }}"
                                     style="background-color: {{ $i->name }}"></label>
@@ -63,7 +63,7 @@
                     <div class="swatch d-flex mt-2">
                         @foreach ($variant->variantItem as $i)
                             <div id="ram-options">
-                                <input  id="{{$i->name}}" type="radio" class="d-none" name="{{$variant->name}}" value="{{$i->name}}" checked>
+                                <input  id="{{$i->name}}" type="radio" class=" button_ram" name="ram"  value="{{$i->name}}" >
                                 <label for="{{$i->name}}" class="me-2 bg__ram ">{{$i->name}}</label>
                             </div>
                         @endforeach

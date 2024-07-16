@@ -6,8 +6,8 @@
                     <a class="nav-link text-white" aria-current="page" href="/">Trang chủ</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2">
-                    <a class="nav-link text-white" href="#">Giới thiệu</a>
-                </li>
+                    <a class="nav-link text-white" href="{{ route('showPages', ['slug1' => 'gioi-thieu','slug2' => 'gioi-thieu']) }}">Giới thiệu</a>
+                </li>                
                 <li class="nav-item nav_item_cate px-2 dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -16,9 +16,9 @@
                     <ul class="dropdown-menu mt-1 nav_sub_dropdown p-0">
                         @foreach ($categories as $category)
                             <li class="nav_sub_cate">
-                                <a class="dropdown-item item_nav_name py-2" href="#">{{ $category->name }} 
+                                <a class="dropdown-item item_nav_name py-2" href="#">{{ $category->name }}
                                     @if ($category->subCategories->count() > 0)
-                                    <span class="float-end"><i class="fa-solid fa-chevron-right"></i></span>
+                                        <span class="float-end"><i class="fa-solid fa-chevron-right"></i></span>
                                     @endif
                                 </a>
                                 @if ($category->subCategories->count() > 0)
@@ -42,7 +42,7 @@
                     <a class="nav-link text-white" href="#">Liên hệ</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2">
-                    <a class="nav-link text-white" href="#">Chính Sách</a>
+                    <a class="nav-link text-white" href="{{ route('showPages', ['slug1' => 'chinh-sach','slug2' => 'chinh-sach-mua-hang']) }}">Chính Sách Mua Hàng</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2">
                     <a class="nav-link text-white" href="#">Đơn Hàng Của Tôi</a>

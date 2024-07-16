@@ -9,7 +9,6 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\InformationController;
 use App\Http\Controllers\Frontend\AddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
-use App\Http\Controllers\Frontend\TintucController;
 use App\Http\Controllers\Frontend\GioHangController;
 use App\Http\Controllers\Frontend\KhieuNaiController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -90,7 +89,10 @@ Route::resource('order', OrderController::class)->middleware('checkLogin');
 
 
 /** các trang thông tin */
-Route::get('thong-tin/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");
+Route::get('information/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");
 
 /** trang 404  */
-Route::get("page-not-found", [ErrorController::class,'index'])->name("index");
+Route::get("/page-not-found", [ErrorController::class,'index'])->name("page-not-found");
+
+/** trang search  */
+Route::get("/search", [ProductController::class,'search'])->name("search");

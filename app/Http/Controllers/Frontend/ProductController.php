@@ -31,14 +31,21 @@ class ProductController extends Controller
         return $products;
     }
 
-    public function getWhereParam(Request $request, $cat = null, $sub = null, $child = null, $slug = null)
+    public function getWhereParam(Request $request, $cat = null, $sub = null, $child = null, $slug = null,$searchTerm = null)
     {
         // Filter parameters
         $filters = compact('cat', 'sub', 'child', 'slug');
         $sortBy = $request->query('sort');
         $slug = str_replace('.html', '', $slug);
+
         // Initialize products query
         $productsQuery = Product::query();
+
+         // áp dụng search cho filter
+         if ($searchTerm) {
+            $productsQuery->where('name', 'like', '%' . $searchTerm . '%');
+        }   
+
         // Apply filters based on provided parameters
         if ($cat) {
             $category = Category::where('slug', $cat)->first();
@@ -115,5 +122,11 @@ class ProductController extends Controller
                 // No filters applied
                 return view('frontend.products.index', compact("products"));
         }
+    }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->query('search');
+        return $this->getWhereParam($request, null, null, null, null, $searchTerm);
     }
 }
