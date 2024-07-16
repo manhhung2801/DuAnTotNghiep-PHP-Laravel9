@@ -37,7 +37,6 @@
 </script>
 
 <script>
-
     document.addEventListener("DOMContentLoaded", function() {
         const boxes = document.querySelectorAll('.scroll_animation');
 
@@ -125,57 +124,52 @@
 </script>
 {{-- ram --}}
 <script>
-<<<<<<< HEAD
+    << << << < HEAD
     document.addEventListener("DOMContentLoaded", function() {
         var ramOptions = document.querySelectorAll('input[name="ram"]');
         var valueRamElement = document.querySelector('.value-ram');
-=======
-  document.addEventListener("DOMContentLoaded", function() {
-    var ramOptions = document.querySelectorAll('input[name="selectInputRam"]');
-    var valueRamElement = document.querySelector('.value-ram');
->>>>>>> 87bc705b597fa57551da49fbda6f91a8fb2e2a33
+        document.addEventListener("DOMContentLoaded", function() {
+            var ramOptions = document.querySelectorAll('input[name="selectInputRam"]');
+            var valueRamElement = document.querySelector('.value-ram');
 
-        ramOptions.forEach(function(option) {
-            option.addEventListener("change", function() {
-                var selectedValue = document.querySelector('input[name="ram"]:checked').value;
-                valueRamElement.textContent = selectedValue;
+            ramOptions.forEach(function(option) {
+                option.addEventListener("change", function() {
+                    var selectedValue = document.querySelector(
+                        'input[name="ram"]:checked').value;
+                    valueRamElement.textContent = selectedValue;
 
-                //Xóa lớp 'selected-label' khỏi tất cả các nhãn".
-                var labels = document.querySelectorAll('.bg__ram');
-                labels.forEach(function(label) {
-                    label.classList.remove('selected-label');
+                    //Xóa lớp 'selected-label' khỏi tất cả các nhãn".
+                    var labels = document.querySelectorAll('.bg__ram');
+                    labels.forEach(function(label) {
+                        label.classList.remove('selected-label');
+                    });
+
+                    //Thêm lớp 'selected-label' vào nhãn của radio button được chọn".
+                    var checkedLabel = document.querySelector('label[for="' + option
+                        .id + '"]');
+                    if (checkedLabel) {
+                        checkedLabel.classList.add('selected-label');
+                    }
                 });
-
-                //Thêm lớp 'selected-label' vào nhãn của radio button được chọn".
-                var checkedLabel = document.querySelector('label[for="' + option.id + '"]');
-                if (checkedLabel) {
-                    checkedLabel.classList.add('selected-label');
-                }
             });
+            // Hiển thị giá trị ban đầu
+            var initialValue = document.querySelector('input[name="ram"].checked').value;
+            valueRamElement.textContent = initialValue;
         });
-        // Hiển thị giá trị ban đầu
-        var initialValue = document.querySelector('input[name="ram"].checked').value;
-        valueRamElement.textContent = initialValue;
-    });
-<<<<<<< HEAD
-</script>
-=======
 
-    // Hiển thị giá trị ban đầu khi trang tải xong
-    var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
-    if (ramValue) {
-        valueRamElement.textContent = ramValue.value;
+        // Hiển thị giá trị ban đầu khi trang tải xong
+        var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
+        if (ramValue) {
+            valueRamElement.textContent = ramValue.value;
 
-        // Đảm bảo nhãn của radio button được chọn có lớp 'selected-label'
-        var checkedLabel = document.querySelector('label[for="' + ramValue.id + '"]');
-        if (checkedLabel) {
-            checkedLabel.classList.add('selected-label');
+            // Đảm bảo nhãn của radio button được chọn có lớp 'selected-label'
+            var checkedLabel = document.querySelector('label[for="' + ramValue.id + '"]');
+            if (checkedLabel) {
+                checkedLabel.classList.add('selected-label');
+            }
         }
-    }
-});
-
-   </script>
->>>>>>> 87bc705b597fa57551da49fbda6f91a8fb2e2a33
+    });
+</script>
 <script>
     // ẩn hiện nút + responsize footer
     document.addEventListener("DOMContentLoaded", function() {
@@ -196,45 +190,70 @@
 
 {{-- search sản phẩm --}}
 <script>
- $(document).ready(function() {
-    $('#timkiem').keyup(function() {
-        $('#result').html('');
-        var search = $('#timkiem').val().trim();
-        if (search !== '') {
-            $('#result').css('display', 'inherit');
-            var expression = new RegExp(search, "i");
-            $.getJSON('/json/products.json', function(data) {
-                // Sắp xếp dữ liệu theo thời gian tạo mới nhất
-                data.sort(function(a, b) {
-                    return new Date(b.created_at) - new Date(a.created_at);
-                });
-                // Lấy ra 10 sản phẩm thời gian gần nhất thỏa mãn điều kiện tìm kiếm
-                var count = 0;
-                $.each(data, function(key, value) {
-                    // kiểm tra xem name trong dữ liệu data có chứa từ khoá mà mình nhập hay không
-                    if (value.name.search(expression) != -1 && count < 10) {
+    $(document).ready(function() {
+        var timeoutId;
+
+        $('#timkiem').keyup(function() {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(function() {
+                searchProducts();
+            }, 500); // Chờ 500ms sau khi ngừng gõ để bắt đầu tìm kiếm
+        });
+
+        function searchProducts() {
+            $('#result').html('');
+            var search = $('#timkiem').val().trim();
+            if (search !== '') {
+                $('#result').css('display', 'inherit');
+                var expression = new RegExp(search, "i");
+                $.getJSON('/json/products.json', function(data) {
+                    // Sắp xếp dữ liệu theo thời gian tạo mới nhất
+                    data.sort(function(a, b) {
+                        return new Date(b.created_at) - new Date(a.created_at);
+                    });
+                    // Mảng để lưu các sản phẩm thỏa mãn điều kiện tìm kiếm
+                    var results = [];
+                    // Lặp qua các sản phẩm và lưu vào mảng results nếu thỏa mãn điều kiện
+                    $.each(data, function(key, value) {
+                        if (value.name.search(expression) != -1) {
+                            results.push(value);
+                        }
+                    });
+                    // Hiển thị tối đa 10 sản phẩm đầu tiên trong mảng results
+                    for (var i = 0; i < Math.min(results.length, 7); i++) {
+                        var product = results[i];
                         $('#result').append(
-                            '<li style="cursor:pointer; display: flex; max-height: 200px;" class="list-group-item link-class"><img src="{{asset('uploads/products')}}/' +
-                            value.image +
-                            '" width="30" height="30" /><div class="mx-2 mt-2"><h4 style="font-size: 12px">' +
-                            value.name + '</h4></div></li>'
+                            '<li style="cursor:pointer;" class="list-group-item link-class d-flex"><img src="{{ asset('uploads/products') }}/' +
+                            product.image +
+                            '" width="30" height="30"/><div class="mx-2"><h4 style="font-size: 12px">' +
+                            product.name +
+                            '</h4> <span class="d-none">|</span><div class="d-flex" style="font-size: 10px; gap:5px"> <p>' +
+                            parseFloat(product.offer_price).toLocaleString(
+                                'vi-VN', {
+                                    style: 'currency',
+                                    currency: 'VND'
+                                }).replace(/\u200B/g, '') +
+                            '</p><p class="text-decoration-line-through text-danger">' +
+                            parseFloat(product.price).toLocaleString(//chuyển đổi số thành chuỗi ngôn ngữ vn và định dạng tiền tệ
+                                'vi-VN', {
+                                    style: 'currency',
+                                    currency: 'VND'
+                                }).replace(/\u200B/g, '') +
+                            '</p></div> </div> </li>'
                         );
-                        count++;
                     }
+
                 });
-
-                
-            });
-        } else {
-            $('#result').css('display', 'none');
+            } else {
+                $('#result').css('display', 'none');
+            }
         }
-    });
 
-    $('#result').on('click', 'li', function() {
-        var click_text = $(this).text().split('|');
-        $('#timkiem').val($.trim(click_text[0]));
-        $('#result').html('');
-        $('#result').css('display', 'none');
+        $('#result').on('click', 'li', function() {
+            var click_text = $(this).text().split('|');
+            $('#timkiem').val($.trim(click_text[0]));
+            $('#result').html('');
+            $('#result').css('display', 'none');
+        });
     });
-});
 </script>
