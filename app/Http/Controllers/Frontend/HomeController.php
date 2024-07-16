@@ -27,14 +27,8 @@ class HomeController extends Controller
         foreach ($getCategory as $cate) {
             $product = [
                 $cate->name => Product::getProduct()->where('status', '=', 1)
-<<<<<<< HEAD
-                    ->where('qty', '>', 0)
-                    ->where('category_id', $cate->id)
-                    ->take(4)->get()
-=======
                                         ->where('category_id', $cate->id)
                                         ->take(4)->get()
->>>>>>> 87bc705b597fa57551da49fbda6f91a8fb2e2a33
             ];
             $getProducts[] = $product;
         }

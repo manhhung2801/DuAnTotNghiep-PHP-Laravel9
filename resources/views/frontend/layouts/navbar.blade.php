@@ -5,38 +5,39 @@
                 <li class="nav-item nav_item_cate px-2">
                     <a class="nav-link text-white" aria-current="page" href="/">Trang chủ</a>
                 </li>
+               
                 <li class="nav-item nav_item_cate px-2">
-                    <a class="nav-link text-white" href="{{ route('showPages', ['slug1' => 'gioi-thieu','slug2' => 'gioi-thieu']) }}">Giới thiệu</a>
-                </li>                
+                    <a class="nav-link text-white"
+                        href="{{ route('showPages', ['slug1' => 'gioi-thieu', 'slug2' => 'gioi-thieu']) }}">Giới
+                        thiệu</a>
+                </li>
                 <li class="nav-item nav_item_cate px-2 dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="product-link">
+                    <a class="nav-link dropdown-toggle text-white" href="javascript:;" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" id="product-link">
                         Sản Phẩm
                     </a>
                     <ul class="dropdown-menu mt-1 nav_sub_dropdown p-0">
-                            <li class="nav_sub_cate">
-                                <a class="dropdown-item item_nav_name py-2" href="{{ url('/product') }}">
-                                    Tất cả sản phẩm <span class="float-end ms-5"><i class="fa-solid fa-layer-group"></i></span>
-                                </a>
-                            </li>
+                        <li class="nav_sub_cate">
+                            <a class="dropdown-item item_nav_name py-2" href="{{ url('/product') }}">
+                                Tất cả sản phẩm <span class="float-end ms-5"><i
+                                        class="fa-solid fa-layer-group"></i></span>
+                            </a>
+                        </li>
                         @foreach ($categories as $category)
                             <li class="nav_sub_cate">
-<<<<<<< HEAD
-                                <a class="dropdown-item item_nav_name py-2" href="#">{{ $category->name }}
-                                    @if ($category->subCategories->count() > 0)
-                                        <span class="float-end"><i class="fa-solid fa-chevron-right"></i></span>
-=======
-                                <a class="dropdown-item item_nav_name py-2" href="{{ url('/product/'.$category->slug) }}">
+                                <a class="dropdown-item item_nav_name py-2"
+                                    href="{{ url('/product/' . $category->slug) }}">
                                     {{ $category->name }}
                                     @if ($category->subCategories->count() > 0)
-                                    <span class="float-end ms-5"><i class="fa-solid fa-chevron-right"></i></span>
->>>>>>> 87bc705b597fa57551da49fbda6f91a8fb2e2a33
+                                        <span class="float-end ms-5"><i class="fa-solid fa-chevron-right"></i></span>
                                     @endif
                                 </a>
                                 @if ($category->subCategories->count() > 0)
                                     <ul class="bg-white dropdown-menu dropdown-submenu p-0">
                                         @foreach ($category->subCategories as $subCategory)
                                             <li class="list-group-item">
-                                                <a class="dropdown-item py-2 item_child_nav" href="{{ url('/product/'.$category->slug.'/'.$subCategory->slug) }}">
+                                                <a class="dropdown-item py-2 item_child_nav"
+                                                    href="{{ url('/product/' . $category->slug . '/' . $subCategory->slug) }}">
                                                     {{ $subCategory->name }}
                                                 </a>
                                             </li>
@@ -52,14 +53,12 @@
                     <a class="nav-link text-white" href="{{ url('/tin-tuc') }}">Tin tức</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2">
-                    <a class="nav-link text-white" href="{{ route("contact") }}">Liên hệ</a>
+                    <a class="nav-link text-white" href="{{ route('contact') }}">Liên hệ</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2">
-<<<<<<< HEAD
-                    <a class="nav-link text-white" href="{{ route('showPages', ['slug1' => 'chinh-sach','slug2' => 'chinh-sach-mua-hang']) }}">Chính Sách Mua Hàng</a>
-=======
-                    <a class="nav-link text-white" href="{{ url('/thong-tin/chinh-sach/chinh-sach-mua-hang') }}">Chính Sách Mua Hàng</a>
->>>>>>> 87bc705b597fa57551da49fbda6f91a8fb2e2a33
+                    <a class="nav-link text-white"
+                        href="{{ route('showPages', ['slug1' => 'chinh-sach', 'slug2' => 'chinh-sach-mua-hang']) }}">
+                        Chính Sách Mua Hàng</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2">
                     <a class="nav-link text-white" href="{{ url('/order') }}">Đơn Hàng Của Tôi</a>
@@ -82,7 +81,7 @@
     }
 
     /* Hiển thị dropdown menu con khi hover vào mục cha */
-    .nav-item:hover > .dropdown-menu {
+    .nav-item:hover>.dropdown-menu {
         display: block;
     }
 
@@ -92,7 +91,7 @@
     }
 
     /* Hiển thị dropdown submenu con khi hover vào mục cha */
-    .nav_sub_cate:hover > .dropdown-submenu {
+    .nav_sub_cate:hover>.dropdown-submenu {
         display: block;
     }
 
