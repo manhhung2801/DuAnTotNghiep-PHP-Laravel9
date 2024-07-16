@@ -17,14 +17,25 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-lg-0">
                     <li class="nav-item ms-5">
-
+                        <style>
+                            ul#result {
+                                position: absolute;
+                                z-index: 9999;
+                                background: #1b2d3c;
+                                width: 27.5%;
+                               
+                            }
+                        </style>
                         <div class="d-flex mt-1">
-                            <input class="form-control text-secondary text-opacity-50 input-search" id="tim_kiem"
-                                type="text" placeholder="Tìm Sản Phẩm..." name="search" autocomplete="off">
-                            {{-- <button class="btn" style="margin-left: -40px" type="submit"><i
-                                    class="fa-light fa-magnifying-glass fa-lg text-secondary text-opacity-75"></i></button> --}}
+                            <form action="{{ route('search') }}" method="GET" class="d-flex">
+                                <input class="form-control text-secondary text-opacity-50 input-search me-2"
+                                    id="timkiem" type="text" placeholder="Tìm Sản Phẩm..." name="search">
+                                <button class="btn" style="margin-left: -50px" type="submit"><i
+                                        class="fa-light fa-magnifying-glass fa-lg text-secondary text-opacity-75"></i></button>
+                            </form>
                         </div>
-                        <ul class="list-group" id="result" style="display:none"></ul>
+
+                        <ul class="list-group  " id="result" style="display:none "></ul>
                     </li>
                     <li class="nav-item ms-5 shadow bg-body bg-secondary bg-opacity-25 rounded-1" style="height: 50px;">
                         <p class="float-start pb-5 px-1">

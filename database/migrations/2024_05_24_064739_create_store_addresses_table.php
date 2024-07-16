@@ -23,7 +23,9 @@ return new class extends Migration
             $table->longText('description');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
-            $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('status')->default(0);
+            //1 là địa chỉ mặc định| 2 địa chỉ khác
+            $table->tinyInteger('pick_store')->default(2);
             $table->timestamps();
             $table->softDeletes();
         });

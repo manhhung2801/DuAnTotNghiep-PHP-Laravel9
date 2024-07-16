@@ -6,8 +6,8 @@
                     <a class="nav-link text-white" aria-current="page" href="/">Trang chủ</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2">
-                    <a class="nav-link text-white" href="#">Giới thiệu</a>
-                </li>
+                    <a class="nav-link text-white" href="{{ route('showPages', ['slug1' => 'gioi-thieu','slug2' => 'gioi-thieu']) }}">Giới thiệu</a>
+                </li>                
                 <li class="nav-item nav_item_cate px-2 dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="product-link">
                         Sản Phẩm
@@ -20,10 +20,16 @@
                             </li>
                         @foreach ($categories as $category)
                             <li class="nav_sub_cate">
+<<<<<<< HEAD
+                                <a class="dropdown-item item_nav_name py-2" href="#">{{ $category->name }}
+                                    @if ($category->subCategories->count() > 0)
+                                        <span class="float-end"><i class="fa-solid fa-chevron-right"></i></span>
+=======
                                 <a class="dropdown-item item_nav_name py-2" href="{{ url('/product/'.$category->slug) }}">
                                     {{ $category->name }}
                                     @if ($category->subCategories->count() > 0)
                                     <span class="float-end ms-5"><i class="fa-solid fa-chevron-right"></i></span>
+>>>>>>> 87bc705b597fa57551da49fbda6f91a8fb2e2a33
                                     @endif
                                 </a>
                                 @if ($category->subCategories->count() > 0)
@@ -49,7 +55,11 @@
                     <a class="nav-link text-white" href="{{ route("contact") }}">Liên hệ</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2">
+<<<<<<< HEAD
+                    <a class="nav-link text-white" href="{{ route('showPages', ['slug1' => 'chinh-sach','slug2' => 'chinh-sach-mua-hang']) }}">Chính Sách Mua Hàng</a>
+=======
                     <a class="nav-link text-white" href="{{ url('/thong-tin/chinh-sach/chinh-sach-mua-hang') }}">Chính Sách Mua Hàng</a>
+>>>>>>> 87bc705b597fa57551da49fbda6f91a8fb2e2a33
                 </li>
                 <li class="nav-item nav_item_cate px-2">
                     <a class="nav-link text-white" href="{{ url('/order') }}">Đơn Hàng Của Tôi</a>

@@ -610,7 +610,8 @@ label.luu_y {
 
 /* ram */
 
-.selected-label {
+.ram-option.selected {
+    background-color: black;
     border: 1px solid black;
 }
 

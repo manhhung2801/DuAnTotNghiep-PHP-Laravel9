@@ -26,6 +26,7 @@ class StoreAdressSeeder extends Seeder
             'phone' => '0905263042',
             'description'=>'Hệ thống cửa hàng CyberMart chuyên bán lẻ điện thoại, máy tính laptop, smartwatch, smarthome, phụ kiện chính hãng - Giá tốt, giao miễn phí.',
             'status' => 1,
+            'pick_store' => 1,
             'created_at' => now(),
         ],[
             'store_name' => 'Công ty 2 thành viên',
@@ -37,6 +38,7 @@ class StoreAdressSeeder extends Seeder
             'phone' => '0905263042',
             'description'=> 'cdfvd',
             'status' => 0,
+            'pick_store' => 2,
             'created_at' => now(),
         ],[
             'store_name' => 'Công ty 3 thành viên',
@@ -48,6 +50,7 @@ class StoreAdressSeeder extends Seeder
             'phone' => '0905263042',
             'description'=> 'fvg dfd',
             'status' => 0,
+            'pick_store' => 2,
             'created_at' => now(),
         ],[
             'store_name' => 'Công ty 4 thành viên',
@@ -59,6 +62,7 @@ class StoreAdressSeeder extends Seeder
             'phone' => '0905263042',
             'description'=> 'fvds',
             'status' => 0,
+            'pick_store' => 2,
             'created_at' => now(),
         ],[
             'store_name' => 'Công ty 5 thành viên',
@@ -70,6 +74,7 @@ class StoreAdressSeeder extends Seeder
             'phone' => '0905263042',
             'description'=> 'dvfbdcs',
             'status' => 0,
+            'pick_store' => 2,
             'created_at' => now(),
         ]
     ]);
