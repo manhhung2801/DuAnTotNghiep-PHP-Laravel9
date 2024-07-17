@@ -71,6 +71,7 @@ class CheckoutController extends Controller
                 $order->payment_method = $request->payment_method;
                 $order->payment_status = $request->payment_method;
                 $order->shipping_method = trim($request->shipping_method);
+                $order->order_status = 0;
                 $order->coupon = trim($request->coupon);
                 $order->user_note = trim($request->user_note);
                 $order->user_id = \Auth::user()->id;
