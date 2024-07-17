@@ -49,9 +49,11 @@ class CartController extends Controller
                 $getCart = \Cart::getContent();
                 foreach ($getCart as $item) {
                     // lấy số lượng trong cart + với quatity thêm vào check với qty của product
-                    $qtyAdd = $item->quantity + $qtyProduct;
-                    if ($product->qty <  $qtyAdd) {
-                        return response()->json(['status' => false, 'message' => 'Trong kho không còn đủ sản phẩm!']);
+                    if ($product->id == $item->id) {
+                        $qtyAdd = $item->quantity + $qtyProduct;
+                        if ($product->qty <  $qtyAdd) {
+                            return response()->json(['status' => false, 'message' => 'Trong kho không còn đủ sản phẩm!']);
+                        }
                     }
                 }
 
