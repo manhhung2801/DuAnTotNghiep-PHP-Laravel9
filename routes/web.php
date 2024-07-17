@@ -91,8 +91,5 @@ Route::resource('order', OrderController::class)->middleware('checkLogin');
 /** các trang thông tin */
 Route::get('information/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");
 
-/** trang 404  */
-Route::get("/page-not-found", [ErrorController::class,'index'])->name("page-not-found");
-
 /** trang search  */
 Route::get("/search", [ProductController::class,'search'])->name("search");

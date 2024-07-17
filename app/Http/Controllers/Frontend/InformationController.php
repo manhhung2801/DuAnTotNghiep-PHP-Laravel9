@@ -21,7 +21,7 @@ class InformationController extends Controller
                 // Check nếu không có $slug1 thì thoát ra trang 404
                 $checkedInformation = Information::where("slug", $slug1)->first();
                 if (!$checkedInformation) {
-                    return redirect()->route('page-not-found');
+                    return view(404);
                 }
 
                 // Tìm trang có $slug2 bên dưới thông tin tìm thấy
@@ -30,7 +30,7 @@ class InformationController extends Controller
                     ->first();
 
                 if (!$informationDetail) {
-                    return redirect()->route('page-not-found');
+                    return view(404);
                 }
 
                 return view("frontend.information.index", [
@@ -40,10 +40,10 @@ class InformationController extends Controller
                     'checkedInformation' => $checkedInformation->id,
                 ]);
             } else {
-                return redirect()->route('page-not-found');
+                return view(404);
             }
         } catch (\Exception $e) {
-            return redirect()->route('page-not-found');
+            return view(404);
         }
     }
 }
