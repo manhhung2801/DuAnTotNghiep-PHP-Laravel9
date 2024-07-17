@@ -39,7 +39,6 @@
                             icon: "success",
                             title: data.message
                         });
-                        console.log(data.abc);
                         $('.cart-count').text(data.cart_count);
                     }
                     if (data.status == false) {

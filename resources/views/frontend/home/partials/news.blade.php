@@ -11,9 +11,9 @@
                             class="list-group-item">
                             <div class="card border-0">
                                 <div class="news_image">
-                                    <img width="400" height="200" src="{{ asset('uploads/post/' . $post->image) }}" class=""
+                                    <img width="400" height="200" src="{{ asset('uploads/post/' . $post->image) }}" class="object-fit-cover"
                                         alt="{{ $post->image }}">
-                                </div>ss
+                                </div>
                                 <div class="card-body px-3">
                                     <h3 class="news-title line-clamp line-clamp-2 fw-semibold">{{ $post->title }}</h3>
                                     <p class="news-desc line-clamp line-clamp-3 mb-1">{{ $post->description }}</p>

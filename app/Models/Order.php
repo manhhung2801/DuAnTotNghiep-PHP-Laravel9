@@ -42,7 +42,7 @@ class Order extends Model
         return self::findOrFail($id);
     }
     static function getOrderAll() {
-        return self::orderBy('id', 'desc');
+        return self::query();
     }
 
 

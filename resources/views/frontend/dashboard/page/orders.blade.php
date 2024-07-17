@@ -67,24 +67,40 @@
                                     <td>
                                         <p class="fw-normal mb-1">{{ $order->user_note }}</p>
                                     </td>
+
+
                                     <td>
-                                        @if ($order->order_status == 0)
-                                            <strong>Chờ xác nhận</strong>
+                                        {{-- Nhận tại cữa hàng --}}
+                                        @if ($order->order_status == -1)
+                                            <strong class="text-danger">Đã hủy</strong>
+                                        @elseif ($order->shipping_method == 0)
+                                            @if ($order->order_status == 0)
+                                                <strong>Đang xử lý</strong>
+                                                <div class="action-cancel">
+                                                    <input type="hidden" value="{{ $order->id }}" name="order_id">
+                                                    <button id="btn-cancel-order" type="button"
+                                                        data-url="{{ route('order.update', $order->id) }}"
+                                                        class="btn btn-outline-danger btn-sm">Hủy đơn hàng</button>
+                                                </div>
+                                            @elseif ($order->order_status == 91)
+                                                <strong class="">Đã tiếp nhận</strong>
+                                            @elseif ($order->order_status == 92)
+                                                <strong class="text-success">Đã hoàn thành</strong>
+                                            @endif
+                                            <p class="pt-2" style="font-size: 10px"><em>{{ $order->created_at }}</em></p>
+                                        @else
+                                            <strong>Đang xử lý</strong>
                                             <div class="action-cancel">
                                                 <input type="hidden" value="{{ $order->id }}" name="order_id">
                                                 <button id="btn-cancel-order" type="button"
                                                     data-url="{{ route('order.update', $order->id) }}"
                                                     class="btn btn-outline-danger btn-sm">Hủy đơn hàng</button>
                                             </div>
-                                        @elseif ($order->order_status == 1)
-                                            <strong class="">Đang vận chuyển</strong>
-                                        @elseif ($order->order_status == 2)
-                                            <strong class="text-success">Đã hoàn thành</strong>
-                                        @elseif ($order->order_status == 3)
-                                            <strong class="text-danger">Đã Hủy</strong>
                                         @endif
-                                        <p class="pt-2" style="font-size: 10px"><em>{{ $order->created_at }}</em></p>
                                     </td>
+
+
+
                                     <td><strong>{{ number_format($order->total, 0, '', '.') }} VNĐ</strong></td>
                                     <td>
                                         <a href="{{ route('order.show', $order->id) }}"
