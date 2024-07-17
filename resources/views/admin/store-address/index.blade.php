@@ -34,15 +34,18 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('admin.storeAddress.index') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
+                    <a href="{{ route('admin.storeAddress.index') }}" class="me-2 btn btn-success float-end ms-2"><i
+                            class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
                 </div>
-                <a href="{{ route('admin.storeAddress.trash-list') }}" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can fs-6"></i>Thùng rác</a>
-                <a href="{{ route('admin.storeAddress.create') }}" class="btn btn-primary float-end me-2"><i class="fa-solid fa-plus text-light fs-6"></i>Thêm mới</a>
+                <a href="{{ route('admin.storeAddress.trash-list') }}" class="btn btn-danger float-end"><i
+                        class="fa-solid fa-trash-can fs-6"></i>Thùng rác</a>
+                <a href="{{ route('admin.storeAddress.create') }}" class="btn btn-primary float-end me-2"><i
+                        class="fa-solid fa-plus text-light fs-6"></i>Thêm mới</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered " style="width:100%">
-                        <thead >
+                        <thead>
                             <tr class="text-center">
                                 <th>Stt</th>
                                 <th>Tên cửa hàng</th>
@@ -53,46 +56,52 @@
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
                                 <th>Trạng thái</th>
+                                <th>Chọn cửa hàng</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
-                        <tbody >
-                            @forelse ( $storeAddress as $storeAddress )
-                            <tr>
-                                <td>{{ $storeAddress->id }}</td>
-                                <td>{{ $storeAddress->store_name }}</td>
-                                <td>{{ $storeAddress->address }}</td>
-                                <td>{{ $storeAddress->ward }}</td>
-                                <td>{{ $storeAddress->district }}</td>
-                                <td>{{ $storeAddress->province }}</td>
-                                <td>{{ $storeAddress->email }}</td>
-                                <td>{{ $storeAddress->phone }}</td>
-                                <td>
-                                    <div class="form-check form-switch form-check-success">
-                                        @if ($storeAddress->status == 1)
-                                            <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                data-id="{{ $storeAddress->id }}" id="flexSwitchCheckSuccess" checked>
-                                        @elseif($storeAddress->status == 0)
-                                            <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                data-id="{{ $storeAddress->id }}" id="flexSwitchCheckSuccess">
-                                        @endif
-                                    </div>
-                                </td>
-                                <td class="text-end">
-                                    <a class="btn btn-primary"
-                                        href="{{ route('admin.storeAddress.edit', $storeAddress->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Sửa</a>
-                                    <a class="btn btn-danger delete-item"
-                                        href="{{ route('admin.storeAddress.destroy', $storeAddress->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xoá</a>
-                                </td>
-                            </tr>  
+                        <tbody>
+                            @forelse ($storeAddress as $storeAddress)
+                                <tr>
+                                    <td>{{ $storeAddress->id }}</td>
+                                    <td>{{ $storeAddress->store_name }}</td>
+                                    <td>{{ $storeAddress->address }}</td>
+                                    <td>{{ $storeAddress->ward }}</td>
+                                    <td>{{ $storeAddress->district }}</td>
+                                    <td>{{ $storeAddress->province }}</td>
+                                    <td>{{ $storeAddress->email }}</td>
+                                    <td>{{ $storeAddress->phone }}</td>
+                                    <td>
+                                        <div class="form-check form-switch form-check-success">
+                                            @if ($storeAddress->status == 1)
+                                                <input class="form-check-input change-status" type="checkbox" role="switch"
+                                                    data-id="{{ $storeAddress->id }}" id="flexSwitchCheckSuccess" checked>
+                                            @elseif($storeAddress->status == 0)
+                                                <input class="form-check-input change-status" type="checkbox" role="switch"
+                                                    data-id="{{ $storeAddress->id }}" id="flexSwitchCheckSuccess">
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{ $storeAddress->pick_store == 1 ? 'Mặc định' : 'Khác' }}
+                                    </td>
+                                    <td class="text-end">
+                                        <a class="btn btn-primary"
+                                            href="{{ route('admin.storeAddress.edit', $storeAddress->id) }}"><i
+                                                class="fa-solid fa-pen fs-6 text-light"></i>Sửa</a>
+                                        <a class="btn btn-danger delete-item"
+                                            href="{{ route('admin.storeAddress.destroy', $storeAddress->id) }}"><i
+                                                class="fa-solid fa-trash fs-6"></i>Xoá</a>
+                                    </td>
+                                </tr>
                             @empty
-                            <tr>
-                                <td colspan="12">Địa chỉ cửa hàng không có dữ liệu</td>
-                            </tr>
+                                <tr>
+                                    <td colspan="12">Địa chỉ cửa hàng không có dữ liệu</td>
+                                </tr>
                             @endforelse
                         </tbody>
                     </table>
-                  
+
                     {{-- {{ $storeAddress->links() }} --}}
                 </div>
             </div>

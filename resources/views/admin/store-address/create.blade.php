@@ -26,12 +26,12 @@
             <div class="card-body">
                 <form class="row g-3" action="{{ route('admin.storeAddress.store') }}" method="POST">
                     @csrf
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="input1" class="form-label">Tên cửa hàng</label>
                         <input type="text" class="form-control" id="input1" name="store_name"
                             value="{{ old('store_name') }}">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="input8" class="form-label">Email</label>
                         <input type="email" class="form-control" id="input8" name="email"
                             value="{{ old('email') }}">
@@ -43,19 +43,19 @@
                     </div>
                     <div class="col-md-4">
                         <label for="provinces" class="form-label">Tỉnh, Thành phố</label>
-                        <select id="provinces" name="provinces" class="form-control" required>
+                        <select id="provinces" name="province" class="form-control" required>
                             <option value="">Chọn tỉnh thành</option>
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="districts" class="form-label">Quận, Huyện</label>
-                        <select id="districts" name="districts" class="form-control" required>
+                        <select id="districts" name="district" class="form-control" required>
                             <option value="">Chọn quận huyện</option>
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="wards" class="form-label">Phường, Xã</label>
-                        <select id="wards" name="wards" class="form-control" required>
+                        <select id="wards" name="ward" class="form-control" required>
                             <option value="">Chọn xã phường</option>
                         </select>
                     </div>
@@ -67,13 +67,20 @@
                     <div class="col-md-4">
                         <label for="input7" class="form-label">Trạng thái</label>
                         <select id="input7" class="form-select" name="status">
-                            <option selected="" value="1">Đang hoạt động</option>
                             <option value="0">Ngừng hoạt động</option>
+                            <option value="1">Đang hoạt động</option>        
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="input8" class="form-label">Chọn cửa hàng</label>
+                        <select id="input8" class="form-select" name="pick_store">
+                            <option value="2">Khác</option>
+                            <option value="1">Mặc định</option>
                         </select>
                     </div>
                     <div class="col-lg-12 mb-3">
-                        <label for="input8" class="form-label">Mô tả</label>
-                        <textarea class="form-control" name="description" id="input8" value="{{ old('description') }}"></textarea>
+                        <label for="input9" class="form-label">Mô tả</label>
+                        <textarea class="form-control" name="description" id="input9" value="{{ old('description') }}"></textarea>
                     </div>
                     <div class="col-md-2">
                         <div class="d-grid align-items-center gap-3">
@@ -86,4 +93,3 @@
     </div>
 
 @endsection
-

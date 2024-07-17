@@ -41,7 +41,7 @@ class ProductController extends Controller
 
         // đường dẫn tới public json_file
         $productsJson = $list->toJson();
-        $path = public_path("json_file/");
+        $path = public_path("json/");
         if (!is_dir($path)) {
             mkdir($path, 0777, true);
         }
