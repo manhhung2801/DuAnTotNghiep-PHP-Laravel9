@@ -46,20 +46,20 @@
                     <div class="col-md-4">
                         <label for="provinces" class="form-label">Tỉnh, Thành phố</label>
                         <select id="provinces" name="province" class="form-control">
-                            <option value="{{ $storeAddress->id }}">{{ $storeAddress->province }}</option>
+                            <option value="{{ $storeAddress->province }}">{{ $storeAddress->province }}</option>
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="districts" class="form-label">Quận, Huyện</label>
                         <select id="districts" name="district" class="form-control">
-                            <option value="{{ $storeAddress->id }}">{{ $storeAddress->district }}</option>
+                            <option value="{{ $storeAddress->district }}">{{ $storeAddress->district }}</option>
                         </select>
                     </div>
 
                     <div class="col-md-4">
                         <label for="wards" class="form-label">Phường, Xã</label>
                         <select id="wards" name="ward" class="form-control">
-                            <option value="{{ $storeAddress->id }}">{{ $storeAddress->ward }}</option>
+                            <option value="{{ $storeAddress->ward }}">{{ $storeAddress->ward }}</option>
                         </select>
                     </div>
 
@@ -78,10 +78,10 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <label for="input9" class="form-label">Chọn cửa hàng</label>
+                        <label for="input9" class="form-label">Địa chỉ lấy hàng</label>
                         <select id="input9" class="form-select" name="pick_store">
-                            <option {{ $storeAddress->pick_store == 1 ? 'selected' : '' }} value="1">Mặc định</option>
-                            <option {{ $storeAddress->pick_store == 2 ? 'selected' : '' }} value="0">Khác</option>
+                            <option {{ $storeAddress->pick_store == 1 ? 'selected' : '' }} value="1">Lấy hàng</option>
+                            <option {{ $storeAddress->pick_store == 0 ? 'selected' : '' }} value="0">Không</option>
                         </select>
                     </div>
                     <div class="col-md-12 ">

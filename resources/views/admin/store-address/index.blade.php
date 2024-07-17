@@ -56,7 +56,7 @@
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
                                 <th>Trạng thái</th>
-                                <th>Chọn cửa hàng</th>
+                                <th>Địa chỉ lấy hàng</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
@@ -83,7 +83,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        {{ $storeAddress->pick_store == 1 ? 'Mặc định' : 'Khác' }}
+                                        {{ $storeAddress->pick_store == 1 ? 'Lấy hàng' : 'Không' }}
                                     </td>
                                     <td class="text-end">
                                         <a class="btn btn-primary"
