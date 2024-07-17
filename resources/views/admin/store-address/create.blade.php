@@ -68,14 +68,14 @@
                         <label for="input7" class="form-label">Trạng thái</label>
                         <select id="input7" class="form-select" name="status">
                             <option value="0">Ngừng hoạt động</option>
-                            <option value="1">Đang hoạt động</option>        
+                            <option value="1">Đang hoạt động</option>
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <label for="input8" class="form-label">Chọn cửa hàng</label>
+                        <label for="input8" class="form-label">Địa chỉ lấy hàng</label>
                         <select id="input8" class="form-select" name="pick_store">
-                            <option value="2">Khác</option>
-                            <option value="1">Mặc định</option>
+                            <option value="0">Không</option>
+                            <option value="1">Lấy hàng</option>
                         </select>
                     </div>
                     <div class="col-lg-12 mb-3">

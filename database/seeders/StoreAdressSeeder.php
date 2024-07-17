@@ -38,7 +38,7 @@ class StoreAdressSeeder extends Seeder
             'phone' => '0905263042',
             'description'=> 'cdfvd',
             'status' => 0,
-            'pick_store' => 2,
+            'pick_store' => 0,
             'created_at' => now(),
         ],[
             'store_name' => 'Công ty 3 thành viên',
@@ -50,7 +50,7 @@ class StoreAdressSeeder extends Seeder
             'phone' => '0905263042',
             'description'=> 'fvg dfd',
             'status' => 0,
-            'pick_store' => 2,
+            'pick_store' => 0,
             'created_at' => now(),
         ],[
             'store_name' => 'Công ty 4 thành viên',
@@ -62,7 +62,7 @@ class StoreAdressSeeder extends Seeder
             'phone' => '0905263042',
             'description'=> 'fvds',
             'status' => 0,
-            'pick_store' => 2,
+            'pick_store' => 0,
             'created_at' => now(),
         ],[
             'store_name' => 'Công ty 5 thành viên',
@@ -74,7 +74,7 @@ class StoreAdressSeeder extends Seeder
             'phone' => '0905263042',
             'description'=> 'dvfbdcs',
             'status' => 0,
-            'pick_store' => 2,
+            'pick_store' => 0,
             'created_at' => now(),
         ]
     ]);

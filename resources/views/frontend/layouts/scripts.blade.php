@@ -68,25 +68,25 @@
     }
 </script>
 <script>
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     var showMoreBtn = document.querySelector('.btn--view-more');
-    //     var productReviewContent = document.querySelector('.ba-text-fpt.has-height');
-    //     var moreText = document.querySelector('.more-text');
-    //     var lessText = document.querySelector('.less-text');
+    document.addEventListener('DOMContentLoaded', function() {
+        var showMoreBtn = document.querySelector('.btn--view-more');
+        var productReviewContent = document.querySelector('.ba-text-fpt.has-height');
+        var moreText = document.querySelector('.more-text');
+        var lessText = document.querySelector('.less-text');
 
-    //     showMoreBtn.addEventListener('click', function() {
-    //         if (productReviewContent.style.height === '360px' || productReviewContent.style.height ===
-    //             '') {
-    //             productReviewContent.style.height = 'auto';
-    //             moreText.classList.add('d-none');
-    //             lessText.classList.remove('d-none');
-    //         } else {
-    //             productReviewContent.style.height = '360px';
-    //             moreText.classList.remove('d-none');
-    //             lessText.classList.add('d-none');
-    //         }
-    //     });
-    // });
+        showMoreBtn.addEventListener('click', function() {
+            if (productReviewContent.style.height === '360px' || productReviewContent.style.height ===
+                '') {
+                productReviewContent.style.height = 'auto';
+                moreText.classList.add('d-none');
+                lessText.classList.remove('d-none');
+            } else {
+                productReviewContent.style.height = '360px';
+                moreText.classList.remove('d-none');
+                lessText.classList.add('d-none');
+            }
+        });
+    });
 </script>
 <script>
     //
@@ -234,7 +234,8 @@
                                     currency: 'VND'
                                 }).replace(/\u200B/g, '') +
                             '</p><p class="text-decoration-line-through text-danger">' +
-                            parseFloat(product.price).toLocaleString(//chuyển đổi số thành chuỗi ngôn ngữ vn và định dạng tiền tệ
+                            parseFloat(product.price)
+                            .toLocaleString( //chuyển đổi số thành chuỗi ngôn ngữ vn và định dạng tiền tệ
                                 'vi-VN', {
                                     style: 'currency',
                                     currency: 'VND'

@@ -31,7 +31,7 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        $list = Product::get();
+
         $getProduct = Product::getProduct();
         if (!empty(Request()->get('keyword'))) {
             $keyword = trim(Request()->get('keyword'));
@@ -39,15 +39,16 @@ class ProductController extends Controller
         }
         $getProduct = $getProduct->paginate(15);
 
-        // đường dẫn tới public json_file
-        $productsJson = $list->toJson();
-        $path = public_path("json/");
-        if (!is_dir($path)) {
-            mkdir($path, 0777, true);
-        }
-        File::put($path . 'products.json', $productsJson);
-
-        return view('admin.product.index', compact('getProduct','list'));
+        // $list = Product::get();
+        // // đường dẫn tới public json_file
+        // $productsJson = $list->toJson();
+        // $path = public_path("json/");
+        // if (!is_dir($path)) {
+        //     mkdir($path, 0777, true);
+        // }
+        // File::put($path . 'products.json', $productsJson);
+        // return view('admin.product.index', compact('getProduct','list'));
+        return view('admin.product.index', compact('getProduct'));
     }
 
     public function create()
