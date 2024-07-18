@@ -76,7 +76,7 @@
                 <div class="col mt-3">
                     <div class="row">
                         <div class="col-lg-6">
-                            <img src="{{ asset('uploads/post/' . $postsNews->image) }}" alt="" class="w-100" style="height: 150px;">
+                            <img src="{{ asset('uploads/post/' . $postsNews->image) }}" alt="" class="w-100" style="height: 150px; object-fit:cover;">
                         </div>
                         <div class="col-lg-6">
                             <a href="{{route('news.details', [ 'slugs_cate' =>$postsNews->Post_categories->slug, 'slugs' =>$postsNews->slug ])}}" style="
