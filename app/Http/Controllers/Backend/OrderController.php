@@ -24,7 +24,8 @@ class OrderController extends Controller
             $sort_price = trim(Request()->get('sort_price'));
             if ($sort_price === 'asc' || $sort_price === 'desc') {
                 $getOrders->orderBy('total', $sort_price);
-            } else {
+            } 
+            else {
                 return view('404');
             }
         }
