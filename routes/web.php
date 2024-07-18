@@ -39,6 +39,7 @@ Route::get("/", [HomeController::class, 'index'])->name("home");
 Route::get('/dia-chi', [AddressController::class,'index'])->name('address');
 /** End Addresss */
 Route::get('/lien-he', [ContactController::class,'index'])->name('contact');
+Route::post('/lien-he/gui', [ContactController::class,'contact'])->name('contactContact');
 
 
 /** User Dashboard */

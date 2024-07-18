@@ -194,6 +194,7 @@ class CouponsController extends Controller
 
         try {
             Coupons::findOrFail($id)->delete();
+            
             return response(['status' => 'success', 'Deleted Successfully!']);
         } catch (ValidationException $e) {
             toastr()->error('Lỗi: ' . $e);
