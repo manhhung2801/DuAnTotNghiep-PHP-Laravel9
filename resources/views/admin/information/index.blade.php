@@ -25,16 +25,71 @@
                     <div class="form-search ms-2">
                         <form action="" method="get">
                             <div class="input-group">
-                                <input type="text" value="{{ Request::get('keyword') }}" name="keyword" class="form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm">
-                                <button class="btn btn-outline-primary rounded-end-5" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <input type="text" value="{{ Request::get('keyword') }}" name="keyword"
+                                    class="form-control rounded-start-5 focus-ring focus-ring-light" placeholder="Tìm kiếm">
+                                <button class="btn btn-outline-primary rounded-end-5" type="submit"><i
+                                        class="fa-solid fa-magnifying-glass"></i></button>
                             </div>
                         </form>
                     </div>
-                    <a href="{{ route("admin.information.index") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Làm Mới</a>
+                    <a href="{{ route('admin.information.index') }}" class="me-2 btn btn-success float-end ms-2"><i
+                            class="fa-solid fa-rotate-left fs-6"></i>Làm Mới</a>
                 </div>
-                <a href="{{ route("admin.information.create") }}" class="me-2 btn btn-primary float-end"><i class="fa-solid fa-plus text-light fs-6"></i>Thêm Mới Danh Mục</a>
+                <a href="{{ route('admin.information.create') }}" class="me-2 btn btn-primary float-end"><i
+                        class="fa-solid fa-plus text-light fs-6"></i>Thêm Mới Danh Mục</a>
             </div>
             <div class="card-body">
+                <form action="" method="get">
+                    <div class="row mb-3">
+                        <div class="col-1 mt-1 ">
+                            <label for="" class="bg-primary p-1 border rounded-1"><span class="text-white">Bộ
+                                    lọc</span> </label>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" name="sort_name">
+                                <option value>Tên</option>
+                                <option {{ Request::get('sort_name') == 'asc' ? 'selected' : '' }} value="asc">Tên A-Z
+                                </option>
+                                <option {{ Request::get('sort_name') == 'desc' ? 'selected' : '' }} value="desc">Tên Z-A
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" name="sort_rank">
+                                <option value>Thứ hạng</option>
+                                <option {{ Request::get('sort_rank') == 'asc' ? 'selected' : '' }} value="asc">Thứ hạng
+                                    tăng
+                                </option>
+                                <option {{ Request::get('sort_rank') == 'desc' ? 'selected' : '' }} value="desc">Thứ hạng
+                                    giảm
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" name="check_status">
+                                <option value>Trạng thái</option>
+                                <option {{ Request::get('check_status') == 1 ? 'selected' : '' }} value="1">Đang hoạt
+                                    động
+                                </option>
+                                <option {{ Request::get('check_status') == 0 ? 'selected' : '' }} value="0">Không hoạt
+                                    động
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" name="sort_date">
+                                <option value>Ngày tạo</option>
+                                <option {{ Request::get('sort_date') == 'desc' ? 'selected' : '' }} value="desc">Mới nhất
+                                </option>
+                                <option {{ Request::get('sort_date') == 'asc' ? 'selected' : '' }} value="asc">Cũ nhất
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-1">
+                            <button class="btn btn-primary">Lọc</button>
+                        </div>
+                    </div>
+                </form>
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
@@ -48,31 +103,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ( $information as $infor )
-                            <tr>
-                                <td>{{ $infor->id }}</td>
-                                <td>{{ $infor->name }}</td>
-                                <td>{{ $infor->slug }}</td>
-                                <td>
-                                    {{ $infor->rank }}
-                                </td>
-                                <td>
-                                    <div class="form-check form-switch form-check-success">
-                                        @if($infor->status == 1)
-                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $infor->id }}" id="flexSwitchCheckSuccess" checked>
-                                        @elseif($infor->status == 0)
-                                            <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $infor->id }}" id="flexSwitchCheckSuccess">
-                                        @endif
-                                    </div>
-                                <td class="text-end">
-                                    <a class="btn btn-primary" href="{{ route('admin.information.edit', $infor->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
-                                    <a class="btn btn-danger delete-item" href="{{ route("admin.information.destroy", $infor->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>
-                                </td>
-                            </tr>
+                            @forelse ($information as $infor)
+                                <tr>
+                                    <td>{{ $infor->id }}</td>
+                                    <td>{{ $infor->name }}</td>
+                                    <td>{{ $infor->slug }}</td>
+                                    <td>
+                                        {{ $infor->rank }}
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-switch form-check-success">
+                                            @if ($infor->status == 1)
+                                                <input class="form-check-input change-status" type="checkbox" role="switch"
+                                                    data-id="{{ $infor->id }}" id="flexSwitchCheckSuccess" checked>
+                                            @elseif($infor->status == 0)
+                                                <input class="form-check-input change-status" type="checkbox" role="switch"
+                                                    data-id="{{ $infor->id }}" id="flexSwitchCheckSuccess">
+                                            @endif
+                                        </div>
+                                    <td class="text-end">
+                                        <a class="btn btn-primary"
+                                            href="{{ route('admin.information.edit', $infor->id) }}"><i
+                                                class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
+                                        <a class="btn btn-danger delete-item"
+                                            href="{{ route('admin.information.destroy', $infor->id) }}"><i
+                                                class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>
+                                    </td>
+                                </tr>
                             @empty
-                            <tr>
-                                <td colspan="12">Trang thông tin không có dữ liệu</td>
-                            </tr>
+                                <tr>
+                                    <td colspan="12">Trang thông tin không có dữ liệu</td>
+                                </tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -84,27 +145,27 @@
 @endsection
 
 @push('scripts')
-<script>
-    $(document).ready(function() {
-        $('body').off('click', '.change-status').on('click', '.change-status', function() {
-            let isChecked = $(this).is(':checked');
-            let id = $(this).data('id');
+    <script>
+        $(document).ready(function() {
+            $('body').off('click', '.change-status').on('click', '.change-status', function() {
+                let isChecked = $(this).is(':checked');
+                let id = $(this).data('id');
 
-            $.ajax({
-                method: "PUT",
-                url: "{{route('admin.information.change-status')}}",
-                data: {
-                    status: isChecked,
-                    id: id
-                },
-                success: function (data) {
-                    toastr.success(data.message);
-                },
-                error: function (xhr, status, error) {
-                    console.log(error);
-                }
-            });
-        })
-    });
-</script>
+                $.ajax({
+                    method: "PUT",
+                    url: "{{ route('admin.information.change-status') }}",
+                    data: {
+                        status: isChecked,
+                        id: id
+                    },
+                    success: function(data) {
+                        toastr.success(data.message);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            })
+        });
+    </script>
 @endpush

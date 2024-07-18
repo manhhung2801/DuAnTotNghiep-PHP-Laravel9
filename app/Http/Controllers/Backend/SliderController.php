@@ -13,15 +13,40 @@ class SliderController extends Controller
 
     public function index(Request $request)
     {
-        $sliders = Slider::latest();
+        $sliders = Slider::query();
+        $sortBy = $request->query('sort');
         // search tìm kiếm theo type
         if (!empty($request->get('keyword'))) {
             $sliders = Slider::where('type', 'like', '%' . $request->get('keyword') . '%')->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
         }
-        $sliders = $sliders->paginate(15);
 
+        // Sắp xếp theo giá tăng hoặc giảm
+        if ($request->filled('sort_price')) {
+            $sort_price = $request->get('sort_price');
+            if ($sort_price === 'asc' || $sort_price === 'desc') {
+                $sliders->orderBy('starting_price', $sort_price);
+            }
+        }
+        // Sắp xếp theo trạng thái
+        if ($request->filled('check_status')) {
+            $check_status = $request->get('check_status');
+            if ($check_status == 1) {
+                $sliders->where('status', $check_status);
+            } elseif ($check_status == 0) {
+                $sliders->where('status', $check_status);
+            }
+        }
+
+        // Sắp xếp theo ngày tạo
+        if ($request->filled('sort_date')) {
+            $sort_date = $request->get('sort_date');
+            if ($sort_date === 'asc' || $sort_date === 'desc') {
+                $sliders->orderBy('created_at', $sort_date);
+            }
+        }
+
+        $sliders = $sliders->paginate(15);
         return view("admin.slider.index", compact('sliders'));
-        // 
     }
     public function create()
     {

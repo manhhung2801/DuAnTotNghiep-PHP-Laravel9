@@ -35,9 +35,9 @@ use App\Models\Information;
 Route::get("/", [HomeController::class, 'index'])->name("home");
 /** Home */
 /** Addresss */
-Route::get('/dia-chi', [AddressController::class,'index'])->name('address');
+Route::get('/address', [AddressController::class, 'index'])->name('address');
 /** End Addresss */
-Route::get('/lien-he', [ContactController::class,'index'])->name('contact');
+Route::get('/lien-he', [ContactController::class, 'index'])->name('contact');
 
 
 /** User Dashboard */
@@ -69,7 +69,7 @@ Route::get('giohang', [GioHangController::class, 'index']);
 // Route::get('product/',[ProductController::class, 'index']);
 // Route::get('product/{slug?}',[ProductController::class, 'getSlug']);
 
-Route::get('product/{cat?}/{sub?}/{child?}/{slug?}',[ProductController::class, 'getWhereParam']);
+Route::get('product/{cat?}/{sub?}/{child?}/{slug?}', [ProductController::class, 'getWhereParam']);
 // http://127.0.0.1:8000/dien-thoai-tablet/iphone/iphone-15-series/iphone-lo
 
 
@@ -92,4 +92,8 @@ Route::resource('order', OrderController::class)->middleware('checkLogin');
 Route::get('information/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");
 
 /** trang search  */
-Route::get("/search", [ProductController::class,'search'])->name("search");
+Route::get("/search", [ProductController::class, 'search'])->name("search");
+
+Route::fallback(function () {
+    return view("404");
+});

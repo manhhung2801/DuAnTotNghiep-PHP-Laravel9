@@ -11,18 +11,51 @@ use Illuminate\Support\Str;
 
 class InformationController extends Controller
 {
-   
+
     public function index(Request $request)
     {
         $information = Information::query(); // Start with a clean query builder
 
-        if(!empty($request->get('keyword'))) {
+        if (!empty($request->get('keyword'))) {
 
-            $information = $information->where('name', 'like', '%'.$request->get('keyword').'%');
+            $information = $information->where('name', 'like', '%' . $request->get('keyword') . '%');
         }
 
-       // Order by rank in ascending order
-        $information = $information->orderBy('rank', 'asc');
+        // Sắp xếp theo tên a-z hoặc tên z-a 
+        if ($request->filled('sort_name')) {
+            $sort_name = $request->get('sort_name');
+            if ($sort_name === 'asc' || $sort_name === 'desc') {
+                $information->orderBy('name', $sort_name);
+            }
+        }
+        // Sắp xếp theo rank tăng hoặc giảm 
+        if ($request->filled('sort_rank')) {
+            $sort_rank = $request->get('sort_rank');
+            if ($sort_rank === 'asc' || $sort_rank === 'desc') {
+                $information->orderBy('rank', $sort_rank);
+            }
+        }
+
+        // Sắp xếp theo trạng thái
+        if ($request->filled('check_status')) {
+            $check_status = $request->get('check_status');
+            if ($check_status == 1) {
+                $information->where('status', $check_status);
+            } elseif ($check_status == 0) {
+                $information->where('status', $check_status);
+            }
+        }
+
+        // Sắp xếp theo ngày tạo
+        if ($request->filled('sort_date')) {
+            $sort_date = $request->get('sort_date');
+            if ($sort_date === 'asc' || $sort_date === 'desc') {
+                $information->orderBy('created_at', $sort_date);
+            }
+        }
+
+     
+
 
         // Paginate with 10 items per page
         $information = $information->paginate(10);
@@ -30,18 +63,18 @@ class InformationController extends Controller
         return view("admin.information.index", compact('information'));
     }
 
-    
+
     public function create()
     {
         return view("admin.information.create");
     }
 
-   
+
     public function store(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:200'],
-            'rank' => ['required', 'numeric', 'unique:information,rank' ],
+            'rank' => ['required', 'numeric', 'unique:information,rank'],
             'status' => ['required'],
         ], [
             'name.required' => 'Tên trang không được để trống.',
@@ -62,20 +95,20 @@ class InformationController extends Controller
         return redirect()->back();
     }
 
-   
+
     public function show($id)
     {
         //
     }
 
-   
+
     public function edit($id)
     {
         $information = Information::findOrFail($id);
         return view('admin.information.edit', compact('information'));
     }
 
-   
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -84,7 +117,7 @@ class InformationController extends Controller
                 $count = Information::where('rank', $value)
                     ->where('id', '!=', $id)
                     ->count();
-    
+
                 if ($count > 0) {
                     $fail('Thứ hạng đã được sử dụng.');
                 }
@@ -108,7 +141,7 @@ class InformationController extends Controller
         return redirect()->back();
     }
 
-   
+
     public function destroy($id)
     {
         $information = Information::findOrFail($id);
