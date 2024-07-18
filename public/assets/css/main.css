@@ -688,6 +688,10 @@
  .checkout-button {
      margin-top: 20px;
  }
+ .lable_store_address, .form-check-input {
+    font-size: 12px;
+ }
+ 
  
  .btn-delete {
      color: red;

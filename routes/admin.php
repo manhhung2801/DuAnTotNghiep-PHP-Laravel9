@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\backend\VariantItemController;
 use App\Http\Controllers\Backend\ChildCategoryController;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\InformationController;
 use App\Http\Controllers\backend\OrderController;
@@ -145,7 +146,19 @@ Route::resource('/post', PostsController::class);
 
 Route::resource('/order', OrderController::class);
 
+
 // 
 Route::fallback(function () {
     return view("404");
 });
+
+// Liên Hệ 
+Route::get('contact/trash-list', [ContactController::class, 'showTrash'])->name('coupons.trash-list');
+Route::DELETE('contact/destroy-trash/{id?}', [ContactController::class, 'destroyTrash'])->name('contact.destroy-trash');
+Route::PATCH('contact/restore-trash/{id?}', [ContactController::class, 'restoreTrash'])->name('contact.restore-trash');
+Route::get('contact',[ContactController::class,"index"])->name('AdminContact');
+Route::get('contact/show/{id}',[ContactController::class,"show"])->name('contact.show');
+Route::put('contact/feedback/answered/{id}',[ContactController::class,"answered"])->name('contact.answered');
+Route::delete('contact/destroy/{id}',[ContactController::class,"destroy"])->name('contact.destroy');
+Route::post('contact/feedback',[ContactController::class,"feedback"])->name('contact.feedback');
+

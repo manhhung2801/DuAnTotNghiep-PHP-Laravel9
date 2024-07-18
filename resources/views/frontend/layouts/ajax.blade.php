@@ -51,7 +51,7 @@
                 error: function(xhr, status, error) {
                     Toast.fire({
                         icon: "error",
-                        title: xhr.responseJSON.message
+                        title: "Đã có lỗi xảy ra. Vui lòng liên hệ cho chúng tôi!"
                     });
                 }
             })

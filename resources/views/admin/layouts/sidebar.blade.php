@@ -154,6 +154,20 @@
             </ul>
         </li>
 
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="fa-regular fa-address-book"></i>
+                </div>
+                <div class="menu-title">Liên Hệ</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route('admin.AdminContact') }}"><i class='bx bx-radio-circle'></i>Danh sách Khách hàng liên hệ</a>
+                </li>
+            </ul>
+        </li>
+
+
     </ul>
     <!--end navigation-->
 </div>

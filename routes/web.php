@@ -16,6 +16,7 @@ use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\frontend\ErrorController;
+use App\Http\Controllers\frontend\GHTKController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Models\Information;
 
@@ -37,7 +38,10 @@ Route::get("/", [HomeController::class, 'index'])->name("home");
 /** Addresss */
 Route::get('/address', [AddressController::class, 'index'])->name('address');
 /** End Addresss */
-Route::get('/lien-he', [ContactController::class, 'index'])->name('contact');
+
+Route::get('/lien-he', [ContactController::class,'index'])->name('contact');
+Route::post('/lien-he/gui', [ContactController::class,'contact'])->name('contactContact');
+
 
 
 /** User Dashboard */
@@ -92,8 +96,16 @@ Route::resource('order', OrderController::class)->middleware('checkLogin');
 Route::get('information/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");
 
 /** trang search  */
+
 Route::get("/search", [ProductController::class, 'search'])->name("search");
 
 Route::fallback(function () {
     return view("404");
 });
+
+Route::get("/search", [ProductController::class,'search'])->name("search");
+
+/** Tính phí ship (calculateShipping) */
+Route::get("/calculateShipping", [GHTKController::class, 'calculateShipping'])->name('calculateShipping');
+
+
