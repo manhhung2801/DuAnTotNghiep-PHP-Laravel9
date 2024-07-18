@@ -6,7 +6,6 @@ var callAPI = (url) => {
             throw error;
         })
 }
-console.log("ádasd");
 
 callAPI('/assets/API/Provinces.json').then(res => {
     var provincesData = res.data.data

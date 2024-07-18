@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Order_detail;
 use App\Models\Order;
 use App\Models\Product;
-use Illuminate\Database\QueryException;
 use Cart;
+use Exception;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -53,10 +53,16 @@ class CheckoutController extends Controller
                     }
                     // trừ số lượng sản phẩm trong databse
                     $getQtyProduct->qty -= $cart->quantity;
+                    // Update số lượng sau khi mua hàng
                     $getQtyProduct->save();
                 }
                 // end check số lương
 
+                //Tính tổng tiền nếu có phí ship
+                $shipping_money = $request->input('shipping_money') ?? 0;
+                $total = \Cart::getTotal() + $shipping_money;
+
+                // Thêm order
                 $order = new Order();
                 $order->order_name = trim($request->name);
                 $order->order_phone = trim($request->phone);
@@ -65,7 +71,9 @@ class CheckoutController extends Controller
                 $order->order_district = trim($request->districts);
                 $order->order_ward = trim($request->wards);
                 $order->order_address = trim($request->address);
-                $order->total = \Cart::getTotal();
+                $order->ship_money = $shipping_money;
+                $order->delivery_address = $request->delivery_address ?? '';
+                $order->total = $total;
                 $order->qty_total = \Cart::getTotalQuantity();
                 // thanh toán
                 $order->payment_method = $request->payment_method;
@@ -77,6 +85,7 @@ class CheckoutController extends Controller
                 $order->user_id = \Auth::user()->id;
                 $order->save();
 
+                //Thên order detail
                 foreach ($getCart as $key => $proCart) {
                     $order_detail = new Order_detail();
                     $order_detail->product_name = $proCart->name;
@@ -91,9 +100,9 @@ class CheckoutController extends Controller
                 \Cart::clear();
                 return view('frontend.thankyou.index');
             }
-            return redirect()->back()->with(['error' => 'Đã xảy ra lỗi !!!']);
-        } catch (QueryException $e) {
-            return redirect()->back()->with(['error' => 'Đã xảy ra lỗi !!!' . $e]);
+            return redirect()->back()->with(['error' => 'Không tìm thấy sản phẩm trong giỏ hàng!']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => 'Đã xảy ra lỗi xảy trong quá trình thanh toán. Vui lòng liên hệ cho chúng tôi!']);
         }
     }
 }

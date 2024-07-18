@@ -49,7 +49,7 @@
                 </form>
             </td>
             <td id="priceItemCart" class="pt-5 text-danger fw-bold">
-                {{ number_format($item->price * $item->quantity, 0, '', '.') }}</td>
+                {{ number_format($item->price * $item->quantity, 0, '', '.') }}₫</td>
         </tr>
     @endforeach
 </tbody>
