@@ -153,7 +153,6 @@
     </div>
     <script>
         (() => {
-
             const forms = document.querySelectorAll('.needs-validation')
             Array.from(forms).forEach(form => {
                 form.addEventListener('submit', event => {
@@ -169,4 +168,84 @@
 @endsection
 @push('script_lib-js')
     <script src="{{ asset('assets/js/app.js') }}"></script>
+@endpush
+@push('ajax')
+    <script type="text/javascript">
+        $(document).ready(() => {
+            //Nếu Nhận hàng tại cữa hàng thì reset các trường
+            $('body').off('click', '#receiveStore').on('click', '#receiveStore', function() {
+                //Phí ship sẽ bằng 0 nếu người dùng chọn nhận tại nữa hàng (trường show dữ liệu)
+                $('#total_line_shipping').text(0 + ' VNĐ');
+                //Lấy tổng tiền ở hiện tại trong input ẩn.
+                var totalMoney = $('#total_price_hidden').val();
+                $('#total_price_summary').text(totalMoney + ' VNĐ')
+                //Phí ship sẽ bằng 0 nếu người dùng chọn nhận tại nữa hàng (trường lấy dữ liệu)
+                $('input[name="shipping_money"]').val(0)
+                //Hiện ds cữa hàng
+                $('#pick_address_store').removeClass('d-none')
+
+                $.ajax({
+                    type: 'GET',
+                    url: "{{ route('api.getStoreAddress') }}",
+                    success: function(data) {
+                        if (data.status) {
+                            //loại bỏ tất cả các option có trước đó
+                            $('#pick_address_store').empty()
+
+                            $.each(data.storeAdress, function(index, value) {
+                                var form_check = $('<div>').addClass('form-check')
+                                form_check.append(
+                                    `<input class="form-check-input" type="radio" name="delivery_address" id="store_address_${index}" value="${value}" checked><label class="form-check-label lable_store_address" for="store_address_${index}">${value}</label>`
+                                )
+                                $('#pick_address_store').append(form_check)
+                            })
+                        } else {
+                            alert('Đã có lỗi xảy ra: ' + response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Đã có lỗi xảy ra. Vui lòng liên hệ cho chúng tôi')
+                    }
+                })
+            })
+
+            // Nếu GHTK thì tính phí ship 
+            $('body').on('change click', '#wards, #ghtk', function() {
+                if ($('#ghtk').is(':checked')) {
+                    // Ẩn ds cữa hàng đi
+                    $('#pick_address_store').addClass('d-none')
+                    $('#pick_address_store').empty()
+                    //Lấy thông tin người nhận để render phí ship
+                    var province = $('#provinces').val()
+                    var district = $('#districts').val()
+                    var ward = $('#wards').val()
+                    var address = $('#address').val()
+
+                    if (ward) {
+                        $.ajax({
+                            type: 'get',
+                            url: "{{ route('calculateShipping') }}",
+                            data: {
+                                province: province,
+                                district: district,
+                                ward: ward,
+                                address: address ?? '',
+                            },
+                            dataType: 'json',
+                            success: function(data) {
+                                $('#total_line_shipping').text('+ ' + data.shipMoney
+                                    .toLocaleString(
+                                        'vi-VN') + ' VNĐ');
+                                $('#total_price_summary').text(data.cartMoney + ' VNĐ')
+                                $('input[name="shipping_money"]').val(data.shipMoney)
+                            },
+                            error: function(xhr, status, error) {
+                                alert('Đã có lỗi vui lòng thử lại sau!');
+                            }
+                        })
+                    }
+                }
+            })
+        })
+    </script>
 @endpush

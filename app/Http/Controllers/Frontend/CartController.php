@@ -39,8 +39,7 @@ class CartController extends Controller
     {
         try {
             $id = $request->id;
-            $product = Product::getProductItem($id);
-
+            $product = Product::getProductItem($id); 
             // Nếu sản phẩm có tồn tại
             if ($product) {
                 $qtyProduct = $request->qty ??  1;
@@ -85,7 +84,7 @@ class CartController extends Controller
             }
             return response()->json(['status' => false, 'message' => 'Sản phẩm không tồn tại!'], 404);
         } catch (Exception $e) {
-            return response()->json(['status' => false, 'message' => 'Có lỗi khi thêm vào giỏ hàng: ' . $e->getMessage()]);
+            return response()->json(['status' => false, 'message' => 'Có lỗi khi thêm vào giỏ hàng. Vui lòng liên hệ cho chúng tôi']);
         }
     }
 

@@ -17,6 +17,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\frontend\ErrorController;
 use App\Http\Controllers\Frontend\OrderController;
+use App\Http\Controllers\frontend\ShippingController;
 use App\Models\Information;
 
 /*
@@ -96,3 +97,7 @@ Route::get("/page-not-found", [ErrorController::class,'index'])->name("page-not-
 
 /** trang search  */
 Route::get("/search", [ProductController::class,'search'])->name("search");
+
+/** Tính phí ship (calculateShipping) */
+Route::get("/calculateShipping", [ShippingController::class, 'calculateShipping'])->name('calculateShipping');
+

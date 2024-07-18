@@ -124,18 +124,13 @@
 </script>
 {{-- ram --}}
 <script>
-    << << << < HEAD
     document.addEventListener("DOMContentLoaded", function() {
-        var ramOptions = document.querySelectorAll('input[name="ram"]');
+        var ramOptions = document.querySelectorAll('input[name="selectInputRam"]');
         var valueRamElement = document.querySelector('.value-ram');
-        document.addEventListener("DOMContentLoaded", function() {
-            var ramOptions = document.querySelectorAll('input[name="selectInputRam"]');
-            var valueRamElement = document.querySelector('.value-ram');
 
             ramOptions.forEach(function(option) {
                 option.addEventListener("change", function() {
-                    var selectedValue = document.querySelector(
-                        'input[name="ram"]:checked').value;
+                    var selectedValue = document.querySelector('input[name="selectInputRam"]:checked').value;
                     valueRamElement.textContent = selectedValue;
 
                     //Xóa lớp 'selected-label' khỏi tất cả các nhãn".
@@ -153,14 +148,17 @@
                 });
             });
             // Hiển thị giá trị ban đầu
-            var initialValue = document.querySelector('input[name="ram"].checked').value;
-            valueRamElement.textContent = initialValue;
-        });
+            var selectInput = document.querySelector('input[name="selectInputRam"]:checked');
+            if(initialValue) {
+                var initialValue = selectInput.value;
+                valueRamElement.textContent = initialValue;
+            }
+   
 
         // Hiển thị giá trị ban đầu khi trang tải xong
         var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
         if (ramValue) {
-            valueRamElement.textContent = ramValue.value;
+            // valueRamElement.textContent = ramValue.value;
 
             // Đảm bảo nhãn của radio button được chọn có lớp 'selected-label'
             var checkedLabel = document.querySelector('label[for="' + ramValue.id + '"]');
