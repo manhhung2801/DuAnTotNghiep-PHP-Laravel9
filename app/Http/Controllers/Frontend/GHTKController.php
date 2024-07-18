@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Cart;
 
-class ShippingController extends Controller
+class GHTKController extends Controller
 {
 
     public function calculateShipping(Request $request)
