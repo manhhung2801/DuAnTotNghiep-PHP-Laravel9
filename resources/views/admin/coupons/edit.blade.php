@@ -53,8 +53,11 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="input8" class="form-label">Loại giảm giá</label>
-                    <input type="text" class="form-control" id="input8" name="discount_type" value="{{ $Coupons->discount_type }}">
+                    <label for="input7" class="form-label">Loại giảm giá</label>
+                    <select id="input7" class="form-select" name="discount_type">
+                        <option value="percent">phần trăm</option>
+                        <option value="permanent">Cố định</option>
+                    </select>
                 </div>
 
                 <div class="col-md-6">
