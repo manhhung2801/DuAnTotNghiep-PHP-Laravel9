@@ -16,8 +16,8 @@ use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\frontend\ErrorController;
+use App\Http\Controllers\frontend\GHTKController;
 use App\Http\Controllers\Frontend\OrderController;
-use App\Http\Controllers\frontend\ShippingController;
 use App\Models\Information;
 
 /*
@@ -96,5 +96,5 @@ Route::get('information/{slug1?}/{slug2?}', [InformationController::class, 'show
 Route::get("/search", [ProductController::class,'search'])->name("search");
 
 /** Tính phí ship (calculateShipping) */
-Route::get("/calculateShipping", [ShippingController::class, 'calculateShipping'])->name('calculateShipping');
+Route::get("/calculateShipping", [GHTKController::class, 'calculateShipping'])->name('calculateShipping');
 
