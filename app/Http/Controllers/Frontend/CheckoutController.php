@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\VNPAYController;
 use App\Models\Order_detail;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Database\QueryException;
 use Cart;
 use Illuminate\Http\Request;
+use App\Services\VNPayService;
+use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
 {
@@ -56,8 +59,10 @@ class CheckoutController extends Controller
                     $getQtyProduct->save();
                 }
                 // end check số lương
+                $orderCode = Str::random(10);
 
                 $order = new Order();
+                $order->vnp_order_code  = $orderCode;
                 $order->order_name = trim($request->name);
                 $order->order_phone = trim($request->phone);
                 $order->order_email = trim($request->email);
@@ -69,7 +74,7 @@ class CheckoutController extends Controller
                 $order->qty_total = \Cart::getTotalQuantity();
                 // thanh toán
                 $order->payment_method = $request->payment_method;
-                $order->payment_status = $request->payment_method;
+                $order->payment_status = 0;
                 $order->shipping_method = trim($request->shipping_method);
                 $order->coupon = trim($request->coupon);
                 $order->user_note = trim($request->user_note);
@@ -87,7 +92,12 @@ class CheckoutController extends Controller
                     $order_detail->save();
                 }
                 // xóa toàn bộ giỏ hàng
-                \Cart::clear();
+                // \Cart::clear();
+
+                if($request->payment_method == 1) {
+                    $vnpayService = new VNPayService();
+                   return $vnpayService->vnpayCreatePayment($order->vnp_order_code, $order->total);
+                }
                 return view('frontend.thankyou.index');
             }
             return redirect()->back()->with(['error' => 'Đã xảy ra lỗi !!!']);

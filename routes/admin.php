@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VNPAYController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\backend\AdminOderController;
@@ -144,3 +145,6 @@ Route::resource('/post',PostsController::class);
 // });
 
 Route::resource('/order', OrderController::class);
+
+
+Route::post('/order-vnp-refund-status-update', [OrderController::class, 'VNPRefundStatusUpdate'])->name('order.vnp-refund-status.update');

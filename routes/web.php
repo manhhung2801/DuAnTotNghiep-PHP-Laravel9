@@ -19,7 +19,7 @@ use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\frontend\ErrorController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Models\Information;
-
+use \App\Http\Controllers\VNPAYController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -94,3 +94,12 @@ Route::get('thong-tin/{slug1?}/{slug2?}', [InformationController::class, 'showPa
 
 /** trang 404  */
 Route::get("page-not-found", [ErrorController::class,'index'])->name("index");
+
+/** VNPAY */
+Route::get('vnpay-return', [VNPAYController::class, 'vnpay_return']);
+
+Route::post('retry-payment', [VNPAYController::class, 'retry_payment'])->name("retry-payment");
+
+Route::get('/thankyou', function() {
+    return view('frontend.thankyou.index');
+})->name('thankyou');

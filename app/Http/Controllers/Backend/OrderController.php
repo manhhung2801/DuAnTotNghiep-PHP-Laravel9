@@ -15,6 +15,27 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function VNPRefundStatusUpdate(Request $request) {
+        $order = Order::find($request->orderId);
+        $order->vnp_refund_status =  $request->vnpRefundStatus;
+        $order->save();
+
+        $message = '';
+
+        if($order->vnp_refund_status == 'Pending') {
+            $message = 'Chờ phê duyệt hoàn tiền';
+        }elseif($order->vnp_refund_status == 'Processing') {
+            $message = 'Đang xử lý hoàn tiền';
+        }
+        elseif($order->vnp_refund_status == 'Refunded') {
+            $message = 'Đã hoàn tiền';
+        }
+        elseif($order->vnp_refund_status == 'Refund_Failed') {
+            $message = 'Hoàn tiền không thành công';
+        }
+
+        return response(['message' =>  $message]);
+    }
     public function index()
     {
         $getOrders = Order::getOrderAll()->paginate(15);
@@ -92,4 +113,5 @@ class OrderController extends Controller
     {
         //
     }
+
 }

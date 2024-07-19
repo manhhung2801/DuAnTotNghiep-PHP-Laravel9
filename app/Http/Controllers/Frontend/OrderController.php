@@ -90,6 +90,12 @@ class OrderController extends Controller
 
             $order->order_status = 3;
             $order->save();
+
+            if($order->order_status == 3 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null) {
+                $order->vnp_refund_status = 'Pending';
+                $order->save();
+            }
+
             return response()->json(['status' => true, 'message' => 'Hủy đơn hàng thành công!']);
         }
         return response()->json(['status' => false, 'message' => 'Hủy đơn hàng thất bại!']);
