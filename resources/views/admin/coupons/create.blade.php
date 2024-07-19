@@ -39,8 +39,11 @@
                     <input id="input3" type="number" class="form-control" name="quantity" value="{{ old('quantity') }}" />
                 </div>
                 <div class="col-md-6">
-                    <label for="input4" class="form-label">Sử dụng tối đa</label>
-                    <input type="number" class="form-control" id="input4" name="max_use" value="{{ old('max_use') }}">
+                    <label for="input7" class="form-label">Trạng thái</label>
+                    <select id="input7" class="form-select" name="status">
+                        <option selected="" value="1">Hoạt động</option>
+                        <option value="0">Không hoạt động</option>
+                    </select>
                 </div>
                 <div class="col-md-6">
                     <label for="input5" class="form-label">Ngày bắt đầu</label>
@@ -52,27 +55,19 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="input8" class="form-label">Loại giảm giá</label>
-                    <input type="text" class="form-control" id="input8" name="" value="percent" disabled>
-                    <input type="hidden" class="form-control" id="input8" name="discount_type" value="percent">
+                    <label for="input7" class="form-label">Loại giảm giá</label>
+                    <select id="input7" class="form-select" name="discount_type">
+                        <option value="prencent">phần trăm</option>
+                        <option value="amount">Cố định</option>
+                    </select>
                 </div>
 
                 <div class="col-md-6">
                     <label for="input9" class="form-label">Giảm giá</label>
-                    <input type="number" class="form-control" id="input9" name="discount" value="{{ old('discount') }}">
+                    <input type="number" class="form-control" id="input9" name="prencent_amount" value="{{ old('prencent_amount') }}">
                 </div>
 
-                <div class="col-md-6">
-                    <label for="input9" class="form-label">Tổng số đã sử dụng</label>
-                    <input type="number" class="form-control" id="input9" name="total_used" value="{{ old('total_used') }}">
-                </div>
-                <div class="col-md-6">
-                    <label for="input7" class="form-label">Trạng thái</label>
-                    <select id="input7" class="form-select" name="status">
-                        <option selected="" value="1">Hoạt động</option>
-                        <option value="0">Không hoạt động</option>
-                    </select>
-                </div>
+
                 <div class="col-md-2">
                     <div class="d-grid align-items-center gap-3">
                         <button type="submit" class="btn btn-primary px-4">Tạo mới</button>

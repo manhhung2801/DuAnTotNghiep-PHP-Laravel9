@@ -19,7 +19,7 @@ use App\Http\Controllers\frontend\ErrorController;
 use App\Http\Controllers\frontend\GHTKController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Models\Information;
-
+use \App\Http\Controllers\VNPAYController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -108,4 +108,17 @@ Route::get("/search", [ProductController::class,'search'])->name("search");
 /** Tính phí ship (calculateShipping) */
 Route::get("/calculateShipping", [GHTKController::class, 'calculateShipping'])->name('calculateShipping');
 
+
+
+/** trang 404  */
+Route::get("page-not-found", [ErrorController::class,'index'])->name("index");
+
+/** VNPAY */
+Route::get('vnpay-return', [VNPAYController::class, 'vnpay_return']);
+
+Route::post('retry-payment', [VNPAYController::class, 'retry_payment'])->name("retry-payment");
+
+Route::get('/thankyou', function() {
+    return view('frontend.thankyou.index');
+})->name('thankyou');
 

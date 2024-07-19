@@ -49,48 +49,39 @@ class CouponsController extends Controller
     public function store(Request $request)
     {
         $Coupons = new Coupons;
-        $request->validate(
-            [
-                'name' => ['required', 'max:20'],
-                'code' => ['required', 'max:10'],
-                'quantity' => ['required', 'numeric'],
-                'max_use' => ['required', 'numeric'],
-                'start_date' => ['required'],
-                'end_date' => ['required'],
-                'discount_type' => ['required'],
-                'discount' => ['required', 'numeric'],
-                'total_used' => ['required', 'numeric'],
-                'status' => ['required'],
+        $request->validate([
+            'name' => ['required', 'max:20'],
+            'code' => ['required', 'max:10'],
+            'quantity' => ['required', 'numeric'],
+            'start_date' => ['required'],
+            'end_date' => ['required'],
+            'discount_type' => ['required'],
+            'prencent_amount' => ['required', 'numeric'],
 
-            ],
-            [
-                'name.required' => 'Tên không được để trống.',
-                'name.max' => 'Không vượt quá 20 ký tự.',
-                'code.required' => 'Mã giảm giá không được để trống.',
-                'code.max' => 'Không vượt quá 10 ký tự.',
+            'status' => ['required'],
 
-                'quantity.required' => 'Số lượng không được để trống.',
-                'max_use.required' => 'Sử dụng tối đa không được để trống.',
-                'start_date.required' => 'Ngày bắt đầu không được để trống.',
-                'end_date.required' => 'Ngày cuối không được để trống.',
-                'end_date.required' => 'Ngày cuối không được để trống.',
-                'discount_type.required' => 'Loại giảm giá không được để trống.',
-                'discount.required' => 'Giảm giá không được để trống.',
-                'total_used.required' => 'Tổng số đã sử dụng không được để trống.',
+        ], [
+            'name.required' => 'Tên không được để trống.',
+            'name.max' => 'Không vượt quá 20 ký tự.',
+            'code.required' => 'Mã giảm giá không được để trống.',
+            'code.max' => 'Không vượt quá 10 ký tự.',
+
+            'quantity.required' => 'Số lượng không được để trống.',
+            'start_date.required' => 'Ngày bắt đầu không được để trống.',
+            'end_date.required' => 'Ngày cuối không được để trống.',
+            'end_date.required' => 'Ngày cuối không được để trống.',
+            'discount_type.required' => 'Loại giảm giá không được để trống.',
+            'prencent_amount.required' => 'Giảm giá không được để trống.',
 
 
-            ]
-        );
-
+        ]);
         $Coupons->name = $request->name;
         $Coupons->code = $request->code;
         $Coupons->quantity = $request->quantity;
-        $Coupons->max_use = $request->max_use;
         $Coupons->start_date = $request->start_date;
         $Coupons->end_date = $request->end_date;
         $Coupons->discount_type = $request->discount_type;
-        $Coupons->discount = $request->discount;
-        $Coupons->total_used = $request->total_used;
+        $Coupons->prencent_amount = $request->prencent_amount;
         $Coupons->status = $request->status;
         $Coupons->save();
 
@@ -137,12 +128,11 @@ class CouponsController extends Controller
             'name' => ['required', 'max:20'],
             'code' => ['required', 'max:10'],
             'quantity' => ['required', 'numeric'],
-            'max_use' => ['required', 'numeric'],
             'start_date' => ['required'],
             'end_date' => ['required'],
             'discount_type' => ['required'],
-            'discount' => ['required', 'numeric'],
-            'total_used' => ['required', 'numeric'],
+            'prencent_amount' => ['required', 'numeric'],
+
             'status' => ['required'],
 
         ], [
@@ -152,25 +142,23 @@ class CouponsController extends Controller
             'code.max' => 'Không vượt quá 10 ký tự.',
 
             'quantity.required' => 'Số lượng không được để trống.',
-            'max_use.required' => 'Sử dụng tối đa không được để trống.',
             'start_date.required' => 'Ngày bắt đầu không được để trống.',
             'end_date.required' => 'Ngày cuối không được để trống.',
             'end_date.required' => 'Ngày cuối không được để trống.',
             'discount_type.required' => 'Loại giảm giá không được để trống.',
-            'discount.required' => 'Giảm giá không được để trống.',
-            'total_used.required' => 'Tổng số đã sử dụng không được để trống.',
+            'prencent_amount.required' => 'Giảm giá không được để trống.',
 
 
         ]);
         $Coupons->name = $request->name;
         $Coupons->code = $request->code;
         $Coupons->quantity = $request->quantity;
-        $Coupons->max_use = $request->max_use;
+
         $Coupons->start_date = $request->start_date;
         $Coupons->end_date = $request->end_date;
         $Coupons->discount_type = $request->discount_type;
-        $Coupons->discount = $request->discount;
-        $Coupons->total_used = $request->total_used;
+        $Coupons->prencent_amount = $request->prencent_amount;
+
         $Coupons->status = $request->status;
 
 
@@ -194,7 +182,7 @@ class CouponsController extends Controller
 
         try {
             Coupons::findOrFail($id)->delete();
-            
+
             return response(['status' => 'success', 'Deleted Successfully!']);
         } catch (ValidationException $e) {
             toastr()->error('Lỗi: ' . $e);
