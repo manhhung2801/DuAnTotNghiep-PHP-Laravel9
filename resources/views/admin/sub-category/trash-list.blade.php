@@ -63,7 +63,7 @@
                                 @endif
                              </td>
                             <td>{{ $subCategory->category->name }}</td>
-                            <td>
+                            <td class="text-end">
                                 <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.sub-category.restore-trash', $subCategory->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>
                                     Khôi phục</a>
                                 <a class="btn btn-danger delete-item" href="{{ route('admin.sub-category.destroy-trash', $subCategory->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa vĩnh viễn</a>

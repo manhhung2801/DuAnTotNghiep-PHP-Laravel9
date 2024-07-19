@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Category;
 use App\Models\Information;
 use App\Models\Page;
+use App\Models\Product;
 use App\Models\StoreAddress;
 use Darryldecode\Cart\Cart;
 use Illuminate\Support\Facades\View;
@@ -33,7 +34,7 @@ class ViewServiceProvider extends ServiceProvider
         View::composer('frontend.layouts.master', function ($view) {
             $categories = Category::where('status', 1)->orderBy('rank', 'asc')->get();
             $storeAddress = StoreAddress::where("status", "=", 1)->limit(1)->get();
-            $ListInformation = Information::where('name', '!=', 'Giới thiệu')->get();
+            $ListInformation = Information::where('id', '!=', 3)->get();
             $qtyCart = \Cart::getTotalQuantity();
             $ListPage = Page::where("status", "=", 1) ->get();
             $view->with('categories', $categories)

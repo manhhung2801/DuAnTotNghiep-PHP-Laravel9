@@ -32,7 +32,7 @@
                                     <div class="product-thumbnail ">
                                         <div class="product-thumbnail__wrapper" data-tg-static="">
                                             <img src="{{ asset('uploads/products/' . $cart->associatedModel->image) }}"
-                                                alt=""
+                                                alt="{{$cart->associatedModel->image}}"
                                                 class="product-thumbnail__image border rounded-1 img-thumbnail object-fit-contain">
                                         </div>
                                         <span class="product-thumbnail__quantity">{{ $cart->quantity }}</span>
@@ -40,11 +40,11 @@
                                 </td>
                                 <th class="product__description ">
                                     <p class="product__description__name tenchung mb-0">{{ $cart->name }}
-                                    <p>
+                                    </p>
                                         @if(!$cart->attributes->isEmpty())
 
                                         @foreach ($cart->attributes as $key => $value)
-                                        <span class="product__description__property variant__cart">{{$key}}:{{ $value }}</span>
+                                        <span class="product__description__property variant__cart text-capitalize m-0"><strong>{{$key}}:</strong> {{ $value }}</span>
                                         @endforeach
 
                                         @endif
@@ -78,13 +78,15 @@
                         </tr>
                         <tr>
                             <th style="font-weight: normal;">Phí vận chuyển</th>
-                            <td class="total-line__price">Miễn phí</td>
+                            <td id="total_line_shipping" class="total-line__price">----</td>
+                            <input type="hidden" value="" name="shipping_money">
                         </tr>
                     </tbody>
                     <tfoot class="total-line">
                         <tr>
                             <th>Tổng cộng</th>
-                            <td class="total-line__price">{{$getTotal}} VNĐ</td>
+                            <td class="total-line__price" id="total_price_summary">{{$getTotal}} VNĐ</td>
+                            <input type="hidden" id="total_price_hidden" value="{{$getTotal}}">
                         </tr>
                     </tfoot>
                 </table>

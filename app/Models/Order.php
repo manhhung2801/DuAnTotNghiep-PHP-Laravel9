@@ -9,9 +9,13 @@ class Order extends Model
 {
     use HasFactory;
     protected $table = 'Orders';
-    protected $filable = [
+    protected $fillable = [
         'order_name',
-        'orderphone',
+        'vnp_order_code',
+        'vnp_transaction_id',
+        'vnp_bank_code',
+        'vnp_refund_status',
+        'order_phone',
         'order_email',
         'order_province',
         'order_district',
@@ -42,7 +46,7 @@ class Order extends Model
         return self::findOrFail($id);
     }
     static function getOrderAll() {
-        return self::orderBy('id', 'desc');
+        return self::query();
     }
 
 

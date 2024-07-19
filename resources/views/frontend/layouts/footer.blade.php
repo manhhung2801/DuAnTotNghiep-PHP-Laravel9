@@ -81,22 +81,22 @@
                         <li class="mb-3 mt-3">
                             <h5>HỖ TRỢ THANH TOÁN</h5>
                         </li>
-                        <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2 m-auto">
+                        <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2 mx-2">
                             <a href=""><img class="border-0"
                                     src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_2.svg?1712897547805"
                                     alt=""></a>
                         </li>
-                        <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2 m-auto">
+                        <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2 mx-2">
                             <a href=""><img class="border-0"
                                     src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805"
                                     alt=""></a>
                         </li>
-                        <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2 m-auto">
+                        <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2 mx-2">
                             <a href=""><img class="border-0"
                                     src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_3.svg?1712897547805"
                                     alt=""></a>
                         </li>
-                        <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2 m-auto">
+                        <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2 mx-2">
                             <a href=""><img class="border-0"
                                     src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805"
                                     alt=""></a>
@@ -108,3 +108,4 @@
         </footer>
     </div>
 </div>
+

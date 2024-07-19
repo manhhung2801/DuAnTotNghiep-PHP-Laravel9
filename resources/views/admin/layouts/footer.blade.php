@@ -166,6 +166,7 @@
     <script type="text/javascript" src="{{ asset('backend/assets/bootstrap-iconpicker/js/bootstrap-iconpicker.bundle.min.js') }}"></script>
 	<!--app JS-->
 	<script src="{{asset('backend/assets/js/app.js')}}"></script>
+	<script src="{{asset('assets/js/app.js')}}"></script>
 	<script>
 		new PerfectScrollbar(".app-container")
 	</script>

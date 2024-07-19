@@ -10,9 +10,8 @@ class Coupons extends Model
     use HasFactory,SoftDeletes;
     protected $table = 'coupons';
     protected $fillable = [
-        'id', 'name', 'code', 'quantity',
-        'max_use', 'start_date', 'end_date',
-        'discount_type', 'discount', 'status',
+        'id', 'name', 'code', 'quantity','start_date', 'end_date',
+        'discount_type', 'prencent_amount', 'status',
         'total_used','deleted_at',
     ];
     

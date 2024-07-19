@@ -54,7 +54,7 @@
 
                                                         {{-- Lặp các variant --}}
                                                         @foreach ($variants as $key => $value)
-                                                            <p class="text-muted mb-0 small">{{ $key }}:
+                                                            <p class="text-muted mb-0 small text-capitalize"><strong>{{ $key }}:</strong>
                                                                 {{ $value }}</p>
                                                         @endforeach
                                                     @endif

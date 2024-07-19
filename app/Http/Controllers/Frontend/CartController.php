@@ -16,7 +16,6 @@ class CartController extends Controller
     {
         $getCart = \Cart::getContent();
         $subTotal = \Cart::getSubTotal();
-
         foreach ($getCart as $cart) {
             $getProduct = Product::findOrFail($cart->id);
             $productPrice = $getProduct->offer_price ?? $getProduct->price;
@@ -40,32 +39,52 @@ class CartController extends Controller
     {
         try {
             $id = $request->id;
-            $product = Product::getProductItem($id);
-            $qtyProduct = $request->qty ??  1;
+            $product = Product::getProductItem($id); 
+            // Nếu sản phẩm có tồn tại
+            if ($product) {
+                $qtyProduct = $request->qty ??  1;
 
-            $attributes = [];
-            if (isset($request->color) && $request->color!=null) {
-                $getVariant = VariantItem::with('variant')->findOrFail($request->color);
-                if (!empty($getVariant)) {
-                    $attributes[$getVariant->variant->name] = $getVariant->name;
-                }else {
-                    $attributes[$getVariant->variant->name] = null;
+                //Check số lượng trong cart so với số lướng sản phẩm
+                $getCart = \Cart::getContent();
+                foreach ($getCart as $item) {
+                    // lấy số lượng trong cart + với quatity thêm vào check với qty của product
+                    if ($product->id == $item->id) {
+                        $qtyAdd = $item->quantity + $qtyProduct;
+                        if ($product->qty <  $qtyAdd) {
+                            return response()->json(['status' => false, 'message' => 'Trong kho không còn đủ sản phẩm!']);
+                        }
+                    }
                 }
+
+                // thêm variant
+                $attributes = [];
+                if (!empty($request->variants)) {
+                    foreach ($request->variants as $variant) {
+                        if ($variant != null) {
+                            $getVariant = VariantItem::with('variant')->findOrFail($variant);
+                            if ($getVariant) {
+                                $attributes[$getVariant->variant->name] = $getVariant->name;
+                            }
+                        }
+                    }
+                }
+
+                //Thêm giỏ hàng
+                $addCart = \Cart::add([
+                    'id' => $id,
+                    'name' => $product->name,
+                    'price' => $product->offer_price ?? $product->price,
+                    'quantity' => $qtyProduct,
+                    'attributes' => $attributes,
+                    'associatedModel' => $product,
+                ]);
+                // lấy ra số lượng
+                $cart_count = \Cart::getTotalQuantity();
+                return response()->json(['status' => true, 'message' => 'Thêm ' . $product->name . ' vào giỏ hàng thành công!', 'cart_count' => $cart_count, 'abc' => $request->variants]);
             }
-
-            \Cart::add([
-                'id' => $id,
-                'name' => $product->name,
-                'price' => $product->offer_price ?? $product->price,
-                'quantity' => $qtyProduct,
-                'attributes' => $attributes,
-                'associatedModel' => $product,
-            ]);
-
-            $cart_count = \Cart::getTotalQuantity();
-            return response()->json(['status' => true, 'message' => 'Thêm ' . $product->name . ' vào giỏ hàng thành công!', 'cart_count' => $cart_count]);
+            return response()->json(['status' => false, 'message' => 'Sản phẩm không tồn tại!'], 404);
         } catch (Exception $e) {
-            return response()->json(['status' => false, 'message' => 'Có lỗi khi thêm vào giỏ hàng ' . $e]);
+            return response()->json(['status' => false, 'message' => 'Có lỗi khi thêm vào giỏ hàng. Vui lòng liên hệ cho chúng tôi']);
         }
     }
 
@@ -91,7 +110,7 @@ class CartController extends Controller
             $subTotal = number_format(\Cart::getSubTotal(), 0, '', '.');
             return response()->json(['status' => true, 'message' => 'Cập nhập sản phẩm thành công!', 'summedPrice' => $summedPrice, 'subTotal' => $subTotal]);
         } else {
-            return response()->json(['status' => false, 'message' => 'Cập nhập sản phẩm thất bại!']);
+            return response()->json(['status' => false, 'message' => 'Cập nhập sản phẩm thất bại!'], 404);
         }
     }
 
@@ -100,12 +119,13 @@ class CartController extends Controller
         try {
             $removeCart = \Cart::remove($id);
             $subTotal = number_format(\Cart::getSubTotal(), 0, '', '.');
-
+            $cart_count = \Cart::getTotalQuantity();
             if ($removeCart === true) {
                 return response()->json([
                     'status' => true,
                     'message' => 'Xóa sản phẩm thành công!',
-                    'subTotal' => $subTotal
+                    'subTotal' => $subTotal,
+                    'cart_count' => $cart_count,
                 ], 200);
             }
             return response()->json([

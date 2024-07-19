@@ -54,9 +54,12 @@
             });
 
             $('body').on('click', '.btn_delete_cart', function(e) {
+                //Ngăn hành vi mặc định reload
                 e.preventDefault();
                 window.setTimeout(() => {
+                    // url xóa sản phẩm
                     var url = $(this).attr('data-url');
+                    // lấy ra element tr chứa nút delete để xóa element mà không cần reload trang
                     var row = $(this).closest('tr');
                     $.ajax({
                         type: 'DELETE',
@@ -69,12 +72,20 @@
                                     icon: "success",
                                     title: data.message
                                 });
+
+                                //Nếu xóa sản phẩm trong cart thành công thì tiến hành xóa luôn hàng của sản phẩm trong cart
                                 row.remove()
+                                
+                                // Update lại giá của sản phẩm
                                 $('#subTotal').text(data.subTotal + '₫');
                                 if (data.subTotal == 0) {
                                     window.location.reload();
                                 }
+                                // update lại số lượng sản phẩm có trong cart trong header.
+                                $('.cart-count').text(data.cart_count);
                             }
+
+                            // Nếu xóa sản phẩm thất bại báo lỗi
                             if (data.status == false) {
                                 Toast.fire({
                                     icon: "error",
@@ -82,6 +93,7 @@
                                 });
                             }
                         },
+                        // báo lỗi serrve
                         error: function(error) {
                             Toast.fire({
                                 icon: "error",
@@ -94,22 +106,27 @@
             $('body').on('click', ".btn-minus, .btn-plus", function(e) {
                 e.preventDefault()
                 window.setTimeout(() => {
-                    //lấy ra element cha của input cần tăng sl
+                    //lấy ra element cha bao quát các input
                     var container = $(this).closest('form')
 
                     //tìm element có id qtyProduct trong container input-group
                     var qtyInput = container.find('#qtyProduct');
                     var qtyProduct = parseInt(qtyInput.val());
-                    //Lấy số lượng để so sánh
+
+                    //Lấy số lượng trong kho ra để so sánh với số lượng trong cart
                     var productInput = container.find('#productInStock');
                     var productInStock = parseInt(productInput.attr('data-qty'));
+
                     // Tăng giảm số lượng sản phẩm khi bấm nút
                     if ($(this).hasClass('btn-minus')) {
+                        // nếu qty bé hơn bằng 1 thì không được giảm
                         if (qtyProduct <= 1) {
                             return;
                         }
                         qtyProduct--;
+
                     } else if ($(this).hasClass('btn-plus')) {
+                        // Nếu số lượng trong cart lớn hơn sản phẩm trong kho thì return về lỗi
                         if (qtyProduct >= productInStock) {
                             Toast.fire({
                                 icon: "error",
@@ -119,9 +136,10 @@
                         }
                         qtyProduct++;
                     }
+                    // gán số lượng xử lý vào value input
                     qtyInput.val(qtyProduct);
 
-                    //lấy element tr gần nút bấm nhất làm box khoanh vùng
+                    //lấy element tr gần nút bấm nhất làm container box 1 sản phẩm 
                     var containerPrice = $(this).closest('tr');
                     // url xóa
                     var url = container.attr('data-url')
@@ -146,9 +164,10 @@
                                     });
                                 }
 
-                                //Tìm #priceItemCart trong box cha của nút bấm
+                                //Tìm #priceItemCart trong container box 1 sản phẩm tại nút bấm tăng giảm qty => gán lại giá mới
                                 containerPrice.find('#priceItemCart').text(data
                                     .summedPrice + '₫');
+                                // gán lại tổng giá
                                 $('#subTotal').text(data.subTotal + '₫');
                             },
                             error: function(error) {

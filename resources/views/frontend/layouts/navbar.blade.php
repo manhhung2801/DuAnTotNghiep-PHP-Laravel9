@@ -5,20 +5,31 @@
                 <li class="nav-item nav_item_cate px-2">
                     <a class="nav-link text-white" aria-current="page" href="/">Trang chủ</a>
                 </li>
+               
                 <li class="nav-item nav_item_cate px-2">
-                    <a class="nav-link text-white" href="#">Giới thiệu</a>
+                    <a class="nav-link text-white"
+                        href="{{ route('showPages', ['slug1' => 'gioi-thieu', 'slug2' => 'gioi-thieu']) }}">Giới
+                        thiệu</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2 dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white" href="javascript:;" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" id="product-link">
                         Sản Phẩm
                     </a>
                     <ul class="dropdown-menu mt-1 nav_sub_dropdown p-0">
+                        <li class="nav_sub_cate">
+                            <a class="dropdown-item item_nav_name py-2" href="{{ url('/product') }}">
+                                Tất cả sản phẩm <span class="float-end ms-5"><i
+                                        class="fa-solid fa-layer-group"></i></span>
+                            </a>
+                        </li>
                         @foreach ($categories as $category)
                             <li class="nav_sub_cate">
-                                <a class="dropdown-item item_nav_name py-2" href="#">{{ $category->name }} 
+                                <a class="dropdown-item item_nav_name py-2"
+                                    href="{{ url('/product/' . $category->slug) }}">
+                                    {{ $category->name }}
                                     @if ($category->subCategories->count() > 0)
-                                    <span class="float-end"><i class="fa-solid fa-chevron-right"></i></span>
+                                        <span class="float-end ms-5"><i class="fa-solid fa-chevron-right"></i></span>
                                     @endif
                                 </a>
                                 @if ($category->subCategories->count() > 0)
@@ -26,7 +37,9 @@
                                         @foreach ($category->subCategories as $subCategory)
                                             <li class="list-group-item">
                                                 <a class="dropdown-item py-2 item_child_nav"
-                                                    href="/product/{{ $category->slug }}/{{ $subCategory->slug }}">{{ $subCategory->name }}</a>
+                                                    href="{{ url('/product/' . $category->slug . '/' . $subCategory->slug) }}">
+                                                    {{ $subCategory->name }}
+                                                </a>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -35,17 +48,20 @@
                         @endforeach
                     </ul>
                 </li>
+
                 <li class="nav-item nav_item_cate px-2">
-                    <a class="nav-link text-white" href="/tin-tuc">Tin tức</a>
+                    <a class="nav-link text-white" href="{{ url('/tin-tuc') }}">Tin tức</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2">
-                    <a class="nav-link text-white" href="#">Liên hệ</a>
+                    <a class="nav-link text-white" href="{{ route('contact') }}">Liên hệ</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2">
-                    <a class="nav-link text-white" href="#">Chính Sách</a>
+                    <a class="nav-link text-white"
+                        href="{{ route('showPages', ['slug1' => 'chinh-sach', 'slug2' => 'chinh-sach-mua-hang']) }}">
+                        Chính Sách Mua Hàng</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2">
-                    <a class="nav-link text-white" href="#">Đơn Hàng Của Tôi</a>
+                    <a class="nav-link text-white" href="{{ url('/order') }}">Đơn Hàng Của Tôi</a>
                 </li>
             </ul>
         </div>
@@ -53,6 +69,38 @@
 </nav>
 
 <style>
+    .dropdown-item.item_nav_name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Ẩn tất cả các dropdown menu con */
+    .nav-item .dropdown-menu {
+        display: none;
+    }
+
+    /* Hiển thị dropdown menu con khi hover vào mục cha */
+    .nav-item:hover>.dropdown-menu {
+        display: block;
+    }
+
+    /* Ẩn tất cả các dropdown submenu con */
+    .nav_sub_cate .dropdown-submenu {
+        display: none;
+    }
+
+    /* Hiển thị dropdown submenu con khi hover vào mục cha */
+    .nav_sub_cate:hover>.dropdown-submenu {
+        display: block;
+    }
+
+    /* Hiển thị dropdown menu con khi thêm class 'show' */
+    .nav-item .dropdown-menu.show {
+        display: block;
+    }
+
+
     .navbar-nav {
         width: 100%;
         justify-content: center;

@@ -610,7 +610,8 @@ label.luu_y {
 
 /* ram */
 
-.selected-label {
+.ram-option.selected {
+    background-color: black;
     border: 1px solid black;
 }
 
@@ -1013,4 +1014,21 @@ label.luu_y {
 
 .increase-btn {
     border-left: 1px solid #ccc;
+}
+
+
+/* button trang error */
+
+.btn_pagenotfound {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn_pagenotfound:hover {
+    background-color: #0056b3;
 }

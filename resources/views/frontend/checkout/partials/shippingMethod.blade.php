@@ -3,7 +3,7 @@
         <div class="radio-wrapper ">
             <div class="mt-0">
                 <div class="radio__input">
-                    <input type="radio" name="shipping_method" value="0" class="input-radio" id="receiveStore" checked>
+                    <input type="radio" name="shipping_method" value="0" class="input-radio" id="receiveStore">
                 </div>
             </div>
             <label for="receiveStore" class="radio__label">
@@ -17,6 +17,11 @@
                 </span>
             </label>
         </div>
+        <div id="pick_address_store" class="d-none mt-2">
+            {{-- <label class="form-label" for="">Chọn địa chỉ cữa hàng: </label> --}}
+            {{-- <select id="pick_address_store_select" class="w-100 py-2 " name="pick_address_store">
+            </select> --}}
+        </div>
     </div>
 </div>
 <div class="form-group rounded-1 border p-1 align-content-center mt-2">
@@ -24,7 +29,8 @@
         <div class="radio-wrapper ">
             <div class="mt-0">
                 <div class="radio__input">
-                    <input type="radio" name="shipping_method" value="1" class="input-radio" id="ghtk">
+                    <input type="radio" name="shipping_method" value="1" class="input-radio" id="ghtk"
+                        checked>
                 </div>
             </div>
             <label for="ghtk" class="radio__label">
