@@ -40,8 +40,11 @@
                     <input id="input3" type="number" class="form-control" name="quantity" value="{{ $Coupons->quantity }}" />
                 </div>
                 <div class="col-md-6">
-                    <label for="input4" class="form-label">Sử dụng tối đa</label>
-                    <input type="text" class="form-control" id="input4" name="max_use" value="{{ $Coupons->max_use }}">
+                    <label for="input7" class="form-label">Trạng thái</label>
+                    <select id="input7" class="form-select" name="status">
+                        <option selected="" value="1">Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
                 </div>
                 <div class="col-md-6">
                     <label for="input5" class="form-label">Ngày bắt đầu</label>
@@ -62,20 +65,10 @@
 
                 <div class="col-md-6">
                     <label for="input9" class="form-label">Giảm giá</label>
-                    <input type="number" class="form-control" id="input9" name="discount" value="{{ $Coupons->discount }}">
+                    <input type="number" class="form-control" id="input9" name="prencent_amount" value="{{ $Coupons->prencent_amount }}">
                 </div>
 
-                <div class="col-md-6">
-                    <label for="input9" class="form-label">Tổng số đã sử dụng</label>
-                    <input type="number" class="form-control" id="input9" name="total_used" value="{{ $Coupons->total_used }}">
-                </div>
-                <div class="col-md-6">
-                    <label for="input7" class="form-label">Trạng thái</label>
-                    <select id="input7" class="form-select" name="status">
-                        <option selected="" value="1">Active</option>
-                        <option value="0">Inactive</option>
-                    </select>
-                </div>
+
                 <div class="col-md-2">
                     <div class="d-grid align-items-center gap-3">
                         <button type="submit" class="btn btn-primary px-4">Cập nhật</button>
