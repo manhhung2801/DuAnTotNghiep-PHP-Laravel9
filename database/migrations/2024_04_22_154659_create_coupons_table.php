@@ -20,7 +20,8 @@ return new class extends Migration
             $table->integer('quantity');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('discount_type');
+            $table->enum('discount_type', ['prencent', 'amount'])->default('prencent');
+
             $table->double('prencent_amount');
             $table->tinyInteger('status')->default(1);
             $table->softDeletes();
