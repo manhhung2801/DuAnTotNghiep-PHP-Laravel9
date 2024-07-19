@@ -19,13 +19,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->integer('phone');
-            $table->integer('content');
+            $table->text('content');
             $table->enum('feedback', ['unread', 'read', 'answered'])->default('unread');
             $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
         });
     }
 

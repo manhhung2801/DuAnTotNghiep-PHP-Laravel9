@@ -30,10 +30,10 @@ class PagesController extends Controller
         // Sắp xếp theo trạng thái
         if ($request->filled('check_status')) {
             $check_status = $request->get('check_status');
-            if ($check_status == 1) {
-                $pages->where('status', $check_status);
-            } elseif ($check_status == 0) {
-                $pages->where('status', $check_status);
+            if ($check_status == '1') {
+                $pages = $pages->where('status', 1);
+            } elseif ($check_status == '0') {
+                $pages = $pages->where('status', 0);
             }
         }
 

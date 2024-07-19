@@ -39,10 +39,10 @@ class InformationController extends Controller
         // Sắp xếp theo trạng thái
         if ($request->filled('check_status')) {
             $check_status = $request->get('check_status');
-            if ($check_status == 1) {
-                $information->where('status', $check_status);
-            } elseif ($check_status == 0) {
-                $information->where('status', $check_status);
+            if ($check_status == '1') {
+                $information = $information->where('status', 1);
+            } elseif ($check_status == '0') {
+                $information = $information->where('status', 0);
             }
         }
 
@@ -54,7 +54,7 @@ class InformationController extends Controller
             }
         }
 
-     
+
 
 
         // Paginate with 10 items per page

@@ -56,10 +56,10 @@
                         <div class="col">
                             <select class="form-select" name="check_status">
                                 <option value>Trạng thái</option>
-                                <option {{ Request::get('check_status') == 1 ? 'selected' : '' }} value="1" >Đang hoạt
+                                <option {{ Request::get('check_status') == '1' ? 'selected' : '' }} value="1" >Đang hoạt
                                     động
                                 </option>
-                                <option {{ Request::get('check_status') == 0 ? 'selected' : '' }} value="0">Không hoạt
+                                <option {{ Request::get('check_status') == '0' ? 'selected' : '' }} value="0">Không hoạt
                                     động
                                 </option>
                             </select>
