@@ -92,6 +92,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>VNPAY</th>
                                 <th>Thông tin khách hàng</th>
                                 <th>Tổng tiền</th>
                                 <th>Phương thức thanh toán</th>
@@ -106,6 +107,11 @@
                             @forelse ($getOrders as $order)
                                 <tr>
                                     <td>#{{ $order->id }}</td>
+                                    <td>
+                                        Số hóa đơn: <strong>{{ $order->vnp_order_code }}</strong><br/>
+                                        Mã GD: <strong>{{ $order->vnp_transaction_id }}</strong><br/>
+                                        Ngân hàng: <strong>{{ $order->vnp_bank_code }}</strong><br/>
+                                    </td>
                                     <td>
                                         <div class="info_customer_order">
                                             <div class="order_name">
@@ -128,13 +134,32 @@
                                         @if ($order->payment_method == 0)
                                             <p class="m-0">Thanh toán khi nhận hàng</p>
                                         @elseif($order->payment_method == 1)
-                                            <p class="m-0">Thanh toán bằng ngân hàng</p>
+                                            <p class="mb-1"><img src="{{ asset("uploads/vnpay.png") }}" alt="" width="60px" height="13px"></p>
                                         @endif
+
                                         @if ($order->payment_status == 0)
                                             <p class="m-0 badge text-bg-danger"><em>Chưa thanh toán</em></p>
                                         @elseif($order->payment_status == 1)
-                                            <p class="m-0 badge text-bg-success"><em>Đã thanh toán</em></p>
+                                            @if($order->order_status == -1 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null)
+                                                @if($order->vnp_refund_status == 'Pending' || $order->vnp_refund_status == 'Processing' || $order->vnp_refund_status == 'Refunded' || $order->vnp_refund_status == 'Refund_Failed')
+                                                    <p class="m-0 badge text-bg-success"><em style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã thanh toán</em></p>
+                                                @endif
+                                            @else
+                                                <p class="m-0 badge text-bg-success"><em>Đã thanh toán</em></p>
+                                            @endif
+
+                                            @if($order->order_status == -1 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null)
+                                                <select class="form-select mt-2 form-select-sm" aria-label="Small select example" id="vnp_refund_status" data-orderid="{{ $order->id }}">
+                                                    <option {{ $order->vnp_refund_status == 'Pending' ? 'selected' : '' }} value="Pending"><p class="m-0 badge text-bg-secondary"><em>Chờ phê duyệt hoàn tiền</em></p></option>
+                                                    <option {{ $order->vnp_refund_status == 'Processing' ? 'selected' : '' }} value="Processing"><p class="m-0 badge text-bg-secondary"><em>Đang xử lý hoàn tiền</em></p></option>
+                                                    <option {{ $order->vnp_refund_status == 'Refunded' ? 'selected' : '' }} value="Refunded"><p class="m-0 badge text-bg-secondary"><em>Đã hoàn tiền</em></p></option>
+                                                    <option {{ $order->vnp_refund_status == 'Refund_Failed' ? 'selected' : '' }} value="Refund_Failed"><p class="m-0 badge text-bg-secondary"><em>Hoàn tiền không thành công</em></p></option>
+                                                </select>
+                                            @endif
+                                        @elseif($order->payment_status == 2)
+                                            <p class="m-0 badge text-bg-warning"><em>Thanh toán thất bại / lỗi</em></p>
                                         @endif
+
                                     </td>
 
                                     {{-- Phương thức nhận hàng --}}
@@ -148,6 +173,18 @@
 
                                     {{-- Trạng thái đơn hàng --}}
                                     <td>
+                                        <select id="change-status-order"
+                                            data-url="{{ route('admin.order.update', $order->id) }}" class="form-select form-select-sm" aria-label="Small select example"
+                                            name="">
+                                            <option value="0" {{ $order->order_status == 0 ? 'selected' : '' }}>Chờ
+                                                duyệt</option>
+                                            <option value="1" {{ $order->order_status == 1 ? 'selected' : '' }}>Đang
+                                                vận chuyển</option>
+                                            <option value="2" {{ $order->order_status == 2 ? 'selected' : '' }}>Hoàn
+                                                thành</option>
+                                            <option value="-1" {{ $order->order_status == -1 ? 'selected' : '' }}>Đã hủy
+                                            </option>
+                                        </select>
                                         @if ($order->order_status == -1)
                                             <p class="p-2 badge text-bg-danger">Đã hủy</p>
                                         @elseif($order->order_status == 92 || $order->order_status == 6 || $order->order_status == 5)
@@ -210,11 +247,16 @@
 
                                     <td>
                                         <!-- Button trigger modal -->
-                                        <button id="btn-show-order-detail" type="button"
-                                            data-url="{{ route('admin.order.show', $order->id) }}"
+                                        <button id="btn-show-order-detail" type="button" data-url="{{ route('admin.order.show', $order->id) }}"
                                             class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#orderDetail">
                                             Xem thêm
                                         </button>
+                                        @if($order->vnp_transaction_id !== null)
+                                            <a class="btn btn-info btn-sm" href="https://sandbox.vnpayment.vn/merchantv2/Transaction/PaymentDetail/{{ $order->vnp_transaction_id }}.htm" target="_blank">
+                                                VNPAY
+                                            </a>
+                                        @endif
+
                                         @include('admin.order.partials.modalOrderDetail')
                                     </td>
                                 </tr>
@@ -235,6 +277,28 @@
 @push('scripts')
     <script>
         $(document).ready(() => {
+            //
+            $('body').off('change', '#vnp_refund_status').on('change', '#vnp_refund_status', function() {
+                var order_id = $(this).attr('data-orderid');
+                var vnp_refund_status = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('admin.order.vnp-refund-status.update') }}",
+                    data: {
+                        orderId: order_id,
+                       vnpRefundStatus: vnp_refund_status,
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        toastr.success(data.message);
+                        // console.log(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            });
+
             $('body').off('click', '#btn-show-order-detail').on('click', '#btn-show-order-detail', function() {
                 var url = $(this).attr('data-url')
                 var baseimg = "{{ asset('uploads/products/') }}";
