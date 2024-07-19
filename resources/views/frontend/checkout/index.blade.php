@@ -264,8 +264,6 @@
                         alert('Đã có lỗi khi áp dụng mã giảm giá. Xin vui lòng thử lại sau!' +error);
                     }
                 });
-
-
             })
         })
     </script>
