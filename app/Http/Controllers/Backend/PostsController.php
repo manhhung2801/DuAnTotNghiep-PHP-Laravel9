@@ -33,24 +33,7 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function trashedPost(Request $request)
-    {
 
-
-        $post = Post::onlyTrashed()->latest();
-
-        // Nếu có keyword trong request, thêm điều kiện tìm kiếm
-        if (!empty($request->get('keyword'))) {
-            $keyword = $request->get('keyword');
-            $post = $post->where('title', 'like', '%' . $keyword . '%');
-        }
-
-        // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
-        $post = $post->get();
-
-        // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
-        return view('admin.post.trashlist', compact('post'));
-    }
 
     public function restore($id)
     {

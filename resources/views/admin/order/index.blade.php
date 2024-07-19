@@ -41,8 +41,8 @@
             <div class="card-body">
                 <form action="" method="get">
                     <div class="row mb-3">
-                        <div class="col-1">
-                            <label for="">Bộ lọc: </label>
+                        <div class="col-1 mt-1 ">
+                            <label for="" class="bg-primary p-1 border rounded-1"><span class="text-white">Bộ lọc</span> </label>
                         </div>
                         <div class="col">
                             <select class="form-select" name="sort_price">

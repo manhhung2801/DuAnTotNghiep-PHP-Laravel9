@@ -57,26 +57,25 @@
                             </div>
                         </div>
                         <div class="col-lg-6 col-12 col-md-6 mt-2">
-                            <form class="mx-auto">
-                                <fieldset class="row frame-contact">
-                                    <h4 class="text-center mt-2 col-lg-12"><b>LIÊN HỆ VỚI CHÚNG TÔI</b></h4>
-                                    <div class="mb-3 text-start col-lg-6">
-                                        <input type="text" class="form-control" placeholder="Họ và tên">
-                                    </div>
-                                    <div class="mb-3 text-start col-lg-6">
-                                        <input type="email" class="form-control" placeholder="Email">
-                                    </div>
-                                    <div class="mb-3 text-start col-lg-12">
-                                        <input type="email" class="form-control" placeholder="Điện thoại">
-                                    </div>
-                                    <div class="mb-3 text-start col-lg-12">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Nội dung"></textarea>
-                                    </div>
-                                    <div class="col-lg-12">
+                            <form class="mx-auto formContact row frame-contact" method="post">
+                                <h4 class="text-center mt-2 col-lg-12"><b>LIÊN HỆ VỚI CHÚNG TÔI</b></h4>
 
-                                        <button type="submit" class="btn btn-dark">Gửi tin nhắn <i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </fieldset>
+                                <div class="mb-3 text-start col-lg-6">
+                                    <input name="name" type="text" class="form-control name-contact" placeholder="Họ và tên">
+                                </div>
+                                <div class="mb-3 text-start col-lg-6">
+                                    <input name="email" type="email" class="form-control email-contact" placeholder="Email">
+                                </div>
+                                <div class="mb-3 text-start col-lg-12">
+                                    <input name="phone" type="number" class="form-control phone-contact" placeholder="Điện thoại">
+                                </div>
+                                <div class="mb-3 text-start col-lg-12">
+                                    <textarea name="content" class="form-control conten-contact" id="exampleFormControlTextarea1" rows="3" placeholder="Nội dung"></textarea>
+                                </div>
+                                <div class="col-lg-12">
+
+                                    <button type="submit" class="btn btn-dark click-submit-contact">Gửi tin nhắn <i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -87,5 +86,61 @@
         </main>
     </section>
 
-</div>
-@endsection
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('.click-submit-contact').click(function(e) {
+                e.preventDefault();
+                var name = $(this).closest('.formContact').find('.name-contact').val();
+                var email = $(this).closest('.formContact').find('.email-contact').val();
+                var phone = $(this).closest('.formContact').find('.phone-contact').val();
+                var content = $(this).closest('.formContact').find('.conten-contact').val();
+
+                var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    }
+                });
+
+                $.ajax({
+                    method: 'POST',
+                    url: "{{ route('contactContact') }}",
+                    data: {
+                        'name': name,
+                        'email': email,
+                        'phone': phone,
+                        'content': content,
+                    },
+                    success: function(data) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
+                        });
+                        if (data.status == true) {
+                            Toast.fire({
+                                icon: "success",
+                                title: data.message
+                            });
+                        }
+                        if (data.status == false) {
+                            Toast.fire({
+                                icon: "error",
+                                title: data.message
+                            });
+                        }
+                    },
+                    error: function(response) {
+                        alert(response.status)
+                    }
+                })
+            })
+
+
+        })
+    </script>
+
+    @endsection

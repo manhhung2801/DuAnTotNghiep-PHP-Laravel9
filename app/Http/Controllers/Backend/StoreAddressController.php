@@ -11,21 +11,39 @@ class StoreAddressController extends Controller
 {
     public function index(Request $request)
     {
-        $message = session('message');
-        $storeAddress = StoreAddress::latest();
+        $storeAddress = StoreAddress::query();
         // search tìm kiếm theo type
         if (!empty($request->get('keyword'))) {
             $storeAddress = StoreAddress::where('store_name', 'like', '%' . $request->get('keyword') . '%')->orWhere('phone', 'like', '%' . $request->get('keyword') . '%');
-            if ($storeAddress->count() == 0) {
-                session()->flash('message', 'Không tìm thấy bản ghi');
-            } else {
-                session()->forget('message');
-            }
-        } else {
-            session()->forget('message');
         }
+
+        // Sắp xếp theo tên a-z hoặc tên z-a 
+        if ($request->filled('sort_name')) {
+            $sort_name = $request->get('sort_name');
+            if ($sort_name === 'asc' || $sort_name === 'desc') {
+                $storeAddress->orderBy('store_name', $sort_name);
+            }
+        }
+        // Sắp xếp theo trạng thái
+        if ($request->filled('check_status')) {
+            $check_status = $request->get('check_status');
+            if ($check_status == 1) {
+                $storeAddress->where('status', $check_status);
+            } elseif ($check_status == 0) {
+                $storeAddress->where('status', $check_status);
+            }
+        }
+
+        // Sắp xếp theo ngày tạo
+        if ($request->filled('sort_date')) {
+            $sort_date = $request->get('sort_date');
+            if ($sort_date === 'asc' || $sort_date === 'desc') {
+                $storeAddress->orderBy('created_at', $sort_date);
+            }
+        }
+        //phân trang
         $storeAddress = $storeAddress->paginate(15);
-        return view('admin.store-address.index', compact('storeAddress', 'message'));
+        return view('admin.store-address.index', compact('storeAddress'));
     }
 
 
@@ -47,7 +65,7 @@ class StoreAddressController extends Controller
             'province' => ['required'],
             'description' => ['required'],
             'email' => ['required', 'email'],
-            'phone' => ['required', 'min:10', ],
+            'phone' => ['required', 'min:10',],
             'status' => ['required'],
             'pick_store' => ['required'],
         ], [

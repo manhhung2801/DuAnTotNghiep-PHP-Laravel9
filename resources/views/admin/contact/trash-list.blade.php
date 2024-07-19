@@ -33,7 +33,7 @@
                 </div>
                 <a href="{{ route("admin.coupons.trash-list") }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
             </div>
-            <a href="{{ route('admin.coupons.index') }}" class="btn btn-primary float-end">Quay lại</a>
+            <a href="{{ route('admin.AdminContact') }}" class="btn btn-primary float-end">Quay lại</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -41,36 +41,28 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Tên giảm giá</th>
-                            <th>Mã giảm giá</th>
-                            <th>Số lượng</th>
-                            <th>Giảm giá</th>
+                            <th>User_id</th>
+                            <th>Họ và tên</th>
+                            <th>Email</th>
+                            <th>điện thoại</th>
+                            <th>content</th>
                             <th>Trạng thái</th>
-                            <th>Hoạt động</th>
                         </tr>
                     </thead>
                     <tbody>
                         @php $stt = 1; @endphp
-                        @forelse ( $getCoupons as $item )
+                        @forelse ( $getcontact as $item )
                         <tr>
                             <td> @php echo $stt++; @endphp</td>
+                            <td>{{ $item->users->id }}</td>
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->code }}</td>
-                            <td>{{ $item->quantity}}</td>
-                            <td>{{ $item->prencent_amount}}</td>
-
-                            <td>
-                                <div class="form-check form-switch form-check-success">
-                                    @if ($item->status == 1)
-                                    <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $item->id }}" id="flexSwitchCheckSuccess" checked>
-                                    @elseif($item->status == 0)
-                                    <input class="form-check-input change-status" type="checkbox" role="switch" data-id="{{ $item->id }}" id="flexSwitchCheckSuccess">
-                                    @endif
-                                </div>
-	 
+                            <td>{{ $item->email }}</td>
+                            <td>{{ $item->phone }}</td>
+                            <td>{{ $item->content }}</td>
+                            <td>{{ $item->feedback }}</td>
                             <td class="text-end">
-                                <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.coupons.restore-trash', $item->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Khôi phục</a>
-                                <a class="btn btn-danger delete-item" href="{{ route('admin.coupons.destroy-trash', $item->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa vĩnh viễn</a>
+                                <a class="btn btn-primary restoreTrash-item" href="{{ route('admin.contact.restore-trash', $item->id) }}"><i class="fa-solid fa-trash-can-arrow-up fs-6"></i>Khôi phục</a>
+                                <a class="btn btn-danger delete-item" href="{{ route('admin.contact.destroy-trash', $item->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xóa vĩnh viễn</a>
                             </td>
                         </tr>
                         @empty
@@ -84,4 +76,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection

@@ -13,19 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coupons', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
-            $table->string('code');
-            $table->integer('quantity');
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->enum('discount_type', ['prencent', 'amount'])->default('prencent');
-
-            $table->double('prencent_amount');
-            $table->tinyInteger('status')->default(1);
+            $table->string('email');
+            $table->integer('phone');
+            $table->text('content');
+            $table->enum('feedback', ['unread', 'read', 'answered'])->default('unread');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coupons');
+        Schema::dropIfExists('contacts');
     }
 };

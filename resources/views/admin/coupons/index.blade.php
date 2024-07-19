@@ -61,7 +61,7 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->code }}</td>
                                     <td>{{ $item->quantity }}</td>
-                                    <td>{{ $item->discount }}</td>
+                                    <td>{{ $item->prencent_amount }}</td>
 
                                     <td>
                                         <div class="form-check form-switch form-check-success">
