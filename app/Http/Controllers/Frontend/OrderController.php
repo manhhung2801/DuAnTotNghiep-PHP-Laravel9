@@ -88,10 +88,10 @@ class OrderController extends Controller
                 $product->save();
             }
 
-            $order->order_status = 3;
+            $order->order_status = -1;
             $order->save();
 
-            if($order->order_status == 3 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null) {
+            if($order->order_status == -1 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null) {
                 $order->vnp_refund_status = 'Pending';
                 $order->save();
             }

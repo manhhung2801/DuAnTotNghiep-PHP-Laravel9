@@ -68,7 +68,7 @@
                                                 <button class="text-white btn btn-dark btn-sm shadow-lg fw-bold rounded-3 mt-1">Thanh toán</button>
                                             </form>
                                         @elseif($order->payment_status == 1)
-                                            @if($order->order_status == 3 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null)
+                                            @if($order->order_status == -1 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null)
                                                 @if($order->vnp_refund_status == 'Pending' || $order->vnp_refund_status == 'Processing' || $order->vnp_refund_status == 'Refunded' || $order->vnp_refund_status == 'Refund_Failed')
                                                     <p class="m-0 badge text-bg-success"><em style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã thanh toán</em></p>
                                                 @endif
@@ -84,7 +84,7 @@
                                                     <button class="text-white btn btn-dark btn-sm shadow-lg fw-bold rounded-3 mt-1">Thanh toán</button>
                                                 </form>
                                         @endif
-                                        @if($order->order_status == 3 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null)
+                                        @if($order->order_status == -1 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null)
                                             @if($order->vnp_refund_status == 'Pending')
                                                 <p class="m-0 badge text-bg-secondary"><em>Chờ phê duyệt hoàn tiền</em></p>
                                             @elseif($order->vnp_refund_status == 'Processing')
