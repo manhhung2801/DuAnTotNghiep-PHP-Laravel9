@@ -26,12 +26,10 @@ class CouponsSeeder extends Seeder
                     'name' => $name,
                     'code' =>  $code,
                     'quantity' => 12,
-                    'max_use' => 12,
                     'start_date' => $startDate,
                     'end_date' =>   $endDate,
                     "discount_type" => "percent",
-                    "discount" => 12,
-                    "total_used" => 12,
+                    "prencent_amount" => 12,
                     'created_at' => now(),
                 ]
             ]);
