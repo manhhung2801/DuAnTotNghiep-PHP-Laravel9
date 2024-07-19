@@ -246,6 +246,27 @@
                     }
                 }
             })
+
+            // Apply coupon code
+            $('body').off('click', '#apply_coupon_code').on('click', '#apply_coupon_code', function() {
+                var coupon_code = $('#coupon_code_input').val()
+
+                $.ajax({
+                    type: "post", // Sử dụng method POST
+                    url: "{{ route('applyCouponCode') }}",
+                    data: {
+                        coupon_code: coupon_code
+                    },
+                    success: function(data) {
+                        console.log(data);
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Đã có lỗi khi áp dụng mã giảm giá. Xin vui lòng thử lại sau!');
+                    }
+                });
+
+
+            })
         })
     </script>
 @endpush

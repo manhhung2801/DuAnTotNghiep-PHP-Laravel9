@@ -105,4 +105,14 @@ class CheckoutController extends Controller
             return redirect()->back()->with(['error' => 'Đã xảy ra lỗi xảy trong quá trình thanh toán. Vui lòng liên hệ cho chúng tôi!']);
         }
     }
+
+    function applyCouponCode(Request $request)
+    {
+        return response()->json($request->coupon_code);
+    }
+
+    //function xử lý mã giảm giá
+    private function checkCouponCode($coupon_code) {
+        
+    }
 }

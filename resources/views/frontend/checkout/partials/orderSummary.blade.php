@@ -61,10 +61,10 @@
             <div class="order-summary__section">
                 <div class="edit_checkout animate-floating-labels d-flex">
                     <div class="form-group col-md-9 w-75">
-                        <input type="text" name="coupon" class="field__input" placeholder="Nhập mã khuyến mãi">
+                        <input id="coupon_code_input" type="text" name="coupon" class="field__input" placeholder="Nhập mã khuyến mãi">
                     </div>
-                    <button class="border rounded-1 p-2 col-md-3 mx-1 w-25" type="button">
-                        <span class="spinner-label">Áp dụng</span>
+                    <button id="apply_coupon_code" class="btn btn-primary ms-2" type="button">
+                        Áp dụng
                     </button>
                 </div>
             </div>
