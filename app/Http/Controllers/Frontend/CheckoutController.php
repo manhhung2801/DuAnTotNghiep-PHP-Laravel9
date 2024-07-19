@@ -102,7 +102,7 @@ class CheckoutController extends Controller
                     $order_detail->save();
                 }
                 // xóa toàn bộ giỏ hàng
-                // \Cart::clear();
+                \Cart::clear();
 
                 if($request->payment_method == 1) {
                     $vnpayService = new VNPayService();
