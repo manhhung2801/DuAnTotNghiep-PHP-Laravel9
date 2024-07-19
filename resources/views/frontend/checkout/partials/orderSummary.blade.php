@@ -78,13 +78,15 @@
                         </tr>
                         <tr>
                             <th style="font-weight: normal;">Phí vận chuyển</th>
-                            <td class="total-line__price">Miễn phí</td>
+                            <td id="total_line_shipping" class="total-line__price">----</td>
+                            <input type="hidden" value="" name="shipping_money">
                         </tr>
                     </tbody>
                     <tfoot class="total-line">
                         <tr>
                             <th>Tổng cộng</th>
-                            <td class="total-line__price">{{$getTotal}} VNĐ</td>
+                            <td class="total-line__price" id="total_price_summary">{{$getTotal}} VNĐ</td>
+                            <input type="hidden" id="total_price_hidden" value="{{$getTotal}}">
                         </tr>
                     </tfoot>
                 </table>

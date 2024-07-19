@@ -43,11 +43,53 @@
                         class="fa-solid fa-plus text-light fs-6"></i>Thêm mới</a>
             </div>
             <div class="card-body">
+                <form action="" method="get">
+                    <div class="row mb-3">
+                        <div class="col-1 mt-1 ">
+                            <label for="" class="bg-primary p-1 border rounded-1"><span class="text-white">Bộ
+                                    lọc</span> </label>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" name="sort_price">
+                                <option value>Giá</option>
+                                <option {{ Request::get('sort_price') == 'asc' ? 'selected' : '' }} value="asc">Giá tăng
+                                    dần
+                                </option>
+                                <option {{ Request::get('sort_price') == 'desc' ? 'selected' : '' }} value="desc">Giá giảm
+                                    dần
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" name="check_status">
+                                <option value>Trạng thái</option>
+                                <option {{ Request::get('check_status') == 1 ? 'selected' : '' }} value="1">Đang hoạt
+                                    động
+                                </option>
+                                <option {{ Request::get('check_status') == 0 ? 'selected' : '' }} value="0">Không hoạt
+                                    động
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" name="sort_date">
+                                <option value>Ngày tạo</option>
+                                <option {{ Request::get('sort_date') == 'desc' ? 'selected' : '' }} value="desc">Mới nhất
+                                </option>
+                                <option {{ Request::get('sort_date') == 'asc' ? 'selected' : '' }} value="asc">Cũ nhất
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-1">
+                            <button class="btn btn-primary">Lọc</button>
+                        </div>
+                    </div>
+                </form>
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered " style="width:100%">
                         <thead class="text-center">
                             <tr>
-                                <th>Stt</th>
+                                <th>ID</th>
                                 <th>Hình ảnh</th>
                                 <th>Kiểu</th>
                                 <th>Tiêu đề</th>

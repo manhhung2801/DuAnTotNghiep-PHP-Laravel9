@@ -9,7 +9,6 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\InformationController;
 use App\Http\Controllers\Frontend\AddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
-use App\Http\Controllers\Frontend\TintucController;
 use App\Http\Controllers\Frontend\GioHangController;
 use App\Http\Controllers\Frontend\KhieuNaiController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -17,6 +16,7 @@ use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\frontend\ErrorController;
+use App\Http\Controllers\frontend\GHTKController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Models\Information;
 use \App\Http\Controllers\VNPAYController;
@@ -36,9 +36,12 @@ use \App\Http\Controllers\VNPAYController;
 Route::get("/", [HomeController::class, 'index'])->name("home");
 /** Home */
 /** Addresss */
-Route::get('/dia-chi', [AddressController::class,'index'])->name('address');
+Route::get('/address', [AddressController::class, 'index'])->name('address');
 /** End Addresss */
+
 Route::get('/lien-he', [ContactController::class,'index'])->name('contact');
+Route::post('/lien-he/gui', [ContactController::class,'contact'])->name('contactContact');
+
 
 
 /** User Dashboard */
@@ -70,7 +73,7 @@ Route::get('giohang', [GioHangController::class, 'index']);
 // Route::get('product/',[ProductController::class, 'index']);
 // Route::get('product/{slug?}',[ProductController::class, 'getSlug']);
 
-Route::get('product/{cat?}/{sub?}/{child?}/{slug?}',[ProductController::class, 'getWhereParam']);
+Route::get('product/{cat?}/{sub?}/{child?}/{slug?}', [ProductController::class, 'getWhereParam']);
 // http://127.0.0.1:8000/dien-thoai-tablet/iphone/iphone-15-series/iphone-lo
 
 
@@ -90,7 +93,22 @@ Route::resource('order', OrderController::class)->middleware('checkLogin');
 
 
 /** các trang thông tin */
-Route::get('thong-tin/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");
+Route::get('information/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");
+
+/** trang search  */
+
+Route::get("/search", [ProductController::class, 'search'])->name("search");
+
+Route::fallback(function () {
+    return view("404");
+});
+
+Route::get("/search", [ProductController::class,'search'])->name("search");
+
+/** Tính phí ship (calculateShipping) */
+Route::get("/calculateShipping", [GHTKController::class, 'calculateShipping'])->name('calculateShipping');
+
+
 
 /** trang 404  */
 Route::get("page-not-found", [ErrorController::class,'index'])->name("index");
@@ -103,3 +121,4 @@ Route::post('retry-payment', [VNPAYController::class, 'retry_payment'])->name("r
 Route::get('/thankyou', function() {
     return view('frontend.thankyou.index');
 })->name('thankyou');
+

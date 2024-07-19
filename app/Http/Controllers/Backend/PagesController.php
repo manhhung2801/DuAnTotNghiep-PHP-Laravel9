@@ -7,6 +7,7 @@ use App\Models\Information;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+
 class PagesController extends Controller
 {
 
@@ -19,9 +20,35 @@ class PagesController extends Controller
             $pages = $pages->where('name', 'like', '%' . $request->get('keyword') . '%');
         }
 
+        // Sắp xếp theo tên a-z hoặc tên z-a 
+        if ($request->filled('sort_name')) {
+            $sort_name = $request->get('sort_name');
+            if ($sort_name === 'asc' || $sort_name === 'desc') {
+                $pages->orderBy('name', $sort_name);
+            }
+        }
+        // Sắp xếp theo trạng thái
+        if ($request->filled('check_status')) {
+            $check_status = $request->get('check_status');
+            if ($check_status == 1) {
+                $pages->where('status', $check_status);
+            } elseif ($check_status == 0) {
+                $pages->where('status', $check_status);
+            }
+        }
+
+        // Sắp xếp theo ngày tạo
+        if ($request->filled('sort_date')) {
+            $sort_date = $request->get('sort_date');
+            if ($sort_date === 'asc' || $sort_date === 'desc') {
+                $pages->orderBy('created_at', $sort_date);
+            }
+        }
+
+
 
         // Paginate with 10 items per page
-        $pages = $pages->paginate(10);
+        $pages = $pages->paginate(15);
 
         return view("admin.pages.index", compact('pages'));
     }
@@ -29,10 +56,10 @@ class PagesController extends Controller
     public function create()
     {
         $information = Information::where('status', 1)->get();
-        return view("admin.pages.create",compact('information'));
+        return view("admin.pages.create", compact('information'));
     }
 
-   
+
     public function store(Request $request)
     {
         $request->validate(
@@ -56,7 +83,7 @@ class PagesController extends Controller
         $pages->long_description = $request->long_description;
         $pages->status = $request->status;
         $pages->save();
-        
+
         toastr()->success("Thêm " . $request->name . " Thành công");
         return redirect()->back();
     }
@@ -71,10 +98,10 @@ class PagesController extends Controller
     public function edit($id)
     {
         $pages = Page::findOrFail($id);
-        
+
         $information = Information::where('status', 1)->get();
 
-        return view('admin.pages.edit', compact('pages','information'));
+        return view('admin.pages.edit', compact('pages', 'information'));
     }
 
 
@@ -83,14 +110,14 @@ class PagesController extends Controller
         $request->validate(
             [
                 'information_id' => ['required'],
-              
+
                 'name' => ['required', 'max:255'],
                 'long_description' => ['required'],
 
             ],
             [
                 'information_id.required' => "Danh mục trang không được để trống. ",
-                
+
                 'long_description.required' => "Nội dung không được để trống. ",
                 "name.required" => "Tên không được để trống",
             ]
@@ -104,7 +131,7 @@ class PagesController extends Controller
         $pages->long_description = $request->long_description;
         $pages->status = $request->status;
         $pages->save();
-        
+
         toastr()->success('Tạo mới thành công!', 'success');
 
         return redirect()->back();

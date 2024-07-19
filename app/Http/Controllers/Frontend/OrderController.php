@@ -18,7 +18,7 @@ class OrderController extends Controller
     public function index()
     {
         $idUser = \Auth::user()->id;
-        $getOrders = Order::getOrderUser($idUser)->paginate(5);
+        $getOrders = Order::getOrderUser($idUser)->paginate(10);
         return view('frontend.dashboard.page.orders', compact('getOrders'));
     }
 

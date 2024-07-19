@@ -39,7 +39,6 @@
                             icon: "success",
                             title: data.message
                         });
-                        console.log(data.abc);
                         $('.cart-count').text(data.cart_count);
                     }
                     if (data.status == false) {
@@ -52,7 +51,7 @@
                 error: function(xhr, status, error) {
                     Toast.fire({
                         icon: "error",
-                        title: xhr.responseJSON.message
+                        title: "Đã có lỗi xảy ra. Vui lòng liên hệ cho chúng tôi!"
                     });
                 }
             })

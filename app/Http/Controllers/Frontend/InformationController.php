@@ -9,25 +9,41 @@ use Illuminate\Http\Request;
 
 class InformationController extends Controller
 {
-    public function showPages($slug1, $slug2)
+    public function showPages($slug1 = null, $slug2 = null)
     {
-        $ListInformation = Information::all();
-        $ListPage = Page::all();
-        $ckeckIdListInformation = Information::where("slug", $slug1)->first();
+        try {
 
+            $listInformation = Information::all();
+            $listPages = Page::all();
 
-            if ($ckeckIdListInformation) {
-                $Informationdetai = Page::where("slug", $slug2)
-                    ->where("information_id", $ckeckIdListInformation->id)
+            // Check điều kiện $slug1 and $slug2 
+            if ($slug1 && $slug2) {
+                // Check nếu không có $slug1 thì thoát ra trang 404
+                $checkedInformation = Information::where("slug", $slug1)->first();
+                if (!$checkedInformation) {
+                    return view(404);
+                }
+
+                // Tìm trang có $slug2 bên dưới thông tin tìm thấy
+                $informationDetail = Page::where("slug", $slug2)
+                    ->where("information_id", $checkedInformation->id)
                     ->first();
 
-                return view("frontend.information.index", [
-                    'ListInformation' => $ListInformation,
-                    'ListPage' => $ListPage,
-                    'Informationdetai' => $Informationdetai,
-                    'ckeckIdListInformation' => $ckeckIdListInformation->id,
+                if (!$informationDetail) {
+                    return view(404);
+                }
 
+                return view("frontend.information.index", [
+                    'listInformation' => $listInformation,
+                    'listPages' => $listPages,
+                    'informationDetail' => $informationDetail,
+                    'checkedInformation' => $checkedInformation->id,
                 ]);
+            } else {
+                return view(404);
+            }
+        } catch (\Exception $e) {
+            return view(404);
         }
     }
 }

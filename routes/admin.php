@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\backend\VariantItemController;
 use App\Http\Controllers\Backend\ChildCategoryController;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\InformationController;
 use App\Http\Controllers\backend\OrderController;
@@ -58,13 +59,13 @@ Route::resource('/child-category', ChildCategoryController::class);
 
 /** Information */
 Route::put('/information/change-status', [InformationController::class, 'changeStatus'])->name('information.change-status');
-Route::resource('/information',InformationController::class);
+Route::resource('/information', InformationController::class);
 
 
 
 /**Pages */
 Route::put('/pages/change-status', [PagesController::class, 'changeStatus'])->name('pages.change-status');
-Route::resource('/pages',PagesController::class);
+Route::resource('/pages', PagesController::class);
 
 /** Product */
 Route::put('/product/change-status', [ProductController::class, 'changeStatus'])->name('product.change-status');
@@ -98,22 +99,22 @@ Route::resource('/coupons', CouponsController::class);
 
 /** Variant */
 Route::put('/variant/change-status', [VariantController::class, 'changeStatus'])->name('variant.change-status');
-Route::get('/variant/trashed-variant',[VariantController::class, 'trashedVariant'])->name('variant.trashed-variant');
-Route::PATCH('/variant/restore/{id}',[VariantController::class,'restore'])->name('variant.restore-variant');
-Route::DELETE('/variant/deleted/{id}',[VariantController::class,'deleteVariant'])->name('variant.deleted-variant');
-Route::put('/variant/change-status',[ VariantController::class,'changeStatus'])->name('variant.change-status');
+Route::get('/variant/trashed-variant', [VariantController::class, 'trashedVariant'])->name('variant.trashed-variant');
+Route::PATCH('/variant/restore/{id}', [VariantController::class, 'restore'])->name('variant.restore-variant');
+Route::DELETE('/variant/deleted/{id}', [VariantController::class, 'deleteVariant'])->name('variant.deleted-variant');
+Route::put('/variant/change-status', [VariantController::class, 'changeStatus'])->name('variant.change-status');
 
 /** add variant of product */
-Route::get('product/{id}/variant',[VariantController::class, 'getVariantByProductId'])->name('product.variant');
-Route::resource('/variant',VariantController::class);
+Route::get('product/{id}/variant', [VariantController::class, 'getVariantByProductId'])->name('product.variant');
+Route::resource('/variant', VariantController::class);
 
 
 /** VariantItem */
 Route::get('/variantItem/onlyTrashed', [VariantItemController::class, 'onlyTrashed'])->name('variantItem.onlyTrashed');
-Route::PATCH('/variantItem/restore/{id?}', [ VariantItemController::class, 'restore'])->name('variantItem.restore');
-Route::DELETE('/variantItem/delete/{id?}', [ VariantItemController::class, 'destroyTrashed'])->name('variantItem.destroyTrashed');
+Route::PATCH('/variantItem/restore/{id?}', [VariantItemController::class, 'restore'])->name('variantItem.restore');
+Route::DELETE('/variantItem/delete/{id?}', [VariantItemController::class, 'destroyTrashed'])->name('variantItem.destroyTrashed');
 /** add variantItem of variant */
-Route::get('product/variant/{id}/variant-item/',[VariantItemController::class, 'getVariantItemByVariantId'])->name('product.variant.variant-item');
+Route::get('product/variant/{id}/variant-item/', [VariantItemController::class, 'getVariantItemByVariantId'])->name('product.variant.variant-item');
 
 Route::resource('/variantItem', VariantItemController::class);
 Route::put('/variantItem/change-status/{id?}', [VariantItemController::class, 'changeStatus'])->name('variantItem.change-status');
@@ -125,20 +126,20 @@ Route::put("/user-management/change-role", [UserManagementController::class, 'ch
 Route::put("/user-management/change-status", [UserManagementController::class, 'changeStatus'])->name('user-management.change-status');
 
 /** post_category */
-Route::put('/post-category/change-status',[PostCategoriesController::class,'changeStatus'])->name('post-category.change-status');
-Route::get('/post-category/trashed-postCategory',[PostCategoriesController::class, 'trashedPostcate'])->name('post-category.trashed-postCate');
-Route::get('/post-category/restore/{id}',[PostCategoriesController::class,'restore'])->name('post-category.restore-post_categories');
-Route::get('/post-category/deleted/{id}',[PostCategoriesController::class,'deleteVariant'])->name('post-category.deleted-post_categories');
-Route::resource('/post-category',PostCategoriesController::class);
+Route::put('/post-category/change-status', [PostCategoriesController::class, 'changeStatus'])->name('post-category.change-status');
+Route::get('/post-category/trashed-postCategory', [PostCategoriesController::class, 'trashedPostcate'])->name('post-category.trashed-postCate');
+Route::get('/post-category/restore/{id}', [PostCategoriesController::class, 'restore'])->name('post-category.restore-post_categories');
+Route::get('/post-category/deleted/{id}', [PostCategoriesController::class, 'deleteVariant'])->name('post-category.deleted-post_categories');
+Route::resource('/post-category', PostCategoriesController::class);
 
 
 
 /** post */
-Route::put('/post/change-status',[PostsController::class,'changeStatus'])->name('post.change-status');
-Route::get('/post/trashed-post',[PostsController::class, 'trashedPost'])->name('post.trashed-post');
-Route::get('/post/restore/{id}',[PostsController::class,'restore'])->name('post.restore-post');
-Route::get('/post/deleted/{id}',[PostsController::class,'deleteVariant'])->name('post.deleted-post');
-Route::resource('/post',PostsController::class);
+Route::put('/post/change-status', [PostsController::class, 'changeStatus'])->name('post.change-status');
+Route::get('/post/trashed-post', [PostsController::class, 'trashedPost'])->name('post.trashed-post');
+Route::get('/post/restore/{id}', [PostsController::class, 'restore'])->name('post.restore-post');
+Route::get('/post/deleted/{id}', [PostsController::class, 'deleteVariant'])->name('post.deleted-post');
+Route::resource('/post', PostsController::class);
 
 // Route::fallback(function () {
 //     return route("admin.login");
@@ -147,4 +148,21 @@ Route::resource('/post',PostsController::class);
 Route::resource('/order', OrderController::class);
 
 
+
 Route::post('/order-vnp-refund-status-update', [OrderController::class, 'VNPRefundStatusUpdate'])->name('order.vnp-refund-status.update');
+
+// 
+Route::fallback(function () {
+    return view("404");
+});
+
+// Liên Hệ 
+Route::get('contact/trash-list', [ContactController::class, 'showTrash'])->name('coupons.trash-list');
+Route::DELETE('contact/destroy-trash/{id?}', [ContactController::class, 'destroyTrash'])->name('contact.destroy-trash');
+Route::PATCH('contact/restore-trash/{id?}', [ContactController::class, 'restoreTrash'])->name('contact.restore-trash');
+Route::get('contact',[ContactController::class,"index"])->name('AdminContact');
+Route::get('contact/show/{id}',[ContactController::class,"show"])->name('contact.show');
+Route::put('contact/feedback/answered/{id}',[ContactController::class,"answered"])->name('contact.answered');
+Route::delete('contact/destroy/{id}',[ContactController::class,"destroy"])->name('contact.destroy');
+Route::post('contact/feedback',[ContactController::class,"feedback"])->name('contact.feedback');
+

@@ -46,7 +46,7 @@
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead class="text-center">
                             <tr>
-                                <th>Stt</th>
+                                <th>ID</th>
                                 <th>Hình ảnh</th>
                                 <th>Kiểu</th>
                                 <th>Tiêu đề</th>
