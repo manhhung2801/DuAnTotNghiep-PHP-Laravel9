@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupons;
 use App\Models\Order_detail;
 use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Support\Facades\Session;
 use Cart;
 use Exception;
 use Illuminate\Http\Request;
@@ -108,11 +110,70 @@ class CheckoutController extends Controller
 
     function applyCouponCode(Request $request)
     {
-        return response()->json($request->coupon_code);
+        $coupon_code = $request->coupon_code;
+        $getCoupon = Session::get('coupon_code') ?? 0;
+        if ($getCoupon == $coupon_code) {
+            return response()->json(['status' => false]);
+        }
+
+        Session::forget('coupon_code');
+        Session::forget('discount_amount');
+
+        $total_cart = \Cart::getSubTotal();
+        $check_coupon_code = $this->checkCouponCode($coupon_code, $total_cart);
+
+        if ($check_coupon_code == -1) {
+            return response()->json(['status' => false, 'message' => 'Mã giảm giá đã hết lượt sử dụng!']);
+        }
+        if ($check_coupon_code == 0) {
+            return response()->json(['status' => false, 'message' => 'Mã giảm giá không đúng hoặc không tồn tại']);
+        }
+        if ($check_coupon_code > 0) {
+            Session::put('coupon_code', $coupon_code);
+            Session::put('discount_amount', $check_coupon_code);
+            $newTotal = $total_cart - $check_coupon_code;
+
+            return response()->json(['status' => true, 'newTotal' => number_format($newTotal, 0, ',', '.')]);
+        }
+        // return response()->json($check_coupon_code);
+        return response()->json(['status' => false]);
     }
 
-    //function xử lý mã giảm giá
-    private function checkCouponCode($coupon_code) {
-        
+    //function xử lý mã giảm giá 
+    private function checkCouponCode($coupon_code, $total_cart)
+    {
+        $currentDate = date('Y-m-d H:i:s');
+        $couponCode = Coupons::checkCouponCode($coupon_code);
+
+        // Kiểm tra có tồn tại hay không
+        if (!$couponCode) {
+            return 0;
+        }
+
+        //Nếu code tồn tại
+        if ($couponCode) {
+
+            //Kiểm tra ngày đã đến ngày chưa hay đã hết hạn
+            if ($couponCode->end_date <= $currentDate || $couponCode->start_date >= $currentDate) {
+                return 1;
+            }
+            // // kiểm tra số lượng
+            if ($couponCode->quantity <= 0) {
+                return -1;
+            }
+
+            //Khỏi tạo giá trị ban đầu
+            $discountAmount = 0;
+            //Kiểm tra loại và tính toán giảm giá theo phần trăm hay cố định
+            if ($couponCode->coupon_type === 'precent') {
+                //tính số tiền được giảm trên số % giảm của tổng tiền
+                $discountAmount = ($couponCode->precent_amount / 100) * $total_cart;
+            } elseif ($couponCode->coupon_type === 'amount') {
+                //Nếu số tiền được giảm nhiều hơn số tiền tổng đơn hàng thì lấy số tiền được giảm -> tránh số tiền giảm nhiều hơn đơn hàng
+                $discountAmount = min($couponCode->precent_amount, $total_cart);
+            }
+            //Kết quả trả về luôn lơn hơn 0
+            return max(0, $discountAmount);
+        }
     }
 }

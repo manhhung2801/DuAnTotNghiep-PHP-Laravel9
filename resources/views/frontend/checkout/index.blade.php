@@ -261,7 +261,7 @@
                         console.log(data);
                     },
                     error: function(xhr, status, error) {
-                        alert('Đã có lỗi khi áp dụng mã giảm giá. Xin vui lòng thử lại sau!');
+                        alert('Đã có lỗi khi áp dụng mã giảm giá. Xin vui lòng thử lại sau!' +error);
                     }
                 });
 
