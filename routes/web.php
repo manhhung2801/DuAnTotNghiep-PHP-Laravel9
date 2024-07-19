@@ -16,6 +16,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\OrderController;
+use App\Http\Controllers\Frontend\CommentsController;
 use App\Models\Information;
 
 /*
@@ -87,4 +88,8 @@ Route::resource('order', OrderController::class)->middleware('checkLogin');
 
 /** các trang thông tin */
 Route::get('thong-tin/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");
+
+// Comment sản phẩm
+Route::get('/comments/{id}', [CommentsController::class, 'getComments'])->name("commentProductId");
+Route::post('/comment-post', [CommentsController::class, 'commentPost'])->name("commentPost");
 

@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\PagesController;
 use App\Http\Controllers\Backend\StoreAddressController;
 use App\Http\Controllers\Backend\UserManagementController;
 use App\Http\Controllers\Backend\PostCategoriesController;
+use App\Http\Controllers\Backend\CommentsController;
 use App\Models\Information;
 
 
@@ -138,6 +139,12 @@ Route::get('/post/trashed-post',[PostsController::class, 'trashedPost'])->name('
 Route::get('/post/restore/{id}',[PostsController::class,'restore'])->name('post.restore-post');
 Route::get('/post/deleted/{id}',[PostsController::class,'deleteVariant'])->name('post.deleted-post');
 Route::resource('/post',PostsController::class);
+
+/** Comment */
+Route::get('comment/trash-list', [CommentsController::class, 'showTrash'])->name('comment.trash-list');
+Route::DELETE('comment/destroy-trash/{id?}', [CommentsController::class, 'destroyTrash'])->name('comment.destroy-trash');
+Route::PATCH('comment/restore-trash/{id?}', [CommentsController::class, 'restoreTrash'])->name('comment.restore-trash');
+Route::resource('comment', CommentsController::class);
 
 // Route::fallback(function () {
 //     return route("admin.login");

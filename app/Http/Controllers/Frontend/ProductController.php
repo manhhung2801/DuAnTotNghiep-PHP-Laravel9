@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductComments;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
@@ -101,6 +102,11 @@ class ProductController extends Controller
                 $product = Product::with('product_image_galleries')->findOrFail($product->id);
                 $product_image_galleries = $product->product_image_galleries;
                 $variants = $product->variant()->get();
+
+                $comments = ProductComments::where('product_id', $product->id)
+                ->with('user')
+                ->get();
+
                 // Lấy danh sách các id của các sản phẩm liên quan (cùng danh mục) trừ sản phẩm ban đầu
                 $relatedProductIds = Product::where('category_id', $product->category_id)
                     ->where('id', '!=', $product->id) // Loại trừ sản phẩm ban đầu
@@ -110,7 +116,7 @@ class ProductController extends Controller
                 ->orderBy('created_at','desc')
                     ->limit(4)
                     ->get();
-                return view('frontend.products.detail', compact( "product", "variants", "product_image_galleries", "product_image_galleries", "products", "relatedProducts"));
+                return view('frontend.products.detail', compact( "product", "variants", "product_image_galleries", "product_image_galleries", "products", "relatedProducts", "comments"));
             default:
                 // No filters applied
                 return view('frontend.products.index', compact( "products"));
