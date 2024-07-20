@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('order_ward');
             $table->double('total');
             $table->double('ship_money')->nullable();
-            $table->string('delivery_address')->nullable();
+            $table->string('store_address')->nullable();
             $table->double('qty_total');
             $table->string('payment_method');
             $table->integer('payment_status');

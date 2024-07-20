@@ -293,7 +293,7 @@
                                 <a href="#!" class="text-reset text-decoration-none">Đơn hàng</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-reset text-decoration-none">Hệ thống cữa hàng</a>
+                                <a href="#!" class="text-reset text-decoration-none">Hệ thống cửa hàng</a>
                             </li>
                             <li>
                                 <a href="#!" class="text-reset text-decoration-none">Tìm store trên Google Map</a>
