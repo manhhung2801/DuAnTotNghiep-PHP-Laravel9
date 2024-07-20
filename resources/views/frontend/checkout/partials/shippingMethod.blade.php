@@ -8,7 +8,7 @@
             </div>
             <label for="receiveStore" class="radio__label">
                 <span class="radio__label__primary">
-                    <span>Nhận tại cữa hàng</span>
+                    <span>Nhận tại cửa hàng</span>
                 </span>
                 <span class="radio__label__accessory">
                     <span class="content-box__emphasis price ">
@@ -18,7 +18,7 @@
             </label>
         </div>
         <div id="pick_address_store" class="d-none mt-2">
-            {{-- <label class="form-label" for="">Chọn địa chỉ cữa hàng: </label> --}}
+            {{-- <label class="form-label" for="">Chọn địa chỉ cửa hàng: </label> --}}
             {{-- <select id="pick_address_store_select" class="w-100 py-2 " name="pick_address_store">
             </select> --}}
         </div>

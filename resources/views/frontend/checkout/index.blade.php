@@ -172,7 +172,7 @@
 @push('ajax')
     <script type="text/javascript">
         $(document).ready(() => {
-            //Nếu Nhận hàng tại cữa hàng thì reset các trường
+            //Nếu Nhận hàng tại cửa hàng thì reset các trường
             $('body').off('click', '#receiveStore').on('click', '#receiveStore', function() {
                 //Phí ship sẽ bằng 0 nếu người dùng chọn nhận tại nữa hàng (trường show dữ liệu)
                 $('#total_line_shipping').text(0 + ' VNĐ');
@@ -181,13 +181,13 @@
                 $('#total_price_summary').text(parseInt(totalMoney).toLocaleString('vi-VN') + ' VNĐ');
                 //Phí ship sẽ bằng 0 nếu người dùng chọn nhận tại nữa hàng (trường lấy dữ liệu)
                 $('input[name="shipping_money"]').val(0)
-                //Hiện ds cữa hàng
+                //Hiện ds cửa hàng
                 $('#pick_address_store').removeClass('d-none')
                 //reset coupon
                 $('#coupon_code_input').val('');
                 $('#coupon_code_value').val(0);
 
-                
+
                 $.ajax({
                     type: 'GET',
                     url: "{{ route('api.getStoreAddress') }}",
@@ -199,7 +199,7 @@
                             $.each(data.storeAdress, function(index, value) {
                                 var form_check = $('<div>').addClass('form-check')
                                 form_check.append(
-                                    `<input class="form-check-input" type="radio" name="delivery_address" id="store_address_${index}" value="${value}" checked><label class="form-check-label lable_store_address" for="store_address_${index}">${value}</label>`
+                                    `<input class="form-check-input" type="radio" name="store_address" id="store_address_${index}" value="${value}" checked><label class="form-check-label lable_store_address" for="store_address_${index}">${value}</label>`
                                 )
                                 $('#pick_address_store').append(form_check)
                             })
@@ -216,7 +216,7 @@
             // Nếu GHTK thì tính phí ship 
             $('body').off('change click', '#wards, #ghtk').on('change click', '#wards, #ghtk', function() {
                 if ($('#ghtk').is(':checked')) {
-                    // Ẩn ds cữa hàng đi
+                    // Ẩn ds cửa hàng đi
                     $('#pick_address_store').addClass('d-none')
                     $('#pick_address_store').empty()
 
