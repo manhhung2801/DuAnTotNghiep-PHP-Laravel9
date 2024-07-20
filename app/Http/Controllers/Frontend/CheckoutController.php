@@ -34,7 +34,7 @@ class CheckoutController extends Controller
         }
 
         $getSubTotal = number_format(\Cart::getSubTotal(), 0, '', '.');
-        $getTotal = number_format(\Cart::getTotal(), 0, '', '.');
+        $getTotal = \Cart::getTotal();
         $getTotalQuantity = \Cart::getTotalQuantity();
         return view('frontend.checkout.index', compact('getCart', 'getSubTotal', 'getTotal', 'getTotalQuantity'));
     }
@@ -55,14 +55,22 @@ class CheckoutController extends Controller
                     }
                     // trừ số lượng sản phẩm trong databse
                     $getQtyProduct->qty -= $cart->quantity;
-                    // Update số lượng sau khi mua hàng
                     $getQtyProduct->save();
                 }
-                // end check số lương
 
-                //Tính tổng tiền nếu có phí ship
-                $shipping_money = $request->input('shipping_money') ?? 0;
-                $total = \Cart::getTotal() + $shipping_money;
+                //Tính tổng tiền nếu có coupon
+                $total_price_input = $request->input('total_price_hidden') ?? 0;
+                $total = $total_price_input - $request->input('coupon_value');
+
+                // Cộng 1 lần sử dụng mã coupon
+                $couponCode = $request->session()->get('coupon_code') ?? '';
+                if ($couponCode) {
+                    $getCoupon = Coupons::where('code', $couponCode)->first();
+                    if ($getCoupon) {
+                        $getCoupon->quantity -= 1;
+                        $getCoupon->save;
+                    }
+                }
 
                 // Thêm order
                 $order = new Order();
@@ -73,7 +81,7 @@ class CheckoutController extends Controller
                 $order->order_district = trim($request->districts);
                 $order->order_ward = trim($request->wards);
                 $order->order_address = trim($request->address);
-                $order->ship_money = $shipping_money;
+                $order->ship_money = $request->input('shipping_money') ?? 0;
                 $order->delivery_address = $request->delivery_address ?? '';
                 $order->total = $total;
                 $order->qty_total = \Cart::getTotalQuantity();
@@ -82,10 +90,11 @@ class CheckoutController extends Controller
                 $order->payment_status = $request->payment_method;
                 $order->shipping_method = trim($request->shipping_method);
                 $order->order_status = 0;
-                $order->coupon = trim($request->coupon);
+                $order->coupon = $couponCode;
                 $order->user_note = trim($request->user_note);
                 $order->user_id = \Auth::user()->id;
                 $order->save();
+
 
                 //Thên order detail
                 foreach ($getCart as $key => $proCart) {
@@ -111,15 +120,11 @@ class CheckoutController extends Controller
     function applyCouponCode(Request $request)
     {
         $coupon_code = $request->coupon_code;
-        $getCoupon = Session::get('coupon_code') ?? 0;
-        if ($getCoupon == $coupon_code) {
-            return response()->json(['status' => false]);
-        }
 
         Session::forget('coupon_code');
         Session::forget('discount_amount');
 
-        $total_cart = \Cart::getSubTotal();
+        $total_cart = $request->total_cart;
         $check_coupon_code = $this->checkCouponCode($coupon_code, $total_cart);
 
         if ($check_coupon_code == -1) {
@@ -133,7 +138,7 @@ class CheckoutController extends Controller
             Session::put('discount_amount', $check_coupon_code);
             $newTotal = $total_cart - $check_coupon_code;
 
-            return response()->json(['status' => true, 'newTotal' => number_format($newTotal, 0, ',', '.')]);
+            return response()->json(['status' => true, 'newTotal' => $newTotal]);
         }
         // return response()->json($check_coupon_code);
         return response()->json(['status' => false]);

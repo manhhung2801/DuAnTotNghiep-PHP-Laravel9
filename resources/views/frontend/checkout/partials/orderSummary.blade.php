@@ -61,12 +61,14 @@
             <div class="order-summary__section">
                 <div class="edit_checkout animate-floating-labels d-flex">
                     <div class="form-group col-md-9 w-75">
-                        <input id="coupon_code_input" type="text" name="coupon" class="field__input" placeholder="Nhập mã khuyến mãi">
+                        <input id="coupon_code_input" type="text" class="field__input" placeholder="Nhập mã khuyến mãi">
+                        <input id="coupon_code_value" type="hidden" name="coupon_value" value="0">
                     </div>
                     <button id="apply_coupon_code" class="btn btn-primary ms-2" type="button">
                         Áp dụng
                     </button>
                 </div>
+                <span id="message_coupon" class="text-danger"></span>
             </div>
             <hr>
             <div class="order-summary__section ">
@@ -79,14 +81,14 @@
                         <tr>
                             <th style="font-weight: normal;">Phí vận chuyển</th>
                             <td id="total_line_shipping" class="total-line__price">----</td>
-                            <input type="hidden" value="" name="shipping_money">
+                            <input id="shipping_value" type="hidden" value="0" name="shipping_money">
                         </tr>
                     </tbody>
                     <tfoot class="total-line">
                         <tr>
                             <th>Tổng cộng</th>
-                            <td class="total-line__price" id="total_price_summary">{{$getTotal}} VNĐ</td>
-                            <input type="hidden" id="total_price_hidden" value="{{$getTotal}}">
+                            <td class="total-line__price" id="total_price_summary">{{number_format($getTotal, 0, ',', '.')}} VNĐ</td>
+                            <input type="hidden" id="total_price_hidden" name="total_price_hidden" value="{{$getTotal}}">
                         </tr>
                     </tfoot>
                 </table>

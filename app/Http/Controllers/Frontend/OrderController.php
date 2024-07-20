@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupons;
 use App\Models\Order;
 use App\Models\Order_detail;
 use App\Models\Product;
@@ -53,7 +54,8 @@ class OrderController extends Controller
     {
         $getOrderDetail = Order_detail::where('order_id', '=', $id)->get();
         $orderDetail = Order::getOrder($id);
-        return view('frontend.dashboard.page.order-detail', compact('getOrderDetail', 'orderDetail'));
+        $getCoupon = Coupons::where('code', $orderDetail->coupon)->first();
+        return view('frontend.dashboard.page.order-detail', compact('getOrderDetail', 'orderDetail', 'getCoupon'));
     }
 
     /**

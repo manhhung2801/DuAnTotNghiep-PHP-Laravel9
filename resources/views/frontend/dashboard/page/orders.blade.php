@@ -52,9 +52,9 @@
                                         </div>
                                     </td>
                                     <td>
-                                        @if ($order->payment_status == 0)
+                                        @if ($order->payment_method == 0)
                                             <p class="fw-normal mb-1">Thanh toán khi nhận hàng</p>
-                                        @elseif ($order->payment_status == 1)
+                                        @elseif ($order->payment_method == 1)
                                             <p class="fw-normal mb-1">Thanh toán qua ngân hàng</p>
                                         @endif
 
@@ -99,9 +99,7 @@
                                         @endif
                                     </td>
 
-
-
-                                    <td><strong>{{ number_format($order->total, 0, '', '.') }} VNĐ</strong></td>
+                                    <td><strong>{{ number_format($order->total + $order->ship_money, 0, '', '.') }} VNĐ</strong></td>
                                     <td>
                                         <a href="{{ route('order.show', $order->id) }}"
                                             class="btn btn-primary btn-rounded px-3 py-1">Xem</a>
