@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductComments;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
@@ -44,7 +45,7 @@ class ProductController extends Controller
          // áp dụng search cho filter
          if ($searchTerm) {
             $productsQuery->where('name', 'like', '%' . $searchTerm . '%');
-        }   
+        }
 
         // Apply filters based on provided parameters
         if ($cat) {
@@ -91,10 +92,10 @@ class ProductController extends Controller
 
         // Paginate the products
         $products = $productsQuery->paginate(16);
-      
+
         // Calculate percentage change for products
         $products = $this->calculatePercentageChange($products);
-      
+
         // Determine which view to render based on filtered parameters
         switch (count(array_filter($filters))) {
             case 1:
@@ -110,6 +111,12 @@ class ProductController extends Controller
                 // Assuming only one product is filtered
                 $product = Product::with('product_image_galleries')->findOrFail($product->id);
                 $product_image_galleries = $product->product_image_galleries;
+                $variants = $product->variant()->get();
+
+                $comments = ProductComments::where('product_id', $product->id)
+                ->with('user')
+                ->get();
+
                 $variants = $product->variant();
                 // Lấy danh sách các id của các sản phẩm liên quan (cùng danh mục) trừ sản phẩm ban đầu
                 $relatedProductIds = Product::where('category_id', $product->category_id)
@@ -120,7 +127,7 @@ class ProductController extends Controller
                     ->orderBy('created_at', 'desc')
                     ->limit(4)
                     ->get();
-                return view('frontend.products.detail', compact("product", "variants", "product_image_galleries", "product_image_galleries", "products", "relatedProducts", "getQtyCart"));
+                return view('frontend.products.detail', compact("product", "variants", "product_image_galleries", "product_image_galleries", "products", "relatedProducts", "comments", "getQtyCart"));
             default:
                 // No filters applied
                 return view('frontend.products.index', compact("products"));

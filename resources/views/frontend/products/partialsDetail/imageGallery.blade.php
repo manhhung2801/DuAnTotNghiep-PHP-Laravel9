@@ -1,5 +1,6 @@
 <div class="product-image">
     <div class="big-img">
+        {{-- @dd($product) --}}
         <img src="{{ asset('uploads/products/' . $product->image) }}">
     </div>
     <div class="images d-flex mt-3">

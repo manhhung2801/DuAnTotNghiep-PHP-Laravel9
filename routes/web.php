@@ -18,6 +18,7 @@ use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\frontend\ErrorController;
 use App\Http\Controllers\frontend\GHTKController;
 use App\Http\Controllers\Frontend\OrderController;
+use App\Http\Controllers\Frontend\CommentsController;
 use App\Models\Information;
 use \App\Http\Controllers\VNPAYController;
 /*
@@ -121,4 +122,8 @@ Route::post('retry-payment', [VNPAYController::class, 'retry_payment'])->name("r
 Route::get('/thankyou', function() {
     return view('frontend.thankyou.index');
 })->name('thankyou');
+
+// Comment sản phẩm
+Route::get('/comments/{id}', [CommentsController::class, 'getComments'])->name("commentProductId");
+Route::post('/comment-post', [CommentsController::class, 'commentPost'])->name("commentPost");
 

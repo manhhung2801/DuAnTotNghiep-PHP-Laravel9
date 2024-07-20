@@ -153,6 +153,19 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="fa-solid fa-comment"></i>
+                </div>
+                <div class="menu-title">Bình luận</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route('admin.comment.index') }}"><i class='bx bx-radio-circle'></i>Danh sách sản
+                        phẩm</a>
+                </li>
+            </ul>
+        </li>
 
         <li>
             <a class="has-arrow" href="javascript:;">
