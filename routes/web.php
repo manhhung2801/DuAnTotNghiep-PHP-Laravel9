@@ -15,11 +15,9 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\ContactController;
-use App\Http\Controllers\frontend\ErrorController;
 use App\Http\Controllers\frontend\GHTKController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\CommentsController;
-use App\Models\Information;
 use \App\Http\Controllers\VNPAYController;
 /*
 |--------------------------------------------------------------------------
@@ -67,15 +65,10 @@ Route::post('/admin/login', [AdminLoginController::class, 'store'])->name("admin
 
 
 /** User Dashboard */
-// Route::get('/tintuc',[TintucController::class,'index']);
 Route::get('/khieunai', [KhieuNaiController::class, 'index']);
 Route::get('giohang', [GioHangController::class, 'index']);
 
-// Route::get('product/',[ProductController::class, 'index']);
-// Route::get('product/{slug?}',[ProductController::class, 'getSlug']);
-
 Route::get('product/{cat?}/{sub?}/{child?}/{slug?}', [ProductController::class, 'getWhereParam']);
-// http://127.0.0.1:8000/dien-thoai-tablet/iphone/iphone-15-series/iphone-lo
 
 
 Route::get('/tin-tuc', [NewsController::class, 'index'])->name("news");
@@ -112,10 +105,6 @@ Route::get("/search", [ProductController::class,'search'])->name("search");
 /** Tính phí ship (calculateShipping) */
 Route::get("/calculateShipping", [GHTKController::class, 'calculateShipping'])->name('calculateShipping');
 
-
-
-/** trang 404  */
-Route::get("page-not-found", [ErrorController::class,'index'])->name("index");
 
 /** VNPAY */
 Route::get('vnpay-return', [VNPAYController::class, 'vnpay_return']);
