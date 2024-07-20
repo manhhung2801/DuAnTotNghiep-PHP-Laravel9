@@ -9,8 +9,6 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\InformationController;
 use App\Http\Controllers\Frontend\AddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
-use App\Http\Controllers\Frontend\GioHangController;
-use App\Http\Controllers\Frontend\KhieuNaiController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
@@ -65,9 +63,6 @@ Route::post('/admin/login', [AdminLoginController::class, 'store'])->name("admin
 
 
 /** User Dashboard */
-Route::get('/khieunai', [KhieuNaiController::class, 'index']);
-Route::get('giohang', [GioHangController::class, 'index']);
-
 Route::get('product/{cat?}/{sub?}/{child?}/{slug?}', [ProductController::class, 'getWhereParam']);
 
 
