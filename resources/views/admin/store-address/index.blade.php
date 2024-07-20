@@ -45,18 +45,9 @@
             <div class="card-body">
                 <form action="" method="get">
                     <div class="row mb-3">
-                        <div class="col-2 mt-1 ">
+                        <div class="col-1 mt-1 ">
                             <label for="" class="bg-primary p-1 border rounded-1"><span class="text-white">Bộ
                                     lọc</span> </label>
-                        </div>
-                        <div class="col">
-                            <select class="form-select" name="sort_name">
-                                <option value>Tên</option>
-                                <option {{ Request::get('sort_name') == 'asc' ? 'selected' : '' }} value="asc">Tên A-Z
-                                </option>
-                                <option {{ Request::get('sort_name') == 'desc' ? 'selected' : '' }} value="desc">Tên Z-A
-                                </option>
-                            </select>
                         </div>
                         <div class="col">
                             <select class="form-select" name="check_status">

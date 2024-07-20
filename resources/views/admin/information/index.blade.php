@@ -46,15 +46,6 @@
                                     lọc</span> </label>
                         </div>
                         <div class="col">
-                            <select class="form-select" name="sort_name">
-                                <option value>Tên</option>
-                                <option {{ Request::get('sort_name') == 'asc' ? 'selected' : '' }} value="asc">Tên A-Z
-                                </option>
-                                <option {{ Request::get('sort_name') == 'desc' ? 'selected' : '' }} value="desc">Tên Z-A
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col">
                             <select class="form-select" name="sort_rank">
                                 <option value>Thứ hạng</option>
                                 <option {{ Request::get('sort_rank') == 'asc' ? 'selected' : '' }} value="asc">Thứ hạng

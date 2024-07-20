@@ -81,7 +81,7 @@ class OrderController extends Controller
         }
 
         // Lấy kết quả và phân trang
-        $getOrders = $getOrders->paginate(15); // Phân trang với số lượng bản ghi trên mỗi trang là 10
+        $getOrders = $getOrders->paginate(15)->appends(request()->query()); // Phân trang với số lượng bản ghi trên mỗi trang là 10
 
         return view('admin.order.index', compact('getOrders'));
     }

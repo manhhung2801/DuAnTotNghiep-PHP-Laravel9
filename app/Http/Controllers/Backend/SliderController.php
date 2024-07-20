@@ -45,7 +45,7 @@ class SliderController extends Controller
             }
         }
 
-        $sliders = $sliders->paginate(15);
+        $sliders = $sliders->paginate(15)->appends(request()->query());
         return view("admin.slider.index", compact('sliders'));
     }
     public function create()

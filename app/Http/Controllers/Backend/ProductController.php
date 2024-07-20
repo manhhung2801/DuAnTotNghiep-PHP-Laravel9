@@ -33,11 +33,56 @@ class ProductController extends Controller
     {
 
         $getProduct = Product::getProduct();
+
+        $category = Category::all();
+        // tìm kiếm sản phẩm theo tên
         if (!empty(Request()->get('keyword'))) {
             $keyword = trim(Request()->get('keyword'));
             $getProduct->where('name', 'like', '%' . $keyword . '%');
         }
-        $getProduct = $getProduct->paginate(15);
+
+        // lọc theo danh mục
+        if ($request->filled('category_id')) {
+            $category_id = $request->get('category_id');
+            $getProduct->where('category_id', $category_id);
+        }
+
+        // lọc sản phẩm theo giá tăng hoặc giảm
+        if ($request->filled('sort_price')) {
+            $sort_price = trim($request->get('sort_price'));
+            if ($sort_price === 'asc' || $sort_price === 'desc') {
+                $getProduct->orderBy('price', $sort_price);
+            }
+        };
+
+        // lọc sản phẩm theo số lượng tăng hoặc giảm
+        if ($request->filled('sort_qty')) {
+            $sort_qty = $request->get('sort_qty');
+            if ($sort_qty === 'asc' || $sort_qty === 'desc') {
+                $getProduct->orderBy('qty', $sort_qty);
+            }
+        };
+
+        // lọc sản phẩm trạng thái
+        if ($request->filled('check_status')) {
+            $check_status = $request->get('check_status');
+            if ($check_status == '1') {
+                $getProduct->where('status', 1);
+            } elseif ($check_status == '0') {
+                $getProduct->where('status', 0);
+            }
+        };
+
+        // lọc sản phẩm theo ngày đăng mới nhất hoặc ngày đăng cũ nhất
+        if ($request->filled('sort_date')) {
+            $sort_date = $request->get('sort_date');
+            if ($sort_date === 'asc' || $sort_date === 'desc') {
+                $getProduct->orderBy('created_at', $sort_date);
+            }
+        }
+
+        $getProduct = $getProduct->paginate(15)->appends(request()->query());
+        // appends(request()->query())  tự động thêm các tham số truy vấn hiện tại vào các liên kết phân trang
 
         $list = Product::get();
         // đường dẫn tới public json_file
@@ -47,7 +92,7 @@ class ProductController extends Controller
             mkdir($path, 0777, true);
         }
         File::put($path . 'products.json', $productsJson);
-        return view('admin.product.index', compact('getProduct', 'list'));
+        return view('admin.product.index', compact('getProduct', 'list', 'category'));
         // return view('admin.product.index', compact('getProduct'));
     }
 

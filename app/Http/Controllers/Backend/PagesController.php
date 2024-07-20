@@ -20,13 +20,6 @@ class PagesController extends Controller
             $pages = $pages->where('name', 'like', '%' . $request->get('keyword') . '%');
         }
 
-        // Sắp xếp theo tên a-z hoặc tên z-a 
-        if ($request->filled('sort_name')) {
-            $sort_name = $request->get('sort_name');
-            if ($sort_name === 'asc' || $sort_name === 'desc') {
-                $pages->orderBy('name', $sort_name);
-            }
-        }
         // Sắp xếp theo trạng thái
         if ($request->filled('check_status')) {
             $check_status = $request->get('check_status');
@@ -48,7 +41,7 @@ class PagesController extends Controller
 
 
         // Paginate with 10 items per page
-        $pages = $pages->paginate(15);
+        $pages = $pages->paginate(15)->appends(request()->query());
 
         return view("admin.pages.index", compact('pages'));
     }
