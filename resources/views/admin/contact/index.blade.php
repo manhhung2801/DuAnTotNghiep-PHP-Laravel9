@@ -60,11 +60,11 @@
                             <td>{{ $item->phone }}</td>
                             <td>{{ $item->content }}</td>
                             <td class="feedbackss">@if($item->feedback == 'unread')
-                                <span style="color: green;"> Chưa đọc</span>
+                                <span style="color: gray;"> Chưa đọc</span>
                                 @elseif($item->feedback == 'read')
-                                Đã đọc
+                                <span style="color: red;"> Đã đọc</span>
                                 @else
-                                Đã phản hồi
+                                <span style="color: palegreen;"> Phản hồi</span>
                                 @endif
                             </td>
 
