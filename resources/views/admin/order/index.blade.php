@@ -173,7 +173,7 @@
 
                                     {{-- Trạng thái đơn hàng --}}
                                     <td>
-                                        <select id="change-status-order"
+                                        {{-- <select id="change-status-order"
                                             data-url="{{ route('admin.order.update', $order->id) }}" class="form-select form-select-sm" aria-label="Small select example"
                                             name="">
                                             <option value="0" {{ $order->order_status == 0 ? 'selected' : '' }}>Chờ
@@ -184,7 +184,7 @@
                                                 thành</option>
                                             <option value="-1" {{ $order->order_status == -1 ? 'selected' : '' }}>Đã hủy
                                             </option>
-                                        </select>
+                                        </select> --}}
                                         @if ($order->order_status == -1)
                                             <p class="p-2 badge text-bg-danger">Đã hủy</p>
                                         @elseif($order->order_status == 92 || $order->order_status == 6 || $order->order_status == 5)
