@@ -186,6 +186,8 @@
                 //reset coupon
                 $('#coupon_code_input').val('');
                 $('#coupon_code_value').val(0);
+
+                
                 $.ajax({
                     type: 'GET',
                     url: "{{ route('api.getStoreAddress') }}",
@@ -212,7 +214,7 @@
             })
 
             // Nếu GHTK thì tính phí ship 
-            $('body').on('change click', '#wards, #ghtk', function() {
+            $('body').off('change click', '#wards, #ghtk').on('change click', '#wards, #ghtk', function() {
                 if ($('#ghtk').is(':checked')) {
                     // Ẩn ds cữa hàng đi
                     $('#pick_address_store').addClass('d-none')

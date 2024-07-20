@@ -72,7 +72,7 @@ class CheckoutController extends Controller
                     $getCoupon = Coupons::where('code', $couponCode)->first();
                     if ($getCoupon) {
                         $getCoupon->quantity -= 1;
-                        $getCoupon->save;
+                        $getCoupon->save();
                     }
                 }
 
@@ -115,9 +115,9 @@ class CheckoutController extends Controller
                 // xóa toàn bộ giỏ hàng
                 \Cart::clear();
 
-                if($request->payment_method == 1) {
+                if ($request->payment_method == 1) {
                     $vnpayService = new VNPayService();
-                   return $vnpayService->vnpayCreatePayment($order->vnp_order_code, $order->total);
+                    return $vnpayService->vnpayCreatePayment($order->vnp_order_code, $order->total);
                 }
                 return view('frontend.thankyou.index');
             }
