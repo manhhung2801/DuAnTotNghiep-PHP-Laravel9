@@ -156,7 +156,7 @@
                                                     <option {{ $order->vnp_refund_status == 'Refunded' ? 'selected' : '' }} value="Refunded"><p class="badge text-bg-secondary"><em>Đã hoàn tiền</em></p></option>
                                                     <option {{ $order->vnp_refund_status == 'Refund_Failed' ? 'selected' : '' }} value="Refund_Failed"><p class="badge text-bg-secondary"><em>Không thành công</em></p></option>
                                                 </select>
-                                                <label for="vnp_refund_status">Hoàn Tiền</label>
+                                                <label for="vnp_refund_status" class="fw-bold">Hoàn Tiền</label>
                                               </div>
                                             @endif
                                         @elseif($order->payment_status == 2)
