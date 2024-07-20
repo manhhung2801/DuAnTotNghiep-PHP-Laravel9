@@ -86,7 +86,10 @@ Route::get('/tin-tuc/{slugs_cate}/{slugs}', [NewsController::class, 'details'])-
 // Route Cart
 Route::resource('cart', CartController::class);
 
-// Route Checkout
+/**Apply Coupon Code */
+Route::post('/applyCouponCode', [CheckoutController::class, 'applyCouponCode'])->name('applyCouponCode')->middleware('checkLogin');
+
+//Checkout
 Route::resource('checkout', CheckoutController::class)->middleware('checkLogin');
 
 // Order customer

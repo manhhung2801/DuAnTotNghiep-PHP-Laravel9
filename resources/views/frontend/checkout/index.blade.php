@@ -178,12 +178,14 @@
                 $('#total_line_shipping').text(0 + ' VNĐ');
                 //Lấy tổng tiền ở hiện tại trong input ẩn.
                 var totalMoney = $('#total_price_hidden').val();
-                $('#total_price_summary').text(totalMoney + ' VNĐ')
+                $('#total_price_summary').text(parseInt(totalMoney).toLocaleString('vi-VN') + ' VNĐ');
                 //Phí ship sẽ bằng 0 nếu người dùng chọn nhận tại nữa hàng (trường lấy dữ liệu)
                 $('input[name="shipping_money"]').val(0)
                 //Hiện ds cữa hàng
                 $('#pick_address_store').removeClass('d-none')
-
+                //reset coupon
+                $('#coupon_code_input').val('');
+                $('#coupon_code_value').val(0);
                 $.ajax({
                     type: 'GET',
                     url: "{{ route('api.getStoreAddress') }}",
@@ -215,11 +217,13 @@
                     // Ẩn ds cữa hàng đi
                     $('#pick_address_store').addClass('d-none')
                     $('#pick_address_store').empty()
+
                     //Lấy thông tin người nhận để render phí ship
                     var province = $('#provinces').val()
                     var district = $('#districts').val()
                     var ward = $('#wards').val()
                     var address = $('#address').val()
+                    var total_cart = parseInt($('#total_price_hidden').val())
 
                     if (ward) {
                         $.ajax({
@@ -233,10 +237,14 @@
                             },
                             dataType: 'json',
                             success: function(data) {
+                                //in ra phí ship
                                 $('#total_line_shipping').text('+ ' + data.shipMoney
-                                    .toLocaleString(
-                                        'vi-VN') + ' VNĐ');
-                                $('#total_price_summary').text(data.cartMoney + ' VNĐ')
+                                    .toLocaleString('vi-VN') + ' VNĐ')
+                                //tính toán và in ra số tiền đã + phí ship
+                                var total = total_cart + parseInt(data.shipMoney);
+                                $('#total_price_summary').text(total.toLocaleString('vi-VN') +
+                                    ' VNĐ')
+                                //Lưu tiền ship vào input
                                 $('input[name="shipping_money"]').val(data.shipMoney)
                             },
                             error: function(xhr, status, error) {
@@ -245,6 +253,38 @@
                         })
                     }
                 }
+            })
+
+            // Apply coupon code
+            $('body').off('click', '#apply_coupon_code').on('click', '#apply_coupon_code', function() {
+                var coupon_code = $('#coupon_code_input').val()
+                var total_cart = $('#total_price_hidden').val()
+                $.ajax({
+                    type: "post", // Sử dụng method POST
+                    url: "{{ route('applyCouponCode') }}",
+                    data: {
+                        coupon_code: coupon_code,
+                        total_cart: total_cart
+                    },
+                    success: function(data) {
+                        if (data.status) {
+                            //Lấy số tiền đã app mã coupon + với phí ship nếu có
+                            var shipping = $('#shipping_value').val()
+                            var total = parseInt(data.newTotal) + parseInt(shipping)
+                            $('#total_price_summary').text(total.toLocaleString('vi-VN') +
+                                ' VNĐ');
+
+                            //Lưu số tiền đã giảm vào input hidden
+                            $('#coupon_code_value').val(total_cart - data.newTotal)
+                        }else {
+                            $('#message_coupon').text(data.message)
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Đã có lỗi khi áp dụng mã giảm giá. Xin vui lòng thử lại sau!' +
+                            error);
+                    }
+                });
             })
         })
     </script>
