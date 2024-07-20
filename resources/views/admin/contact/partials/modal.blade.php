@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="contactDetails" tabindex="-1" aria-labelledby="contactDetails" aria-hidden="true">
+<div class="modal fade " id="contactDetails" tabindex="-1" aria-labelledby="contactDetails" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,12 +13,12 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
-                                <h2>Liên Hệ</h2>
+                                <h2 class="text-start">Liên Hệ</h2>
                                 <div class="product-info">
                                     <table class="table table table-striped table-bordered">
-                                        <tbody>
+                                        <tbody class="text-start">
                                             <tr class="">
-                                                <th scope="row">Tên người liên hệ</th>
+                                                <th scope="row">ID</th>
                                                 <td id="id-user" class="id"></td>
                                             </tr>
                                             <tr>
@@ -26,7 +26,7 @@
                                                 <td id="modal_name"></td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">Id user</th>
+                                                <th scope="row">User_id</th>
                                                 <td id="user_id"></td>
 
                                             </tr>
@@ -56,10 +56,10 @@
                     </div>
                 </div>
                 <div class="m-5">
-                    <button type="submit" class="btn btn-danger capnhat-lienhen" data-bs-dismiss="modal">Dã đọc</button>
+                    <button type="submit" class="btn btn-danger capnhat-lienhen" data-bs-dismiss="modal">Đã
+                        đọc</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-

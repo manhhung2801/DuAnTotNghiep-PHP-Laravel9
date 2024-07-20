@@ -15,6 +15,27 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function VNPRefundStatusUpdate(Request $request) {
+        $order = Order::find($request->orderId);
+        $order->vnp_refund_status =  $request->vnpRefundStatus;
+        $order->save();
+
+        $message = '';
+
+        if($order->vnp_refund_status == 'Pending') {
+            $message = 'Chờ phê duyệt hoàn tiền';
+        }elseif($order->vnp_refund_status == 'Processing') {
+            $message = 'Đang xử lý hoàn tiền';
+        }
+        elseif($order->vnp_refund_status == 'Refunded') {
+            $message = 'Đã hoàn tiền';
+        }
+        elseif($order->vnp_refund_status == 'Refund_Failed') {
+            $message = 'Hoàn tiền không thành công';
+        }
+
+        return response(['message' =>  $message]);
+    }
     public function index()
     {
         $getOrders = Order::query(); // Khởi tạo query builder
@@ -60,7 +81,7 @@ class OrderController extends Controller
         }
 
         // Lấy kết quả và phân trang
-        $getOrders = $getOrders->paginate(15); // Phân trang với số lượng bản ghi trên mỗi trang là 10
+        $getOrders = $getOrders->paginate(15)->appends(request()->query()); // Phân trang với số lượng bản ghi trên mỗi trang là 10
 
         return view('admin.order.index', compact('getOrders'));
     }
@@ -147,4 +168,5 @@ class OrderController extends Controller
     {
         //
     }
+
 }
