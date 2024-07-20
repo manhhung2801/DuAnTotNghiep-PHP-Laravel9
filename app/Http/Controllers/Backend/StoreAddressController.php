@@ -16,21 +16,14 @@ class StoreAddressController extends Controller
         if (!empty($request->get('keyword'))) {
             $storeAddress = StoreAddress::where('store_name', 'like', '%' . $request->get('keyword') . '%')->orWhere('phone', 'like', '%' . $request->get('keyword') . '%');
         }
-
-        // Sắp xếp theo tên a-z hoặc tên z-a 
-        if ($request->filled('sort_name')) {
-            $sort_name = $request->get('sort_name');
-            if ($sort_name === 'asc' || $sort_name === 'desc') {
-                $storeAddress->orderBy('store_name', $sort_name);
-            }
-        }
+        
         // Sắp xếp theo trạng thái
         if ($request->filled('check_status')) {
             $check_status = $request->get('check_status');
-            if ($check_status == 1) {
-                $storeAddress->where('status', $check_status);
-            } elseif ($check_status == 0) {
-                $storeAddress->where('status', $check_status);
+            if ($check_status == '1') {
+                $storeAddress = $storeAddress->where('status', 1);
+            } elseif ($check_status == '0') {
+                $storeAddress = $storeAddress->where('status', 0);
             }
         }
 
@@ -42,7 +35,7 @@ class StoreAddressController extends Controller
             }
         }
         //phân trang
-        $storeAddress = $storeAddress->paginate(15);
+        $storeAddress = $storeAddress->paginate(15)->appends(request()->query());
         return view('admin.store-address.index', compact('storeAddress'));
     }
 

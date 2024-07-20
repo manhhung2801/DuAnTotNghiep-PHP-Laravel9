@@ -188,6 +188,7 @@ return [
         // Cart
         Darryldecode\Cart\CartServiceProvider::class,
 
+        //Comment
         /*
          * Application Service Providers...
          */

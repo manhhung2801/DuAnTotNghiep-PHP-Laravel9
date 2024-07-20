@@ -47,15 +47,17 @@
                                                     <p class="text-muted mb-0"><strong>{{ $order->product_name }}</strong>
                                                     </p>
                                                     @if (isset($order->variants))
-                                                    {{-- Chuyển dổi json thành mảng --}}
+                                                        {{-- Chuyển dổi json thành mảng --}}
                                                         @php
                                                             $variants = json_decode($order->variants);
                                                         @endphp
 
                                                         {{-- Lặp các variant --}}
                                                         @foreach ($variants as $key => $value)
-                                                            <p class="text-muted mb-0 small text-capitalize"><strong>{{ $key }}:</strong>
-                                                                {{ $value }}</p>
+                                                            <p class="text-muted mb-0 small text-capitalize">
+                                                                <strong>{{ $key }}:</strong>
+                                                                {{ $value }}
+                                                            </p>
                                                         @endforeach
                                                     @endif
                                                 </div>
@@ -94,33 +96,30 @@
                             </div>
                             <div class="d-flex justify-content-between pt-2">
                                 <p class="fw-bold mb-0">Chi tiết đơn hàng</p>
-                                <p class="text-muted mb-0"><span class="fw-bold me-4">Tổng cộng</span>
-                                    {{ number_format($orderDetail->total, 0, '', '.') }}
-                                    VNĐ</p>
+                                <p class="text-muted mb-0"><span class="fw-bold">Tổng cộng: </span>{{ number_format($orderDetail->total, 0, '', '.') }}VNĐ</p>
+                            </div>
+                            <div class="pt-2 text-end">
+                                @isset($getCoupon)
+                                    <p class="text-muted mb-0"><span class="fw-bold">Giảm giá: </span>
+                                        {{ $getCoupon->precent_amount }}
+                                        {{ $getCoupon->coupon_type == 'precent' ? '%' : 'VND' }}
+                                    </p>
+                                @endisset
                             </div>
 
-                            <div class="d-flex justify-content-between pt-2">
-                                <p class="text-muted mb-0">Số hóa đơn: 788152</p>
-                                <p class="text-muted mb-0"><span class="fw-bold me-4">Giảm giá</span>
-                                    {{ $orderDetail->coupon != null ? number_format($orderDetail->coupon, 0, '', '.') : 0 }}
-                                    VNĐ</p>
-                            </div>
-
-                            <div class="d-flex justify-content-between">
-                                <p class="text-muted mb-0">Ngày xuất hóa đơn: {{ $orderDetail->created_at }}</p>
-                                <p class="text-muted mb-0"><span class="fw-bold me-4">Thuế hàng hóa và dịch vụ 18%</span>
-                                    123</p>
-                            </div>
-
-                            <div class="d-flex justify-content-between mb-5">
-                                <p class="text-muted mb-0">Phiếu thu tiền : 18KU-62IIK</p>
-                                <p class="text-muted mb-0"><span class="fw-bold me-4">Phí giao hàng</span> miễn phí</p>
+                            <div class="text-end mb-5">
+                                <p class="text-muted mb-0"><span class="fw-bold">Phí giao hàng: </span>
+                                    @isset($orderDetail->ship_money)
+                                        {{ number_format($orderDetail->ship_money, 0, ',', '.') }}
+                                    @endisset
+                                    VNĐ
+                                </p>
                             </div>
                         </div>
                         <div class="card-footer border-0 px-4 py-5"
                             style="background-color: #1A2130; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                             <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">TỔNG SỐ
-                                CHI TRẢ: <span class="h2 mb-0 ms-2">{{ number_format($orderDetail->total, 0, '', '.') }}
+                                CHI TRẢ: <span class="h2 mb-0 ms-2">{{ number_format($orderDetail->total + $orderDetail->ship_money, 0, '', '.') }}
                                     VNĐ</span></h5>
                         </div>
                     </div>

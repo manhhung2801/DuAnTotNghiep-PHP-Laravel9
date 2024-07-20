@@ -48,8 +48,7 @@ class GHTKController extends Controller
             // Chuyển json thành mảng
             $jsonData = json_decode($response);
             $shipMoney = $jsonData->fee->options->shipMoney;
-            $cartMoney = number_format((\Cart::getSubTotal() + $shipMoney), 0, '', '.');
-            return response()->json(['status' => true, 'shipMoney' => $shipMoney, 'cartMoney' => $cartMoney]);
+            return response()->json(['status' => true, 'shipMoney' => $shipMoney]);
         } catch (\Exception $e) {
             return response()->json(['status' => false, 'Đã xảy ra lỗi' . $e]);
         }

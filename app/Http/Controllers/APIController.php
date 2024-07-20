@@ -20,7 +20,7 @@ class APIController extends Controller
             };
             return response()->json(['status' => true, 'storeAdress' => $data]);
         } catch (Exception $e) {
-            return response()->json(['status' => false, 'message' => 'Có lỗi khi lấy địa chỉ cữa hàng. Vui lòng liên hệ cho chúng tôi']);
+            return response()->json(['status' => false, 'message' => 'Có lỗi khi lấy địa chỉ cửa hàng. Vui lòng liên hệ cho chúng tôi']);
         }
     }
 }

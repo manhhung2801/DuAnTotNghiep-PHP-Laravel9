@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupons;
 use App\Models\Order;
 use App\Models\Order_detail;
 use App\Models\Product;
@@ -53,7 +54,8 @@ class OrderController extends Controller
     {
         $getOrderDetail = Order_detail::where('order_id', '=', $id)->get();
         $orderDetail = Order::getOrder($id);
-        return view('frontend.dashboard.page.order-detail', compact('getOrderDetail', 'orderDetail'));
+        $getCoupon = Coupons::where('code', $orderDetail->coupon)->first();
+        return view('frontend.dashboard.page.order-detail', compact('getOrderDetail', 'orderDetail', 'getCoupon'));
     }
 
     /**
@@ -90,6 +92,12 @@ class OrderController extends Controller
 
             $order->order_status = -1;
             $order->save();
+
+            if($order->order_status == -1 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null) {
+                $order->vnp_refund_status = 'Pending';
+                $order->save();
+            }
+
             return response()->json(['status' => true, 'message' => 'Hủy đơn hàng thành công!']);
         }
         return response()->json(['status' => false, 'message' => 'Hủy đơn hàng thất bại!']);
