@@ -12,6 +12,7 @@ use App\Models\SubCategory;
 use App\Models\ChildCategory;
 use App\Models\StoreAddress;
 use DB;
+use Illuminate\Http\RedirectResponse;
 
 class ProductController extends Controller
 {
@@ -32,7 +33,7 @@ class ProductController extends Controller
         return $products;
     }
 
-    public function getWhereParam(Request $request, $cat = null, $sub = null, $child = null, $slug = null,$searchTerm = null)
+    public function getWhereParam(Request $request, $cat = null, $sub = null, $child = null, $slug = null, $searchTerm = null)
     {
         // Filter parameters
         $filters = compact('cat', 'sub', 'child', 'slug');
@@ -42,8 +43,8 @@ class ProductController extends Controller
         // Initialize products query
         $productsQuery = Product::query();
 
-         // áp dụng search cho filter
-         if ($searchTerm) {
+        // áp dụng search cho filter
+        if ($searchTerm) {
             $productsQuery->where('name', 'like', '%' . $searchTerm . '%');
         }
 
@@ -52,28 +53,28 @@ class ProductController extends Controller
             $category = Category::where('slug', $cat)->first();
             if ($category) {
                 $productsQuery->where('category_id', $category->id);
-            }
+            } else return view("404");
         }
 
         if ($sub) {
             $subCategory = SubCategory::where('slug', $sub)->first();
             if ($subCategory) {
                 $productsQuery->where('sub_category_id', $subCategory->id);
-            }
+            } else return view("404");
         }
 
         if ($child) {
             $childCategory = ChildCategory::where('slug', $child)->first();
             if ($childCategory) {
                 $productsQuery->where('child_category_id', $childCategory->id);
-            }
+            } else return view("404");
         }
 
         if ($slug) {
             $product = Product::where('slug', $slug)->first();
             if ($product) {
                 $productsQuery->where('id', $product->id);
-            }
+            } else return view("404");
         }
 
         // Sort products by name if specified
@@ -114,8 +115,8 @@ class ProductController extends Controller
                 $variants = $product->variant()->get();
 
                 $comments = ProductComments::where('product_id', $product->id)
-                ->with('user')
-                ->get();
+                    ->with('user')
+                    ->get();
 
                 $variants = $product->variant();
                 // Lấy danh sách các id của các sản phẩm liên quan (cùng danh mục) trừ sản phẩm ban đầu
