@@ -10,16 +10,21 @@ use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $storeAddress = StoreAddress::where("status", "=", 1)->orderBy("id", "asc")->limit(1)->get();
         return view('frontend.contact.index', compact('storeAddress'));
     }
 
-    public function contact(Request $request) {
+    public function contact(Request $request)
+    {
         $name = $request->input('name');
         $phone = $request->input('phone');
         $email = $request->input('email');
-        $content = $request->input('content'); // Corrected variable name
+        $content = $request->input('content');
+
+ 
+
 
         if (Auth::check()) {
             $data = array();

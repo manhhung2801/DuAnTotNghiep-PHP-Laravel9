@@ -85,7 +85,7 @@ class CouponsController extends Controller
         $Coupons->status = $request->status;
         $Coupons->save();
 
-        toastr()->success('Admin successfully added slider');
+        toastr()->success('Tạo mới thành công!', 'success');
         return redirect()->back();
     }
 
@@ -163,7 +163,7 @@ class CouponsController extends Controller
 
 
         $Coupons->update();
-        toastr()->success('Admin updated slider successfully');
+        toastr()->success('Cập nhật thành công!', 'success');
         return redirect()->back();
     }
 

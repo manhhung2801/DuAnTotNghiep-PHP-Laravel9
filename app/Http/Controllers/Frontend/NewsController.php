@@ -13,7 +13,7 @@ class NewsController extends Controller
 {
     public function index()
     {
-       
+
 
         $newsCate = Post_categories::all();
 
@@ -56,13 +56,16 @@ class NewsController extends Controller
         $newsdetai = Post::where("slug", $lugs)->first();
         $list_related_news = Post::take(4)->get();
 
+        if ($newsdetai) {
+            return view('frontend.post.post', [
+                'newsdetai' => $newsdetai,
+                'newsCate' => $newsCate,
+                'list_related_news' => $list_related_news,
+                // 'newsCateDetail' => $newsCateDetail,
 
-        return view('frontend.post.post', [
-            'newsdetai' => $newsdetai,
-            'newsCate' => $newsCate,
-            'list_related_news' => $list_related_news,
-            // 'newsCateDetail' => $newsCateDetail,
-
-        ]);
+            ]);
+        }else {
+            return view(404);
+        }
     }
 }
