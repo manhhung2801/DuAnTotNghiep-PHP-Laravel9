@@ -5,7 +5,7 @@
                 <li class="nav-item nav_item_cate px-2">
                     <a class="nav-link text-white" aria-current="page" href="/">Trang chủ</a>
                 </li>
-               
+
                 <li class="nav-item nav_item_cate px-2">
                     <a class="nav-link text-white"
                         href="{{ route('showPages', ['slug1' => 'gioi-thieu', 'slug2' => 'gioi-thieu']) }}">Giới

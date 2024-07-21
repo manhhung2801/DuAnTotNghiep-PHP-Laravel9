@@ -4,7 +4,7 @@
     @include('frontend.layouts.head')
     @yield('styles')
 </head>
-<body>
+<body >
     <div class="wrapper-page">
             @include('frontend.layouts.header')
 

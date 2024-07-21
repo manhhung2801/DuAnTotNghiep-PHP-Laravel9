@@ -14,6 +14,7 @@ class UserManagementController extends Controller
     {
 
          $getUser = User::query(); // Khởi tạo query builder
+
         $validStatuses = ["user","admin"];
         // Sắp xếp theo role admin/user
         if (!empty(Request()->get('sort_role'))) {
@@ -35,9 +36,6 @@ class UserManagementController extends Controller
             }
         }
 
-        // Lấy danh sách tất cả các user, sắp xếp theo thứ tự mới nhất
-        //$users = User::latest();
-
         // Nếu có keyword trong request, thêm điều kiện tìm kiếm
         if (!empty($request->get('keyword'))) {
             $keyword = $request->get('keyword');
@@ -49,7 +47,7 @@ class UserManagementController extends Controller
         }
 
         // Phân trang kết quả với 15 user mỗi trang
-        $users = $getUser->paginate(15);
+        $users = $getUser->paginate(15)->appends(request()->query());
 
         // Trả về view với dữ liệu danh sách user
         return view('admin.user-management.index', compact('users'));

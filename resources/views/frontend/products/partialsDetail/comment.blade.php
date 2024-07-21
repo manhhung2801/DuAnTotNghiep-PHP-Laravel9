@@ -47,7 +47,7 @@
                                         width="40">
                                     <div class="d-flex flex-column justify-content-{{ $comment->user->id === auth()->id() ? "end" : "start"}} ml-2">
                                         <span class="d-block font-weight-bold name">{{ $comment->user->id === auth()->id() ? "Bạn" : $comment->user->name}}</span>
-                                        <span class="date text-black-50">{{ $comment->user->created_at }}</span>
+                                        <span class="date text-black-50">{{ $comment->created_at }}</span>
                                     </div>
                                 </div>
                                 <div class="mt-2">
