@@ -129,8 +129,9 @@ class ProductController extends Controller
                     ->get();
                 return view('frontend.products.detail', compact("product", "variants", "product_image_galleries", "product_image_galleries", "products", "relatedProducts", "comments", "getQtyCart"));
             default:
+                $categories = Category::get();
                 // No filters applied
-                return view('frontend.products.index', compact("products"));
+                return view('frontend.products.index', compact("categories", "products"));
         }
     }
 
