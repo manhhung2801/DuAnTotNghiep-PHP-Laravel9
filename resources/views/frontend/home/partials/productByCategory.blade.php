@@ -9,14 +9,11 @@
                     <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-6">
                         <div class="item_product_main">
                             <div class="variants product-action item-product-main duration-300">
-                                @if ($pro->offer_price != null)
-                                    <span class="flash-sale">Giảm
-                                        {{ number_format((($pro->price - $pro->offer_price) / $pro->price) * 100, 0) }}%
-                                    </span>
-                                @endif
+                            {{Helper::sale($pro->offer_start_date,$pro->offer_end_date,$pro->price, $pro->offer_price)}}
+
                                 <div class="product-thumbnail">
                                     <a class="image_thumb scale_hover"
-                                        href="/product/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html"
+                                        href="/san-pham/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html"
                                         title="iPhone 13 Pro Max 1TB - Chính Hãng VN/A">
                                         <img class="lazyload duration-300 loaded"
                                             src="{{ asset('uploads/products/' . $pro->image) }}">
@@ -24,24 +21,13 @@
                                 </div>
                                 <div class="product-info mt-2">
                                     <h3 class="product-name line-clamp line-clamp-2 ">
-                                        <a href="/product/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html"
+                                        <a href="/san-pham/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html"
                                             title="" class="text-decoration-none ">{{ $pro->name }}</a>
                                     </h3>
                                     <div class="product-price-cart">
                                         <div class="price-box">
-                                            @if ($pro->qty <= 0)
-                                                <span class="price fw-semibold">Hết hàng</span>
-                                            @elseif ($pro->offer_price == null)
-                                                <span class="price">{{ number_format($pro->price, 0, '.', '.') }}<i
-                                                        class="fa-solid fa-dong-sign"></i></span>
-                                            @else
-                                                <span
-                                                    class="compare-price">{{ number_format($pro->price, 0, '.', '.') }}<i
-                                                        class="fa-regular fa-dong-sign"></i></span>
-                                                <span
-                                                    class="price">{{ number_format($pro->offer_price, 0, '.', '.') }}<i
-                                                        class="fa-solid fa-dong-sign"></i></span>
-                                            @endif
+                                        {{Helper::CouponsPrice($pro->offer_start_date,$pro->offer_end_date,$pro->price, $pro->offer_price)}}
+
                                         </div>
                                         {{-- <form class="formCart" method="post">
                                             <input class="productId" type="hidden" value="{{ $pro->id }}">
@@ -65,7 +51,7 @@
                 @endforeach
             </div>
             <div class="scroll_animation show-all text-center mt-2">
-                <a class="px-5 py-2 btn btn-outline-dark " href="/product/{{ $pro->category->slug }}.html">Xem tất cả
+                <a class="px-5 py-2 btn btn-outline-dark " href="/san-pham/{{ $pro->category->slug }}">Xem tất cả
                     <i class="fa-regular fa-chevron-right"></i></a>
             </div>
         @endforeach

@@ -12,7 +12,7 @@
                     </span>
                     <div class="product-thumbnail">
                         <a class="image_thumb scale_hover"
-                            href="/product/{{ $item->category->slug }}/{{ $item->subcategory->slug }}/{{ $item->childcategory->slug }}/{{ $item->slug }}.html"
+                            href="/san-pham/{{ $item->category->slug }}/{{ $item->subcategory->slug }}/{{ $item->childcategory->slug }}/{{ $item->slug }}.html"
                             title="iPhone 13 Pro Max 1TB - Chính Hãng VN/A">
                             <img class="lazyload duration-300 loaded"
                                 src="{{ asset('uploads/products/' . $item->image) }}">
@@ -20,7 +20,7 @@
                     </div>
                     <div class="product-info mt-1">
                         <h3 class="product-name line-clamp line-clamp-2 ">
-                            <a href="/product/{{ $item->category->slug }}/{{ $item->subcategory->slug }}/{{ $item->childcategory->slug }}/{{ $item->slug }}.html"
+                            <a href="/san-pham/{{ $item->category->slug }}/{{ $item->subcategory->slug }}/{{ $item->childcategory->slug }}/{{ $item->slug }}.html"
                                 title="" class="text-decoration-none ">{{ $item->name }}</a>
                         </h3>
                         <div class="product-price-cart d-flex">
