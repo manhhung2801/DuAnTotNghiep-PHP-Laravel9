@@ -6,7 +6,7 @@
                 href="/san-pham/{{ $category->slug }}/{{ $item->slug }}">
                 <div class="cate-img ">
                     <img width="100" height="100"
-                        src="//bizweb.dktcdn.net/thumb/large/100/480/632/collections/230223022516-thiet-ke-chua-co-te.png"
+                        src="{{ asset('uploads/subcategories/' . $item->image) }}"
                         class="  ">
                 </div>
                 <div class="cate-info-title ">{{ $item->name }}</div>
@@ -21,7 +21,7 @@
                 href="/san-pham/{{ $subCategory->slug }}/{{ $item->slug }}">
                 <div class="cate-img ">
                     <img width="100" height="100"
-                        src="//bizweb.dktcdn.net/thumb/large/100/480/632/collections/230223022516-thiet-ke-chua-co-te.png"
+                        src="{{ asset('uploads/childcategory/' . $item->image) }}"
                         class="  ">
                 </div>
                 <div class="cate-info-title ">{{ $item->name }}</div>
@@ -35,7 +35,7 @@
                 href="/san-pham/{{ $item->slug }}/">
                 <div class="cate-img ">
                     <img width="100" height="100"
-                        src="//bizweb.dktcdn.net/thumb/large/100/480/632/collections/230223022516-thiet-ke-chua-co-te.png"
+                        src="{{ asset('uploads/category/' . $item->image) }}"
                         class="  ">
                 </div>
                 <div class="cate-info-title ">{{ $item->name }}</div>
