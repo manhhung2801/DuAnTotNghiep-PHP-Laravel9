@@ -5,7 +5,7 @@
                 <li class="nav-item nav_item_cate px-2">
                     <a class="nav-link text-white" aria-current="page" href="/">Trang chủ</a>
                 </li>
-               
+
                 <li class="nav-item nav_item_cate px-2">
                     <a class="nav-link text-white"
                         href="{{ route('showPages', ['slug1' => 'gioi-thieu', 'slug2' => 'gioi-thieu']) }}">Giới
@@ -62,6 +62,39 @@
                 </li>
                 <li class="nav-item nav_item_cate px-2">
                     <a class="nav-link text-white" href="{{ url('/order') }}">Đơn Hàng Của Tôi</a>
+                </li>
+                <li class="nav-item nav_item_cate px-2 dropdown navbar-collapse">
+                    <a class="dropdown-toggle nav-link text-white" href="javascript:;" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Tài khoản
+                    </a>
+                    <ul class="dropdown-menu p-0" aria-labelledby="dropdownMenuButton1">
+                        @if (!empty(Auth::check()))
+                            <li><a class="dropdown-item"
+                                    href="{{ route('dashboard') }}">Tài khoản của tôi</a></li>
+                            <li>
+                                <!-- Authentication -->
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a class="dropdown-item"
+                                        href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">Đăng
+                                        xuất
+                                    </a>
+                                </form>
+                            </li>
+                        @else
+                            <li><a class="dropdown-item"
+                                    href="{{ route('login') }}">Đăng nhập</a></li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('register') }}">Đăng ký</a></li>
+                        @endif
+
+                        <li><a class="dropdown-item" href="{{ url('/order') }}">Đơn
+                                hàng của tôi</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>

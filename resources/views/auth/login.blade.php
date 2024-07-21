@@ -5,10 +5,10 @@
     <div class="page-body">
         <div class="all_content-login my-5">
             <div class="login-block row px-4 pt-4 pb-5">
-                <div class="login-form-wrapper col-7">
+                <div class="login-form-wrapper col-md-7 col-12">
                     <img src="https://shopdunk.com/images/uploaded/banner/TND_M402_010%201.jpeg" class="d-block w-100" alt="img">
                 </div>
-                <div class="register-block col-5">
+                <div class="register-block col-md-5 col-12">
                     <div class="page-title">
                         <h4>Đăng nhập</h4>
                     </div>
