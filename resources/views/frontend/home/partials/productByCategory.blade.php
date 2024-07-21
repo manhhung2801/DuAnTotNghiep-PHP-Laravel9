@@ -25,21 +25,7 @@
                         </h3>
                         <div class="product-price-cart">
                             <div class="price-box">
-                                <!-- @if ($pro->qty <= 0)
-
-                                                <span class="price fw-semibold">Hết hàng</span>
-                                            @elseif ($pro->offer_price == null)
-                                                <span class="price">{{ number_format($pro->price, 0, '.', '.') }}<i
-                                                        class="fa-solid fa-dong-sign"></i></span>
-                                            @else
-                                                <span
-                                                    class="compare-price">{{ number_format($pro->price, 0, '.', '.') }}<i
-                                                        class="fa-regular fa-dong-sign"></i></span>
-                                                <span
-                                                    class="price">{{ number_format($pro->offer_price, 0, '.', '.') }}<i
-                                                        class="fa-solid fa-dong-sign"></i></span>
-                                            @endif -->
-
+                               
                                 {{Helper::CouponsPrice($pro->offer_start_date,$pro->offer_end_date,$pro->price, $pro->offer_price)}}
                             </div>
                             {{-- <form class="formCart" method="post">
