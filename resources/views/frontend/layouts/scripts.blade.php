@@ -16,24 +16,25 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const productLink = document.getElementById('product-link');
-        const dropdownMenu = productLink.nextElementSibling;
+    $(document).ready(function() {
+        const $productLink = $('#product-link');
+        const $dropdownMenu = $productLink.next();
 
-        productLink.addEventListener('mouseover', function(event) {
-            dropdownMenu.classList.add('show');
+        $productLink.on('mouseover', function() {
+            $dropdownMenu.addClass('show');
         });
 
-        productLink.addEventListener('click', function(event) {
+        $productLink.on('click', function() {
             window.location.href = this.href;
         });
 
-        document.addEventListener('click', function(event) {
-            if (!productLink.contains(event.target)) {
-                dropdownMenu.classList.remove('show');
+        $(document).on('click', function(event) {
+            if (!$productLink.is(event.target) && $productLink.has(event.target).length === 0) {
+                $dropdownMenu.removeClass('show');
             }
         });
     });
+
 </script>
 
 <script>
@@ -153,7 +154,7 @@
                 var initialValue = selectInput.value;
                 valueRamElement.textContent = initialValue;
             }
-   
+
 
         // Hiển thị giá trị ban đầu khi trang tải xong
         var ramValue = document.querySelector('input[name="selectInputRam"]:checked');

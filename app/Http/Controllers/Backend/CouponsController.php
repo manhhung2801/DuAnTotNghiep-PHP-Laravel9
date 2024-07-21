@@ -55,8 +55,8 @@ class CouponsController extends Controller
             'quantity' => ['required', 'numeric'],
             'start_date' => ['required'],
             'end_date' => ['required'],
-            'discount_type' => ['required'],
-            'prencent_amount' => ['required', 'numeric'],
+            'coupon_type' => ['required'],
+            'precent_amount' => ['required', 'numeric'],
 
             'status' => ['required'],
 
@@ -70,8 +70,8 @@ class CouponsController extends Controller
             'start_date.required' => 'Ngày bắt đầu không được để trống.',
             'end_date.required' => 'Ngày cuối không được để trống.',
             'end_date.required' => 'Ngày cuối không được để trống.',
-            'discount_type.required' => 'Loại giảm giá không được để trống.',
-            'prencent_amount.required' => 'Giảm giá không được để trống.',
+            'coupon_type.required' => 'Loại giảm giá không được để trống.',
+            'precent_amount.required' => 'Giảm giá không được để trống.',
 
 
         ]);
@@ -80,8 +80,8 @@ class CouponsController extends Controller
         $Coupons->quantity = $request->quantity;
         $Coupons->start_date = $request->start_date;
         $Coupons->end_date = $request->end_date;
-        $Coupons->discount_type = $request->discount_type;
-        $Coupons->prencent_amount = $request->prencent_amount;
+        $Coupons->coupon_type = $request->coupon_type;
+        $Coupons->precent_amount = $request->precent_amount;
         $Coupons->status = $request->status;
         $Coupons->save();
 
@@ -130,8 +130,8 @@ class CouponsController extends Controller
             'quantity' => ['required', 'numeric'],
             'start_date' => ['required'],
             'end_date' => ['required'],
-            'discount_type' => ['required'],
-            'prencent_amount' => ['required', 'numeric'],
+            'coupon_type' => ['required'],
+            'precent_amount' => ['required', 'numeric'],
 
             'status' => ['required'],
 
@@ -145,8 +145,8 @@ class CouponsController extends Controller
             'start_date.required' => 'Ngày bắt đầu không được để trống.',
             'end_date.required' => 'Ngày cuối không được để trống.',
             'end_date.required' => 'Ngày cuối không được để trống.',
-            'discount_type.required' => 'Loại giảm giá không được để trống.',
-            'prencent_amount.required' => 'Giảm giá không được để trống.',
+            'coupon_type.required' => 'Loại giảm giá không được để trống.',
+            'precent_amount.required' => 'Giảm giá không được để trống.',
 
 
         ]);
@@ -156,8 +156,8 @@ class CouponsController extends Controller
 
         $Coupons->start_date = $request->start_date;
         $Coupons->end_date = $request->end_date;
-        $Coupons->discount_type = $request->discount_type;
-        $Coupons->prencent_amount = $request->prencent_amount;
+        $Coupons->coupon_type = $request->coupon_type;
+        $Coupons->precent_amount = $request->precent_amount;
 
         $Coupons->status = $request->status;
 

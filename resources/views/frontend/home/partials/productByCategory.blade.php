@@ -1,5 +1,6 @@
 <div class="catalog-product-list container">
     @foreach ($getProducts as $getProduct)
+
     @foreach ($getProduct as $category_name => $product)
     <div class="scroll_animation section_title text-center mb-3 pt-5">
         <h4 class="text-uppercase">{{ $category_name }}</h>
@@ -25,6 +26,7 @@
                         <div class="product-price-cart">
                             <div class="price-box">
                                 <!-- @if ($pro->qty <= 0)
+
                                                 <span class="price fw-semibold">Hết hàng</span>
                                             @elseif ($pro->offer_price == null)
                                                 <span class="price">{{ number_format($pro->price, 0, '.', '.') }}<i
@@ -50,12 +52,20 @@
                             </form> --}}
                         </div>
                     </div>
+
                     <div class="promotion-content">
                         <div class="line-clamp-2-new" title="Thu cũ đổi mới: Thu giá cao trợ giá đến 90%">
                             <p>Thu cũ đổi mới: Thu giá cao trợ giá đến 90%</p>
                         </div>
                     </div>
                 </div>
+
+                @endforeach
+            </div>
+            <div class="scroll_animation show-all text-center mt-2">
+                <a class="px-5 py-2 btn btn-outline-dark " href="/san-pham/{{ $pro->category->slug }}.html">Xem tất cả
+                    <i class="fa-regular fa-chevron-right"></i></a>
+
             </div>
         </div>
         @endforeach

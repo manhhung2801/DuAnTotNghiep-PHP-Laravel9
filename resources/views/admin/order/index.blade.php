@@ -149,12 +149,15 @@
                                             @endif
 
                                             @if($order->order_status == -1 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null)
-                                                <select class="form-select mt-2 form-select-sm" aria-label="Small select example" id="vnp_refund_status" data-orderid="{{ $order->id }}">
-                                                    <option {{ $order->vnp_refund_status == 'Pending' ? 'selected' : '' }} value="Pending"><p class="m-0 badge text-bg-secondary"><em>Chờ phê duyệt hoàn tiền</em></p></option>
-                                                    <option {{ $order->vnp_refund_status == 'Processing' ? 'selected' : '' }} value="Processing"><p class="m-0 badge text-bg-secondary"><em>Đang xử lý hoàn tiền</em></p></option>
-                                                    <option {{ $order->vnp_refund_status == 'Refunded' ? 'selected' : '' }} value="Refunded"><p class="m-0 badge text-bg-secondary"><em>Đã hoàn tiền</em></p></option>
-                                                    <option {{ $order->vnp_refund_status == 'Refund_Failed' ? 'selected' : '' }} value="Refund_Failed"><p class="m-0 badge text-bg-secondary"><em>Hoàn tiền không thành công</em></p></option>
+                                            <div class="form-floating">
+                                                <select class="form-select mt-1 form-select-sm" aria-label="Floating label select example" id="vnp_refund_status" data-orderid="{{ $order->id }}">
+                                                    <option {{ $order->vnp_refund_status == 'Pending' ? 'selected' : '' }} value="Pending"><p class="badge text-bg-secondary"><em>Chờ phê duyệt</em></p></option>
+                                                    <option {{ $order->vnp_refund_status == 'Processing' ? 'selected' : '' }} value="Processing"><p class="badge text-bg-secondary"><em>Đang xử lý</em></p></option>
+                                                    <option {{ $order->vnp_refund_status == 'Refunded' ? 'selected' : '' }} value="Refunded"><p class="badge text-bg-secondary"><em>Đã hoàn tiền</em></p></option>
+                                                    <option {{ $order->vnp_refund_status == 'Refund_Failed' ? 'selected' : '' }} value="Refund_Failed"><p class="badge text-bg-secondary"><em>Không thành công</em></p></option>
                                                 </select>
+                                                <label for="vnp_refund_status" class="fw-bold">Hoàn Tiền</label>
+                                              </div>
                                             @endif
                                         @elseif($order->payment_status == 2)
                                             <p class="m-0 badge text-bg-warning"><em>Thanh toán thất bại / lỗi</em></p>
@@ -173,18 +176,6 @@
 
                                     {{-- Trạng thái đơn hàng --}}
                                     <td>
-                                        <select id="change-status-order"
-                                            data-url="{{ route('admin.order.update', $order->id) }}" class="form-select form-select-sm" aria-label="Small select example"
-                                            name="">
-                                            <option value="0" {{ $order->order_status == 0 ? 'selected' : '' }}>Chờ
-                                                duyệt</option>
-                                            <option value="1" {{ $order->order_status == 1 ? 'selected' : '' }}>Đang
-                                                vận chuyển</option>
-                                            <option value="2" {{ $order->order_status == 2 ? 'selected' : '' }}>Hoàn
-                                                thành</option>
-                                            <option value="-1" {{ $order->order_status == -1 ? 'selected' : '' }}>Đã hủy
-                                            </option>
-                                        </select>
                                         @if ($order->order_status == -1)
                                             <p class="p-2 badge text-bg-danger">Đã hủy</p>
                                         @elseif($order->order_status == 92 || $order->order_status == 6 || $order->order_status == 5)

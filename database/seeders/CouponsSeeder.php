@@ -28,8 +28,8 @@ class CouponsSeeder extends Seeder
                     'quantity' => 12,
                     'start_date' => $startDate,
                     'end_date' =>   $endDate,
-                    "discount_type" => "percent",
-                    "prencent_amount" => 12,
+                    "coupon_type" => "percent",
+                    "precent_amount" => 12,
                     'created_at' => now(),
                 ]
             ]);

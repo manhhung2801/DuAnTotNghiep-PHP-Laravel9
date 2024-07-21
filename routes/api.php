@@ -19,6 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/** Lấy tất cả các cữa hàng show ra checkout (Get Store Address)*/
+/** Lấy tất cả các cửa hàng show ra checkout (Get Store Address)*/
 Route::get('getStoreAddress', [APIController::class, 'getStoreAddress'])->name('api.getStoreAddress');
 

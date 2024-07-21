@@ -35,9 +35,35 @@
                     <a href="{{ route('admin.user-management.index') }}" class="me-2 btn btn-success float-end ms-2"><i
                             class="fa-solid fa-rotate-left fs-6"></i>Làm Mới</a>
                 </div>
-
             </div>
+
             <div class="card-body">
+                <form action="" method="get">
+                    <div class="row mb-3">
+                        <div class="col-1 mt-1 ">
+                            <label for="" class="bg-primary p-1 border rounded-1"><span class="text-white">Bộ lọc</span> </label>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" name="sort_role">
+                                <option {{ Request::get('sort_role') == 'user' ? 'selected' : '' }} value="user">User
+                                </option>
+                                <option {{ Request::get('sort_role') == 'admin' ? 'selected' : '' }} value="admin">Admin
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" name="sort_date">
+                                <option value>Ngày tạo</option>
+                                <option {{ Request::get('sort_date') == 'desc' ? 'selected' : '' }} value="desc">Mới nhất
+                                </option>
+                                <option {{ Request::get('sort_date') == 'asc' ? 'selected' : '' }} value="asc">Cũ nhất
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-1">
+                            <button class="btn btn-primary">Lọc</button>
+                        </div>
+                    </div>
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
