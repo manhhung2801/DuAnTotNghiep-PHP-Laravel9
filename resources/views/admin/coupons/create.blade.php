@@ -56,15 +56,15 @@
 
                 <div class="col-md-6">
                     <label for="input7" class="form-label">Loại giảm giá</label>
-                    <select id="input7" class="form-select" name="discount_type">
-                        <option value="prencent">phần trăm</option>
+                    <select id="input7" class="form-select" name="coupon_type">
+                        <option value="precent">phần trăm</option>
                         <option value="amount">Cố định</option>
                     </select>
                 </div>
 
                 <div class="col-md-6">
                     <label for="input9" class="form-label">Giảm giá</label>
-                    <input type="number" class="form-control" id="input9" name="prencent_amount" value="{{ old('prencent_amount') }}">
+                    <input type="number" class="form-control" id="input9" name="precent_amount" value="{{ old('precent_amount') }}">
                 </div>
 
 

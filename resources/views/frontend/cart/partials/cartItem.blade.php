@@ -32,10 +32,10 @@
                 <form method="post" data-url="{{ route('cart.update', $item->id) }}">
                     @csrf @method('PUT')
                     <div class="input-group mb-3" style="width:150px;padding-top:30px">
-                        <button class="btn-minus btn btn-outline-secondary"><i class="fa-solid fa-minus"></i></button>
+                        <button class="btn-minus_product btn btn-outline-secondary"><i class="fa-solid fa-minus"></i></button>
                         <input id="qtyProduct" type="number" class="qtyProduct form-control text-center"
                             maxlength="100" value="{{ $item->quantity }}">
-                        <button class="btn-plus btn btn-outline-secondary"><i class="fa-solid fa-plus"></i></button>
+                        <button class="btn-plus_product btn btn-outline-secondary"><i class="fa-solid fa-plus"></i></button>
 
                         @if ($item->associatedModel->qty > 0)
                             <span id="productInStock" data-qty="{{ $item->associatedModel->qty }}">Còn

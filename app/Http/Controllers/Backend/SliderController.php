@@ -30,10 +30,10 @@ class SliderController extends Controller
         // Sắp xếp theo trạng thái
         if ($request->filled('check_status')) {
             $check_status = $request->get('check_status');
-            if ($check_status == 1) {
-                $sliders->where('status', $check_status);
-            } elseif ($check_status == 0) {
-                $sliders->where('status', $check_status);
+            if ($check_status == '1') {
+                $sliders = $sliders->where('status', 1);
+            } elseif ($check_status == '0') {
+                $sliders = $sliders->where('status', 0);
             }
         }
 
@@ -45,7 +45,7 @@ class SliderController extends Controller
             }
         }
 
-        $sliders = $sliders->paginate(15);
+        $sliders = $sliders->paginate(15)->appends(request()->query());
         return view("admin.slider.index", compact('sliders'));
     }
     public function create()

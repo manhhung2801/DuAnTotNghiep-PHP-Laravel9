@@ -9,17 +9,13 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\InformationController;
 use App\Http\Controllers\Frontend\AddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
-use App\Http\Controllers\Frontend\GioHangController;
-use App\Http\Controllers\Frontend\KhieuNaiController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\ContactController;
-use App\Http\Controllers\frontend\ErrorController;
 use App\Http\Controllers\frontend\GHTKController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\CommentsController;
-use App\Models\Information;
 use \App\Http\Controllers\VNPAYController;
 /*
 |--------------------------------------------------------------------------
@@ -86,7 +82,10 @@ Route::get('/tin-tuc/{slugs_cate}/{slugs}', [NewsController::class, 'details'])-
 // Route Cart
 Route::resource('cart', CartController::class);
 
-// Route Checkout
+/**Apply Coupon Code */
+Route::post('/applyCouponCode', [CheckoutController::class, 'applyCouponCode'])->name('applyCouponCode')->middleware('checkLogin');
+
+//Checkout
 Route::resource('checkout', CheckoutController::class)->middleware('checkLogin');
 
 // Order customer
@@ -109,10 +108,6 @@ Route::get("/search", [ProductController::class,'search'])->name("search");
 /** Tính phí ship (calculateShipping) */
 Route::get("/calculateShipping", [GHTKController::class, 'calculateShipping'])->name('calculateShipping');
 
-
-
-/** trang 404  */
-Route::get("page-not-found", [ErrorController::class,'index'])->name("index");
 
 /** VNPAY */
 Route::get('vnpay-return', [VNPAYController::class, 'vnpay_return']);

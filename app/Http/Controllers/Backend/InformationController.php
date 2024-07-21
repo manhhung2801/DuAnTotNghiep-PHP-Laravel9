@@ -21,13 +21,6 @@ class InformationController extends Controller
             $information = $information->where('name', 'like', '%' . $request->get('keyword') . '%');
         }
 
-        // Sắp xếp theo tên a-z hoặc tên z-a 
-        if ($request->filled('sort_name')) {
-            $sort_name = $request->get('sort_name');
-            if ($sort_name === 'asc' || $sort_name === 'desc') {
-                $information->orderBy('name', $sort_name);
-            }
-        }
         // Sắp xếp theo rank tăng hoặc giảm 
         if ($request->filled('sort_rank')) {
             $sort_rank = $request->get('sort_rank');
@@ -39,10 +32,10 @@ class InformationController extends Controller
         // Sắp xếp theo trạng thái
         if ($request->filled('check_status')) {
             $check_status = $request->get('check_status');
-            if ($check_status == 1) {
-                $information->where('status', $check_status);
-            } elseif ($check_status == 0) {
-                $information->where('status', $check_status);
+            if ($check_status == '1') {
+                $information = $information->where('status', 1);
+            } elseif ($check_status == '0') {
+                $information = $information->where('status', 0);
             }
         }
 
@@ -54,11 +47,11 @@ class InformationController extends Controller
             }
         }
 
-     
+
 
 
         // Paginate with 10 items per page
-        $information = $information->paginate(10);
+        $information = $information->paginate(15)->appends(request()->query());
 
         return view("admin.information.index", compact('information'));
     }

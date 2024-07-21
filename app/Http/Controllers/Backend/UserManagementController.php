@@ -12,13 +12,36 @@ class UserManagementController extends Controller
 
     public function index(Request $request)
     {
+
+         $getUser = User::query(); // Khởi tạo query builder
+        $validStatuses = ["user","admin"];
+        // Sắp xếp theo role admin/user
+        if (!empty(Request()->get('sort_role'))) {
+            $sort_role = trim(Request()->get('sort_role'));
+            if (in_array($sort_role, $validStatuses)) {
+                $getUser->where('role', $sort_role);
+            } 
+            else {
+                return view('404');
+            }
+        }
+        // Sắp xếp theo ngày tạo
+        if (!empty(Request()->get('sort_date'))) {
+            $sort_date = trim(Request()->get('sort_date'));
+            if ($sort_date == 'desc' || $sort_date == 'asc') {
+                $getUser->orderBy('created_at', $sort_date);
+            } else {
+                return view('404');
+            }
+        }
+
         // Lấy danh sách tất cả các user, sắp xếp theo thứ tự mới nhất
-        $users = User::latest();
+        //$users = User::latest();
 
         // Nếu có keyword trong request, thêm điều kiện tìm kiếm
         if (!empty($request->get('keyword'))) {
             $keyword = $request->get('keyword');
-            $users = $users->where(function($query) use ($keyword) {
+            $getUser = $getUser->where(function($query) use ($keyword) {
                 $query->where('name', 'like', '%' . $keyword . '%')
                     ->orWhere('email', 'like', '%' . $keyword . '%')
                     ->orWhere('role', 'like', '%' . $keyword . '%');
@@ -26,7 +49,7 @@ class UserManagementController extends Controller
         }
 
         // Phân trang kết quả với 15 user mỗi trang
-        $users = $users->paginate(15);
+        $users = $getUser->paginate(15);
 
         // Trả về view với dữ liệu danh sách user
         return view('admin.user-management.index', compact('users'));

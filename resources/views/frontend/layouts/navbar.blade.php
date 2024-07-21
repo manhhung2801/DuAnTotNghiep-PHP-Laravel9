@@ -63,36 +63,50 @@
                 <li class="nav-item nav_item_cate px-2">
                     <a class="nav-link text-white" href="{{ url('/order') }}">Đơn Hàng Của Tôi</a>
                 </li>
+                <li class="nav-item nav_item_cate px-2 dropdown navbar-toggler border-0">
+                    <a class="nav-link dropdown-toggle text-white fs-6" href="javascript:;" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" id="product-link">
+                        Tài khoản
+                    </a>
+                    <ul class="dropdown-menu mt-1 nav_sub_dropdown p-0">
+                        @if (!empty(Auth::check()))
+                            <li><a class="dropdown-item py-2"
+                                    href="{{ route('dashboard') }}">Tài khoản của tôi</a></li>
+                            <li>
+                                <!-- Authentication -->
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a class="dropdown-item py-2"
+                                        href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">Đăng
+                                        xuất
+                                    </a>
+                                </form>
+                            </li>
+                        @else
+                            <li><a class="dropdown-item py-2"
+                                    href="{{ route('login') }}">Đăng nhập</a></li>
+                            <li><a class="dropdown-item py-2"
+                                    href="{{ route('register') }}">Đăng ký</a></li>
+                        @endif
+
+                        <li><a class="dropdown-item py-2" href="{{ url('/order') }}">Đơn
+                                hàng của tôi</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
 <style>
-    .dropdown-item.item_nav_name {
+
+.dropdown-item.item_nav_name {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-
-    /* Ẩn tất cả các dropdown menu con */
-    .nav-item .dropdown-menu {
-        display: none;
-    }
-
-    /* Hiển thị dropdown menu con khi hover vào mục cha */
-    .nav-item:hover>.dropdown-menu {
-        display: block;
-    }
-
-    /* Ẩn tất cả các dropdown submenu con */
-    .nav_sub_cate .dropdown-submenu {
-        display: none;
-    }
-
-    /* Hiển thị dropdown submenu con khi hover vào mục cha */
-    .nav_sub_cate:hover>.dropdown-submenu {
-        display: block;
     }
 
     /* Hiển thị dropdown menu con khi thêm class 'show' */
@@ -119,7 +133,6 @@
     .navbar-nav .dropdown-menu>li:hover>.dropdown-submenu {
         display: block;
     }
-
     @media (max-width: 991.98px) {
         .navbar-nav {
             justify-content: flex-start;

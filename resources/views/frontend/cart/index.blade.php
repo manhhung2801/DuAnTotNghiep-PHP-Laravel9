@@ -53,7 +53,7 @@
                 }
             });
 
-            $('body').on('click', '.btn_delete_cart', function(e) {
+            $('body').off('click', '.btn_delete_cart').on('click', '.btn_delete_cart', function(e) {
                 //Ngăn hành vi mặc định reload
                 e.preventDefault();
                 window.setTimeout(() => {
@@ -103,7 +103,7 @@
                     })
                 }, 500)
             })
-            $('body').on('click', ".btn-minus, .btn-plus", function(e) {
+            $('body').off('click', ".btn-minus_product, .btn-plus_product").on('click', ".btn-minus_product, .btn-plus_product", function(e) {
                 e.preventDefault()
                 window.setTimeout(() => {
                     //lấy ra element cha bao quát các input
@@ -118,14 +118,14 @@
                     var productInStock = parseInt(productInput.attr('data-qty'));
 
                     // Tăng giảm số lượng sản phẩm khi bấm nút
-                    if ($(this).hasClass('btn-minus')) {
+                    if ($(this).hasClass('btn-minus_product')) {
                         // nếu qty bé hơn bằng 1 thì không được giảm
                         if (qtyProduct <= 1) {
                             return;
                         }
                         qtyProduct--;
 
-                    } else if ($(this).hasClass('btn-plus')) {
+                    } else if ($(this).hasClass('btn-plus_product')) {
                         // Nếu số lượng trong cart lớn hơn sản phẩm trong kho thì return về lỗi
                         if (qtyProduct >= productInStock) {
                             Toast.fire({
