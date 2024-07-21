@@ -18,7 +18,7 @@
                     </a>
                     <ul class="dropdown-menu mt-1 nav_sub_dropdown p-0">
                         <li class="nav_sub_cate">
-                            <a class="dropdown-item item_nav_name py-2" href="{{ url('/product') }}">
+                            <a class="dropdown-item item_nav_name py-2" href="{{ url('/san-pham') }}">
                                 Tất cả sản phẩm <span class="float-end ms-5"><i
                                         class="fa-solid fa-layer-group"></i></span>
                             </a>
@@ -26,7 +26,7 @@
                         @foreach ($categories as $category)
                             <li class="nav_sub_cate">
                                 <a class="dropdown-item item_nav_name py-2"
-                                    href="{{ url('/product/' . $category->slug) }}">
+                                    href="{{ url('/san-pham/' . $category->slug) }}">
                                     {{ $category->name }}
                                     @if ($category->subCategories->count() > 0)
                                         <span class="float-end ms-5"><i class="fa-solid fa-chevron-right"></i></span>
@@ -37,7 +37,7 @@
                                         @foreach ($category->subCategories as $subCategory)
                                             <li class="list-group-item">
                                                 <a class="dropdown-item py-2 item_child_nav"
-                                                    href="{{ url('/product/' . $category->slug . '/' . $subCategory->slug) }}">
+                                                    href="{{ url('/san-pham/' . $category->slug . '/' . $subCategory->slug) }}">
                                                     {{ $subCategory->name }}
                                                 </a>
                                             </li>

@@ -16,7 +16,7 @@
                                 @endif
                                 <div class="product-thumbnail">
                                     <a class="image_thumb scale_hover"
-                                        href="/product/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html"
+                                        href="/san-pham/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html"
                                         title="iPhone 13 Pro Max 1TB - Chính Hãng VN/A">
                                         <img class="lazyload duration-300 loaded"
                                             src="{{ asset('uploads/products/' . $pro->image) }}">
@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="product-info mt-2">
                                     <h3 class="product-name line-clamp line-clamp-2 ">
-                                        <a href="/product/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html"
+                                        <a href="/san-pham/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html"
                                             title="" class="text-decoration-none ">{{ $pro->name }}</a>
                                     </h3>
                                     <div class="product-price-cart">
@@ -65,7 +65,7 @@
                 @endforeach
             </div>
             <div class="scroll_animation show-all text-center mt-2">
-                <a class="px-5 py-2 btn btn-outline-dark " href="/product/{{ $pro->category->slug }}.html">Xem tất cả
+                <a class="px-5 py-2 btn btn-outline-dark " href="/san-pham/{{ $pro->category->slug }}.html">Xem tất cả
                     <i class="fa-regular fa-chevron-right"></i></a>
             </div>
         @endforeach
