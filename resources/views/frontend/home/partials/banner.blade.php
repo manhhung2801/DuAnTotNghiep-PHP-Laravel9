@@ -10,7 +10,7 @@
                     <div class="product-content">
                         <span class="sub-title mb-2">{{ $banner->title }}</span>
                         <h3>{{ $banner->seo_title }}</h3>
-                        <div class="desc">{{ $banner->content }}</div>
+                        <div class="desc">{{ $banner->description }}</div>
                         <a href="{{ route('news.details', [$banner->Post_categories->slug, $banner->slug]) }}"
                             title="Xem thêm" class="btn btn-dark px-4 mt-4">
                             Xem thêm <i class="fa-solid fa-angle-right"></i>

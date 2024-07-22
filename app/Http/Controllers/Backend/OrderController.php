@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
-use App\Models\Order_detail;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -116,8 +116,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        // $getOrderDetail = Order_detail::where('order_id', '=', $id)->get();
-        $getOrderDetail = Order_detail::with('product')->where('order_id', '=', $id)->get();
+        $getOrderDetail = OrderDetail::with('product')->where('order_id', '=', $id)->get();
         return response()->json(['getOrderDetail' => $getOrderDetail]);
     }
 

@@ -7,7 +7,7 @@
         <div class="small-img overflow-auto text-nowrap">
             <img src="{{ asset('uploads/products/' . $product->image) }}" class="img-thumbnail img-fluid"
                 onclick="showImg(this.src)" width="58" height="58">
-            @foreach ($product_image_galleries as $item)
+            @foreach ($ProductImageGalleries as $item)
                 <img src="{{ asset('uploads/gallery/' . $item->image) }}" class="img-thumbnail img-fluid"
                     onclick="showImg(this.src)" width="58" height="58">
             @endforeach
