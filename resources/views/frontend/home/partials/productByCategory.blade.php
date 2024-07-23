@@ -15,7 +15,7 @@
                                         href="/san-pham/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html"
                                         title="iPhone 13 Pro Max 1TB - Chính Hãng VN/A">
                                         <img class="lazyload duration-300 loaded"
-                                            src="{{ asset('uploads/products/' . $pro->image) }}">
+                                            src="{{ asset('uploads/products/' . $pro->image) }}" alt="{{ $pro->image }}">
                                     </a>
                                 </div>
                                 <div class="product-info mt-2">

@@ -13,7 +13,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\ContactController;
-use App\Http\Controllers\frontend\GHTKController;
+use App\Http\Controllers\GHTKController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\CommentsController;
 use \App\Http\Controllers\VNPAYController;
@@ -63,6 +63,10 @@ Route::post('/admin/login', [AdminLoginController::class, 'store'])->name("admin
 
 
 /** User Dashboard */
+
+// Route::get('san-pham/',[ProductController::class, 'index']);
+// Route::get('san-pham/{slug?}',[ProductController::class, 'getSlug']);
+
 Route::get('san-pham/{cat?}/{sub?}/{child?}/{slug?}', [ProductController::class, 'getWhereParam']);
 // http://127.0.0.1:8000/dien-thoai-tablet/iphone/iphone-15-series/iphone-lo
 

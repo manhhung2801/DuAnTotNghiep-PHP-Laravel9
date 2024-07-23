@@ -73,14 +73,14 @@ class Product extends Model
         return self::withTrashed()->where('id', $id)->restore();
     }
 
-    public function product_image_galleries()
+    public function ProductImageGalleries()
     {
-        return $this->hasMany(product_image_galleries::class, 'product_id', 'id');
+        return $this->hasMany(ProductImageGalleries::class, 'product_id', 'id');
     }
     
-    public function order_detail()
+    public function orderDetail()
     {
-        return $this->hasMany(Order_detail::class, 'product_id', 'id');
+        return $this->hasMany(OrderDetail::class, 'product_id', 'id');
     }
 
     public function variant()

@@ -22,9 +22,14 @@
                         <p id="subTotal" class="col-5 fs-5 text-danger">{{ number_format($subTotal, 0, '', '.') }}₫</p>
                     </div>
                     <div class="text-right col-md-12">
-                        <a href="{{ route('checkout.index') }}" class="btn btn-dark checkout-button"
-                            style="width:350px">Thanh
-                            toán</a>
+                        @if (Auth()->check())
+                            <a href="{{ route('checkout.index') }}" class="btn btn-dark checkout-button"
+                                style="width:350px">Thanh
+                                toán</a>
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-danger" style="width:350px">Đăng nhập để thanh
+                                toán</a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -75,7 +80,7 @@
 
                                 //Nếu xóa sản phẩm trong cart thành công thì tiến hành xóa luôn hàng của sản phẩm trong cart
                                 row.remove()
-                                
+
                                 // Update lại giá của sản phẩm
                                 $('#subTotal').text(data.subTotal + '₫');
                                 if (data.subTotal == 0) {
@@ -103,83 +108,87 @@
                     })
                 }, 500)
             })
-            $('body').off('click', ".btn-minus_product, .btn-plus_product").on('click', ".btn-minus_product, .btn-plus_product", function(e) {
-                e.preventDefault()
-                window.setTimeout(() => {
-                    //lấy ra element cha bao quát các input
-                    var container = $(this).closest('form')
+            $('body').off('click', ".btn-minus_product, .btn-plus_product").on('click',
+                ".btn-minus_product, .btn-plus_product",
+                function(e) {
+                    e.preventDefault()
+                    window.setTimeout(() => {
+                        //lấy ra element cha bao quát các input
+                        var container = $(this).closest('form')
 
-                    //tìm element có id qtyProduct trong container input-group
-                    var qtyInput = container.find('#qtyProduct');
-                    var qtyProduct = parseInt(qtyInput.val());
+                        //tìm element có id qtyProduct trong container input-group
+                        var qtyInput = container.find('#qtyProduct');
+                        var qtyProduct = parseInt(qtyInput.val());
 
-                    //Lấy số lượng trong kho ra để so sánh với số lượng trong cart
-                    var productInput = container.find('#productInStock');
-                    var productInStock = parseInt(productInput.attr('data-qty'));
+                        //Lấy số lượng trong kho ra để so sánh với số lượng trong cart
+                        var productInput = container.find('#productInStock');
+                        var productInStock = parseInt(productInput.attr('data-qty'));
 
-                    // Tăng giảm số lượng sản phẩm khi bấm nút
-                    if ($(this).hasClass('btn-minus_product')) {
-                        // nếu qty bé hơn bằng 1 thì không được giảm
-                        if (qtyProduct <= 1) {
-                            return;
+                        // Tăng giảm số lượng sản phẩm khi bấm nút
+                        if ($(this).hasClass('btn-minus_product')) {
+                            qtyProduct--;
+
+                        } else if ($(this).hasClass('btn-plus_product')) {
+                            qtyProduct++;
                         }
-                        qtyProduct--;
-
-                    } else if ($(this).hasClass('btn-plus_product')) {
                         // Nếu số lượng trong cart lớn hơn sản phẩm trong kho thì return về lỗi
-                        if (qtyProduct >= productInStock) {
+                        if (qtyProduct > productInStock) {
                             Toast.fire({
                                 icon: "error",
                                 title: "Sản phẩm trong kho không đủ"
                             });
                             return;
                         }
-                        qtyProduct++;
-                    }
-                    // gán số lượng xử lý vào value input
-                    qtyInput.val(qtyProduct);
+                        // nếu qty bé hơn bằng 1 thì không được giảm
+                        if (qtyProduct < 1) {
+                            return;
+                        }
+                        // gán số lượng xử lý vào value input
+                        qtyInput.val(qtyProduct);
 
-                    //lấy element tr gần nút bấm nhất làm container box 1 sản phẩm 
-                    var containerPrice = $(this).closest('tr');
-                    // url xóa
-                    var url = container.attr('data-url')
-                    if (qtyProduct >= 1) {
-                        $.ajax({
-                            type: 'PUT',
-                            url: url,
-                            data: {
-                                qtyProduct: qtyProduct,
-                            },
-                            success: function(data) {
-                                if (data.status == true) {
-                                    Toast.fire({
-                                        icon: "success",
-                                        title: data.message
-                                    });
-                                }
-                                if (data.status == false) {
+                        //lấy element tr gần nút bấm nhất làm container box 1 sản phẩm 
+                        var containerPrice = $(this).closest('tr');
+
+                        // url xóa
+                        var url = container.attr('data-url')
+                        if (qtyProduct >= 1) {
+                            $.ajax({
+                                type: 'PUT',
+                                url: url,
+                                data: {
+                                    qtyProduct: qtyProduct,
+                                },
+                                success: function(data) {
+                                    if (data.status == true) {
+                                        Toast.fire({
+                                            icon: "success",
+                                            title: data.message
+                                        });
+                                        $('.cart-count').text(data.cart_count);
+                                    }
+                                    if (data.status == false) {
+                                        Toast.fire({
+                                            icon: "error",
+                                            title: data.message
+                                        });
+                                    }
+
+                                    //Tìm #priceItemCart trong container box 1 sản phẩm tại nút bấm tăng giảm qty => gán lại giá mới
+                                    containerPrice.find('#priceItemCart').text(data
+                                        .summedPrice + '₫');
+                                    // gán lại tổng giá
+                                    $('#subTotal').text(data.subTotal + '₫');
+                                },
+                                error: function(error) {
                                     Toast.fire({
                                         icon: "error",
-                                        title: data.message
+                                        title: error
                                     });
                                 }
-
-                                //Tìm #priceItemCart trong container box 1 sản phẩm tại nút bấm tăng giảm qty => gán lại giá mới
-                                containerPrice.find('#priceItemCart').text(data
-                                    .summedPrice + '₫');
-                                // gán lại tổng giá
-                                $('#subTotal').text(data.subTotal + '₫');
-                            },
-                            error: function(error) {
-                                Toast.fire({
-                                    icon: "error",
-                                    title: error
-                                });
-                            }
-                        })
-                    }
-                }, 500)
-            })
+                            })
+                        }
+                    }, 500)
+                })
         })
     </script>
 @endpush

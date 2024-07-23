@@ -33,5 +33,32 @@ class Helper
         } else {
             //   echo "0%";
         }
+      }
+
+      public static function getProductPrice($product)
+    {
+        $productPrice = null;
+        $currentDate = new DateTime();
+
+        // Kiểm tra nếu offer_price tồn tại
+        if (!empty($product->offer_price)) {
+            $offerStartDate = new DateTime($product->offer_start_date);
+            $offerEndDate = new DateTime($product->offer_end_date);
+
+            // Kiểm tra nếu ngày hiện tại nằm trong khoảng thời gian khuyến mãi
+            if ($currentDate >= $offerStartDate && $currentDate <= $offerEndDate) {
+                $productPrice = $product->offer_price;
+            }
+        }
+
+        // Nếu không có giá khuyến mãi hợp lệ thì lấy giá gốc
+        if ($productPrice === null) {
+            $productPrice = $product->price;
+        }
+
+        return (int) $productPrice;
     }
 }
+
+
+

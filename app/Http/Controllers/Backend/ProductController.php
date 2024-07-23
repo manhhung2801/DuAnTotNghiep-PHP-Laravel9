@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ruleProductCreate;
@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\ChildCategory;
-use App\Models\product_image_galleries;
+use App\Models\ProductImageGalleries;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\ValidationException;
 use Exception;
@@ -142,7 +142,7 @@ class ProductController extends Controller
                     $gallery->move(public_path('/uploads/gallery'), $file_name);
 
                     //Update vào table gallery
-                    $image_gallery = new product_image_galleries();
+                    $image_gallery = new ProductImageGalleries();
                     $image_gallery->image = $file_name;
                     $image_gallery->product_id = $product->id; //product_id lấy từ Product vừa thêm ở trên
                     $image_gallery->save();
@@ -157,7 +157,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $gallery = product_image_galleries::where('product_id', $id)->get('image');
+        $gallery = ProductImageGalleries::where('product_id', $id)->get('image');
         $category = Category::where('status', 1)->get();
         $product = Product::getProductItem($id);
         return view('admin.product.edit', compact('product', 'category', 'gallery'));
@@ -259,9 +259,9 @@ class ProductController extends Controller
                     }
                 }
                 // Lấy gallery của product theo ID và xóa tất cả
-                $galleryDel = product_image_galleries::where('product_id', $id)->delete();
+                $galleryDel = ProductImageGalleries::where('product_id', $id)->delete();
                 foreach ($request->image_gallery as $gal) {
-                    $gallery = new product_image_galleries();
+                    $gallery = new ProductImageGalleries();
                     $ext = $gal->extension();
                     $fileName = 'media_gallery_' . uniqid() . '.' . $ext;
                     $gal->move(public_path('uploads/gallery/'), $fileName);
@@ -280,7 +280,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $getProduct = Product::with(['variant.variantItem', 'product_image_galleries'])->findOrFail($id);
+        $getProduct = Product::with(['variant.variantItem', 'ProductImageGalleries'])->findOrFail($id);
         return response()->json([$getProduct]);
     }
     public function destroy($id)
@@ -319,7 +319,7 @@ class ProductController extends Controller
     {
         try {
             Product::destroyTrashedItem($id);
-            $image_gallery = product_image_galleries::where('product_id', $id);
+            $image_gallery = ProductImageGalleries::where('product_id', $id);
             foreach ($image_gallery->get() as $img) {
                 if (File::exists(public_path('uploads/gallery/' . $img->image))) {
                     File::delete(public_path('uploads/gallery/' . $img->image));

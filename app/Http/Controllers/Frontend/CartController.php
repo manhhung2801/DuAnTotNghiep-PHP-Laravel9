@@ -9,6 +9,7 @@ use App\Models\VariantItem;
 use Illuminate\Http\Request;
 use Exception;
 use Cart;
+use Helper;
 
 class CartController extends Controller
 {
@@ -18,7 +19,14 @@ class CartController extends Controller
         $subTotal = \Cart::getSubTotal();
         foreach ($getCart as $cart) {
             $getProduct = Product::findOrFail($cart->id);
-            $productPrice = $getProduct->offer_price ?? $getProduct->price;
+
+            //Kiểm tra xem sản phẩm đó lỡ ẩn đi nếu sản phẩm còn trong cart
+            if($getProduct->status === 0) {
+                \Cart::remove($cart->id);
+            }
+
+            //Kiểm tra giá thay đổi
+            $productPrice = Helper::getProductPrice($getProduct);
             if ($cart->price != $productPrice) {
                 \Cart::update($cart->id, [
                     'price' => $productPrice,
@@ -26,7 +34,7 @@ class CartController extends Controller
             }
             \Cart::update($cart->id, [
                 'associatedModel' => $getProduct,
-            ]);
+            ]); 
         }
         return view('frontend.cart.index', compact('getCart', 'subTotal'));
     }
@@ -69,11 +77,13 @@ class CartController extends Controller
                     }
                 }
 
+                //Kiểm tra giá sản phẩm
+                $productPrice = Helper::getProductPrice($product);
                 //Thêm giỏ hàng
                 $addCart = \Cart::add([
                     'id' => $id,
                     'name' => $product->name,
-                    'price' => $product->offer_price ?? $product->price,
+                    'price' => $productPrice,
                     'quantity' => $qtyProduct,
                     'attributes' => $attributes,
                     'associatedModel' => $product,
@@ -108,7 +118,8 @@ class CartController extends Controller
         if ($addCart) {
             $summedPrice = number_format(Cart::get($id)->getPriceSum(), 0, '', '.');
             $subTotal = number_format(\Cart::getSubTotal(), 0, '', '.');
-            return response()->json(['status' => true, 'message' => 'Cập nhập sản phẩm thành công!', 'summedPrice' => $summedPrice, 'subTotal' => $subTotal]);
+            $cart_count = \Cart::getTotalQuantity();
+            return response()->json(['status' => true, 'message' => 'Cập nhập sản phẩm thành công!', 'summedPrice' => $summedPrice, 'subTotal' => $subTotal, 'cart_count' => $cart_count]);
         } else {
             return response()->json(['status' => false, 'message' => 'Cập nhập sản phẩm thất bại!'], 404);
         }
@@ -130,7 +141,7 @@ class CartController extends Controller
             }
             return response()->json([
                 'status' => false,
-                'message' => 'Xóa sản phẩm thất bại!'
+                'message' => 'Không tìm thấy sản phẩm trong giỏ hàng!'
             ]);
         } catch (Exception $e) {
             return response()->json([

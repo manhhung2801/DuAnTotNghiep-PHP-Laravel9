@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Coupons;
 use App\Http\Controllers\VNPAYController;
-use App\Models\Order_detail;
+use App\Models\OrderDetail;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Session;
@@ -103,7 +103,7 @@ class CheckoutController extends Controller
 
                 //Thên order detail
                 foreach ($getCart as $key => $proCart) {
-                    $order_detail = new Order_detail();
+                    $order_detail = new OrderDetail();
                     $order_detail->product_name = $proCart->name;
                     $order_detail->variants = $proCart->attributes;
                     $order_detail->price = $proCart->price;
