@@ -1,6 +1,13 @@
 @extends('frontend.layouts.master')
 
-@section('title', 'Chi tiết sản phẩm')
+@section('title', $product->seo_title ?? 'Sản phẩm' . $product->name)
+@section('description', $product->seo_description ?? 'CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop, smartwatch, gia dụng, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.')
+@section('schema')  
+<script type="application/ld+json">
+    
+</script>
+@endsection
+
 
 @section('content')
     <div class="layout-collection">
@@ -60,5 +67,5 @@
                 }
             });
         });
-    </script>
+    </>
 @endsection
