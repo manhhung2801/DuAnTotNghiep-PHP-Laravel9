@@ -110,8 +110,8 @@ class ProductController extends Controller
                 $getQtyCart = \Cart::get($product->id);
 
                 // Assuming only one product is filtered
-                $product = Product::with('product_image_galleries')->findOrFail($product->id);
-                $product_image_galleries = $product->product_image_galleries;
+                $product = Product::with('ProductImageGalleries')->findOrFail($product->id);
+                $ProductImageGalleries = $product->ProductImageGalleries;
                 $variants = $product->variant()->get();
 
                 $comments = ProductComments::where('product_id', $product->id)
@@ -128,7 +128,7 @@ class ProductController extends Controller
                     ->orderBy('created_at', 'desc')
                     ->limit(4)
                     ->get();
-                return view('frontend.products.detail', compact("product", "variants", "product_image_galleries", "product_image_galleries", "products", "relatedProducts", "comments", "getQtyCart"));
+                return view('frontend.products.detail', compact("product", "variants", "ProductImageGalleries", "products", "relatedProducts", "comments", "getQtyCart"));
             default:
                 $categories = Category::get();
                 // No filters applied

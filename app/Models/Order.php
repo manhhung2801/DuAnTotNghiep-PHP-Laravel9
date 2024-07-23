@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    protected $table = 'Orders';
+    protected $table = 'orders';
     protected $fillable = [
         'order_name',
         'vnp_order_code',
@@ -34,9 +34,9 @@ class Order extends Model
         'created_at',
         'updated_at'
     ];
-    public function order_detail()
+    public function orderDetail()
     {
-        return $this->hasMany(Order_detail::class, 'order_id', 'id');
+        return $this->hasMany(OrderDetail::class, 'order_id', 'id');
     }
     static function getOrderUser($id) {
         return self::where('user_id', '=', $id);

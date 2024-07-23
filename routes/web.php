@@ -13,7 +13,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\ContactController;
-use App\Http\Controllers\frontend\GHTKController;
+use App\Http\Controllers\GHTKController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\CommentsController;
 use \App\Http\Controllers\VNPAYController;
@@ -63,9 +63,6 @@ Route::post('/admin/login', [AdminLoginController::class, 'store'])->name("admin
 
 
 /** User Dashboard */
-// Route::get('/tintuc',[TintucController::class,'index']);
-Route::get('/khieunai', [KhieuNaiController::class, 'index']);
-Route::get('giohang', [GioHangController::class, 'index']);
 
 // Route::get('san-pham/',[ProductController::class, 'index']);
 // Route::get('san-pham/{slug?}',[ProductController::class, 'getSlug']);
