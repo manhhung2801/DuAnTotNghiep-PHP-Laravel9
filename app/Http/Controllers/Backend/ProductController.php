@@ -122,6 +122,7 @@ class ProductController extends Controller
             $product->weight = $request->weight;
             $product->views = $request->views;
             $product->seo_description = $request->seo_description;
+            $product->promotion = $request->promotion;
             $product->long_description = $request->long_description;
             $product->short_description = $request->short_description;
             $product->specifications = $request->specifications;
@@ -173,6 +174,7 @@ class ProductController extends Controller
             'sub_category_id' => 'required',
             'child_category_id' => 'required',
             'specifications' => 'required',
+            'promotion' => 'required',
         ], [
             'name' => [
                 'required' => 'Tên sản phẩm là bắt buộc.',
@@ -202,6 +204,9 @@ class ProductController extends Controller
             'specifications' => [
                 'required' => 'Thông tin sản phẩm không được để trống.',
             ],
+            'promotion' => [
+                'required' => 'Nội dung khuyến mãi không được để trống.',
+            ],
         ]);
 
         try {
@@ -222,6 +227,7 @@ class ProductController extends Controller
             $product->weight = $request->weight;
             $product->status = $request->status;
             $product->seo_description = $request->seo_description;
+            $product->promotion = $request->promotion;
             $product->long_description = $request->long_description;
             $product->short_description = $request->short_description;
             $product->specifications = $request->specifications;

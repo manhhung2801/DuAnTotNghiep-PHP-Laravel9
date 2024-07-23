@@ -25,12 +25,6 @@
                 <div class="col-lg-8 col-sm-12 text-center text-lg-start">
                     <h2>{{$newCatefind->name}}</h2>
                 </div>
-                <!-- <div class="col-lg-4 d-none d-lg-block">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control rounded-start-5" placeholder="Tìm kiếm">
-                        <button class="btn btn-outline-primary rounded-end-5" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
-                </div> -->
             </div>
             <div class="post-list row">
                 @include('frontend.post.partials.postItem')

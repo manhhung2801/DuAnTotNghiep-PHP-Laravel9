@@ -114,11 +114,9 @@
  }
  
  .item_product_main .product-action .product-info .product-price-cart .price-box {
-     flex-grow: 1;
      display: flex;
      align-items: center;
      flex-wrap: wrap;
-     gap: 2px;
  }
  
  .item_product_main .product-action .product-info .product-price-cart .price-box .compare-price {
@@ -263,7 +261,7 @@
      }
  }
  /*------------------------------------ End Icon fixed ------------------------------------- */
- /*------------------------------------ Footer ------------------------------------- */
+ /* ------------------------------------ Footer ------------------------------------- */
  
  .footer-item {
      color: white;
@@ -692,10 +690,11 @@
  .checkout-button {
      margin-top: 20px;
  }
- .lable_store_address, .form-check-input {
-    font-size: 12px;
- }
  
+ .lable_store_address,
+ .form-check-input {
+     font-size: 12px;
+ }
  
  .btn-delete {
      color: red;

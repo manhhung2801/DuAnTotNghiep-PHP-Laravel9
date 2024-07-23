@@ -134,6 +134,10 @@
                     </div>
                 </div>
                 <div class="col-lg-12 mb-3">
+                    <label for="promotion_content" class="form-label">Nội dung khuyến mãi</label>
+                    <input type="text" class="form-control" id="promotion_content" name="promotion" value="{{ old('promotion') }}">
+                </div>
+                <div class="col-lg-12 mb-3">
                     <label for="editor" class="form-label">Mô tả</label>
                     <textarea class="form-control description" name="long_description" id="editor" value="{{ old('long_description') }}"></textarea>
                 </div>
