@@ -84,6 +84,10 @@
                                             <td class="text_description" id="modal_seo_description" colspan="3"></td>
                                         </tr>
                                         <tr>
+                                            <th scope="row">Nội dung khuyến mãi</th>
+                                            <td class="text_description" id="modal_promotion" colspan="3"></td>
+                                        </tr>
+                                        <tr>
                                             <th scope="row">Mô tả ngắn</th>
                                             <td class="text_description" id="modal_short_description" colspan="3"></td>
                                         </tr>

@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('product_type', 255)->nullable();
             $table->tinyInteger('status')->default(1);
             $table->string('seo_title', 255)->nullable();
+            $table->string('promotion', 255)->nullable();
             $table->text('seo_description')->nullable();
             $table->bigInteger('category_id')->unsigned()->index();
             $table->double('weight');
