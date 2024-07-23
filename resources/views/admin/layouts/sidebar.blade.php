@@ -161,8 +161,7 @@
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('admin.comment.index') }}"><i class='bx bx-radio-circle'></i>Danh sách sản
-                        phẩm</a>
+                    <a href="{{ route('admin.comment.index') }}"><i class='bx bx-radio-circle'></i>Danh sách bình luận</a>
                 </li>
             </ul>
         </li>
