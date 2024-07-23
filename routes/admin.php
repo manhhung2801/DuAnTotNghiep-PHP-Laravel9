@@ -155,12 +155,12 @@ Route::resource('/order', OrderController::class);
 
 Route::post('/order-vnp-refund-status-update', [OrderController::class, 'VNPRefundStatusUpdate'])->name('order.vnp-refund-status.update');
 
-// 
+//
 Route::fallback(function () {
     return view("404");
 });
 
-// Liên Hệ 
+// Liên Hệ
 Route::get('contact/trash-list', [ContactController::class, 'showTrash'])->name('coupons.trash-list');
 Route::DELETE('contact/destroy-trash/{id?}', [ContactController::class, 'destroyTrash'])->name('contact.destroy-trash');
 Route::PATCH('contact/restore-trash/{id?}', [ContactController::class, 'restoreTrash'])->name('contact.restore-trash');

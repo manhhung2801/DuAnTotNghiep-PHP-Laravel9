@@ -14,9 +14,16 @@
 <meta property="og:description" content="@yield('description', 'CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop, smartwatch, gia dụng, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.')" />
 <meta property="og:url" content="{{ url()->current() }}" />
 <meta property="og:site_name" content="CyberMart" />
-<meta property="article:modified_time" content="{{ now()->toIso8601String() }}" />
+<meta property="article:published_time" content="2024-07-23T16:02:33+07:00" />
+<meta property="article:modified_time" content="2024-07-23T16:02:33+07:00" />
 <meta property="og:image" content="{{ asset('uploads/logo/cybermart_logo_1x1.png') }}" />
+<meta property="og:image:secure_url" content="{{ asset('uploads/logo/cybermart_logo_1x1.png') }}" />
+<meta property="og:image:width" content="250" />
+<meta property="og:image:height" content="250" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="{{ asset('uploads/logo/cybermart_logo_1x1.png') }}" />
+<meta name="twitter:title" content="@yield('title', 'CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam')" />
+<meta name="twitter:description" content="@yield('description', 'CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop, smartwatch, gia dụng, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.')" />
 @yield('schema')
 {{-- end SEO --}}
 

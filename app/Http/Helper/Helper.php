@@ -21,7 +21,6 @@ class Helper
                             </div>';
         }
     }
-
     public static function sale($offer_start_date, $offer_end_date,  $price,  $offer_price)
     {
         $now = Carbon::now();
@@ -33,9 +32,9 @@ class Helper
         } else {
             //   echo "0%";
         }
-      }
+    }
 
-      public static function getProductPrice($product)
+    public static function getProductPrice($product)
     {
         $productPrice = null;
         $currentDate = new DateTime();
@@ -58,7 +57,6 @@ class Helper
 
         return (int) $productPrice;
     }
+    
 }
-
-
 
