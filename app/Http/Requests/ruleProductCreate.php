@@ -24,7 +24,6 @@ class ruleProductCreate extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
             'name' => 'required|max:255|unique:products,name',
             'qty' => 'required|min:0',
             'image' => 'required|image|mimes:jpeg,jpg,png,gif,webp|max:10240',
@@ -34,15 +33,17 @@ class ruleProductCreate extends FormRequest
             'sub_category_id' => 'required',
             'child_category_id' => 'required',
             'weight' => 'required',
+            'promotion' => 'required',
             'specifications' => 'required'
         ];
     }
-    public function messages() {
+    public function messages()
+    {
         return [
             'name' => [
-            'required' => 'Tên sản phẩm là bắt buộc.',
-            'max' => 'Tên sản phẩm không được dài quá :max ký tự.',
-            'unique' => 'Tên sản phẩm đã tồn tại.',
+                'required' => 'Tên sản phẩm là bắt buộc.',
+                'max' => 'Tên sản phẩm không được dài quá :max ký tự.',
+                'unique' => 'Tên sản phẩm đã tồn tại.',
             ],
             'qty' => [
                 'required' => 'Số lượng sản phẩm là bắt buộc.',
@@ -72,6 +73,9 @@ class ruleProductCreate extends FormRequest
             ],
             'weight' => [
                 'required' => 'Trọng lượng sản phẩm là bắt buộc.',
+            ],
+            'promotion' => [
+                'required' => 'Nội dung khuyến mãi là bắt buộc.',
             ],
             'specifications' => [
                 'required' => 'Thông tin sản phẩm không được để trống.',

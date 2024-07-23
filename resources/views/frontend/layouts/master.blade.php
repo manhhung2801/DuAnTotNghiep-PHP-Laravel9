@@ -13,7 +13,7 @@
             @yield('content')
         </main>
         <!-- End main content -->
-
+        @include('frontend.layouts.contact')
         @include('frontend.layouts.footer')
     </div>
     @include('frontend.layouts.scripts')
