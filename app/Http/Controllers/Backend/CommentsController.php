@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductComments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Exception;
 
 class CommentsController extends Controller
 {
@@ -18,12 +20,16 @@ class CommentsController extends Controller
     public function index(Request $request)
     {
 
-        $getComment = ProductComments::getComment();
+        // $getComment = ProductComments::getComment();
+        $getComment = ProductComments::with('user', 'product')
+            ->get()
+            ->groupBy('product_id');
+
         if (!empty(Request()->get('keyword'))) {
             $keyword = trim(Request()->get('keyword'));
             $getComment->where('name', 'like', '%' . $keyword . '%');
         }
-        $getComment = $getComment->paginate(15);
+
         return view('admin.comment.index', compact('getComment'));
     }
 
@@ -60,10 +66,10 @@ class CommentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function create()
-    // {
-    //     //
-    // }
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -71,10 +77,10 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(Request $request)
-    // {
-    //     //
-    // }
+    public function store(Request $request)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.

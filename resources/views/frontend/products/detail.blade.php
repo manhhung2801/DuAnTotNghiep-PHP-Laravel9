@@ -18,7 +18,7 @@
                     @include('frontend.products.partialsDetail.sidebar')
                 </div>
             </div>
-            <div class="catalog-product-list container">
+            <div class="catalog-product-list container" >
                 @include('frontend.products.partialsDetail.relatedProducts')
             </div>
             <div class="row">
