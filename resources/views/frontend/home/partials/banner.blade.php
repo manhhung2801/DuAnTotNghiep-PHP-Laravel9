@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-12 col-md-6 pt-3">
                     <picture class="d-flex justify-content-center bg-banner-item_img">
-                        <img width="573" height="502" src="{{ asset('uploads/post/' . $banner->image) }}">
+                        <img width="573" height="502" src="{{ asset('uploads/post/' . $banner->image) }}" alt="{{$banner->image}}">
                     </picture>
                 </div>
             </div>

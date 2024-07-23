@@ -10,7 +10,7 @@
                     <a href="/san-pham/{{$cate->slug}}" title="iPhone" class="cate-item list-group-item">
                         <div class="box-cate text-center">
                             <div class="cate-image_home ">
-                                <img alt="iphone" width="80px" height="80px" src="{{ asset('uploads/category/'. $cate->image)}}">
+                                <img alt="{{ $cate->name }}" width="80px" height="80px" src="{{ asset('uploads/category/'. $cate->image)}}">
                             </div>
                             <h6 class="cate-name mt-2">
                                 {{$cate->name}}

@@ -128,7 +128,7 @@
         <div class="scroll_animation section-banner_new pt-5">
             @include('frontend.home.partials.banner')
         </div>
-        <div class="scroll_animation select-news pt-1">
+        <div class="scroll_animation select-news pt-5">
             @include('frontend.home.partials.news')
         </div>
     </div>

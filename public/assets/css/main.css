@@ -343,6 +343,7 @@
      border-radius: 10px 10px 0 0;
      transition-duration: 0.8s;
      width: 100%;
+     height: 180px;
  }
  
  .news-item .card:hover img {
@@ -366,8 +367,8 @@
  
  .scroll_animation {
      opacity: 0;
-     transform: translateY(50px);
-     transition: opacity 2s, transform 2s;
+     transform: translateY(150px);
+     transition: opacity 0.5s, transform 2s;
  }
  
  .scroll_animation.show {
@@ -387,6 +388,9 @@
          width: 403px;
          height: 332px;
      }
+     .news-item .card .news_image img {
+        height: 150px;
+    }
  }
  /*------------------------End Home Page ---------------------------*/
  /*------------------------Sanpham Page ---------------------------*/
