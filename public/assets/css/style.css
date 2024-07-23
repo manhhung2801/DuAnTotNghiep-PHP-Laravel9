@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    color: #333;
+}
+
 .master-wrapper-page {
     background: #f5f5f7;
 }

@@ -60,11 +60,15 @@ class PagesController extends Controller
                 'information_id' => ['required'],
                 'name' => ['required', 'max:255'],
                 'long_description' => ['required'],
+                'seo_title' => ['required'],
+                'seo_description' => ['required'],
 
             ],
             [
                 'information_id.required' => "Danh mục trang không được để trống. ",
                 'long_description.required' => "Nội dung không được để trống. ",
+                'seo_title.required' => "Nội dung SEO không được để trống. ",
+                'seo_description.required' => "Mô tả SEO không được để trống. ",
                 "name.required" => "Tên không được để trống",
             ]
         );
@@ -73,6 +77,8 @@ class PagesController extends Controller
         $pages->name = $request->name;
         $pages->information_id = $request->information_id;
         $pages->slug = Str::slug($request->name);
+        $pages->seo_title = $request->seo_title;
+        $pages->seo_description = $request->seo_description;
         $pages->long_description = $request->long_description;
         $pages->status = $request->status;
         $pages->save();
@@ -106,11 +112,13 @@ class PagesController extends Controller
 
                 'name' => ['required', 'max:255'],
                 'long_description' => ['required'],
-
+                'seo_title' => ['required'],
+                'seo_description' => ['required'],
             ],
             [
                 'information_id.required' => "Danh mục trang không được để trống. ",
-
+                'seo_title.required' => "Nội dung SEO không được để trống. ",
+                'seo_description.required' => "Mô tả SEO không được để trống. ",
                 'long_description.required' => "Nội dung không được để trống. ",
                 "name.required" => "Tên không được để trống",
             ]
@@ -121,6 +129,8 @@ class PagesController extends Controller
         $pages->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->name, '-');
         $pages->information_id = $request->information_id;
         $pages->slug = Str::slug($request->name);
+        $pages->seo_title = $request->seo_title;
+        $pages->seo_description = $request->seo_description;
         $pages->long_description = $request->long_description;
         $pages->status = $request->status;
         $pages->save();
