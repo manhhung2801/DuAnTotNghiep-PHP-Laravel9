@@ -79,6 +79,8 @@ class PageSeeder extends Seeder
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont,;" segoe="" color="" ui="">
     Riêng khách tỉnh có nhu cầu mua số lượng lớn hoặc khách buôn sỉ nếu có nhu cầu mua sản phẩm , chúng tôi sẽ nhờ dịch vụ giao nhận của các công ty vận chuyển và phí sẽ được tính theo phí của các đơn vị cung cấp dịch vụ vận chuyển hoặc theo thoản thuận hợp đồng giữa 2 bên.
 </p>',
+                'seo_title' => 'Chính sách mua hàng, thanh toán và vận chuyển - Điều khoản chi tiết',
+                'seo_description' => 'Khám phá chính sách mua hàng, thanh toán và vận chuyển của chúng tôi. Bao gồm các hình thức thanh toán đa dạng, chính sách xử lý khiếu nại nhanh chóng và chi tiết về thời gian giao hàng. Đảm bảo độ chính xác và thỏa thuận với khách hàng, với cam kết kinh doanh minh bạch và hợp pháp.',
                 'status' => 1,
                 'created_at' => now(),
             ], [
@@ -108,6 +110,8 @@ class PageSeeder extends Seeder
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     - Khi máy có tính trạng hao mòn về ngoại hình không như lúc mua (trừ vết cấn, móp, sứt mẻ, nứt vỡ sẽ bị từ chối bảo hành) quý khách cần bù chênh lệch phần linh kiện bị hao mòn theo bảng giá kỹ thuật của CyberMart tại thời điểm đó.
 </p>',
+                'seo_title' => 'Chính sách đổi trả sản phẩm - Điều khoản và điều kiện chi tiết',
+                'seo_description' => 'Tìm hiểu chính sách đổi trả sản phẩm của CyberMart, bao gồm các điều kiện bảo hành, từ chối trường hợp như rơi vỡ, ẩm ướt, sọc màn hình và các yêu cầu đổi trả linh kiện. Đảm bảo quyền lợi của khách hàng với các điều khoản rõ ràng và minh bạch từ CyberMart.',
                 'status' => 1,
                 'created_at' => now(),
             ], [
@@ -139,13 +143,15 @@ class PageSeeder extends Seeder
     Thời gian giao hàng tới địa điểm khách hàng yêu cầu theo chỉ tiêu về thời gian giao hàng của nhà cung cấp dịch vụ.<br>
     Để thuận tiện và sắp xếp thời gian, địa điểm nhận hàng phù hợp, Quý khách hàng vui lòng chủ động liên hệ với đơn vị trung gian để nhận hàng.
 </p>',
+                'seo_title' => 'Chính sách vận chuyển CyberMart - Hình thức và thông tin chi tiết',
+                'seo_description' => 'Khám phá các hình thức vận chuyển và giao nhận hàng hóa tại CyberMart, bao gồm giao hàng tận nơi miễn phí trong bán kính 300km và sự lựa chọn các nhà cung cấp dịch vụ chuyển phát. Đảm bảo thời gian giao hàng và sự thuận tiện cho khách hàng khi nhận hàng.',
                 'status' => 1,
                 'created_at' => now(),
             ], [
                 'name' => 'Chính sách bảo mật',
                 'slug' => Str::slug('Chính sách bảo mật', '-'),
                 'information_id' => 1,
-                
+
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     Cám ơn quý khách đã quan tâm và truy cập vào website. Chúng tôi tôn trọng và cam kết sẽ bảo mật những thông tin mang tính riêng tư của Quý khách.
@@ -207,13 +213,15 @@ class PageSeeder extends Seeder
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     - Quý khách có quyền yêu cầu truy cập vào dữ liệu cá nhân của mình, có quyền yêu cầu chúng tôi sửa lại những sai sót trong dữ liệu của bạn mà không mất phí. Bất cứ lúc nào bạn cũng có quyền yêu cầu chúng tôi ngưng sử dụng dữ liệu cá nhân của bạn cho mục đích tiếp thị.
 </p>',
+                'seo_title' => 'Chính sách bảo mật của CyberMart - Bảo vệ thông tin cá nhân',
+                'seo_description' => 'Khám phá chính sách bảo mật của CyberMart, cam kết bảo vệ thông tin cá nhân của khách hàng và giải thích cách chúng tôi thu thập, sử dụng và bảo mật thông tin cá nhân. Quý khách có quyền yêu cầu truy cập, sửa đổi hoặc ngừng sử dụng dữ liệu cá nhân một cách dễ dàng và minh bạch.',
                 'status' => 1,
                 'created_at' => now(),
             ], [
                 'name' => 'Cam kết cửa hàng',
                 'slug' => Str::slug('Cam kết cửa hàng', '-'),
                 'information_id' => 1,
-               
+
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     CyberMart cam kết tất cả các sản phẩm bán ra tại CyberMart đều là sản phẩm chính hãng, và nhận được các chế độ bảo hành chính hãng.
@@ -225,13 +233,15 @@ class PageSeeder extends Seeder
     Thời gian bảo hành áp dụng cho máy mới: 12 tháng hoặc dài hơn theo quy định của hãng.<br>
     Thời gian bảo hành áp dụng cho máy cũ: 6 tháng
 </p>',
+                'seo_title' => 'Cam kết sản phẩm chính hãng và bảo hành tại CyberMart',
+                'seo_description' => 'CyberMart cam kết bán các sản phẩm chính hãng và áp dụng chế độ bảo hành chính hãng đầy đủ. Thời gian bảo hành cho sản phẩm mới là 12 tháng và sản phẩm cũ là 6 tháng. Khách hàng có thể đến trực tiếp các trung tâm bảo hành chính hãng hoặc cửa hàng CyberMart gần nhất để được hỗ trợ.',
                 'status' => 1,
                 'created_at' => now(),
             ], [
                 'name' => 'Hướng dẫn mua hàng',
                 'slug' => Str::slug('Hướng dẫn mua hàng', '-'),
                 'information_id' => 2,
-        
+
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     <strong style="box-sizing:border-box;font-weight:bolder;">Bước 1</strong>: Truy cập website và lựa chọn sản phẩm cần mua để mua hàng
@@ -272,13 +282,15 @@ class PageSeeder extends Seeder
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     Trân trọng cảm ơn.
 </p>',
+                'seo_title' => 'Hướng dẫn mua hàng tại CyberMart - Đơn giản và thuận tiện',
+                'seo_description' => 'Hướng dẫn chi tiết từ việc lựa chọn sản phẩm đến thanh toán và gửi đơn hàng tại CyberMart. Đăng nhập tài khoản để dễ dàng quản lý đơn hàng hoặc mua hàng nhanh chóng không cần tài khoản. Xem lại và xác nhận thông tin đơn hàng trước khi gửi đi.',
                 'status' => 1,
                 'created_at' => now(),
             ], [
                 'name' => 'Hướng dẫn đổi trả',
                 'slug' => Str::slug('Hướng dẫn đổi trả', '-'),
                 'information_id' => 2,
-                
+
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     <strong style="box-sizing:border-box;font-weight:bolder;">Bước 1</strong>: Truy cập website và lựa chọn sản phẩm cần mua để mua hàng
@@ -319,13 +331,15 @@ class PageSeeder extends Seeder
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     Trân trọng cảm ơn.
 </p>',
+                'seo_title' => 'Hướng dẫn đổi trả sản phẩm tại CyberMart',
+                'seo_description' => 'Hướng dẫn chi tiết từ việc chọn sản phẩm đến quy trình đổi trả tại CyberMart. Đăng nhập tài khoản để dễ dàng quản lý đơn hàng hoặc mua hàng nhanh chóng không cần tài khoản. Xem lại và xác nhận thông tin đơn hàng trước khi gửi đi.',
                 'status' => 1,
                 'created_at' => now(),
             ], [
                 'name' => 'Hướng dẫn trả góp',
                 'slug' => Str::slug('Hướng dẫn trả góp', '-'),
                 'information_id' => 2,
-               
+
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     Để thuận tiện và dễ dàng hơn cho khách hàng khi mua hàng online, CyberMart tích hợp hình thức trả góp với sự đa dạng về cổng thanh toán, kỳ hạn, lãi suất ưu đãi đi kè với nhiều chương trình hấp dẫn.
@@ -362,13 +376,15 @@ class PageSeeder extends Seeder
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     • Đơn hàng tham gia chương trình trả góp sẽ không được đổi trả (trừ sản phẩm lỗi do phía CyberMart).
 </p>',
+                'seo_title' => 'Hướng dẫn trả góp mua hàng tại CyberMart',
+                'seo_description' => 'Hướng dẫn chi tiết cách trả góp khi mua hàng tại CyberMart qua các công ty tài chính như Home Credit, FE Credit và các cổng thanh toán thẻ tín dụng như OnePay, Kredivo, Alepay. Tận dụng các ưu đãi lãi suất và điều kiện thanh toán linh hoạt. Xem thêm thể lệ và điều kiện áp dụng trước khi đăng ký.',
                 'status' => 1,
                 'created_at' => now(),
             ], [
                 'name' => 'Hướng dẫn chuyển khoản',
                 'slug' => Str::slug('Hướng dẫn chuyển khoản', '-'),
                 'information_id' => 2,
-                
+
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     <strong style="box-sizing:border-box;font-weight:bolder;">Khách hàng thanh toán trực tiếp tại cửa hàng&nbsp;</strong><br>
@@ -387,19 +403,23 @@ class PageSeeder extends Seeder
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     Tư vấn viên sẽ hướng dẫn khách hàng các bước cần thiết để tiến hành trả thanh toán.
 </p>',
+                'seo_title' => 'Hướng dẫn chuyển khoản và thanh toán tại CyberMart',
+                'seo_description' => 'Hướng dẫn chi tiết các phương thức thanh toán tại CyberMart bao gồm thanh toán trực tiếp tại cửa hàng để nhận ưu đãi và quà tặng, cũng như thanh toán online qua chuyển khoản trước khi nhận hàng để được hưởng quà tặng kèm. Liên hệ Hotline 1900 6750 để được hỗ trợ đổi trả sản phẩm do lỗi của Dola.',
                 'status' => 1,
                 'created_at' => now(),
             ], [
                 'name' => 'Hướng dẫn hoàn hàng',
                 'slug' => Str::slug('Hướng dẫn hoàn hàng', '-'),
                 'information_id' => 2,
-               
+
                 'long_description' => '
 <p>
     <span style="background-color:rgb(255,255,255);color:rgb(51,51,51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;"><span style="-webkit-text-stroke-width:0px;display:inline !important;float:none;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">- Trả máy trong 7 ngày đầu trừ phí 10% (Giá thu lại tính theo giá máy đã qua sử dụng tại thời điểm trả máy, với điều kiện tình trạng và ngoại hình máy phải như ban đầu).</span></span><br>
     <span style="background-color:rgb(255,255,255);color:rgb(51,51,51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;"><span style="-webkit-text-stroke-width:0px;display:inline !important;float:none;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">- Sau 7 ngày tính theo giá thu máy thông thường tại thời điểm lúc đó.</span></span><br>
     <span style="background-color:rgb(255,255,255);color:rgb(51,51,51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;"><span style="-webkit-text-stroke-width:0px;display:inline !important;float:none;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">- Gói bảo hành thu lại 50% trong 7 ngày, sau 7 ngày không hỗ trợ thu lại</span></span>
 </p>',
+                'seo_title' => 'Hướng dẫn hoàn hàng tại CyberMart - Điều kiện và chi phí hoàn trả',
+                'seo_description' => 'Hướng dẫn chi tiết các điều kiện và chi phí khi hoàn hàng tại CyberMart, bao gồm trả máy trong 7 ngày đầu với phí 10%, sau đó tính giá thu máy thông thường. Gói bảo hành chỉ áp dụng hoàn trả 50% trong 7 ngày đầu, sau đó không hỗ trợ hoàn lại sản phẩm.',
                 'status' => 1,
                 'created_at' => now(),
             ], [
@@ -413,6 +433,8 @@ class PageSeeder extends Seeder
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     <strong style="box-sizing:border-box;font-weight:bolder;">CyberMart&nbsp;</strong>hiện&nbsp;đã trở thành cái tên không còn xa lạ với người tiêu dùng trong nước. Hiện nay chúng tôi đang sở hữu mạng lưới hơn 7chi nhánh phủ trên khắp cả nước, trong đó bao gồm hai trung tâm bảo hành tại Hà Nội và một trung tâm bảo hành tại thành phố Hồ Chí Minh. Đến với chuỗi cửa hàng của <strong style="box-sizing:border-box;font-weight:bolder;">CyberMart</strong>, quý khách có thể hoàn toàn yên tâm về uy tín, chất lượng sản phẩm với mức giá rẻ hơn khoảng 15-20% so với giá bán trên thị trường. Song song với đó, chúng tôi cũng luôn nỗ lực phục vụ đem đến trải nghiệm dịch vụ tốt nhất cho khách hàng.
 </p>',
+                'seo_title' => 'Giới thiệu CyberMart - Nhà bán lẻ hàng đầu sản phẩm công nghệ chính hãng',
+                'seo_description' => 'CyberMart - nhà bán lẻ hàng đầu cung cấp các sản phẩm điện thoại, công nghệ chính hãng tại Việt Nam. Với mạng lưới hơn 7 chi nhánh và trung tâm bảo hành tại Hà Nội và TP.HCM, chúng tôi cam kết mang đến sản phẩm chất lượng, giá cả cạnh tranh và dịch vụ tận tâm nhất cho quý khách hàng.',
                 'status' => 1,
                 'created_at' => now(),
             ]
