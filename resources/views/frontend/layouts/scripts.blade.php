@@ -2,6 +2,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js "></script>
 <script defer src="https://cdn.jsdelivr.net/gh/artru-git/artru-aio@latest/artru-smoothscroll.min.js"></script>
 
+
+
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>
@@ -126,50 +128,51 @@
 {{-- ram --}}
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-                var ramOptions = document.querySelectorAll('input[name="selectInputRam"]');
-                var valueRamElement = document.querySelector('.value-ram');
+        var ramOptions = document.querySelectorAll('input[name="selectInputRam"]');
+        var valueRamElement = document.querySelector('.value-ram');
 
-                ramOptions.forEach(function(option) {
-                    option.addEventListener("change", function() {
-                        var selectedValue = document.querySelector(
-                            'input[name="selectInputRam"]:checked').value;
-                        valueRamElement.textContent = selectedValue;
+        ramOptions.forEach(function(option) {
+            option.addEventListener("change", function() {
+                var selectedValue = document.querySelector(
+                    'input[name="selectInputRam"]:checked').value;
+                valueRamElement.textContent = selectedValue;
 
-                        //Xóa lớp 'selected-label' khỏi tất cả các nhãn".
-                        var labels = document.querySelectorAll('.bg__ram');
-                        labels.forEach(function(label) {
-                            label.classList.remove('selected-label');
-                        });
-
-                        //Thêm lớp 'selected-label' vào nhãn của radio button được chọn".
-                        var checkedLabel = document.querySelector('label[for="' + option
-                            .id + '"]');
-                        if (checkedLabel) {
-                            checkedLabel.classList.add('selected-label');
-                        }
-                    });
-                    // Hiển thị giá trị ban đầu
-                    var selectInput = document.querySelector('input[name="selectInputRam"]:checked');
-                    if (initialValue) {
-                        var initialValue = selectInput.value;
-                        valueRamElement.textContent = initialValue;
-                    }
-
-
-                    // Hiển thị giá trị ban đầu khi trang tải xong
-                    var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
-                    if (ramValue) {
-                        // valueRamElement.textContent = ramValue.value;
-
-                        // Đảm bảo nhãn của radio button được chọn có lớp 'selected-label'
-                        var checkedLabel = document.querySelector('label[for="' + ramValue.id + '"]');
-                        if (checkedLabel) {
-                            checkedLabel.classList.add('selected-label');
-                        }
-                    }
+                //Xóa lớp 'selected-label' khỏi tất cả các nhãn".
+                var labels = document.querySelectorAll('.bg__ram');
+                labels.forEach(function(label) {
+                    label.classList.remove('selected-label');
                 });
+
+                //Thêm lớp 'selected-label' vào nhãn của radio button được chọn".
+                var checkedLabel = document.querySelector('label[for="' + option
+                    .id + '"]');
+                if (checkedLabel) {
+                    checkedLabel.classList.add('selected-label');
+                }
+            });
+            // Hiển thị giá trị ban đầu
+            var selectInput = document.querySelector('input[name="selectInputRam"]:checked');
+            if (initialValue) {
+                var initialValue = selectInput.value;
+                valueRamElement.textContent = initialValue;
+            }
+
+
+            // Hiển thị giá trị ban đầu khi trang tải xong
+            var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
+            if (ramValue) {
+                // valueRamElement.textContent = ramValue.value;
+
+                // Đảm bảo nhãn của radio button được chọn có lớp 'selected-label'
+                var checkedLabel = document.querySelector('label[for="' + ramValue.id + '"]');
+                if (checkedLabel) {
+                    checkedLabel.classList.add('selected-label');
+                }
+            }
+        });
+    })
 </script>
-//search sản phẩm
+{{-- search sản phẩm --}}
 <script>
     $(document).ready(function() {
         var timeoutId;
@@ -239,4 +242,3 @@
         });
     });
 </script>
-

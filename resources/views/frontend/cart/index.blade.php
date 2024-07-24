@@ -14,32 +14,30 @@
                     @include('frontend.cart.partials.cartItem')
                 </table>
             </div>
-            <div class="d-flex justify-content-between align-items-end">
-                <a onclick="history.back()" class="btn btn-light continue-shopping ">Tiếp tục mua hàng</a>
-                <div class="total fs-5">
-                    <div class="row">
-                        <span class="fs-5 pe-4 col-5 fw-normal">Tổng tiền: </span>
-                        <p id="subTotal" class="col-5 fs-5 text-danger">{{ number_format($subTotal, 0, '', '.') }}₫</p>
-                    </div>
-                    <div class="text-right col-md-12">
-                        @if (Auth()->check())
-                            <a href="{{ route('checkout.index') }}" class="btn btn-dark checkout-button"
-                                style="width:350px">Thanh
-                                toán</a>
-                        @else
-                            <a href="{{ route('login') }}" class="btn btn-danger" style="width:350px">Đăng nhập để thanh
-                                toán</a>
-                        @endif
-                    </div>
+            <div class="d-flex justify-content-end">
+                <span class="fs-5 pe-4 fw-normal">Tổng tiền: </span>
+                <strong id="subTotal" class="fs-5 text-danger">{{ number_format($subTotal, 0, '', '.') }}₫</strong>
+            </div>
+            <div class="row">
+                <div class="btn_back col">
+                    <a onclick="history.back()" class="btn btn-light continue-shopping">Tiếp tục mua hàng</a>
+                </div>
+                <div class="col">
+                    @if (Auth()->check())
+                        <a href="{{ route('checkout.index') }}" class="btn btn-dark checkout-button py-2 px-5 float-end">Thanh toán</a>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-danger checkout-button py-2 float-end px-5">Đăng nhập</a>
+                    @endif
                 </div>
             </div>
-        @else
-            <div class="cart_empty text-center">
-                <img src="{{ asset('uploads/072024/empty-cart.webp') }}" width="30%" alt="cart_empty"> <br>
-                <p>Giỏ hàng của bạn đang trống. Bạn hãy thêm gì đó đi!</p>
-                <a class="btn btn-outline-dark rounded rounded-0" style="width:200px" href="/">Trở lại mua hàng</a>
-            </div>
-        @endif
+    </div>
+@else
+    <div class="cart_empty text-center">
+        <img src="{{ asset('uploads/072024/empty-cart.webp') }}" width="30%" alt="cart_empty"> <br>
+        <p>Giỏ hàng của bạn đang trống. Bạn hãy thêm gì đó đi!</p>
+        <a class="btn btn-outline-dark rounded rounded-0" style="width:200px" href="/">Trở lại mua hàng</a>
+    </div>
+    @endif
     </div>
 @endsection
 @push('ajax')
