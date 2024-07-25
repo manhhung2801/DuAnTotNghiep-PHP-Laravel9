@@ -61,7 +61,6 @@ class CheckoutController extends Controller
                     $getQtyProduct->save();
                 }
                 // end check số lương
-                $orderCode = Str::random(10);
                 //Tính tổng tiền nếu có coupon
                 $total_price_input = $request->input('total_price_hidden') ?? 0;
                 $total = $total_price_input - $request->input('coupon_value');
@@ -75,10 +74,9 @@ class CheckoutController extends Controller
                         $getCoupon->save();
                     }
                 }
-
                 // Thêm order
                 $order = new Order();
-                $order->vnp_order_code  = $orderCode;
+                $order->vnp_order_code  = ($request->payment_method == 1) ? Str::random(10) : '';
                 $order->order_name = trim($request->name);
                 $order->order_phone = trim($request->phone);
                 $order->order_email = trim($request->email);
