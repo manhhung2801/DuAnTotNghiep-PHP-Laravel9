@@ -3,8 +3,9 @@
         font-size: 11px
     }
 
-    .comment-text {
-        font-size: 12px
+   .comment-text {
+        padding-left: 45px;
+        font-size: 15px
     }
 
     .fs-12 {
@@ -32,8 +33,8 @@
     }
 </style>
 
-<div class="col-12 mt-5">
-    <h4 class="pb-4">Bình luận</h4>
+<div class="col-6 mx-auto mt-5">
+    <h4 class="text-center pb-4">Bình luận</h4>
     <div class="d-flex justify-content-center row">
         <div class="">
             <div class="d-flex flex-column comment-section">
@@ -56,21 +57,12 @@
                             </div>
                         @endforeach
                     @else
-                        <div class="col-12 text-danger text-center comment_not_found">
+                        <div class="col-12 text-danger text-center comment_not_found pb-4">
                             Sản phẩm chưa có bình luận
                         </div>
                     @endif
                 </div>
 
-                <div class="bg-white">
-                    <div class="d-flex flex-row fs-12">
-                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span>
-                        </div>
-                        <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span
-                                class="ml-1">Comment</span></div>
-                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
-                    </div>
-                </div>
                 <form class="comment_form" method="POST" class="bg-light p-2"
                     onsubmit="return validateAndSubmitComment(event)">
                     @csrf
@@ -81,7 +73,7 @@
                         <textarea id="comment_input" class="form-control ml-1 shadow-none textarea" name="message"
                             placeholder="Bình luận của bạn về sản phẩm"></textarea>
                     </div>
-                    <div class="mt-2 text-right">
+                    <div class="mt-2 text-center">
                         <button class="btn btn-primary btn-sm shadow-none comment_submit_btn">Bình
                             luận</button>
                     </div>
