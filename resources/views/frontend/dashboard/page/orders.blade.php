@@ -25,7 +25,7 @@
                         <thead class="bg-light">
                             <tr class="table-dark">
                                 <th>Mã ĐH</th>
-                                <th>Thông tin người nhận</th>
+                                {{-- <th>Thông tin người nhận</th> --}}
                                 <th>Phương thức thanh toán</th>
                                 <th>Vận chuyển</th>
                                 <th>Trạng thái</th>
@@ -37,8 +37,10 @@
                             @forelse ($getOrders as $order)
                                 <tr>
                                     <td>
-                                        <p class="fw-bold mb1">#{{ $order->id }}</p>
-                                    <td>
+                                        @if($order-> $)
+                                        <p class="fw-bold mb1"></p>
+                                    </td>
+                                    {{-- <td>
                                         <div class="d-flex align-items-center">
                                             <div class="ms-3">
                                                 <p class="fw-bold mb-1">Tên: {{ $order->order_name }}</p>
@@ -50,7 +52,7 @@
                                                     {{ $order->order_province }}</p>
                                             </div>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         @if ($order->payment_method == 0)
                                             <p class="fw-normal mb-1">Thanh toán khi nhận hàng</p>

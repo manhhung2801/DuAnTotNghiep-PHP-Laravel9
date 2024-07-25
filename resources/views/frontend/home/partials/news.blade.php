@@ -1,7 +1,7 @@
 @if ($getPosts == true)
     <div class="container">
         <div class="section_title text-center mb-3">
-            <h4 class="text-uppercase">Tin tức công nghệ</h4>
+            <h2 class="text-uppercase fs-4">Tin tức công nghệ</h2>
         </div>
         <div class="row">
             @foreach ($getPosts as $post)

@@ -180,8 +180,7 @@
                     </div>
                     <div class="col-lg-12 mb-3">
                         <label for="editor" class="form-label">Thông tin sản phẩm</label>
-                        <textarea class="form-control description" name="specifications" id="specifications"
-                            value="{!! $product->specifications !!}"></textarea>
+                        <textarea class="form-control description" name="specifications" id="specifications"{!! $product->specifications !!}</textarea>
                     </div>
                     <div class="col-md-2">
                         <div class="d-grid align-items-center gap-3">
