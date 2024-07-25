@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('slug', 255);
             $table->unsignedBigInteger('information_id');
             $table->foreign('information_id')->references('id')->on('information');
+            $table->string('seo_title', 255)->nullable();
+            $table->text('seo_description')->nullable();
             $table->longText('long_description');
             $table->boolean('status');
             $table->timestamps();

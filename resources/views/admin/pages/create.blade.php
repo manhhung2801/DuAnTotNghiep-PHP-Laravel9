@@ -26,27 +26,39 @@
             <div class="card-body">
                 <form class="row g-3" action="{{ route('admin.pages.store') }}" method="POST">
                     @csrf
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="input1" class="form-label">Tên trang</label>
                         <input type="text" class="form-control" id="input1" name="name"
                             value="{{ old('name') }}">
                     </div>
-                    <div class="col-md-4 ">
+                    <div class="col-md-6 ">
                         <label for="input2" class="form-label">Danh mục trang</label>
                         <select id="input2" class="form-select main-information" name="information_id">
                             <option>Chọn danh mục</option>
-                            @foreach ($information as $item )
-                            <option value="{{$item->id}}">{{$item->name}}</option>
+                            @foreach ($information as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach
                         </select>
                         </select>
                     </div>
-                    <div class="col-md-4">
-                        <label for="input7" class="form-label">Trạng thái</label>
-                        <select id="input7" class="form-select" name="status">
-                            <option selected="" value="1">Đang hoạt động</option>
-                            <option value="0">Ngừng hoạt động</option>
-                        </select>
+                    <div class="row mt-3">
+                        <div class="col-lg-6 mb-3">
+                            <label for="seotitle" class="form-label">Nội dung SEO</label>
+                            <input type="text" class="form-control" id="seotitle" name="seo_title"
+                                value="{{ old('seo_title') }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="input7" class="form-label">Trạng thái</label>
+                            <select id="input7" class="form-select" name="status">
+                                <option selected="" value="1">Đang hoạt động</option>
+                                <option value="0">Ngừng hoạt động</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 mb-3">
+                        <label for="seodesc" class="form-label">Mô tả SEO</label>
+                        <input type="text" class="form-control" id="seodesc" name="seo_description"
+                            value="{{ old('seo_description') }}">
                     </div>
                     <div class="col-md-12 mb-3">
                         <label for="editor" class="form-label">Mô tả</label>
@@ -180,7 +192,5 @@
         CKEDITOR.ClassicEditor.create(document.getElementById("editor"), editorConfig).catch(error => {
             console.error(error);
         });
-       
     </script>
 @endsection
-

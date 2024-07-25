@@ -33,9 +33,11 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('admin.pages.index') }}" class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
+                    <a href="{{ route('admin.pages.index') }}" class="me-2 btn btn-success float-end ms-2"><i
+                            class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
                 </div>
-                <a href="{{ route('admin.pages.create') }}" class="btn btn-primary float-end me-2"><i class="fa-solid fa-plus text-light fs-6"></i>Thêm mới</a>
+                <a href="{{ route('admin.pages.create') }}" class="btn btn-primary float-end me-2"><i
+                        class="fa-solid fa-plus text-light fs-6"></i>Thêm mới</a>
             </div>
             <div class="card-body">
                 <form action="" method="get">
@@ -47,10 +49,11 @@
                         <div class="col">
                             <select class="form-select" name="check_status">
                                 <option value>Trạng thái</option>
-                                <option {{ Request::get('check_status') == '1' ? 'selected' : '' }} value="1" >Đang hoạt
+                                <option {{ Request::get('check_status') == '1' ? 'selected' : '' }} value="1">Đang hoạt
                                     động
                                 </option>
-                                <option {{ Request::get('check_status') == '0' ? 'selected' : '' }} value="0">Không hoạt
+                                <option {{ Request::get('check_status') == '0' ? 'selected' : '' }} value="0">Không
+                                    hoạt
                                     động
                                 </option>
                             </select>
@@ -76,39 +79,43 @@
                                 <th>Stt</th>
                                 <th>Tên</th>
                                 <th>Slug</th>
+                                <th>Nội dung Seo</th>
                                 <th>Trạng thái</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody class=" justify-content-center">
-                            @forelse ( $pages as $page )
-                            <tr>
-                                <td>{{ $page->id }}</td>
-                                <td>{{ $page->name }}</td>
-                                <td>{{ $page->slug }}</td>
-                                <td>
-                                    <div class="form-check form-switch form-check-success">
-                                        @if ($page->status == 1)
-                                            <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                data-id="{{ $page->id }}" id="flexSwitchCheckSuccess" checked >
-                                        @elseif($page->status == 0)
-                                            <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                data-id="{{ $page->id }}" id="flexSwitchCheckSuccess">
-                                        @endif
-                                    </div>
-                                </td>
-                                <td class="text-end">
-                                    <a class="btn btn-primary text-light"
-                                        href="{{ route('admin.pages.edit', $page->id) }}"><i class="fa-solid fa-pen fs-6 text-light"></i>Sửa</a>
-                                    <a class="btn btn-danger delete-item"
-                                        href="{{ route('admin.pages.destroy', $page->id) }}"><i class="fa-solid fa-trash fs-6"></i>Xoá</a>
-                                </td>
-                            </tr>
+                            @forelse ($pages as $page)
+                                <tr>
+                                    <td>{{ $page->id }}</td>
+                                    <td>{{ $page->name }}</td>
+                                    <td>{{ $page->slug }}</td>
+                                    <td>{{ $page->seo_title }}</td>
+                                    <td>
+                                        <div class="form-check form-switch form-check-success">
+                                            @if ($page->status == 1)
+                                                <input class="form-check-input change-status" type="checkbox" role="switch"
+                                                    data-id="{{ $page->id }}" id="flexSwitchCheckSuccess" checked>
+                                            @elseif($page->status == 0)
+                                                <input class="form-check-input change-status" type="checkbox" role="switch"
+                                                    data-id="{{ $page->id }}" id="flexSwitchCheckSuccess">
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="text-end">
+                                        <a class="btn btn-primary text-light"
+                                            href="{{ route('admin.pages.edit', $page->id) }}"><i
+                                                class="fa-solid fa-pen fs-6 text-light"></i>Sửa</a>
+                                        <a class="btn btn-danger delete-item"
+                                            href="{{ route('admin.pages.destroy', $page->id) }}"><i
+                                                class="fa-solid fa-trash fs-6"></i>Xoá</a>
+                                    </td>
+                                </tr>
                             @empty
-                            <tr>
-                                <td colspan="12">Không có dữ liệu trang</td>
-                            </tr>
-                            @endforelse     
+                                <tr>
+                                    <td colspan="12">Không có dữ liệu trang</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                     {{ $pages->links() }}

@@ -67,6 +67,7 @@
         event.target.classList.add('active');
     }
 </script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var showMoreBtn = document.querySelector('.btn--view-more');
