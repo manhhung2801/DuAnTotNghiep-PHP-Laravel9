@@ -13,6 +13,7 @@ use Cart;
 use Exception;
 use Illuminate\Http\Request;
 use App\Services\VNPayService;
+use Helper;
 use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
@@ -76,16 +77,21 @@ class CheckoutController extends Controller
                     }
                 }
 
+                
+                $order_address = [
+                    'province' => trim($request->provinces),
+                    'district' => trim($request->districts),
+                    'ward'     => trim($request->wards),
+                    'address'  => trim($request->address) ?? ''
+                ];
                 // Thêm order
                 $order = new Order();
+                $order->order_code = Helper::randOrderCode();
                 $order->vnp_order_code  = $orderCode;
                 $order->order_name = trim($request->name);
                 $order->order_phone = trim($request->phone);
                 $order->order_email = trim($request->email);
-                $order->order_province = trim($request->provinces);
-                $order->order_district = trim($request->districts);
-                $order->order_ward = trim($request->wards);
-                $order->order_address = trim($request->address);
+                $order->order_address = json_encode($order_address);
                 $order->ship_money = $request->input('shipping_money') ?? 0;
                 $order->store_address = $request->store_address ?? '';
                 $order->total = $total;
@@ -101,7 +107,7 @@ class CheckoutController extends Controller
                 $order->save();
 
 
-                //Thên order detail
+                //Thêm order detail
                 foreach ($getCart as $key => $proCart) {
                     $order_detail = new OrderDetail();
                     $order_detail->product_name = $proCart->name;

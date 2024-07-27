@@ -21,6 +21,7 @@ use App\Http\Controllers\Backend\StoreAddressController;
 use App\Http\Controllers\Backend\UserManagementController;
 use App\Http\Controllers\Backend\PostCategoriesController;
 use App\Http\Controllers\Backend\CommentsController;
+use App\Http\Controllers\GHTKController;
 use App\Models\Information;
 
 
@@ -170,3 +171,9 @@ Route::put('contact/feedback/answered/{id}',[ContactController::class,"answered"
 Route::delete('contact/destroy/{id}',[ContactController::class,"destroy"])->name('contact.destroy');
 Route::post('contact/feedback',[ContactController::class,"feedback"])->name('contact.feedback');
 
+//GHTK
+Route::post('/ghtk-post-order/{id?}', [GHTKController::class, 'postOrder'])->name('ghtk.post-order');
+
+//GHTK Cancel Order
+Route::post('/ghtk-cancel-order/{tracking_id}', [GHTKController::class, 'cancelOrder'])->name('ghtk.cancel-order');
+Route::post('/updateShipment/{tracking_id?}', [GHTKController::class, 'updateShipment'])->name('updateShipment');

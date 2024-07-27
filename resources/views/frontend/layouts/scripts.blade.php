@@ -16,6 +16,13 @@
 <!-- chứa các ajax -->
 @include('frontend.layouts.ajax')
 
+<script>
+    // Loading
+    window.addEventListener("load", () => {
+        const preloader = document.querySelector(".loader-container");
+        preloader.classList.add("unactive")
+    })
+</script>
 
 <script>
     $(document).ready(function() {
@@ -129,8 +136,8 @@
 {{-- ram --}}
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-                var ramOptions = document.querySelectorAll('input[name="selectInputRam"]');
-                var valueRamElement = document.querySelector('.value-ram');
+        var ramOptions = document.querySelectorAll('input[name="selectInputRam"]');
+        var valueRamElement = document.querySelector('.value-ram');
 
         ramOptions.forEach(function(option) {
             option.addEventListener("change", function() {
@@ -157,19 +164,19 @@
                 var initialValue = selectInput.value;
                 valueRamElement.textContent = initialValue;
             }
-                        // Hiển thị giá trị ban đầu khi trang tải xong
-                        var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
-                        if (ramValue) {
-                            // valueRamElement.textContent = ramValue.value;
+            // Hiển thị giá trị ban đầu khi trang tải xong
+            var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
+            if (ramValue) {
+                // valueRamElement.textContent = ramValue.value;
 
-                            // Đảm bảo nhãn của radio button được chọn có lớp 'selected-label'
-                            var checkedLabel = document.querySelector('label[for="' + ramValue.id + '"]');
-                            if (checkedLabel) {
-                                checkedLabel.classList.add('selected-label');
-                            }
-                        }
-                    })
-                });
+                // Đảm bảo nhãn của radio button được chọn có lớp 'selected-label'
+                var checkedLabel = document.querySelector('label[for="' + ramValue.id + '"]');
+                if (checkedLabel) {
+                    checkedLabel.classList.add('selected-label');
+                }
+            }
+        })
+    });
 </script>
 {{-- search sản phẩm --}}
 <script>

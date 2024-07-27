@@ -40,6 +40,12 @@ class OrderController extends Controller
     {
         $getOrders = Order::query(); // Khởi tạo query builder
 
+        //tìm kiếm 
+        if(!empty(Request()->get('keyword'))){
+            $kw = trim(Request()->get('keyword'));
+            $getOrders->where('order_code', 'like', '%'. $kw . '%')
+                      ->orWhere('order_phone', 'like', '%' . $kw . '%');
+        }
         // Sắp xếp theo giá
         if (!empty(Request()->get('sort_price'))) {
             $sort_price = trim(Request()->get('sort_price'));

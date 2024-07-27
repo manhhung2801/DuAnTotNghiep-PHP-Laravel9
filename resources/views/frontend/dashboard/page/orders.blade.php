@@ -37,8 +37,11 @@
                             @forelse ($getOrders as $order)
                                 <tr>
                                     <td>
-                                        @if($order-> $)
-                                        <p class="fw-bold mb1"></p>
+                                        @if ($order->payment_method == 0)
+                                            <p class="fw-bold mb1">ĐH{{ $order->order_code }}</p>
+                                        @elseif($order->payment_method == 1)
+                                            <p class="fw-bold mb1">ĐH{{ $order->vnp_order_code }}</p>
+                                        @endif
                                     </td>
                                     {{-- <td>
                                         <div class="d-flex align-items-center">
@@ -130,6 +133,7 @@
                                             <p class="fw-normal mb-1"><img width="50px"
                                                     src="https://cdn.haitrieu.com/wp-content/uploads/2022/05/Logo-GHTK-H.png"
                                                     alt="ghtk"></p>
+                                            <span>{{ $order->tracking_id }}</span>
                                         @endif
                                     </td>
                                     <td>
@@ -201,12 +205,19 @@
                     text: "Bạn sẽ không thể thay đổi nữa sau đó!",
                     icon: "warning",
                     showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
                     cancelButtonText: "Hủy",
                     confirmButtonText: "Tôi đồng ý hủy!"
                 }).then((result) => {
                     if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Vui lòng chờ...',
+                            html: 'Đang xử lý...',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            didOpen: () => {
+                                Swal.showLoading()
+                            }
+                        });
                         $.ajax({
                             type: 'PATCH',
                             url: url,

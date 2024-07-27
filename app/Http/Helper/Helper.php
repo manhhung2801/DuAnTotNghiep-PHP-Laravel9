@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
+use App\Models\Order;
 
 class Helper
 {
@@ -57,6 +59,13 @@ class Helper
 
         return (int) $productPrice;
     }
-    
-}
 
+    public static function randOrderCode()
+    {
+        do {
+            $orderCode = Str::random(10); // Tạo một chuỗi ngẫu nhiên dài 10 ký tự
+        } while (Order::where('order_code', $orderCode)->exists());
+
+        return $orderCode;
+    }
+}

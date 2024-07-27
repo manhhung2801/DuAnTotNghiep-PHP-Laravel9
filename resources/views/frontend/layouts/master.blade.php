@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     @include('frontend.layouts.head')
     @yield('styles')
 </head>
-<body >
+
+<body>
+
     <div class="wrapper-page">
-            @include('frontend.layouts.header')
+        <div class="loader-container">
+            <div class="loader">
+                <div class="inner-circle"></div>
+            </div>
+        </div>
+        @include('frontend.layouts.header')
 
         <!-- Main content -->
         <main>
@@ -18,4 +26,5 @@
     </div>
     @include('frontend.layouts.scripts')
 </body>
+
 </html>

@@ -48,7 +48,6 @@
                         });
                     }
                     $('.cart-count').text(data.cart_count);
-
                 },
                 error: function(xhr, status, error) {
                     Toast.fire({

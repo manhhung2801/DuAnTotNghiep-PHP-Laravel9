@@ -20,9 +20,9 @@ class OrderDetail extends Model
         'update_at'
     ];
     
-    public function Product()
+    public function product()
     {
-        return $this->hasOne(Product::class, 'id', 'product_id');
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
     public function order()
     {

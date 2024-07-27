@@ -40,52 +40,7 @@
             </div>
             <div class="card-body">
                 <form action="" method="get">
-                    <div class="row mb-3">
-                        <div class="col-1 mt-1 ">
-                            <label for="" class="bg-primary p-1 border rounded-1"><span class="text-white">Bộ lọc</span> </label>
-                        </div>
-                        <div class="col">
-                            <select class="form-select" name="sort_price">
-                                <option value>Tổng tiền</option>
-                                <option {{ Request::get('sort_price') == 'asc' ? 'selected' : '' }} value="asc">Tăng dần
-                                </option>
-                                <option {{ Request::get('sort_price') == 'desc' ? 'selected' : '' }} value="desc">Giảm dần
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <select class="form-select" name="order_status">
-                                <option value>Trạng thái đơn hàng</option>
-                                <option {{ Request::get('order_status') == '0' ? 'selected' : '' }} value="0">Chờ Xác nhận</option>
-                                <option {{ Request::get('order_status') == '91' ? 'selected' : '' }} value="91">Đã tiếp nhận</option>
-                                <option {{ Request::get('order_status') == '92' ? 'selected' : '' }} value="92">Đã hoàn
-                                    thành</option>
-                                <option {{ Request::get('order_status') == '-1' ? 'selected' : '' }} value="-1">Đã hủy
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <select class="form-select" name="sort_payment">
-                                <option value>Thanh toán</option>
-                                <option {{ Request::get('sort_payment') == 0 ? 'selected' : '' }} value="0">Chưa thanh
-                                    toán</option>
-                                <option {{ Request::get('sort_payment') == 1 ? 'selected' : '' }} value="1">Đã thanh
-                                    toán</option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <select class="form-select" name="sort_date">
-                                <option value>Ngày tạo</option>
-                                <option {{ Request::get('sort_date') == 'desc' ? 'selected' : '' }} value="desc">Mới nhất
-                                </option>
-                                <option {{ Request::get('sort_date') == 'asc' ? 'selected' : '' }} value="asc">Cũ nhất
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col-1">
-                            <button class="btn btn-primary">Lọc</button>
-                        </div>
-                    </div>
+                    @include('admin.order.partials.filter')
                 </form>
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
@@ -108,9 +63,9 @@
                                 <tr>
                                     <td>#{{ $order->id }}</td>
                                     <td>
-                                        Số hóa đơn: <strong>{{ $order->vnp_order_code }}</strong><br/>
-                                        Mã GD: <strong>{{ $order->vnp_transaction_id }}</strong><br/>
-                                        Ngân hàng: <strong>{{ $order->vnp_bank_code }}</strong><br/>
+                                        Số hóa đơn: <strong>{{ $order->vnp_order_code }}</strong><br />
+                                        Mã GD: <strong>{{ $order->vnp_transaction_id }}</strong><br />
+                                        Ngân hàng: <strong>{{ $order->vnp_bank_code }}</strong><br />
                                     </td>
                                     <td>
                                         <div class="info_customer_order">
@@ -122,8 +77,11 @@
                                                     {{ $order->order_email }}</em>
                                             </div>
                                             <div class="order_address">
-                                                <em>ĐC: {{ $order->order_address }} {{ $order->order_ward }},
-                                                    {{ $order->order_dictrict }}, {{ $order->order_province }}</em>
+                                                @php
+                                                    $address = json_decode($order->order_address);
+                                                @endphp
+                                                <em>ĐC:
+                                                    {{ ($address->address ?? '') . ', ' . $address->ward . ', ' . $address->district . ', ' . $address->province }}</em>
                                             </div>
                                         </div>
                                     </td>
@@ -134,30 +92,63 @@
                                         @if ($order->payment_method == 0)
                                             <p class="m-0">Thanh toán khi nhận hàng</p>
                                         @elseif($order->payment_method == 1)
-                                            <p class="mb-1"><img src="{{ asset("uploads/vnpay.png") }}" alt="" width="60px" height="13px"></p>
+                                            <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}" alt=""
+                                                    width="60px" height="13px"></p>
                                         @endif
 
                                         @if ($order->payment_status == 0)
                                             <p class="m-0 badge text-bg-danger"><em>Chưa thanh toán</em></p>
                                         @elseif($order->payment_status == 1)
-                                            @if($order->order_status == -1 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null)
-                                                @if($order->vnp_refund_status == 'Pending' || $order->vnp_refund_status == 'Processing' || $order->vnp_refund_status == 'Refunded' || $order->vnp_refund_status == 'Refund_Failed')
-                                                    <p class="m-0 badge text-bg-success"><em style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã thanh toán</em></p>
+                                            @if (
+                                                $order->order_status == -1 &&
+                                                    $order->payment_method == 1 &&
+                                                    $order->payment_status == 1 &&
+                                                    $order->vnp_transaction_id !== null)
+                                                @if (
+                                                    $order->vnp_refund_status == 'Pending' ||
+                                                        $order->vnp_refund_status == 'Processing' ||
+                                                        $order->vnp_refund_status == 'Refunded' ||
+                                                        $order->vnp_refund_status == 'Refund_Failed')
+                                                    <p class="m-0 badge text-bg-success"><em
+                                                            style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã
+                                                            thanh toán</em></p>
                                                 @endif
                                             @else
                                                 <p class="m-0 badge text-bg-success"><em>Đã thanh toán</em></p>
                                             @endif
 
-                                            @if($order->order_status == -1 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null)
-                                            <div class="form-floating">
-                                                <select class="form-select mt-1 form-select-sm" aria-label="Floating label select example" id="vnp_refund_status" data-orderid="{{ $order->id }}">
-                                                    <option {{ $order->vnp_refund_status == 'Pending' ? 'selected' : '' }} value="Pending"><p class="badge text-bg-secondary"><em>Chờ phê duyệt</em></p></option>
-                                                    <option {{ $order->vnp_refund_status == 'Processing' ? 'selected' : '' }} value="Processing"><p class="badge text-bg-secondary"><em>Đang xử lý</em></p></option>
-                                                    <option {{ $order->vnp_refund_status == 'Refunded' ? 'selected' : '' }} value="Refunded"><p class="badge text-bg-secondary"><em>Đã hoàn tiền</em></p></option>
-                                                    <option {{ $order->vnp_refund_status == 'Refund_Failed' ? 'selected' : '' }} value="Refund_Failed"><p class="badge text-bg-secondary"><em>Không thành công</em></p></option>
-                                                </select>
-                                                <label for="vnp_refund_status" class="fw-bold">Hoàn Tiền</label>
-                                              </div>
+                                            @if (
+                                                $order->order_status == -1 &&
+                                                    $order->payment_method == 1 &&
+                                                    $order->payment_status == 1 &&
+                                                    $order->vnp_transaction_id !== null)
+                                                <div class="form-floating">
+                                                    <select class="form-select mt-1 form-select-sm"
+                                                        aria-label="Floating label select example" id="vnp_refund_status"
+                                                        data-orderid="{{ $order->id }}">
+                                                        <option
+                                                            {{ $order->vnp_refund_status == 'Pending' ? 'selected' : '' }}
+                                                            value="Pending">
+                                                            <p class="badge text-bg-secondary"><em>Chờ phê duyệt</em></p>
+                                                        </option>
+                                                        <option
+                                                            {{ $order->vnp_refund_status == 'Processing' ? 'selected' : '' }}
+                                                            value="Processing">
+                                                            <p class="badge text-bg-secondary"><em>Đang xử lý</em></p>
+                                                        </option>
+                                                        <option
+                                                            {{ $order->vnp_refund_status == 'Refunded' ? 'selected' : '' }}
+                                                            value="Refunded">
+                                                            <p class="badge text-bg-secondary"><em>Đã hoàn tiền</em></p>
+                                                        </option>
+                                                        <option
+                                                            {{ $order->vnp_refund_status == 'Refund_Failed' ? 'selected' : '' }}
+                                                            value="Refund_Failed">
+                                                            <p class="badge text-bg-secondary"><em>Không thành công</em></p>
+                                                        </option>
+                                                    </select>
+                                                    <label for="vnp_refund_status" class="fw-bold">Hoàn Tiền</label>
+                                                </div>
                                             @endif
                                         @elseif($order->payment_status == 2)
                                             <p class="m-0 badge text-bg-warning"><em>Thanh toán thất bại / lỗi</em></p>
@@ -170,7 +161,9 @@
                                         @if ($order->shipping_method == 0)
                                             <p class="m-0">Nhận tại cửa hàng</p>
                                         @elseif($order->shipping_method == 1)
-                                            <p class="m-0">Giao hàng tiết kiệm</p>
+                                            <p class="fw-normal mb-1"><img width="80px"
+                                                    src="https://cdn.haitrieu.com/wp-content/uploads/2022/05/Logo-GHTK-H.png"
+                                                    alt="ghtk"></p>
                                         @endif
                                     </td>
 
@@ -198,32 +191,31 @@
                                                         {{ $order->order_status == -1 ? 'selected' : '' }}>Đã hủy</option>
                                                 </select>
                                             @else
-                                                @if ($order->order_status == 1)
-                                                    <p class="p-2 badge text-bg-primary">Đơn đã chuyển cho GHTK</p>
-                                                @else
-                                                    <select id="change-status-order"
+                                                @if ($order->order_status == 0)
+                                                    <a id="accept_ghtk"
+                                                        data-url="{{ route('admin.ghtk.post-order', $order->id) }}"
+                                                        class="btn btn-outline-primary px-4 py-1 my-1">Xác nhận</a>
+                                                    <a id="change-status-order"
                                                         data-url="{{ route('admin.order.update', $order->id) }}"
-                                                        class="form-select" name="">
-                                                        <option value="0"
-                                                            {{ $order->order_status == 0 ? 'selected' : 'disabled' }}>Chờ
-                                                            tiếp nhận</option>
-                                                        <option value="1"
-                                                            {{ $order->order_status == 1 ? 'selected' : '' }}>Xác nhận
-                                                        </option>
-                                                        <option value="-1"
-                                                            {{ $order->order_status == -1 ? 'selected' : '' }}>Hủy
-                                                        </option>
-                                                    </select>
+                                                        data-val="-1" class="btn btn-outline-danger px-2 py-1">Hủy</a>
+                                                @else
+                                                    <p class="p-2 badge text-bg-primary">Đã chuyển đơn cho GHTK</p>
+                                                @endif
+
+                                                @if ($order->order_status == 1 || $order->order_status == 2)
+                                                    <a id="cancel_ghtk"
+                                                        data-url="{{ route('admin.ghtk.cancel-order', $order->tracking_id) }}"
+                                                        class="btn btn-outline-danger px-2 py-1">Hủy</a>
                                                 @endif
                                             @endif
                                         @endif
                                     </td>
 
                                     <td>
-                                        <textarea disabled name="" id="">{{ $order->user_note }}</textarea>
+                                        {{ $order->user_note }}
                                     </td>
 
-                                    <td style="width: 100px; overflow:hidden; ">
+                                    <td style="width: 100px; overflow:hidden;">
                                         <div class="container_admin_note">
                                             <textarea disabled class="admin_note_text">{{ $order->admin_note }}</textarea>
                                             <!-- Button trigger modal -->
@@ -238,12 +230,15 @@
 
                                     <td>
                                         <!-- Button trigger modal -->
-                                        <button id="btn-show-order-detail" type="button" data-url="{{ route('admin.order.show', $order->id) }}"
+                                        <button id="btn-show-order-detail" type="button"
+                                            data-url="{{ route('admin.order.show', $order->id) }}"
                                             class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#orderDetail">
-                                            Xem thêm
+                                            Chi tiết
                                         </button>
-                                        @if($order->vnp_transaction_id !== null)
-                                            <a class="btn btn-info btn-sm" href="https://sandbox.vnpayment.vn/merchantv2/Transaction/PaymentDetail/{{ $order->vnp_transaction_id }}.htm" target="_blank">
+                                        @if ($order->vnp_transaction_id !== null)
+                                            <a class="btn btn-info btn-sm"
+                                                href="https://sandbox.vnpayment.vn/merchantv2/Transaction/PaymentDetail/{{ $order->vnp_transaction_id }}.htm"
+                                                target="_blank">
                                                 VNPAY
                                             </a>
                                         @endif
@@ -277,10 +272,10 @@
                     url: "{{ route('admin.order.vnp-refund-status.update') }}",
                     data: {
                         orderId: order_id,
-                       vnpRefundStatus: vnp_refund_status,
+                        vnpRefundStatus: vnp_refund_status,
                     },
                     dataType: "json",
-                    success: function (data) {
+                    success: function(data) {
                         toastr.success(data.message);
                         // console.log(response);
                     },
@@ -363,8 +358,8 @@
                 })
             });
 
-            $('body').off('change', '#change-status-order').on('change', '#change-status-order', function() {
-                var orderStatus = $(this).val();
+            $('body').off('click', '#change-status-order').on('click', '#change-status-order', function() {
+                var orderStatus = $(this).attr('data-val');
                 var url = $(this).attr('data-url')
                 console.log(url);
                 $.ajax({
@@ -402,7 +397,6 @@
                 var adminNote = container.find('#admin_note__input').val()
                 var url = container.find('.change-admin-note').attr('data-url')
                 var adminNoteText = container.find('.admin_note_text')
-                console.log();
                 $.ajax({
                     type: 'PATCH',
                     url: url,
@@ -416,6 +410,122 @@
                         console.log(error);
                     }
                 })
+            })
+            $('body').off('click', '#accept_ghtk').on('click', '#accept_ghtk', function() {
+                var url = $(this).attr('data-url');
+                Swal.fire({
+                    title: "Bạn có chắc chắn?",
+                    text: "Thực hiện chuyển đơn hàng cho ĐVVC!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Đồng ý",
+                    cancelButtonText: "Hủy",
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Vui lòng chờ...',
+                            html: 'Đang xử lý...',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            didOpen: () => {
+                                Swal.showLoading()
+                            }
+                        });
+                        $.ajax({
+                            type: 'post',
+                            url: url,
+                            success: function(res) {
+                                setTimeout(() => {
+                                    // Đơn hàng thành công
+                                    if (res.status == true) {
+                                        Swal.fire({
+                                            title: "Yêu cầu thành công!",
+                                            html: `
+                                            <div class="text-start">
+                                                <h5>Thông tin đơn hàng <u>${res.order.partner_id}</u></h5>
+                                                <p class="m-0">MVC: ${res.order.tracking_id}</p>
+                                                <p class="m-0">Phí vận chuyển: ${res.order.fee} VMĐ</p>
+                                                <p class="m-0">Thời gian lấy: ${res.order.estimated_pick_time}</p>
+                                                <p class="m-0">Thời gian giao: ${res.order.estimated_deliver_time}</p>
+                                            </div>
+                                        `,
+                                            icon: "success"
+                                        });
+                                    }
+                                    //Đơn hàng lỗi
+                                    if (res.status == false) {
+                                        Swal.fire({
+                                            title: "Yêu cầu thất bại!",
+                                            text: res.message +
+                                                '. Mã lỗi: ' + res
+                                                .error_code,
+                                            icon: "error"
+                                        });
+                                    }
+                                }, 500);
+                            },
+                            error: function(xhr, status, error) {
+                                Swal.close()
+                                const response = JSON.parse(xhr.responseText);
+                                alert("Lỗi: " + response.message);
+                            }
+                        })
+                    }
+                });
+            })
+            $('body').off('click', '#cancel_ghtk').on('click', '#cancel_ghtk', function() {
+                Swal.fire({
+                    title: "Bạn có chắc chắn hủy?",
+                    text: "Thực hiện lệnh hủy đơn hàng đến ĐVVC!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Đồng ý",
+                    cancelButtonText: "Hủy",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Vui lòng chờ...',
+                            html: 'Đang xử lý...',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            didOpen: () => {
+                                Swal.showLoading()
+                            }
+                        });
+                        $.ajax({
+                            type: 'post',
+                            url: $(this).attr('data-url'),
+                            success: function(res) {
+                                console.log(res);
+                                if (res.success == true) {
+                                    Swal.fire({
+                                        title: "Yêu cầu thành công!",
+                                        text: res.message,
+                                        icon: "success"
+                                    });
+                                }
+                                //Hủy thất bại
+                                if (res.success == false) {
+                                    Swal.fire({
+                                        title: "Yêu cầu thất bại!",
+                                        text: res.message + '. Mã lỗi: ' + res .error_code + '. Log: ' + res .log_id,
+                                        icon: "error"
+                                    });
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                Swal.close()
+                                const response = JSON.parse(xhr.responseText);
+                                alert("Lỗi: " + response.message);
+                            }
+                        })
+                    }
+                });
             })
         })
     </script>
