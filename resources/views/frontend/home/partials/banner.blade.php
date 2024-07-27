@@ -3,7 +3,7 @@
         style="background: url('{{ asset('uploads/post_gallery/' . $banner->post_image_galleries->first()->image) }}') center/cover no-repeat;">
         <div class="container">
             <div class="section_title text-center mb-3">
-                <h4 class="text-uppercase">THÔNG TIN SẢN PHẨM MỚI</h>
+                <h2 class="text-uppercase fs-4">THÔNG TIN SẢN PHẨM MỚI</h2>
             </div>
             <div class="row">
                 <div class="col-12 col-md-6 col-left d-flex align-items-center">

@@ -2,6 +2,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js "></script>
 <script defer src="https://cdn.jsdelivr.net/gh/artru-git/artru-aio@latest/artru-smoothscroll.min.js"></script>
 
+
+
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>
@@ -14,6 +16,13 @@
 <!-- chứa các ajax -->
 @include('frontend.layouts.ajax')
 
+<script>
+    // Loading
+    window.addEventListener("load", () => {
+        const preloader = document.querySelector(".loader-container");
+        preloader.classList.add("unactive")
+    })
+</script>
 
 <script>
     $(document).ready(function() {
@@ -155,8 +164,6 @@
                 var initialValue = selectInput.value;
                 valueRamElement.textContent = initialValue;
             }
-
-
             // Hiển thị giá trị ban đầu khi trang tải xong
             var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
             if (ramValue) {

@@ -10,10 +10,10 @@
             <a class="navbar-brand" href="{{ route('home') }}">
                 <span class="fs-1 text-white fw-bold">CYBERMART</span>
             </a>
-            <p class="navbar-toggler border-0 ps-2 icon-cart">
-                <i class="fa-solid fa-cart-shopping fa-lg mt-4" style="color: #ffffff;"></i>
-                <span class="cart-count-mobile">12</span>
-            </p>
+            <a href="{{ route('cart.index') }}" class="navbar-toggler border-0 ps-2 icon-cart">
+                <i class="fa-solid fa-cart-shopping fa-lg mt-3" style="color: #ffffff;"></i>
+                <span class="cart-count-mobile">{{ $qtyCart ?? '0' }}</span>
+            </a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-lg-0">
                     <li class="nav-item ms-5">
@@ -23,7 +23,7 @@
                                 z-index: 9999;
                                 background: #1b2d3c;
                                 width: 27.5%;
-                               
+
                             }
                         </style>
                         <div class="d-flex mt-1">
@@ -62,14 +62,13 @@
                                 </span>
                                 <ul class="dropdown-menu p-0" aria-labelledby="dropdownMenuButton1">
                                     @if (!empty(Auth::check()))
-                                        <li><a class="dropdown-item"
-                                                href="{{ route('dashboard') }}">Tài khoản của tôi</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('dashboard') }}">Tài khoản của
+                                                tôi</a></li>
                                         <li>
                                             <!-- Authentication -->
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
-                                                <a class="dropdown-item"
-                                                    href="{{ route('logout') }}"
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">Đăng
                                                     xuất
@@ -77,10 +76,8 @@
                                             </form>
                                         </li>
                                     @else
-                                        <li><a class="dropdown-item"
-                                                href="{{ route('login') }}">Đăng nhập</a></li>
-                                        <li><a class="dropdown-item"
-                                                href="{{ route('register') }}">Đăng ký</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('login') }}">Đăng nhập</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('register') }}">Đăng ký</a></li>
                                     @endif
 
                                     <li><a class="dropdown-item" href="{{ url('/order') }}">Đơn

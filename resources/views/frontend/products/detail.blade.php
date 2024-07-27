@@ -1,10 +1,9 @@
 @extends('frontend.layouts.master')
 
-@section('title', $product->seo_title ? $product->seo_title : 'Sản phẩm ' . $product->name)
+@section('title', $product->seo_title ?? 'Sản phẩm ' . $product->name)
 @section('description',
-    $product->seo_description
-    ? $product->seo_description
-    : 'CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop,
+    $product->seo_description ??
+    'CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop,
     smartwatch, gia dụng, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.')
 @section('schema')
     <script type="application/ld+json">
@@ -45,8 +44,6 @@
                 @include('frontend.products.partialsDetail.comment')
             </div>
         </div>
-
-
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {

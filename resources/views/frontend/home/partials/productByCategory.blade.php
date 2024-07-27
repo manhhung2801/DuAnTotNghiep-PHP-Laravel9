@@ -3,7 +3,7 @@
         @foreach ($getProduct as $category_name => $product)
             <div class="container">
                 <div class="scroll_animation section_title text-center mb-3 pt-5">
-                    <h4 class="text-uppercase">{{ $category_name }}</h>
+                    <h2 class="text-uppercase fs-4">{{ $category_name }}</h2>
                 </div>
                 <div class="scroll_animation row">
                     @foreach ($product as $pro)

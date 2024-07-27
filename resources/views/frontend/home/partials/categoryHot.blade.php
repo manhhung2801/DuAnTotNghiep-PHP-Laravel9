@@ -1,6 +1,6 @@
 <div class="container">
     <div class="scroll_animation section_title text-center mb-3">
-        <h4 class="text-uppercase">Danh mục nổi bật</h3>
+        <h2 class="text-uppercase fs-4">Danh mục nổi bật</h3>
     </div>
     <div class="scroll_animation row">
         @foreach ($categoryHot as $cate )
