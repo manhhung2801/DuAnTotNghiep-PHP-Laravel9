@@ -21,6 +21,7 @@ class SubCategorySeeder extends Seeder
                 "category_id" => 1,
                 "name" => "iPhone",
                 "slug" => "iphone",
+                "image" => "sub_iphone.webp",
                 "status" => 1
             ],
             [
@@ -39,6 +40,7 @@ class SubCategorySeeder extends Seeder
                 "category_id" => 1,
                 "name" => "OPPO",
                 "slug" => "oppo",
+                "image" => "sub_oppo.webp",
                 "status" => 1
             ],
             [
@@ -107,13 +109,14 @@ class SubCategorySeeder extends Seeder
                 "slug" => "itel",
                 "status" => 1
             ],
-             // Điện thoại, Tablet id = 1
+            // Điện thoại, Tablet id = 1
 
             // Laptop id = 2
             [
                 "category_id" => 2,
                 "name" => "Mac",
                 "slug" => "mac",
+                "image" => "sub_mac.webp",
                 "status" => 1
             ],
             [
@@ -162,6 +165,7 @@ class SubCategorySeeder extends Seeder
                 "category_id" => 2,
                 "name" => "MSI",
                 "slug" => "msi",
+                "image" => "sub_msi.webp",
                 "status" => 1
             ],
             [
@@ -497,11 +501,12 @@ class SubCategorySeeder extends Seeder
             // Tivi id = 9
         ];
 
-        foreach($sub_categories as $subCategory) {
+        foreach ($sub_categories as $subCategory) {
             DB::table('sub_categories')->insert([
                 "category_id" => $subCategory['category_id'],
                 "name" => $subCategory['name'],
                 "slug" => $subCategory['slug'],
+                // "image" => $subCategory['image'],
                 "status" => $subCategory['status']
             ]);
         }

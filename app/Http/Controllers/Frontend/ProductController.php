@@ -120,7 +120,7 @@ class ProductController extends Controller
 
                 $variants = $product->variant();
                 // Lấy danh sách các id của các sản phẩm liên quan (cùng danh mục) trừ sản phẩm ban đầu
-                $relatedProductIds = Product::where('category_id', $product->category_id)
+                $relatedProductIds = Product::where('category_id', $product->category_id)->where('sub_category_id', $product->sub_category_id)->where('child_category_id', $product->child_category_id)
                     ->where('id', '!=', $product->id) // Loại trừ sản phẩm ban đầu
                     ->pluck('id');
                 // Lấy các sản phẩm liên quan dựa trên danh sách id đã lấy được

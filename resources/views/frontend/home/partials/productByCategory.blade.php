@@ -11,18 +11,18 @@
                             <div class="item_product_main">
                                 <div class="variants product-action item-product-main duration-300">
                                     {{ Helper::sale($pro->offer_start_date, $pro->offer_end_date, $pro->price, $pro->offer_price) }}
-
-                                    <div class="product-thumbnail">
-                                        <a class="image_thumb scale_hover"
+                                    <div class="product-thumbnail ">
+                                        <a class="image_thumb scale_hover "
                                             href="/san-pham/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html"
-                                            title="iPhone 13 Pro Max 1TB - Chính Hãng VN/A">
+                                            title="{{ $pro->name }}">
 
                                             {{-- Kiểm tra xem image là tên tệp tin hoặc URL --}}
                                             @php $isUrl = filter_var($pro->image, FILTER_VALIDATE_URL);@endphp
-                                            <img class="lazyload duration-300 loaded"
+                                            <img width="358" height="358"
+                                                class="lazyload duration-300 loaded text-center"
                                                 src="{{ $isUrl ? $pro->image : asset('uploads/products/' . $pro->image) }}"
                                                 alt="{{ $pro->image }}">
-                                    
+
                                         </a>
                                     </div>
                                     <div class="product-info mt-2">
@@ -47,9 +47,8 @@
                                         </div>
                                     </div>
                                     <div class="promotion-content">
-                                        <div class="line-clamp-2-new"
-                                            title="Thu cũ đổi mới: Thu giá cao trợ giá đến 90%">
-                                            <p>Thu cũ đổi mới: Thu giá cao trợ giá đến 90%</p>
+                                        <div class="line-clamp-2-new" title="{{ $pro->promotion }}">
+                                            <p>{{ $pro->promotion }}</p>
                                         </div>
                                     </div>
                                 </div>

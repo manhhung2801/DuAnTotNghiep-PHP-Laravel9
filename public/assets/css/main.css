@@ -60,6 +60,7 @@
      width: 100%;
      aspect-ratio: 1;
      position: relative;
+     text-align: center;
  }
  
  .item_product_main:hover .product-action .product-thumbnail .image_thumb img {
@@ -75,7 +76,7 @@
      bottom: 0;
      left: 0;
      right: 0;
-     margin: auto;
+     padding: 15px;
      object-fit: contain;
  }
  
@@ -95,7 +96,6 @@
  
  .line-clamp-2 {
      -webkit-line-clamp: 2;
-     height: calc(1em* 1.4* 2);
  }
  
  .line-clamp {
@@ -387,8 +387,8 @@
          height: 332px;
      }
      .news-item .card .news_image img {
-        height: 150px;
-    }
+         height: 150px;
+     }
  }
  /*------------------------End Home Page ---------------------------*/
  /*------------------------Sanpham Page ---------------------------*/
