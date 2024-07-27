@@ -88,42 +88,33 @@
                                         @endif
 
                                         @if ($order->payment_method == 1 && $order->payment_status == 0)
-                                            <p class="mb-1"><img src="{{ asset("uploads/vnpay.png") }}" alt="" width="60px" height="13px"></p>
+                                            <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}" alt=""
+                                                    width="60px" height="13px"></p>
                                             <p class="m-0 badge text-bg-danger"><em>Chưa thanh toán</em></p>
-                                        @elseif($order->payment_status == 1)
-                                            @if (
-                                                $order->order_status == -1 &&
-                                                    $order->payment_method == 1 &&
-                                                    $order->payment_status == 1 &&
-                                                    $order->vnp_transaction_id !== null)
+                                        @elseif($order->payment_method == 1 && $order->payment_status == 1)
+                                            @if ($order->order_status == -1 && $order->vnp_transaction_id !== null)
                                                 @if (
                                                     $order->vnp_refund_status == 'Pending' ||
                                                         $order->vnp_refund_status == 'Processing' ||
-                                                        $order->vnp_refund_status == 'Refunded' ||
                                                         $order->vnp_refund_status == 'Refund_Failed')
-                                                    <p class="m-0 badge text-bg-success"><em
-                                                            style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã
-                                                            thanh toán</em></p>
-                                        @elseif($order->payment_method == 1 && $order->payment_status == 1)
-                                            @if($order->order_status == -1 && $order->vnp_transaction_id !== null)
-                                                @if($order->vnp_refund_status == 'Pending' || $order->vnp_refund_status == 'Processing' || $order->vnp_refund_status == 'Refund_Failed')
-                                                    <p class="mb-1"><img src="{{ asset("uploads/vnpay.png") }}" alt="" width="60px" height="13px"></p>
+                                                    <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}"
+                                                            alt="" width="60px" height="13px"></p>
                                                     <span id="{{ $order->id }}">
-                                                        <p class="m-0 badge text-bg-success"><em style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã thanh toán</em></p>
+                                                        <p class="m-0 badge text-bg-success"><em
+                                                                style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã
+                                                                thanh toán</em></p>
                                                     </span>
                                                 @elseif($order->vnp_refund_status == 'Refunded')
-                                                    <p class="mb-1"><img src="{{ asset("uploads/vnpay.png") }}" alt="" width="60px" height="13px"></p>
+                                                    <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}"
+                                                            alt="" width="60px" height="13px"></p>
                                                 @endif
                                             @else
-                                                <p class="mb-1"><img src="{{ asset("uploads/vnpay.png") }}" alt="" width="60px" height="13px"></p>
+                                                <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}"
+                                                        alt="" width="60px" height="13px"></p>
                                                 <p class="m-0 badge text-bg-success"><em>Đã thanh toán</em></p>
                                             @endif
 
-                                            @if (
-                                                $order->order_status == -1 &&
-                                                    $order->payment_method == 1 &&
-                                                    $order->payment_status == 1 &&
-                                                    $order->vnp_transaction_id !== null)
+                                            @if ($order->order_status == -1 && $order->vnp_transaction_id !== null)
                                                 <div class="form-floating">
                                                     <select class="form-select mt-1 form-select-sm"
                                                         aria-label="Floating label select example" id="vnp_refund_status"
@@ -148,19 +139,13 @@
                                                             value="Refund_Failed">
                                                             <p class="badge text-bg-secondary"><em>Không thành công</em></p>
                                                         </option>
-                                            @if($order->order_status == -1 && $order->vnp_transaction_id !== null)
-                                                <div class="form-floating">
-                                                    <select class="form-select mt-1 form-select-sm" aria-label="Floating label select example" id="vnp_refund_status" data-orderid="{{ $order->id }}">
-                                                        <option {{ $order->vnp_refund_status == 'Pending' ? 'selected' : '' }} value="Pending"><p class="badge text-bg-secondary"><em>Chờ phê duyệt</em></p></option>
-                                                        <option {{ $order->vnp_refund_status == 'Processing' ? 'selected' : '' }} value="Processing"><p class="badge text-bg-secondary"><em>Đang xử lý</em></p></option>
-                                                        <option {{ $order->vnp_refund_status == 'Refunded' ? 'selected' : '' }} value="Refunded"><p class="badge text-bg-secondary"><em>Đã hoàn tiền</em></p></option>
-                                                        <option {{ $order->vnp_refund_status == 'Refund_Failed' ? 'selected' : '' }} value="Refund_Failed"><p class="badge text-bg-secondary"><em>Không thành công</em></p></option>
                                                     </select>
                                                     <label for="vnp_refund_status" class="fw-bold">Hoàn Tiền</label>
                                                 </div>
                                             @endif
                                         @elseif($order->payment_method == 1 && $order->payment_status == 2)
-                                            <p class="mb-1"><img src="{{ asset("uploads/vnpay.png") }}" alt="" width="60px" height="13px"></p>
+                                            <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}" alt=""
+                                                    width="60px" height="13px"></p>
                                             <p class="m-0 badge text-bg-warning"><em>Thanh toán thất bại / lỗi</em></p>
                                         @endif
 
@@ -211,7 +196,6 @@
                                                 @else
                                                     <p class="p-2 badge text-bg-primary">Đã chuyển đơn cho GHTK</p>
                                                 @endif
-
                                                 @if ($order->order_status == 1 || $order->order_status == 2)
                                                     <a id="cancel_ghtk"
                                                         data-url="{{ route('admin.ghtk.cancel-order', $order->tracking_id) }}"
@@ -285,14 +269,16 @@
                         vnpRefundStatus: vnp_refund_status,
                     },
                     dataType: "json",
-                    success: function (data) {
+                    success: function(data) {
                         let $parentElement = $("#" + order_id);
 
                         if (data.vnp_refund_status == "Refunded") {
                             $parentElement.find("p.m-0.badge.text-bg-success").remove();
                         }
-                        if (data.vnp_refund_status !== "Refunded"){
-                            $parentElement.html(`<p class="m-0 badge text-bg-success"><em style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã thanh toán</em></p>`);
+                        if (data.vnp_refund_status !== "Refunded") {
+                            $parentElement.html(
+                                `<p class="m-0 badge text-bg-success"><em style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã thanh toán</em></p>`
+                            );
                         }
                         toastr.success(data.message);
                         // console.log(response);
@@ -432,36 +418,36 @@
             $('body').off('click', '#accept_ghtk').on('click', '#accept_ghtk', function() {
                 var url = $(this).attr('data-url');
                 Swal.fire({
-                    title: "Bạn có chắc chắn?",
-                    text: "Thực hiện chuyển đơn hàng cho ĐVVC!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Đồng ý",
-                    cancelButtonText: "Hủy",
-                })
-                .then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Vui lòng chờ...',
-                            html: 'Đang xử lý...',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            didOpen: () => {
-                                Swal.showLoading()
-                            }
-                        });
-                        $.ajax({
-                            type: 'post',
-                            url: url,
-                            success: function(res) {
-                                setTimeout(() => {
-                                    // Đơn hàng thành công
-                                    if (res.status == true) {
-                                        Swal.fire({
-                                            title: "Yêu cầu thành công!",
-                                            html: `
+                        title: "Bạn có chắc chắn?",
+                        text: "Thực hiện chuyển đơn hàng cho ĐVVC!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Đồng ý",
+                        cancelButtonText: "Hủy",
+                    })
+                    .then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                title: 'Vui lòng chờ...',
+                                html: 'Đang xử lý...',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                didOpen: () => {
+                                    Swal.showLoading()
+                                }
+                            });
+                            $.ajax({
+                                type: 'post',
+                                url: url,
+                                success: function(res) {
+                                    setTimeout(() => {
+                                        // Đơn hàng thành công
+                                        if (res.status == true) {
+                                            Swal.fire({
+                                                title: "Yêu cầu thành công!",
+                                                html: `
                                             <div class="text-start">
                                                 <h5>Thông tin đơn hàng <u>${res.order.partner_id}</u></h5>
                                                 <p class="m-0">MVC: ${res.order.tracking_id}</p>
@@ -470,29 +456,29 @@
                                                 <p class="m-0">Thời gian giao: ${res.order.estimated_deliver_time}</p>
                                             </div>
                                         `,
-                                            icon: "success"
-                                        });
-                                    }
-                                    //Đơn hàng lỗi
-                                    if (res.status == false) {
-                                        Swal.fire({
-                                            title: "Yêu cầu thất bại!",
-                                            text: res.message +
-                                                '. Mã lỗi: ' + res
-                                                .error_code,
-                                            icon: "error"
-                                        });
-                                    }
-                                }, 500);
-                            },
-                            error: function(xhr, status, error) {
-                                Swal.close()
-                                const response = JSON.parse(xhr.responseText);
-                                alert("Lỗi: " + response.message);
-                            }
-                        })
-                    }
-                });
+                                                icon: "success"
+                                            });
+                                        }
+                                        //Đơn hàng lỗi
+                                        if (res.status == false) {
+                                            Swal.fire({
+                                                title: "Yêu cầu thất bại!",
+                                                text: res.message +
+                                                    '. Mã lỗi: ' + res
+                                                    .error_code,
+                                                icon: "error"
+                                            });
+                                        }
+                                    }, 500);
+                                },
+                                error: function(xhr, status, error) {
+                                    Swal.close()
+                                    const response = JSON.parse(xhr.responseText);
+                                    alert("Lỗi: " + response.message);
+                                }
+                            })
+                        }
+                    });
             })
             $('body').off('click', '#cancel_ghtk').on('click', '#cancel_ghtk', function() {
                 Swal.fire({
@@ -531,7 +517,9 @@
                                 if (res.success == false) {
                                     Swal.fire({
                                         title: "Yêu cầu thất bại!",
-                                        text: res.message + '. Mã lỗi: ' + res .error_code + '. Log: ' + res .log_id,
+                                        text: res.message + '. Mã lỗi: ' + res
+                                            .error_code + '. Log: ' + res
+                                            .log_id,
                                         icon: "error"
                                     });
                                 }
