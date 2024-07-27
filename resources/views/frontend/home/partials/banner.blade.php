@@ -1,6 +1,6 @@
 @forelse ($bannerHero as $banner)
     <div class="bg-banner overflow-hidden"
-    style="background: url('{{ asset('uploads/post_gallery/'.$banner->post_image_galleries->first()->image) }}') center/cover no-repeat;">
+        style="background: url('{{ asset('uploads/post_gallery/' . $banner->post_image_galleries->first()->image) }}') center/cover no-repeat;">
         <div class="container">
             <div class="section_title text-center mb-3">
                 <h2 class="text-uppercase fs-4">THÔNG TIN SẢN PHẨM MỚI</h2>
@@ -20,11 +20,13 @@
                 </div>
                 <div class="col-12 col-md-6 pt-3">
                     <picture class="d-flex justify-content-center bg-banner-item_img">
-                        <img width="573" height="502" src="{{ asset('uploads/post/' . $banner->image) }}" alt="{{$banner->image}}">
+                        <img width="573" height="502" src="{{ asset('uploads/post/' . $banner->image) }}"
+                            alt="{{ $banner->image }}">
                     </picture>
                 </div>
             </div>
         </div>
     </div>
 @empty
+   
 @endforelse

@@ -47,7 +47,6 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>VNPAY</th>
                                 <th>Thông tin khách hàng</th>
                                 <th>Tổng tiền</th>
                                 <th>Phương thức thanh toán</th>
@@ -62,11 +61,6 @@
                             @forelse ($getOrders as $order)
                                 <tr>
                                     <td>#{{ $order->id }}</td>
-                                    <td>
-                                        Số hóa đơn: <strong>{{ $order->vnp_order_code }}</strong><br />
-                                        Mã GD: <strong>{{ $order->vnp_transaction_id }}</strong><br />
-                                        Ngân hàng: <strong>{{ $order->vnp_bank_code }}</strong><br />
-                                    </td>
                                     <td>
                                         <div class="info_customer_order">
                                             <div class="order_name">
@@ -89,14 +83,12 @@
 
                                     {{-- Phương thức thanh toán --}}
                                     <td>
-                                        @if ($order->payment_method == 0)
+                                        @if ($order->payment_method == 0 && $order->payment_method == 0)
                                             <p class="m-0">Thanh toán khi nhận hàng</p>
-                                        @elseif($order->payment_method == 1)
-                                            <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}" alt=""
-                                                    width="60px" height="13px"></p>
                                         @endif
 
-                                        @if ($order->payment_status == 0)
+                                        @if ($order->payment_method == 1 && $order->payment_status == 0)
+                                            <p class="mb-1"><img src="{{ asset("uploads/vnpay.png") }}" alt="" width="60px" height="13px"></p>
                                             <p class="m-0 badge text-bg-danger"><em>Chưa thanh toán</em></p>
                                         @elseif($order->payment_status == 1)
                                             @if (
@@ -112,8 +104,18 @@
                                                     <p class="m-0 badge text-bg-success"><em
                                                             style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã
                                                             thanh toán</em></p>
+                                        @elseif($order->payment_method == 1 && $order->payment_status == 1)
+                                            @if($order->order_status == -1 && $order->vnp_transaction_id !== null)
+                                                @if($order->vnp_refund_status == 'Pending' || $order->vnp_refund_status == 'Processing' || $order->vnp_refund_status == 'Refund_Failed')
+                                                    <p class="mb-1"><img src="{{ asset("uploads/vnpay.png") }}" alt="" width="60px" height="13px"></p>
+                                                    <span id="{{ $order->id }}">
+                                                        <p class="m-0 badge text-bg-success"><em style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã thanh toán</em></p>
+                                                    </span>
+                                                @elseif($order->vnp_refund_status == 'Refunded')
+                                                    <p class="mb-1"><img src="{{ asset("uploads/vnpay.png") }}" alt="" width="60px" height="13px"></p>
                                                 @endif
                                             @else
+                                                <p class="mb-1"><img src="{{ asset("uploads/vnpay.png") }}" alt="" width="60px" height="13px"></p>
                                                 <p class="m-0 badge text-bg-success"><em>Đã thanh toán</em></p>
                                             @endif
 
@@ -146,11 +148,19 @@
                                                             value="Refund_Failed">
                                                             <p class="badge text-bg-secondary"><em>Không thành công</em></p>
                                                         </option>
+                                            @if($order->order_status == -1 && $order->vnp_transaction_id !== null)
+                                                <div class="form-floating">
+                                                    <select class="form-select mt-1 form-select-sm" aria-label="Floating label select example" id="vnp_refund_status" data-orderid="{{ $order->id }}">
+                                                        <option {{ $order->vnp_refund_status == 'Pending' ? 'selected' : '' }} value="Pending"><p class="badge text-bg-secondary"><em>Chờ phê duyệt</em></p></option>
+                                                        <option {{ $order->vnp_refund_status == 'Processing' ? 'selected' : '' }} value="Processing"><p class="badge text-bg-secondary"><em>Đang xử lý</em></p></option>
+                                                        <option {{ $order->vnp_refund_status == 'Refunded' ? 'selected' : '' }} value="Refunded"><p class="badge text-bg-secondary"><em>Đã hoàn tiền</em></p></option>
+                                                        <option {{ $order->vnp_refund_status == 'Refund_Failed' ? 'selected' : '' }} value="Refund_Failed"><p class="badge text-bg-secondary"><em>Không thành công</em></p></option>
                                                     </select>
                                                     <label for="vnp_refund_status" class="fw-bold">Hoàn Tiền</label>
                                                 </div>
                                             @endif
-                                        @elseif($order->payment_status == 2)
+                                        @elseif($order->payment_method == 1 && $order->payment_status == 2)
+                                            <p class="mb-1"><img src="{{ asset("uploads/vnpay.png") }}" alt="" width="60px" height="13px"></p>
                                             <p class="m-0 badge text-bg-warning"><em>Thanh toán thất bại / lỗi</em></p>
                                         @endif
 
@@ -275,7 +285,15 @@
                         vnpRefundStatus: vnp_refund_status,
                     },
                     dataType: "json",
-                    success: function(data) {
+                    success: function (data) {
+                        let $parentElement = $("#" + order_id);
+
+                        if (data.vnp_refund_status == "Refunded") {
+                            $parentElement.find("p.m-0.badge.text-bg-success").remove();
+                        }
+                        if (data.vnp_refund_status !== "Refunded"){
+                            $parentElement.html(`<p class="m-0 badge text-bg-success"><em style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã thanh toán</em></p>`);
+                        }
                         toastr.success(data.message);
                         // console.log(response);
                     },

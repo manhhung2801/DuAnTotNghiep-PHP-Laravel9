@@ -60,7 +60,7 @@
                                         @if ($order->payment_method == 0)
                                             <p class="fw-normal mb-1">Thanh toán khi nhận hàng</p>
                                         @elseif ($order->payment_method == 1)
-                                            <p class="fw-normal mb-1">Thanh toán qua ngân hàng</p>
+                                            {{-- <p class="fw-normal mb-1">Thanh toán qua ngân hàng</p> --}}
                                             <p class="fw-normal mb-1">
                                                 <img src="{{ asset('uploads/vnpay.png') }}" alt="" width="60px"
                                                     height="13px">
@@ -90,7 +90,6 @@
                                                 @if (
                                                     $order->vnp_refund_status == 'Pending' ||
                                                         $order->vnp_refund_status == 'Processing' ||
-                                                        $order->vnp_refund_status == 'Refunded' ||
                                                         $order->vnp_refund_status == 'Refund_Failed')
                                                     <p class="m-0 badge text-bg-success"><em
                                                             style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã

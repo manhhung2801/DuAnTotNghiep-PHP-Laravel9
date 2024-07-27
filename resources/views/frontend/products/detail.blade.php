@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title', $product->seo_title ?? 'Sản phẩm' . $product->name)
+@section('title', $product->seo_title ?? 'Sản phẩm ' . $product->name)
 @section('description',
     $product->seo_description ??
     'CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop,

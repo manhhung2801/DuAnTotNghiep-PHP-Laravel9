@@ -34,7 +34,7 @@ class OrderController extends Controller
             $message = 'Hoàn tiền không thành công';
         }
 
-        return response(['message' =>  $message]);
+        return response(['message' =>  $message, 'vnp_refund_status' => $order->vnp_refund_status]);
     }
     public function index()
     {
