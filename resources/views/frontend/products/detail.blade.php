@@ -1,9 +1,13 @@
 @extends('frontend.layouts.master')
 
-@section('title', $product->seo_title ?? 'Sản phẩm' . $product->name)
-@section('description', $product->seo_description ?? 'CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop, smartwatch, gia dụng, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.')
-@section('schema')  
-<script type="application/ld+json">
+@section('title', $product->seo_title ? $product->seo_title : 'Sản phẩm ' . $product->name)
+@section('description',
+    $product->seo_description
+    ? $product->seo_description
+    : 'CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop,
+    smartwatch, gia dụng, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.')
+@section('schema')
+    <script type="application/ld+json">
     
 </script>
 @endsection
@@ -25,7 +29,7 @@
                     @include('frontend.products.partialsDetail.sidebar')
                 </div>
             </div>
-            <div class="catalog-product-list container" >
+            <div class="catalog-product-list container">
                 @include('frontend.products.partialsDetail.relatedProducts')
             </div>
             <div class="row">
@@ -67,5 +71,5 @@
                 }
             });
         });
-    </>
+    </script>
 @endsection
