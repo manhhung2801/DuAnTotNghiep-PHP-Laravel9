@@ -3,7 +3,7 @@
         font-size: 11px
     }
 
-   .comment-text {
+    .comment-text {
         padding-left: 45px;
         font-size: 15px
     }
@@ -33,26 +33,47 @@
     }
 </style>
 
-<div class="col-6 mx-auto mt-5">
-    <h4 class="text-center pb-4">Bình luận</h4>
+<div class="col-8 mt-5 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+    <h4 class="text-left pb-4">Hỏi và đáp</h4>
     <div class="d-flex justify-content-center row">
         <div class="">
             <div class="d-flex flex-column comment-section">
-
+                <form class="comment_form row pb-4" method="POST" class="bg-light p-2"
+                    onsubmit="return validateAndSubmitComment(event)">
+                    @csrf
+                    <div class="col-10">
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}" class="user_id">
+                        <input type="hidden" name="product_id" value="{{ $product->id }}" class="product_id">
+                        <div class="d-flex flex-row align-items-start"><img class="rounded-circle px-1"
+                                src="https://cdn2.cellphones.com.vn/insecure/rs:fill:55:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/chibi2.png"
+                                width="40">
+                            <textarea id="comment_input" class="form-control shadow bg-body-tertiary rounded textarea" name="message"
+                                placeholder="Bình luận của bạn về sản phẩm"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-2 mt-2 text-center">
+                        <button class="btn btn-primary btn-sm shadow-none comment_submit_btn">Bình
+                            luận</button>
+                    </div>
+                </form>
                 <div id="comments-container">
                     @if (isset($comments) && $comments->count() > 0)
                         @foreach ($comments as $comment)
-                            <div class="bg-white p-2">
-                                <div class="d-flex flex-row user-info">
-                                    <img class="rounded-circle" src="{{ asset('images\default-avatar.png') }}"
-                                        width="40">
-                                    <div class="d-flex flex-column justify-content-{{ $comment->user->id === auth()->id() ? "end" : "start"}} ml-2">
-                                        <span class="d-block font-weight-bold name">{{ $comment->user->id === auth()->id() ? "Bạn" : $comment->user->name}}</span>
-                                        <span class="date text-black-50">{{ $comment->created_at }}</span>
+                            <div class="bg-white p-2 mb-2">
+                                <div class="d-flex flex-row user-info justify-content-between align-items-center">
+                                    <div class="d-flex flex-row user-info">
+                                        <div class="bg-primary text-white fw-bold d-flex justify-content-center align-items-center rounded-circle mx-1" style="width: 40px; height: 40px;">{{ $comment->user->id === auth()->id() ? 'Bạn' : substr($comment->user->name, 0, 1) }}</div>
+                                        <div
+                                            class="d-flex flex-column justify-content-center">
+                                            <span
+                                                class="d-block fw-bold name">{{ $comment->user->id === auth()->id() ? 'Bạn' : $comment->user->name }}</span>
+
+                                        </div>
                                     </div>
+                                    <span class="date text-black-50 fw-bold">{{ $comment->created_at }}</span>
                                 </div>
-                                <div class="mt-2">
-                                    <p class="comment-text">{{ $comment->message }}</p>
+                                <div class="comment-text mt-2">
+                                    <p class=" shadow bg-body-tertiary rounded">{{ $comment->message }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -62,22 +83,6 @@
                         </div>
                     @endif
                 </div>
-
-                <form class="comment_form" method="POST" class="bg-light p-2"
-                    onsubmit="return validateAndSubmitComment(event)">
-                    @csrf
-                    <input type="hidden" name="user_id" value="{{ auth()->id() }}" class="user_id">
-                    <input type="hidden" name="product_id" value="{{ $product->id }}" class="product_id">
-                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
-                            src="{{ asset('images\default-avatar.png') }}" width="40">
-                        <textarea id="comment_input" class="form-control ml-1 shadow-none textarea" name="message"
-                            placeholder="Bình luận của bạn về sản phẩm"></textarea>
-                    </div>
-                    <div class="mt-2 text-center">
-                        <button class="btn btn-primary btn-sm shadow-none comment_submit_btn">Bình
-                            luận</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

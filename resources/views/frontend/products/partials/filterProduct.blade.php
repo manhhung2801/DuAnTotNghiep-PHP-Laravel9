@@ -53,7 +53,8 @@
                         <input type="range" class="form-range border border-secondary-subtle p-1 rounded-pill"
                             id="customRange1" value="{{ floor($products->min('price')) }}"
                             min="{{ empty(floor($products->min('price'))) ? 0 : floor($products->min('price')) }}"
-                            max="{{ floor($products->max('price') * 2) }}">
+                            max="{{ floor($products->max('price') * 2) }}"
+                        >
                     </div>
                 </div>
             </li>

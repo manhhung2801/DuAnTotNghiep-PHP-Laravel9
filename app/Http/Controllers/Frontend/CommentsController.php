@@ -19,7 +19,7 @@ class CommentsController extends Controller
         try {
             $comments = ProductComments::where('product_id', $productId)
                 ->with('user')
-                ->orderBy('created_at', 'asc')
+                ->orderBy('created_at', 'desc')
                 ->get();
 
             return response()->json([

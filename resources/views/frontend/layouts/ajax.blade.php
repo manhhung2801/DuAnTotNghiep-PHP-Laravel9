@@ -190,16 +190,21 @@
 
                         response.data.forEach(function(comment) {
                             commentsHtml += `
-                                <div class="bg-white p-2">
-                                    <div class="d-flex flex-row user-info">
-                                        <img class="rounded-circle" src="{{ asset('images/default-avatar.png') }}" width="40">
-                                        <div class="d-flex flex-column justify-content-${comment?.user?.id === {{auth()->id() ?? 0}} ? `end` : `start`} ml-2">
-                                            <span class="d-block font-weight-bold name">${comment?.user?.id === {{auth()->id() ?? 0}} ? `Bạn` : comment?.user?.name}</span>
-                                            <span class="date text-black-50">${comment.created_at}</span>
+                                <div class="bg-white p-2 mb-2">
+                                    <div class="d-flex flex-row user-info justify-content-between align-items-center">
+                                        <div class="d-flex flex-row user-info">
+                                            <div class="bg-primary text-white fw-bold d-flex justify-content-center align-items-center rounded-circle mx-1" style="width: 40px; height: 40px;">${comment?.user?.id === {{ auth()->id() ?? 0 }} ? 'Bạn' : comment?.user?.name?.substring(0, 1) }</div>
+                                            <div
+                                                class="d-flex flex-column justify-content-center">
+                                                <span
+                                                    class="d-block fw-bold name">${comment?.user?.id === {{ auth()->id() ?? 0 }} ? `Bạn` : comment?.user?.name}</span>
+
+                                            </div>
                                         </div>
+                                        <span class="date text-black-50 fw-bold">${comment.created_at}</span>
                                     </div>
-                                    <div class="mt-2">
-                                        <p class="comment-text">${comment.message}</p>
+                                    <div class="comment-text mt-2">
+                                        <p class=" shadow bg-body-tertiary rounded">${comment.message}</p>
                                     </div>
                                 </div>
                             `;
@@ -219,3 +224,5 @@
 </script>
 
 @stack('ajax')
+
+

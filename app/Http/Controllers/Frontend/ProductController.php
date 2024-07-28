@@ -120,6 +120,7 @@ class ProductController extends Controller
 
                 $comments = ProductComments::where('product_id', $product->id)
                     ->with('user')
+                    ->orderBy('created_at', 'desc')
                     ->get();
 
                 $variants = $product->variant();
