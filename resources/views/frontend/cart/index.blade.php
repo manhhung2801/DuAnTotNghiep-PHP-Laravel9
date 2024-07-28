@@ -8,109 +8,11 @@
                 <p>Vui lòng <a class="text-danger" href="{{ route('login') }}">Đăng nhập</a> trước khi đặt hàng! </p>
             @endif
         </div>
-        {{-- cart responsive hung --}}
-        {{-- <section class="h-100">
-            <div class="container h-100 py-5">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-12">
-                        <div class="card rounded-3 mb-4 shadow-lg bg-body-tertiary border border-1">
-                            <div class="card-body p-4">
-                                <div class="row d-flex justify-content-between align-items-center">
-                                    <div class="col-md-2 col-lg-2 col-xl-2">
-                                        <img
-                                            src="{{ asset('uploads/products/ipad_01.png') }}"
-                                            class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                    </div>
-                                    <div class="col-md-3 col-lg-3 col-xl-3">
-                                        <p class="lead fw-normal mb-2 mt-2">Apple Macbook Air M1 2021 512GB</p>
-                                        <p><span class="text-muted">Còn 21 sản phẩm</span></p>
-                                        <p><span class="text-muted">RAM: </span>280GB | <span class="text-muted">Color: </span><i class="fas fa-circle me-2" style="color: #fdd8d2;"></i> Pink</p>
-                                        <p><span class="text-muted">Đơn giá: </span>11.170.000₫ </p>
-                                    </div>
-                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                        <button class="btn-minus_product btn btn-outline-secondary me-2"><i class="fa-solid fa-minus"></i></button>
-                                        <input id="qtyProduct" type="number" class="qtyProduct form-control text-center w-50"
-                                            maxlength="100" value="11">
-                                        <button class="btn-plus_product btn btn-outline-secondary ms-2"><i class="fa-solid fa-plus"></i></button>
-                                    </div>
-                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                        <h5 class="mb-0 mt-2">11.170.000₫</h5>
-                                    </div>
-                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                        <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card rounded-3 mb-4 shadow-lg bg-body-tertiary border border-1">
-                            <div class="card-body p-4">
-                                <div class="row d-flex justify-content-between align-items-center">
-                                    <div class="col-md-2 col-lg-2 col-xl-2">
-                                        <img
-                                            src="{{ asset('uploads/products/ipad_01.png') }}"
-                                            class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                    </div>
-                                    <div class="col-md-3 col-lg-3 col-xl-3">
-                                        <p class="lead fw-normal mb-2 mt-2">Apple Macbook Air M1 2021 512GB</p>
-                                        <p><span class="text-muted">Còn 21 sản phẩm</span></p>
-                                        <p><span class="text-muted">RAM: </span>280GB | <span class="text-muted">Color: </span><i class="fas fa-circle me-2" style="color: #fdd8d2;"></i> Pink</p>
-                                        <p><span class="text-muted">Đơn giá: </span>11.170.000₫ </p>
-                                    </div>
-                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                        <button class="btn-minus_product btn btn-outline-secondary me-2"><i class="fa-solid fa-minus"></i></button>
-                                        <input id="qtyProduct" type="number" class="qtyProduct form-control text-center w-50"
-                                            maxlength="100" value="11">
-                                        <button class="btn-plus_product btn btn-outline-secondary ms-2"><i class="fa-solid fa-plus"></i></button>
-                                    </div>
-                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                        <h5 class="mb-0 mt-2">11.170.000₫</h5>
-                                    </div>
-                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                        <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card rounded-3 mb-4 shadow-lg bg-body-tertiary border border-1">
-                            <div class="card-body p-4">
-                                <div class="row d-flex justify-content-between align-items-center">
-                                    <div class="col-md-2 col-lg-2 col-xl-2">
-                                        <img
-                                            src="{{ asset('uploads/products/ipad_01.png') }}"
-                                            class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                    </div>
-                                    <div class="col-md-3 col-lg-3 col-xl-3">
-                                        <p class="lead fw-normal mb-2 mt-2">Apple Macbook Air M1 2021 512GB</p>
-                                        <p><span class="text-muted">Còn 21 sản phẩm</span></p>
-                                        <p><span class="text-muted">RAM: </span>280GB | <span class="text-muted">Color: </span><i class="fas fa-circle me-2" style="color: #fdd8d2;"></i> Pink</p>
-                                        <p><span class="text-muted">Đơn giá: </span>11.170.000₫ </p>
-                                    </div>
-                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                        <button class="btn-minus_product btn btn-outline-secondary me-2"><i class="fa-solid fa-minus"></i></button>
-                                        <input id="qtyProduct" type="number" class="qtyProduct form-control text-center w-50"
-                                            maxlength="100" value="11">
-                                        <button class="btn-plus_product btn btn-outline-secondary ms-2"><i class="fa-solid fa-plus"></i></button>
-                                    </div>
-                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                        <h5 class="mb-0 mt-2">11.170.000₫</h5>
-                                    </div>
-                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                        <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
-        {{-- cart responsive hung --}}
         @if (Cart::isEmpty() == false)
-            <div class="table-responsive">
-                <table class="table">
-                    @include('frontend.cart.partials.cartItem')
-                </table>
-            </div>
+            <section class="h-100">
+                @include('frontend.cart.partials.cartItem')
+            </section>
+
             <div class="d-flex justify-content-end">
                 <span class="fs-5 pe-4 fw-normal">Tổng tiền: </span>
                 <strong id="subTotal" class="fs-5 text-danger">{{ number_format($subTotal, 0, '', '.') }}₫</strong>
@@ -121,9 +23,12 @@
                 </div>
                 <div class="col">
                     @if (Auth()->check())
-                        <a href="{{ route('checkout.index') }}" class="btn btn-dark checkout-button py-2 px-5 float-end">Thanh toán</a>
+                        <a href="{{ route('checkout.index') }}"
+                            class="btn btn-dark checkout-button py-2 px-3 float-end">Thanh toán</a>
                     @else
-                        <a href="{{ route('login') }}" class="btn btn-danger checkout-button py-2 float-end px-5">Đăng nhập</a>
+                        <a href="{{ route('login') }}"
+                            class="btn btn-danger checkout-button py-2 float-end px-4 w-auto">Đăng
+                            nhập</a>
                     @endif
                 </div>
             </div>
@@ -160,47 +65,58 @@
                     // url xóa sản phẩm
                     var url = $(this).attr('data-url');
                     // lấy ra element tr chứa nút delete để xóa element mà không cần reload trang
-                    var row = $(this).closest('tr');
-                    $.ajax({
-                        type: 'DELETE',
-                        url: url,
-                        success: function(data) {
-                            // In ra thông báo xóa thành công
-                            if (data.status == true) {
-                                //message thành công 
-                                Toast.fire({
-                                    icon: "success",
-                                    title: data.message
-                                });
+                    var row = $(this).closest('.card');
+                    Swal.fire({
+                        html: `<h5>Bạn muốn xóa sản phẩm này!</h5>`,
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonText: "Xóa ngay",
+                        cancelButtonText: "Hủy"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                type: 'DELETE',
+                                url: url,
+                                success: function(data) {
+                                    // In ra thông báo xóa thành công
+                                    if (data.status == true) {
+                                        //message thành công 
+                                        Toast.fire({
+                                            icon: "success",
+                                            title: data.message
+                                        });
 
-                                //Nếu xóa sản phẩm trong cart thành công thì tiến hành xóa luôn hàng của sản phẩm trong cart
-                                row.remove()
+                                        //Nếu xóa sản phẩm trong cart thành công thì tiến hành xóa luôn hàng của sản phẩm trong cart
+                                        row.remove()
 
-                                // Update lại giá của sản phẩm
-                                $('#subTotal').text(data.subTotal + '₫');
-                                if (data.subTotal == 0) {
-                                    window.location.reload();
+                                        // Update lại giá của sản phẩm
+                                        $('#subTotal').text(data.subTotal +
+                                        '₫');
+                                        if (data.subTotal == 0) {
+                                            window.location.reload();
+                                        }
+                                        // update lại số lượng sản phẩm có trong cart trong header.
+                                        $('.cart-count').text(data.cart_count);
+                                    }
+
+                                    // Nếu xóa sản phẩm thất bại báo lỗi
+                                    if (data.status == false) {
+                                        Toast.fire({
+                                            icon: "error",
+                                            title: data.message
+                                        });
+                                    }
+                                },
+                                // báo lỗi serrve
+                                error: function(error) {
+                                    Toast.fire({
+                                        icon: "error",
+                                        title: error
+                                    });
                                 }
-                                // update lại số lượng sản phẩm có trong cart trong header.
-                                $('.cart-count').text(data.cart_count);
-                            }
-
-                            // Nếu xóa sản phẩm thất bại báo lỗi
-                            if (data.status == false) {
-                                Toast.fire({
-                                    icon: "error",
-                                    title: data.message
-                                });
-                            }
-                        },
-                        // báo lỗi serrve
-                        error: function(error) {
-                            Toast.fire({
-                                icon: "error",
-                                title: error
-                            });
+                            })
                         }
-                    })
+                    });
                 }, 500)
             })
             $('body').off('click', ".btn-minus_product, .btn-plus_product").on('click',
@@ -242,8 +158,7 @@
                         qtyInput.val(qtyProduct);
 
                         //lấy element tr gần nút bấm nhất làm container box 1 sản phẩm 
-                        var containerPrice = $(this).closest('tr');
-
+                        var containerPrice = $(this).closest('.card');
                         // url xóa
                         var url = container.attr('data-url')
                         if (qtyProduct >= 1) {
