@@ -9,16 +9,18 @@
                 <path
                     d="M12.96 14H9.028v-.691l2.579-3.72v-.054H9.098v-.867h3.785v.691l-2.567 3.72v.054h2.645V14zM4.5 2.5a.5.5 0 0 0-1 0v9.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L4.5 12.293V2.5z">
                 </path>
-            </svg> Xếp theo
+            </svg>
+            Xếp theo
         </h3>
-        <ul style="margin-bottom: 0px;padding-left: 0px" class="sort-options p-2">
+        <ul style="margin-bottom: 0px;padding-left: 0px" class="sort-options p-0 d-flex align-items-center">
             <li class="btn-quick-sort alpha-asc list-group-item p-0">
-                <a
-                    href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'az'])) }}" class="text-decoration-none">Tên
+                <a href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'az'])) }}"
+                    class="text-decoration-none">Tên
                     A-Z</a>
             </li>
             <li class="btn-quick-sort alpha-asc list-group-item p-0">
-                <a class="text-decoration-none" href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'za'])) }}">Tên
+                <a class="text-decoration-none"
+                    href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'za'])) }}">Tên
                     Z-A</a>
             </li>
             <li class="btn-quick-sort price-asc list-group-item p-0">
@@ -28,7 +30,32 @@
             </li>
             <li class="btn-quick-sort price-asc list-group-item p-0">
                 <a class="text-decoration-none"
-                    href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'price_high_low'])) }}">Giá cao xuống thấp</a>
+                    href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'price_high_low'])) }}">Giá
+                    cao xuống thấp</a>
+            </li>
+            <li class=" btn-quick-sort price-asc list-group-item ">
+                <div class="col-12 value-display position-relative flex-column">
+                    <div class="">
+                        <span class="">
+                            <a id="submitFindPrice" class="btn py-0 m-1"
+                                href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => floor($products->min('price'))])) }}">Lọc
+                                giá</a>
+                        </span>
+                        <span>Từ <span id="minPrice">0</span><sup>đ</sup> đến </span>
+                        <span class="">
+                            <span
+                                id="value-display">0</span><span><sup>đ</sup></span>
+                            {{-- </span>
+                        <span class="px-4"> --}}
+                        </span>
+                    </div>
+                    <div class="">
+                        <input type="range" class="form-range border border-secondary-subtle p-1 rounded-pill"
+                            id="customRange1" value="{{ floor($products->min('price')) }}"
+                            min="{{ empty(floor($products->min('price'))) ? 0 : floor($products->min('price')) }}"
+                            max="{{ floor($products->max('price') * 2) }}">
+                    </div>
+                </div>
             </li>
         </ul>
     </div>
@@ -50,5 +77,43 @@
                 dropdown.style.display = 'none';
             }
         });
+    });
+</script>
+
+<script>
+    const rangeInput = document.getElementById('customRange1');
+    const valueDisplay = document.getElementById('value-display');
+    const minPrice = document.getElementById('minPrice');
+    const submitFindPrice = document.getElementById('submitFindPrice');
+    const currentURL = new URL(window.location.href);
+
+    function formatNumber(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    minPrice.textContent = formatNumber({{ empty(floor($products->min('price'))) ? 0 : floor($products->min('price')) }});
+    valueDisplay.textContent = formatNumber({{ floor($products->max('price') * 2) }});
+
+    function getPriceWhereUrl() {
+        if (currentURL.searchParams.get('sort')) {
+            const priceFillter = currentURL.searchParams.get('sort').toString();
+            if (priceFillter > 0) {
+                valueDisplay.textContent = formatNumber(priceFillter);
+                rangeInput.value = priceFillter;
+            }
+        }
+    }
+
+    getPriceWhereUrl();
+
+    function updateSubmitLink() {
+        currentURL.searchParams.set('sort', rangeInput.value);
+        submitFindPrice.href = currentURL.toString();
+    }
+
+    rangeInput.addEventListener('input', () => {
+        valueDisplay.textContent = formatNumber(rangeInput.value);
+        console.log("🚀 ~ rangeInput.addEventListener ~ rangeInput.value:", rangeInput.value)
+        updateSubmitLink();
     });
 </script>
