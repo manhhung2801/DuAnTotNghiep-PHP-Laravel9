@@ -70,7 +70,7 @@
 
                                         </div>
                                     </div>
-                                    <span class="date text-black-50 fw-bold">{{ $comment->created_at }}</span>
+                                    <span class="date text-black-50 fw-bold">{{ $comment->created_at->diffForHumans(now()) }}</span>
                                 </div>
                                 <div class="comment-text mt-2">
                                     <p class=" shadow bg-body-tertiary rounded">{{ $comment->message }}</p>

@@ -201,7 +201,7 @@
 
                                             </div>
                                         </div>
-                                        <span class="date text-black-50 fw-bold">${comment.created_at}</span>
+                                        <span class="date text-black-50 fw-bold">${formatTimeDifference(comment.created_at)}</span>
                                     </div>
                                     <div class="comment-text mt-2">
                                         <p class=" shadow bg-body-tertiary rounded">${comment.message}</p>
@@ -221,6 +221,25 @@
             });
         })
     }
+
+    function formatTimeDifference(createdAt) {
+    const now = new Date();
+    const created = new Date(createdAt);
+    const diffInSeconds = Math.floor((now - created) / 1000);
+
+    if (diffInSeconds < 60) {
+        return `${diffInSeconds} giây trước`;
+    } else if (diffInSeconds < 3600) {
+        const minutes = Math.floor(diffInSeconds / 60);
+        return `${minutes} phút trước`;
+    } else if (diffInSeconds < 86400) {
+        const hours = Math.floor(diffInSeconds / 3600);
+        return `${hours} giờ trước`;
+    } else {
+        const days = Math.floor(diffInSeconds / 86400);
+        return `${days} ngày trước`;
+    }
+}
 </script>
 
 @stack('ajax')
