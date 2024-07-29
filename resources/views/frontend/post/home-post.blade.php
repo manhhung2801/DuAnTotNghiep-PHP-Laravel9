@@ -51,11 +51,12 @@
         <!-- slide end  -->
 
         <!-- categories post -->
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-3">
+        {{-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-3"> --}}
+        <div class="col-12 d-flex flex-wrap justify-content-center gx-2 mt-3">
             @foreach($newsCate as $cate)
-            <div class="col" style="padding: 10px; text-align: center;">
-                <a style="text-decoration: none; color: black;" href="{{route('news.newsSiteType',['slugs' =>$cate->slug ])}}">
-                    <div class="border border-primary rounded-3 p-2">
+            <div class="col-{{ 12 / $newsCate->count() }} text-center ">
+                <a style="color: #515154; text-decoration: none;" href="{{route('news.newsSiteType',['slugs' =>$cate->slug ])}}">
+                    <div class="p-2 ">
                         {{$cate->name}}
                     </div>
                 </a>
@@ -107,7 +108,7 @@
             <div class=" show-all text-center mt-5 show">
                 <a class="px-5 py-2 btn btn-outline-dark " href="{{route('news.newsSiteType',['slugs' =>$cate->slug ])}}">Xem tất cả <i class="fa-regular fa-chevron-right"></i></a>
             </div>
-        
+
         </div>
         @endif
         @endforeach
