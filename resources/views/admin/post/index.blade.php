@@ -82,7 +82,7 @@
                             <td><p class="p">{{$post->seo_title}}</p></td>
                             <td><p class="p">{{$post->seo_description}}</p></td>
                             <td>
-                                {{($post->type==1)?"Bài Viết":"Banner"}}
+                                {{($post->type==0)?"Bài Viết":"Banner"}}
                             </td>
                             <td>
                                 <div class="form-check form-switch form-check-success">

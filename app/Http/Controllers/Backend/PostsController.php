@@ -7,6 +7,7 @@ use App\Models\Post_categories;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Post_image_galleries;
+use Exception;
 use Illuminate\Validation\ValidationException;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Str;
@@ -44,13 +45,34 @@ class PostsController extends Controller
         return redirect()->route('admin.post.index')->with('success', 'Đã khôi phục bài viết thành công');
     }
 
-    public function deleteVariant($id)
+    public function delete($id)
     {
         $post = Post::withTrashed()->findOrFail($id);
         if (!empty($post)) {
+            if (File::exists(public_path("uploads/post/{$post->image}"))) {
+                File::delete(public_path("uploads/post/{$post->image}"));
+            }
             $post->forceDelete();
         }
-        return redirect()->route('admin.post.index')->with('success', 'Đã xóa bài viết thành công');
+        // return response(['status' => 'success', 'Xóa vĩnh viễn thành công!']);
+
+        return redirect()->route('admin.post.trashed-post')->with('success', 'Đã xóa bài viết thành công');
+
+
+        // try{
+        //     $post = Post::withTrashed()->findOrFail($id);
+
+        //     if (File::exists(public_path("uploads/post/{$post->image}"))) {
+        //         File::delete(public_path("uploads/post/{$post->image}"));
+        //     }
+
+
+        //     Post::destroyTrashedItem($id);
+        //     return response(['status' => 'success', 'Xóa vĩnh viễn thành công!']);
+        // }
+        // catch(Exception $e) {
+        //     return response(['status' => 'error', 'Xoá thất bại! '.$e.'' ]);
+        // }
     }
 
 
@@ -72,28 +94,29 @@ class PostsController extends Controller
     {
     }
 
-   
+
     public function create()
     {
-        $user = User::where('role','admin')->get();
+        $user = User::where('role', 'admin')->get();
         $post_categories = Post_categories::all();
         return view('admin.post.create', compact('post_categories', 'user'));
     }
-  
+
     public function store(Request $request)
     {
         $request->validate(
             [
                 'category_id' => ['required'],
                 'user_id' => ['required'],
-                'title' => ['required','max:255'],
+                'title' => ['required', 'max:255'],
                 'description' => ['required'],
                 'content' => ['required'],
-                'image' => ['required','image','mimes:jpeg,jpg,png,gif,webp','max:10240'],
+                'image' => ['required', 'image', 'mimes:jpeg,jpg,png,gif,webp', 'max:10240'],
                 'seo_description' => ['required'],
                 'seo_title' => ['required'],
                 'type' => ['required'],
-            ],[
+            ],
+            [
                 'category_id.required' => "Danh mục bài đăng không được để trống. ",
                 'user_id.required' => "Tên người đăng bài không được để trống. ",
                 'title.required' => "Tiêu đề không được để trống. ",
@@ -123,31 +146,31 @@ class PostsController extends Controller
         $post->type = $request->type;
         $post->status = $request->status;
         $post->save();
-     
-        if ($request->hasFile('image_gallery')) {
-                foreach ($request->file('image_gallery') as $gallery) {
-                    $file_name = 'media_post_gallery_' . uniqid() . '.' . $gallery->extension(); //uniqid() giúp tạo ra một ID duy nhất
-                    $gallery->move(public_path('/uploads/post_gallery'), $file_name);
 
-                    //Update vào table gallery
-                    $image_gallery = new Post_image_galleries();
-                    $image_gallery->image = $file_name;
-                    $image_gallery->post_id = $post->id; //product_id lấy từ Product vừa thêm ở trên
-                    $image_gallery->save();
-                }
+        if ($request->hasFile('image_gallery')) {
+            foreach ($request->file('image_gallery') as $gallery) {
+                $file_name = 'media_post_gallery_' . uniqid() . '.' . $gallery->extension(); //uniqid() giúp tạo ra một ID duy nhất
+                $gallery->move(public_path('/uploads/post_gallery'), $file_name);
+
+                //Update vào table gallery
+                $image_gallery = new Post_image_galleries();
+                $image_gallery->image = $file_name;
+                $image_gallery->post_id = $post->id; //product_id lấy từ Product vừa thêm ở trên
+                $image_gallery->save();
             }
-            toastr()->success("Thêm " . $request->name . " Thành công");
-            return redirect()->back(); 
+        }
+        toastr()->success("Thêm " . $request->name . " Thành công");
+        return redirect()->back();
     }
 
-   
+
     public function edit($id)
-    {   
+    {
         $gallery = Post_image_galleries::where('post_id', $id)->get('image');
         $post = Post::findOrFail($id);
-        $user = User::where('role','admin')->get();
+        $user = User::where('role', 'admin')->get();
         $post_categories = Post_categories::all();
-        return view('admin.post.edit', compact('post', 'user', 'post_categories','gallery'));
+        return view('admin.post.edit', compact('post', 'user', 'post_categories', 'gallery'));
     }
     /**
      * Update the specified resource in storage.
@@ -163,14 +186,15 @@ class PostsController extends Controller
             [
                 'category_id' => ['required'],
                 'user_id' => ['required'],
-                'title' => ['required','max:255'],
+                'title' => ['required', 'max:255'],
                 'description' => ['required'],
                 'content' => ['required'],
-                'image' => ['image','mimes:jpeg,jpg,png,gif,webp','max:10240'],
+                'image' => ['image', 'mimes:jpeg,jpg,png,gif,webp', 'max:10240'],
                 'seo_description' => ['required'],
                 'seo_title' => ['required'],
                 'type' => ['required'],
-            ],[
+            ],
+            [
                 'category_id.required' => "Danh mục bài đăng không được để trống. ",
                 'user_id.required' => "Tên người đăng bài không được để trống. ",
                 'title.required' => "Tiêu đề không được để trống. ",
@@ -210,28 +234,28 @@ class PostsController extends Controller
             $post->image = $request->image_old;
         }
         $post->save();
-        
+
         if ($request->hasFile('image_gallery')) {
-                // Xóa file ảnh cũ trong uploads
-                if (!empty($request->image_gallery_old)) {
-                    foreach (json_decode($request->image_gallery_old) as $gal) {
-                        if (File::exists(public_path('uploads/post_gallery/' . $gal->image))) {
-                            File::delete(public_path('uploads/post_gallery/' . $gal->image));
-                        }
+            // Xóa file ảnh cũ trong uploads
+            if (!empty($request->image_gallery_old)) {
+                foreach (json_decode($request->image_gallery_old) as $gal) {
+                    if (File::exists(public_path('uploads/post_gallery/' . $gal->image))) {
+                        File::delete(public_path('uploads/post_gallery/' . $gal->image));
                     }
                 }
-                // Lấy gallery của product theo ID và xóa tất cả
-                // $galleryDel = Post_image_galleries::where('product_id', $id)->delete();
-                foreach ($request->image_gallery as $gal) {
-                    $gallery = new Post_image_galleries();
-                    $ext = $gal->extension();
-                    $fileName = 'media_post_gallery_' . uniqid() . '.' . $ext;
-                    $gal->move(public_path('uploads/post_gallery/'), $fileName);
-                    $gallery->image = $fileName;
-                    // $gallery->product_id = $id;
-                    $gallery->save();
-                }
             }
+            // Lấy gallery của product theo ID và xóa tất cả
+            // $galleryDel = Post_image_galleries::where('product_id', $id)->delete();
+            foreach ($request->image_gallery as $gal) {
+                $gallery = new Post_image_galleries();
+                $ext = $gal->extension();
+                $fileName = 'media_post_gallery_' . uniqid() . '.' . $ext;
+                $gal->move(public_path('uploads/post_gallery/'), $fileName);
+                $gallery->image = $fileName;
+                // $gallery->product_id = $id;
+                $gallery->save();
+            }
+        }
 
         toastr('Cập nhật thành công!', 'success');
 
@@ -247,6 +271,7 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
+
         $post->delete();
 
         return response(['status' => 'success', 'message' => 'Đã xoá thành công!']);
@@ -260,5 +285,23 @@ class PostsController extends Controller
         $post->status = $request->status == 'true' ? 1 : 0;
         $post->save();
         return response(['message' => 'Trạng thái đã được cập nhật']);
+    }
+
+
+    public function trashedPost(Request $request)
+    {
+        $post = Post::onlyTrashed()->latest();
+
+        // Nếu có keyword trong request, thêm điều kiện tìm kiếm
+        if (!empty($request->get('keyword'))) {
+            $keyword = $request->get('keyword');
+            $post = $post->where('name', 'like', '%' . $keyword . '%');
+        }
+
+        // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
+        $post = $post->get();
+
+        // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
+        return view('admin.post.trashlist', compact('post'));
     }
 }
