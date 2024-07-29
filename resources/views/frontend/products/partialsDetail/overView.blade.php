@@ -18,7 +18,14 @@
 </div>
 <hr>
 <div class="price-box ">
-    {{ Helper::CouponsPrice($product->offer_start_date, $product->offer_end_date, $product->price, $product->offer_price) }}
+    @php
+        $prices = Helper::CouponsPrice($product->offer_start_date, $product->offer_end_date, $product->price, $product->offer_price);
+    @endphp
+    <div class="price-box">
+        <span class="compare-price CouponsPrice_old">
+            {{ $prices['price_old'] }} <i class="fa-regular fa-dong-sign"></i></span>
+        <span class="price CouponsPrice_new">{{ $prices['price_new'] }} <i class='fa-solid fa-dong-sign'></i> </span>
+    </div>
 
     <!-- Giá gốca -->
 </div>
@@ -35,8 +42,8 @@
                             <div data-value="{{ $i->name }}" title="{{ $i->name }}"
                                 class="swatch-element color " onclick="changeColor(this)">
                                 <div class="tooltip d-none">{{ $i->name }}</div>
-                                <input id="{{ $i->name }}" data-id="{{ $i->id }}" 
-                                    type="radio" name="selectInputColor" class="d-none" value="{{ $i->name }}">
+                                <input id="{{ $i->name }}" data-id="{{ $i->id }}" type="radio"
+                                    name="selectInputColor" class="d-none" value="{{ $i->name }}">
                                 <label class=" me-2" for="{{ $i->name }}"
                                     style="background-color: {{ $i->name }}"></label>
                             </div>
@@ -56,8 +63,10 @@
                     <div class="swatch d-flex mt-2">
                         @foreach ($variant->variantItem as $i)
                             <div id="ram-options">
-                                <input  id="{{$i->name}}" type="radio" class="d-none button_ram" name="selectInputRam" data-id="{{$i->id}}" value="{{$i->name}}" checked>
-                                <label for="{{$i->name}}" class="me-2 bg__ram">{{$i->name}}</label>
+                                <input id="{{ $i->name }}" type="radio" class="d-none button_ram"
+                                    name="selectInputRam" data-id="{{ $i->id }}" value="{{ $i->name }}"
+                                    checked>
+                                <label for="{{ $i->name }}" class="me-2 bg__ram">{{ $i->name }}</label>
                             </div>
                         @endforeach
                     </div>
@@ -87,7 +96,7 @@
                     </span>
                 </div>
                 {{-- input để nhận giá trị quatity hiện có trong cart --}}
-                <input id="getQtyCart" type="hidden" value="{{$getQtyCart->quantity ?? 0 }}">
+                <input id="getQtyCart" type="hidden" value="{{ $getQtyCart->quantity ?? 0 }}">
                 @if ($product->qty > 0)
                     <div class="btn-mua button_actions col-md-12 col">
                         <button type="button" class="btn-buyNow btn col-12 btn-addToCart">

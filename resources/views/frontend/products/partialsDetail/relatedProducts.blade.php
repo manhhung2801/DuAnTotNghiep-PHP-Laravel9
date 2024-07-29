@@ -7,7 +7,9 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-6">
             <div class="item_product_main">
                 <div class="variants product-action item-product-main duration-300">
-                    {{ Helper::sale($pro->offer_start_date, $pro->offer_end_date, $pro->price, $pro->offer_price) }}
+                    <span class="flash-sale">Giảm
+                        {{ Helper::discount($pro->offer_start_date, $pro->offer_end_date, $pro->price, $pro->offer_price) }}
+                    </span>
                     <div class="product-thumbnail">
                         <a class="image_thumb scale_hover"
                             href="/san-pham/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html"
@@ -22,7 +24,24 @@
                                 title="" class="text-decoration-none ">{{ $pro->name }}</a>
                         </h3>
                         <div class="product-price-cart d-flex">
-                            {{ Helper::CouponsPrice($pro->offer_start_date, $pro->offer_end_date, $pro->price, $pro->offer_price) }}
+                            <div class="price-box">
+                                @php
+                                    $prices = Helper::CouponsPrice(
+                                        $pro->offer_start_date,
+                                        $pro->offer_end_date,
+                                        $pro->price,
+                                        $pro->offer_price,
+                                    );
+                                @endphp
+                                <div class="price-box">
+                                    <span class="compare-price CouponsPrice_old">
+                                        {{ $prices['price_old'] }} <i class="fa-regular fa-dong-sign"></i></span>
+                                    <span class="price CouponsPrice_new">{{ $prices['price_new'] }} <i
+                                            class='fa-solid fa-dong-sign'></i> </span>
+
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="promotion-content">
