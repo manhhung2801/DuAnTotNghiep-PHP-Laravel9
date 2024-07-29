@@ -65,12 +65,6 @@ Route::post('/admin/login', [AdminLoginController::class, 'store'])->name("admin
 
 
 /** User Dashboard */
-<<<<<<< HEAD
-// Route::get('/tintuc',[TintucController::class,'index']);
-// Route::get('/khieunai', [KhieuNaiController::class, 'index']);
-// Route::get('giohang', [GioHangController::class, 'index']);
-=======
->>>>>>> b3a57779f206e505f6fcda681565dfc5db8277c9
 
 // Route::get('san-pham/',[ProductController::class, 'index']);
 // Route::get('san-pham/{slug?}',[ProductController::class, 'getSlug']);
