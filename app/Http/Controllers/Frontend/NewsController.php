@@ -18,6 +18,7 @@ class NewsController extends Controller
         $newsCate = Post_categories::all();
 
         $newsDetail = [];
+        $slideposts = Post::where('status', 1)->orderBy('id','ASC')->take(4)->get();
         foreach ($newsCate as $cate) {
             $posts = Post::where('status', 1)->where('category_id', $cate->id)->take(4)->get();
             $newsDetail[$cate->id] = $posts;
@@ -27,6 +28,7 @@ class NewsController extends Controller
         return view('frontend.post.home-post', [
             'newsCate' => $newsCate,
             'newsDetail' => $newsDetail,
+            'slideposts' => $slideposts,
         ]);
     }
 

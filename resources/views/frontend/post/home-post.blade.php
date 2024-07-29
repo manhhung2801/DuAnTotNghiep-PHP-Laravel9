@@ -22,28 +22,21 @@
     </div>
     <div class="container">
         <!-- slide  -->
-        <div id="carouselExampleCaptions " class="carousel slide">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
+        <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{asset('uploads/post/media_6678459ac8cc9.jpg')}}" class="d-block w-100" alt="...">
+                @foreach($slideposts as $item)
+                <div class="carousel-item active rounded-4">
+                    <img src="{{ asset('uploads/post/' . $item->image) }}" class="d-block w-100 rounded-4" alt="..." style="height: 500px;object-fit: cover">
                 </div>
-                <div class="carousel-item">
-                    <img src="{{asset('uploads/post/media_6678459ac8cc9.jpg')}}" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{asset('uploads/post/media_6678459ac8cc9.jpg')}}" class="d-block w-100" alt="...">
-                </div>
+                @endforeach
+
+
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
@@ -107,7 +100,7 @@
             <div class=" show-all text-center mt-5 show">
                 <a class="px-5 py-2 btn btn-outline-dark " href="{{route('news.newsSiteType',['slugs' =>$cate->slug ])}}">Xem tất cả <i class="fa-regular fa-chevron-right"></i></a>
             </div>
-        
+
         </div>
         @endif
         @endforeach
