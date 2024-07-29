@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Coupons;
 use App\Http\Controllers\VNPAYController;
-use App\Models\Order_detail;
+use App\Models\OrderDetail;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Session;
@@ -13,6 +13,7 @@ use Cart;
 use Exception;
 use Illuminate\Http\Request;
 use App\Services\VNPayService;
+use Helper;
 use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
@@ -61,7 +62,6 @@ class CheckoutController extends Controller
                     $getQtyProduct->save();
                 }
                 // end check số lương
-                $orderCode = Str::random(10);
                 //Tính tổng tiền nếu có coupon
                 $total_price_input = $request->input('total_price_hidden') ?? 0;
                 $total = $total_price_input - $request->input('coupon_value');
@@ -76,16 +76,21 @@ class CheckoutController extends Controller
                     }
                 }
 
+                
+                $order_address = [
+                    'province' => trim($request->provinces),
+                    'district' => trim($request->districts),
+                    'ward'     => trim($request->wards),
+                    'address'  => trim($request->address) ?? ''
+                ];
                 // Thêm order
                 $order = new Order();
-                $order->vnp_order_code  = $orderCode;
+                $order->order_code = Helper::randOrderCode();
+                $order->vnp_order_code  = ($request->payment_method == 1) ? Str::random(10) : '';
                 $order->order_name = trim($request->name);
                 $order->order_phone = trim($request->phone);
                 $order->order_email = trim($request->email);
-                $order->order_province = trim($request->provinces);
-                $order->order_district = trim($request->districts);
-                $order->order_ward = trim($request->wards);
-                $order->order_address = trim($request->address);
+                $order->order_address = json_encode($order_address);
                 $order->ship_money = $request->input('shipping_money') ?? 0;
                 $order->store_address = $request->store_address ?? '';
                 $order->total = $total;
@@ -101,9 +106,9 @@ class CheckoutController extends Controller
                 $order->save();
 
 
-                //Thên order detail
+                //Thêm order detail
                 foreach ($getCart as $key => $proCart) {
-                    $order_detail = new Order_detail();
+                    $order_detail = new OrderDetail();
                     $order_detail->product_name = $proCart->name;
                     $order_detail->variants = $proCart->attributes;
                     $order_detail->price = $proCart->price;

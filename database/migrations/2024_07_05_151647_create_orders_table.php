@@ -15,18 +15,16 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('order_code')->unique();
             $table->string('vnp_order_code');
             $table->string('vnp_transaction_id')->nullable(); // // vnpay
             $table->string('vnp_bank_code')->nullable(); // vnpay
             $table->enum('vnp_refund_status', ['Pending', 'Processing', 'Refunded', 'Refund_Failed'])->nullable();
-            $table->string('ghtk_code')->nullable();
+            $table->string('tracking_id')->nullable(); // GHTK
             $table->string('order_name');
             $table->string('order_phone',20);
             $table->string('order_email');
-            $table->string('order_province');
-            $table->string('order_district');
             $table->string('order_address')->nullable();
-            $table->string('order_ward');
             $table->double('total');
             $table->double('ship_money')->nullable();
             $table->string('store_address')->nullable();

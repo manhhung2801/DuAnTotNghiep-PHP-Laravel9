@@ -9,27 +9,18 @@
                     <a href="{{ route("dashboard") }}" class="active list-group-item list-group-item-action border-0 fw-semibold"><i class="me-2 fa-solid fa-user "></i> Thông tin tài khoản</a>
                 </div>
                 <div class="slidebar_list-tem">
-                    <a href="#" class="inactive list-group-item list-group-item-action border-0 fw-semibold"><i class="me-2 fa-solid fa-location-dot"></i> Địa chỉ nhận hàng</a>
-                </div>
-                <div class="slidebar_list-tem">
-                    <a href="#" class="inactive list-group-item list-group-item-action border-0 fw-semibold"><i class="me-2 fa-sharp fa-solid fa-ballot-check"></i> Đơn đặt hàng</a>
-                </div>
-                <div class="slidebar_list-tem">
-                    <a href="#" class=" inactive list-group-item list-group-item-action border-0 fw-semibold"><i class="me-2 fa-solid fa-gear"></i> Hệ thống</a>
-                </div>
-                <div class="slidebar_list-tem">
-                    <a href="#" class="inactive list-group-item list-group-item-action border-0 fw-semibold"><i class="me-2 fa-solid fa-gift"></i> Điểm thưởng</a>
+                    <a href="{{ route("order.index") }}" class="inactive list-group-item list-group-item-action border-0 fw-semibold"><i class="me-2 fa-sharp fa-solid fa-ballot-check"></i> Đơn đặt hàng</a>
                 </div>
                 <div class="slidebar_list-tem">
                     <a href="{{ route('form.password.update') }}" class="inactive list-group-item list-group-item-action border-0 fw-semibold"><i class="me-2 fa-solid fa-lock"></i> Đổi mật khẩu - Delete Accout</a>
                 </div>
                 <div class="slidebar_list-tem">
-                    <a href="#" class="inactive list-group-item list-group-item-action border-0 fw-semibold"><i class="me-2 fa-solid fa-image"></i> Ảnh đại diện</a>
+                    <a href="{{ route("profile.update.image.show") }}" class="inactive list-group-item list-group-item-action border-0 fw-semibold"><i class="me-2 fa-solid fa-image"></i> Ảnh đại diện</a>
                 </div>
-                <div class="slidebar_list-tem">
+                {{-- <div class="slidebar_list-tem">
                     <a href="#" class="inactive list-group-item list-group-item-action border-0 fw-semibold"><i class="me-2 fa-solid fa-clock-rotate-left"></i> Lịch sử đánh giá sản
                         phẩm</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

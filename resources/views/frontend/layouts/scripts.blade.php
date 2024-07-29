@@ -2,6 +2,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js "></script>
 <script defer src="https://cdn.jsdelivr.net/gh/artru-git/artru-aio@latest/artru-smoothscroll.min.js"></script>
 
+
+
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>
@@ -14,6 +16,13 @@
 <!-- chứa các ajax -->
 @include('frontend.layouts.ajax')
 
+<script>
+    // Loading
+    window.addEventListener("load", () => {
+        const preloader = document.querySelector(".loader-container");
+        preloader.classList.add("unactive")
+    })
+</script>
 
 <script>
     $(document).ready(function() {
@@ -34,7 +43,6 @@
             }
         });
     });
-
 </script>
 
 <script>
@@ -47,8 +55,6 @@
                 const boxTop = box.getBoundingClientRect().top;
                 if (boxTop < triggerBottom) {
                     box.classList.add('show');
-                } else {
-                    box.classList.remove('show');
                 }
             });
         }
@@ -68,6 +74,7 @@
         event.target.classList.add('active');
     }
 </script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var showMoreBtn = document.querySelector('.btn--view-more');
@@ -75,18 +82,21 @@
         var moreText = document.querySelector('.more-text');
         var lessText = document.querySelector('.less-text');
 
-        showMoreBtn.addEventListener('click', function() {
-            if (productReviewContent.style.height === '360px' || productReviewContent.style.height ===
-                '') {
-                productReviewContent.style.height = 'auto';
-                moreText.classList.add('d-none');
-                lessText.classList.remove('d-none');
-            } else {
-                productReviewContent.style.height = '360px';
-                moreText.classList.remove('d-none');
-                lessText.classList.add('d-none');
-            }
-        });
+        // Kiểm tra xem tất cả các yếu tố cần thiết có tồn tại không
+        if (showMoreBtn && productReviewContent && moreText && lessText) {
+            showMoreBtn.addEventListener('click', function() {
+                if (productReviewContent.style.height === '360px' || productReviewContent.style
+                    .height === '') {
+                    productReviewContent.style.height = 'auto';
+                    moreText.classList.add('d-none');
+                    lessText.classList.remove('d-none');
+                } else {
+                    productReviewContent.style.height = '360px';
+                    moreText.classList.remove('d-none');
+                    lessText.classList.add('d-none');
+                }
+            });
+        }
     });
 </script>
 <script>
@@ -129,64 +139,45 @@
         var ramOptions = document.querySelectorAll('input[name="selectInputRam"]');
         var valueRamElement = document.querySelector('.value-ram');
 
-            ramOptions.forEach(function(option) {
-                option.addEventListener("change", function() {
-                    var selectedValue = document.querySelector('input[name="selectInputRam"]:checked').value;
-                    valueRamElement.textContent = selectedValue;
+        ramOptions.forEach(function(option) {
+            option.addEventListener("change", function() {
+                var selectedValue = document.querySelector(
+                    'input[name="selectInputRam"]:checked').value;
+                valueRamElement.textContent = selectedValue;
 
-                    //Xóa lớp 'selected-label' khỏi tất cả các nhãn".
-                    var labels = document.querySelectorAll('.bg__ram');
-                    labels.forEach(function(label) {
-                        label.classList.remove('selected-label');
-                    });
-
-                    //Thêm lớp 'selected-label' vào nhãn của radio button được chọn".
-                    var checkedLabel = document.querySelector('label[for="' + option
-                        .id + '"]');
-                    if (checkedLabel) {
-                        checkedLabel.classList.add('selected-label');
-                    }
+                //Xóa lớp 'selected-label' khỏi tất cả các nhãn".
+                var labels = document.querySelectorAll('.bg__ram');
+                labels.forEach(function(label) {
+                    label.classList.remove('selected-label');
                 });
+
+                //Thêm lớp 'selected-label' vào nhãn của radio button được chọn".
+                var checkedLabel = document.querySelector('label[for="' + option
+                    .id + '"]');
+                if (checkedLabel) {
+                    checkedLabel.classList.add('selected-label');
+                }
             });
             // Hiển thị giá trị ban đầu
             var selectInput = document.querySelector('input[name="selectInputRam"]:checked');
-            if(initialValue) {
+            if (initialValue) {
                 var initialValue = selectInput.value;
                 valueRamElement.textContent = initialValue;
             }
+            // Hiển thị giá trị ban đầu khi trang tải xong
+            var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
+            if (ramValue) {
+                // valueRamElement.textContent = ramValue.value;
 
-
-        // Hiển thị giá trị ban đầu khi trang tải xong
-        var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
-        if (ramValue) {
-            // valueRamElement.textContent = ramValue.value;
-
-            // Đảm bảo nhãn của radio button được chọn có lớp 'selected-label'
-            var checkedLabel = document.querySelector('label[for="' + ramValue.id + '"]');
-            if (checkedLabel) {
-                checkedLabel.classList.add('selected-label');
-            }
-        }
-    });
-</script>
-<script>
-    // ẩn hiện nút + responsize footer
-    document.addEventListener("DOMContentLoaded", function() {
-        var showButtons = document.querySelectorAll(".show-pages");
-        showButtons.forEach(function(button) {
-            button.addEventListener("click", function() {
-                var itemWrapper = button.closest(".footer-item");
-                var itemList = itemWrapper.querySelector("ul.itemCard");
-                if (itemList) {
-                    itemList.classList.toggle("d-none");
-                } else {
-                    itemList.classList.toggle("d-block");
+                // Đảm bảo nhãn của radio button được chọn có lớp 'selected-label'
+                var checkedLabel = document.querySelector('label[for="' + ramValue.id + '"]');
+                if (checkedLabel) {
+                    checkedLabel.classList.add('selected-label');
                 }
-            });
-        });
+            }
+        })
     });
 </script>
-
 {{-- search sản phẩm --}}
 <script>
     $(document).ready(function() {

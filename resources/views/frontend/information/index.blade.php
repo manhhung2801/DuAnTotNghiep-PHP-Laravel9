@@ -1,15 +1,22 @@
 @extends('frontend.layouts.master')
-@section('title', $informationDetail->name)
+@section('title', $informationDetail->seo_title ?? $informationDetail->name)
+@section('description', $informationDetail->seo_description ?? 'CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop, smartwatch, gia dụng, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.' )
+@section('schema')
+    <script type="application/ld+json">
+    
+</script>
+@endsection
 @section('content')
-<style>
-    a{
-        color: black
-    }
-    a:hover{
-        color: red;
-        transition: 0.5s;
-    }
-</style>
+    <style>
+        a {
+            color: black
+        }
+
+        a:hover {
+            color: red;
+            transition: 0.5s;
+        }
+    </style>
     <div class="bread-crumb">
         <section class="bread-crumb">
             <div class="container ">
@@ -26,7 +33,8 @@
             <div class="layout-contact">
                 <div class="container">
                     <div class="row">
-                        <h1 class="fs-3"><a href="" class="text-decoration-none " >{{ $informationDetail->name }}</a></h1>
+                        <h1 class="fs-3"><a href=""
+                                class="text-decoration-none ">{{ $informationDetail->name }}</a></h1>
                         {!! $informationDetail->long_description !!}
                     </div>
                 </div>

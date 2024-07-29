@@ -212,6 +212,7 @@
                             $('#modal_video_link').text(data[0].video_link)
                             $('#modal_seo_title').text(data[0].seo_title)
                             $('#modal_seo_description').text(data[0].seo_description)
+                            $('#modal_promotion').text(data[0].promotion)
                             $('#modal_short_description').html(data[0]
                                 .short_description)
                             $('#modal_long_description').html(data[0].long_description)

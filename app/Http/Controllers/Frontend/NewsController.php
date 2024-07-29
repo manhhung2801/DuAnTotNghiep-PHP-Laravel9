@@ -54,19 +54,19 @@ class NewsController extends Controller
 
 
         $newsCate = Post_categories::all();
-        // $newsCateDetail = Post_categories::where("slug",$slugs_cate);
         $newsdetai = Post::where("slug", $lugs)->first();
-        $list_related_news = Post::take(4)->get();
+        // lấy id bài viết của bài viết liên quan trừ id bào viết ban đầu
+        $list_related_id = Post::where('category_id', $newsdetai->category_id)->where('id', '!=', $newsdetai->id)->pluck('id');
+        // lấy bài viết liên quan theo id đã lấy
+        $list_related_news = Post::whereIn('id', $list_related_id)->take(4)->get();
 
         if ($newsdetai) {
             return view('frontend.post.post', [
                 'newsdetai' => $newsdetai,
                 'newsCate' => $newsCate,
                 'list_related_news' => $list_related_news,
-                // 'newsCateDetail' => $newsCateDetail,
-
             ]);
-        }else {
+        } else {
             return view(404);
         }
     }

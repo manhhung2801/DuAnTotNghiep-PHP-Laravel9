@@ -1,6 +1,6 @@
 <div class="container">
     <div class="scroll_animation section_title text-center mb-3">
-        <h4 class="text-uppercase">Danh mục nổi bật</h3>
+        <h2 class="text-uppercase fs-4">Danh mục nổi bật</h3>
     </div>
     <div class="scroll_animation row">
         @foreach ($categoryHot as $cate )
@@ -10,7 +10,7 @@
                     <a href="/san-pham/{{$cate->slug}}" title="iPhone" class="cate-item list-group-item">
                         <div class="box-cate text-center">
                             <div class="cate-image_home ">
-                                <img alt="iphone" width="80px" height="80px" src="{{ asset('uploads/category/'. $cate->image)}}">
+                                <img alt="{{ $cate->name }}" width="80px" height="80px" src="{{ asset('uploads/category/'. $cate->image)}}">
                             </div>
                             <h6 class="cate-name mt-2">
                                 {{$cate->name}}

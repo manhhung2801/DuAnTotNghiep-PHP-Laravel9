@@ -13,7 +13,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\ContactController;
-use App\Http\Controllers\frontend\GHTKController;
+use App\Http\Controllers\GHTKController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\CommentsController;
 use \App\Http\Controllers\VNPAYController;
@@ -47,7 +47,9 @@ Route::middleware(['auth', 'verified', 'role:user'])->group(function () {
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile-update-image', [ProfileController::class, 'showUpdateImage'])->name('profile.update.image.show');
+    Route::post('/profile-update-image', [ProfileController::class, 'updateImage'])->name('profile.update.image');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
@@ -63,9 +65,12 @@ Route::post('/admin/login', [AdminLoginController::class, 'store'])->name("admin
 
 
 /** User Dashboard */
+<<<<<<< HEAD
 // Route::get('/tintuc',[TintucController::class,'index']);
 // Route::get('/khieunai', [KhieuNaiController::class, 'index']);
 // Route::get('giohang', [GioHangController::class, 'index']);
+=======
+>>>>>>> b3a57779f206e505f6fcda681565dfc5db8277c9
 
 // Route::get('san-pham/',[ProductController::class, 'index']);
 // Route::get('san-pham/{slug?}',[ProductController::class, 'getSlug']);

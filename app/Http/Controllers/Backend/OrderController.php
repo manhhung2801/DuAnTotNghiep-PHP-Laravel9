@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
-use App\Models\Order_detail;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -34,12 +34,18 @@ class OrderController extends Controller
             $message = 'Hoàn tiền không thành công';
         }
 
-        return response(['message' =>  $message]);
+        return response(['message' =>  $message, 'vnp_refund_status' => $order->vnp_refund_status]);
     }
     public function index()
     {
         $getOrders = Order::query(); // Khởi tạo query builder
 
+        //tìm kiếm 
+        if(!empty(Request()->get('keyword'))){
+            $kw = trim(Request()->get('keyword'));
+            $getOrders->where('order_code', 'like', '%'. $kw . '%')
+                      ->orWhere('order_phone', 'like', '%' . $kw . '%');
+        }
         // Sắp xếp theo giá
         if (!empty(Request()->get('sort_price'))) {
             $sort_price = trim(Request()->get('sort_price'));
@@ -116,8 +122,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        // $getOrderDetail = Order_detail::where('order_id', '=', $id)->get();
-        $getOrderDetail = Order_detail::with('product')->where('order_id', '=', $id)->get();
+        $getOrderDetail = OrderDetail::with('product')->where('order_id', '=', $id)->get();
         return response()->json(['getOrderDetail' => $getOrderDetail]);
     }
 

@@ -39,8 +39,7 @@
             </div>
         </form>
     </div>
-
-    <div class="page-title d-block text-center mt-4">
+    {{-- <div class="page-title d-block text-center mt-4">
         <h1 class="fs-4">Xoá tài khoản</h1>
     </div>
 
@@ -68,6 +67,6 @@
                 </div>
             </div>
         </form>
-    </div>
+    </div> --}}
 </div>
 @endsection

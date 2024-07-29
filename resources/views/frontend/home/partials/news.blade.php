@@ -1,7 +1,7 @@
 @if ($getPosts == true)
     <div class="container">
-        <div class="section_title text-center mt-1">
-            <h4 class="text-uppercase">Tin tức công nghệ</h4>
+        <div class="section_title text-center mb-3">
+            <h2 class="text-uppercase fs-4">Tin tức công nghệ</h2>
         </div>
         <div class="row">
             @foreach ($getPosts as $post)
@@ -11,8 +11,8 @@
                             class="list-group-item">
                             <div class="card border-0">
                                 <div class="news_image">
-                                    <img width="400" height="200" src="{{ asset('uploads/post/' . $post->image) }}" class="object-fit-cover"
-                                        alt="{{ $post->image }}">
+                                    <img  src="{{ asset('uploads/post/' . $post->image) }}" class="object-fit-cover"
+                                        alt="{{ $post->title }}">
                                 </div>
                                 <div class="card-body px-3">
                                     <h3 class="news-title line-clamp line-clamp-2 fw-semibold">{{ $post->title }}</h3>

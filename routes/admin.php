@@ -3,37 +3,39 @@
 use App\Http\Controllers\VNPAYController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\backend\AdminOderController;
 use App\Http\Controllers\Backend\PostsController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponsController;
-use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\VariantController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
-use App\Http\Controllers\backend\VariantItemController;
+use App\Http\Controllers\Backend\VariantItemController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\ContactController;
-use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\InformationController;
-use App\Http\Controllers\backend\OrderController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PagesController;
 use App\Http\Controllers\Backend\StoreAddressController;
 use App\Http\Controllers\Backend\UserManagementController;
 use App\Http\Controllers\Backend\PostCategoriesController;
 use App\Http\Controllers\Backend\CommentsController;
+use App\Http\Controllers\GHTKController;
 use App\Models\Information;
 
 
 /** Admin Routes */
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+<<<<<<< HEAD
 
 Route::post('/dashboards', [AdminController::class, 'dashboards'])->name('dashboard.pots');
 
 
 // Route::post('/dashboard', [AdminController::class, 'piechart'])->name('piechart');
 // Route::get('', [HomeController::class, 'index'])->name('index');
+=======
+>>>>>>> b3a57779f206e505f6fcda681565dfc5db8277c9
 
 /** Profile Routes */
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
@@ -163,17 +165,32 @@ Route::resource('/order', OrderController::class);
 
 Route::post('/order-vnp-refund-status-update', [OrderController::class, 'VNPRefundStatusUpdate'])->name('order.vnp-refund-status.update');
 
-// 
+//
 Route::fallback(function () {
     return view("404");
 });
 
-// Liên Hệ 
+// Liên Hệ
 Route::get('contact/trash-list', [ContactController::class, 'showTrash'])->name('coupons.trash-list');
 Route::DELETE('contact/destroy-trash/{id?}', [ContactController::class, 'destroyTrash'])->name('contact.destroy-trash');
 Route::PATCH('contact/restore-trash/{id?}', [ContactController::class, 'restoreTrash'])->name('contact.restore-trash');
+<<<<<<< HEAD
 Route::get('contact', [ContactController::class, "index"])->name('AdminContact');
 Route::get('contact/show/{id}', [ContactController::class, "show"])->name('contact.show');
 Route::put('contact/feedback/answered/{id}', [ContactController::class, "answered"])->name('contact.answered');
 Route::delete('contact/destroy/{id}', [ContactController::class, "destroy"])->name('contact.destroy');
 Route::post('contact/feedback', [ContactController::class, "feedback"])->name('contact.feedback');
+=======
+Route::get('contact',[ContactController::class,"index"])->name('AdminContact');
+Route::get('contact/show/{id}',[ContactController::class,"show"])->name('contact.show');
+Route::put('contact/feedback/answered/{id}',[ContactController::class,"answered"])->name('contact.answered');
+Route::delete('contact/destroy/{id}',[ContactController::class,"destroy"])->name('contact.destroy');
+Route::post('contact/feedback',[ContactController::class,"feedback"])->name('contact.feedback');
+
+//GHTK
+Route::post('/ghtk-post-order/{id?}', [GHTKController::class, 'postOrder'])->name('ghtk.post-order');
+
+//GHTK Cancel Order
+Route::post('/ghtk-cancel-order/{tracking_id}', [GHTKController::class, 'cancelOrder'])->name('ghtk.cancel-order');
+Route::post('/updateShipment/{tracking_id?}', [GHTKController::class, 'updateShipment'])->name('updateShipment');
+>>>>>>> b3a57779f206e505f6fcda681565dfc5db8277c9

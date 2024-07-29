@@ -89,6 +89,10 @@ class ProductController extends Controller
             $productsQuery->orderBy('offer_price', 'asc');
         } elseif ($sortBy === 'price_high_low') {
             $productsQuery->orderBy('offer_price', 'desc');
+        } elseif (isset($sortBy) && is_numeric($sortBy)) {
+            $minPrice = $productsQuery->min('price');
+            $productsQuery->whereBetween('price', [$minPrice, $sortBy]);
+            $productsQuery->orderBy('price', 'desc');
         }
 
         // Paginate the products
@@ -110,17 +114,18 @@ class ProductController extends Controller
                 $getQtyCart = \Cart::get($product->id);
 
                 // Assuming only one product is filtered
-                $product = Product::with('product_image_galleries')->findOrFail($product->id);
-                $product_image_galleries = $product->product_image_galleries;
+                $product = Product::with('ProductImageGalleries')->findOrFail($product->id);
+                $ProductImageGalleries = $product->ProductImageGalleries;
                 $variants = $product->variant()->get();
 
                 $comments = ProductComments::where('product_id', $product->id)
                     ->with('user')
+                    ->orderBy('created_at', 'desc')
                     ->get();
 
                 $variants = $product->variant();
                 // Lấy danh sách các id của các sản phẩm liên quan (cùng danh mục) trừ sản phẩm ban đầu
-                $relatedProductIds = Product::where('category_id', $product->category_id)
+                $relatedProductIds = Product::where('category_id', $product->category_id)->where('sub_category_id', $product->sub_category_id)->where('child_category_id', $product->child_category_id)
                     ->where('id', '!=', $product->id) // Loại trừ sản phẩm ban đầu
                     ->pluck('id');
                 // Lấy các sản phẩm liên quan dựa trên danh sách id đã lấy được
@@ -128,7 +133,7 @@ class ProductController extends Controller
                     ->orderBy('created_at', 'desc')
                     ->limit(4)
                     ->get();
-                return view('frontend.products.detail', compact("product", "variants", "product_image_galleries", "product_image_galleries", "products", "relatedProducts", "comments", "getQtyCart"));
+                return view('frontend.products.detail', compact("product", "variants", "ProductImageGalleries", "products", "relatedProducts", "comments", "getQtyCart"));
             default:
                 $categories = Category::get();
                 // No filters applied

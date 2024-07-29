@@ -330,6 +330,24 @@ class ChildCategorySeeder extends Seeder
                 "name" => "ALIENWARE",
                 "slug" => "alienware",
                 "status" => 1
+            ],[
+                "category_id" => 2,
+                "sub_category_id" => 24,
+                "name" => "Gaming",
+                "slug" => "Gaming",
+                "status" => 1
+            ],[
+                "category_id" => 2,
+                "sub_category_id" => 24,
+                "name" => "Katana",
+                "slug" => "Katana",
+                "status" => 1
+            ],[
+                "category_id" => 2,
+                "sub_category_id" => 24,
+                "name" => "Modern",
+                "slug" => "Modern",
+                "status" => 1
             ],
 
             [
@@ -366,10 +384,94 @@ class ChildCategorySeeder extends Seeder
                 "name" => "Samsung",
                 "slug" => "samsung",
                 "status" => 1
+            ],
+             //categories id = 4, sub_categories Đồng hồ thông minh id = 34
+            [
+                "category_id" => 4,
+                "sub_category_id" => 34,
+                "name" => "SamSung",
+                "slug" => "sam-sung",
+                "status" => 1
+            ],[
+                "category_id" => 4,
+                "sub_category_id" => 34,
+                "name" => "Xiaomi",
+                "slug" => "xiaomi",
+                "status" => 1
+            ],[
+                "category_id" => 4,
+                "sub_category_id" => 34,
+                "name" => "Oppo",
+                "slug" => "oppo",
+                "status" => 1
+            ],
+             //categories id = 5, sub_categories Nồi chiên không dầu id = 38
+             [
+                "category_id" => 5,
+                "sub_category_id" => 38,
+                "name" => "Philips",
+                "slug" => "philips",
+                "status" => 1
+            ],[
+                "category_id" => 5,
+                "sub_category_id" => 38,
+                "name" => "Sharp",
+                "slug" => "sharp",
+                "status" => 1
+            ],[
+                "category_id" => 5,
+                "sub_category_id" => 38,
+                "name" => "Boar",
+                "slug" => "boar",
+                "status" => 1
+            ], [
+                "category_id" => 5,
+                "sub_category_id" => 38,
+                "name" => "Xiaomi",
+                "slug" => "xiaomi",
+                "status" => 1
+            ],[
+                "category_id" => 5,
+                "sub_category_id" => 38,
+                "name" => "Kilite",
+                "slug" => "kalite",
+                "status" => 1
+            ],[
+                "category_id" => 5,
+                "sub_category_id" => 38,
+                "name" => "BlueStone",
+                "slug" => "bluestone",
+                "status" => 1
+            ],
+            //categories id = 6, sub_categories Phụ kiện Apple id = 50
+            [
+                "category_id" => 6,
+                "sub_category_id" => 50,
+                "name" => "Cáp, sạc",
+                "slug" => "cap-sac",
+                "status" => 1
             ],[
                 "category_id" => 6,
-                "sub_category_id" => 52,
-                "name" => "Ôp lưng",
+                "sub_category_id" => 50,
+                "name" => "Ốp lưng, bao da",
+                "slug" => "op-lung",
+                "status" => 1
+            ],[
+                "category_id" => 6,
+                "sub_category_id" => 50,
+                "name" => "Tai nghe",
+                "slug" => "tai-nghe",
+                "status" => 1
+            ],[
+                "category_id" => 6,
+                "sub_category_id" => 50,
+                "name" => "Bàn phím",
+                "slug" => "ban-phim",
+                "status" => 1
+            ],[
+                "category_id" => 6,
+                "sub_category_id" => 50,
+                "name" => "Dây đeo Apple Watch",
                 "slug" => "op-lung",
                 "status" => 1
             ],

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Coupons;
 use App\Models\Order;
-use App\Models\Order_detail;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -52,7 +52,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $getOrderDetail = Order_detail::where('order_id', '=', $id)->get();
+        $getOrderDetail = OrderDetail::where('order_id', '=', $id)->get();
         $orderDetail = Order::getOrder($id);
         $getCoupon = Coupons::where('code', $orderDetail->coupon)->first();
         return view('frontend.dashboard.page.order-detail', compact('getOrderDetail', 'orderDetail', 'getCoupon'));
@@ -81,7 +81,7 @@ class OrderController extends Controller
         $order = Order::getOrder($id);
 
         if ($order == true) {
-            $refundQty = Order_detail::where('order_id', $id)->get();
+            $refundQty = OrderDetail::where('order_id', $id)->get();
             foreach ($refundQty as $re) {
                 $product = Product::findOrFail($re->product_id);
                 if ($product->id == $re->product_id) {

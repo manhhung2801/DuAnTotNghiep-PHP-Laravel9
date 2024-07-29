@@ -11,6 +11,6 @@ class Post_image_galleries extends Model
 
   public function post()
   {
-    return $this->hasOne(Product::class, 'id', 'post_id');
+    return $this->hasOne(Post::class, 'id', 'post_id');
   }
 }
