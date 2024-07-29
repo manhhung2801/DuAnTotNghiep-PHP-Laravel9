@@ -18,14 +18,7 @@
 </div>
 <hr>
 <div class="price-box ">
-    <span class="special-price">
-        <span class="price product-price fs-4 text-danger">{{ number_format($product->offer_price, 0, '', ',') }}
-            đ</span>
-    </span>
-    <!-- Giá Khuyến mại -->
-    <span class="old-price">
-        <del class="price product-price-old mx-1">{{ number_format($product->price, 0, '', ',') }} đ</del>
-    </span>
+    {{ Helper::CouponsPrice($product->offer_start_date, $product->offer_end_date, $product->price, $product->offer_price) }}
 
     <!-- Giá gốca -->
 </div>

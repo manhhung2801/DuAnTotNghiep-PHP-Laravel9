@@ -33,8 +33,12 @@ class ProductController extends Controller
         return $products;
     }
 
-    public function getWhereParam(Request $request, $cat = null, $sub = null, $child = null, $slug = null, $searchTerm = null)
+    public function getWhereParam(Request $request, $cat = null, $sub = null, $child = null, $slug = null, $searchKeyword = null)
     {
+        // Get search keyword from request if it exists
+        $searchKeyword = $request->query('tukhoa');
+        $searchKeyword = trim(strip_tags($searchKeyword));
+
         // Filter parameters
         $filters = compact('cat', 'sub', 'child', 'slug');
         $sortBy = $request->query('sort');
@@ -43,9 +47,11 @@ class ProductController extends Controller
         // Initialize products query
         $productsQuery = Product::query();
 
-        // áp dụng search cho filter
-        if ($searchTerm) {
-            $productsQuery->where('name', 'like', '%' . $searchTerm . '%');
+        // Apply search keyword if provided
+        if (!empty($searchKeyword)) {
+            $productsQuery->where('name', 'like', "%$searchKeyword%")->orderBy("offer_price", "asc")->orderBy("created_at", "desc");
+            $products = $productsQuery->paginate(5);
+            return view('frontend.products.index', compact('products'));
         }
 
         // Apply filters based on provided parameters
@@ -77,22 +83,19 @@ class ProductController extends Controller
             } else return view("404");
         }
 
-        // Sort products by name if specified
+        // Sort products by specified criteria
         if ($sortBy === 'az') {
             $productsQuery->orderBy('name', 'asc');
         } elseif ($sortBy === 'za') {
             $productsQuery->orderBy('name', 'desc');
-        }
-
-        // Sort products by price if specified
-        if ($sortBy === 'price_low_high') {
+        } elseif ($sortBy === 'price_low_high') {
             $productsQuery->orderBy('offer_price', 'asc');
         } elseif ($sortBy === 'price_high_low') {
             $productsQuery->orderBy('offer_price', 'desc');
         }
 
         // Paginate the products
-        $products = $productsQuery->paginate(16);
+        $products = $productsQuery->orderBy('offer_end_date', 'desc' )->paginate(16);
 
         // Calculate percentage change for products
         $products = $this->calculatePercentageChange($products);
@@ -106,7 +109,6 @@ class ProductController extends Controller
             case 3:
                 return view('frontend.products.index', compact("childCategory", "products"));
             case 4:
-                //Lấy quantity để check
                 $getQtyCart = \Cart::get($product->id);
 
                 // Assuming only one product is filtered
@@ -119,11 +121,11 @@ class ProductController extends Controller
                     ->get();
 
                 $variants = $product->variant();
-                // Lấy danh sách các id của các sản phẩm liên quan (cùng danh mục) trừ sản phẩm ban đầu
-                $relatedProductIds = Product::where('category_id', $product->category_id)->where('sub_category_id', $product->sub_category_id)->where('child_category_id', $product->child_category_id)
-                    ->where('id', '!=', $product->id) // Loại trừ sản phẩm ban đầu
+                $relatedProductIds = Product::where('category_id', $product->category_id)
+                    ->where('sub_category_id', $product->sub_category_id)
+                    ->where('child_category_id', $product->child_category_id)
+                    ->where('id', '!=', $product->id)
                     ->pluck('id');
-                // Lấy các sản phẩm liên quan dựa trên danh sách id đã lấy được
                 $relatedProducts = Product::whereIn('id', $relatedProductIds)
                     ->orderBy('created_at', 'desc')
                     ->limit(4)
@@ -131,14 +133,66 @@ class ProductController extends Controller
                 return view('frontend.products.detail', compact("product", "variants", "ProductImageGalleries", "products", "relatedProducts", "comments", "getQtyCart"));
             default:
                 $categories = Category::get();
-                // No filters applied
                 return view('frontend.products.index', compact("categories", "products"));
         }
     }
 
-    public function search(Request $request)
-    {
-        $searchTerm = $request->query('search');
-        return $this->getWhereParam($request, null, null, null, null, $searchTerm);
-    }
+
+    // public function ajaxSearch(Request $request)
+    // {
+    //     $searchKeyword = trim(strip_tags($request->query('search')));
+
+    //     // Giữ nguyên phương thức getWhereParam không thay đổi
+    //     $viewData = $this->getWhereParam($request, null, null, null, null, $searchKeyword);
+
+    //     // Chỉ trả về danh sách sản phẩm cho AJAX
+    //     return response()->json([
+    //         'products' => $viewData['products']->map(function ($product) {
+    //             return [
+    //                 'id' => $product->id,
+    //                 'name' => $product->name,
+    //                 'slug' => $product->slug,
+    //                 'cat' => $product->category->slug ?? '',
+    //                 'sub' => $product->subCategory->slug ?? '',
+    //                 'child' => $product->childCategory->slug ?? '',
+    //                 'image' => $product->image ?? '', // Tên tệp hình ảnh
+    //                 'price' => $product->price ?? 0, // Giá gốc
+    //                 'offer_price' => $product->offer_price ?? 0 // Giá khuyến mãi
+    //             ];
+    //         }),
+    //         'categories' => $viewData['categories'] ?? null // Nếu có thể, hãy thêm dữ liệu cần thiết
+    //     ]);
+    // }
+    public function ajaxSearch(Request $request)
+{
+    $searchKeyword = trim(strip_tags($request->query('search')));
+
+    // Keep the getWhereParam method unchanged
+    $viewData = $this->getWhereParam($request, null, null, null, null, $searchKeyword);
+
+    // Prepare the JSON response
+    return response()->json([
+        'products' => $viewData['products']->map(function ($product) {
+            $data = [
+                'id' => $product->id,
+                'name' => $product->name,
+                'slug' => $product->slug,
+                'cat' => $product->category->slug ?? '',
+                'sub' => $product->subCategory->slug ?? '',
+                'child' => $product->childCategory->slug ?? '',
+                'image' => $product->image ?? '',
+                'price' => $product->price ?? 0,
+            ];
+
+            // Check if offer_price exists and add it to the response
+            if (!is_null($product->offer_price)) {
+                $data['offer_price'] = $product->offer_price;
+            }
+
+            return $data;
+        }),
+        'categories' => $viewData['categories'] ?? null
+    ]);
+}
+
 }

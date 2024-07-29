@@ -475,6 +475,14 @@ class ChildCategorySeeder extends Seeder
                 "slug" => "op-lung",
                 "status" => 1
             ],
+            //categories id = 7, sub_categories Phụ kiện Apple id = 60
+            [
+                "category_id" => 7,
+                "sub_category_id" => 64,
+                "name" => "Gaming",
+                "slug" => "gaming",
+                "status" => 1
+            ],
         ];
 
         foreach($child_cagtegories as $childCategory) {

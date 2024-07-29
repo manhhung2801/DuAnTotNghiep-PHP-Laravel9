@@ -22,7 +22,6 @@
                                                 class="lazyload duration-300 loaded text-center"
                                                 src="{{ $isUrl ? $pro->image : asset('uploads/products/' . $pro->image) }}"
                                                 alt="{{ $pro->image }}">
-
                                         </a>
                                     </div>
                                     <div class="product-info mt-2">
@@ -33,7 +32,6 @@
                                         <div class="product-price-cart">
                                             <div class="price-box">
                                                 {{ Helper::CouponsPrice($pro->offer_start_date, $pro->offer_end_date, $pro->price, $pro->offer_price) }}
-
                                             </div>
                                             {{-- <form class="formCart" method="post">
                                             <input class="productId" type="hidden" value="{{ $pro->id }}">
