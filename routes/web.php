@@ -96,7 +96,7 @@ Route::get('information/{slug1?}/{slug2?}', [InformationController::class, 'show
 
 /** trang search  */
 
-Route::get('/ajax-search', [ProductController::class, 'ajaxSearch'])->name('ajax.search');
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 
 // web.phpq
