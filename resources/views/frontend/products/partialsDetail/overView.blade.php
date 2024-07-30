@@ -18,16 +18,15 @@
 </div>
 <hr>
 <div class="price-box ">
+    <span class="flash-sale" style="display: none;">{{Helper::discount($product->offer_start_date, $product->offer_end_date, $product->price, $product->offer_price)}}</span>
     @php
     $prices = Helper::CouponsPrice($product->offer_start_date, $product->offer_end_date, $product->price, $product->offer_price);
     @endphp
     <div class="price-box">
-        <span class="compare-price CouponsPrice_old">
-            {{ $prices['price_old'] }} <i class="fa-regular fa-dong-sign"></i></span>
-        <span class="price CouponsPrice_new">{{ $prices['price_new'] }} <i class='fa-solid fa-dong-sign'></i> </span>
+        <span class="compare-price CouponsPrice_old">{{ $prices['price_old'] }} <i class="fa-regular fa-dong-sign"></i></span>
+        <span class="price  ">{{ $prices['price_new'] }} <i class='fa-solid fa-dong-sign'></i> </span>
     </div>
 
-    <!-- Giá gốca -->
 </div>
 
 <div class="form-product ">
@@ -110,3 +109,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    var flash_sale = document.querySelector(".flash-sale");
+    var compare_price = document.querySelector(".CouponsPrice_old");
+    console.log(compare_price);
+    if (flash_sale.textContent.trim() == "0") {
+
+        compare_price.style.display = "none";
+
+    } else {
+        flash_sale.style.display = "none";
+        compare_price.style.display = "block";
+
+    }
+</script>
