@@ -36,7 +36,7 @@ class ProductController extends Controller
     public function getWhereParam(Request $request, $cat = null, $sub = null, $child = null, $slug = null, $searchKeyword = null)
     {
         // Get search keyword from request if it exists
-        $searchKeyword = $request->query('tukhoa');
+        $searchKeyword = $request->query('search');
         $searchKeyword = trim(strip_tags($searchKeyword));
 
         // Filter parameters
@@ -50,7 +50,7 @@ class ProductController extends Controller
         // Apply search keyword if provided
         if (!empty($searchKeyword)) {
             $productsQuery->where('name', 'like', "%$searchKeyword%")->orderBy("offer_price", "asc")->orderBy("created_at", "desc");
-            $products = $productsQuery->paginate(5);
+            $products = $productsQuery->paginate(7);
             return view('frontend.products.index', compact('products'));
         }
 
@@ -99,7 +99,7 @@ class ProductController extends Controller
         }
 
         // Paginate the products
-        $products = $productsQuery->orderBy('offer_end_date', 'desc' )->paginate(16);
+        $products = $productsQuery->orderBy('offer_end_date', 'desc')->paginate(16);
 
         // Calculate percentage change for products
         $products = $this->calculatePercentageChange($products);
@@ -143,61 +143,30 @@ class ProductController extends Controller
     }
 
 
-    // public function ajaxSearch(Request $request)
-    // {
-    //     $searchKeyword = trim(strip_tags($request->query('search')));
-
-    //     // Giữ nguyên phương thức getWhereParam không thay đổi
-    //     $viewData = $this->getWhereParam($request, null, null, null, null, $searchKeyword);
-
-    //     // Chỉ trả về danh sách sản phẩm cho AJAX
-    //     return response()->json([
-    //         'products' => $viewData['products']->map(function ($product) {
-    //             return [
-    //                 'id' => $product->id,
-    //                 'name' => $product->name,
-    //                 'slug' => $product->slug,
-    //                 'cat' => $product->category->slug ?? '',
-    //                 'sub' => $product->subCategory->slug ?? '',
-    //                 'child' => $product->childCategory->slug ?? '',
-    //                 'image' => $product->image ?? '', // Tên tệp hình ảnh
-    //                 'price' => $product->price ?? 0, // Giá gốc
-    //                 'offer_price' => $product->offer_price ?? 0 // Giá khuyến mãi
-    //             ];
-    //         }),
-    //         'categories' => $viewData['categories'] ?? null // Nếu có thể, hãy thêm dữ liệu cần thiết
-    //     ]);
-    // }
     public function ajaxSearch(Request $request)
-{
-    $searchKeyword = trim(strip_tags($request->query('search')));
+    {
+        $searchKeyword = trim(strip_tags($request->query('search')));
 
-    // Keep the getWhereParam method unchanged
-    $viewData = $this->getWhereParam($request, null, null, null, null, $searchKeyword);
+        // Giữ nguyên phương thức getWhereParam không thay đổi
+        $viewData = $this->getWhereParam($request, null, null, null, null, $searchKeyword);
 
-    // Prepare the JSON response
-    return response()->json([
-        'products' => $viewData['products']->map(function ($product) {
-            $data = [
-                'id' => $product->id,
-                'name' => $product->name,
-                'slug' => $product->slug,
-                'cat' => $product->category->slug ?? '',
-                'sub' => $product->subCategory->slug ?? '',
-                'child' => $product->childCategory->slug ?? '',
-                'image' => $product->image ?? '',
-                'price' => $product->price ?? 0,
-            ];
-
-            // Check if offer_price exists and add it to the response
-            if (!is_null($product->offer_price)) {
-                $data['offer_price'] = $product->offer_price;
-            }
-
-            return $data;
-        }),
-        'categories' => $viewData['categories'] ?? null
-    ]);
-}
-
+        // Chỉ trả về danh sách sản phẩm cho AJAX
+        return response()->json([
+            'products' => $viewData['products']->map(function ($product) {
+                return [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'slug' => $product->slug,
+                    'cat' => $product->category->slug ?? '',
+                    'sub' => $product->subCategory->slug ?? '',
+                    'child' => $product->childCategory->slug ?? '',
+                    'image' => $product->image ?? '', // Tên tệp hình ảnh
+                    'price' => $product->price ?? 0, // Giá gốc
+                    'offer_price' => $product->offer_price ?? 0 // Giá khuyến mãi
+                ];
+            }),
+            'categories' => $viewData['categories'] ?? null // Nếu có thể, hãy thêm dữ liệu cần thiết
+        ]);
+    }
+   
 }

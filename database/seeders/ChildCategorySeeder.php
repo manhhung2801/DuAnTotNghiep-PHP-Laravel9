@@ -483,6 +483,34 @@ class ChildCategorySeeder extends Seeder
                 "slug" => "gaming",
                 "status" => 1
             ],
+            //categories id = 8, sub_categories samsung id = 70
+            [
+                "category_id" => 8,
+                "sub_category_id" => 70,
+                "name" => "32 INCH",
+                "slug" => "32-inch",
+                "status" => 1
+            ],
+            [
+                "category_id" => 8,
+                "sub_category_id" => 70,
+                "name" => "43 INCH",
+                "slug" => "43-inch",
+                "status" => 1
+            ],[
+                "category_id" => 8,
+                "sub_category_id" => 70,
+                "name" => "50 INCH",
+                "slug" => "50-inch",
+                "status" => 1
+            ],
+            [
+                "category_id" => 8,
+                "sub_category_id" => 70,
+                "name" => "55 INCH",
+                "slug" => "55-inch",
+                "status" => 1
+            ],
         ];
 
         foreach($child_cagtegories as $childCategory) {

@@ -38,6 +38,10 @@ class ProductSeeder extends Seeder
             $nameNoiChien = 'Nồi chiên không dầu' . collect([' ', ' Xiaomi ', ' Kalite ', ' Bear ', ' Gaabor ', ' Philips ', ' SHARP ', ' BlueStone ', ' Cuckoo ', ' Kangaroo ', ' Sunhouse '])->random() . collect([' ', ' Smart Air Fryer Pro ', ' Q6 ', ' QZG-E12H9 ', ' Q10 ', ' GA-M4A01 ', ' HD9257/80 ', ' HD9200/90 ', ' KF-AF70EV-BK ', ' HD9285/90 ', ' Smart Air Fryer  ', ' QZG-F15G1 ', ' KG55AF1A '])->random() . collect([' ', ' 5L ', ' 6L ', ' 7L ', ' 8L ', ' 9L ', ' 10L ', ' 11L ', ' 12L ', ' 13L ', ' 14L ', ' 15L ', ' 16L ', ' 17L ', ' 18L '])->random();
             $nameOplung = 'Ốp lưng Iphone ' . rand(11, 15) . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' Silicone ', ' Wiwu ', ' Leather ', ' Q10 ', ' GA-M4A01 ', ' HD9257/80 ', ' HD9200/90 ', ' KF-AF70EV-BK ', ' HD9285/90 ', ' Smart Air Fryer  ', ' QZG-F15G1 ', ' KG55AF1A '])->random() . collect([' ', ' Hỗ trợ sạc Magsafe ', ' Chính hãng ', ' Quốc tế ', ' Nội địa ', ' Japan ', ' Việt Name ', ' Chine ', ' USA '])->random();
             $nameManHinhMsi = 'Màn hình ' . collect([' ', ' di động MSI ', ' Gaming MSI ', ' MSI ', ' văn phòng MSI '])->random() . collect([' ', ' Pro ', ' Plus ', ' Modern '])->random() . collect([' ', ' MP161 ', ' G225F ', ' G255F ', ' G63S ', ' G100 ', ' G3 ', ' G9 ', ' G20 '])->random() . collect([' ', ' 25 inch ', ' 26 inch ', ' 21 inch ', ' 22 inch ', ' 15 inch '])->random();
+            // tivi category 8
+            $nameTiVi32 = collect([' Xiaomi Smart ', ' Smart ', ' Google ', '  '])->random() . collect([' Tivi ', ' Tivi QNED '])->random() . collect([' Samsung ', ' Samsung QLED'])->random() . collect([' ', ' 4K ', ' 47LMHD456 ', ' 5K '])->random() . ' 32 INCH ' ;
+            //End tivi category 8
+            $nameTiVi = collect([' Xiaomi Smart ', ' Smart ', ' Google ', '  '])->random() . collect([' Tivi ', ' Tivi QNED '])->random() . collect([' ', ' LG ', ' Samsung ', ' TCL ', ' Samsung QLED'])->random() . collect([' ', ' 4K ', ' 47LMHD456 ', ' 5K '])->random() . collect([' ', ' 25 inch ', ' 26 inch ', ' 21 inch ', ' 22 inch ', ' 15 inch '])->random();
             // Thêm tên sản phẩm vào mảng Iphone
             DB::table('products')->insert([
                 [
@@ -2260,6 +2264,77 @@ class ProductSeeder extends Seeder
                     'weight' => 0.5,
                     'sub_category_id' => 64,
                     'child_category_id' => 65,
+                    'created_at' => now(),
+                    "status" => 1
+                ],
+            ]);
+            // Thêm tên sản phẩm tivi category 8
+            DB::table('products')->insert([
+                [
+                    "name" => $nameTiVi32,
+                    "slug" => Str::slug($nameTiVi32 . rand(0, 990), '-'),
+                    "image" =>  'tivi_' . rand(1, 30) . '.webp',
+                    'qty' => 200,
+                    'offer_price' => round(rand(10000000, 29000000) / 10000) * 10000,
+                    'price' => round(rand(9000000, 29000000) / 10000) * 10000,
+                    'offer_start_date' => now(),
+                    'sku' => 'SPTV' . rand(120, 140),
+                    'video_link' => 'https://youtube.com',
+                    'long_description' => '<div id="cpsContent" class="cps-block-content" style="max-height: 100000px;"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Thiết kế tinh giản với màn hình phẳng viền mỏng 3 cạnh nâng cao thẩm mỹ của không gian</li><li>Kích thước 55 inch và dộ phân giải 4K tạo nên không gian rõ nét với màu sắc chân thực</li><li>Tổng công suất loa 20W cùng công nghệ Q-Symphony cho trải nghiệm âm thanh sống động</li><li>Hệ điều hành Tizen trực quan, dễ hiểu, dễ thao tác, tích hợp kho ứng dụng phong phú</li><li>Ứng dụng SmartThings cho phép sử dụng điện thoại để điều khiển tivi từ xa tiện lợi</li></ul></div></div> <div><p style="text-align: justify;"><strong>' . $nameTiVi32 . '</strong> là chiếc tivi thông minh truyền tải hình ảnh chân thực với khung hình rộng lớn. Người dùng sẽ có cảm nhận sâu sắc khi xem nội dung qua màn ảnh <a href="https://cybermart.io.vn/product/tivi/samsung/32-inch.html" title="Tivi 55 inch chính hãng" target="_blank"><strong>tivi 55 inch</strong></a> chất lượng này. Hãy xem đoạn mô tả dưới đây để biết ưu điểm của chiếc TV Samsung UA55AU7002 này.</p> <h2><strong>' . $nameTiVi32 . ' - Hình ảnh đẹp chuẩn 4K</strong></h2> <h3 style="text-align: justify;"><strong>Hiển thị màu sắc choáng ngợp, nội dung chuẩn 4K</strong></h3> <p style="text-align: justify;">Tivi 55AU7002 được tích hợp công nghệ PurColor mang đến dải màu sắc rộng lớn. Bạn có thể đắm chìm trong từng chi tiết của khung hình bởi sự sống động y như thật của hình ảnh.</p> <p style="text-align: justify;">Tivi Samsung mới này có khả năng cung cấp hình ảnh chuẩn 4K, nâng cấp mọi nội dung bạn yêu thích lên tầm cao mới. Công nghệ Color Mapping mang đến màu sắc khác biệt cho bạn chiêm ngưỡng thỏa thích.</p> <p style="text-align: justify;"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fmediamart.vn%2Ftivi%2Fsmart-tivi-samsung-4k-65-inch-65bu8000-crystal-uhd&psig=AOvVaw2GmTe3uKuffADjsXV4AR9_&ust=1722390372309000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCMC-kajSzYcDFQAAAAAdAAAAABAE" alt="Đánh giá màn hình Smart tivi Samsung 4K 55 inch UA55AU7002" loading="lazy"></p> <p style="text-align: justify;">&gt;&gt;&gt; Xem thêm <strong><a href="https://cybermart.io.vn/product/tivi/samsung/32-inch.html" target="_blank">Tivi Samsung 43AU7002</a></strong> mới giá cực tốt tại Cybermart.</p> <h3 style="text-align: justify;"><strong>Khung hình mượt mà, kết nối đa thiết bị</strong></h3> <p style="text-align: justify;">' . $nameTiVi32 . ' được trang bị công nghệ Motion Xcelerator xóa bỏ hiện tượng bóng ma trên màn hình. Công nghệ này giúp hình ảnh rõ nét từng chi tiết, chuyển cảnh không bị ảnh hưởng mờ nhòe.</p> <p style="text-align: justify;">Tivi có thể kết nối từ xa với PC, laptop, thiết bị di động giúp bạn tận hưởng tiện ích của thiết bị. Bạn có thể xem các chương trình yêu thích trên tivi, kết nối dễ dàng với các thiết bị thông minh chỉ cần có kết nối Internet trên tivi UA55AU7002.</p> <p style="text-align: justify;"><img src="https://dienmaycongthanh.vn/Upload/Products/smart-tivi-samsung-4k-50-inch-50au7700kxxv/50AU7700KXXV_2.jpg" alt="Đánh giá khả năng hiển thị" loading="lazy"></p> <h2 style="text-align: justify;"><strong>Mua ' . $nameTiVi32 . ' giá rẻ, chất lượng tại Cybermart</strong></h2> <p style="text-align: justify;"><strong>Smart ' . $nameTiVi32 . ' chính hãng</strong> có giá bán cực tốt tại cửa hàng Cybermart, được bảo hành đầy đủ. Gọi ngay cho chúng tôi nếu bạn muốn trang bị chiếc tivi này cho phòng khách nhà mình.</p></div> </div>         
+                          ',
+                    'short_description' => '
+                                <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng ' . $nameTiVi32 . '<br>
+                                ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
+                                ✔️Bảo hành chính hãng ' . $nameTiVi32 . ' 12 tháng</p>',
+                    'specifications' => '
+                    <table id="tskt" class="table table-striped">
+            <tbody>
+            <tr>
+                <td>Tần số quét</td>
+                <td>100 Hz</td>
+            </tr>
+            <tr>
+                <td>Thời gian phản hồi</td>
+                <td>1ms</td>
+            </tr>
+            <tr>
+                <td>Góc nhìn</td>
+                <td>16.7 triệu</td>
+            </tr>
+            <tr>
+                <td>Độ sáng</td>
+                <td>300 nits</td>
+            </tr>
+            <tr>
+                <td>Độ tương phản động</td>
+                <td>100000000:1</td>
+            </tr>
+            <tr>
+                <td>Độ tương phản tĩnh</td>
+                <td>1000:1</td>
+            </tr>
+            <tr>
+                <td>Độ phân giải màn hình</td>
+                <td>1920×1080 pixels</td>
+            </tr>
+            <tr>
+                <td>Tấm nền</td>
+                <td>IPS</td>
+            </tr>
+            <tr>
+                <td>Số lượng màu</td>
+                <td>16.7 triệu</td>
+            </tr>
+            </tbody></table>
+                               ',
+                    'product_type' => 'new',
+                    'seo_title' => ' ' . $nameTiVi32 . ' - Hình ảnh đẹp chuẩn 4K, giá rẻ tại Cybermart',
+                    'promotion' => $pro,
+                    'seo_description' => '' . $nameTiVi32 . ' là lựa chọn lý tưởng với kích thước 55 inch và độ phân giải 4K, mang đến không gian rõ nét với màu sắc chân thực. Với công nghệ PurColor và Color Mapping, bạn sẽ được trải nghiệm hình ảnh sống động, chi tiết tuyệt vời. Hãy khám phá khả năng kết nối đa thiết bị và khung hình mượt mà của chiếc tivi này. Mua ngay tại Cybermart với giá ưu đãi hôm nay!',
+                    'category_id' => 8,
+                    'weight' => 0.5,
+                    'sub_category_id' => 70,
+                    'child_category_id' => 66,
                     'created_at' => now(),
                     "status" => 1
                 ],
