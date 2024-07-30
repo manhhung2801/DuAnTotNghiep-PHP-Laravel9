@@ -8,7 +8,7 @@
 
                 <li class="nav-item nav_item_cate px-2">
                     <a class="nav-link text-white"
-                        href="{{ route('showPages', ['slug1' => 'gioi-thieu', 'slug2' => 'gioi-thieu']) }}">Giới
+                        href="{{ route('showPages', ['slug1' => 'gioi-thieu', 'slug2' => 'gioi-thieu-ve-CyberMart']) }}">Giới
                         thiệu</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2 dropdown">

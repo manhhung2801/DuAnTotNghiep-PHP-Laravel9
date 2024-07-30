@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="wrapper-home-page">
+    <div class="wrapper-home-page ">
         <div class="slideshow-home-page pb-4">
             @include('frontend.home.partials.slideShow')
         </div>

@@ -19,9 +19,8 @@ return new class extends Migration
             $table->foreign('product_id')->references('id')->on('products');
             $table->string('name');
             $table->string('status');
-            $table->softDeletes();
             $table->timestamps();
-           
+            $table->softDeletes();
         });
     }
 
@@ -32,8 +31,7 @@ return new class extends Migration
      */
     public function down()
     {
-         Schema::table('variant',function(Blueprint $table)
-        {
+        Schema::table('variant', function (Blueprint $table) {
             Schema::dropIfExists('variant');
         });
     }

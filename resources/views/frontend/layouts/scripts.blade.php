@@ -167,7 +167,7 @@
             // Hiển thị giá trị ban đầu khi trang tải xong
             var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
             if (ramValue) {
-                // valueRamElement.textContent = ramValue.value;
+                valueRamElement.textContent = ramValue.value;
 
                 // Đảm bảo nhãn của radio button được chọn có lớp 'selected-label'
                 var checkedLabel = document.querySelector('label[for="' + ramValue.id + '"]');
@@ -181,70 +181,119 @@
 {{-- search sản phẩm --}}
 <script>
     $(document).ready(function() {
-        var timeoutId;
+        var typingTimer; // Timer identifier
+        var doneTypingInterval = 3000; // Time in milliseconds (3 seconds)
 
-        $('#timkiem').keyup(function() {
-            clearTimeout(timeoutId);
-            timeoutId = setTimeout(function() {
-                searchProducts();
-            }, 500); // Chờ 500ms sau khi ngừng gõ để bắt đầu tìm kiếm
+        // On keyup, start the countdown
+        $('#searchInput').on('keyup', function() {
+            clearTimeout(typingTimer); // Clear the previous timer
+
+            var searchKeyword = $(this).val().trim();
+            if (searchKeyword.length === 0) {
+                $('#result').empty().hide();
+                return;
+            }
+
+            // Set a new timer
+            typingTimer = setTimeout(function() {
+                $('#searchForm').submit(); // Trigger form submission after 3 seconds
+            }, doneTypingInterval);
+        });
+        //
+        $('#searchForm').on('submit', function(e) {
+            e.preventDefault(); // Ngăn chặn việc làm mới trang
+            var searchKeyword = $('#searchInput').val().trim();
+
+            if (searchKeyword.length === 0) {
+                $('#result').empty().hide(); // Ẩn kết quả nếu không có từ khóa tìm kiếm
+                return;
+            }
+
+            $.ajax({
+                url: "{{ route('ajax.search') }}", // Đảm bảo URL đúng
+                method: 'GET',
+                data: {
+                    search: searchKeyword
+                },
+                success: function(data) {
+                    var resultList = $('#result');
+                    resultList.empty(); // Xóa kết quả trước đó
+
+                    if (data.products.length > 0) {
+                        $.each(data.products, function(index, product) {
+                            // Tạo đường dẫn cho sản phẩm
+                            var productUrl = '/san-pham/' + product.cat + '/' +
+                                product.sub + '/' + product.child + '/' + product
+                                .slug;
+
+                            // Tạo đường dẫn cho hình ảnh
+                            var imageUrl = '{{ asset('uploads/products') }}/' +
+                                product.image;
+
+                            // Tạo phần tử danh sách cho mỗi sản phẩm với hình ảnh, tên và giá
+                            var listItem =
+                                '<li class="list-group-item d-flex align-items-start" style="cursor:pointer;">' +
+                                '<a href="' + productUrl +
+                                '" class="d-flex w-100 text-decoration-none">' +
+                                '<img src="' + imageUrl + '" alt="' + product.name +
+                                '" style="width: 40px; height: 40px; object-fit: cover; margin-right: 15px; border-radius: 5px;">' +
+                                '<div class="d-flex flex-column  w-100">' +
+                                '<h4 style="font-size: 16px; margin: 0;">' + product
+                                .name + '</h4>' +
+                                '<div style="font-size: 14px;">' +
+                                (product.offer_price > 0 ?
+                                    '<span style="color: red; font-weight: bold;">' +
+                                    parseFloat(product.offer_price).toLocaleString(
+                                        'vi-VN', {
+                                            style: 'currency',
+                                            currency: 'VND'
+                                        }).replace(/\u200B/g, '') +
+                                    '</span> ' +
+                                    '<span style="text-decoration: line-through; color: #888;">' +
+                                    parseFloat(product.price).toLocaleString(
+                                        'vi-VN', {
+                                            style: 'currency',
+                                            currency: 'VND'
+                                        }).replace(/\u200B/g, '') +
+                                    '</span>' :
+                                    '<span>' +
+                                    parseFloat(product.price).toLocaleString(
+                                        'vi-VN', {
+                                            style: 'currency',
+                                            currency: 'VND'
+                                        }).replace(/\u200B/g, '') +
+                                    '</span>') +
+                                '</div>' +
+                                '</div>' +
+                                '</a>' +
+                                '</li>';
+
+                            resultList.append(listItem);
+                        });
+
+                        resultList.show(); // Hiển thị danh sách kết quả
+                    } else {
+                        resultList.empty().hide(); // Ẩn kết quả nếu không có sản phẩm nào
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error: ", status, error);
+                    // Xử lý lỗi nếu có
+                    $('#result').empty().hide(); // Ẩn kết quả nếu có lỗi
+                }
+            });
         });
 
-        function searchProducts() {
-            $('#result').html('');
-            var search = $('#timkiem').val().trim();
-            if (search !== '') {
-                $('#result').css('display', 'inherit');
-                var expression = new RegExp(search, "i");
-                $.getJSON('/json/products.json', function(data) {
-                    // Sắp xếp dữ liệu theo thời gian tạo mới nhất
-                    data.sort(function(a, b) {
-                        return new Date(b.created_at) - new Date(a.created_at);
-                    });
-                    // Mảng để lưu các sản phẩm thỏa mãn điều kiện tìm kiếm
-                    var results = [];
-                    // Lặp qua các sản phẩm và lưu vào mảng results nếu thỏa mãn điều kiện
-                    $.each(data, function(key, value) {
-                        if (value.name.search(expression) != -1) {
-                            results.push(value);
-                        }
-                    });
-                    // Hiển thị tối đa 10 sản phẩm đầu tiên trong mảng results
-                    for (var i = 0; i < Math.min(results.length, 7); i++) {
-                        var product = results[i];
-                        $('#result').append(
-                            '<li style="cursor:pointer;" class="list-group-item link-class d-flex"><img src="{{ asset('uploads/products') }}/' +
-                            product.image +
-                            '" width="30" height="30"/><div class="mx-2"><h4 style="font-size: 12px">' +
-                            product.name +
-                            '</h4> <span class="d-none">|</span><div class="d-flex" style="font-size: 10px; gap:5px"> <p>' +
-                            parseFloat(product.offer_price).toLocaleString(
-                                'vi-VN', {
-                                    style: 'currency',
-                                    currency: 'VND'
-                                }).replace(/\u200B/g, '') +
-                            '</p><p class="text-decoration-line-through text-danger">' +
-                            parseFloat(product.price)
-                            .toLocaleString( //chuyển đổi số thành chuỗi ngôn ngữ vn và định dạng tiền tệ
-                                'vi-VN', {
-                                    style: 'currency',
-                                    currency: 'VND'
-                                }).replace(/\u200B/g, '') +
-                            '</p></div> </div> </li>'
-                        );
-                    }
-
-                });
-            } else {
-                $('#result').css('display', 'none');
+        $('#searchInput').on('keyup', function() {
+            var searchKeyword = $(this).val().trim();
+            if (searchKeyword.length === 0) {
+                $('#result').empty().hide(); // Ẩn kết quả nếu không có từ khóa tìm kiếm
+                return;
             }
-        }
 
-        $('#result').on('click', 'li', function() {
-            var click_text = $(this).text().split('|');
-            $('#timkiem').val($.trim(click_text[0]));
-            $('#result').html('');
-            $('#result').css('display', 'none');
+            $('#searchForm').submit(); // Gửi form khi người dùng nhập từ khóa
         });
     });
 </script>
+
+{{-- js trang home price --}}

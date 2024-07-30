@@ -84,15 +84,8 @@ class ProductController extends Controller
         $getProduct = $getProduct->paginate(15)->appends(request()->query());
         // appends(request()->query())  tự động thêm các tham số truy vấn hiện tại vào các liên kết phân trang
 
-        $list = Product::get();
-        // đường dẫn tới public json_file
-        $productsJson = $list->toJson();
-        $path = public_path("json/");
-        if (!is_dir($path)) {
-            mkdir($path, 0777, true);
-        }
-        File::put($path . 'products.json', $productsJson);
-        return view('admin.product.index', compact('getProduct', 'list', 'category'));
+
+        return view('admin.product.index', compact('getProduct', 'category'));
         // return view('admin.product.index', compact('getProduct'));
     }
 

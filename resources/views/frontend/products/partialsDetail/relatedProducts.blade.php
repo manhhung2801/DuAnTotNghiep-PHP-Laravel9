@@ -28,8 +28,6 @@
                                 <span class=" price "> {{ $prices['price_old'] }} <i class="fa-regular fa-dong-sign "></i></span>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
                 <div class="promotion-content">

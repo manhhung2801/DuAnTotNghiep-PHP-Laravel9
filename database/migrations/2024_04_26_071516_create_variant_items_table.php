@@ -21,8 +21,8 @@ return new class extends Migration
             $table->double('price');
             $table->boolean('is_default')->default(true);
             $table->boolean('status')->default(true);
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
