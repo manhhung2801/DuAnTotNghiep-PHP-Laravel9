@@ -21,7 +21,7 @@
             <div class="container ">
                 <ul class="breadcrumb d-flex ">
                     <li class="home">
-                        <a href="#" title="Trang chủ"><span>Trang chủ</span></a>
+                        <a href="/" title="Trang chủ"><span>Trang chủ</span></a>
                         <span class="mr_lr mx-2"><i class="fas fa-angle-right"></i></span>
                         <span> {{ $newsdetai->Post_categories->name }}</span>
                         <span class="mr_lr"><i class="fas fa-angle-right"></i></span>

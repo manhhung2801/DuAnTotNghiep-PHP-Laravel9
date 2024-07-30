@@ -36,8 +36,8 @@ Route::get("/", [HomeController::class, 'index'])->name("home");
 Route::get('/address', [AddressController::class, 'index'])->name('address');
 /** End Addresss */
 
-Route::get('/lien-he', [ContactController::class,'index'])->name('contact');
-Route::post('/lien-he/gui', [ContactController::class,'contact'])->name('contactContact');
+Route::get('/lien-he', [ContactController::class, 'index'])->name('contact');
+Route::post('/lien-he/gui', [ContactController::class, 'contact'])->name('contactContact');
 
 
 
@@ -96,13 +96,17 @@ Route::get('information/{slug1?}/{slug2?}', [InformationController::class, 'show
 
 /** trang search  */
 
-Route::get("/search", [ProductController::class, 'search'])->name("search");
+Route::get('/search', [ProductController::class, 'search'])->name('search');
+
+
+// web.phpq
+// web.php
 
 Route::fallback(function () {
     return view("404");
 });
 
-Route::get("/search", [ProductController::class,'search'])->name("search");
+
 
 /** Tính phí ship (calculateShipping) */
 Route::get("/calculateShipping", [GHTKController::class, 'calculateShipping'])->name('calculateShipping');
@@ -113,11 +117,10 @@ Route::get('vnpay-return', [VNPAYController::class, 'vnpay_return']);
 
 Route::post('retry-payment', [VNPAYController::class, 'retry_payment'])->name("retry-payment");
 
-Route::get('/thankyou', function() {
+Route::get('/thankyou', function () {
     return view('frontend.thankyou.index');
 })->name('thankyou');
 
 // Comment sản phẩm
 Route::get('/comments/{id}', [CommentsController::class, 'getComments'])->name("commentProductId");
 Route::post('/comment-post', [CommentsController::class, 'commentPost'])->name("commentPost");
-

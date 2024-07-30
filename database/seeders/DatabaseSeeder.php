@@ -34,6 +34,8 @@ class DatabaseSeeder extends Seeder
             InformationSeeder::class,
             PageSeeder::class,
             ProductSeeder::class,
+            VariantSeeder::class,
+            VariantItemTableSeeder::class,
         ]);
     }
 }

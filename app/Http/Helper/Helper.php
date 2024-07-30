@@ -35,7 +35,7 @@ class Helper
         $startCarbon = Carbon::parse($offer_start_date);
         $endCarbon = Carbon::parse($offer_end_date);
         $discount = 0;
-        if ($now->between($startCarbon, $endCarbon) &&(!empty($offer_end_date))) {
+        if ($now->between($startCarbon, $endCarbon) && (!empty($offer_end_date))) {
             $discount = number_format((($price - $offer_price) / $price) * 100, 0);
         } else {
             $discount = 0;
@@ -70,7 +70,7 @@ class Helper
     public static function randOrderCode()
     {
         do {
-            $orderCode = Str::random(10); // Tạo một chuỗi ngẫu nhiên dài 10 ký tự
+            $orderCode = "ĐH-" . Str::random(10); // Tạo một chuỗi ngẫu nhiên dài 10 ký tự
         } while (Order::where('order_code', $orderCode)->exists());
 
         return $orderCode;
