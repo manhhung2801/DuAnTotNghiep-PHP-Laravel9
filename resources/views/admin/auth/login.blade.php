@@ -60,11 +60,12 @@
 											<div class="col-12">
 												<label for="inputChoosePassword" class="form-label">Mật khẩu</label>
 												<div class="input-group" id="show_hide_password">
-													<input type="password" id="password" name="password" class="form-control border-end-0" id="inputChoosePassword" placeholder="Nhập mật khẩu"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+													<input type="password" id="password" name="password" class="form-control border-end-0" id="inputChoosePassword" placeholder="Nhập mật khẩu">
+                                                    <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+												</div>
                                                     @if($errors->has('password'))
                                                         <code>{{ $errors->first('password') }}</code>
                                                     @endif
-												</div>
 											</div>
 
 											<div class="col-md-6">

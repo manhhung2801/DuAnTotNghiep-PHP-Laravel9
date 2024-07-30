@@ -17,7 +17,7 @@
                         <input type="hidden" name="user_type" value="user">
                         <div class="mb-3">
                             <label for="email" class="form-label p-0">Tên đăng nhập:</label>
-                            <input type="email" class="form-control" type="email" name="email" value="{{ old('email') }}" maxlength="25" ng-model="user">
+                            <input type="email" class="form-control" type="email" name="email" value="{{ old('email') }}" maxlength="100" ng-model="user">
                             @if ($errors->any())
                                 <span class="text-danger">
                                     @error('email')
