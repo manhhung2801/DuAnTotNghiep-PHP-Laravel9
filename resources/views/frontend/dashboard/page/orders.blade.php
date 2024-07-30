@@ -125,7 +125,7 @@
                                             @endif
                                         @endif
                                     </td>
-                                    <td class="d-none d-lg-block">
+                                    <td >
                                         @if ($order->shipping_method == 0)
                                             <p class="fw-normal m-0">Nhận tại cửa hàng</p>
                                         @elseif($order->shipping_method == 1)
