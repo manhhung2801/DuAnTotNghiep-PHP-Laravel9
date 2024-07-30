@@ -28,6 +28,12 @@ use App\Models\Information;
 /** Admin Routes */
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
+Route::post('/dashboards', [AdminController::class, 'dashboards'])->name('dashboard.pots');
+
+
+// Route::post('/dashboard', [AdminController::class, 'piechart'])->name('piechart');
+// Route::get('', [HomeController::class, 'index'])->name('index');
+
 /** Profile Routes */
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile/update/', [ProfileController::class, 'updateProfile'])->name('profile.update');
@@ -137,7 +143,7 @@ Route::resource('/post-category', PostCategoriesController::class);
 Route::put('/post/change-status', [PostsController::class, 'changeStatus'])->name('post.change-status');
 Route::get('/post/trashed-post', [PostsController::class, 'trashedPost'])->name('post.trashed-post');
 Route::get('/post/restore/{id}', [PostsController::class, 'restore'])->name('post.restore-post');
-Route::get('/post/deleted/{id}', [PostsController::class, 'deleteVariant'])->name('post.deleted-post');
+Route::get('/post/deleted/{id}', [PostsController::class, 'delete'])->name('post.deleted-post');
 Route::resource('/post', PostsController::class);
 
 /** Comment */
@@ -165,6 +171,7 @@ Route::fallback(function () {
 Route::get('contact/trash-list', [ContactController::class, 'showTrash'])->name('coupons.trash-list');
 Route::DELETE('contact/destroy-trash/{id?}', [ContactController::class, 'destroyTrash'])->name('contact.destroy-trash');
 Route::PATCH('contact/restore-trash/{id?}', [ContactController::class, 'restoreTrash'])->name('contact.restore-trash');
+
 Route::get('contact',[ContactController::class,"index"])->name('AdminContact');
 Route::get('contact/show/{id}',[ContactController::class,"show"])->name('contact.show');
 Route::put('contact/feedback/answered/{id}',[ContactController::class,"answered"])->name('contact.answered');
@@ -177,3 +184,4 @@ Route::post('/ghtk-post-order/{id?}', [GHTKController::class, 'postOrder'])->nam
 //GHTK Cancel Order
 Route::post('/ghtk-cancel-order/{tracking_id}', [GHTKController::class, 'cancelOrder'])->name('ghtk.cancel-order');
 Route::post('/updateShipment/{tracking_id?}', [GHTKController::class, 'updateShipment'])->name('updateShipment');
+

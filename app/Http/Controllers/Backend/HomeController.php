@@ -22,4 +22,5 @@ class HomeController extends Controller
             'coutSlider' => $coutSlider,
         ]);
     }
+
 }

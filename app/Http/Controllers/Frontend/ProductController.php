@@ -89,6 +89,10 @@ class ProductController extends Controller
             $productsQuery->orderBy('offer_price', 'asc');
         } elseif ($sortBy === 'price_high_low') {
             $productsQuery->orderBy('offer_price', 'desc');
+        } elseif (isset($sortBy) && is_numeric($sortBy)) {
+            $minPrice = $productsQuery->min('price');
+            $productsQuery->whereBetween('price', [$minPrice, $sortBy]);
+            $productsQuery->orderBy('price', 'desc');
         }
 
         // Paginate the products
@@ -116,6 +120,7 @@ class ProductController extends Controller
 
                 $comments = ProductComments::where('product_id', $product->id)
                     ->with('user')
+                    ->orderBy('created_at', 'desc')
                     ->get();
 
                 $variants = $product->variant();
