@@ -52,6 +52,7 @@
                                 </div>
                                 </form> --}}
                                         </div>
+                                      </div>
                                     </div>
                                     <div class="promotion-content">
                                         <div class="line-clamp-2-new"
