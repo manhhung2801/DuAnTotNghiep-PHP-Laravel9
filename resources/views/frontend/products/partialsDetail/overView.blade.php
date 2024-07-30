@@ -18,6 +18,7 @@
 </div>
 <hr>
 <div class="price-box ">
+    <span class="flash-sale" style="display: none;">{{Helper::discount($product->offer_start_date, $product->offer_end_date, $product->price, $product->offer_price)}}</span>
     @php
         $prices = Helper::CouponsPrice(
             $product->offer_start_date,
@@ -27,10 +28,12 @@
         );
     @endphp
     <div class="price-box">
-        <span class="compare-price  CouponsPrice_old">{{ $prices['price_new'] }} <i class='fa-solid fa-dong-sign'></i>
-        </span>
-        <span class=" price "> {{ $prices['price_old'] }} <i class="fa-regular fa-dong-sign "></i></span>
+
+        <span class="compare-price CouponsPrice_old">{{ $prices['price_old'] }} <i class="fa-regular fa-dong-sign"></i></span>
+        <span class="price  ">{{ $prices['price_new'] }} <i class='fa-solid fa-dong-sign'></i> </span>
     </div>
+
+
 </div>
 
 <div class="form-product ">

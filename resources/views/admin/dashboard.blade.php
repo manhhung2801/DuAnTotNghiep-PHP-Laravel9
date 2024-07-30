@@ -21,6 +21,36 @@
             </div>
         </div>
         <div class="col">
+            <div class="card radius-10 border-start border-0 border-4 border-info">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="mb-0 text-secondary">Tổng đơn chờ thang toán</p>
+                            <h4 class="my-1 text-info">{{$unpaidOrders}}</h4>
+                            <!-- <p class="mb-0 font-13">+2.5% from last week</p> -->
+                        </div>
+                        <div class="widgets-icons-2 rounded-circle bg-gradient-blues text-white ms-auto"><i class="bx bxs-cart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card radius-10 border-start border-0 border-4 border-info">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="mb-0 text-secondary">Tổng đơn hàng hủy</p>
+                            <h4 class="my-1 text-info">{{$cancelOrders}}</h4>
+                            <!-- <p class="mb-0 font-13">+2.5% from last week</p> -->
+                        </div>
+                        <div class="widgets-icons-2 rounded-circle bg-gradient-blues text-white ms-auto"><i class="bx bxs-cart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
             <div class="card radius-10 border-start border-0 border-4 border-danger">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
@@ -292,19 +322,17 @@
                         <body>
                             <div class="row">
                                 <div class="col-lg-12 areachart_chart">
-
                                     <form method="post">
                                         <div class="col-lg-12">
-                                            <label for="start_date">bất đầu</label>
+                                            <label for="start_date">Bắt đầu</label>
                                             <input type="date" id="start_date" value="2013-01-01">
                                         </div>
-                                        <div class="col-lg-12 mt-2 ">
-                                            <label for="end_date">kết thúc</label>
+                                        <div class="col-lg-12 mt-2">
+                                            <label for="end_date">Kết thúc</label>
                                             <input type="date" id="end_date" value="2015-01-01">
                                         </div>
                                         <div>
                                             <input type="submit" value="Kết quả" id="result_areachart_chart">
-
                                         </div>
                                     </form>
                                 </div>
@@ -328,7 +356,6 @@
     <!--end row-->
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
-
     <script>
         google.charts.load('current', {
             'packages': ['corechart']
@@ -337,7 +364,7 @@
 
         function drawChart(response = []) {
             var dataArr = [
-                ['Date', 'Đơn hàng ', 'tổng tiền']
+                ['Date', 'online', 'tổng tiền']
             ];
             if (response.length > 0) {
                 let aggregatedData = {};
@@ -385,7 +412,7 @@
                 var start_date = $(this).closest('.areachart_chart').find('#start_date').val();
                 var end_date = $(this).closest('.areachart_chart').find('#end_date').val();
 
-                if (end_date <= start_date) {
+                if (!start_date || !end_date || end_date <= start_date) {
                     <?php
                     // toastr()->error('Lỗi: ngày bắt đầu không được lớn hơn ngày kết thúc');
                     ?>
@@ -412,6 +439,83 @@
             });
         });
     </script>
+
+
+    <!-- <script>
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart(response = []) {
+            var dataArr = [
+                ['Date', 'online']
+            ];
+            if (response.length > 0) {
+                let aggregatedData = {};
+                response.forEach(item => {
+                    let date = new Date(item.created_at);
+                    let formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+                    if (aggregatedData[formattedDate]) {
+                        aggregatedData[formattedDate] += item.qty_total;
+                    } else {
+                        aggregatedData[formattedDate] = item.qty_total;
+                    }
+                });
+
+                for (let date in aggregatedData) {
+                    dataArr.push([date, aggregatedData[date]]);
+                }
+            } else {
+                dataArr.push(['01-01-2013', 1000], ['01-01-2014', 1170], ['01-01-2015', 660]);
+            }
+
+            var data = google.visualization.arrayToDataTable(dataArr);
+
+            var options = {
+                title: 'Company Performance',
+                hAxis: {
+                    title: 'Date',
+                    titleTextStyle: {
+                        color: '#333'
+                    }
+                },
+                vAxis: {
+                    minValue: 0
+                }
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('areachart'));
+            chart.draw(data, options);
+        }
+
+        $(document).ready(function() {
+            $('#result_areachart_chart').click(function(e) {
+                e.preventDefault();
+                var start_date = $(this).closest('.areachart_chart').find('#start_date').val();
+                var end_date = $(this).closest('.areachart_chart').find('#end_date').val();
+
+                let url = "{{ route('admin.dashboard.pots') }}";
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    method: "POST",
+                    url: url,
+                    dataType: "json",
+                    data: {
+                        start_date: start_date,
+                        end_date: end_date
+                    },
+                    success: function(response) {
+                        drawChart(response.Order);
+                    }
+                });
+            });
+        });
+    </script> -->
 
 </div>
 @endsection
