@@ -27,7 +27,7 @@
                             }
                         </style>
                         <div class="d-flex mt-1">
-                            <form id="searchForm" class="d-flex">
+                            <form id="searchForm" class="d-flex" action="{{ route('search') }}" method="GET">
                                 <input class="form-control text-secondary text-opacity-50 input-search me-2"
                                     id="searchInput" type="text" placeholder="Tìm Sản Phẩm..." name="search">
                                 <button class="btn" style="margin-left: -50px" type="submit">
@@ -35,10 +35,6 @@
                                 </button>
                             </form>
                         </div>
-
-                        <ul class="list-group" id="result" >
-
-                        </ul>
                     </li>
                     <li class="nav-item ms-5 shadow bg-body bg-secondary bg-opacity-25 rounded-1" style="height: 50px;">
                         <p class="float-start pb-5 px-1">

@@ -35,9 +35,7 @@ class ProductController extends Controller
 
     public function getWhereParam(Request $request, $cat = null, $sub = null, $child = null, $slug = null, $searchKeyword = null)
     {
-        // Get search keyword from request if it exists
-        $searchKeyword = $request->query('search');
-        $searchKeyword = trim(strip_tags($searchKeyword));
+        $searchKeyword = trim(strip_tags($request->query('search')));
 
         // Filter parameters
         $filters = compact('cat', 'sub', 'child', 'slug');
@@ -47,10 +45,10 @@ class ProductController extends Controller
         // Initialize products query
         $productsQuery = Product::query();
 
-        // Apply search keyword if provided
+
         if (!empty($searchKeyword)) {
-            $productsQuery->where('name', 'like', "%$searchKeyword%")->orderBy("offer_price", "asc")->orderBy("created_at", "desc");
-            $products = $productsQuery->paginate(7);
+            $productsQuery->where('name', 'like', "%$searchKeyword%");
+            $products = $productsQuery->paginate(20);
             return view('frontend.products.index', compact('products'));
         }
 
@@ -143,30 +141,9 @@ class ProductController extends Controller
     }
 
 
-    public function ajaxSearch(Request $request)
+    public function search(Request $request)
     {
         $searchKeyword = trim(strip_tags($request->query('search')));
-
-        // Giữ nguyên phương thức getWhereParam không thay đổi
-        $viewData = $this->getWhereParam($request, null, null, null, null, $searchKeyword);
-
-        // Chỉ trả về danh sách sản phẩm cho AJAX
-        return response()->json([
-            'products' => $viewData['products']->map(function ($product) {
-                return [
-                    'id' => $product->id,
-                    'name' => $product->name,
-                    'slug' => $product->slug,
-                    'cat' => $product->category->slug ?? '',
-                    'sub' => $product->subCategory->slug ?? '',
-                    'child' => $product->childCategory->slug ?? '',
-                    'image' => $product->image ?? '', // Tên tệp hình ảnh
-                    'price' => $product->price ?? 0, // Giá gốc
-                    'offer_price' => $product->offer_price ?? 0 // Giá khuyến mãi
-                ];
-            }),
-            'categories' => $viewData['categories'] ?? null // Nếu có thể, hãy thêm dữ liệu cần thiết
-        ]);
+        return $this->getWhereParam($request, null, null, null, null, $searchKeyword);
     }
-   
 }
