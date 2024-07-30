@@ -10,7 +10,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-6 ">
                             <div class="item_product_main ">
                                 <div class="variants product-action item-product-main duration-300">
-                                    <span class="flash-sale" style="display: none">Giảm
+                                    <span class="flash-sale">Giảm
                                         {{ Helper::discount($pro->offer_start_date, $pro->offer_end_date, $pro->price, $pro->offer_price) }}%
                                     </span>
                                     <div class="product-thumbnail ">
@@ -46,20 +46,18 @@
                                                     <span
                                                         class="compare-price  CouponsPrice_old">{{ $prices['price_new'] }}
                                                         <i class='fa-solid fa-dong-sign'></i> </span>
-                                                    <span class=" price CouponsPrice_new1"> {{ $prices['price_old'] }}
-                                                        <i class="fa-regular fa-dong-sign "></i></span>
-                                                    <span class="price CouponsPrice_new2 ">{{ $prices['price_new'] }}
-                                                        <i class='fa-solid fa-dong-sign'></i> </span>
-
+                                                    <span class=" price "> {{ $prices['price_old'] }} <i
+                                                            class="fa-regular fa-dong-sign "></i></span>
                                                 </div>
-                                            </div>{{-- <form class="formCart" method="post">
-                                    <input class="productId" type="hidden" value="{{ $pro->id }}">
-                        <div class="product-button ">
-                            <button class="btn-addToCart btn-cart btn-views rounded border-0 px-2" title="Mua ngay" type="button">
-                                <i class="fa-sharp fa-regular fa-cart-shopping"></i>
-                            </button>
-                        </div>
-                        </form> --}}
+                                            </div>
+                                            {{-- <form class="formCart" method="post">
+                                            <input class="productId" type="hidden" value="{{ $pro->id }}">
+                                <div class="product-button ">
+                                    <button class="btn-addToCart btn-cart btn-views rounded border-0 px-2" title="Mua ngay" type="button">
+                                        <i class="fa-sharp fa-regular fa-cart-shopping"></i>
+                                    </button>
+                                </div>
+                                </form> --}}
                                         </div>
                                     </div>
                                     <div class="promotion-content">
@@ -85,22 +83,16 @@
 <script>
     var flash_sale = document.querySelectorAll(".flash-sale");
     var compare_price = document.querySelectorAll(".CouponsPrice_old");
-    var compare_price_old1 = document.querySelectorAll(".CouponsPrice_new1");
-    var compare_price_old2 = document.querySelectorAll(".CouponsPrice_new2");
     for (var i = 0; i < flash_sale.length; i++) {
         if (flash_sale[i].textContent.trim() == "Giảm 0%") {
             flash_sale[i].style.display = "none";
             if (compare_price[i]) {
                 compare_price[i].style.display = "none";
-                compare_price_old1[i].style.display = "none";
-
             }
-
         } else {
             flash_sale[i].style.display = "block";
             if (compare_price[i]) {
                 compare_price[i].style.display = "block";
-                compare_price_old2[i].style.display = "none";
             }
         }
     }
