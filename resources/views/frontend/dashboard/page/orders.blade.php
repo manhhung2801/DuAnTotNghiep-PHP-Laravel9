@@ -26,8 +26,8 @@
                             <tr class="table-dark">
                                 <th>Mã ĐH</th>
                                 {{-- <th>Thông tin người nhận</th> --}}
-                                <th>Phương thức thanh toán</th>
-                                <th>Vận chuyển</th>
+                                <th class="d-none d-lg-block">Phương thức thanh toán</th>
+                                <th >Vận chuyển</th>
                                 <th>Trạng thái</th>
                                 <th>Tổng tiền</th>
                                 <th>Chi tiết</th>
@@ -56,7 +56,7 @@
                                             </div>
                                         </div>
                                     </td> --}}
-                                    <td>
+                                    <td class="d-none d-lg-block">
                                         @if ($order->payment_method == 0)
                                             <p class="fw-normal mb-1">Thanh toán khi nhận hàng</p>
                                         @elseif ($order->payment_method == 1)
@@ -125,7 +125,7 @@
                                             @endif
                                         @endif
                                     </td>
-                                    <td>
+                                    <td class="d-none d-lg-block">
                                         @if ($order->shipping_method == 0)
                                             <p class="fw-normal m-0">Nhận tại cửa hàng</p>
                                         @elseif($order->shipping_method == 1)
