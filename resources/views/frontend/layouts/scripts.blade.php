@@ -16,13 +16,13 @@
 <!-- chứa các ajax -->
 @include('frontend.layouts.ajax')
 
-<script>
+{{-- <script>
     // Loading
     window.addEventListener("load", () => {
         const preloader = document.querySelector(".loader-container");
         preloader.classList.add("unactive")
     })
-</script>
+</script> --}}
 
 <script>
     $(document).ready(function() {
