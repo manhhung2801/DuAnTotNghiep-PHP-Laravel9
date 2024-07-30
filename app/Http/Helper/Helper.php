@@ -25,9 +25,6 @@ class Helper
         return ['price_new' => $price_new, 'price_old' => $price_old];
     }
 
-
-
-
     public static function discount($offer_start_date, $offer_end_date,  $price,  $offer_price)
     {
         $now = Carbon::now();

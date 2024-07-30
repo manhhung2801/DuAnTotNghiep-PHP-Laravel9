@@ -10,7 +10,7 @@
 
     <div class="wrapper-page">
         <div class="loader-container">
-            <div class="loader">
+            <div class="loader" >
                 <i class="fa-duotone fa-solid fa-loader fa-spin-pulse"></i>
             </div>
         </div>

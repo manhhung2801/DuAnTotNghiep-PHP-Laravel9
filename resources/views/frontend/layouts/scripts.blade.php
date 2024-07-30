@@ -167,7 +167,7 @@
             // Hiển thị giá trị ban đầu khi trang tải xong
             var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
             if (ramValue) {
-                // valueRamElement.textContent = ramValue.value;
+                valueRamElement.textContent = ramValue.value;
 
                 // Đảm bảo nhãn của radio button được chọn có lớp 'selected-label'
                 var checkedLabel = document.querySelector('label[for="' + ramValue.id + '"]');
@@ -179,12 +179,36 @@
     });
 </script>
 {{-- search sản phẩm --}}
-
 <script>
     $(document).ready(function() {
+        var typingTimer; // Timer identifier
+        var doneTypingInterval = 3000; // Time in milliseconds (3 seconds)
+
+        // On keyup, start the countdown
+        $('#searchInput').on('keyup', function() {
+            clearTimeout(typingTimer); // Clear the previous timer
+
+            var searchKeyword = $(this).val().trim();
+            if (searchKeyword.length === 0) {
+                $('#result').empty().hide();
+                return;
+            }
+
+            // Set a new timer
+            typingTimer = setTimeout(function() {
+                $('#searchForm').submit(); // Trigger form submission after 3 seconds
+            }, doneTypingInterval);
+        });
+        //
         $('#searchForm').on('submit', function(e) {
             e.preventDefault(); // Ngăn chặn việc làm mới trang
-            var searchKeyword = $('#searchInput').val();
+            var searchKeyword = $('#searchInput').val().trim();
+
+            if (searchKeyword.length === 0) {
+                $('#result').empty().hide(); // Ẩn kết quả nếu không có từ khóa tìm kiếm
+                return;
+            }
+
             $.ajax({
                 url: "{{ route('ajax.search') }}", // Đảm bảo URL đúng
                 method: 'GET',
@@ -196,7 +220,6 @@
                     resultList.empty(); // Xóa kết quả trước đó
 
                     if (data.products.length > 0) {
-                        resultList.show();
                         $.each(data.products, function(index, product) {
                             // Tạo đường dẫn cho sản phẩm
                             var productUrl = '/san-pham/' + product.cat + '/' +
@@ -247,23 +270,30 @@
 
                             resultList.append(listItem);
                         });
+
+                        resultList.show(); // Hiển thị danh sách kết quả
                     } else {
-                        resultList.hide();
+                        resultList.empty().hide(); // Ẩn kết quả nếu không có sản phẩm nào
                     }
                 },
                 error: function(xhr, status, error) {
                     console.error("AJAX Error: ", status, error);
+                    // Xử lý lỗi nếu có
+                    $('#result').empty().hide(); // Ẩn kết quả nếu có lỗi
                 }
             });
         });
 
         $('#searchInput').on('keyup', function() {
-            var searchKeyword = $(this).val();
-            if (searchKeyword.length > 0) {
-                $('#searchForm').submit();
-            } else {
-                $('#result').hide();
+            var searchKeyword = $(this).val().trim();
+            if (searchKeyword.length === 0) {
+                $('#result').empty().hide(); // Ẩn kết quả nếu không có từ khóa tìm kiếm
+                return;
             }
+
+            $('#searchForm').submit(); // Gửi form khi người dùng nhập từ khóa
         });
     });
 </script>
+
+{{-- js trang home price --}}

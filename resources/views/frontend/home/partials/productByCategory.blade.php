@@ -10,7 +10,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-6 ">
                             <div class="item_product_main ">
                                 <div class="variants product-action item-product-main duration-300">
-                                    <span class="flash-sale">Giảm
+                                    <span class="flash-sale" style="display: none">Giảm
                                         {{ Helper::discount($pro->offer_start_date, $pro->offer_end_date, $pro->price, $pro->offer_price) }}%
                                     </span>
                                     <div class="product-thumbnail ">
@@ -52,7 +52,14 @@
                                                         <i class='fa-solid fa-dong-sign'></i> </span>
 
                                                 </div>
-                                            </div>
+                                            </div>{{-- <form class="formCart" method="post">
+                                    <input class="productId" type="hidden" value="{{ $pro->id }}">
+                        <div class="product-button ">
+                            <button class="btn-addToCart btn-cart btn-views rounded border-0 px-2" title="Mua ngay" type="button">
+                                <i class="fa-sharp fa-regular fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                        </form> --}}
                                         </div>
                                     </div>
                                     <div class="promotion-content">
