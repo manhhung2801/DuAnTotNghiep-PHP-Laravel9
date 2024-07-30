@@ -26,8 +26,8 @@
                             <tr class="table-dark">
                                 <th>Mã ĐH</th>
                                 {{-- <th>Thông tin người nhận</th> --}}
-                                <th>Phương thức thanh toán</th>
-                                <th>Vận chuyển</th>
+                                <th class="d-none d-lg-block">Phương thức thanh toán</th>
+                                <th >Vận chuyển</th>
                                 <th>Trạng thái</th>
                                 <th>Tổng tiền</th>
                                 <th>Chi tiết</th>
@@ -38,9 +38,9 @@
                                 <tr>
                                     <td>
                                         @if ($order->payment_method == 0)
-                                            <p class="fw-bold mb1">ĐH{{ $order->order_code }}</p>
+                                            <p class="fw-bold mb1">{{ $order->order_code }}</p>
                                         @elseif($order->payment_method == 1)
-                                            <p class="fw-bold mb1">ĐH{{ $order->vnp_order_code }}</p>
+                                            <p class="fw-bold mb1">{{ $order->vnp_order_code }}</p>
                                         @endif
                                     </td>
                                     {{-- <td>
@@ -56,7 +56,7 @@
                                             </div>
                                         </div>
                                     </td> --}}
-                                    <td>
+                                    <td class="d-none d-lg-block">
                                         @if ($order->payment_method == 0)
                                             <p class="fw-normal mb-1">Thanh toán khi nhận hàng</p>
                                         @elseif ($order->payment_method == 1)
@@ -125,14 +125,13 @@
                                             @endif
                                         @endif
                                     </td>
-                                    <td>
+                                    <td >
                                         @if ($order->shipping_method == 0)
                                             <p class="fw-normal m-0">Nhận tại cửa hàng</p>
                                         @elseif($order->shipping_method == 1)
                                             <p class="fw-normal mb-1"><img width="50px"
                                                     src="https://cdn.haitrieu.com/wp-content/uploads/2022/05/Logo-GHTK-H.png"
-                                                    alt="ghtk"></p>
-                                            <span>{{ $order->tracking_id }}</span>
+                                                    alt="ghtk"> <span>{{$order->tracking_id ? "-". $order->tracking_id:''}}</span></p>
                                         @endif
                                     </td>
                                     <td>
@@ -161,6 +160,10 @@
                                             @if ($order->order_status == 0)
                                                 <strong>Chờ xác nhận</strong>
                                             @endif
+                                            @if ($order->order_status > 0)
+                                                <strong>Đã tiếp nhận</strong>
+                                            @endif
+                                            
                                             @if ($order->order_status == 0 || $order->order_status == 1 || $order->order_status == 2)
                                                 <div class="action-cancel">
                                                     <input type="hidden" value="{{ $order->id }}" name="order_id">
