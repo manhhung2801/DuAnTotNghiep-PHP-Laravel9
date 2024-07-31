@@ -154,7 +154,7 @@ class GHTKController extends Controller
             if ($checkOrder) {
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
-                    CURLOPT_URL => "https://services-staging.ghtklab.com/services/shipment/cancel/".$tracking_id,
+                    CURLOPT_URL => "https://services-staging.ghtklab.com/services/shipment/cancel/" . $tracking_id,
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_CUSTOMREQUEST => "POST",
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
@@ -177,5 +177,24 @@ class GHTKController extends Controller
         } catch (Exception $e) {
             return response(['status' => false, 'Đã xảy ra lỗi' . $e]);
         }
+    }
+
+    public function statusOrder($tracking_id)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/shipment/v2/" . $tracking_id,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_HTTPHEADER => array(
+                "Token: APITokenSample-ca441e70288cB0515F310742",
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+
+        echo 'Response: ' . $response;
     }
 }

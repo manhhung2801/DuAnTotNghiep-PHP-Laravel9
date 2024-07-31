@@ -104,8 +104,11 @@ Route::fallback(function () {
 
 Route::get("/search", [ProductController::class,'search'])->name("search");
 
-/** Tính phí ship (calculateShipping) */
+/** GHTK*/
+/**  Tính phí ship (calculateShipping)  */
 Route::get("/calculateShipping", [GHTKController::class, 'calculateShipping'])->name('calculateShipping');
+/**Kiểm tra đơn hàng */
+Route::get('/statusOrder/{tracking_id?}', [GHTKController::class, 'statusOrder'])->name('statusOrder');
 
 
 /** VNPAY */
@@ -120,4 +123,5 @@ Route::get('/thankyou', function() {
 // Comment sản phẩm
 Route::get('/comments/{id}', [CommentsController::class, 'getComments'])->name("commentProductId");
 Route::post('/comment-post', [CommentsController::class, 'commentPost'])->name("commentPost");
+
 

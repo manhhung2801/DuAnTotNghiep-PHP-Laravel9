@@ -26,7 +26,7 @@
                             <tr class="table-dark">
                                 <th>Mã ĐH</th>
                                 {{-- <th>Thông tin người nhận</th> --}}
-                                <th class="d-none d-lg-block">Phương thức thanh toán</th>
+                                <th >Phương thức thanh toán</th>
                                 <th >Vận chuyển</th>
                                 <th>Trạng thái</th>
                                 <th>Tổng tiền</th>
@@ -56,7 +56,7 @@
                                             </div>
                                         </div>
                                     </td> --}}
-                                    <td class="d-none d-lg-block">
+                                    <td>
                                         @if ($order->payment_method == 0)
                                             <p class="fw-normal mb-1">Thanh toán khi nhận hàng</p>
                                         @elseif ($order->payment_method == 1)
