@@ -26,10 +26,9 @@
                             <div class="price-box">
                                 <span class="compare-price  CouponsPrice_old">{{ $prices['price_new'] }} <i class='fa-solid fa-dong-sign'></i> </span>
                                 <span class=" price "> {{ $prices['price_old'] }} <i class="fa-regular fa-dong-sign "></i></span>
+                                
                             </div>
                         </div>
-
-
                     </div>
                 </div>
                 <div class="promotion-content">

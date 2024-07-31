@@ -20,7 +20,7 @@ class Helper
             $price_new = number_format($price, 0, '.', '.');
             $price_old = number_format($offer_price, 0, '.', '.');
         } else {
-            $price_new = number_format($price, 0, '.', '.');
+            $price_old = number_format($price, 0, '.', '.');
         }
         return ['price_new' => $price_new, 'price_old' => $price_old];
     }
@@ -35,7 +35,7 @@ class Helper
         $startCarbon = Carbon::parse($offer_start_date);
         $endCarbon = Carbon::parse($offer_end_date);
         $discount = 0;
-        if ($now->between($startCarbon, $endCarbon) &&(!empty($offer_end_date))) {
+        if ($now->between($startCarbon, $endCarbon) && (!empty($offer_end_date))) {
             $discount = number_format((($price - $offer_price) / $price) * 100, 0);
         } else {
             $discount = 0;

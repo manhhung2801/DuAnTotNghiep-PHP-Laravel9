@@ -128,7 +128,7 @@
      line-height: initial;
  }
  
- .item_product_main .product-action .product-info .product-price-cart .price-box .price {
+ .price-box .price {
      color: #bf1e2e;
      font-weight: 800;
      display: block;

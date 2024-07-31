@@ -22,7 +22,13 @@ class ProductSeeder extends Seeder
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
-            $nameIP = 'iPhone ' . rand(11, 15) . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
+            // Điện thoại-Tablet iphone 
+            $nameIP11 = 'iPhone 11 SERIES' . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
+            $nameIP12 = 'iPhone 12 SERIES' . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
+            $nameIP13 = 'iPhone 13 SERIES' . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
+            $nameIP14 = 'iPhone 14 SERIES' . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
+            $nameIP15 = 'iPhone 15 SERIES' . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
+            // End  Điện thoại-Tablet iphone
             $nameOP = 'OPPO ' . collect(['Reno12 ', ' Reno11 ', ' A18 ', ' A79 ', ' Reno10 ', ' A77s ', ' A78 ', ' Reno7 '])->random() . collect([' ', ' F ', ' X5 ', ' Pro ', ' Plus ', ' N3 ', ' T '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
             $nameMac = 'Oppo Macbook ' . collect([' ', ' Air ', ' Pro ', ' Plus '])->random() . collect([' ', ' 14 ', ' 15 ', ' 16 '])->random()  . collect([' ', ' M1 ', ' M2 ', ' M3 '])->random() . collect([' 2019 ', ' 2020 ', ' 2021 ', ' 2022 ', ' 2023 '])->random() . collect([' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
             $nameMSI = 'Laptop  ' . collect([' ', ' Gaming ', ' MSI '])->random() . collect([' ', ' Modern ', ' Pulse ', ' Crosshair ', ' Prestige ', ' Katana ', ' Cyborg ', ' Crosshair ', ' Bravo '])->random() . collect([' ', ' 15 ', ' GF63 ', ' 14 '])->random()  . collect([' ', ' A12VE-412VN ', ' 11UC-1228VN ', ' 13VE-452VN ', ' A15VE-412VN ', ' 10UC-1228VN ', ' 13VE-454VN '])->random();
@@ -31,26 +37,32 @@ class ProductSeeder extends Seeder
             $nameSmartPhone = 'Đồng hồ  ' . collect([' ', ' thông minh ', ' định vị '])->random() . collect([' ', ' Huawei ', ' SamSung ', ' Galaxy ', ' Garmin ', ' Xiaomi ', ' CorosPace ', ' Garmin Forerunner ', ' Watch '])->random() . collect([' ', ' 165 ', ' 40mm ', ' 2 ', ' 965 ', ' 2022 ', ' 3 ', ' Air '])->random() . collect([' ', ' Pro ', ' Bluetooth ', ' 4G ', ' 5G ', ' dây cao su ', ' dây da ', ' 3S ', ' Edge '])->random();
             $nameNoiChien = 'Nồi chiên không dầu' . collect([' ', ' Xiaomi ', ' Kalite ', ' Bear ', ' Gaabor ', ' Philips ', ' SHARP ', ' BlueStone ', ' Cuckoo ', ' Kangaroo ', ' Sunhouse '])->random() . collect([' ', ' Smart Air Fryer Pro ', ' Q6 ', ' QZG-E12H9 ', ' Q10 ', ' GA-M4A01 ', ' HD9257/80 ', ' HD9200/90 ', ' KF-AF70EV-BK ', ' HD9285/90 ', ' Smart Air Fryer  ', ' QZG-F15G1 ', ' KG55AF1A '])->random() . collect([' ', ' 5L ', ' 6L ', ' 7L ', ' 8L ', ' 9L ', ' 10L ', ' 11L ', ' 12L ', ' 13L ', ' 14L ', ' 15L ', ' 16L ', ' 17L ', ' 18L '])->random();
             $nameOplung = 'Ốp lưng Iphone ' . rand(11, 15) . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' Silicone ', ' Wiwu ', ' Leather ', ' Q10 ', ' GA-M4A01 ', ' HD9257/80 ', ' HD9200/90 ', ' KF-AF70EV-BK ', ' HD9285/90 ', ' Smart Air Fryer  ', ' QZG-F15G1 ', ' KG55AF1A '])->random() . collect([' ', ' Hỗ trợ sạc Magsafe ', ' Chính hãng ', ' Quốc tế ', ' Nội địa ', ' Japan ', ' Việt Name ', ' Chine ', ' USA '])->random();
+            $nameManHinhMsi = 'Màn hình ' . collect([' ', ' di động MSI ', ' Gaming MSI ', ' MSI ', ' văn phòng MSI '])->random() . collect([' ', ' Pro ', ' Plus ', ' Modern '])->random() . collect([' ', ' MP161 ', ' G225F ', ' G255F ', ' G63S ', ' G100 ', ' G3 ', ' G9 ', ' G20 '])->random() . collect([' ', ' 25 inch ', ' 26 inch ', ' 21 inch ', ' 22 inch ', ' 15 inch '])->random();
+            // tivi category 8
+            $nameTiVi32 = collect([' Xiaomi Smart ', ' Smart ', ' Google ', '  '])->random() . collect([' Tivi ', ' Tivi QNED '])->random() . collect([' Samsung ', ' Samsung QLED'])->random() . collect([' ', ' 4K ', ' 47LMHD456 ', ' 5K '])->random() . ' 32 INCH ' ;
+            //End tivi category 8
+            $nameTiVi = collect([' Xiaomi Smart ', ' Smart ', ' Google ', '  '])->random() . collect([' Tivi ', ' Tivi QNED '])->random() . collect([' ', ' LG ', ' Samsung ', ' TCL ', ' Samsung QLED'])->random() . collect([' ', ' 4K ', ' 47LMHD456 ', ' 5K '])->random() . collect([' ', ' 25 inch ', ' 26 inch ', ' 21 inch ', ' 22 inch ', ' 15 inch '])->random();
             // Thêm tên sản phẩm vào mảng Iphone
             DB::table('products')->insert([
-                'name' => $nameIP,
-                'slug' => Str::slug($nameIP . rand(0, 990), '-'),
-                'image' => 'iphone_' . rand(1, 30) . '.webp',
-                'qty' => 200,
-                'price' => round(rand(29000000, 33900000) / 100000) * 100000,
-                'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
-                'offer_start_date' => now(),
-                'sku' => 'SPIP' . rand(100, 1020),
-                'video_link' => 'https://youtube.com',
-                'short_description' => '
+                [
+                    'name' => $nameIP11,
+                    'slug' => Str::slug($nameIP11 . rand(0, 990), '-'),
+                    'image' => 'iphone_' . rand(1, 30) . '.webp',
+                    'qty' => 200,
+                    'price' => round(rand(29000000, 33900000) / 100000) * 100000,
+                    'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
+                    'offer_start_date' => now(),
+                    'sku' => 'SPIP' . rand(100, 1020),
+                    'video_link' => 'https://youtube.com',
+                    'short_description' => '
                 <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
                 ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
                 ✔️Bảo hành chính hãng Apple 12 tháng</p>',
-                'long_description' => '
+                    'long_description' => '
                 <div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li> Mạnh mẽ, siêu nhanh với chip A14, RAM 6GB, mạng 5G tốc độ cao</li><li> Rực rỡ, sắc nét, độ sáng cao - Màn hình OLED cao cấp, Super Retina XDR hỗ trợ HDR10, Dolby Vision</li><li> Chụp ảnh siêu đỉnh - Night Mode , thuật toán Deep Fusion, Smart HDR 3, camera LiDar</li><li> Bền bỉ vượt trội - Kháng nước, kháng bụi IP68, mặt lưng Ceramic Shield</li></ul></div></div>
-                <div><p style="text-align: justify;"><strong>Sản phẩm ' . $nameIP . ' sắp hết hàng, bạn có thể tham khảo thêm <a href="https://cybermart.io.vn/" target="_blank">' . $nameIP . '</a> với nhiều nâng cấp về cấu hình, camera, màn hình đang có mức giá cực hấp dẫn tại hệ thống cybermart.</strong></p><h2 style="text-align: justify;"><strong>Điện thoại ' . $nameIP . ': Nâng tầm đẳng cấp sử dụng</strong></h2><p style="text-align: justify;">Cứ mỗi năm, đến dạo cuối tháng 8 và gần đầu tháng 9 thì mọi thông tin sôi sục mới về chiếc iPhone mới lại xuất hiện. Apple năm nay lại ra thêm một chiếc iPhone mới với tên gọi mới là <strong>' . $nameIP . '</strong>, đây là một dòng điện thoại mới và mạnh mẽ nhất của nhà Apple năm nay. Mời bạn tham khảo thêm một số mô tả sản phẩm bên dưới để bạn có thể ra quyết định mua sắm.</p><blockquote><p style="text-align: justify;">Năm 2023, Apple vừa cho ra mắt series iPhone 15 với nhiều nâng cấp từ các thế hệ iPhone 12, 13, 14 trước đó. Vì vậy nếu bạn đang tìm một phiên bản mới nhất của dòng điện thoại Apple, tham khảo ngay <a href="https://cybermart.io.vn/" title="giá ' . $nameIP . '" target="_blank"><strong>giá ' . $nameIP . '</strong></a> tại cybermart cùng nhiều ưu đãi hấp dẫn. Đặc biệt ' . $nameIP . ' còn được trợ giá lên đời tối đa 4 triệu đồng. Xem ngay!</p></blockquote><p style="text-align: justify;">Năm nay, công nghệ màn hình trên ' . $nameIP . ' cũng được đổi mới và trang bị tốt hơn cùng kích thước lên đến 6.7 inch, lớn hơn so với <a href="https://cybermart.io.vn/">điện thoại iPhone 12</a> thường. Với công nghệ màn hình OLED cho khả năng hiển thị hình ảnh lên đến 2778 x 1284&nbsp;pixels. Bên cạnh đó, màn hình này còn cho độ sáng tối đa cao nhất lên đến 800 nits, luôn đảm bảo cho bạn một độ sáng cao và dễ nhìn nhất ngoài nắng.</p><p style="text-align: justify;"><img src="https://www.bigw.com.au/medias/sys_master/images/images/hd0/h91/17559628939294.jpg" alt="Màn hình 6.7 inches Super Retina XDR" loading="lazy"></p><p style="text-align: justify;">Một điểm đổi mới nữa trên màn hình của chiếc&nbsp;điện thoại Apple iPhone 12 năm nay là việc chúng được thiết kế với khung viền vuông vức, viền thép không gỉ mang đến vẻ đẹp sang trọng cho điện thoại. Máy cũng được trang bị nhiều phiên bản màu sắc đặc biệt cho người dùng lựa chọn.</p><h3 style="text-align: justify;"><strong>RAM 6GB đa nhiệm thoải mái, bộ nhớ trong dung lượng lớn</strong></h3><p style="text-align: justify;">Về trang bị phần cứng bên trong thì ' . $nameIP . ' có một thanh RAM lên đến 6GB. Điều này cho thấy rằng Apple ngày đang lắng nghe người dùng nhiều hơn khi trang bị một dung lượng RAM lớn hơn để việc đa nhiệm ngày càng được cải thiện hơn. Việc thanh ram lớn giúp cho bạn trải nghiệm các tựa game và đa nhiệm mượt mà hơn.</p><p style="text-align: justify;"><img src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2020/11/iphone12promax-2-scaled.jpg" alt="RAM 6GB đa nhiệm thoải mái, bộ nhớ trong dung lượng lớn" loading="lazy"></p><p style="text-align: justify;">Năm nay, ' . $nameIP . ' cũng sẽ có ba phiên bản bộ nhớ trong khác nhau, với bộ nhớ trong nhỏ nhất bắt đầu từ 128GB, 256GB và cao nhất sẽ là 512GB. Một chiếc điện thoại mà có một bộ nhớ trong lớn ngang ngửa một chiếc laptop là điều mà Apple muốn mang lại cho người dùng để có thể san sẻ bớt bộ nhớ cho các thiết bị khác.</p></div>
+                <div><p style="text-align: justify;"><strong>Sản phẩm ' . $nameIP11 . ' sắp hết hàng, bạn có thể tham khảo thêm <a href="https://cybermart.io.vn/" target="_blank">' . $nameIP11 . '</a> với nhiều nâng cấp về cấu hình, camera, màn hình đang có mức giá cực hấp dẫn tại hệ thống cybermart.</strong></p><h2 style="text-align: justify;"><strong>Điện thoại ' . $nameIP11 . ': Nâng tầm đẳng cấp sử dụng</strong></h2><p style="text-align: justify;">Cứ mỗi năm, đến dạo cuối tháng 8 và gần đầu tháng 9 thì mọi thông tin sôi sục mới về chiếc iPhone mới lại xuất hiện. Apple năm nay lại ra thêm một chiếc iPhone mới với tên gọi mới là <strong>' . $nameIP11 . '</strong>, đây là một dòng điện thoại mới và mạnh mẽ nhất của nhà Apple năm nay. Mời bạn tham khảo thêm một số mô tả sản phẩm bên dưới để bạn có thể ra quyết định mua sắm.</p><blockquote><p style="text-align: justify;">Năm 2023, Apple vừa cho ra mắt series iPhone 15 với nhiều nâng cấp từ các thế hệ iPhone 12, 13, 14 trước đó. Vì vậy nếu bạn đang tìm một phiên bản mới nhất của dòng điện thoại Apple, tham khảo ngay <a href="https://cybermart.io.vn/" title="giá ' . $nameIP11 . '" target="_blank"><strong>giá ' . $nameIP11 . '</strong></a> tại cybermart cùng nhiều ưu đãi hấp dẫn. Đặc biệt ' . $nameIP11 . ' còn được trợ giá lên đời tối đa 4 triệu đồng. Xem ngay!</p></blockquote><p style="text-align: justify;">Năm nay, công nghệ màn hình trên ' . $nameIP11 . ' cũng được đổi mới và trang bị tốt hơn cùng kích thước lên đến 6.7 inch, lớn hơn so với <a href="https://cybermart.io.vn/">điện thoại iPhone 12</a> thường. Với công nghệ màn hình OLED cho khả năng hiển thị hình ảnh lên đến 2778 x 1284&nbsp;pixels. Bên cạnh đó, màn hình này còn cho độ sáng tối đa cao nhất lên đến 800 nits, luôn đảm bảo cho bạn một độ sáng cao và dễ nhìn nhất ngoài nắng.</p><p style="text-align: justify;"><img src="https://www.bigw.com.au/medias/sys_master/images/images/hd0/h91/17559628939294.jpg" alt="Màn hình 6.7 inches Super Retina XDR" loading="lazy"></p><p style="text-align: justify;">Một điểm đổi mới nữa trên màn hình của chiếc&nbsp;điện thoại Apple iPhone 12 năm nay là việc chúng được thiết kế với khung viền vuông vức, viền thép không gỉ mang đến vẻ đẹp sang trọng cho điện thoại. Máy cũng được trang bị nhiều phiên bản màu sắc đặc biệt cho người dùng lựa chọn.</p><h3 style="text-align: justify;"><strong>RAM 6GB đa nhiệm thoải mái, bộ nhớ trong dung lượng lớn</strong></h3><p style="text-align: justify;">Về trang bị phần cứng bên trong thì ' . $nameIP11 . ' có một thanh RAM lên đến 6GB. Điều này cho thấy rằng Apple ngày đang lắng nghe người dùng nhiều hơn khi trang bị một dung lượng RAM lớn hơn để việc đa nhiệm ngày càng được cải thiện hơn. Việc thanh ram lớn giúp cho bạn trải nghiệm các tựa game và đa nhiệm mượt mà hơn.</p><p style="text-align: justify;"><img src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2020/11/iphone12promax-2-scaled.jpg" alt="RAM 6GB đa nhiệm thoải mái, bộ nhớ trong dung lượng lớn" loading="lazy"></p><p style="text-align: justify;">Năm nay, ' . $nameIP11 . ' cũng sẽ có ba phiên bản bộ nhớ trong khác nhau, với bộ nhớ trong nhỏ nhất bắt đầu từ 128GB, 256GB và cao nhất sẽ là 512GB. Một chiếc điện thoại mà có một bộ nhớ trong lớn ngang ngửa một chiếc laptop là điều mà Apple muốn mang lại cho người dùng để có thể san sẻ bớt bộ nhớ cho các thiết bị khác.</p></div>
                 ',
-                'specifications' => '
+                    'specifications' => '
                <table id="tskt" class="table table-striped">
 <tbody>
 <tr>
@@ -172,15 +184,612 @@ class ProductSeeder extends Seeder
 </tr>
 </tbody></table>
                 ',
-                'product_type' => 'new',
-                'seo_title' => '' . $nameIP . ' - Màn Hình OLED 6.7 inches | Cybermart',
-                'promotion' => $pro,
-                'seo_description' => 'Khám phá ' . $nameIP . ' với màn hình OLED 6.7 inches, chip A14 mạnh mẽ, RAM 6GB và bộ nhớ lên đến 512GB. Đặc biệt, sản phẩm hỗ trợ mạng 5G, chống nước IP68 và được trang bị camera LiDar để chụp ảnh siêu đỉnh. Nhận ưu đãi và giảm giá hấp dẫn tại Cybermart. Mua ngay hôm nay để trải nghiệm công nghệ mới nhất từ Apple!',
-                'category_id' => 1,
-                'weight' => 0.5,
-                'sub_category_id' => 1,
-                'child_category_id' => rand(1, 5),
-                'created_at' => now(),
+                    'product_type' => 'new',
+                    'seo_title' => '' . $nameIP11 . ' - Màn Hình OLED 6.7 inches | Cybermart',
+                    'promotion' => $pro,
+                    'seo_description' => 'Khám phá ' . $nameIP11 . ' với màn hình OLED 6.7 inches, chip A14 mạnh mẽ, RAM 6GB và bộ nhớ lên đến 512GB. Đặc biệt, sản phẩm hỗ trợ mạng 5G, chống nước IP68 và được trang bị camera LiDar để chụp ảnh siêu đỉnh. Nhận ưu đãi và giảm giá hấp dẫn tại Cybermart. Mua ngay hôm nay để trải nghiệm công nghệ mới nhất từ Apple!',
+                    'category_id' => 1,
+                    'weight' => 0.5,
+                    'sub_category_id' => 1,
+                    'child_category_id' => 5,
+                    'created_at' => now(),
+                ], [
+                    'name' => $nameIP12,
+                    'slug' => Str::slug($nameIP12 . rand(0, 990), '-'),
+                    'image' => 'iphone_' . rand(1, 30) . '.webp',
+                    'qty' => 200,
+                    'price' => round(rand(29000000, 33900000) / 100000) * 100000,
+                    'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
+                    'offer_start_date' => now(),
+                    'sku' => 'SPIP' . rand(100, 1020),
+                    'video_link' => 'https://youtube.com',
+                    'short_description' => '
+                <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
+                ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
+                ✔️Bảo hành chính hãng Apple 12 tháng</p>',
+                    'long_description' => '
+                <div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li> Mạnh mẽ, siêu nhanh với chip A14, RAM 6GB, mạng 5G tốc độ cao</li><li> Rực rỡ, sắc nét, độ sáng cao - Màn hình OLED cao cấp, Super Retina XDR hỗ trợ HDR10, Dolby Vision</li><li> Chụp ảnh siêu đỉnh - Night Mode , thuật toán Deep Fusion, Smart HDR 3, camera LiDar</li><li> Bền bỉ vượt trội - Kháng nước, kháng bụi IP68, mặt lưng Ceramic Shield</li></ul></div></div>
+                <div><p style="text-align: justify;"><strong>Sản phẩm ' . $nameIP12 . ' sắp hết hàng, bạn có thể tham khảo thêm <a href="https://cybermart.io.vn/" target="_blank">' . $nameIP12 . '</a> với nhiều nâng cấp về cấu hình, camera, màn hình đang có mức giá cực hấp dẫn tại hệ thống cybermart.</strong></p><h2 style="text-align: justify;"><strong>Điện thoại ' . $nameIP12 . ': Nâng tầm đẳng cấp sử dụng</strong></h2><p style="text-align: justify;">Cứ mỗi năm, đến dạo cuối tháng 8 và gần đầu tháng 9 thì mọi thông tin sôi sục mới về chiếc iPhone mới lại xuất hiện. Apple năm nay lại ra thêm một chiếc iPhone mới với tên gọi mới là <strong>' . $nameIP12 . '</strong>, đây là một dòng điện thoại mới và mạnh mẽ nhất của nhà Apple năm nay. Mời bạn tham khảo thêm một số mô tả sản phẩm bên dưới để bạn có thể ra quyết định mua sắm.</p><blockquote><p style="text-align: justify;">Năm 2023, Apple vừa cho ra mắt series iPhone 15 với nhiều nâng cấp từ các thế hệ iPhone 12, 13, 14 trước đó. Vì vậy nếu bạn đang tìm một phiên bản mới nhất của dòng điện thoại Apple, tham khảo ngay <a href="https://cybermart.io.vn/" title="giá ' . $nameIP12 . '" target="_blank"><strong>giá ' . $nameIP12 . '</strong></a> tại cybermart cùng nhiều ưu đãi hấp dẫn. Đặc biệt ' . $nameIP12 . ' còn được trợ giá lên đời tối đa 4 triệu đồng. Xem ngay!</p></blockquote><p style="text-align: justify;">Năm nay, công nghệ màn hình trên ' . $nameIP12 . ' cũng được đổi mới và trang bị tốt hơn cùng kích thước lên đến 6.7 inch, lớn hơn so với <a href="https://cybermart.io.vn/">điện thoại iPhone 12</a> thường. Với công nghệ màn hình OLED cho khả năng hiển thị hình ảnh lên đến 2778 x 1284&nbsp;pixels. Bên cạnh đó, màn hình này còn cho độ sáng tối đa cao nhất lên đến 800 nits, luôn đảm bảo cho bạn một độ sáng cao và dễ nhìn nhất ngoài nắng.</p><p style="text-align: justify;"><img src="https://www.bigw.com.au/medias/sys_master/images/images/hd0/h91/17559628939294.jpg" alt="Màn hình 6.7 inches Super Retina XDR" loading="lazy"></p><p style="text-align: justify;">Một điểm đổi mới nữa trên màn hình của chiếc&nbsp;điện thoại Apple iPhone 12 năm nay là việc chúng được thiết kế với khung viền vuông vức, viền thép không gỉ mang đến vẻ đẹp sang trọng cho điện thoại. Máy cũng được trang bị nhiều phiên bản màu sắc đặc biệt cho người dùng lựa chọn.</p><h3 style="text-align: justify;"><strong>RAM 6GB đa nhiệm thoải mái, bộ nhớ trong dung lượng lớn</strong></h3><p style="text-align: justify;">Về trang bị phần cứng bên trong thì ' . $nameIP12 . ' có một thanh RAM lên đến 6GB. Điều này cho thấy rằng Apple ngày đang lắng nghe người dùng nhiều hơn khi trang bị một dung lượng RAM lớn hơn để việc đa nhiệm ngày càng được cải thiện hơn. Việc thanh ram lớn giúp cho bạn trải nghiệm các tựa game và đa nhiệm mượt mà hơn.</p><p style="text-align: justify;"><img src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2020/11/iphone12promax-2-scaled.jpg" alt="RAM 6GB đa nhiệm thoải mái, bộ nhớ trong dung lượng lớn" loading="lazy"></p><p style="text-align: justify;">Năm nay, ' . $nameIP12 . ' cũng sẽ có ba phiên bản bộ nhớ trong khác nhau, với bộ nhớ trong nhỏ nhất bắt đầu từ 128GB, 256GB và cao nhất sẽ là 512GB. Một chiếc điện thoại mà có một bộ nhớ trong lớn ngang ngửa một chiếc laptop là điều mà Apple muốn mang lại cho người dùng để có thể san sẻ bớt bộ nhớ cho các thiết bị khác.</p></div>
+                ',
+                    'specifications' => '
+               <table id="tskt" class="table table-striped">
+<tbody>
+<tr>
+	<td>Hãng sản xuất</td>
+	<td>Oppo</td>
+</tr>
+<tr>
+	<td>Kích thước màn hình</td>
+	<td>6.7&nbsp;inches</td>
+</tr>
+<tr>
+	<td>Độ phân giải màn hình</td>
+	<td>2796&nbsp;x 1290&nbsp;pixels</td>
+</tr>
+<tr>
+	<td>Loại màn hình</td>
+	<td>OLED LPTS</td>
+</tr>
+<tr>
+	<td>Bộ nhớ trong</td>
+	<td>1TB</td>
+</tr>
+<tr>
+	<td>Chipset</td>
+	<td>Oppo A16 Bionic</td>
+</tr>
+<tr>
+	<td>CPU</td>
+	<td>Oppo A16 Bionic&nbsp;120Hz</td>
+</tr>
+<tr>
+	<td>GPU</td>
+	<td>Oppo GPU (5 lõi)</td>
+</tr>
+<tr>
+	<td>Kích thước</td>
+	<td>160.7 x 77.6 x 7.9 mm</td>
+</tr>
+<tr>
+	<td>Trọng lượng</td>
+	<td>240 g</td>
+</tr>
+<tr>
+	<td>Camera sau</td>
+	<td>Camera chính: 48MP<br>
+	Camera góc siêu rộng: 12MP<br>
+	Camera tele: 12MP</td>
+</tr>
+<tr>
+	<td>Camera trước</td>
+	<td>12 MP</td>
+</tr>
+<tr>
+	<td>Quay video</td>
+	<td>4K @24 fps, 25 fps, 30 fps, 60 fps<br>
+	1080p @25 fps, 30 fps, 60 fps<br>
+	720p @30 fps<br>
+	4K HDR @30 fps<br>
+	2.8K @ 60 fps<br>
+	HDR với Dolby Vision @60 fps<br>
+	ProRes 4K @30fps<br>
+	Chuyển động chậm 1080p @ 120fps, 240 fps</td>
+</tr>
+<tr>
+	<td>Pin</td>
+	<td>Li - Ion, Không thể thay thế</td>
+</tr>
+<tr>
+	<td>Cổng sạc</td>
+	<td>Lightning</td>
+</tr>
+<tr>
+	<td>Loại SIM</td>
+	<td>Nano SIM, eSIM</td>
+</tr>
+<tr>
+	<td>Hệ điều hành</td>
+	<td>iOS</td>
+</tr>
+<tr>
+	<td>Phiên bản hệ điều hành</td>
+	<td>iOS 16.2</td>
+</tr>
+<tr>
+	<td>Khe cắm thẻ nhớ</td>
+	<td>Không</td>
+</tr>
+<tr>
+	<td>3G</td>
+	<td>HSPA 42.2/5.76 Mbps, EV-DO Rev.A 3.1 Mbps</td>
+</tr>
+<tr>
+	<td>4G</td>
+	<td>LTE-A (4CA) Cat16 1024/150 Mbps</td>
+</tr>
+<tr>
+	<td>5G</td>
+	<td>mmWave, Sub-6 GHz</td>
+</tr>
+<tr>
+	<td>WLAN</td>
+	<td>Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot</td>
+</tr>
+<tr>
+	<td>Bluetooth</td>
+	<td>Bluetooth 5.3</td>
+</tr>
+<tr>
+	<td>GPS</td>
+	<td>A-GPS, GLONASS, GALILEO, QZSS</td>
+</tr>
+<tr>
+	<td>NFC</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>Cảm biến</td>
+	<td>Cảm biến gia tốc, Cảm biến tiệm cận, Cảm biến ánh sáng, La bàn, Con quay hồi chuyển, Cảm biến áp kế</td>
+</tr>
+</tbody></table>
+                ',
+                    'product_type' => 'new',
+                    'seo_title' => '' . $nameIP12 . ' - Màn Hình OLED 6.7 inches | Cybermart',
+                    'promotion' => $pro,
+                    'seo_description' => 'Khám phá ' . $nameIP12 . ' với màn hình OLED 6.7 inches, chip A14 mạnh mẽ, RAM 6GB và bộ nhớ lên đến 512GB. Đặc biệt, sản phẩm hỗ trợ mạng 5G, chống nước IP68 và được trang bị camera LiDar để chụp ảnh siêu đỉnh. Nhận ưu đãi và giảm giá hấp dẫn tại Cybermart. Mua ngay hôm nay để trải nghiệm công nghệ mới nhất từ Apple!',
+                    'category_id' => 1,
+                    'weight' => 0.5,
+                    'sub_category_id' => 1,
+                    'child_category_id' => 4,
+                    'created_at' => now(),
+                ], [
+                    'name' => $nameIP15,
+                    'slug' => Str::slug($nameIP15 . rand(0, 990), '-'),
+                    'image' => 'iphone_' . rand(1, 30) . '.webp',
+                    'qty' => 200,
+                    'price' => round(rand(29000000, 33900000) / 100000) * 100000,
+                    'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
+                    'offer_start_date' => now(),
+                    'sku' => 'SPIP' . rand(100, 1020),
+                    'video_link' => 'https://youtube.com',
+                    'short_description' => '
+                <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
+                ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
+                ✔️Bảo hành chính hãng Apple 12 tháng</p>',
+                    'long_description' => '
+                <div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li> Mạnh mẽ, siêu nhanh với chip A14, RAM 6GB, mạng 5G tốc độ cao</li><li> Rực rỡ, sắc nét, độ sáng cao - Màn hình OLED cao cấp, Super Retina XDR hỗ trợ HDR10, Dolby Vision</li><li> Chụp ảnh siêu đỉnh - Night Mode , thuật toán Deep Fusion, Smart HDR 3, camera LiDar</li><li> Bền bỉ vượt trội - Kháng nước, kháng bụi IP68, mặt lưng Ceramic Shield</li></ul></div></div>
+                <div><p style="text-align: justify;"><strong>Sản phẩm ' . $nameIP15 . ' sắp hết hàng, bạn có thể tham khảo thêm <a href="https://cybermart.io.vn/" target="_blank">' . $nameIP15 . '</a> với nhiều nâng cấp về cấu hình, camera, màn hình đang có mức giá cực hấp dẫn tại hệ thống cybermart.</strong></p><h2 style="text-align: justify;"><strong>Điện thoại ' . $nameIP15 . ': Nâng tầm đẳng cấp sử dụng</strong></h2><p style="text-align: justify;">Cứ mỗi năm, đến dạo cuối tháng 8 và gần đầu tháng 9 thì mọi thông tin sôi sục mới về chiếc iPhone mới lại xuất hiện. Apple năm nay lại ra thêm một chiếc iPhone mới với tên gọi mới là <strong>' . $nameIP15 . '</strong>, đây là một dòng điện thoại mới và mạnh mẽ nhất của nhà Apple năm nay. Mời bạn tham khảo thêm một số mô tả sản phẩm bên dưới để bạn có thể ra quyết định mua sắm.</p><blockquote><p style="text-align: justify;">Năm 2023, Apple vừa cho ra mắt series iPhone 15 với nhiều nâng cấp từ các thế hệ iPhone 12, 13, 14 trước đó. Vì vậy nếu bạn đang tìm một phiên bản mới nhất của dòng điện thoại Apple, tham khảo ngay <a href="https://cybermart.io.vn/" title="giá ' . $nameIP11 . '" target="_blank"><strong>giá ' . $nameIP11 . '</strong></a> tại cybermart cùng nhiều ưu đãi hấp dẫn. Đặc biệt ' . $nameIP11 . ' còn được trợ giá lên đời tối đa 4 triệu đồng. Xem ngay!</p></blockquote><p style="text-align: justify;">Năm nay, công nghệ màn hình trên ' . $nameIP11 . ' cũng được đổi mới và trang bị tốt hơn cùng kích thước lên đến 6.7 inch, lớn hơn so với <a href="https://cybermart.io.vn/">điện thoại iPhone 12</a> thường. Với công nghệ màn hình OLED cho khả năng hiển thị hình ảnh lên đến 2778 x 1284&nbsp;pixels. Bên cạnh đó, màn hình này còn cho độ sáng tối đa cao nhất lên đến 800 nits, luôn đảm bảo cho bạn một độ sáng cao và dễ nhìn nhất ngoài nắng.</p><p style="text-align: justify;"><img src="https://www.bigw.com.au/medias/sys_master/images/images/hd0/h91/17559628939294.jpg" alt="Màn hình 6.7 inches Super Retina XDR" loading="lazy"></p><p style="text-align: justify;">Một điểm đổi mới nữa trên màn hình của chiếc&nbsp;điện thoại Apple iPhone 12 năm nay là việc chúng được thiết kế với khung viền vuông vức, viền thép không gỉ mang đến vẻ đẹp sang trọng cho điện thoại. Máy cũng được trang bị nhiều phiên bản màu sắc đặc biệt cho người dùng lựa chọn.</p><h3 style="text-align: justify;"><strong>RAM 6GB đa nhiệm thoải mái, bộ nhớ trong dung lượng lớn</strong></h3><p style="text-align: justify;">Về trang bị phần cứng bên trong thì ' . $nameIP11 . ' có một thanh RAM lên đến 6GB. Điều này cho thấy rằng Apple ngày đang lắng nghe người dùng nhiều hơn khi trang bị một dung lượng RAM lớn hơn để việc đa nhiệm ngày càng được cải thiện hơn. Việc thanh ram lớn giúp cho bạn trải nghiệm các tựa game và đa nhiệm mượt mà hơn.</p><p style="text-align: justify;"><img src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2020/11/iphone12promax-2-scaled.jpg" alt="RAM 6GB đa nhiệm thoải mái, bộ nhớ trong dung lượng lớn" loading="lazy"></p><p style="text-align: justify;">Năm nay, ' . $nameIP11 . ' cũng sẽ có ba phiên bản bộ nhớ trong khác nhau, với bộ nhớ trong nhỏ nhất bắt đầu từ 128GB, 256GB và cao nhất sẽ là 512GB. Một chiếc điện thoại mà có một bộ nhớ trong lớn ngang ngửa một chiếc laptop là điều mà Apple muốn mang lại cho người dùng để có thể san sẻ bớt bộ nhớ cho các thiết bị khác.</p></div>
+                ',
+                    'specifications' => '
+               <table id="tskt" class="table table-striped">
+<tbody>
+<tr>
+	<td>Hãng sản xuất</td>
+	<td>Oppo</td>
+</tr>
+<tr>
+	<td>Kích thước màn hình</td>
+	<td>6.7&nbsp;inches</td>
+</tr>
+<tr>
+	<td>Độ phân giải màn hình</td>
+	<td>2796&nbsp;x 1290&nbsp;pixels</td>
+</tr>
+<tr>
+	<td>Loại màn hình</td>
+	<td>OLED LPTS</td>
+</tr>
+<tr>
+	<td>Bộ nhớ trong</td>
+	<td>1TB</td>
+</tr>
+<tr>
+	<td>Chipset</td>
+	<td>Oppo A16 Bionic</td>
+</tr>
+<tr>
+	<td>CPU</td>
+	<td>Oppo A16 Bionic&nbsp;120Hz</td>
+</tr>
+<tr>
+	<td>GPU</td>
+	<td>Oppo GPU (5 lõi)</td>
+</tr>
+<tr>
+	<td>Kích thước</td>
+	<td>160.7 x 77.6 x 7.9 mm</td>
+</tr>
+<tr>
+	<td>Trọng lượng</td>
+	<td>240 g</td>
+</tr>
+<tr>
+	<td>Camera sau</td>
+	<td>Camera chính: 48MP<br>
+	Camera góc siêu rộng: 12MP<br>
+	Camera tele: 12MP</td>
+</tr>
+<tr>
+	<td>Camera trước</td>
+	<td>12 MP</td>
+</tr>
+<tr>
+	<td>Quay video</td>
+	<td>4K @24 fps, 25 fps, 30 fps, 60 fps<br>
+	1080p @25 fps, 30 fps, 60 fps<br>
+	720p @30 fps<br>
+	4K HDR @30 fps<br>
+	2.8K @ 60 fps<br>
+	HDR với Dolby Vision @60 fps<br>
+	ProRes 4K @30fps<br>
+	Chuyển động chậm 1080p @ 120fps, 240 fps</td>
+</tr>
+<tr>
+	<td>Pin</td>
+	<td>Li - Ion, Không thể thay thế</td>
+</tr>
+<tr>
+	<td>Cổng sạc</td>
+	<td>Lightning</td>
+</tr>
+<tr>
+	<td>Loại SIM</td>
+	<td>Nano SIM, eSIM</td>
+</tr>
+<tr>
+	<td>Hệ điều hành</td>
+	<td>iOS</td>
+</tr>
+<tr>
+	<td>Phiên bản hệ điều hành</td>
+	<td>iOS 16.2</td>
+</tr>
+<tr>
+	<td>Khe cắm thẻ nhớ</td>
+	<td>Không</td>
+</tr>
+<tr>
+	<td>3G</td>
+	<td>HSPA 42.2/5.76 Mbps, EV-DO Rev.A 3.1 Mbps</td>
+</tr>
+<tr>
+	<td>4G</td>
+	<td>LTE-A (4CA) Cat16 1024/150 Mbps</td>
+</tr>
+<tr>
+	<td>5G</td>
+	<td>mmWave, Sub-6 GHz</td>
+</tr>
+<tr>
+	<td>WLAN</td>
+	<td>Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot</td>
+</tr>
+<tr>
+	<td>Bluetooth</td>
+	<td>Bluetooth 5.3</td>
+</tr>
+<tr>
+	<td>GPS</td>
+	<td>A-GPS, GLONASS, GALILEO, QZSS</td>
+</tr>
+<tr>
+	<td>NFC</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>Cảm biến</td>
+	<td>Cảm biến gia tốc, Cảm biến tiệm cận, Cảm biến ánh sáng, La bàn, Con quay hồi chuyển, Cảm biến áp kế</td>
+</tr>
+</tbody></table>
+                ',
+                    'product_type' => 'new',
+                    'seo_title' => '' . $nameIP15 . ' - Màn Hình OLED 6.7 inches | Cybermart',
+                    'promotion' => $pro,
+                    'seo_description' => 'Khám phá ' . $nameIP15 . ' với màn hình OLED 6.7 inches, chip A14 mạnh mẽ, RAM 6GB và bộ nhớ lên đến 512GB. Đặc biệt, sản phẩm hỗ trợ mạng 5G, chống nước IP68 và được trang bị camera LiDar để chụp ảnh siêu đỉnh. Nhận ưu đãi và giảm giá hấp dẫn tại Cybermart. Mua ngay hôm nay để trải nghiệm công nghệ mới nhất từ Apple!',
+                    'category_id' => 1,
+                    'weight' => 0.5,
+                    'sub_category_id' => 1,
+                    'child_category_id' => 1,
+                    'created_at' => now(),
+                ], [
+                    'name' => $nameIP13,
+                    'slug' => Str::slug($nameIP13 . rand(0, 990), '-'),
+                    'image' => 'iphone_' . rand(1, 30) . '.webp',
+                    'qty' => 200,
+                    'price' => round(rand(29000000, 33900000) / 100000) * 100000,
+                    'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
+                    'offer_start_date' => now(),
+                    'sku' => 'SPIP' . rand(100, 1020),
+                    'video_link' => 'https://youtube.com',
+                    'short_description' => '
+                <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
+                ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
+                ✔️Bảo hành chính hãng Apple 12 tháng</p>',
+                    'long_description' => '
+                <div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li> Mạnh mẽ, siêu nhanh với chip A14, RAM 6GB, mạng 5G tốc độ cao</li><li> Rực rỡ, sắc nét, độ sáng cao - Màn hình OLED cao cấp, Super Retina XDR hỗ trợ HDR10, Dolby Vision</li><li> Chụp ảnh siêu đỉnh - Night Mode , thuật toán Deep Fusion, Smart HDR 3, camera LiDar</li><li> Bền bỉ vượt trội - Kháng nước, kháng bụi IP68, mặt lưng Ceramic Shield</li></ul></div></div>
+                <div><p style="text-align: justify;"><strong>Sản phẩm ' . $nameIP13 . ' sắp hết hàng, bạn có thể tham khảo thêm <a href="https://cybermart.io.vn/" target="_blank">' . $nameIP13 . '</a> với nhiều nâng cấp về cấu hình, camera, màn hình đang có mức giá cực hấp dẫn tại hệ thống cybermart.</strong></p><h2 style="text-align: justify;"><strong>Điện thoại ' . $nameIP13 . ': Nâng tầm đẳng cấp sử dụng</strong></h2><p style="text-align: justify;">Cứ mỗi năm, đến dạo cuối tháng 8 và gần đầu tháng 9 thì mọi thông tin sôi sục mới về chiếc iPhone mới lại xuất hiện. Apple năm nay lại ra thêm một chiếc iPhone mới với tên gọi mới là <strong>' . $nameIP13 . '</strong>, đây là một dòng điện thoại mới và mạnh mẽ nhất của nhà Apple năm nay. Mời bạn tham khảo thêm một số mô tả sản phẩm bên dưới để bạn có thể ra quyết định mua sắm.</p><blockquote><p style="text-align: justify;">Năm 2023, Apple vừa cho ra mắt series iPhone 15 với nhiều nâng cấp từ các thế hệ iPhone 12, 13, 14 trước đó. Vì vậy nếu bạn đang tìm một phiên bản mới nhất của dòng điện thoại Apple, tham khảo ngay <a href="https://cybermart.io.vn/" title="giá ' . $nameIP13 . '" target="_blank"><strong>giá ' . $nameIP13 . '</strong></a> tại cybermart cùng nhiều ưu đãi hấp dẫn. Đặc biệt ' . $nameIP13 . ' còn được trợ giá lên đời tối đa 4 triệu đồng. Xem ngay!</p></blockquote><p style="text-align: justify;">Năm nay, công nghệ màn hình trên ' . $nameIP13 . ' cũng được đổi mới và trang bị tốt hơn cùng kích thước lên đến 6.7 inch, lớn hơn so với <a href="https://cybermart.io.vn/">điện thoại iPhone 12</a> thường. Với công nghệ màn hình OLED cho khả năng hiển thị hình ảnh lên đến 2778 x 1284&nbsp;pixels. Bên cạnh đó, màn hình này còn cho độ sáng tối đa cao nhất lên đến 800 nits, luôn đảm bảo cho bạn một độ sáng cao và dễ nhìn nhất ngoài nắng.</p><p style="text-align: justify;"><img src="https://www.bigw.com.au/medias/sys_master/images/images/hd0/h91/17559628939294.jpg" alt="Màn hình 6.7 inches Super Retina XDR" loading="lazy"></p><p style="text-align: justify;">Một điểm đổi mới nữa trên màn hình của chiếc&nbsp;điện thoại Apple iPhone 12 năm nay là việc chúng được thiết kế với khung viền vuông vức, viền thép không gỉ mang đến vẻ đẹp sang trọng cho điện thoại. Máy cũng được trang bị nhiều phiên bản màu sắc đặc biệt cho người dùng lựa chọn.</p><h3 style="text-align: justify;"><strong>RAM 6GB đa nhiệm thoải mái, bộ nhớ trong dung lượng lớn</strong></h3><p style="text-align: justify;">Về trang bị phần cứng bên trong thì ' . $nameIP13 . ' có một thanh RAM lên đến 6GB. Điều này cho thấy rằng Apple ngày đang lắng nghe người dùng nhiều hơn khi trang bị một dung lượng RAM lớn hơn để việc đa nhiệm ngày càng được cải thiện hơn. Việc thanh ram lớn giúp cho bạn trải nghiệm các tựa game và đa nhiệm mượt mà hơn.</p><p style="text-align: justify;"><img src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2020/11/iphone12promax-2-scaled.jpg" alt="RAM 6GB đa nhiệm thoải mái, bộ nhớ trong dung lượng lớn" loading="lazy"></p><p style="text-align: justify;">Năm nay, ' . $nameIP13 . ' cũng sẽ có ba phiên bản bộ nhớ trong khác nhau, với bộ nhớ trong nhỏ nhất bắt đầu từ 128GB, 256GB và cao nhất sẽ là 512GB. Một chiếc điện thoại mà có một bộ nhớ trong lớn ngang ngửa một chiếc laptop là điều mà Apple muốn mang lại cho người dùng để có thể san sẻ bớt bộ nhớ cho các thiết bị khác.</p></div>
+                ',
+                    'specifications' => '
+               <table id="tskt" class="table table-striped">
+<tbody>
+<tr>
+	<td>Hãng sản xuất</td>
+	<td>Oppo</td>
+</tr>
+<tr>
+	<td>Kích thước màn hình</td>
+	<td>6.7&nbsp;inches</td>
+</tr>
+<tr>
+	<td>Độ phân giải màn hình</td>
+	<td>2796&nbsp;x 1290&nbsp;pixels</td>
+</tr>
+<tr>
+	<td>Loại màn hình</td>
+	<td>OLED LPTS</td>
+</tr>
+<tr>
+	<td>Bộ nhớ trong</td>
+	<td>1TB</td>
+</tr>
+<tr>
+	<td>Chipset</td>
+	<td>Oppo A16 Bionic</td>
+</tr>
+<tr>
+	<td>CPU</td>
+	<td>Oppo A16 Bionic&nbsp;120Hz</td>
+</tr>
+<tr>
+	<td>GPU</td>
+	<td>Oppo GPU (5 lõi)</td>
+</tr>
+<tr>
+	<td>Kích thước</td>
+	<td>160.7 x 77.6 x 7.9 mm</td>
+</tr>
+<tr>
+	<td>Trọng lượng</td>
+	<td>240 g</td>
+</tr>
+<tr>
+	<td>Camera sau</td>
+	<td>Camera chính: 48MP<br>
+	Camera góc siêu rộng: 12MP<br>
+	Camera tele: 12MP</td>
+</tr>
+<tr>
+	<td>Camera trước</td>
+	<td>12 MP</td>
+</tr>
+<tr>
+	<td>Quay video</td>
+	<td>4K @24 fps, 25 fps, 30 fps, 60 fps<br>
+	1080p @25 fps, 30 fps, 60 fps<br>
+	720p @30 fps<br>
+	4K HDR @30 fps<br>
+	2.8K @ 60 fps<br>
+	HDR với Dolby Vision @60 fps<br>
+	ProRes 4K @30fps<br>
+	Chuyển động chậm 1080p @ 120fps, 240 fps</td>
+</tr>
+<tr>
+	<td>Pin</td>
+	<td>Li - Ion, Không thể thay thế</td>
+</tr>
+<tr>
+	<td>Cổng sạc</td>
+	<td>Lightning</td>
+</tr>
+<tr>
+	<td>Loại SIM</td>
+	<td>Nano SIM, eSIM</td>
+</tr>
+<tr>
+	<td>Hệ điều hành</td>
+	<td>iOS</td>
+</tr>
+<tr>
+	<td>Phiên bản hệ điều hành</td>
+	<td>iOS 16.2</td>
+</tr>
+<tr>
+	<td>Khe cắm thẻ nhớ</td>
+	<td>Không</td>
+</tr>
+<tr>
+	<td>3G</td>
+	<td>HSPA 42.2/5.76 Mbps, EV-DO Rev.A 3.1 Mbps</td>
+</tr>
+<tr>
+	<td>4G</td>
+	<td>LTE-A (4CA) Cat16 1024/150 Mbps</td>
+</tr>
+<tr>
+	<td>5G</td>
+	<td>mmWave, Sub-6 GHz</td>
+</tr>
+<tr>
+	<td>WLAN</td>
+	<td>Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot</td>
+</tr>
+<tr>
+	<td>Bluetooth</td>
+	<td>Bluetooth 5.3</td>
+</tr>
+<tr>
+	<td>GPS</td>
+	<td>A-GPS, GLONASS, GALILEO, QZSS</td>
+</tr>
+<tr>
+	<td>NFC</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>Cảm biến</td>
+	<td>Cảm biến gia tốc, Cảm biến tiệm cận, Cảm biến ánh sáng, La bàn, Con quay hồi chuyển, Cảm biến áp kế</td>
+</tr>
+</tbody></table>
+                ',
+                    'product_type' => 'new',
+                    'seo_title' => '' . $nameIP13 . ' - Màn Hình OLED 6.7 inches | Cybermart',
+                    'promotion' => $pro,
+                    'seo_description' => 'Khám phá ' . $nameIP13 . ' với màn hình OLED 6.7 inches, chip A14 mạnh mẽ, RAM 6GB và bộ nhớ lên đến 512GB. Đặc biệt, sản phẩm hỗ trợ mạng 5G, chống nước IP68 và được trang bị camera LiDar để chụp ảnh siêu đỉnh. Nhận ưu đãi và giảm giá hấp dẫn tại Cybermart. Mua ngay hôm nay để trải nghiệm công nghệ mới nhất từ Apple!',
+                    'category_id' => 1,
+                    'weight' => 0.5,
+                    'sub_category_id' => 1,
+                    'child_category_id' => 3,
+                    'created_at' => now(),
+                ], [
+                    'name' => $nameIP14,
+                    'slug' => Str::slug($nameIP14 . rand(0, 990), '-'),
+                    'image' => 'iphone_' . rand(1, 30) . '.webp',
+                    'qty' => 200,
+                    'price' => round(rand(29000000, 33900000) / 100000) * 100000,
+                    'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
+                    'offer_start_date' => now(),
+                    'sku' => 'SPIP' . rand(100, 1020),
+                    'video_link' => 'https://youtube.com',
+                    'short_description' => '
+                <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
+                ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
+                ✔️Bảo hành chính hãng Apple 12 tháng</p>',
+                    'long_description' => '
+                <div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li> Mạnh mẽ, siêu nhanh với chip A14, RAM 6GB, mạng 5G tốc độ cao</li><li> Rực rỡ, sắc nét, độ sáng cao - Màn hình OLED cao cấp, Super Retina XDR hỗ trợ HDR10, Dolby Vision</li><li> Chụp ảnh siêu đỉnh - Night Mode , thuật toán Deep Fusion, Smart HDR 3, camera LiDar</li><li> Bền bỉ vượt trội - Kháng nước, kháng bụi IP68, mặt lưng Ceramic Shield</li></ul></div></div>
+                <div><p style="text-align: justify;"><strong>Sản phẩm ' . $nameIP14 . ' sắp hết hàng, bạn có thể tham khảo thêm <a href="https://cybermart.io.vn/" target="_blank">' . $nameIP14 . '</a> với nhiều nâng cấp về cấu hình, camera, màn hình đang có mức giá cực hấp dẫn tại hệ thống cybermart.</strong></p><h2 style="text-align: justify;"><strong>Điện thoại ' . $nameIP14 . ': Nâng tầm đẳng cấp sử dụng</strong></h2><p style="text-align: justify;">Cứ mỗi năm, đến dạo cuối tháng 8 và gần đầu tháng 9 thì mọi thông tin sôi sục mới về chiếc iPhone mới lại xuất hiện. Apple năm nay lại ra thêm một chiếc iPhone mới với tên gọi mới là <strong>' . $nameIP14 . '</strong>, đây là một dòng điện thoại mới và mạnh mẽ nhất của nhà Apple năm nay. Mời bạn tham khảo thêm một số mô tả sản phẩm bên dưới để bạn có thể ra quyết định mua sắm.</p><blockquote><p style="text-align: justify;">Năm 2023, Apple vừa cho ra mắt series iPhone 15 với nhiều nâng cấp từ các thế hệ iPhone 12, 13, 14 trước đó. Vì vậy nếu bạn đang tìm một phiên bản mới nhất của dòng điện thoại Apple, tham khảo ngay <a href="https://cybermart.io.vn/" title="giá ' . $nameIP14 . '" target="_blank"><strong>giá ' . $nameIP14 . '</strong></a> tại cybermart cùng nhiều ưu đãi hấp dẫn. Đặc biệt ' . $nameIP14 . ' còn được trợ giá lên đời tối đa 4 triệu đồng. Xem ngay!</p></blockquote><p style="text-align: justify;">Năm nay, công nghệ màn hình trên ' . $nameIP14 . ' cũng được đổi mới và trang bị tốt hơn cùng kích thước lên đến 6.7 inch, lớn hơn so với <a href="https://cybermart.io.vn/">điện thoại iPhone 12</a> thường. Với công nghệ màn hình OLED cho khả năng hiển thị hình ảnh lên đến 2778 x 1284&nbsp;pixels. Bên cạnh đó, màn hình này còn cho độ sáng tối đa cao nhất lên đến 800 nits, luôn đảm bảo cho bạn một độ sáng cao và dễ nhìn nhất ngoài nắng.</p><p style="text-align: justify;"><img src="https://www.bigw.com.au/medias/sys_master/images/images/hd0/h91/17559628939294.jpg" alt="Màn hình 6.7 inches Super Retina XDR" loading="lazy"></p><p style="text-align: justify;">Một điểm đổi mới nữa trên màn hình của chiếc&nbsp;điện thoại Apple iPhone 12 năm nay là việc chúng được thiết kế với khung viền vuông vức, viền thép không gỉ mang đến vẻ đẹp sang trọng cho điện thoại. Máy cũng được trang bị nhiều phiên bản màu sắc đặc biệt cho người dùng lựa chọn.</p><h3 style="text-align: justify;"><strong>RAM 6GB đa nhiệm thoải mái, bộ nhớ trong dung lượng lớn</strong></h3><p style="text-align: justify;">Về trang bị phần cứng bên trong thì ' . $nameIP14 . ' có một thanh RAM lên đến 6GB. Điều này cho thấy rằng Apple ngày đang lắng nghe người dùng nhiều hơn khi trang bị một dung lượng RAM lớn hơn để việc đa nhiệm ngày càng được cải thiện hơn. Việc thanh ram lớn giúp cho bạn trải nghiệm các tựa game và đa nhiệm mượt mà hơn.</p><p style="text-align: justify;"><img src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2020/11/iphone12promax-2-scaled.jpg" alt="RAM 6GB đa nhiệm thoải mái, bộ nhớ trong dung lượng lớn" loading="lazy"></p><p style="text-align: justify;">Năm nay, ' . $nameIP14 . ' cũng sẽ có ba phiên bản bộ nhớ trong khác nhau, với bộ nhớ trong nhỏ nhất bắt đầu từ 128GB, 256GB và cao nhất sẽ là 512GB. Một chiếc điện thoại mà có một bộ nhớ trong lớn ngang ngửa một chiếc laptop là điều mà Apple muốn mang lại cho người dùng để có thể san sẻ bớt bộ nhớ cho các thiết bị khác.</p></div>
+                ',
+                    'specifications' => '
+               <table id="tskt" class="table table-striped">
+<tbody>
+<tr>
+	<td>Hãng sản xuất</td>
+	<td>Oppo</td>
+</tr>
+<tr>
+	<td>Kích thước màn hình</td>
+	<td>6.7&nbsp;inches</td>
+</tr>
+<tr>
+	<td>Độ phân giải màn hình</td>
+	<td>2796&nbsp;x 1290&nbsp;pixels</td>
+</tr>
+<tr>
+	<td>Loại màn hình</td>
+	<td>OLED LPTS</td>
+</tr>
+<tr>
+	<td>Bộ nhớ trong</td>
+	<td>1TB</td>
+</tr>
+<tr>
+	<td>Chipset</td>
+	<td>Oppo A16 Bionic</td>
+</tr>
+<tr>
+	<td>CPU</td>
+	<td>Oppo A16 Bionic&nbsp;120Hz</td>
+</tr>
+<tr>
+	<td>GPU</td>
+	<td>Oppo GPU (5 lõi)</td>
+</tr>
+<tr>
+	<td>Kích thước</td>
+	<td>160.7 x 77.6 x 7.9 mm</td>
+</tr>
+<tr>
+	<td>Trọng lượng</td>
+	<td>240 g</td>
+</tr>
+<tr>
+	<td>Camera sau</td>
+	<td>Camera chính: 48MP<br>
+	Camera góc siêu rộng: 12MP<br>
+	Camera tele: 12MP</td>
+</tr>
+<tr>
+	<td>Camera trước</td>
+	<td>12 MP</td>
+</tr>
+<tr>
+	<td>Quay video</td>
+	<td>4K @24 fps, 25 fps, 30 fps, 60 fps<br>
+	1080p @25 fps, 30 fps, 60 fps<br>
+	720p @30 fps<br>
+	4K HDR @30 fps<br>
+	2.8K @ 60 fps<br>
+	HDR với Dolby Vision @60 fps<br>
+	ProRes 4K @30fps<br>
+	Chuyển động chậm 1080p @ 120fps, 240 fps</td>
+</tr>
+<tr>
+	<td>Pin</td>
+	<td>Li - Ion, Không thể thay thế</td>
+</tr>
+<tr>
+	<td>Cổng sạc</td>
+	<td>Lightning</td>
+</tr>
+<tr>
+	<td>Loại SIM</td>
+	<td>Nano SIM, eSIM</td>
+</tr>
+<tr>
+	<td>Hệ điều hành</td>
+	<td>iOS</td>
+</tr>
+<tr>
+	<td>Phiên bản hệ điều hành</td>
+	<td>iOS 16.2</td>
+</tr>
+<tr>
+	<td>Khe cắm thẻ nhớ</td>
+	<td>Không</td>
+</tr>
+<tr>
+	<td>3G</td>
+	<td>HSPA 42.2/5.76 Mbps, EV-DO Rev.A 3.1 Mbps</td>
+</tr>
+<tr>
+	<td>4G</td>
+	<td>LTE-A (4CA) Cat16 1024/150 Mbps</td>
+</tr>
+<tr>
+	<td>5G</td>
+	<td>mmWave, Sub-6 GHz</td>
+</tr>
+<tr>
+	<td>WLAN</td>
+	<td>Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot</td>
+</tr>
+<tr>
+	<td>Bluetooth</td>
+	<td>Bluetooth 5.3</td>
+</tr>
+<tr>
+	<td>GPS</td>
+	<td>A-GPS, GLONASS, GALILEO, QZSS</td>
+</tr>
+<tr>
+	<td>NFC</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>Cảm biến</td>
+	<td>Cảm biến gia tốc, Cảm biến tiệm cận, Cảm biến ánh sáng, La bàn, Con quay hồi chuyển, Cảm biến áp kế</td>
+</tr>
+</tbody></table>
+                ',
+                    'product_type' => 'new',
+                    'seo_title' => '' . $nameIP14 . ' - Màn Hình OLED 6.7 inches | Cybermart',
+                    'promotion' => $pro,
+                    'seo_description' => 'Khám phá ' . $nameIP14 . ' với màn hình OLED 6.7 inches, chip A14 mạnh mẽ, RAM 6GB và bộ nhớ lên đến 512GB. Đặc biệt, sản phẩm hỗ trợ mạng 5G, chống nước IP68 và được trang bị camera LiDar để chụp ảnh siêu đỉnh. Nhận ưu đãi và giảm giá hấp dẫn tại Cybermart. Mua ngay hôm nay để trải nghiệm công nghệ mới nhất từ Apple!',
+                    'category_id' => 1,
+                    'weight' => 0.5,
+                    'sub_category_id' => 1,
+                    'child_category_id' => 2,
+                    'created_at' => now(),
+                ],
             ]);
             // Thêm tên sản phẩm vào mảng Mac
             DB::table('products')->insert([
@@ -1304,9 +1913,9 @@ class ProductSeeder extends Seeder
                     <div id="cpsContent" class="cps-block-content"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Thực hiện cuộc thông thường hay video call với sim 4G</li><li>Nút liên lạc khẩn cấp tự động gửi vị trí cùng một bản ghi âm 30 giây tới các số được lưu sẵn</li><li>Ghi lại lịch sử di chuyển với định vị GPS</li><li>Thao tác thuận tiện với màng hình 1.3 inch</li><li>Không ngại mưa rơi hay nước bắn với kháng nước chuẩn IP67</li></ul></div></div> <div><h2><strong>Vì sao nên mua ' . $nameSmartPhone . '</strong></h2> <p>Chiếc đồng hồ này có trọng lượng rất nhẹ, chỉ khoảng 53 gam, kết hợp với dây đeo cao cấp, đem lại cảm giác đeo thoải mái cả ngày dài. Đặc biệt, sản phẩm đạt tiêu chuẩn kháng nước và bụi bẩn IP67, giúp bảo vệ thiết bị trong những trường hợp bé đi dưới mưa hoặc bị bắn nước trong lúc rửa tay.&nbsp;Ngoài ra, Myalo KidsPhone K84 cho phép người dùng liên lạc hai chiều, hỗ trợ phụ huynh gọi video cho bé trong lúc đi xa rất dễ dàng.&nbsp;</p> <p><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Watch/Myalo/dong-ho-thong-minh-tre-em-k84-6.jpg" alt="Vì sao nên mua ' . $nameSmartPhone . '" loading="lazy"></p> <h2 style="text-align: justify;"><strong>Myalo KidsPhone K84 - Đồng hồ chứa đựng đầy đủ tiện ích cần thiết cho bé</strong></h2> <p style="text-align: justify;">Các bậc phụ huynh đang tìm kiếm món phụ kiện cho con em mình hãy tham khảo ngay&nbsp;<strong>đồng hồ trẻ em myAlo KidsPhone K84</strong>. Đây là chiếc đồng hồ không chỉ xinh xắn bên ngoài, mà còn chứa đựng nhiều tiện ích hữu dụng cho bé khi cần thiết.</p> <h3 style="text-align: justify;"><strong>Kiểu dáng xinh xắn, dây đeo êm ái, kháng nước chuẩn IP67</strong></h3> <p style="text-align: justify;">Đồng hồ myAlo KidsPhone K84 mang kiểu dáng xinh xắn, thiết kế năng động với màu xanh biển sẽ phù hợp với cả bé trai lẫn bé gái.&nbsp;Dây đeo được làm từ chất liệu đàn hồi, cùng với trọng lượng nhẹ nhàng của đồng hồ giúp đảm bảo êm ái và thoải mái trên da tay bé khi đeo dài lâu.</p> <p style="text-align: justify;"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Watch/Myalo/dong-ho-thong-minh-tre-em-k84-5.jpg" alt="Kiểu dáng xinh xắn, dây đeo êm ái, kháng nước chuẩn IP67" loading="lazy"></p> <p style="text-align: justify;">MyAlo KidsPhone K84 còn đảm bảo kháng thấm nước với tiêu chuẩn IP67, giúp bé tha hồ tham gia các hoạt động bơi lội hoặc đi biển mà không lo đồng hồ bị hỏng.&nbsp;Ngoài ra, đồng hồ thông minh trẻ em myAlo KidsPhone K84 còn cho phép bé chụp ảnh và chia sẻ ảnh với bố mẹ về những khoảnh khắc đáng nhớ của bé trong chuyến đi chơi.</p> <h3 style="text-align: justify;"><strong>Tính năng liên lạc khẩn cấp, thiết lập vùng an toàn giúp giám sát bé hiệu quả</strong></h3> <p style="text-align: justify;">Các bậc phụ huynh thường hay lo lắng khi con em mình tham gia khu vui chơi, giờ đây sẽ không phải lo lắng với đồng hồ thông minh myAlo KidsPhone K84.</p> <p style="text-align: justify;">Chiếc đồng hồ được trang bị tính năng liên lạc khẩn cấp SOS, cho phép bé lưu lại số điện thoại của bố mẹ hoặc người thân và thực hiện cuộc gọi SOS ngay khi có tai nạn hoặc sự cố nguy hiểm xảy ra.</p> <p style="text-align: justify;"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Watch/Myalo/dong-ho-thong-minh-tre-em-k84-1.jpg" alt="Tính năng liên lạc khẩn cấp, thiết lập vùng an toàn giúp giám sát bé hiệu quả" loading="lazy"></p> <p style="text-align: justify;">Ngoài ra, bố mẹ còn có thể thiết lập vùng an toàn cho bé trên <a href="https://cellphones.com.vn/do-choi-cong-nghe/dong-ho-dinh-vi-tre-em.html" target="_blank">đồng hồ trẻ em</a> myAlo KidsPhone K84. Bé sẽ an tâm chơi đùa trong khu vực phạm vi đã được thiết lập sẵn, và đồng hồ sẽ báo hiệu chuông lớn mỗi khi có ai đưa bé ra ngoài phạm vi ấy.</p> <p style="text-align: justify;">Những tiện ích khác trên đồng hồ myAlo KidsPhone K84 gồm có: máy ghi âm, theo dõi vận động, đồng hồ bấm giờ, máy tính, dự báo thời tiết, nghe nhạc MP3, và cảm biến phát hiện đòng hồ rơi khỏi cổ tay bé.</p> <h2><strong>Hướng dẫn sử dụng đồng hồ thông minh trẻ em Myalo KidsPhone K84 chi tiết</strong></h2> <p>Sau đây, CellphoneS sẽ hướng dẫn sử dụng chiếc đồng hồ thông minh trẻ em Myalo KidsPhone K84 một cách chi tiết nhất, giúp mọi người làm quen thiết bị nhanh chóng.&nbsp;</p> <h3><strong>Hướng dẫn kích hoạt đồng hồ thông minh trẻ em Myalo KidsPhone K84&nbsp;</strong></h3> <p>Đây là dòng đồng hồ thông minh trẻ em, nên việc kích hoạt sản phẩm này chỉ cần vài thao tác đơn giản như sau.</p> <p>Bước 1: Sạc đầy thiết bị khoảng 2 - 3 tiếng, và đang ở trong tình trạng tắt nguồn.&nbsp;</p> <p>Bước 2: Lắp thẻ SIM đã được kích hoạt GPRS vào sản phẩm.</p> <p>Bước 3: Ấn và nhấn giữ 3 giây để bật nguồn đồng hồ.&nbsp;</p> <p><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Watch/Myalo/dong-ho-thong-minh-tre-em-k84-2.jpg" alt="Hướng dẫn kích hoạt đồng hồ thông minh trẻ em Myalo KidsPhone K84 " loading="lazy"></p> <h3><strong>Hướng dẫn ghép nối ' . $nameSmartPhone . ' với điện thoại</strong></h3> <p>Các bước kích hoạt chiếc đồng hồ này khá đơn giản, các bạn hãy làm theo các bước phía dưới đây.</p> <p>Bước 1: Tải ứng dụng myAlo myKids vào trên điện thoại → Mở app và nhấn Đăng ký</p> <p>Bước 2: Khai báo thông tin cá nhân, rồi tiếp tục nhấn Đăng ký. Sau đó, đồng ý với Điều khoản sử dụng và Chính sách quyền riêng tư của myAlo myKids.</p> <p>Bước 3: Vào Cài đặt → Nhấn Thêm thiết bị và đợi bắt đầu ghép nối&nbsp;</p> <p>Bước 4: Mở đồng hồ và vào mục Mã ràng buộc → Dùng điện thoại để quét mã QR Code → Nhập thông tin cá nhân cho bé.</p> <p><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Watch/Myalo/dong-ho-thong-minh-tre-em-k84-4.jpg" alt="Hướng dẫn ghép nối ' . $nameSmartPhone . ' với điện thoại" loading="lazy"></p> <p>Bước 5: Khi đã nhập xong thông tin, nhấn Hoàn thành để kết thúc quá trình ghép nối.&nbsp;</p> <h2 style="text-align: left;"><strong>Sở hữu đồng hồ trẻ em myAlo KidsPhone K84 giá rẻ, chất lượng tại&nbsp;</strong><strong>CellphoneS</strong></h2> <p align="center" style="text-align: justify;">Các bậc phụ huynh giờ đây có thể sắm cho con mình chiếc đồng hồ <strong>myAlo KidsPhone K84 chính hãng</strong> với giá tốt tại hệ thống CellphoneS. Với chuỗi cửa hàng có mặt ở Hà Nội và TP. HCM.&nbsp;</p></div></div> 
                   ',
                     'short_description' => '
-                        <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng ' . $nameMSI . '<br>
+                        <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng ' . $nameSmartPhone . '<br>
                         ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
-                        ✔️Bảo hành chính hãng ' . $nameMSI . ' 12 tháng</p>',
+                        ✔️Bảo hành chính hãng ' . $nameSmartPhone . ' 12 tháng</p>',
                     'specifications' => '
             <table id="tskt" class="table table-striped">
     <tbody>
@@ -1332,15 +1941,15 @@ class ProductSeeder extends Seeder
     </tr>
     <tr>
         <td>Chipset</td>
-        <td>' . $nameMSI . ' A16 Bionic</td>
+        <td>' . $nameSmartPhone . ' A16 Bionic</td>
     </tr>
     <tr>
         <td>CPU</td>
-        <td>' . $nameMSI . ' A16 Bionic&nbsp;120Hz</td>
+        <td>' . $nameSmartPhone . ' A16 Bionic&nbsp;120Hz</td>
     </tr>
     <tr>
         <td>GPU</td>
-        <td>' . $nameMSI . ' GPU (5 lõi)</td>
+        <td>' . $nameSmartPhone . ' GPU (5 lõi)</td>
     </tr>
     <tr>
         <td>Kích thước</td>
@@ -1430,9 +2039,9 @@ class ProductSeeder extends Seeder
     </tbody></table>
                        ',
                     'product_type' => 'new',
-                    'seo_title' => '' . $nameMSI . ' - Gaming Cao Cấp, Hiệu Năng Mạnh Mẽ, Giá Tốt',
+                    'seo_title' => '' . $nameSmartPhone . ' - Gaming Cao Cấp, Hiệu Năng Mạnh Mẽ, Giá Tốt',
                     'promotion' => $pro,
-                    'seo_description' => 'Khám phá ' . $nameMSI . ' với CPU Intel Core i5-12450H, GPU RTX 4050 và màn hình 15.6 inch Full HD 144Hz. Hiệu năng vượt trội cho game thủ, lưu trữ rộng rãi với 512GB SSD và RAM DDR5 8GB. Mua ngay tại Cybermart với giá ưu đãi và dịch vụ tốt nhất.',
+                    'seo_description' => 'Khám phá ' . $nameSmartPhone . ' với CPU Intel Core i5-12450H, GPU RTX 4050 và màn hình 15.6 inch Full HD 144Hz. Hiệu năng vượt trội cho game thủ, lưu trữ rộng rãi với 512GB SSD và RAM DDR5 8GB. Mua ngay tại Cybermart với giá ưu đãi và dịch vụ tốt nhất.',
                     'category_id' => 4,
                     'weight' => 3,
                     'sub_category_id' => rand(34, 37),
@@ -1583,6 +2192,149 @@ class ProductSeeder extends Seeder
                     'weight' => 0.5,
                     'sub_category_id' => 50,
                     'child_category_id' => 61,
+                    'created_at' => now(),
+                    "status" => 1
+                ],
+            ]);
+            // Thêm tên sản phẩm màn hình msi
+            DB::table('products')->insert([
+                [
+                    "name" => $nameManHinhMsi,
+                    "slug" => Str::slug($nameManHinhMsi . rand(0, 990), '-'),
+                    "image" =>  'manhinhmsi_' . rand(1, 15) . '.webp',
+                    'qty' => 200,
+                    'offer_price' => round(rand(3000000, 7000000) / 10000) * 10000,
+                    'price' => round(rand(9000000, 15000000) / 10000) * 10000,
+                    'offer_start_date' => now(),
+                    'sku' => 'SPMHMSI' . rand(120, 140),
+                    'video_link' => 'https://youtube.com',
+                    'long_description' => '
+                             <div id="cpsContent" class="cps-block-content"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Tận hưởng trải nghiệm mượt mà với tần số quét cao lên đến 100Hz và thời gian phản hồi siêu nhanh chỉ 1ms, giúp giảm hiện tượng nhòe hình và giảm độ trễ</li> <li>Thưởng thức hình ảnh sắc nét và màu sắc chân thực với độ phân giải Full HD 1920 x 1080 và tấm nền IPS cung cấp góc nhìn rộng lên đến 178°</li> <li>Đảm bảo màu sắc chính xác với không gian màu sRGB 99%, mang lại trải nghiệm xem hình ảnh và video chân thực nhất</li></ul></div></div> <div><p style="text-align: justify;"><strong>' . $nameManHinhMsi . '</strong> với tần số quét màn hình <strong>100Hz</strong> mượt mà cùng tấm nền IPS cho góc nhìn rộng 178 độ. Màn hình với <strong>công nghệ EyesErgo</strong> hỗ trợ nâng cao chất lượng hình ảnh, hỗ trợ bảo vệ mắt người dùng. Màn hình máy tính này còn sở hữu tốc độ phản hồi 1ms cùng thiết kế công thái học.</p> <h2 style="text-align: justify;">' . $nameManHinhMsi . ' – Hiển thị chất lượng, thiết kế sang trọng</h2> <p style="text-align: justify;">' . $nameManHinhMsi . ' là <a href="https://cybermart.io.vn/product/pc-man-hinh/msi" title="Màn hình MSI chính hãng" target="_blank"><strong>màn hình MSI</strong></a> chất lượng với thiết kế viền siêu mỏng cùng khả năng hiển thị sống động. Cùng với đó, màn hình còn được trang bị nhiều công nghệ hỗ trợ bảo vệ đôi mắt người dùng.</p> <h3 style="text-align: justify;"><strong> Màn hình FHD hiển thị vượt trội cùng tần số quét 1ms </strong></h3> <p style="text-align: justify;">' . $nameManHinhMsi . ' với tấm nền IPS cùng với độ phân giải FHD nhờ đó mang lại khả năng hiển thị vượt trội. Màn hình với độ phân giải 1920x1080 cùng với dải màu rộng tới 16,7 triệu màu mang lại khả năng hiển thị hình ảnh sống động.</p> <p style="text-align: justify;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTnK057B2kD-lB4Gv8XbnaujMJho09D74u1g&s" alt="Chất lượng ' . $nameManHinhMsi . '" loading="lazy"></p> <p style="text-align: justify;">Cùng với đó, <a href="https://cybermart.io.vn/product/pc-man-hinh/msi" title="' . $nameManHinhMsi . '" target="_blank"><strong>' . $nameManHinhMsi . '</strong></a> này còn sở hữu tần số quét 100Hz mang lại các trải nghiệm hình ảnh mượt mà. Cùng với đó màn hình với tốc độ đáp ứng 1ms mang lại khả năng phản hồi nhanh. Màn hình còn sở hữu độ sáng cao lên đến 300 nits hỗ trợ khả năng hiển thị rõ nét trong nhiều điều kiện ánh sáng.</p> <h3 style="text-align: justify;"><strong> Thiết kế công thái học, điều chỉnh độ nghiêng dễ dàng </strong></h3> <p style="text-align: justify;"><strong>' . $nameManHinhMsi . '</strong> được trang bị một thiết kế công thái học mang lại cho người dùng những trải nghiệm sử dụng thoải mái. Với thiết kế này, người dùng có thể thoải mái điều chỉnh độ nghiêng theo dáng ngồi của từng người dùng.</p> <p style="text-align: justify;"><img src="https://product.hstatic.net/200000722513/product/1024_8bf3c33a323543328886f8e0c5209f5b_1024x1024.png" alt="Thiết kế ' . $nameManHinhMsi . '" loading="lazy"></p> <p style="text-align: justify;">Ngoài ra, <a href="https://cybermart.io.vn/product/pc-man-hinh/msi" title="màn hình 100hz" target="_blank"><strong>màn hình 100hz</strong></a> MSI này với tấm nền IPS nhờ đó hỗ trợ mang lại góc nhìn rộng đến 178 độ. Với góc nhìn rộng, người dùng có thể thoải mái sử dụng cũng như trao đổi thông tin. Màn hình IPS còn mang lại khả năng hiển thị màu sắc sống động, phù hợp với nhiều nhu cầu công việc.</p> <p style="text-align: justify;"><img src="https://i0.wp.com/it.networkhub.vn/wp-content/uploads/2024/02/Man-Hinh-Cong-MSI-Optix-G32CQ4-E2-170Hz-songphuong.vn-01.jpg" alt="Thiết kế ' . $nameManHinhMsi . '" loading="lazy"></p> <p style="text-align: justify;"><a href="https://cybermart.io.vn/product/pc-man-hinh/msi" title="màn hình văn phòng" target="_blank">Màn hình văn phòng</a> này với thiết kế khung viền siêu mỏng nhờ đó mang lại một không gian hiển thị vượt trội. Cùng với đó là hệ thống khe phụ kiện đa dạng, cổng kết nối tiện dụng từ HDMI đến D-Sub(VGA).</p> <h3 style="text-align: justify;"><strong> Công nghệ MSI EyesErgo hỗ trợ bảo vệ đôi mắt người dùng </strong></h3> <p style="text-align: justify;">MSI Pro MP275 27 inch được trang bị công nghệ MSI EyesErgo và công nghệ chống chớp nhờ đó hỗ trợ giảm thiểu được các tình trạng mỏi mắt khi sử dụng trong thời gian dài. Đặc biệt, màn hình còn được trang bị MSI Eye-Q Check giúp người dùng có thể tự kiểm tra mắt tiện lợi.</p> <p style="text-align: justify;"><img src="https://maytinhgiaphat.vn/wp-content/uploads/2022/03/6.png" alt="Công nghệ  ' . $nameManHinhMsi . '" loading="lazy"></p> <h2 style="text-align: justify;"><strong> Mua ngay ' . $nameManHinhMsi . ' chính hãng tại Cybermart </strong></h2> <p style="text-align: justify;">' . $nameManHinhMsi . ' với thiết kế tiện dụng phù hợp cho nhiều đối tượng người dùng. Hiện mẫu màn hình máy tính chất lượng này được bán chính hãng tại Cybermart với giá bán ưu đãi cùng nhiều khuyến mãi hấp dẫn. Tại đây, khách mua hàng sẽ nhận được nhiều ưu đãi hấp dẫn, đặc biệt là khách hàng thành viên cũng như học sinh – sinh viên. Tại đây hệ thống còn hỗ trợ người dùng mua trả góp ' . $nameManHinhMsi . ' với mức lãi suất thấp.</p></div> </div>
+                          ',
+                    'short_description' => '
+                                <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng ' . $nameManHinhMsi . '<br>
+                                ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
+                                ✔️Bảo hành chính hãng ' . $nameManHinhMsi . ' 12 tháng</p>',
+                    'specifications' => '
+                    <table id="tskt" class="table table-striped">
+            <tbody>
+            <tr>
+                <td>Tần số quét</td>
+                <td>100 Hz</td>
+            </tr>
+            <tr>
+                <td>Thời gian phản hồi</td>
+                <td>1ms</td>
+            </tr>
+            <tr>
+                <td>Góc nhìn</td>
+                <td>16.7 triệu</td>
+            </tr>
+            <tr>
+                <td>Độ sáng</td>
+                <td>300 nits</td>
+            </tr>
+            <tr>
+                <td>Độ tương phản động</td>
+                <td>100000000:1</td>
+            </tr>
+            <tr>
+                <td>Độ tương phản tĩnh</td>
+                <td>1000:1</td>
+            </tr>
+            <tr>
+                <td>Độ phân giải màn hình</td>
+                <td>1920×1080 pixels</td>
+            </tr>
+            <tr>
+                <td>Tấm nền</td>
+                <td>IPS</td>
+            </tr>
+            <tr>
+                <td>Số lượng màu</td>
+                <td>16.7 triệu</td>
+            </tr>
+            </tbody></table>
+                               ',
+                    'product_type' => 'new',
+                    'seo_title' => '' . $nameManHinhMsi . ' - Tần Số Quét 100Hz, Tấm Nền IPS, Công Nghệ EyesErgo',
+                    'promotion' => $pro,
+                    'seo_description' => 'Khám phá ' . $nameManHinhMsi . ' với tần số quét 100Hz và tấm nền IPS cho hình ảnh sắc nét. Công nghệ EyesErgo bảo vệ mắt, cùng thiết kế công thái học và độ phân giải Full HD 1920x1080. Mua ngay tại CellphoneS để nhận ưu đãi hấp dẫn!',
+                    'category_id' => 7,
+                    'weight' => 0.5,
+                    'sub_category_id' => 64,
+                    'child_category_id' => 65,
+                    'created_at' => now(),
+                    "status" => 1
+                ],
+            ]);
+            // Thêm tên sản phẩm tivi category 8
+            DB::table('products')->insert([
+                [
+                    "name" => $nameTiVi32,
+                    "slug" => Str::slug($nameTiVi32 . rand(0, 990), '-'),
+                    "image" =>  'tivi_' . rand(1, 30) . '.webp',
+                    'qty' => 200,
+                    'offer_price' => round(rand(10000000, 29000000) / 10000) * 10000,
+                    'price' => round(rand(9000000, 29000000) / 10000) * 10000,
+                    'offer_start_date' => now(),
+                    'sku' => 'SPTV' . rand(120, 140),
+                    'video_link' => 'https://youtube.com',
+                    'long_description' => '<div id="cpsContent" class="cps-block-content" style="max-height: 100000px;"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Thiết kế tinh giản với màn hình phẳng viền mỏng 3 cạnh nâng cao thẩm mỹ của không gian</li><li>Kích thước 55 inch và dộ phân giải 4K tạo nên không gian rõ nét với màu sắc chân thực</li><li>Tổng công suất loa 20W cùng công nghệ Q-Symphony cho trải nghiệm âm thanh sống động</li><li>Hệ điều hành Tizen trực quan, dễ hiểu, dễ thao tác, tích hợp kho ứng dụng phong phú</li><li>Ứng dụng SmartThings cho phép sử dụng điện thoại để điều khiển tivi từ xa tiện lợi</li></ul></div></div> <div><p style="text-align: justify;"><strong>' . $nameTiVi32 . '</strong> là chiếc tivi thông minh truyền tải hình ảnh chân thực với khung hình rộng lớn. Người dùng sẽ có cảm nhận sâu sắc khi xem nội dung qua màn ảnh <a href="https://cybermart.io.vn/product/tivi/samsung/32-inch.html" title="Tivi 55 inch chính hãng" target="_blank"><strong>tivi 55 inch</strong></a> chất lượng này. Hãy xem đoạn mô tả dưới đây để biết ưu điểm của chiếc TV Samsung UA55AU7002 này.</p> <h2><strong>' . $nameTiVi32 . ' - Hình ảnh đẹp chuẩn 4K</strong></h2> <h3 style="text-align: justify;"><strong>Hiển thị màu sắc choáng ngợp, nội dung chuẩn 4K</strong></h3> <p style="text-align: justify;">Tivi 55AU7002 được tích hợp công nghệ PurColor mang đến dải màu sắc rộng lớn. Bạn có thể đắm chìm trong từng chi tiết của khung hình bởi sự sống động y như thật của hình ảnh.</p> <p style="text-align: justify;">Tivi Samsung mới này có khả năng cung cấp hình ảnh chuẩn 4K, nâng cấp mọi nội dung bạn yêu thích lên tầm cao mới. Công nghệ Color Mapping mang đến màu sắc khác biệt cho bạn chiêm ngưỡng thỏa thích.</p> <p style="text-align: justify;"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fmediamart.vn%2Ftivi%2Fsmart-tivi-samsung-4k-65-inch-65bu8000-crystal-uhd&psig=AOvVaw2GmTe3uKuffADjsXV4AR9_&ust=1722390372309000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCMC-kajSzYcDFQAAAAAdAAAAABAE" alt="Đánh giá màn hình Smart tivi Samsung 4K 55 inch UA55AU7002" loading="lazy"></p> <p style="text-align: justify;">&gt;&gt;&gt; Xem thêm <strong><a href="https://cybermart.io.vn/product/tivi/samsung/32-inch.html" target="_blank">Tivi Samsung 43AU7002</a></strong> mới giá cực tốt tại Cybermart.</p> <h3 style="text-align: justify;"><strong>Khung hình mượt mà, kết nối đa thiết bị</strong></h3> <p style="text-align: justify;">' . $nameTiVi32 . ' được trang bị công nghệ Motion Xcelerator xóa bỏ hiện tượng bóng ma trên màn hình. Công nghệ này giúp hình ảnh rõ nét từng chi tiết, chuyển cảnh không bị ảnh hưởng mờ nhòe.</p> <p style="text-align: justify;">Tivi có thể kết nối từ xa với PC, laptop, thiết bị di động giúp bạn tận hưởng tiện ích của thiết bị. Bạn có thể xem các chương trình yêu thích trên tivi, kết nối dễ dàng với các thiết bị thông minh chỉ cần có kết nối Internet trên tivi UA55AU7002.</p> <p style="text-align: justify;"><img src="https://dienmaycongthanh.vn/Upload/Products/smart-tivi-samsung-4k-50-inch-50au7700kxxv/50AU7700KXXV_2.jpg" alt="Đánh giá khả năng hiển thị" loading="lazy"></p> <h2 style="text-align: justify;"><strong>Mua ' . $nameTiVi32 . ' giá rẻ, chất lượng tại Cybermart</strong></h2> <p style="text-align: justify;"><strong>Smart ' . $nameTiVi32 . ' chính hãng</strong> có giá bán cực tốt tại cửa hàng Cybermart, được bảo hành đầy đủ. Gọi ngay cho chúng tôi nếu bạn muốn trang bị chiếc tivi này cho phòng khách nhà mình.</p></div> </div>         
+                          ',
+                    'short_description' => '
+                                <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng ' . $nameTiVi32 . '<br>
+                                ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
+                                ✔️Bảo hành chính hãng ' . $nameTiVi32 . ' 12 tháng</p>',
+                    'specifications' => '
+                    <table id="tskt" class="table table-striped">
+            <tbody>
+            <tr>
+                <td>Tần số quét</td>
+                <td>100 Hz</td>
+            </tr>
+            <tr>
+                <td>Thời gian phản hồi</td>
+                <td>1ms</td>
+            </tr>
+            <tr>
+                <td>Góc nhìn</td>
+                <td>16.7 triệu</td>
+            </tr>
+            <tr>
+                <td>Độ sáng</td>
+                <td>300 nits</td>
+            </tr>
+            <tr>
+                <td>Độ tương phản động</td>
+                <td>100000000:1</td>
+            </tr>
+            <tr>
+                <td>Độ tương phản tĩnh</td>
+                <td>1000:1</td>
+            </tr>
+            <tr>
+                <td>Độ phân giải màn hình</td>
+                <td>1920×1080 pixels</td>
+            </tr>
+            <tr>
+                <td>Tấm nền</td>
+                <td>IPS</td>
+            </tr>
+            <tr>
+                <td>Số lượng màu</td>
+                <td>16.7 triệu</td>
+            </tr>
+            </tbody></table>
+                               ',
+                    'product_type' => 'new',
+                    'seo_title' => ' ' . $nameTiVi32 . ' - Hình ảnh đẹp chuẩn 4K, giá rẻ tại Cybermart',
+                    'promotion' => $pro,
+                    'seo_description' => '' . $nameTiVi32 . ' là lựa chọn lý tưởng với kích thước 55 inch và độ phân giải 4K, mang đến không gian rõ nét với màu sắc chân thực. Với công nghệ PurColor và Color Mapping, bạn sẽ được trải nghiệm hình ảnh sống động, chi tiết tuyệt vời. Hãy khám phá khả năng kết nối đa thiết bị và khung hình mượt mà của chiếc tivi này. Mua ngay tại Cybermart với giá ưu đãi hôm nay!',
+                    'category_id' => 8,
+                    'weight' => 0.5,
+                    'sub_category_id' => 70,
+                    'child_category_id' => 66,
                     'created_at' => now(),
                     "status" => 1
                 ],
