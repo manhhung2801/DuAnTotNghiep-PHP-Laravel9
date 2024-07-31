@@ -97,7 +97,6 @@
                     <div class="card-body p-4">
                         <h3 class="card-title fw-bold mb-4">#Đơn hàng của <b class="text-primary">{{ \Auth::user()->name }}</b></h3>
                         <div class="page account-page customer-info-page">
-
                             @forelse ($getOrders as $order)
                                 <div class="order-item bg-white mb-3 p-3 rounded-0 shadow-sm border border-1">
                                     <div class="order-header d-flex justify-content-between align-items-center">

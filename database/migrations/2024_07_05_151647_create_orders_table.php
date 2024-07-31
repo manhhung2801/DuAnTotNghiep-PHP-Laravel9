@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('order_code')->unique();
             $table->string('vnp_order_code');
             $table->string('vnp_transaction_id')->nullable(); // // vnpay
@@ -36,8 +38,6 @@ return new class extends Migration
             $table->tinyInteger('order_status')->default(0);
             $table->text('admin_note')->nullable();
             $table->text('user_note')->nullable();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
