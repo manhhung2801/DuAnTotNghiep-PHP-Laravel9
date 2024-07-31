@@ -12,6 +12,42 @@
             /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             background: linear-gradient(to top left, rgb(190, 219, 220), rgba(246, 243, 255, 1))
         }
+
+        .track-line {
+            height: 2px !important;
+            background-color: #488978;
+            opacity: 1;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin-left: 3px;
+            margin-right: 3px;
+            margin-top: 0px;
+            background-color: #488978;
+            border-radius: 50%;
+            display: inline-block
+        }
+
+        .big-dot {
+            height: 25px;
+            width: 25px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            background-color: #488978;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .big-dot i {
+            font-size: 12px;
+        }
+
+        .card-stepper {
+            z-index: 0
+        }
     </style>
 @endsection
 @section('content')
@@ -78,42 +114,74 @@
                                 </div>
                             @empty
                             @endforelse
-                            <div class="row d-flex align-items-center">
-                                <div class="col-md-2">
-                                    <p class="text-muted mb-0 small">Theo dõi thứ tự</p>
+                            <div class="row d-flex align-items-center mb-3">
+                                <div class="col">
+                                        <div class="d-flex flex-row justify-content-between align-items-center align-content-center">
+                                            <span class="dot"></span>
+                                            <hr class="flex-fill track-line"><span class="dot"></span>
+                                            <hr class="flex-fill track-line"><span class="dot"></span>
+                                            <hr class="flex-fill track-line"><span class="dot"></span>
+                                            <hr class="flex-fill track-line"><span
+                                                class="d-flex justify-content-center align-items-center big-dot dot">
+                                                <i class="fa fa-check text-white"></i></span>
+                                        </div>
+                            
+                                        <div class="d-flex flex-row justify-content-between align-items-center">
+                                            <div class="d-flex flex-column align-items-start"><span>15 tháng 3</span><span>Đã đóng gói</span>
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center"><span>15 tháng 3</span>
+                                                <span>Đặt hàng thành công</span>
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center align-items-center"><span>15 tháng 3
+                                                </span><span>Đơn hàng đã được gửi đi</span>
+                                            </div>
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>15 Mar</span>
+                                                <span>Đang giao hàng</span>
+                                            </div>
+                                            <div class="d-flex flex-column align-items-end"><span>15 tháng 3</span><span>Đã giao hàng</span></div>
+                                        </div>
                                 </div>
-                                <div class="col-md-10">
-                                    <div class="progress" style="height: 6px; border-radius: 16px;">
-                                        <div class="progress-bar" role="progressbar"
-                                            style="width: 65%; border-radius: 16px; background-color: #1A2130;"
-                                            aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <div class="d-flex justify-content-around mb-1">
-                                        <p class="text-muted mt-1 mb-0 small ms-xl-5">Ra ngoài để giao hàng</p>
-                                        <p class="text-muted mt-1 mb-0 small ms-xl-5">Đã giao hàng</p>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="d-flex justify-content-between pt-2">
-                                <p class="fw-bold mb-0">Chi tiết đơn hàng</p>
-                                <p class="text-muted mb-0"><span class="fw-bold">Tổng cộng: </span>{{ number_format($orderDetail->total, 0, '', '.') }}VNĐ</p>
-                            </div>
-                            <div class="pt-2 text-end">
-                                @isset($getCoupon)
-                                    <p class="text-muted mb-0"><span class="fw-bold">Giảm giá: </span>
-                                        {{ $getCoupon->precent_amount }}
-                                        {{ $getCoupon->coupon_type == 'precent' ? '%' : 'VND' }}
-                                    </p>
-                                @endisset
-                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-4 mt-2">
+                                    <div class="pt-2">
+                                        <h5>Thông tin người nhận</h6>
+                                        <p class="text-muted mb-0 mt-3">Nguyễn Văn B</p>
+                                        <p class="text-muted mb-0">0342568696</p>
+                                        <p class="text-muted mb-0">chung cư AVENUE đường 11, Phường Tam Bình, TP. Thủ Đức , TP. Hồ Chí minh.</p>
 
-                            <div class="text-end mb-5">
-                                <p class="text-muted mb-0"><span class="fw-bold">Phí giao hàng: </span>
-                                    @isset($orderDetail->ship_money)
-                                        {{ number_format($orderDetail->ship_money, 0, ',', '.') }}
-                                    @endisset
-                                    VNĐ
-                                </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-4 mt-2">
+                                    <div class="pt-2">
+                                        <h5>Phương thức thanh toán:</h6>
+                                        <p class="text-muted mb-0 mt-3">Thanh toán khi nhận hàng (COD)</p>
+                                        @isset($getCoupon)
+                                            <p class="text-muted mb-0"><span class="fw-bold">Giảm giá: </span>
+                                                {{ $getCoupon->precent_amount }}
+                                                {{ $getCoupon->coupon_type == 'precent' ? '%' : 'VND' }}
+                                            </p>
+                                        @endisset
+                                        <p class="text-muted mb-0"><span class="fw-bold">Tổng cộng: </span>{{ number_format($orderDetail->total, 0, '', '.') }}VNĐ</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-4 mt-2">
+                                    <div class="pt-2">
+                                        <h5>Thông tin vận chuyển</h6>
+                                        <p class="text-muted mb-0 mt-3"><span class="fw-bold">Phí giao hàng: </span>
+                                            @isset($orderDetail->ship_money)
+                                                {{ number_format($orderDetail->ship_money, 0, ',', '.') }}
+                                            @endisset
+                                            VNĐ
+                                        </p>
+                                        <p class="text-muted mb-0 mt-3">
+                                            <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/05/Logo-GHTK-H.png" alt="GHTK" class="shipping-logo" style="margin-top: -5px" width="150px" height="35px"> 
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="card-footer border-0 px-4 py-5"
