@@ -53,9 +53,9 @@ class OrderController extends Controller
     public function show($id)
     {
         $getOrderDetail = OrderDetail::where('order_id', '=', $id)->get();
-        $orderDetail = Order::getOrder($id);
-        $getCoupon = Coupons::where('code', $orderDetail->coupon)->first();
-        return view('frontend.dashboard.page.order-detail', compact('getOrderDetail', 'orderDetail', 'getCoupon'));
+        $getOrder = Order::getOrder($id);
+        $getCoupon = Coupons::where('code', $getOrder->coupon)->first();
+        return view('frontend.dashboard.page.order-detail', compact('getOrderDetail', 'getOrder', 'getCoupon'));
     }
 
     /**
