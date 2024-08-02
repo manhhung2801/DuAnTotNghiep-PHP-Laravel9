@@ -20,7 +20,7 @@ class PageSeeder extends Seeder
             [
                 'name' => 'Chính sách mua hàng',
                 'slug' => Str::slug('Chính sách mua hàng', '-'),
-                'information_id' => 1,
+                'page_category_id' => 1,
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont,;" segoe="" color="" ui="">
     <strong style="box-sizing:border-box;font-weight:bolder;">Chính sách thanh toán:</strong>
@@ -86,7 +86,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Chính sách đổi trả',
                 'slug' => Str::slug('Chính sách đổi trả', '-'),
-                'information_id' => 1,
+                'page_category_id' => 1,
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     - Quý khách sử dụng gói bảo hành nào sẽ được hỗ trợ theo chính sách của gói đó, bảo hành áp dụng cho các lỗi từ nhà sản xuất (Là các lỗi hư hỏng về linh kiện, không phải các lỗi về ứng dụng hay tính năng)<br>
@@ -117,7 +117,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Chính sách vận chuyển',
                 'slug' => Str::slug('Chính sách vận chuyển', '-'),
-                'information_id' => 1,
+                'page_category_id' => 1,
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     <strong style="box-sizing:border-box;font-weight:bolder;">I. HÌNH THỨC VẬN CHUYỂN &amp; GIAO NHẬN HÀNG HÓA</strong>
@@ -150,7 +150,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Chính sách bảo mật',
                 'slug' => Str::slug('Chính sách bảo mật', '-'),
-                'information_id' => 1,
+                'page_category_id' => 1,
 
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
@@ -220,7 +220,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Cam kết cửa hàng',
                 'slug' => Str::slug('Cam kết cửa hàng', '-'),
-                'information_id' => 1,
+                'page_category_id' => 1,
 
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
@@ -240,7 +240,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Hướng dẫn mua hàng',
                 'slug' => Str::slug('Hướng dẫn mua hàng', '-'),
-                'information_id' => 2,
+                'page_category_id' => 2,
 
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
@@ -289,7 +289,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Hướng dẫn đổi trả',
                 'slug' => Str::slug('Hướng dẫn đổi trả', '-'),
-                'information_id' => 2,
+                'page_category_id' => 2,
 
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
@@ -338,7 +338,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Hướng dẫn trả góp',
                 'slug' => Str::slug('Hướng dẫn trả góp', '-'),
-                'information_id' => 2,
+                'page_category_id' => 2,
 
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
@@ -383,7 +383,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Hướng dẫn chuyển khoản',
                 'slug' => Str::slug('Hướng dẫn chuyển khoản', '-'),
-                'information_id' => 2,
+                'page_category_id' => 2,
 
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
@@ -410,7 +410,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Hướng dẫn hoàn hàng',
                 'slug' => Str::slug('Hướng dẫn hoàn hàng', '-'),
-                'information_id' => 2,
+                'page_category_id' => 2,
 
                 'long_description' => '
 <p>
@@ -425,7 +425,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Giới thiệu về CyberMart',
                 'slug' => Str::slug('giới thiệu về CyberMart', '-'),
-                'information_id' => 3,
+                'page_category_id' => 3,
                 'long_description' => '
 <figure class="image image_resized text-center" >
     <img style="aspect-ratio:251/251;" src="data:image/png;base64,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" width="251" height="251" uploadprocessed="true">

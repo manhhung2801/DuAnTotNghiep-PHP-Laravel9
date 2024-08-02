@@ -1,12 +1,12 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Thêm mới danh sách trang')
+@section('title', 'Thêm mới danh mục trang')
 
 @section('content')
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Danh sách trang</div>
+            <div class="breadcrumb-title pe-3">Danh mục trang</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
@@ -21,10 +21,10 @@
 		<div class="card">
 			<div class="card-header">
 				<h6 class="mt-2 mb-0 text-uppercase float-start">Tạo Mới</h6>
-				<a href="{{ route("admin.information.index") }}" class="btn btn-primary float-end">Quay Lại</a>
+				<a href="{{ route("admin.page-category.index") }}" class="btn btn-primary float-end">Quay Lại</a>
 			</div>
 			<div class="card-body">
-				<form class="row g-3" action="{{ route("admin.information.store") }}" method="POST" >
+				<form class="row g-3" action="{{ route("admin.page-category.store") }}" method="POST" >
 					@csrf
 					<div class="col-md-4">
 						<label for="input1" class="form-label">Tên trang</label>

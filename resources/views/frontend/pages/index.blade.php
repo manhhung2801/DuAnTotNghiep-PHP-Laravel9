@@ -1,6 +1,7 @@
 @extends('frontend.layouts.master')
-@section('title', $informationDetail->seo_title ?? $informationDetail->name)
-@section('description', $informationDetail->seo_description ?? 'CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop, smartwatch, gia dụng, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.' )
+@section('title', $PagesDetail->seo_title ?? $PagesDetail->name)
+@section('description', $PagesDetail->seo_description ?? 'CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính
+    laptop, smartwatch, gia dụng, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.')
 @section('schema')
     <script type="application/ld+json">
     
@@ -34,8 +35,8 @@
                 <div class="container">
                     <div class="row">
                         <h1 class="fs-3"><a href=""
-                                class="text-decoration-none ">{{ $informationDetail->name }}</a></h1>
-                        {!! $informationDetail->long_description !!}
+                                class="text-decoration-none ">{{ $PagesDetail->name }}</a></h1>
+                        {!! $PagesDetail->long_description !!}
                     </div>
                 </div>
             </div>

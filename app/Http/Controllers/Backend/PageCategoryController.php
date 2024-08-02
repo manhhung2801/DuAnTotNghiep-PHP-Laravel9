@@ -3,29 +3,27 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Information;
 use App\Models\Page;
-use App\Models\SubInformation;
+use App\Models\PageCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class InformationController extends Controller
+class PageCategoryController extends Controller
 {
-
     public function index(Request $request)
     {
-        $information = Information::query(); // Start with a clean query builder
+        $pageCategories = PageCategory::query();
 
         if (!empty($request->get('keyword'))) {
 
-            $information = $information->where('name', 'like', '%' . $request->get('keyword') . '%');
+            $pageCategories = $pageCategories->where('name', 'like', '%' . $request->get('keyword') . '%');
         }
 
         // Sắp xếp theo rank tăng hoặc giảm 
         if ($request->filled('sort_rank')) {
             $sort_rank = $request->get('sort_rank');
             if ($sort_rank === 'asc' || $sort_rank === 'desc') {
-                $information->orderBy('rank', $sort_rank);
+                $pageCategories->orderBy('rank', $sort_rank);
             }
         }
 
@@ -33,9 +31,9 @@ class InformationController extends Controller
         if ($request->filled('check_status')) {
             $check_status = $request->get('check_status');
             if ($check_status == '1') {
-                $information = $information->where('status', 1);
+                $pageCategories = $pageCategories->where('status', 1);
             } elseif ($check_status == '0') {
-                $information = $information->where('status', 0);
+                $pageCategories = $pageCategories->where('status', 0);
             }
         }
 
@@ -43,7 +41,7 @@ class InformationController extends Controller
         if ($request->filled('sort_date')) {
             $sort_date = $request->get('sort_date');
             if ($sort_date === 'asc' || $sort_date === 'desc') {
-                $information->orderBy('created_at', $sort_date);
+                $pageCategories->orderBy('created_at', $sort_date);
             }
         }
 
@@ -51,15 +49,15 @@ class InformationController extends Controller
 
 
         // Paginate with 10 items per page
-        $information = $information->paginate(15)->appends(request()->query());
+        $pageCategories = $pageCategories->paginate(15)->appends(request()->query());
 
-        return view("admin.information.index", compact('information'));
+        return view("admin.page-category.index", compact('pageCategories'));
     }
 
 
     public function create()
     {
-        return view("admin.information.create");
+        return view("admin.page-category.create");
     }
 
 
@@ -67,7 +65,7 @@ class InformationController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:200'],
-            'rank' => ['required', 'numeric', 'unique:information,rank'],
+            'rank' => ['required', 'numeric', 'unique:page_categories,rank'],
             'status' => ['required'],
         ], [
             'name.required' => 'Tên trang không được để trống.',
@@ -76,12 +74,12 @@ class InformationController extends Controller
             'rank.unique' => 'Thứ hạng đã tồn tại.',
         ]);
 
-        $information = new Information();
-        $information->name = $request->name;
-        $information->slug = Str::slug($request->name);
-        $information->rank = $request->rank;
-        $information->status = $request->status;
-        $information->save();
+        $pageCategories = new PageCategory();
+        $pageCategories->name = $request->name;
+        $pageCategories->slug = Str::slug($request->name);
+        $pageCategories->rank = $request->rank;
+        $pageCategories->status = $request->status;
+        $pageCategories->save();
         // Set a success toast, with a title
         toastr()->success('Tạo mới thành công!', 'success');
 
@@ -97,8 +95,8 @@ class InformationController extends Controller
 
     public function edit($id)
     {
-        $information = Information::findOrFail($id);
-        return view('admin.information.edit', compact('information'));
+        $pageCategories = PageCategory::findOrFail($id);
+        return view('admin.page-category.edit', compact('pageCategories'));
     }
 
 
@@ -107,7 +105,7 @@ class InformationController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:200'],
             'rank' => ['numeric', function ($attribute, $value, $fail) use ($id) {
-                $count = Information::where('rank', $value)
+                $count = PageCategory::where('rank', $value)
                     ->where('id', '!=', $id)
                     ->count();
 
@@ -122,12 +120,12 @@ class InformationController extends Controller
             'rank.unique' => 'Thứ hạng đã được sử dụng.',
         ]);
 
-        $information = Information::findOrFail($id);
-        $information->name = $request->name;
-        $information->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->name, '-');
-        $information->rank = $request->rank;
-        $information->status = $request->status;
-        $information->save();
+        $pageCategories = PageCategory::findOrFail($id);
+        $pageCategories->name = $request->name;
+        $pageCategories->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->name, '-');
+        $pageCategories->rank = $request->rank;
+        $pageCategories->status = $request->status;
+        $pageCategories->save();
         // Set a success toast, with a title
         toastr()->success('Cập nhật thành công!', 'success');
 
@@ -137,22 +135,22 @@ class InformationController extends Controller
 
     public function destroy($id)
     {
-        $information = Information::findOrFail($id);
-        $pages = Page::where('information_id', $information->id)->count();
+        $pageCategories = PageCategory::findOrFail($id);
+        $pages = Page::where('page_category_id', $pageCategories->id)->count();
         if ($pages > 0) {
             return response(['status' => 'error', 'message' => 'Mục này chứa, các trang không thể xoá!']);
         }
 
-        $information->delete();
+        $pageCategories->delete();
 
         return response(['status' => 'success', 'Đã xóa thành công!']);
     }
 
     public function changeStatus(Request $request)
     {
-        $information = Information::findOrFail($request->id);
-        $information->status = $request->status == 'true' ? 1 : 0;
-        $information->save();
+        $pageCategories = PageCategory::findOrFail($request->id);
+        $pageCategories->status = $request->status == 'true' ? 1 : 0;
+        $pageCategories->save();
         return response(['message' => 'Trạng thái đã được cập nhật']);
     }
 }

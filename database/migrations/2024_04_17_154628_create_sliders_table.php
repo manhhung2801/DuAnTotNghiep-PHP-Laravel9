@@ -18,9 +18,7 @@ return new class extends Migration
             $table->string('banner', 255);
             $table->string('type', 255);
             $table->string('title', 255);
-            $table->double('starting_price');
             $table->string('btn_url', 255);
-            $table->integer('serial');
             $table->boolean('status');
             $table->timestamps();
             $table->softDeletes();

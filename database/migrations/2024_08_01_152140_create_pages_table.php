@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('information', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 255);
             $table->string('slug', 255);
-            $table->integer('rank')->nullable()->comment("rank = 1, 2, 3 ,4, 5");
+            $table->unsignedBigInteger('page_category_id');
+            $table->foreign('page_category_id')->references('id')->on('page_categories');
+            $table->string('seo_title', 255)->nullable();
+            $table->text('seo_description')->nullable();
+            $table->longText('long_description');
             $table->boolean('status');
             $table->timestamps();
         });
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('information');
+        Schema::dropIfExists('pages');
     }
 };

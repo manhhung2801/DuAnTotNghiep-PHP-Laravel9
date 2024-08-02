@@ -33,21 +33,10 @@
                         <input type="text" class="form-control" id="input1" name="name" placeholder="Name">
                     </div>
                     <div class="col-md-6">
-                        <label for="input1" class="form-label">Giá</label>
-                        <input type="number" class="form-control" id="input1" name="price" placeholder="Price">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="input9" class="form-label">Is Default</label>
-                        <select id="input9" class="form-select" name="is_default">
-                            <option value="1">True</option>
-                            <option value="0">False</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
                         <label for="input9" class="form-label">Trạng thái</label>
                         <select id="input9" class="form-select" name="status">
-                            <option value="1">Active</option>
-                            <option value="0">Inactive</option>
+                            <option value="1">Đang hoạt động</option>
+                            <option value="0">Không hoạt động</option>
                         </select>
                     </div>
                     <div class="col-md-2">
@@ -76,7 +65,7 @@
                         </form>
                     </div>
                     <a href="{{ route('admin.product.variant.variant-item', $variant->id) }}"
-                        class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Reset</a>
+                        class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Quay lại</a>
                 </div>
             </div>
 
@@ -89,8 +78,6 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Tên</th>
-                                <th>Giá</th>
-                                <th>Is Default</th>
                                 <th>Trạng thái</th>
                                 <th>Hành động</th>
                             </tr>
@@ -100,8 +87,6 @@
                                 <tr>
                                     <td>{{ $variantItem->id }}</td>
                                     <td>{{ $variantItem->name }}</td>
-                                    <td>{{ $variantItem->price }}</td>
-                                    <td>{{ $variantItem->is_default }}</td>
                                     <td>
                                         <div class="form-check form-switch form-check-success">
                                             @if ($variantItem->status == 1)
@@ -117,12 +102,12 @@
                                         <a class="btn btn-primary"
                                             href="{{ route('admin.variantItem.edit', $variantItem->id) }}">
                                             <i class="fa-solid fa-pen fs-6 text-light"></i>
-                                            Edit
+                                            Sửa
                                         </a>
                                         <a class="btn btn-danger delete-item"
                                             href="{{ route('admin.variantItem.destroy', $variantItem->id) }}">
                                             <i class="fa-solid fa-trash fs-6"></i>
-                                            Delete
+                                            Xoá
                                         </a>
                                     </td>
                                 </tr>

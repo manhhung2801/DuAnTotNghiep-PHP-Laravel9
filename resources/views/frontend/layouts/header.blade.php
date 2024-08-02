@@ -18,22 +18,63 @@
                 <ul class="navbar-nav me-auto mb-lg-0">
                     <li class="nav-item ms-5">
                         <style>
-                            ul#result {
+                            #search-result {
                                 position: absolute;
                                 z-index: 9999;
                                 background: #1b2d3c;
-                                width: 27.5%;
+                                width: 420px;
+                                top: 55px;
+                                box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
+                            }
+                            .autocomplete-item {
+                                display: flex;
+                                align-items: center;
+                                padding: 10px;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                            }
 
+                            .autocomplete-item img {
+                                width: 30px;
+                                height: 30px;
+                                margin-right: 10px;
+                                flex-shrink: 0;
+                            }
+
+                            .autocomplete-item div {
+                                overflow: hidden;
+                            }
+
+                            .autocomplete-item:hover {
+                                background-color: #f0f0f0;
+                            }
+
+                            .header-search .header-search-wrapper.show {
+                                display: flex;
+                                width: 410px;
+                            }
+
+                            .viewed {
+                                background: #f5f5f5;
+                                font-size: 13px;
+                                color: #666;
+                                padding: 5px;
                             }
                         </style>
                         <div class="d-flex mt-1">
-                            <form id="searchForm" class="d-flex" action="{{ route('search') }}" method="GET">
-                                <input class="form-control text-secondary text-opacity-50 input-search me-2"
-                                    id="searchInput" type="text" placeholder="Tìm Sản Phẩm..." name="search">
-                                <button class="btn" style="margin-left: -50px" type="submit">
+                            <form action="{{ route('search') }}" method="GET" class="d-flex">
+                                <input type="text"
+                                    class="form-control text-secondary text-opacity-50 input-search me-2"
+                                    id="product-search" placeholder="Tìm kiếm sản phẩm..." required name="query">
+                                <button class="btn" style="margin-left: -50px" type="submit" >
                                     <i class="fa-light fa-magnifying-glass fa-lg text-secondary text-opacity-75"></i>
                                 </button>
                             </form>
+                        </div>
+                        <div id="search-result">
+                            <ul class="list-group list-group-flush " id="result">
+                            </ul>
                         </div>
                     </li>
                     <li class="nav-item ms-5 shadow bg-body bg-secondary bg-opacity-25 rounded-1" style="height: 50px;">
@@ -103,4 +144,5 @@
     </nav>
     <hr class="m-0 text-white hr-line">
     @include('frontend.layouts.navbar')
+
 </header>
