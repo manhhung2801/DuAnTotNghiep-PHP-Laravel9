@@ -38,7 +38,7 @@
                     <div class="">
                         <span class="">
                             <a id="submitFindPrice" class="btn py-0 m-1"
-                                href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => floor($products->min('price'))])) }}">Lọc
+                                href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => floor($products->min('offer_price'))])) }}">Lọc
                                 giá</a>
                         </span>
                         <span>Từ <span id="minPrice">0</span><sup>đ</sup> đến </span>
@@ -51,9 +51,9 @@
                     </div>
                     <div class="">
                         <input type="range" class="form-range border border-secondary-subtle p-1 rounded-pill"
-                            id="customRange1" value="{{ floor($products->min('price')) }}"
-                            min="{{ empty(floor($products->min('price'))) ? 0 : floor($products->min('price')) }}"
-                            max="{{ floor($products->max('price') * 2) }}"
+                            id="customRange1" value="{{ floor($products->min('offer_price')) }}"
+                            min="{{ empty(floor($products->min('offer_price'))) ? 0 : floor($products->min('offer_price')) }}"
+                            max="{{ floor($products->max('offer_price') * 2) }}"
                         >
                     </div>
                 </div>
@@ -92,8 +92,8 @@
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    minPrice.textContent = formatNumber({{ empty(floor($products->min('price'))) ? 0 : floor($products->min('price')) }});
-    valueDisplay.textContent = formatNumber({{ floor($products->max('price') * 2) }});
+    minPrice.textContent = formatNumber({{ empty(floor($products->min('offer_price'))) ? 0 : floor($products->min('offer_price')) }});
+    valueDisplay.textContent = formatNumber({{ floor($products->max('offer_price') * 2) }});
 
     function getPriceWhereUrl() {
         if (currentURL.searchParams.get('sort')) {
