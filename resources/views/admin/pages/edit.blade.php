@@ -34,11 +34,12 @@
                     </div>
                     <div class="col-md-6 ">
                         <label for="input2" class="form-label">Danh mục trang</label>
-                        <select id="input2" class="form-select main-information" name="information_id">
+                        <select id="input2" class="form-select main-information" name="page_category_id">
                             <option>Chọn danh mục</option>
-                            @foreach ($information as $item)
+                            @foreach ($pageCategories as $item)
                                 <option value="{{ $item->id }}"
-                                    {{ $item->id == $pages->information_id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                    {{ $item->id == $pages->page_category_id ? 'selected' : '' }}>{{ $item->name }}
+                                </option>
                             @endforeach
                         </select>
                         </select>

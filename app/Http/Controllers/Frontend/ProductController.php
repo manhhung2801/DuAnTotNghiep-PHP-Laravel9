@@ -33,24 +33,14 @@ class ProductController extends Controller
         return $products;
     }
 
-    public function getWhereParam(Request $request, $cat = null, $sub = null, $child = null, $slug = null, $searchKeyword = null)
+    public function getWhereParam(Request $request, $cat = null, $sub = null, $child = null, $slug = null, $query = null)
     {
-        $searchKeyword = trim(strip_tags($request->query('search')));
 
-        // Filter parameters
+        $productsQuery = Product::query();
+
         $filters = compact('cat', 'sub', 'child', 'slug');
         $sortBy = $request->query('sort');
         $slug = str_replace('.html', '', $slug);
-
-        // Initialize products query
-        $productsQuery = Product::query();
-
-
-        if (!empty($searchKeyword)) {
-            $productsQuery->where('name', 'like', "%$searchKeyword%");
-            $products = $productsQuery->paginate(20);
-            return view('frontend.products.index', compact('products'));
-        }
 
         // Apply filters based on provided parameters
         if ($cat) {
@@ -113,6 +103,10 @@ class ProductController extends Controller
             case 4:
                 $getQtyCart = \Cart::get($product->id);
 
+                if (auth()->check()) {
+                    $this->ProductView($product->id);
+                }
+
                 // Assuming only one product is filtered
                 $product = Product::with('ProductImageGalleries')->findOrFail($product->id);
                 $ProductImageGalleries = $product->ProductImageGalleries;
@@ -122,6 +116,7 @@ class ProductController extends Controller
                     ->with('user')
                     ->orderBy('created_at', 'desc')
                     ->get();
+
 
                 $variants = $product->variant();
                 $relatedProductIds = Product::where('category_id', $product->category_id)
@@ -143,7 +138,56 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
-        $searchKeyword = trim(strip_tags($request->query('search')));
-        return $this->getWhereParam($request, null, null, null, null, $searchKeyword);
+        try {
+            // search tìm kiếm sản phẩm theo tên
+            $query = trim(strip_tags($request->query('query')));
+            $productsQuery  = Product::where('name', 'like', "%$query%")
+                ->get()
+                ->map(function ($product) {
+                    $img = Product::where('id', $product->id)
+                        ->orderBy('created_at', 'asc')
+                        ->first();
+                    $product->image = $img ? $img->image : null;
+                    return $product;
+                });
+            $products = $productsQuery->take(4);
+
+            if ($request->ajax()) {
+                $categories = $products->pluck('category')->unique()->values();
+                $sub_categories = $products->pluck('subCategory')->unique()->values();
+                $child_categories = $products->pluck('childCategory')->unique()->values();
+
+                // $sub_categories = $sub_categories->map(function ($subCategory) {
+                //     if ($subCategory && $subCategory->category) {
+                //         $subCategory->slug_category = $subCategory->category->slug;
+                //     }
+                //     return $subCategory;
+                // });
+
+                return response()->json([
+                    'categories' => $categories,
+                    'sub_categories' => $sub_categories,
+                    'child_categories' => $child_categories,
+                    'products' => $products,
+                ]);
+            } else {
+                $productsQuery = Product::where('name', 'like', "%$query%")
+                    ->orderBy('created_at', 'asc');
+                $products = $productsQuery->paginate(12);
+
+                return view('frontend.products.index', [
+                    'products' => $products,
+                    'query' => $query,
+                ]);
+            }
+        } catch (\Exception $e) {
+            \Log::error($e->getMessage());
+            return response()->json(['error' => 'Dữ liệu lỗi'], 500);
+        }
+    }
+    public function ProductView($productId)
+    {
+
+        Product::where('id', $productId)->increment('views');
     }
 }

@@ -219,7 +219,7 @@
                 console.log(deleteUrl);
                 Swal.fire({
                     title: "Bạn có chắc không?",
-                    text: "You won't be able to revert this!",
+                    text: "Bạn sẽ không thể hoàn nguyên điều này!",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
@@ -235,7 +235,7 @@
                                 if (data.status == 'success') {
                                     showComments(parentID);
                                     Swal.fire(
-                                        "Deleted!",
+                                        "Xoá!",
                                         data.message,
                                         'success'
                                     );

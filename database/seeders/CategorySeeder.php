@@ -18,8 +18,8 @@ class CategorySeeder extends Seeder
         $cagtegories = [
             // id 1
             [
-                "name"=> "Điện thoại, Tablet",
-                "slug" => "dien-thoai-tablet",
+                "name"=> "Điện thoại",
+                "slug" => "dien-thoai",
                 "image" => "cate_dienthoai.webp",
                 "rank" => 1,
                 "status" => 1
@@ -50,8 +50,8 @@ class CategorySeeder extends Seeder
             ],
             // id 5
             [
-                "name"=> "Gia Dụng, Smarthome",
-                "slug" => "gia-dung-smarthome",
+                "name"=> "Gia Dụng",
+                "slug" => "gia-dung",
                 "image" => "cate_giadung.webp",
                 "rank" => 5,
                 "status" => 1
@@ -66,8 +66,8 @@ class CategorySeeder extends Seeder
             ],
             // id 7 
             [
-                "name"=> "PC, Màn Hình",
-                "slug" => "pc-man-hinh",
+                "name"=> "Màn Hình",
+                "slug" => "man-hinh",
                 "image" => "cate_pc.webp",
                 "rank" => 7,
                 "status" => 1

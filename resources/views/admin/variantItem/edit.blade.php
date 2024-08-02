@@ -23,32 +23,24 @@
         <div class="card">
             <div class="card-header">
                 <h6 class="mt-2 mb-0 text-uppercase float-start">Cập nhật biến thể nhỏ</h6>
-                <a href="{{ route('admin.product.variant.variant-item', $variant->id) }}" class="btn btn-primary float-end">Trở về</a>
+                <a href="{{ route('admin.product.variant.variant-item', $variant->id) }}"
+                    class="btn btn-primary float-end">Trở về</a>
             </div>
             <div class="card-body">
-                <form class="row g-3" action="{{ route("admin.variantItem.update", $variantItem->id) }}" method="POST">
+                <form class="row g-3" action="{{ route('admin.variantItem.update', $variantItem->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="col-md-6">
                         <label for="input1" class="form-label">Tên</label>
-                        <input type="text" class="form-control" value="{{ $variantItem->name }}" id="input1" name="name" placeholder="Name">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="input1" class="form-label">Giá</label>
-                        <input type="text" class="form-control" value="{{ $variantItem->price }}" id="input1" name="price" placeholder="Price">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="input9" class="form-label">Is Default</label>
-                        <select id="input9" class="form-select" name="is_default">
-                            <option {{ $variantItem->is_default == 1 ? "selected" : ""  }}  value="1">True</option>
-                            <option {{ $variantItem->is_default == 0 ? "selected" : ""  }}  value="0">False</option>
-                        </select>
+                        <input type="text" class="form-control" value="{{ $variantItem->name }}" id="input1"
+                            name="name" placeholder="Name">
                     </div>
                     <div class="col-md-6">
                         <label for="input9" class="form-label">Trạng thái</label>
-                        <select id="input9" class="form-select" name="status">
-                            <option {{ $variantItem->status == 1 ? "selected" : ""  }}  value="1">Active</option>
-                            <option {{ $variantItem->status == 0 ? "selected" : ""  }}  value="0">Inactive</option>
+                        <select id="input9" class="form-select text-center" name="status">
+                            <option {{ $variantItem->status == 1 ? 'selected' : '' }} value="1">Đang hoạt động</option>
+                            <option {{ $variantItem->status == 0 ? 'selected' : '' }} value="0">Không hoạt động
+                            </option>
                         </select>
                     </div>
                     <div class="col-md-2">
@@ -61,5 +53,3 @@
         </div>
     </div>
 @endsection
-
-

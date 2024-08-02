@@ -19,14 +19,6 @@ class SliderController extends Controller
         if (!empty($request->get('keyword'))) {
             $sliders = Slider::where('type', 'like', '%' . $request->get('keyword') . '%')->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
         }
-
-        // Sắp xếp theo giá tăng hoặc giảm
-        if ($request->filled('sort_price')) {
-            $sort_price = $request->get('sort_price');
-            if ($sort_price === 'asc' || $sort_price === 'desc') {
-                $sliders->orderBy('starting_price', $sort_price);
-            }
-        }
         // Sắp xếp theo trạng thái
         if ($request->filled('check_status')) {
             $check_status = $request->get('check_status');
@@ -60,9 +52,7 @@ class SliderController extends Controller
         $request->validate([
             'type' => ['required', 'string', 'max:200'],
             'title' => ['required', 'string', 'max:200'],
-            'starting_price' => ['required', 'numeric'],
             'btn_url' => ['required',],
-            'serial' => ['required', 'numeric'],
             'status' => ['required'],
             'banner' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048']
         ], [
@@ -70,9 +60,7 @@ class SliderController extends Controller
             'type.max' => 'Kiểu không được quá 200 từ',
             'title.required' => 'Tiêu đề không được để trống',
             'title.max' => 'Tiêu đề không được quá 200 từ',
-            'starting_price.required' => 'Giá không được để trống',
             'btn_url.required' => 'Đường dẫn không được để trống',
-            'serial.required' => 'Số seri không được để trống',
             'banner.required' => 'Hình ảnh không được để trống',
             'banner.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg,png,jpg,gif,svg,webp',
             'banner.max' => 'Kích thước hình ảnh không được quá 2048',
@@ -81,9 +69,7 @@ class SliderController extends Controller
         $slider = new Slider;
         $slider->type = $request->type;
         $slider->title = $request->title;
-        $slider->starting_price = $request->starting_price;
         $slider->btn_url = $request->btn_url;
-        $slider->serial = $request->serial;
         $slider->status = $request->status;
 
         if ($request->hasFile('banner')) {
@@ -117,9 +103,7 @@ class SliderController extends Controller
         $request->validate([
             'type' => ['required', 'string', 'max:200'],
             'title' => ['required', 'string', 'max:200'],
-            'starting_price' => ['required', 'numeric'],
             'btn_url' => ['required',],
-            'serial' => ['required', 'numeric'],
             'status' => ['required'],
             'banner' => ['image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048']
         ], [
@@ -127,18 +111,14 @@ class SliderController extends Controller
             'type.max' => 'Kiểu không được quá 200 từ',
             'title.required' => 'Tiêu đề không được để trống',
             'title.max' => 'Tiêu đề không được quá 200 từ',
-            'starting_price.required' => 'Giá không được để trống',
             'btn_url.required' => 'Đường dẫn không được để trống',
-            'serial.required' => 'Số seri không được để trống',
             'banner.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg,png,jpg,gif,svg,webp',
             'banner.max' => 'Kích thước hình ảnh không được quá 2048',
         ]);
         $slider = Slider::findOrFail($id);
         $slider->type = $request->type;
         $slider->title = $request->title;
-        $slider->starting_price = $request->starting_price;
         $slider->btn_url = $request->btn_url;
-        $slider->serial = $request->serial;
         $slider->status = $request->status;
 
         if ($request->hasFile('banner')) {

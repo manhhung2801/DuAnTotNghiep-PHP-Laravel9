@@ -31,8 +31,8 @@ class DatabaseSeeder extends Seeder
             // CouponsSeeder::class,
             PostCategoriesSeeder::class,
             PostsSeeder::class,
-            InformationSeeder::class,
-            PageSeeder::class, database / seeders / DatabaseSeeder . php
+            PageCategorySeeder::class,
+            PageSeeder::class,
             ProductSeeder::class,
             VariantSeeder::class,
             VariantItemTableSeeder::class,

@@ -22,21 +22,30 @@
         <div class="card">
             <div class="card-header">
                 <h6 class="mt-2 mb-0 text-uppercase float-start">Chỉnh sửa biến thể</h6>
-                <a href="{{ route('admin.product.variant', $variant->product_id) }}" class="btn btn-primary float-end">Trở về</a>
+                <a href="{{ route('admin.product.variant', $variant->product_id) }}" class="btn btn-primary float-end">Trở
+                    về</a>
             </div>
             <div class="card-body">
-                <form class="row g-3" action="{{ route("admin.variant.update", $variant->id) }}" method="POST">
+                <form class="row g-3" action="{{ route('admin.variant.update', $variant->id) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="input1" class="form-label">Tên</label>
-                        <input type="text" class="form-control" value="{{ $variant->name }}" id="input1" name="name" placeholder="Name">
+                        <input type="text" class="form-control" value="{{ $variant->name }}" id="input1"
+                            name="name" placeholder="Name">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <label for="input10" class="form-label">Trạng thái</label>
+                        <select id="input10" class="form-select" name="type">
+                            <option {{ $variant->type == 1 ? 'selected' : '' }} value="1">Màu sắc</option>
+                            <option {{ $variant->type == 0 ? 'selected' : '' }} value="0">Mặc định</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
                         <label for="input9" class="form-label">Trạng thái</label>
                         <select id="input9" class="form-select" name="status">
-                            <option {{ $variant->status == 1 ? "selected" : ""  }}  value="1">Active</option>
-                            <option {{ $variant->status == 0 ? "selected" : ""  }}  value="0">Inactive</option>
+                            <option {{ $variant->status == 1 ? 'selected' : '' }} value="1">Active</option>
+                            <option {{ $variant->status == 0 ? 'selected' : '' }} value="0">Inactive</option>
                         </select>
                     </div>
                     <div class="col-md-2">
@@ -49,5 +58,3 @@
         </div>
     </div>
 @endsection
-
-

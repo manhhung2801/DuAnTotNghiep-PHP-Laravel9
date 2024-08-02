@@ -31,12 +31,11 @@ class VariantItemController extends Controller
 
         $variantItem = $filteredVariantItem->where('product_variant_id', $variant->id)->paginate(15);
 
-        return view('admin.variantItem.index',compact('variantItem', 'product', 'variant'));
+        return view('admin.variantItem.index', compact('variantItem', 'product', 'variant'));
     }
 
     public function index(Request $request)
     {
-
     }
 
     /**
@@ -63,20 +62,16 @@ class VariantItemController extends Controller
         $request->validate([
             'product_variant_id' => ['required', 'numeric', 'min:0'],
             'name' => ['required', 'max:200', 'unique:sub_categories,name'],
-            'price' => ['numeric', 'min:0'],
-            'is_default' => ['required'],
             'status' => ['required']
         ]);
 
         $variantItem = new variantItem();
         $variantItem->product_variant_id = $request->product_variant_id;
         $variantItem->name = $request->name;
-        $variantItem->price = $request->price;
-        $variantItem->is_default = $request->is_default;
         $variantItem->status = $request->status;
         $variantItem->save();
 
-        toastr('Created Successfully!', 'success');
+        toastr('Thêm thành công!', 'success');
 
         return redirect()->back();
     }
@@ -118,19 +113,15 @@ class VariantItemController extends Controller
         //
         $request->validate([
             'name' => ['required', 'max:200', 'unique:sub_categories,name'],
-            'price' => ['numeric', 'min:0'],
-            'is_default' => ['required'],
             'status' => ['required']
         ]);
 
         $variantItem = VariantItem::findOrFail($id);
         $variantItem->name = $request->name;
-        $variantItem->price = $request->price;
-        $variantItem->is_default = $request->is_default;
         $variantItem->status = $request->status;
         $variantItem->save();
 
-        toastr('Updated Successfully!', 'success');
+        toastr('Cập nhật thành công!', 'success');
 
         return redirect()->back();
     }
@@ -143,20 +134,17 @@ class VariantItemController extends Controller
      */
     public function destroy($id)
     {
-        // $variantItem=VariantItem::findOrFail($id);
-        // $variantItem->delete();
         $data = VariantItem::find($id)->delete();
-    //    return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
-       return response(['status' => 'success', 'Successfully!']);
-
+        return response(['status' => 'success', 'Cập nhật thành công!']);
     }
 
 
-    public function changeStatus(Request $request, $id = null){
+    public function changeStatus(Request $request, $id = null)
+    {
         $variantItem = VariantItem::findOrFail($request->id);
         $variantItem->status = $request->status == 'true' ? 1 : 0;
         $variantItem->save();
-        return response(['message' =>'Status has been updated']);
+        return response(['message' => 'Cập nhật thành công']);
     }
 
 
@@ -174,17 +162,17 @@ class VariantItemController extends Controller
 
         $model = new VariantItem();
         $variantItem = $model::onlyTrashed()->get();
-        return view('admin.variantItem.index',compact('variantItem'));
+        return view('admin.variantItem.index', compact('variantItem'));
     }
     public function restore($id = null)
     {
         $variantItem = VariantItem::withTrashed()->find($id)->restore();
-        return response(['status' => 'succses', 'message' => 'Deleted successfully']);
+        return response(['status' => 'succses', 'message' => 'Xoá thành công']);
     }
     public function destroyTrashed($id = null)
     {
         $variantItem = VariantItem::withTrashed()->find($id);
         $variantItem->forceDelete();
-        return response(['status' => 'success', 'Successfully!']);
+        return response(['status' => 'success', 'Cập nhật thành công!']);
     }
 }
