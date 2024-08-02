@@ -5,8 +5,7 @@
 
 
 <!-- Jquery -->
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 <!-- Alert Sweet -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.1/dist/sweetalert2.all.min.js"></script>
@@ -177,6 +176,32 @@
             }
         })
     });
+</script>
+
+<script>
+    var flash_sales = document.querySelectorAll(".flash-sales");
+    var flash_sale = document.querySelectorAll(".flash-sale");
+    var compare_price = document.querySelectorAll(".CouponsPrice_old");
+    var compare_price_old1 = document.querySelectorAll(".CouponsPrice_new1");
+    var compare_price_old2 = document.querySelectorAll(".CouponsPrice_new2");
+    for (var i = 0; i < flash_sale.length; i++) {
+        if (flash_sales[i].textContent.trim() == "0") {
+            flash_sale[i].style.display = "none";
+            if (compare_price[i]) {
+                compare_price[i].style.display = "none";
+                compare_price_old1[i].style.display = "none";
+
+            }
+
+        } else {
+            flash_sale[i].style.display = "block";
+            if (compare_price[i]) {
+                compare_price[i].style.display = "block";
+                compare_price_old2[i].style.display = "none";
+                compare_price_old1[i].style.display = "block";
+            }
+        }
+    }
 </script>
 <script>
     $(document).ready(function() {

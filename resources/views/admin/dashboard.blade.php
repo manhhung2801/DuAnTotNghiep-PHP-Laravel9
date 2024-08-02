@@ -312,210 +312,254 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class=" col-4  ">
+                    <div class=" col-lg-12  ">
 
-                        <head>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form method="post" class="row areachart_chart">
+                                    <div class="col-lg-2">
+                                        <label for="start_date">Bắt đầu</label>
+                                        <input type="date" id="start_date" value="2013-01-01">
+                                    </div>
 
 
-                        </head>
+                                    <div class="col-lg-2">
+                                        <label for="end_date">Kết thúc</label>
+                                        <input type="date" id="end_date" value="2015-01-01">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <input type="submit" value="Kết quả" id="result_areachart_chart" style="padding: 0.9px; width: 150px;border-radius: 5px;border: 1px solid #14abef;background-color: #14abef;color: azure;">
+                                    </div>
+                                </form>
+                            </div>
 
-                        <body>
-                            <div class="row">
-                                <div class="col-lg-12 areachart_chart">
-                                    <form method="post">
-                                        <div class="col-lg-12">
-                                            <label for="start_date">Bắt đầu</label>
-                                            <input type="date" id="start_date" value="2013-01-01">
-                                        </div>
-                                        <div class="col-lg-12 mt-2">
-                                            <label for="end_date">Kết thúc</label>
-                                            <input type="date" id="end_date" value="2015-01-01">
-                                        </div>
-                                        <div>
-                                            <input type="submit" value="Kết quả" id="result_areachart_chart">
-                                        </div>
-                                    </form>
-                                </div>
+                            <div class="col-lg-12">
+                                <div id="areachart" style="width: 1300px; height: 500px;"></div>
 
-                                <div class="col-lg-12">
-                                    <div id="areachart" style="width: 1300px; height: 500px;"></div>
+
+                            </div>
+
+                        </div>
+                        <div class="row d-flex flex-row-reverse">
+                            <input type="submit" value="Chi tiết ĐH thành công " id="successfulOrder" class="btn col-lg-3 text-white m-2 d-none" style="background-color: #3366cc;">
+                            <input type="submit" value="Chi tiết ĐH thất bại" id="failedOrder" class="btn col-lg-3 text-white m-2 d-none" style="background-color: #dc3912;">
+                        </div>
+
+
+
+                        <div class="page-content tableOrder col-lg-12  d-none">
+                            <!--breadcrumb-->
+                            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                                <div class="breadcrumb-title pe-3">Đơn hàng <span class="titleOrder"></span></div>
+
+                            </div>
+                            <!--end breadcrumb-->
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="example" class="table table-striped table-bordered " style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Ngày Tháng Năm</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giá </th>
+                                                    <th>Tổng giá</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="orderTableBody">
+                                                <tr class="forOderchart">
+                                                    <td class="orderChatrId"></td>
+                                                    <td class="orderChatrDate"></td>
+                                                    <td class="orderChatrName"></td>
+                                                    <td class="orderChatrQty"></td>
+                                                    <td class="orderChatrPri"></td>
+                                                    <td class="orderChatrTotal"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+
+
 
                         </body>
 
                         </html>
 
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
-    </div>
 
-    <!--end row-->
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <!--end row-->
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
-    <script>
-        google.charts.load('current', {
-            'packages': ['corechart']
-        });
-        google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart(response = []) {
-            var dataArr = [
-                ['Date', 'online', 'tổng tiền']
-            ];
-            if (response.length > 0) {
-                let aggregatedData = {};
-                response.forEach(item => {
-                    let date = new Date(item.created_at);
-                    let formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
-                    if (aggregatedData[formattedDate]) {
-                        aggregatedData[formattedDate].qty_total += item.qty_total;
-                        aggregatedData[formattedDate].total += item.total;
-                    } else {
-                        aggregatedData[formattedDate] = {
-                            qty_total: item.qty_total,
-                            total: item.total
-                        };
+
+
+
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script>
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart(response = {
+                Orders: [],
+                unpaidOrdersChart: []
+            }) {
+                var dataArr = [
+                    ['Date', 'Đơn hàng thành công', 'Đơn hàng thất bại']
+                ];
+
+                if (response.Orders.length > 0 || response.unpaidOrdersChart.length > 0) {
+                    let aggregatedData = {};
+
+                    // Process successful orders
+                    response.Orders.forEach(item => {
+                        let date = new Date(item.created_at);
+                        let formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+                        if (!aggregatedData[formattedDate]) {
+                            aggregatedData[formattedDate] = {
+                                successful: 0,
+                                failed: 0
+                            };
+                        }
+                        aggregatedData[formattedDate].successful += item.qty_total;
+                    });
+
+                    // Process unpaid orders
+                    response.unpaidOrdersChart.forEach(item => {
+                        let date = new Date(item.created_at);
+                        let formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+                        if (!aggregatedData[formattedDate]) {
+                            aggregatedData[formattedDate] = {
+                                successful: 0,
+                                failed: 0
+                            };
+                        }
+                        aggregatedData[formattedDate].failed += item.qty_total;
+                    });
+
+                    for (let date in aggregatedData) {
+                        dataArr.push([date, aggregatedData[date].successful, aggregatedData[date].failed]);
                     }
-                });
-
-                for (let date in aggregatedData) {
-                    dataArr.push([date, aggregatedData[date].qty_total, aggregatedData[date].total]);
-                }
-            } else {
-                dataArr.push(['01-01-2013', 1, 3400], ['01-01-2014', 2, 2321], ['01-01-2015', 4, 2313]);
-            }
-            var data = google.visualization.arrayToDataTable(dataArr);
-
-            var options = {
-                title: 'Số lượng hàng bán',
-                hAxis: {
-                    title: 'ngày-tháng-năm',
-                    titleTextStyle: {
-                        color: '#333'
-                    }
-                },
-                vAxis: {
-                    minValue: 0
-                }
-            };
-            var charts = new google.visualization.AreaChart(document.getElementById('areachart'));
-            charts.draw(data, options);
-        }
-
-        $(document).ready(function() {
-            $('#result_areachart_chart').click(function(e) {
-                e.preventDefault();
-                var start_date = $(this).closest('.areachart_chart').find('#start_date').val();
-                var end_date = $(this).closest('.areachart_chart').find('#end_date').val();
-
-                if (!start_date || !end_date || end_date <= start_date) {
-                    <?php
-                    // toastr()->error('Lỗi: ngày bắt đầu không được lớn hơn ngày kết thúc');
-                    ?>
                 } else {
-                    let url = "{{route('admin.dashboard.pots')}}";
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
-                    $.ajax({
-                        method: "POST",
-                        url: url,
-                        dataType: "json",
-                        data: {
-                            start_date: start_date,
-                            end_date: end_date,
-                        },
-                        success: function(response) {
-                            drawChart(response.Order);
-                        }
-                    });
+                    dataArr.push(['01-01-2013', 0, 0], ['01-01-2014', 0, 0], ['01-01-2015', 0, 0]);
                 }
-            });
-        });
-    </script>
+
+                var data = google.visualization.arrayToDataTable(dataArr);
+
+                var options = {
+                    title: 'Số lượng hàng bán',
+                    hAxis: {
+                        title: 'ngày-tháng-năm',
+                        titleTextStyle: {
+                            color: '#333'
+                        }
+                    },
+                    vAxis: {
+                        minValue: 0
+                    }
+                };
+
+                var charts = new google.visualization.AreaChart(document.getElementById('areachart'));
+                charts.draw(data, options);
+            }
+            var successfulOrder = document.querySelector('#successfulOrder')
+            var failedOrder = document.querySelector('#failedOrder')
+            var tableOrder = document.querySelector('.tableOrder')
+            $(document).ready(function() {
+                $('#result_areachart_chart').click(function(e) {
+                    e.preventDefault();
+                    var start_date = $(this).closest('.areachart_chart').find('#start_date').val();
+                    var end_date = $(this).closest('.areachart_chart').find('#end_date').val();
 
 
-    <!-- <script>
-        google.charts.load('current', {
-            'packages': ['corechart']
-        });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart(response = []) {
-            var dataArr = [
-                ['Date', 'online']
-            ];
-            if (response.length > 0) {
-                let aggregatedData = {};
-                response.forEach(item => {
-                    let date = new Date(item.created_at);
-                    let formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
-                    if (aggregatedData[formattedDate]) {
-                        aggregatedData[formattedDate] += item.qty_total;
+                    if (!start_date || !end_date || end_date <= start_date) {
+                        alert('Lỗi: ngày bắt đầu không được lớn hơn ngày kết thúc hoặc ngày không hợp lệ');
                     } else {
-                        aggregatedData[formattedDate] = item.qty_total;
+                        let url = "{{route('admin.dashboard.pots')}}";
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        $.ajax({
+                            method: "POST",
+                            url: url,
+                            dataType: "json",
+                            data: {
+                                start_date: start_date,
+                                end_date: end_date,
+                            },
+                            success: function(response) {
+                                if (response.Orders.length > 0 || response.unpaidOrdersChart.length > 0) {
+                                    drawChart(response);
+                              
+                                    handleOrderDetails(response);
+                                    successfulOrder.classList.remove('d-none');
+                                    failedOrder.classList.remove('d-none');
+                                    tableOrder.classList.remove('d-none');
+                                } else {
+                                    alert('Không có đơn hàng nào trong khoảng thời gian này.');
+                                }
+                            }
+                        });
                     }
                 });
 
-                for (let date in aggregatedData) {
-                    dataArr.push([date, aggregatedData[date]]);
-                }
-            } else {
-                dataArr.push(['01-01-2013', 1000], ['01-01-2014', 1170], ['01-01-2015', 660]);
+                $('#successfulOrder').click(function() {
+                    showOrderDetails('Orders');
+                });
+
+                $('#failedOrder').click(function() {
+                    showOrderDetails('unpaidOrdersChart');
+                });
+            });
+
+            function handleOrderDetails(response) {
+                window.orderData = response;
             }
 
-            var data = google.visualization.arrayToDataTable(dataArr);
+            function showOrderDetails(orderType) {
+                var orderTableBody = $('#orderTableBody');
+                orderTableBody.empty();
 
-            var options = {
-                title: 'Company Performance',
-                hAxis: {
-                    title: 'Date',
-                    titleTextStyle: {
-                        color: '#333'
-                    }
-                },
-                vAxis: {
-                    minValue: 0
+                if (window.orderData && window.orderData[orderType]) {
+                    window.orderData[orderType].forEach(order => {
+                        if (orderType === "Orders") {
+                            document.querySelector('.titleOrder').innerHTML = '<span style="color: #3366CC;">thành công<span>';
+                        } else {
+                            document.querySelector('.titleOrder').innerHTML = '<span style="color: #DC3912;">đã hủy<span>';
+                        }
+
+                        let date = new Date(order.created_at);
+                        let formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+
+                        var productNames = order.product_names.join(', ');
+                        let formattedTotal = new Intl.NumberFormat('vi-VN').format(order.total);
+                        let price = order.total / order.qty_total;
+                        var row = `<tr>
+                            <td>${order.id}</td>
+                            <td>${formattedDate}</td>
+                            <td>${productNames}</td>
+                            <td>${order.qty_total}</td>
+                            <td>${price}</td>
+                            <td>${formattedTotal}</td>
+                        </tr>`;
+                        orderTableBody.append(row);
+                    });
                 }
-            };
+            }
+        </script>
 
-            var chart = new google.visualization.AreaChart(document.getElementById('areachart'));
-            chart.draw(data, options);
-        }
-
-        $(document).ready(function() {
-            $('#result_areachart_chart').click(function(e) {
-                e.preventDefault();
-                var start_date = $(this).closest('.areachart_chart').find('#start_date').val();
-                var end_date = $(this).closest('.areachart_chart').find('#end_date').val();
-
-                let url = "{{ route('admin.dashboard.pots') }}";
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    method: "POST",
-                    url: url,
-                    dataType: "json",
-                    data: {
-                        start_date: start_date,
-                        end_date: end_date
-                    },
-                    success: function(response) {
-                        drawChart(response.Order);
-                    }
-                });
-            });
-        });
-    </script> -->
-
-</div>
-@endsection
+    </div>
+    @endsection
