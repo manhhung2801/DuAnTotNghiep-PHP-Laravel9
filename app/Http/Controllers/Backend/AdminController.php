@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\contact;
 use App\Models\Coupons;
 use App\Models\Order;
-use App\Models\Order_detail;
 use App\Models\OrderDetail;
 use App\Models\Post;
 use App\Models\Product;
@@ -33,7 +32,17 @@ class AdminController extends Controller
         }
         return $totalRevenue;
     }
+    public function chartArea($Orders)
+    {
+        foreach ($Orders as $order) {
+            $orderDetails = OrderDetail::where('order_id', $order->id)->get();
+            $productNames = $orderDetails->pluck('product_name')->toArray();
+        
+            $order->product_names = $productNames;
+        }
 
+        return $Orders;
+    }
     public function chartCircle($Order)
     {
         $data = [];
@@ -74,7 +83,7 @@ class AdminController extends Controller
         $countProuduct = User::get()->count();
         $countCoupon = Coupons::get()->count();
         $countSlider = Slider::get()->count();
-        $countOrder = Order::where('payment_status', 1)->where('order_status',92)->count();
+        $countOrder = Order::where('payment_status', 1)->where('order_status', 92)->count();
         $countCategory = Category::get()->count();
         $countPost = Post::get()->count();
         $countProductComments = ProductComments::get()->count();
@@ -107,20 +116,34 @@ class AdminController extends Controller
         ]);
     }
 
+
     public function dashboards(Request $request)
     {
-
-
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
 
         $start_date_order = date('Y-m-d', strtotime($start_date));
         $end_date_order = date('Y-m-d', strtotime($end_date));
 
+        $Orderss= Order::where('order_status', 92)
+            ->where('payment_status', 1)
+            ->whereIn('shipping_method', [0, 1])
+            ->whereBetween('created_at', [$start_date_order, $end_date_order])
+            ->get();
 
 
-        $Order = Order::where('payment_status', 1)->where('order_status',92)->whereBetween('created_at', [$start_date_order, $end_date_order])->get();
-        // $data= ['start_date_order'=> $start_date_order, 'end_date_order'=> $end_date_order];
-        return response(['Order' => $Order]);
+
+        $unpaidOrdersCharts= Order::where(function ($query) {
+            $query->where('order_status', -1)
+                ->orWhere('payment_status', 0);
+        })
+            ->whereBetween('created_at', [$start_date_order, $end_date_order])
+            ->get();
+
+
+        $Orders = $this->chartArea($Orderss);
+        $unpaidOrdersChart = $this->chartArea($unpaidOrdersCharts);
+
+        return response()->json(['Orders' => $Orders, 'unpaidOrdersChart' => $unpaidOrdersChart]);
     }
 }

@@ -78,7 +78,7 @@ class PostsController extends Controller
 
     public function index(Request $request)
     {
-        $post = Post::latest();
+        $post = Post::query();
         if (!empty($request->get('keyword'))) {
             $post = Post::where('title', 'like', '%' . $request->get('keyword') . '%');
         }

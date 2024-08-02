@@ -7,7 +7,11 @@
     <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-6">
         <div class="item_product_main">
             <div class="variants product-action item-product-main duration-300">
-                {{ Helper::discount($pro->offer_start_date, $pro->offer_end_date, $pro->price, $pro->offer_price) }}
+                <span class="flash-sale">Giảm
+                    <span class="flash-sales text-white">{{ Helper::discount($pro->offer_start_date, $pro->offer_end_date, $pro->price, $pro->offer_price) }}</span>%
+                </span>
+
+
                 <div class="product-thumbnail">
                     <a class="image_thumb scale_hover" href="/san-pham/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html" title="iPhone 13 Pro Max 1TB - Chính Hãng VN/A">
                         <img class="lazyload duration-300 loaded" src="{{ asset('uploads/products/' . $pro->image) }}">
@@ -25,8 +29,8 @@
                             @endphp
                             <div class="price-box">
                                 <span class="compare-price  CouponsPrice_old">{{ $prices['price_new'] }} <i class='fa-solid fa-dong-sign'></i> </span>
-                                <span class=" price "> {{ $prices['price_old'] }} <i class="fa-regular fa-dong-sign "></i></span>
-                                
+                                <span class=" price CouponsPrice_new1"> {{ $prices['price_old'] }} <i class="fa-regular fa-dong-sign "></i></span>
+                                <span class="price CouponsPrice_new2 ">{{ $prices['price_new'] }} <i class='fa-solid fa-dong-sign'></i> </span>
                             </div>
                         </div>
                     </div>

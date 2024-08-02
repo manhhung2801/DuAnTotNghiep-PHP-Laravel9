@@ -26,7 +26,10 @@
             <div class="carousel-inner">
                 @foreach($slideposts as $item)
                 <div class="carousel-item active rounded-4">
-                    <img src="{{ asset('uploads/post/' . $item->image) }}" class="d-block w-100 rounded-4" alt="..." style="height: 500px;object-fit: cover">
+                    <a href="{{route('news.details', [ 'slugs_cate' =>$item->Post_categories->slug, 'slugs' =>$item->slug ])}}">
+                        <img src="{{ asset('uploads/post/' . $item->image) }}" class="d-block w-100 rounded-4" alt="..." style="height: 500px;object-fit: cover">
+                    </a>
+
                 </div>
                 @endforeach
 
