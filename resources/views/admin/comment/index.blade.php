@@ -96,6 +96,38 @@
                 let productId = url.substring(url.lastIndexOf("/") + 1);
                 console.log("🚀 ~ showComments ~ productId:", productId)
 
+                function formatTimeAgo(dateString) {
+                    // Chuyển đổi chuỗi thời gian thành đối tượng Date
+                    const dateObj = new Date(dateString);
+
+                    // Tính toán khoảng thời gian từ thời điểm hiện tại đến thời điểm được truyền vào
+                    const currentTime = new Date().getTime();
+                    const timeAgo = currentTime - dateObj.getTime();
+
+                    // Tính toán số giây/phút/giờ/ngày/tháng/năm
+                    const seconds = Math.floor(timeAgo / 1000);
+                    const minutes = Math.floor(seconds / 60);
+                    const hours = Math.floor(minutes / 60);
+                    const days = Math.floor(hours / 24);
+                    const months = Math.floor(days / 30);
+                    const years = Math.floor(months / 12);
+
+                    // Trả về chuỗi thời gian theo định dạng mong muốn
+                    if (years > 0) {
+                        return `${years} năm trước`;
+                    } else if (months > 0) {
+                        return `${months} tháng trước`;
+                    } else if (days > 0) {
+                        return `${days} ngày trước`;
+                    } else if (hours > 0) {
+                        return `${hours} giờ trước`;
+                    } else if (minutes > 0) {
+                        return `${minutes} phút trước`;
+                    } else {
+                        return `${seconds} giây trước`;
+                    }
+                }
+
                 setTimeout(() => {
                     $.ajax({
                         url: url,
@@ -106,6 +138,16 @@
                             let commentsHtml = '';
 
                             if (response.data && response.data.length > 0) {
+                                response.data.sort((a, b) => {
+                                    // Chuyển đổi chuỗi thời gian thành giá trị số để so sánh
+                                    const aTimestamp = new Date(a.created_at).getTime();
+                                    const bTimestamp = new Date(b.created_at).getTime();
+
+                                    // So sánh và trả về kết quả
+                                    if (aTimestamp < bTimestamp) return -1;
+                                    if (aTimestamp > bTimestamp) return 1;
+                                    return 0;
+                                });
                                 console.log("🚀 ~ setTimeout ~ response.data:", response.data)
                                 $('#comments-container').empty();
 
@@ -124,7 +166,7 @@
                                     <div class="d-flex flex-row justify-content-end gap-2 user-info ">
                                         <div class="d-flex flex-column justify-content-end ml-2">
                                         <span class="d-block font-weight-bold name text-end">${comment.user.id === {{ auth()->id() }} ? `Bạn` : comment.user.name + ' - ' + comment.user.email}</span>
-                                        <span class="date text-black-50 text-end">${comment.created_at}</span>
+                                        <span class="date text-black-50 text-end">${formatTimeAgo(comment.created_at)}</span>
                                         <div class="mt-2 ">
                                             <p class="comment-text text-end ">${comment.message}</p>
                                         </div>
@@ -221,7 +263,7 @@
                 showComments($(this).attr('data-url'));
             });
 
-            $('body').on('click', '.comment_submit_btn', function(e) {
+            $('body').off('click', '.comment_submit_btn').on('click', '.comment_submit_btn', function(e) {
                 e.preventDefault();
 
                 // Closest form to the comment submit button

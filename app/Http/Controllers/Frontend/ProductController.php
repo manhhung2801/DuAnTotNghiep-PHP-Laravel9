@@ -51,14 +51,14 @@ class ProductController extends Controller
         }
 
         if ($sub) {
-            $subCategory = SubCategory::where('slug', $sub)->first();
+            $subCategory = SubCategory::where('slug', $sub)->where('category_id', $category->id)->first();
             if ($subCategory) {
                 $productsQuery->where('sub_category_id', $subCategory->id);
             } else return view("404");
         }
 
         if ($child) {
-            $childCategory = ChildCategory::where('slug', $child)->first();
+            $childCategory = ChildCategory::where('slug', $child)->where('sub_category_id', $subCategory->id)->first();
             if ($childCategory) {
                 $productsQuery->where('child_category_id', $childCategory->id);
             } else return view("404");
@@ -81,9 +81,9 @@ class ProductController extends Controller
         } elseif ($sortBy === 'price_high_low') {
             $productsQuery->orderBy('offer_price', 'desc');
         } elseif (isset($sortBy) && is_numeric($sortBy)) {
-            $minPrice = $productsQuery->min('price');
-            $productsQuery->whereBetween('price', [$minPrice, $sortBy]);
-            $productsQuery->orderBy('price', 'desc');
+            $minPrice = $productsQuery->min('offer_price');
+            $productsQuery->whereBetween('offer_price', [$minPrice, $sortBy]);
+            $productsQuery->orderBy('offer_price', 'desc');
         }
 
         // Paginate the products

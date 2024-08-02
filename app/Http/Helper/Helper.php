@@ -20,7 +20,7 @@ class Helper
             $price_new = number_format($price, 0, '.', '.');
             $price_old = number_format($offer_price, 0, '.', '.');
         } else {
-            $price_new = number_format($price, 0, '.', '.');
+            $price_old = number_format($price, 0, '.', '.');
         }
         return ['price_new' => $price_new, 'price_old' => $price_old];
     }
@@ -70,7 +70,7 @@ class Helper
     public static function randOrderCode()
     {
         do {
-            $orderCode = "ĐH-" . Str::random(10); // Tạo một chuỗi ngẫu nhiên dài 10 ký tự
+            $orderCode = "ĐH" . Str::random(10); // Tạo một chuỗi ngẫu nhiên dài 10 ký tự
         } while (Order::where('order_code', $orderCode)->exists());
 
         return $orderCode;

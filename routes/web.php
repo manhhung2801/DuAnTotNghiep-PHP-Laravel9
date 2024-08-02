@@ -108,8 +108,11 @@ Route::fallback(function () {
 
 
 
-/** Tính phí ship (calculateShipping) */
+/** GHTK*/
+/**  Tính phí ship (calculateShipping)  */
 Route::get("/calculateShipping", [GHTKController::class, 'calculateShipping'])->name('calculateShipping');
+/**Kiểm tra đơn hàng */
+Route::get('/statusOrder/{tracking_id?}', [GHTKController::class, 'statusOrder'])->name('statusOrder');
 
 
 /** VNPAY */
