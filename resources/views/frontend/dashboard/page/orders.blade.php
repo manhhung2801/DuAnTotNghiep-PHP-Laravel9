@@ -1,22 +1,22 @@
 @extends('frontend.layouts.master')
 @section('title', 'Đơn hàng của bạn')
 @section('styles')
-    <style>
-        .gradient-custom {
-            /* fallback for old browsers */
-            background: #FFF6E9;
+<style>
+    .gradient-custom {
+        /* fallback for old browsers */
+        background: #FFF6E9;
 
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to top left, rgb(190, 219, 220), rgba(246, 243, 255, 1));
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to top left, rgb(190, 219, 220), rgba(246, 243, 255, 1));
 
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to top left, rgb(190, 219, 220), rgba(246, 243, 255, 1))
-        }
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to top left, rgb(190, 219, 220), rgba(246, 243, 255, 1))
+    }
 
-       .order-list {
-            display: flex;
-            flex-direction: column;
-        }
+    .order-list {
+        display: flex;
+        flex-direction: column;
+    }
 
     .order-item {
         display: flex;
@@ -84,11 +84,10 @@
         border-color: #dc3545;
         color: #dc3545;
     }
-    </style>
+</style>
 @endsection
 
 @section('content')
-
     <section class="h-100 gradient-custom">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -99,9 +98,11 @@
                         <div class="page account-page customer-info-page">
                             @forelse ($getOrders as $order)
                                 <div class="order-item bg-white mb-3 p-3 rounded-0 shadow-sm border border-1">
+
+                                    {{-- Mã đơn hàng + Giá tiền --}}
                                     <div class="order-header d-flex justify-content-between align-items-center">
                                         <div class="order-code">
-                                            <h5 class="fw-bold text-dark">Mã ĐH:
+                                            <h5 class="fw-bold text-dark">#
                                                 {{ $order->order_code }}
                                             </h5>
                                         </div>
@@ -112,88 +113,108 @@
 
                                         </div>
                                     </div>
+
                                     <div class="order-body">
                                         <div class="row">
+
+                                            {{-- Phương thức thanh toán --}}
                                             <div class="col-12 col-lg-4 mb-2">
                                                 <p class="mb-1 text-muted"><strong class="text-dark">Phương thức thanh toán:</strong>
                                                     @if ($order->payment_method == 0)
                                                         <strong class="small">Thanh toán khi nhận hàng</strong>
                                                     @elseif ($order->payment_method == 1)
-                                                    <span class="small"><img src="{{ asset('uploads/vnpay.png') }}" alt="VNPAY" class="payment-logo" style="margin-top: -5px;"></span>
+                                                        <span class="small"><img src="{{ asset('uploads/vnpay.png') }}" alt="VNPAY" class="payment-logo" style="margin-top: -5px;"></span>
                                                     @endif
                                                 </p>
                                                 @if ($order->payment_status == 0)
-                                                <p class="badge text-bg-warning mt-1"><em>Chưa thanh toán</em></p>
+                                                    <p class="badge text-bg-warning mt-1"><em>Chưa thanh toán</em></p>
                                                 @elseif($order->payment_status == 1)
-                                                <p class="badge text-bg-success mt-1"><em>Đã thanh toán</em></p>
+                                                    <p class="badge text-bg-success mt-1"><em>Đã thanh toán</em></p>
                                                 @elseif($order->payment_status == 2)
-                                                <p class="badge text-bg-danger mt-1"><em>Thanh toán thất bại</em></p>
+                                                    <p class="badge text-bg-danger mt-1"><em>Thanh toán thất bại</em></p>
                                                 @endif
                                                 @if ($order->payment_method == 1 && $order->payment_status == 0)
-                                                <form action="{{ route('retry-payment') }}" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                                    <button class="text-white btn btn-dark btn-sm shadow-lg fw-bold rounded-3" style="margin-top: -5px;">Thanh toán</button>
-                                                </form>
+                                                    <form action="{{ route('retry-payment') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                                        <button class="text-white btn btn-dark btn-sm shadow-lg fw-bold rounded-3" style="margin-top: -5px;">Thanh toán</button>
+                                                    </form>
                                                 @elseif($order->payment_method == 1 && $order->payment_status == 2)
-                                                <form action="{{ route('retry-payment') }}" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                                    <button class="text-white btn btn-dark btn-sm shadow-lg fw-bold rounded-3" style="margin-top: -5px;">Thanh toán</button>
-                                                </form>
+                                                    <form action="{{ route('retry-payment') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                                        <button class="text-white btn btn-dark btn-sm shadow-lg fw-bold rounded-3" style="margin-top: -5px;">Thanh toán</button>
+                                                    </form>
                                                 @endif
                                                 @if ($order->order_status == -1 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null)
-                                                @if ($order->vnp_refund_status == 'Pending')
-                                                <p class="badge text-bg-secondary"><em>Chờ phê duyệt hoàn tiền</em></p>
-                                                @elseif($order->vnp_refund_status == 'Processing')
-                                                <p class="badge text-bg-secondary"><em>Đang xử lý hoàn tiền</em></p>
-                                                @elseif($order->vnp_refund_status == 'Refunded')
-                                                <p class="badge text-bg-secondary"><em>Đã hoàn tiền</em></p>
-                                                @elseif($order->vnp_refund_status == 'Refund_Failed')
-                                                <p class="badge text-bg-secondary"><em>Hoàn tiền không thành công</em></p>
-                                                @endif
+                                                    @if ($order->vnp_refund_status == 'Pending')
+                                                        <p class="badge text-bg-secondary"><em>Chờ phê duyệt hoàn tiền</em></p>
+                                                    @elseif($order->vnp_refund_status == 'Processing')
+                                                        <p class="badge text-bg-secondary"><em>Đang xử lý hoàn tiền</em></p>
+                                                    @elseif($order->vnp_refund_status == 'Refunded')
+                                                        <p class="badge text-bg-secondary"><em>Đã hoàn tiền</em></p>
+                                                    @elseif($order->vnp_refund_status == 'Refund_Failed')
+                                                        <p class="badge text-bg-secondary"><em>Hoàn tiền không thành công</em></p>
+                                                    @endif
                                                 @endif
                                             </div>
+
+                                            {{-- Phương thức vận chuyển --}}
                                             <div class="col-12 col-lg-3 mb-2">
                                                 <p class="mb-1 text-dark"><strong>Vận chuyển:</strong>
                                                     @if ($order->shipping_method == 0)
-                                                    <span class="small">Nhận tại cửa hàng</span>
+                                                        <span class="small">Nhận tại cửa hàng</span>
+                                                        <p class="small">{{ $order->store_address ?? '' }}</p>
+
                                                     @elseif($order->shipping_method == 1)
-                                                    <span class="small"><img src="https://cdn.haitrieu.com/wp-content/uploads/2022/05/Logo-GHTK-H.png" alt="GHTK" class="shipping-logo" style="margin-top: -5px"> <span>{{$order->tracking_id ? "-". $order->tracking_id:''}}</span></span>
+                                                        <span class="small"><img src="https://cdn.haitrieu.com/wp-content/uploads/2022/05/Logo-GHTK-H.png" alt="GHTK" class="shipping-logo" style="margin-top: -5px"></span> 
+                                                        <p>{{$order->tracking_id ? "Mã Vận đơn: ". $order->tracking_id:''}}</p>
                                                     @endif
                                                 </p>
                                             </div>
+
+                                            {{-- Trạng thái đơn hàng --}}
+                                            {{-- @php
+                                                $code_success = [92, 5, 6];
+                                            @endphp --}}
                                             <div class="col-12 col-lg-3 mb-2">
                                                 <p class="mb-1 text-dark"><strong>Trạng thái:</strong>
                                                 @if ($order->order_status == -1)
-                                                <strong class="text-danger small">Đã hủy</strong>
+                                                    <strong class="text-danger small">Đã hủy</strong>
+                                                @elseif(in_array($order->order_status, [92, 5, 6, 45]))
+                                                    <strong class="text-success small">Đã giao thành công</strong>
                                                 @elseif ($order->shipping_method == 0)
-                                                @if ($order->order_status == 0)
-                                                <strong class="small">Đang xử lý</strong>
-                                                @elseif ($order->order_status == 91)
-                                                <strong class="small">Đã tiếp nhận</strong>
-                                                @elseif ($order->order_status == 92)
-                                                <strong class="text-success small">Đã hoàn thành</strong>
-                                                @endif
+                                                    @if ($order->order_status == 0)
+                                                        <strong class="small">Đang xử lý</strong>
+                                                    @elseif ($order->order_status == 91)
+                                                        <strong class="small">Đã tiếp nhận</strong>
+                                                    @elseif ($order->order_status == 92)
+                                                        <strong class="text-success small">Đã hoàn thành</strong>
+                                                    @endif
                                                 @elseif($order->shipping_method == 1)
-                                                @if ($order->order_status == 0)
-                                                <strong class="small text-warning">Chờ xác nhận</strong>
-                                                @elseif($order->order_status > 0)
-                                                <strong class="small">Đã tiếp nhận</strong>
-                                                @endif
+                                                    @if ($order->order_status == 0)
+                                                        <strong class="small text-warning">Chờ xác nhận</strong>
+                                                    @elseif($order->order_status > 0)
+                                                        <strong class="small">Đã tiếp nhận</strong>
+                                                    @endif
                                                 @endif
                                                 </p>
                                             </div>
+
+                                            {{-- Detail --}}
                                             <div class="col-12 col-lg-2 d-flex flex-column align-items-start">
                                                 <a href="{{ route('order.show', $order->id) }}" class="btn btn-primary btn-sm w-100">Xem chi tiết</a>
                                                 @if ($order->order_status == 0 || $order->order_status == 1 || $order->order_status == 2)
-                                                <button id="btn-cancel-order" type="button" data-url="{{ route('order.update', $order->id) }}" class="btn btn-outline-danger btn-sm mt-2">Hủy đơn hàng</button>
+                                                    <button id="btn-cancel-order" type="button" data-url="{{ route('order.update', $order->id) }}" class="btn btn-outline-danger btn-sm mt-2">Hủy đơn hàng</button>
                                                 @endif
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
+
                             @empty
+                            {{-- Đơn hàng rỗng --}}
                             <div class="row">
                                 <div class="col-12">
                                     <div class="alert alert-info" role="alert">
@@ -202,7 +223,7 @@
                                 </div>
                             </div>
                             @endforelse
-
+                            {{-- Phân trang --}}
                             <div class="row mt-4">
                                 <div class="col-12">
                                     {{ $getOrders->links() }}

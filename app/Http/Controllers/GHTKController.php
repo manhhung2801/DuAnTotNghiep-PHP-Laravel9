@@ -88,6 +88,10 @@ class GHTKController extends Controller
                 ];
                 $products[] = $product;
             }
+            
+            //Kiểm tra đã đã thanh toán thì cod = 0
+            $pick_money = $getOrder->payment_status == 1 ? 0 : $getOrder->total;
+
             //Dữ liệu gửi lên API
             $order = [
                 "products" => $products,
@@ -107,7 +111,7 @@ class GHTKController extends Controller
                     "ward" => $orderAddress->ward,
                     "hamlet" => "Khác",
                     "is_freeship" => 1,
-                    "pick_money" => $getOrder->total,
+                    "pick_money" => $pick_money,
                     "transport" => "road",
                     "value" => 1000,
                     "tags" => [1]
@@ -182,19 +186,31 @@ class GHTKController extends Controller
     public function statusOrder($tracking_id)
     {
         $curl = curl_init();
-
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/shipment/v2/" . $tracking_id,
+            CURLOPT_URL => "https://services-staging.ghtklab.com/services/shipment/v2/" . $tracking_id,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_HTTPHEADER => array(
-                "Token: APITokenSample-ca441e70288cB0515F310742",
+                "Token: fb71dfceab53db26cb2406e24025261368caca75",
             ),
         ));
 
-        $response = curl_exec($curl);
+        $response = json_decode(curl_exec($curl));
         curl_close($curl);
+        if($response->success == true) {
+            //Update trạng thái vào database
+            $order = Order::where('tracking_id', $tracking_id)->first();
+            $order->order_status = $response->order->status;
+            $order->save();
 
-        echo 'Response: ' . $response;
+            return response()->json([
+                'status' => true, 
+                'status_text' => $response->order->status_text,
+                'modified' => $response->order->modified,
+                'deliver_date' => $response->order->deliver_date,
+            ]);
+        }else {
+            return response('Xảy ra lỗi vui lòng thử lại sau!');
+        }
     }
 }
