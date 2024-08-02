@@ -9,9 +9,8 @@ class Page extends Model
 {
     use HasFactory;
     protected $table = 'pages';
-    public function information()
+    public function pageCategory()
     {
-        return $this->belongsTo(Information::class);
+        return $this->belongsTo(PageCategory::class, "page_category_id");
     }
-   
 }

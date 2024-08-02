@@ -13,7 +13,7 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="{{route('dashboard')}}">
+            <a href="{{ route('dashboard') }}">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
@@ -67,10 +67,10 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fas fa-pager"></i>
                 </div>
-                <div class="menu-title">Danh Mục Thông tin</div>
+                <div class="menu-title">Danh Mục Trang</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.information.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách
+                <li> <a href="{{ route('admin.page-category.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách
                         Trang</a>
                 </li>
             </ul>
@@ -161,7 +161,8 @@
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('admin.comment.index') }}"><i class='bx bx-radio-circle'></i>Danh sách bình luận</a>
+                    <a href="{{ route('admin.comment.index') }}"><i class='bx bx-radio-circle'></i>Danh sách bình
+                        luận</a>
                 </li>
             </ul>
         </li>
@@ -174,7 +175,8 @@
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('admin.AdminContact') }}"><i class='bx bx-radio-circle'></i>Danh sách Khách hàng liên hệ</a>
+                    <a href="{{ route('admin.AdminContact') }}"><i class='bx bx-radio-circle'></i>Danh sách Khách
+                        hàng liên hệ</a>
                 </li>
             </ul>
         </li>

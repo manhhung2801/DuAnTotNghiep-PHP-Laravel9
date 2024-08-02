@@ -182,7 +182,7 @@
                 const total = totalCart + shippingFee - couponDiscount;
 
                 $('#total_price_summary').text(total.toLocaleString('vi-VN') + ' VNĐ');
-                $('.total-line__coupon').text('-' + couponDiscount.toLocaleString('vi-VN') + ' VNĐ');
+                $('.total-line__coupon').text('- ' + couponDiscount.toLocaleString('vi-VN') + ' VNĐ');
                 $('#total_line_shipping').text('+ ' + shippingFee.toLocaleString('vi-VN') + ' VNĐ');
             }
 
@@ -201,7 +201,7 @@
                             $.each(data.storeAdress, function(index, value) {
                                 $('#pick_address_store').append(`
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="store_address" id="store_address_${index}" value="${value}" ${index === 0 ? 'checked' : ''}>
+                                <input class="form-check-input" type="radio" name="store_address" id="store_address_${index}" value="${value}" checked>
                                 <label class="form-check-label lable_store_address" for="store_address_${index}">${value}</label>
                             </div>
                         `);
@@ -217,8 +217,8 @@
 
             // Xử lý giao hàng tận nơi (GHTK)
             $('body').off('change', '#wards, #ghtk').on('change', '#wards, #ghtk', function() {
+                $('#pick_address_store').addClass('d-none').empty();
                 if ($('#ghtk').is(':checked') && $('#wards').val()) {
-                    $('#pick_address_store').addClass('d-none').empty();
 
                     const shippingData = {
                         province: $('#provinces').val(),

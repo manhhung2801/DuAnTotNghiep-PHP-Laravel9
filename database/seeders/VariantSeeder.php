@@ -22,13 +22,15 @@ class VariantSeeder extends Seeder
                 Variant::create([
                     'product_id' => $index,
                     'name' => 'color',
-                    'status' => 'active',
+                    'type' => 1,
+                    'status' => 1,
                 ]);
 
                 Variant::create([
                     'product_id' => $index,
                     'name' => 'ram',
-                    'status' => 'active',
+                    'type' => 0,
+                    'status' => 0,
                 ]);
             } else {
                 error_log("Không tìm thấy sản phẩm với id = $index");

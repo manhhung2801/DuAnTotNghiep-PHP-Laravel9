@@ -10,7 +10,7 @@ class Variant extends Model
     use HasFactory;
     protected $table = 'variant';
     public $primaryKey = 'id';
-    public $fillable = ['product_id', 'name', 'status', 'created_at', 'updated_at',];
+    public $fillable = ['product_id', 'name','type', 'status', 'created_at', 'updated_at',];
 
     public function product()
     {

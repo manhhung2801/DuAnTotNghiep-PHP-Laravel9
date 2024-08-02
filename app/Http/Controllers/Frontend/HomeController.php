@@ -8,13 +8,14 @@ use App\Models\Product;
 use App\Models\Post;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Handler\Proxy;
+
 class HomeController extends Controller
 {
     public function index()
     {
         // category show menu
         $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
-        $slides = Slider::where("status", "=", 1)->orderBy("serial", "asc")->take(3)->get();
+        $slides = Slider::where("status", "=", 1)->take(3)->get();
 
         // Show danh mục nổi bật
         $categoryHot = $categories->take(6);
@@ -27,8 +28,8 @@ class HomeController extends Controller
         foreach ($getCategory as $cate) {
             $product = [
                 $cate->name => Product::getProduct()->where('status', '=', 1)
-                                        ->where('category_id', $cate->id)
-                                        ->take(4)->get()
+                    ->where('category_id', $cate->id)
+                    ->take(4)->get()
             ];
             $getProducts[] = $product;
         }

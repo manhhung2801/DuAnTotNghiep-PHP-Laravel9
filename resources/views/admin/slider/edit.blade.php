@@ -47,21 +47,12 @@
                         <input type="text" class="form-control" id="input1" name="type"
                             value="{{ $slider->type }}">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="input2" class="form-label">Tiêu đề</label>
                         <input type="text" class="form-control" id="input2" name='title'
                             value="{{ $slider->title }}">
                     </div>
-                    <div class="col-md-6">
-                        <label for="input4" class="form-label">Giá</label>
-                        <input type="number" class="form-control" id="input4" name="starting_price"
-                            value="{{ $slider->starting_price }}">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="input5" class="form-label">Số seri</label>
-                        <input type="number" class="form-control" id="input5" name='serial'
-                            value="{{ $slider->serial }}">
-                    </div>
+                   
                     <div class="col-md-4">
                         <label for="input6" class="form-label">Đường dẫn</label>
                         <input type="text" class="form-control" id="input6" name="btn_url"

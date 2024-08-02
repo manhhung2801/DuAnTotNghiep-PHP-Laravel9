@@ -3,41 +3,41 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Information;
 use App\Models\Page;
+use App\Models\PageCategory;
 use Illuminate\Http\Request;
 
-class InformationController extends Controller
+class PageController extends Controller
 {
     public function showPages($slug1 = null, $slug2 = null)
     {
         try {
 
-            $listInformation = Information::all();
+            $ListPageCategories = PageCategory::all();
             $listPages = Page::all();
 
             // Check điều kiện $slug1 and $slug2 
             if ($slug1 && $slug2) {
                 // Check nếu không có $slug1 thì thoát ra trang 404
-                $checkedInformation = Information::where("slug", $slug1)->first();
-                if (!$checkedInformation) {
+                $checkedPageCategories = PageCategory::where("slug", $slug1)->first();
+                if (!$checkedPageCategories) {
                     return view(404);
                 }
 
                 // Tìm trang có $slug2 bên dưới thông tin tìm thấy
-                $informationDetail = Page::where("slug", $slug2)
-                    ->where("information_id", $checkedInformation->id)
+                $PagesDetail = Page::where("slug", $slug2)
+                    ->where("page_category_id", $checkedPageCategories->id)
                     ->first();
 
-                if (!$informationDetail) {
+                if (!$PagesDetail) {
                     return view(404);
                 }
 
-                return view("frontend.information.index", [
-                    'listInformation' => $listInformation,
+                return view("frontend.pages.index", [
+                    'ListPageCategories' => $ListPageCategories,
                     'listPages' => $listPages,
-                    'informationDetail' => $informationDetail,
-                    'checkedInformation' => $checkedInformation->id,
+                    'PagesDetail' => $PagesDetail,
+                    'checkedPageCategories' => $checkedPageCategories->id,
                 ]);
             } else {
                 return view(404);

@@ -44,8 +44,8 @@
                     <div class="col-10">
                         <input type="hidden" name="user_id" value="{{ auth()->id() }}" class="user_id">
                         <input type="hidden" name="product_id" value="{{ $product->id }}" class="product_id">
-                        <div class="d-flex flex-row align-items-start"><img class="rounded-circle px-1"
-                                src="https://cdn2.cellphones.com.vn/insecure/rs:fill:55:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/chibi2.png"
+                        <div class="d-flex flex-row align-items-center"><img class="rounded-circle px-1"
+                                src="{{ asset('images\default-avatar.png') }}"
                                 width="40">
                             <textarea id="comment_input" class="form-control shadow bg-body-tertiary rounded textarea" name="message"
                                 placeholder="Bình luận của bạn về sản phẩm"></textarea>
