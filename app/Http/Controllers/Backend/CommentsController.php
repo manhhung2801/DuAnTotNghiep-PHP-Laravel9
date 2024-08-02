@@ -57,7 +57,9 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        $commentDetail = ProductComments::where(['product_id', $id]);
+        $commentDetail = ProductComments::where('product_id', $id)
+            ->orderBy('created_at', 'asc')
+            ->get();
         return response()->json(['data' => $commentDetail]);
     }
 
