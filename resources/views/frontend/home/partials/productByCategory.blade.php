@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="scroll_animation show-all text-center mt-2">
-                <a class="px-5 py-2 btn btn-outline-dark " href="/san-pham/{{ $pro->category->slug }}.html">Xem tất cả
+                <a class="px-5 py-2 btn btn-outline-dark " href="/san-pham/{{ $pro->category->slug }}">Xem tất cả
                     <i class="fa-regular fa-chevron-right"></i></a>
             </div>
         @endforeach

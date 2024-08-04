@@ -64,7 +64,6 @@ class Helper
         if ($productPrice === null) {
             $productPrice = $product->price;
         }
-
         return (int) $productPrice;
     }
     public static function randOrderCode()
