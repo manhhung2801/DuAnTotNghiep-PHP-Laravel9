@@ -45,14 +45,16 @@
                                                     );
                                                 @endphp
                                                 <div class="price-box">
-                                                    <span
-                                                        class="compare-price  CouponsPrice_old">{{ $prices['price_new'] }}
-                                                        <i class='fa-solid fa-dong-sign'></i> </span>
-                                                    <span class=" price CouponsPrice_new1"> {{ $prices['price_old'] }}
-                                                        <i class="fa-regular fa-dong-sign "></i></span>
                                                     <span class="price CouponsPrice_new2 ">{{ $prices['price_new'] }}
                                                         <i class='fa-solid fa-dong-sign'></i> </span>
-
+                                                    <div class="d-flex align-items-center" style="gap: 4px">
+                                                        <span class=" price CouponsPrice_new1">
+                                                            {{ $prices['price_old'] }}
+                                                            <i class="fa-regular fa-dong-sign "></i></span>
+                                                        <span
+                                                            class="compare-price  CouponsPrice_old">{{ $prices['price_new'] }}
+                                                            <i class='fa-solid fa-dong-sign'></i> </span>
+                                                    </div>
                                                 </div>
                                                 {{-- <form class="formCart" method="post">
                                             <input class="productId" type="hidden" value="{{ $pro->id }}">

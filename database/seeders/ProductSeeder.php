@@ -52,7 +52,7 @@ class ProductSeeder extends Seeder
                     'price' => round(rand(29000000, 33900000) / 100000) * 100000,
                     'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
                     'offer_start_date' => now(),
-                    'offer_end_date' => '2025-07-31',
+                    'offer_end_date' => '2024-07-31',
                     'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -202,7 +202,7 @@ class ProductSeeder extends Seeder
                     'price' => round(rand(29000000, 33900000) / 100000) * 100000,
                     'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
                     'offer_start_date' => now(),
-                    'offer_end_date' => '2025-07-31',
+                    'offer_end_date' => '2024-07-31',
                     'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -352,7 +352,7 @@ class ProductSeeder extends Seeder
                     'price' => round(rand(29000000, 33900000) / 100000) * 100000,
                     'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
                     'offer_start_date' => now(),
-                    'offer_end_date' => '2025-07-31',
+                    'offer_end_date' => '2024-07-31',
                     'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -502,7 +502,7 @@ class ProductSeeder extends Seeder
                     'price' => round(rand(29000000, 33900000) / 100000) * 100000,
                     'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
                     'offer_start_date' => now(),
-                     'offer_end_date' => '2025-07-31',
+                     'offer_end_date' => '2024-07-31',
                     'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -652,7 +652,7 @@ class ProductSeeder extends Seeder
                     'price' => round(rand(29000000, 33900000) / 100000) * 100000,
                     'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
                     'offer_start_date' => now(),
-                     'offer_end_date' => '2025-07-31',
+                     'offer_end_date' => '2024-07-31',
                     'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -805,7 +805,7 @@ class ProductSeeder extends Seeder
                 'price' => round(rand(29000000, 33900000) / 10000) * 10000,
                 'offer_price' => round(rand(15900000, 2900000) / 10000) * 10000,
                 'offer_start_date' => now(),
-                 'offer_end_date' => '2025-07-31',
+                 'offer_end_date' => '2024-07-31',
                 'sku' => 'SPMCB' . rand(120, 140). rand(100, 1020), 
                 'video_link' => 'https://youtube.com',
                 'long_description' => '<div class="ksp-content p-2 mb-2" style="-webkit-text-stroke-width:0px;background-color:rgb(242, 242, 242);border-radius:0.5rem;box-sizing:inherit;color:rgb(74, 74, 74);font-family:Roboto, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:auto;orphans:2;padding:0.5rem !important;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;width:800px;word-spacing:0px;">
@@ -947,7 +947,7 @@ class ProductSeeder extends Seeder
                 'price' => round(rand(29000000, 33900000) / 10000) * 10000,
                 'offer_price' => round(rand(15900000, 2900000) / 10000) * 10000,
                 'offer_start_date' => now(),
-                'offer_end_date' => '2025-07-31',
+                'offer_end_date' => '2024-07-31',
                 'sku' => 'SPOP' . rand(120, 140) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'long_description' => '
@@ -1615,7 +1615,7 @@ class ProductSeeder extends Seeder
                 'price' => round(rand(29000000, 33900000) / 100000) * 100000,
                 'offer_price' => round(rand(3000000, 10000000) / 100000) * 100000,
                 'offer_start_date' => now(),
-                'offer_end_date' => '2025-07-31',
+                'offer_end_date' => '2024-07-31',
                 'sku' => 'SPS' . rand(100, 1020). rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'short_description' => '
@@ -1765,7 +1765,7 @@ class ProductSeeder extends Seeder
                 'price' => round(rand(29000000, 33900000) / 100000) * 100000,
                 'offer_price' => round(rand(3000000, 10000000) / 100000) * 100000,
                 'offer_start_date' => now(),
-                'offer_end_date' => '2025-07-31',
+                'offer_end_date' => '2024-07-31',
                 'sku' => 'SPL' . rand(100, 1020). rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'short_description' => '
@@ -1917,7 +1917,7 @@ class ProductSeeder extends Seeder
                     'price' => round(rand(29000000, 33900000) / 10000) * 10000,
                     'offer_price' => round(rand(15900000, 2900000) / 10000) * 10000,
                     'offer_start_date' => now(),
-                    'offer_end_date' => '2025-07-31',
+                    'offer_end_date' => '2024-07-31',
                     'sku' => 'SPMSI' . rand(120, 140) . rand(100, 1020),              
                     'video_link' => 'https://youtube.com',
                     'long_description' => '
