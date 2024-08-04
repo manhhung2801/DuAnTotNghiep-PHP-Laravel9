@@ -24,7 +24,7 @@
                 <div class="col-lg-5 col-md-6 col-12 details-pro">
                     @include('frontend.products.partialsDetail.overView')
                 </div>
-                <div class="col-lg-3 col-md-12 col-12 product-col-right">
+                <div class="col-lg-3 col-md-6 col-12 product-col-right">
                     @include('frontend.products.partialsDetail.sidebar')
                 </div>
             </div>

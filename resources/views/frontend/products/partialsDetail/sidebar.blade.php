@@ -4,7 +4,6 @@
         <i class="far fa-check-circle"></i> Chính sách hỗ trợ
     </div>
     <div class="policy-content row">
-
         <div class="col-lg-12 col-md-6 col-sm-6 col-12">
             <div class="policy-item duration-300">
                 <div class="icon ">

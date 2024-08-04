@@ -5,7 +5,8 @@
 
 
 <!-- Jquery -->
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
 
 <!-- Alert Sweet -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.1/dist/sweetalert2.all.min.js"></script>
@@ -15,13 +16,13 @@
 <!-- chứa các ajax -->
 @include('frontend.layouts.ajax')
 
-{{-- <script>
+<script>
     // Loading
     window.addEventListener("load", () => {
         const preloader = document.querySelector(".loader-container");
         preloader.classList.add("unactive")
     })
-</script> --}}
+</script>
 
 <script>
     $(document).ready(function() {
@@ -271,10 +272,10 @@
                                 results.addClass('show');
                             } else {
                                 $('#result').empty().removeClass('show');
-                                // results.append(
-                                //     '<div class=""><h5 class="pt-2 text-center text-danger fs-5">Dữ liệu hiện đang cập nhật</h5></div>'
-                                // );
-                                // results.addClass('show');
+                                results.append(
+                                    '<span class="pt-2 text-center text-danger ">Sản phẩm đang cập nhật. Vui lòng quay lại sau</span>'
+                                );
+                                results.addClass('show');
                             }
                         },
                         error: function(xhr) {
@@ -285,6 +286,12 @@
                     $('#result').empty().removeClass('show');
                 }
             }, 250);
+        });
+        // nhấp chuột ra ngoài thì #result ẩn đi
+        $(document).on('click', function(event) {
+            if (!$(event.target).closest('#product-search, #result').length) {
+                $('#result').empty().removeClass('show');
+            }
         });
     });
 </script>
