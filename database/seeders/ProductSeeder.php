@@ -52,6 +52,7 @@ class ProductSeeder extends Seeder
                     'price' => round(rand(29000000, 33900000) / 100000) * 100000,
                     'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
                     'offer_start_date' => now(),
+                    'offer_end_date' => '2025-07-31',
                     'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -201,6 +202,7 @@ class ProductSeeder extends Seeder
                     'price' => round(rand(29000000, 33900000) / 100000) * 100000,
                     'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
                     'offer_start_date' => now(),
+                    'offer_end_date' => '2025-07-31',
                     'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -350,6 +352,7 @@ class ProductSeeder extends Seeder
                     'price' => round(rand(29000000, 33900000) / 100000) * 100000,
                     'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
                     'offer_start_date' => now(),
+                    'offer_end_date' => '2025-07-31',
                     'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -499,6 +502,7 @@ class ProductSeeder extends Seeder
                     'price' => round(rand(29000000, 33900000) / 100000) * 100000,
                     'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
                     'offer_start_date' => now(),
+                     'offer_end_date' => '2025-07-31',
                     'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -648,6 +652,7 @@ class ProductSeeder extends Seeder
                     'price' => round(rand(29000000, 33900000) / 100000) * 100000,
                     'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
                     'offer_start_date' => now(),
+                     'offer_end_date' => '2025-07-31',
                     'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -800,7 +805,8 @@ class ProductSeeder extends Seeder
                 'price' => round(rand(29000000, 33900000) / 10000) * 10000,
                 'offer_price' => round(rand(15900000, 2900000) / 10000) * 10000,
                 'offer_start_date' => now(),
-                'sku' => 'SPMCB' . rand(120, 140). rand(100, 1020),
+                 'offer_end_date' => '2025-07-31',
+                'sku' => 'SPMCB' . rand(120, 140). rand(100, 1020), 
                 'video_link' => 'https://youtube.com',
                 'long_description' => '<div class="ksp-content p-2 mb-2" style="-webkit-text-stroke-width:0px;background-color:rgb(242, 242, 242);border-radius:0.5rem;box-sizing:inherit;color:rgb(74, 74, 74);font-family:Roboto, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:auto;orphans:2;padding:0.5rem !important;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;width:800px;word-spacing:0px;">
     <h2 class="ksp-title has-text-centered" style="box-sizing:inherit;color:rgb(215, 0, 24);font-size:18px;margin:0px;padding:0px;text-align:center !important;">
@@ -941,6 +947,7 @@ class ProductSeeder extends Seeder
                 'price' => round(rand(29000000, 33900000) / 10000) * 10000,
                 'offer_price' => round(rand(15900000, 2900000) / 10000) * 10000,
                 'offer_start_date' => now(),
+                 'offer_end_date' => '2025-07-31',
                 'sku' => 'SPOP' . rand(120, 140). rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'long_description' => '
@@ -1455,6 +1462,7 @@ class ProductSeeder extends Seeder
                 'price' => round(rand(29000000, 33900000) / 10000) * 10000,
                 'offer_price' => round(rand(15900000, 2900000) / 10000) * 10000,
                 'offer_start_date' => now(),
+                 'offer_end_date' => '2025-07-31',
                 'sku' => 'SPMSI' . rand(120, 140). rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'long_description' => '
@@ -1607,6 +1615,7 @@ class ProductSeeder extends Seeder
                 'price' => round(rand(29000000, 33900000) / 100000) * 100000,
                 'offer_price' => round(rand(3000000, 10000000) / 100000) * 100000,
                 'offer_start_date' => now(),
+                'offer_end_date' => '2025-07-31',
                 'sku' => 'SPS' . rand(100, 1020). rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'short_description' => '
@@ -1756,6 +1765,7 @@ class ProductSeeder extends Seeder
                 'price' => round(rand(29000000, 33900000) / 100000) * 100000,
                 'offer_price' => round(rand(3000000, 10000000) / 100000) * 100000,
                 'offer_start_date' => now(),
+                'offer_end_date' => '2025-07-31',
                 'sku' => 'SPL' . rand(100, 1020). rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'short_description' => '
@@ -1907,6 +1917,7 @@ class ProductSeeder extends Seeder
                     'price' => round(rand(29000000, 33900000) / 10000) * 10000,
                     'offer_price' => round(rand(15900000, 2900000) / 10000) * 10000,
                     'offer_start_date' => now(),
+                    'offer_end_date' => '2025-07-31',
                     'sku' => 'SPMSI' . rand(120, 140). rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'long_description' => '
@@ -2060,7 +2071,8 @@ class ProductSeeder extends Seeder
                     'price' => round(rand(29000000, 33900000) / 10000) * 10000,
                     'offer_price' => round(rand(15900000, 3900000) / 10000) * 10000,
                     'offer_start_date' => now(),
-                    'sku' => 'SPNC' . rand(120, 140). rand(100, 1020),
+                    'offer_end_date' => '2025-07-31',
+                    'sku' => 'SPNC' . rand(120, 140). rand(100, 1020), 
                     'video_link' => 'https://youtube.com',
                     'long_description' => '
                              <div id="cpsContent" class="cps-block-content" style="max-height: 100000px;"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Tiết kiệm điện năng, thời gian chế biến với công suất 1700W</li><li>Dung tích lớn lên đến&nbsp;6.5L yên tâm nướng gà nguyên con</li><li>Tích hợp rất nhiều chức năng chiên nấu trên một sản phẩm</li><li>Thiết kế trong suốt dễ dàng quan sát tình trạng thức ăn</li></ul></div></div> <div><p style="text-align: justify;">' . $nameNoiChien . ' sở hữu công suất 1700W kết hợp công nghệ chiên đối lưu không khí, giúp nấu ăn nhanh chóng và lành mạnh hơn. Dung tích lớn 6.5 lít và nhiều chế độ chiên, nấu cho phép nồi đáp ứng nhu cầu ẩm thực phong phú của gia đình. Bên cạnh đó, sản phẩm <a href="https://cybermart.io.vn/product/gia-dung-smarthome/noi-chien-khong-dau" title="Nồi chiên không dầu Sunhouse"><strong>nồi chiên không dầu Sunhouse</strong></a> có thiết kế tối giản với cửa sổ khoang chiên ốp kính trong suốt dễ dàng quan sát.</p> <h2 style="text-align: justify;"><strong>Vì sao nên mua ' . $nameNoiChien . '?</strong></h2> <p style="text-align: justify;">' . $nameNoiChien . ' hứa hẹn sẽ là giải pháp nấu nướng tốt nhờ vào:</p> <p><span style="text-align: justify;">- Công suất 1700W: Chiên, nấu nhanh chóng và hiệu quả.</span><br><span style="text-align: justify;"></span></p> <p><span style="text-align: justify;">- Công nghệ tiên tiến Rapid Air: Tiết kiệm dầu, làm thức ăn trở nên dinh dưỡng hơn.</span><br><span style="text-align: justify;"></span></p> <p><span style="text-align: justify;">- Dung tích 6.5 lít: Chế biến một lượng lớn thực phẩm trong mỗi lần sử dụng, phù hợp cho cả gia đình.</span></p> <p style="text-align: justify;"><img src="https://cdn.tgdd.vn/Products/Images/9418/240313/ava-kdf-593d-0-600x600-1.jpg" alt="Vì sao nên mua ' . $nameNoiChien . '?" loading="lazy"></p> <p><span style="text-align: justify;">- Hỗ trợ nhiều chế độ nấu khác nhau: Đáp ứng nhu cầu ẩm thực đa dạng.</span><br><span style="text-align: justify;"></span></p> <p><span style="text-align: justify;">- Cửa sổ khoang chiên ốp kính trong suốt: Dễ dàng theo dõi quá trình chiên nấu.</span></p> <h2 style="text-align: justify;"><strong>' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn</strong></h2> <p style="text-align: justify;">' . $nameNoiChien . ' đáp ứng tốt nhu cầu chiên nấu thực phẩm của nhiều gia đình với công suất mạnh mẽ và dung tích lớn. Thiết bị có kết cấu cao cấp, vẻ ngoài sang trọng đảm bảo bền đẹp theo thời gian.</p> <p style="text-align: justify;">Bên cạnh đó nếu bạn đang có nhu cầu chọn nồi chiên Sunhouse có dung tích lớn hơn thì có thể khám phá mẫu&nbsp;<a href="https://cybermart.io.vn/product/gia-dung-smarthome/noi-chien-khong-dau" title="SHD4037" target="_blank"><strong>SHD4037</strong></a> được bán tại CellphoneS với đầy đủ ưu điểm vượt trội được bán chính hãng, giao hàng hỏa tốc nhanh. Khám phá ngay nhé!</p> <h3 style="text-align: justify;"><strong>Công suất mạnh mẽ 1700W&nbsp;</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' có công suất mạnh mẽ 1700W, giúp nấu chín thực phẩm nhanh chóng và đều hơn. Công suất cao kết hợp với khả năng gia nhiệt vượt trội giúp nồi chiên Sunhouse SHD4030 hoạt động hiệu quả, tiết kiệm thời gian nấu nướng mà vẫn đảm bảo chất lượng món ăn.</p> <p style="text-align: justify;"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fkingshop.vn%2Fsan-pham%2Fnoi-chien-khong-dau-nineshield-kb-5005m-24444.html&psig=AOvVaw3zaimhvOrXKEHqKCJxF1BR&ust=1722133190097000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCLCaoZ2UxocDFQAAAAAdAAAAABAJ" alt="' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn" loading="lazy"></p> <p style="text-align: justify;">Sunhouse SHD4030 6.5L sử dụng công nghệ chiên không dầu Rapid Air sử dụng luồng khí nóng lưu thông nhanh để làm chín thực phẩm thay vì dầu mỡ truyền thống. Nhờ vậy, món ăn không chỉ giữ được hương vị tự nhiên mà còn giảm lượng chất béo đáng kể, tốt cho sức khỏe.</p> <h3 style="text-align: justify;"><strong>Dung tích 6.5L đủ không gian nấu nướng cho gà nguyên con&nbsp;</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' với dung tích lớn 6.5 lít. Đây lựa chọn lý tưởng cho các gia đình đông thành viên hoặc khi cần nấu lượng thực phẩm lớn.&nbsp;</p> <p style="text-align: justify;"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Do-gia-dung/Noi-chien-khong-dau/Sunhouse/noi-chien-khong-dau-sunhouse-shd4030-6-5l-3.jpg" alt="' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn" loading="lazy"></p> <p style="text-align: justify;">Dung tích này cho phép bạn dễ dàng chế biến một con gà nguyên con, một lượng lớn khoai tây chiên, hoặc nhiều loại thực phẩm khác trong một lần nấu. Với khả năng phục vụ từ 4-6 người, nồi chiên này đáp ứng tốt các bữa ăn gia đình hoặc các buổi tụ họp nhỏ. Dung tích lớn giúp tiết kiệm thời gian nấu nướng và đảm bảo tất cả mọi người đều có phần ăn nóng hổi, ngon miệng.&nbsp;</p> <p style="text-align: justify;">Đặc biệt, ' . $nameNoiChien . ' được trang bị nhiều chức năng chiên nướng đa dạng, bao gồm các chế độ dành riêng cho khoai tây, tôm, thịt bò, cánh gà, pizza…</p> <h3 style="text-align: justify;"><strong>Kiểu dáng hiện đại&nbsp;</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' sở hữu thiết kế hiện đại với gam màu trung tính, dễ dàng hòa hợp với mọi không gian bếp. Vỏ nồi được làm từ chất liệu nhựa cao cấp, giúp nồi chịu nhiệt tốt và dễ dàng vệ sinh sau khi sử dụng.&nbsp;</p> <p style="text-align: justify;"><img src="https://bizweb.dktcdn.net/100/435/504/products/nichienkhongdudachcnang10lrole.jpg?v=1667787763040" alt="' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn" loading="lazy"></p> <p style="text-align: justify;">Đặc biệt, cửa sổ khoang chiên ốp kính trong suốt, cho phép bạn quan sát quá trình nấu nướng mà không cần mở nắp. Thiết kế tối giản nhưng tinh tế của nồi chiên Sunhouse SHD4030 vừa nâng cao tính thẩm mỹ, vừa mang lại sự tiện lợi và hiệu quả trong quá trình sử dụng.</p> <h3 style="text-align: justify;"><strong>Điều khiển núm xoay, tích hợp hẹn giờ 60 phút</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' được trang bị bảng điều khiển núm xoay đơn giản và dễ sử dụng. Nhờ đó, người dùng có thể cài nhiệt độ, cũng như các chương trình nấu trong tíc tắc.&nbsp;</p> <p style="text-align: justify;"><img src="https://s.meta.com.vn/Data/image/2019/10/26/noi-chien-khong-dau-rapido-raf4-0mh-1.jpg" alt="Điều khiển núm xoay, tích hợp hẹn giờ 60 phút" loading="lazy"></p> <p style="text-align: justify;">Trên bảng điều khiển sẽ có tính năng hẹn giờ thông minh cho phép bạn cài đặt thời gian nấu lên đến 60 phút.&nbsp;</p> <h2 style="text-align: justify;"><strong>Mua ' . $nameNoiChien . ' chính hãng, giá tốt tại Cybermart</strong></h2> <p style="text-align: justify;">Nếu bạn đang tìm kiếm sản phẩm ' . $nameNoiChien . ' chính hãng với giá tốt, thì Cybermart là điểm đến lý tưởng. Tại của hàng, bạn sẽ được đảm bảo với bảo hành từ nhà sản xuất Sunhouse.</p> <p style="text-align: justify;">Ngoài ra, bạn sẽ có cơ hội nhận được các ưu đãi khi sắm ' . $nameNoiChien . ' trong các dịp lễ 8/3, 20/10, Black Friday… Hãy ghé thăm Cybermart ngay hôm nay để sở hữu ngay Sunhouse SHD4030 6.5L với giá ưu đãi nhất!</p></div> </div>
@@ -2133,6 +2145,7 @@ class ProductSeeder extends Seeder
                     'offer_price' => round(rand(3000000, 7000000) / 10000) * 10000,
                     'price' => round(rand(9000000, 15000000) / 10000) * 10000,
                     'offer_start_date' => now(),
+                    'offer_end_date' => '2025-07-31',
                     'sku' => 'SPNC' . rand(120, 140). rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'long_description' => '
@@ -2206,6 +2219,7 @@ class ProductSeeder extends Seeder
                     'offer_price' => round(rand(3000000, 7000000) / 10000) * 10000,
                     'price' => round(rand(9000000, 15000000) / 10000) * 10000,
                     'offer_start_date' => now(),
+                    'offer_end_date' => '2025-07-31',
                     'sku' => 'SPMHMSI' . rand(120, 140). rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'long_description' => '
@@ -2278,7 +2292,8 @@ class ProductSeeder extends Seeder
                     'offer_price' => round(rand(10000000, 29000000) / 10000) * 10000,
                     'price' => round(rand(9000000, 29000000) / 10000) * 10000,
                     'offer_start_date' => now(),
-                    'sku' => 'SPTV' . rand(120, 140). rand(100, 1020),
+                     'offer_end_date' => '2025-07-31',
+                    'sku' => 'SPTV' . rand(120, 140). rand(100, 1020), 
                     'video_link' => 'https://youtube.com',
                     'long_description' => '<div id="cpsContent" class="cps-block-content" style="max-height: 100000px;"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Thiết kế tinh giản với màn hình phẳng viền mỏng 3 cạnh nâng cao thẩm mỹ của không gian</li><li>Kích thước 55 inch và dộ phân giải 4K tạo nên không gian rõ nét với màu sắc chân thực</li><li>Tổng công suất loa 20W cùng công nghệ Q-Symphony cho trải nghiệm âm thanh sống động</li><li>Hệ điều hành Tizen trực quan, dễ hiểu, dễ thao tác, tích hợp kho ứng dụng phong phú</li><li>Ứng dụng SmartThings cho phép sử dụng điện thoại để điều khiển tivi từ xa tiện lợi</li></ul></div></div> <div><p style="text-align: justify;"><strong>' . $nameTiVi32 . '</strong> là chiếc tivi thông minh truyền tải hình ảnh chân thực với khung hình rộng lớn. Người dùng sẽ có cảm nhận sâu sắc khi xem nội dung qua màn ảnh <a href="https://cybermart.io.vn/product/tivi/samsung/32-inch.html" title="Tivi 55 inch chính hãng" target="_blank"><strong>tivi 55 inch</strong></a> chất lượng này. Hãy xem đoạn mô tả dưới đây để biết ưu điểm của chiếc TV Samsung UA55AU7002 này.</p> <h2><strong>' . $nameTiVi32 . ' - Hình ảnh đẹp chuẩn 4K</strong></h2> <h3 style="text-align: justify;"><strong>Hiển thị màu sắc choáng ngợp, nội dung chuẩn 4K</strong></h3> <p style="text-align: justify;">Tivi 55AU7002 được tích hợp công nghệ PurColor mang đến dải màu sắc rộng lớn. Bạn có thể đắm chìm trong từng chi tiết của khung hình bởi sự sống động y như thật của hình ảnh.</p> <p style="text-align: justify;">Tivi Samsung mới này có khả năng cung cấp hình ảnh chuẩn 4K, nâng cấp mọi nội dung bạn yêu thích lên tầm cao mới. Công nghệ Color Mapping mang đến màu sắc khác biệt cho bạn chiêm ngưỡng thỏa thích.</p> <p style="text-align: justify;"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fmediamart.vn%2Ftivi%2Fsmart-tivi-samsung-4k-65-inch-65bu8000-crystal-uhd&psig=AOvVaw2GmTe3uKuffADjsXV4AR9_&ust=1722390372309000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCMC-kajSzYcDFQAAAAAdAAAAABAE" alt="Đánh giá màn hình Smart tivi Samsung 4K 55 inch UA55AU7002" loading="lazy"></p> <p style="text-align: justify;">&gt;&gt;&gt; Xem thêm <strong><a href="https://cybermart.io.vn/product/tivi/samsung/32-inch.html" target="_blank">Tivi Samsung 43AU7002</a></strong> mới giá cực tốt tại Cybermart.</p> <h3 style="text-align: justify;"><strong>Khung hình mượt mà, kết nối đa thiết bị</strong></h3> <p style="text-align: justify;">' . $nameTiVi32 . ' được trang bị công nghệ Motion Xcelerator xóa bỏ hiện tượng bóng ma trên màn hình. Công nghệ này giúp hình ảnh rõ nét từng chi tiết, chuyển cảnh không bị ảnh hưởng mờ nhòe.</p> <p style="text-align: justify;">Tivi có thể kết nối từ xa với PC, laptop, thiết bị di động giúp bạn tận hưởng tiện ích của thiết bị. Bạn có thể xem các chương trình yêu thích trên tivi, kết nối dễ dàng với các thiết bị thông minh chỉ cần có kết nối Internet trên tivi UA55AU7002.</p> <p style="text-align: justify;"><img src="https://dienmaycongthanh.vn/Upload/Products/smart-tivi-samsung-4k-50-inch-50au7700kxxv/50AU7700KXXV_2.jpg" alt="Đánh giá khả năng hiển thị" loading="lazy"></p> <h2 style="text-align: justify;"><strong>Mua ' . $nameTiVi32 . ' giá rẻ, chất lượng tại Cybermart</strong></h2> <p style="text-align: justify;"><strong>Smart ' . $nameTiVi32 . ' chính hãng</strong> có giá bán cực tốt tại cửa hàng Cybermart, được bảo hành đầy đủ. Gọi ngay cho chúng tôi nếu bạn muốn trang bị chiếc tivi này cho phòng khách nhà mình.</p></div> </div>         
                           ',
