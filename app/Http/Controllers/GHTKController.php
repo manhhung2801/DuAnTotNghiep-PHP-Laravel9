@@ -32,10 +32,10 @@ class GHTKController extends Controller
                 "pick_address" => $getStore->address ?? '',
                 "province" => $request->province,
                 "district" => $request->district,
-                "ward" =>  $request->wards,
+                "ward" =>  $request->ward,
                 "address" => $request->adress,
                 "transport" => "road",
-                "weight" => $weight,
+                "weight" => $weight* 1000,
                 "value" => 1000,
                 "deliver_option" => "none",
                 "tags" => [1]
@@ -55,7 +55,7 @@ class GHTKController extends Controller
 
             // Chuyển json thành mảng
             $jsonData = json_decode($response);
-            $shipMoney = $jsonData->fee->options->shipMoney;
+            $shipMoney = $jsonData->fee->fee;
             return response()->json(['status' => true, 'shipMoney' => $shipMoney]);
         } catch (\Exception $e) {
             return response()->json(['status' => false, 'Đã xảy ra lỗi' . $e]);
