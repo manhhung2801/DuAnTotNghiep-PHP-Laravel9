@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             PostCategoriesSeeder::class,
             PostsSeeder::class,
             InformationSeeder::class,
-            PageSeeder::class, database / seeders / DatabaseSeeder . php
+            PageSeeder::class,
             ProductSeeder::class,
             VariantSeeder::class,
             VariantItemTableSeeder::class,
