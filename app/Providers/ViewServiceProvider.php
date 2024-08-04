@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Category;
-use App\Models\Information;
 use App\Models\Page;
+use App\Models\PageCategory;
 use App\Models\Product;
 use App\Models\StoreAddress;
 use Darryldecode\Cart\Cart;
@@ -34,12 +34,12 @@ class ViewServiceProvider extends ServiceProvider
         View::composer('frontend.layouts.master', function ($view) {
             $categories = Category::where('status', 1)->orderBy('rank', 'asc')->get();
             $storeAddress = StoreAddress::where("status", "=", 1)->limit(1)->get();
-            $ListInformation = Information::where('id', '!=', 3)->get();
+            $ListPageCategories = PageCategory::where('id', '!=', 3)->get();
             $qtyCart = \Cart::getTotalQuantity();
-            $ListPage = Page::where("status", "=", 1) ->get();
+            $ListPage = Page::where("status", "=", 1)->get();
             $view->with('categories', $categories)
                 ->with('storeAddress', $storeAddress)
-                ->with('ListInformation', $ListInformation)
+                ->with('ListPageCategories', $ListPageCategories)
                 ->with('ListPage', $ListPage)
                 ->with('qtyCart', $qtyCart);
         });

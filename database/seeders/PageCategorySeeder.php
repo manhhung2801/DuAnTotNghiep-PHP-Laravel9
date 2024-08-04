@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class InformationSeeder extends Seeder
+class PageCategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class InformationSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('information')->insert([
+        DB::table('page_categories')->insert([
             [
                 'name' => 'Chính sách',
                 'slug' => Str::slug('Chính sách', '-'),

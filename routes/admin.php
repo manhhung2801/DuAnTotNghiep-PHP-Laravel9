@@ -14,15 +14,14 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VariantItemController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\ContactController;
-use App\Http\Controllers\Backend\InformationController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PagesController;
 use App\Http\Controllers\Backend\StoreAddressController;
 use App\Http\Controllers\Backend\UserManagementController;
 use App\Http\Controllers\Backend\PostCategoriesController;
 use App\Http\Controllers\Backend\CommentsController;
+use App\Http\Controllers\Backend\PageCategoryController;
 use App\Http\Controllers\GHTKController;
-use App\Models\Information;
 
 
 /** Admin Routes */
@@ -62,9 +61,9 @@ Route::DELETE('child-category/destroy-trash/{id?}', [ChildCategoryController::cl
 Route::PATCH('child-category/restore-trash/{id?}', [ChildCategoryController::class, 'restoreTrash'])->name('child-category.restore-trash');
 Route::resource('/child-category', ChildCategoryController::class);
 
-/** Information */
-Route::put('/information/change-status', [InformationController::class, 'changeStatus'])->name('information.change-status');
-Route::resource('/information', InformationController::class);
+/** pageCategories */
+Route::put('/page-category/change-status', [PageCategoryController::class, 'changeStatus'])->name('pageCategories.change-status');
+Route::resource('/page-category', PageCategoryController::class);
 
 
 
@@ -172,11 +171,11 @@ Route::get('contact/trash-list', [ContactController::class, 'showTrash'])->name(
 Route::DELETE('contact/destroy-trash/{id?}', [ContactController::class, 'destroyTrash'])->name('contact.destroy-trash');
 Route::PATCH('contact/restore-trash/{id?}', [ContactController::class, 'restoreTrash'])->name('contact.restore-trash');
 
-Route::get('contact',[ContactController::class,"index"])->name('AdminContact');
-Route::get('contact/show/{id}',[ContactController::class,"show"])->name('contact.show');
-Route::put('contact/feedback/answered/{id}',[ContactController::class,"answered"])->name('contact.answered');
-Route::delete('contact/destroy/{id}',[ContactController::class,"destroy"])->name('contact.destroy');
-Route::post('contact/feedback',[ContactController::class,"feedback"])->name('contact.feedback');
+Route::get('contact', [ContactController::class, "index"])->name('AdminContact');
+Route::get('contact/show/{id}', [ContactController::class, "show"])->name('contact.show');
+Route::put('contact/feedback/answered/{id}', [ContactController::class, "answered"])->name('contact.answered');
+Route::delete('contact/destroy/{id}', [ContactController::class, "destroy"])->name('contact.destroy');
+Route::post('contact/feedback', [ContactController::class, "feedback"])->name('contact.feedback');
 
 //GHTK
 Route::post('/ghtk-post-order/{id?}', [GHTKController::class, 'postOrder'])->name('ghtk.post-order');
@@ -184,4 +183,3 @@ Route::post('/ghtk-post-order/{id?}', [GHTKController::class, 'postOrder'])->nam
 //GHTK Cancel Order
 Route::post('/ghtk-cancel-order/{tracking_id}', [GHTKController::class, 'cancelOrder'])->name('ghtk.cancel-order');
 Route::post('/updateShipment/{tracking_id?}', [GHTKController::class, 'updateShipment'])->name('updateShipment');
-

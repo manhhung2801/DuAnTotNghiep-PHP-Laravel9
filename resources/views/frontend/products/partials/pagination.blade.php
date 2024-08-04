@@ -3,6 +3,7 @@
         display: flex;
         justify-content: center;
     }
+
     .pagination a {
         font-weight: 400;
         margin: 0 2.5px;
@@ -25,38 +26,40 @@
     }
 
     .pagination a:hover:not(.active) {
-        background-color:#141414;
+        background-color: #141414;
         color: #fff;
     }
 </style>
-<div class="pagination">
-    @if ($products->lastPage() > 1)
-        @if ($products->currentPage() > 1)
-            <a href="{{ $products->previousPageUrl() }}" class="prev">
-                &laquo;
-            </a>
-        @else
-            <a href="{{ $products->nextPageUrl() }}" class="prev">
-                &laquo;
-            </a>
-        @endif
-
-        @for ($i = 1; $i <= $products->lastPage(); $i++)
-            @if ($i == $products->currentPage())
-                <a href="" class="active">{{ $i }}</a>
+    <div class="pagination">
+        @if ($products->lastPage() > 1)
+            @if ($products->currentPage() > 1)
+                <a href="{{ $products->appends(['query' => request()->query('query')])->previousPageUrl() }}"
+                    class="prev">
+                    &laquo;
+                </a>
             @else
-                <a href="{{ $products->url($i) }}">{{ $i }}</a>
+                <a href="#" class="prev disabled">
+                    &laquo;
+                </a>
             @endif
-        @endfor
 
-        @if ($products->currentPage() < $products->lastPage())
-            <a href="{{ $products->nextPageUrl() }}" class="next">
-                &raquo;
-            </a>
-        @else
-            <a href="{{ $products->nextPageUrl() }}" class="next">
-                &raquo;
-            </a>
+            @for ($i = 1; $i <= $products->lastPage(); $i++)
+                @if ($i == $products->currentPage())
+                    <a href="#" class="active">{{ $i }}</a>
+                @else
+                    <a
+                        href="{{ $products->appends(['query' => request()->query('query')])->url($i) }}">{{ $i }}</a>
+                @endif
+            @endfor
+
+            @if ($products->currentPage() < $products->lastPage())
+                <a href="{{ $products->appends(['query' => request()->query('query')])->nextPageUrl() }}" class="next">
+                    &raquo;
+                </a>
+            @else
+                <a href="#" class="next disabled">
+                    &raquo;
+                </a>
+            @endif
         @endif
-    @endif
-    </ul>
+    </div>

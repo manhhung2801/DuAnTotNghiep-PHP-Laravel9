@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('product_variant_id');
             $table->foreign('product_variant_id')->references('id')->on('variant')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
-            $table->double('price');
             $table->boolean('is_default')->default(true);
             $table->boolean('status')->default(true);
             $table->timestamps();

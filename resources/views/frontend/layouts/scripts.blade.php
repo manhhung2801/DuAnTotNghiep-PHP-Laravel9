@@ -16,13 +16,13 @@
 <!-- chứa các ajax -->
 @include('frontend.layouts.ajax')
 
-{{-- <script>
+<script>
     // Loading
     window.addEventListener("load", () => {
         const preloader = document.querySelector(".loader-container");
         preloader.classList.add("unactive")
     })
-</script> --}}
+</script>
 
 <script>
     $(document).ready(function() {
@@ -176,5 +176,122 @@
                 }
             }
         })
+    });
+</script>
+
+<script>
+    var flash_sales = document.querySelectorAll(".flash-sales");
+    var flash_sale = document.querySelectorAll(".flash-sale");
+    var compare_price = document.querySelectorAll(".CouponsPrice_old");
+    var compare_price_old1 = document.querySelectorAll(".CouponsPrice_new1");
+    var compare_price_old2 = document.querySelectorAll(".CouponsPrice_new2");
+    for (var i = 0; i < flash_sale.length; i++) {
+        if (flash_sales[i].textContent.trim() == "0") {
+            flash_sale[i].style.display = "none";
+            if (compare_price[i]) {
+                compare_price[i].style.display = "none";
+                compare_price_old1[i].style.display = "none";
+
+            }
+
+        } else {
+            flash_sale[i].style.display = "block";
+            if (compare_price[i]) {
+                compare_price[i].style.display = "block";
+                compare_price_old2[i].style.display = "none";
+                compare_price_old1[i].style.display = "block";
+            }
+        }
+    }
+</script>
+<script>
+    $(document).ready(function() {
+        let timeout;
+        $('#product-search').on('input', function() {
+            let query = $(this).val();
+            clearTimeout(timeout);
+            timeout = setTimeout(function() {
+                if (query.length >= 2) {
+                    $.ajax({
+                        method: "GET",
+                        url: "{{ route('search') }}",
+                        data: {
+                            query: query
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            let results = $('#result');
+                            var categoryHTML = "";
+                            // var subCategoryHTML = "";
+                            var productHTML = "";
+                            results.empty();
+
+                            if (response.products && response.products.length > 0) {
+                                response.categories.forEach(function(category) {
+                                    categoryHTML += `<li class="list-group-item"> 
+                                                    <a href="{{ url('/san-pham/${category.slug}') }}" class="text-decoration-none" style="font-size:13px">
+                                                       ${category.name}
+                                                    </a>
+                                                </li>`;
+                                });
+                                categoryHTML =
+                                    `<div class="ttitle"><div class="viewed">Có phải bạn muốn tìm</div></div>
+                                    ${categoryHTML}`;
+                                //
+                                // response.sub_categories.forEach(function(
+                                //     sub_Category) {
+                                //     subCategoryHTML += `<li class="list-group-item"> 
+                                //                     <a href="{{ url('/san-pham/${sub_Category.slug_category}/${sub_Category.slug}') }}" class="text-decoration-none" style="font-size:13px">
+                                //                        ${sub_Category.name}
+                                //                     </a>
+                                //                 </li>`;
+                                // });
+
+                                // subCategoryHTML =
+                                //     `<div class="ttitle"><div class="viewed">Danh mục loại sản phẩm</div></div>
+                                //     ${subCategoryHTML}`;
+
+
+                                response.products.forEach(function(product) {
+                                    productHTML += `
+                                    <li class="list-group-item autocomplete-item" data-id="${product.id}">
+                                        <img src="{{ asset('uploads/products/${product.image}') }}" alt="${product.name}">
+                                        <div>
+                                            <h3 class="pt-1"><a style="font-size: 12px;" class="text-decoration-none " href="{{ url('/san-pham/${product.category.slug}/${product.sub_category.slug}/${product.child_category.slug}/${product.slug}.html') }}">${product.name}</a></h3>
+                                        </div>
+                                    </li>`;
+                                });
+
+                                productHTML =
+                                    `<div class="ttitle"><div class="viewed">Sản phẩm gợi ý</div></div>
+                                    ${productHTML}`;
+
+                                results.append(categoryHTML +
+                                    productHTML);
+
+                                results.addClass('show');
+                            } else {
+                                $('#result').empty().removeClass('show');
+                                results.append(
+                                    '<span class="pt-2 text-center text-danger ">Sản phẩm đang cập nhật. Vui lòng quay lại sau</span>'
+                                );
+                                results.addClass('show');
+                            }
+                        },
+                        error: function(xhr) {
+                            console.error(xhr.responseText);
+                        }
+                    });
+                } else {
+                    $('#result').empty().removeClass('show');
+                }
+            }, 250);
+        });
+        // nhấp chuột ra ngoài thì #result ẩn đi
+        $(document).on('click', function(event) {
+            if (!$(event.target).closest('#product-search, #result').length) {
+                $('#result').empty().removeClass('show');
+            }
+        });
     });
 </script>

@@ -11,7 +11,8 @@
                             <div class="item_product_main ">
                                 <div class="variants product-action item-product-main duration-300">
                                     <span class="flash-sale">Giảm
-                                        {{ Helper::discount($pro->offer_start_date, $pro->offer_end_date, $pro->price, $pro->offer_price) }}%
+                                        <span
+                                            class="flash-sales text-white">{{ Helper::discount($pro->offer_start_date, $pro->offer_end_date, $pro->price, $pro->offer_price) }}</span>%
                                     </span>
                                     <div class="product-thumbnail ">
                                         <a class="image_thumb scale_hover "
@@ -26,38 +27,47 @@
                                                 alt="{{ $pro->image }}">
 
 
-                            </a>
-                        </div>
-                        <div class="product-info mt-2">
-                            <h3 class="product-name line-clamp line-clamp-2 ">
-                                <a href="/san-pham/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html" title="" class="text-decoration-none ">{{ $pro->name }}</a>
-                            </h3>
-                            <div class="product-price-cart">
-                                <div class="price-box">
-                                    @php
-                                    $prices = Helper::CouponsPrice($pro->offer_start_date, $pro->offer_end_date, $pro->price, $pro->offer_price);
-                                    @endphp
-                                    <div class="price-box">
-                                        <span class="compare-price  CouponsPrice_old">{{ $prices['price_new'] }} <i class='fa-solid fa-dong-sign'></i> </span>
-                                        <span class=" price CouponsPrice_new1"> {{ $prices['price_old'] }} <i class="fa-regular fa-dong-sign "></i></span>
-                                        <span class="price CouponsPrice_new2 ">{{ $prices['price_new'] }} <i class='fa-solid fa-dong-sign'></i> </span>
+                                        </a>
+                                    </div>
+                                    <div class="product-info mt-2">
+                                        <h3 class="product-name line-clamp line-clamp-2 ">
+                                            <a href="/san-pham/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html"
+                                                title="" class="text-decoration-none ">{{ $pro->name }}</a>
+                                        </h3>
+                                        <div class="product-price-cart">
+                                            <div class="price-box">
+                                                @php
+                                                    $prices = Helper::CouponsPrice(
+                                                        $pro->offer_start_date,
+                                                        $pro->offer_end_date,
+                                                        $pro->price,
+                                                        $pro->offer_price,
+                                                    );
+                                                @endphp
+                                                <div class="price-box">
+                                                    <span
+                                                        class="compare-price  CouponsPrice_old">{{ $prices['price_new'] }}
+                                                        <i class='fa-solid fa-dong-sign'></i> </span>
+                                                    <span class=" price CouponsPrice_new1"> {{ $prices['price_old'] }}
+                                                        <i class="fa-regular fa-dong-sign "></i></span>
+                                                    <span class="price CouponsPrice_new2 ">{{ $prices['price_new'] }}
+                                                        <i class='fa-solid fa-dong-sign'></i> </span>
 
-                                            </div>
-                                            {{-- <form class="formCart" method="post">
+                                                </div>
+                                                {{-- <form class="formCart" method="post">
                                             <input class="productId" type="hidden" value="{{ $pro->id }}">
-                                <div class="product-button ">
-                                    <button class="btn-addToCart btn-cart btn-views rounded border-0 px-2" title="Mua ngay" type="button">
-                                        <i class="fa-sharp fa-regular fa-cart-shopping"></i>
-                                    </button>
-                                </div>
-                                </form> --}}
+                                    <div class="product-button ">
+                                        <button class="btn-addToCart btn-cart btn-views rounded border-0 px-2" title="Mua ngay" type="button">
+                                            <i class="fa-sharp fa-regular fa-cart-shopping"></i>
+                                        </button>
+                                    </div>
+                                    </form> --}}
+                                            </div>
                                         </div>
-                                      </div>
                                     </div>
                                     <div class="promotion-content">
-                                        <div class="line-clamp-2-new"
-                                            title="Thu cũ đổi mới: Thu giá cao trợ giá đến 90%">
-                                            <p>Thu cũ đổi mới: Thu giá cao trợ giá đến 90%</p>
+                                        <div class="line-clamp-2-new" title="{{ $pro->promotion }}">
+                                            <p>{{ $pro->promotion }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -74,29 +84,7 @@
     @endforeach
 </div>
 
-<script>
-    var flash_sale = document.querySelectorAll(".flash-sale");
-    var compare_price = document.querySelectorAll(".CouponsPrice_old");
-    var compare_price_old1 = document.querySelectorAll(".CouponsPrice_new1");
-    var compare_price_old2 = document.querySelectorAll(".CouponsPrice_new2");
-    for (var i = 0; i < flash_sale.length; i++) {
-        if (flash_sale[i].textContent.trim() == "Giảm 0%") {
-            flash_sale[i].style.display = "none";
-            if (compare_price[i]) {
-                compare_price[i].style.display = "none";
-                compare_price_old1[i].style.display = "none";
 
-            }
-
-        } else {
-            flash_sale[i].style.display = "block";
-            if (compare_price[i]) {
-                compare_price[i].style.display = "block";
-                compare_price_old2[i].style.display = "none";
-            }
-        }
-    }
-</script>
 @if ($index == 1)
     <div class="scroll_animation section-banner_new pt-5">
         @include('frontend.home.partials.banner')

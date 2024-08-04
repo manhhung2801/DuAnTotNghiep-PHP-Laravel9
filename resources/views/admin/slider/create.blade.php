@@ -27,32 +27,22 @@
                 <form class="row g-3" action="{{ route('admin.slider.store') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
-                    <div class="col-md-4">
-                        <label for="input1" class="form-label">Kiểu</label>
-                        <input type="text" class="form-control" id="input1" name="type"
-                            value="{{ old('type') }}">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="input2" class="form-label">Tiêu đề</label>
-                        <input type="text" class="form-control" id="input2" name='title'
-                            value="{{ old('title') }}">
-                    </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="input3" class="form-label">Hình ảnh</label>
-                        <div class="col-sm-9 text-secondary">
+                        <div class=" text-secondary">
                             <input id="input3" type="file" class="form-control" name="banner" />
                             {{ old('banner') }}
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <label for="input4" class="form-label">Giá</label>
-                        <input type="number" class="form-control" id="input4" name="starting_price"
-                            value="{{ old('starting_price') }}">
+                    <div class="col-md-6">
+                        <label for="input1" class="form-label">Kiểu</label>
+                        <input type="text" class="form-control" id="input1" name="type"
+                            value="{{ old('type') }}" placeholder="Slider_">
                     </div>
                     <div class="col-md-4">
-                        <label for="input5" class="form-label">Số seri</label>
-                        <input type="number" class="form-control" id="input5" name='serial'
-                            value="{{ old('serial') }}">
+                        <label for="input2" class="form-label">Tiêu đề</label>
+                        <input type="text" class="form-control" id="input2" name='title' value="{{ old('title') }}"
+                            placeholder="Nội dung thanh trượt">
                     </div>
                     <div class="col-md-4">
                         <label for="input7" class="form-label">Trạng thái</label>
@@ -61,12 +51,12 @@
                             <option value="0">Ngừng hoạt động</option>
                         </select>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-4">
                         <label for="input6" class="form-label">Đường dẫn</label>
                         <input type="text" class="form-control" id="input6" name="btn_url"
-                            value="{{ old('btn_url') }}">
+                            value="{{ old('btn_url') }}" placeholder="http://localhost:8000/san-pham/">
                     </div>
-                    
+
                     <div class="col-md-2">
                         <div class="d-grid align-items-center gap-3">
                             <button type="submit" class="btn btn-primary px-4">Thêm</button>
