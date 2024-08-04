@@ -41,7 +41,6 @@
             <span class="compare-price CouponsPrice_news2">{{ $prices['price_new'] }} <i
                     class="fa-regular fa-dong-sign"></i></span>
         </div>
-
     </div>
 </div>
 
