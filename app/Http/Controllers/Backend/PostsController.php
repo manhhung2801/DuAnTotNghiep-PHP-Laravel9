@@ -112,7 +112,8 @@ class PostsController extends Controller
         $post = new Post();
         $post->category_id = $request->category_id;
         $post->user_id = $request->user_id;
-        $post->image = $this->uploadFile($request, 'image', '/post');
+        $post->image = $this->uploadFile($request,'image','/post');
+        $post->image_banner = $this->uploadFile($request,'image_banner','/image_banner');
         $post->title = $request->title;
         $post->content = $request->content;
         $post->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->title, '-');
@@ -123,21 +124,8 @@ class PostsController extends Controller
         $post->type = $request->type;
         $post->status = $request->status;
         $post->save();
-     
-        if ($request->hasFile('image_gallery')) {
-                foreach ($request->file('image_gallery') as $gallery) {
-                    $file_name = 'media_post_gallery_' . uniqid() . '.' . $gallery->extension(); //uniqid() giúp tạo ra một ID duy nhất
-                    $gallery->move(public_path('/uploads/post_gallery'), $file_name);
-
-                    //Update vào table gallery
-                    $image_gallery = new Post_image_galleries();
-                    $image_gallery->image = $file_name;
-                    $image_gallery->post_id = $post->id; //product_id lấy từ Product vừa thêm ở trên
-                    $image_gallery->save();
-                }
-            }
-            toastr()->success("Thêm " . $request->name . " Thành công");
-            return redirect()->back(); 
+        toastr()->success("Thêm " . $request->name . " Thành công");
+        return redirect()->back(); 
     }
 
    
@@ -200,39 +188,21 @@ class PostsController extends Controller
         $post->status = $request->status;
 
         if ($request->hasFile('image')) {
-            $post->image = $this->uploadFile($request, 'image', '/post');
+            $post->image = $this->uploadFile($request, 'image','/post');
+            $post->image_banner = $this->uploadFile($request, 'image_banner','/image_banner');
             //Xóa file ảnh cũ
             if (File::exists(public_path('uploads/post/' . $request->image_old))) {
                 File::delete(public_path('uploads/post/' . $request->image_old));
             }
+            if (File::exists(public_path('uploads/image_banner/' . $request->image_old))) {
+                File::delete(public_path('uploads/image_banner/' . $request->image_old));
+            }
         } else {
             // Giữ nguyên ảnh cũ
+            $post->image_banner =$request->image_old;
             $post->image = $request->image_old;
         }
         $post->save();
-        
-        if ($request->hasFile('image_gallery')) {
-                // Xóa file ảnh cũ trong uploads
-                if (!empty($request->image_gallery_old)) {
-                    foreach (json_decode($request->image_gallery_old) as $gal) {
-                        if (File::exists(public_path('uploads/post_gallery/' . $gal->image))) {
-                            File::delete(public_path('uploads/post_gallery/' . $gal->image));
-                        }
-                    }
-                }
-                // Lấy gallery của product theo ID và xóa tất cả
-                // $galleryDel = Post_image_galleries::where('product_id', $id)->delete();
-                foreach ($request->image_gallery as $gal) {
-                    $gallery = new Post_image_galleries();
-                    $ext = $gal->extension();
-                    $fileName = 'media_post_gallery_' . uniqid() . '.' . $ext;
-                    $gal->move(public_path('uploads/post_gallery/'), $fileName);
-                    $gallery->image = $fileName;
-                    // $gallery->product_id = $id;
-                    $gallery->save();
-                }
-            }
-
         toastr('Cập nhật thành công!', 'success');
 
         return redirect()->route('admin.post.index');

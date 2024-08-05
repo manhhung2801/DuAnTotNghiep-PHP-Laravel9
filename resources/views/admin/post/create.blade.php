@@ -46,10 +46,10 @@
                     <label for="image" class="form-label">Hình ảnh</label>
                     <input type="file" class="form-control" id="image" name="image" accept="image/*">
                 </div>
-
+                
                 <div class="col-md-6">
-                    <label for="image" class="form-label">Danh mục banner</label>
-                    <input type="file" class="form-control" id="image" name="image_gallery[]" accept="image/*">
+                    <label for="image" class="form-label">Hình ảnh Banner</label>
+                    <input type="file" class="form-control" id="image_banner" name="image_banner" accept="image/*">
                 </div>
 
                 <div class="col-md-6">

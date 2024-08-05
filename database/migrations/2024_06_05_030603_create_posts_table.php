@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('posts_categories');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->text('image');
+            $table->text('image_banner');
             $table->longText('title');
             $table->longText('content');
             $table->string('slug', 255);
