@@ -29,7 +29,8 @@ class CheckoutController extends Controller
         // Update giá khi có sự thay đổi giá
         foreach ($getCart as $cart) {
             $getProduct = Product::findOrFail($cart->id);
-            $productPrice = $getProduct->offer_price ?? $getProduct->price;
+            //Kiem tra update gia
+            $productPrice = Helper::getProductPrice($getProduct);
             if ($cart->price != $productPrice) {
                 \Cart::update($cart->id, [
                     'price' => $productPrice,
