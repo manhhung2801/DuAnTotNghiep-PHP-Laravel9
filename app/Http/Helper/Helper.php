@@ -64,12 +64,12 @@ class Helper
         if ($productPrice === null) {
             $productPrice = $product->price;
         }
-
         return (int) $productPrice;
     }
     public static function randOrderCode()
     {
         do {
+            // intval(substr(strval(microtime(true) * 100000), -6));
             $orderCode = "ĐH" . Str::random(10); // Tạo một chuỗi ngẫu nhiên dài 10 ký tự
         } while (Order::where('order_code', $orderCode)->exists());
 

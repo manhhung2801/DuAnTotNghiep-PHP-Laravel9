@@ -61,6 +61,7 @@
                             @forelse ($getOrders as $order)
                                 <tr>
                                     <td>{{ $order->order_code }}</td>
+                                    
                                     <td>
                                         <div class="info_customer_order">
                                             <div class="order_name">
@@ -79,6 +80,7 @@
                                             </div>
                                         </div>
                                     </td>
+
                                     <td>
                                         <strong>{{ number_format($order->total) }} VNĐ</strong>
                                         @if ($order->ship_money != null)
@@ -168,10 +170,13 @@
                                     </td>
 
                                     {{-- Trạng thái đơn hàng --}}
-                                    <td>
+                                    <td id="container_statusOrder">
+                                        @php
+                                            $arr_success = [92, 6, 5, 45];
+                                        @endphp
                                         @if ($order->order_status == -1)
                                             <p class="p-2 badge text-bg-danger">Đã hủy</p>
-                                        @elseif($order->order_status == 92 || $order->order_status == 6 || $order->order_status == 5)
+                                        @elseif(in_array($order->order_status, $arr_success))
                                             <p class="p-2 badge text-bg-success">Đã hoàn thành</p>
                                         @else
                                             @if ($order->shipping_method == 0)
@@ -202,9 +207,7 @@
                                                     <p class="p-2 badge text-bg-primary">Đã chuyển đơn cho GHTK</p>
                                                 @endif
                                                 @if ($order->order_status == 1 || $order->order_status == 2)
-                                                    <a id="cancel_ghtk"
-                                                        data-url="{{ route('admin.ghtk.cancel-order', $order->tracking_id) }}"
-                                                        class="btn btn-outline-danger px-2 py-1">Hủy</a>
+                                                    <a id="cancel_ghtk" data-url="{{ route('admin.ghtk.cancel-order', $order->tracking_id) }}" class="btn btn-outline-danger px-2 py-1">Hủy</a>
                                                 @endif
                                             @endif
                                         @endif
@@ -435,6 +438,7 @@
             })
             $('body').off('click', '#accept_ghtk').on('click', '#accept_ghtk', function() {
                 var url = $(this).attr('data-url');
+                var container_status = $(this).closest('tr').find('#container_statusOrder')
                 Swal.fire({
                         title: "Bạn có chắc chắn?",
                         text: "Thực hiện chuyển đơn hàng cho ĐVVC!",
@@ -476,6 +480,10 @@
                                         `,
                                                 icon: "success"
                                             });
+                                            container_status.empty();
+                                            container_status.append(`
+                                            <p class="p-2 badge text-bg-primary">Đã chuyển đơn cho GHTK</p>
+                                            `)
                                         }
                                         //Đơn hàng lỗi
                                         if (res.status == false) {

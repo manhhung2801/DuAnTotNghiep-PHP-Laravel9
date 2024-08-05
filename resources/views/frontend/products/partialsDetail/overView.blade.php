@@ -10,36 +10,45 @@
     <span class="mb-break">
         <span class="stock-brand-title">Tình trạng:</span>
         <?php if ($product->qty > 0) : ?>
-            <span class="a-stock">Còn {{ $product->qty }} sản phẩm</span>
+        <span class="a-stock">Còn {{ $product->qty }} sản phẩm</span>
         <?php else : ?>
-            <span class="a-stock">Hết hàng</span>
+        <span class="a-stock">Hết hàng</span>
         <?php endif; ?>
     </span>
 </div>
 <hr>
 <div class="price-box ">
-    <span class="flash-saless" style="display: none;">{{Helper::discount($product->offer_start_date, $product->offer_end_date, $product->price, $product->offer_price)}}</span>
+    <span class="flash-saless"
+        style="display: none;">{{ Helper::discount($product->offer_start_date, $product->offer_end_date, $product->price, $product->offer_price) }}
+    </span>
 
     @php
-    $prices = Helper::CouponsPrice(
-    $product->offer_start_date,
-    $product->offer_end_date,
-    $product->price,
-    $product->offer_price,
-    );
+        $prices = Helper::CouponsPrice(
+            $product->offer_start_date,
+            $product->offer_end_date,
+            $product->price,
+            $product->offer_price,
+        );
     @endphp
     <div class="price-box">
-
-        <span class="compare-price CouponsPrice_olds">{{ $prices['price_old'] }} <i class="fa-regular fa-dong-sign"></i></span>
+        <span class="compare-price CouponsPrice_olds">{{ $prices['price_old'] }} <i
+                class="fa-regular fa-dong-sign"></i></span>
         <span class="price  CouponsPrice_news3">{{ $prices['price_new'] }} <i class='fa-solid fa-dong-sign'></i> </span>
-        <span class="compare-price CouponsPrice_news2">{{ $prices['price_new'] }} <i class="fa-regular fa-dong-sign"></i></span>
-        <span class="price CouponsPrice_news1  ">{{ $prices['price_old'] }} <i class='fa-solid fa-dong-sign'></i> </span>
+        <div class="d-flex align-items-center" style="gap: 4px">
+            <span class="price CouponsPrice_news1">
+                {{ $prices['price_old'] }} <i class='fa-solid fa-dong-sign'></i>
+            </span>
+            <span class="compare-price CouponsPrice_news2">{{ $prices['price_new'] }} <i
+                    class="fa-regular fa-dong-sign"></i></span>
+        </div>
     </div>
 </div>
 
 <div class="form-product ">
     <div class="select-swatch ">
-
+        @php
+            $hasColor = false;
+        @endphp
         @foreach ($product->variant as $variant)
         @if ($variant->name == 'color')
         <div class="header">Màu sắc: <span class="value-properties">{{ $variant->name }}</span>
@@ -77,7 +86,6 @@
     </div>
     <div class="boz-form mb-3">
         <div class="flex-quantity">
-
             <form class="formCart" method="post">
                 <input class="productId" type="hidden" value="{{ $product->id }}">
                 <div class="custom custom-btn-number  ">
@@ -108,7 +116,6 @@
             </form>
         </div>
     </div>
-
 
     <script>
         var flash_sale = document.querySelector(".flash-saless");

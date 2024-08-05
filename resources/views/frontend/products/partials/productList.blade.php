@@ -24,9 +24,9 @@
                                 @php
                                 $prices = Helper::CouponsPrice($pro->offer_start_date, $pro->offer_end_date, $pro->price, $pro->offer_price);
                                 @endphp
-                                <div class="price-box">
-                                    <span class="compare-price  CouponsPrice_old">{{ $prices['price_new'] }} <i class='fa-solid fa-dong-sign'></i> </span>
+                                <div class="price-box" style="gap: 4px">
                                     <span class=" price CouponsPrice_new1"> {{ $prices['price_old'] }} <i class="fa-regular fa-dong-sign "></i></span>
+                                    <span class="compare-price  CouponsPrice_old">{{ $prices['price_new'] }} <i class='fa-solid fa-dong-sign'></i> </span>
                                     <span class="price CouponsPrice_new2 ">{{ $prices['price_new'] }} <i class='fa-solid fa-dong-sign'></i> </span>
                                 </div>
                             </div>
