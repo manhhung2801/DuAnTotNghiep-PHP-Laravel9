@@ -179,6 +179,7 @@
     });
 </script>
 
+
 <script>
     var flash_sales = document.querySelectorAll(".flash-sales");
     var flash_sale = document.querySelectorAll(".flash-sale");

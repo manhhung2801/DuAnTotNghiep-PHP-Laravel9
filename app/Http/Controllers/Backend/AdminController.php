@@ -90,7 +90,8 @@ class AdminController extends Controller
         $countContact = contact::get()->count();
 
         $countRevenue = Order::where('payment_status', 1)->get();
-        $Order = Order::where('payment_status', 1)->get();
+        $Order = Order::where('payment_status', 1)->where('payment_status', 1)
+        ->orWhere('payment_status', 0)->get();
 
         // tông đơn hàng chưa thanh toán 
         $unpaidOrders = Order::where('payment_status', 0)->where('order_status', 0)->count();
@@ -127,6 +128,7 @@ class AdminController extends Controller
 
         $Orderss= Order::where('order_status', 92)
             ->where('payment_status', 1)
+            ->orWhere('payment_status', 0)
             ->whereIn('shipping_method', [0, 1])
             ->whereBetween('created_at', [$start_date_order, $end_date_order])
             ->get();
@@ -135,7 +137,7 @@ class AdminController extends Controller
 
         $unpaidOrdersCharts= Order::where(function ($query) {
             $query->where('order_status', -1)
-                ->orWhere('payment_status', 0);
+                ->where('payment_status', 0);
         })
             ->whereBetween('created_at', [$start_date_order, $end_date_order])
             ->get();
