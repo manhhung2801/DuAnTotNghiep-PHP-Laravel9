@@ -71,15 +71,45 @@ class ProductController extends Controller
             } else return view("404");
         }
 
+        function sortProductsByOfferPrice(array $products): array
+        {
+            usort($products, function ($a, $b) {
+                $aScore = $a['price'] - $a['offer_price'];
+                $bScore = $b['price'] - $b['offer_price'];
+
+                if ($aScore == $bScore) {
+                    return 0;
+                }
+
+                return ($aScore < $bScore) ? -1 : 1;
+            });
+
+            return $products;
+        }
+
         // Sort products by specified criteria
         if ($sortBy === 'az') {
             $productsQuery->orderBy('name', 'asc');
         } elseif ($sortBy === 'za') {
             $productsQuery->orderBy('name', 'desc');
         } elseif ($sortBy === 'price_low_high') {
-            $productsQuery->orderBy('offer_price', 'asc');
+            $productsQuery->where('deleted_at', null)
+                ->where(function ($query) {
+                    $query->where('offer_price', '>', 0)
+                        ->where('offer_end_date', '>=', date('Y-m-d'));
+                })
+                ->orderBy('offer_price', 'asc')
+                ->orderBy('price', 'asc')
+                ->orderBy('offer_end_date', 'desc');
         } elseif ($sortBy === 'price_high_low') {
-            $productsQuery->orderBy('offer_price', 'desc');
+            $productsQuery->where('deleted_at', null)
+                ->where(function ($query) {
+                    $query->where('offer_price', '>', 0)
+                        ->where('offer_end_date', '>=', date('Y-m-d'));
+                })
+                ->orderBy('offer_price', 'desc')
+                ->orderBy('price', 'desc')
+                ->orderBy('offer_end_date', 'desc');
         } elseif (isset($sortBy) && is_numeric($sortBy)) {
             $minPrice = $productsQuery->min('offer_price');
             $productsQuery->whereBetween('offer_price', [$minPrice, $sortBy]);
