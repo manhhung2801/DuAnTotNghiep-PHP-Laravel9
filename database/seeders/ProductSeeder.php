@@ -42,6 +42,9 @@ class ProductSeeder extends Seeder
             $nameTiVi32 = collect(['Xiaomi Smart', 'Smart', 'Google'])->random() . collect([' Tivi ', ' Tivi QNED '])->random() . collect([' Samsung ', ' Samsung QLED'])->random() . collect([' ', ' 4K ', ' 47LMHD456 ', ' 5K '])->random() . ' 32 INCH ';
             //End tivi category 8
             $nameTiVi = collect(['Xiaomi Smart', 'Smart', 'Google'])->random() . collect([' Tivi ', ' Tivi QNED '])->random() . collect([' ', ' LG ', ' Samsung ', ' TCL ', ' Samsung QLED'])->random() . collect([' ', ' 4K ', ' 47LMHD456 ', ' 5K '])->random() . collect([' ', ' 25 inch ', ' 26 inch ', ' 21 inch ', ' 22 inch ', ' 15 inch '])->random();
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
             // Thêm tên sản phẩm vào mảng Iphone
             DB::table('products')->insert([
                 [
@@ -49,11 +52,11 @@ class ProductSeeder extends Seeder
                     'slug' => Str::slug($nameIP11 . rand(0, 990), '-'),
                     'image' => 'iphone_' . rand(1, 30) . '.webp',
                     'qty' => 200,
-                    'price' => round(rand(29000000, 33900000) / 100000) * 100000,
-                    'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
+                    'price' => $price,
+                    'offer_price' => $offer_price,
                     'offer_start_date' => now(),
-                    'offer_end_date' => '2024-07-31',
-                    'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
+                    'offer_end_date' => '2025-07-31',
+                    'sku' => 'SPIP' . rand(100, 1020) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
                 <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
@@ -199,11 +202,11 @@ class ProductSeeder extends Seeder
                     'slug' => Str::slug($nameIP12 . rand(0, 990), '-'),
                     'image' => 'iphone_' . rand(1, 30) . '.webp',
                     'qty' => 200,
-                    'price' => round(rand(29000000, 33900000) / 100000) * 100000,
-                    'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
+                    'price' => $price,
+                    'offer_price' => $offer_price,
                     'offer_start_date' => now(),
-                    'offer_end_date' => '2024-07-31',
-                    'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
+                    'offer_end_date' => '2025-07-31',
+                    'sku' => 'SPIP' . rand(100, 1020) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
                 <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
@@ -349,11 +352,11 @@ class ProductSeeder extends Seeder
                     'slug' => Str::slug($nameIP15 . rand(0, 990), '-'),
                     'image' => 'iphone_' . rand(1, 30) . '.webp',
                     'qty' => 200,
-                    'price' => round(rand(29000000, 33900000) / 100000) * 100000,
-                    'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
+                    'price' => $price,
+                    'offer_price' => $offer_price,
                     'offer_start_date' => now(),
-                    'offer_end_date' => '2024-07-31',
-                    'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
+                    'offer_end_date' => '2025-07-31',
+                    'sku' => 'SPIP' . rand(100, 1020) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
                 <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
@@ -499,11 +502,11 @@ class ProductSeeder extends Seeder
                     'slug' => Str::slug($nameIP13 . rand(0, 990), '-'),
                     'image' => 'iphone_' . rand(1, 30) . '.webp',
                     'qty' => 200,
-                    'price' => round(rand(29000000, 33900000) / 100000) * 100000,
-                    'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
+                    'price' => $price,
+                    'offer_price' => $offer_price,
                     'offer_start_date' => now(),
-                     'offer_end_date' => '2024-07-31',
-                    'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
+                    'offer_end_date' => '2025-07-31',
+                    'sku' => 'SPIP' . rand(100, 1020) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
                 <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
@@ -649,11 +652,11 @@ class ProductSeeder extends Seeder
                     'slug' => Str::slug($nameIP14 . rand(0, 990), '-'),
                     'image' => 'iphone_' . rand(1, 30) . '.webp',
                     'qty' => 200,
-                    'price' => round(rand(29000000, 33900000) / 100000) * 100000,
-                    'offer_price' => round(rand(10900000, 25900000) / 100000) * 100000,
+                    'price' => $price,
+                    'offer_price' => $offer_price,
                     'offer_start_date' => now(),
-                     'offer_end_date' => '2024-07-31',
-                    'sku' => 'SPIP' . rand(100, 1020). rand(100, 1020),
+                    'offer_end_date' => '2025-07-31',
+                    'sku' => 'SPIP' . rand(100, 1020) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
                 <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
@@ -802,11 +805,11 @@ class ProductSeeder extends Seeder
                 'slug' => Str::slug($nameMac . rand(0, 990), '-'),
                 'image' => 'mac_' . rand(1, 12) . '.webp',
                 'qty' => 200,
-                'price' => round(rand(29000000, 33900000) / 10000) * 10000,
-                'offer_price' => round(rand(15900000, 2900000) / 10000) * 10000,
+                'price' => $price,
+                'offer_price' => $offer_price,
                 'offer_start_date' => now(),
-                 'offer_end_date' => '2024-07-31',
-                'sku' => 'SPMCB' . rand(120, 140). rand(100, 1020), 
+                'offer_end_date' => '2025-07-31',
+                'sku' => 'SPMCB' . rand(120, 140) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'long_description' => '<div class="ksp-content p-2 mb-2" style="-webkit-text-stroke-width:0px;background-color:rgb(242, 242, 242);border-radius:0.5rem;box-sizing:inherit;color:rgb(74, 74, 74);font-family:Roboto, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:auto;orphans:2;padding:0.5rem !important;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;width:800px;word-spacing:0px;">
     <h2 class="ksp-title has-text-centered" style="box-sizing:inherit;color:rgb(215, 0, 24);font-size:18px;margin:0px;padding:0px;text-align:center !important;">
@@ -944,10 +947,10 @@ class ProductSeeder extends Seeder
                 "slug" => Str::slug($nameOP . rand(0, 990), '-'),
                 "image" =>  'oppo_' . rand(1, 18) . '.webp',
                 'qty' => 200,
-                'price' => round(rand(29000000, 33900000) / 10000) * 10000,
-                'offer_price' => round(rand(15900000, 2900000) / 10000) * 10000,
+                'price' => $price,
+                'offer_price' => $offer_price,
                 'offer_start_date' => now(),
-                'offer_end_date' => '2024-07-31',
+                'offer_end_date' => '2025-07-31',
                 'sku' => 'SPOP' . rand(120, 140) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'long_description' => '
@@ -1459,11 +1462,11 @@ class ProductSeeder extends Seeder
                 "slug" => Str::slug($nameMSI . rand(0, 990), '-'),
                 "image" =>  'msi_' . rand(1, 17) . '.webp',
                 'qty' => 200,
-                'price' => round(rand(29000000, 33900000) / 10000) * 10000,
-                'offer_price' => round(rand(15900000, 2900000) / 10000) * 10000,
+                'price' => $price,
+                'offer_price' => $offer_price,
                 'offer_start_date' => now(),
-                 'offer_end_date' => '2025-07-31',
-                'sku' => 'SPMSI' . rand(120, 140). rand(100, 1020),
+                'offer_end_date' => '2025-07-31',
+                'sku' => 'SPMSI' . rand(120, 140) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'long_description' => '
                     <div id="cpsContent" class="cps-block-content"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Mang vẻ ngoài vô cùng tân tiến với đường nét đều mạnh mẽ, cá tính</li><li>CPU Intel Core i5-12450H đảm bảo tốc độ xử lý nhanh gọn</li><li>GPU RTX 4050 tân tiến&nbsp;cho ra khả năng xử lý đa tác vụ, từ chơi game đến làm việc</li><li>Không gian lưu trữ rộng rãi với 512GB SSD, lưu trữ mọi tài liệu, game và phần mềm</li><li>Màn hình 15.6 inch Full HD cùng tần số quét 144Hz, đảm bảo thao tác mượt mà, bắt kịp mọi chuyển động</li></ul></div></div> <div><h2 style="text-align: justify;"><strong>' . $nameMSI . ' – Cân mọi tựa game </strong></h2> <p style="text-align: justify;">' . $nameMSI . ' thuộc dòng <a href="https://cybermart.io.vn/" title="' . $nameMSI . ' chính hãng" target="_blank"><strong>' . $nameMSI . '</strong></a> cao cấp với hiệu năng xuất sắc. Với công nghệ xử lý hàng đầu kết hợp cùng những linh kiện chất lượng cao, phiên bản rất xứng đáng để các game thủ trang bị cho nhu cầu sử dụng của bản thân.</p> <h3 style="text-align: justify;"><strong> CPU mạnh mẽ, card đồ họa tân tiến </strong></h3> <p style="text-align: justify;">' . $nameMSI . ' được thiết kế với bộ chip i5-12450H thế hệ thứ 12 của Intel có khả năng đảm nhiệm xử lý những ứng dụng nặng một cách hiệu quả. Bên cạnh đó, chiếc laptop gaming này còn gây ấn tượng với card đồ họa RTX 4050&nbsp;thuộc thế hệ RTX 40 Series. Nhờ sự kết hợp hoàn hảo giữa hai thông số này mà laptop có thể hoàn tất nhanh chóng mọi tác vụ đa nhiệm mà không lo gián đoạn.</p> <p style="text-align: justify;"><img src="https://cdn.shopify.com/s/files/1/0192/2088/9664/products/img2447_1800x1800.jpg?v=1603981323" alt="Hiệu năng ' . $nameMSI . '" loading="lazy"></p> <h3 style="text-align: justify;"><strong> RAM DDR5 8GB, ổ cứng 512GB SSD </strong></h3> <p style="text-align: justify;">Dòng <a href="https://cybermart.io.vn/" title="' . $nameMSI . '" target="_blank"><strong>' . $nameMSI . '</strong></a> được đầu tư ổ cứng SSD NVMe PCIe Gen 4 có dung lượng đến 512GB. Từ đó, máy có thể dễ dàng lưu trữ tất cả những dữ liệu trong bộ nhớ, cũng như tiết kiệm thời gian truy xuất đáng kể. Ngoài ra, laptop còn ẩn chứa bộ RAM 8GB có tốc độ truyền tải 5200MHz giúp người dùng nâng cao trải nghiệm giải trí khi chạy những phần mềm đòi hỏi yêu cầu cao.&nbsp;</p> <p style="text-align: justify;"><img src="https://phukienmaytinh.com.vn/wp-content/uploads/2020/02/MSI-GF63-3.jpg" alt="Cấu hình ' . $nameMSI . '" loading="lazy"></p> <h2 style="text-align: justify;"><strong> Mua ngay ' . $nameMSI . ' chính hãng tại Cybermart </strong></h2> <p style="text-align: justify;">' . $nameMSI . ' được đánh giá tích cực trong quá trình sử dụng với hiệu suất xử lý vượt trội. Đừng chần chừ đến Cybermart ngay từ bây giờ để sở hữu sản phẩm chất lượng với dịch vụ hỗ trợ tư vấn và giao hàng chuyên nghiệp, nhanh chóng.</p></div> </div> 
@@ -1612,11 +1615,11 @@ class ProductSeeder extends Seeder
                 'slug' => Str::slug($nameSounds . rand(0, 990), '-'),
                 'image' => 'sound_' . rand(1, 20) . '.webp',
                 'qty' => 200,
-                'price' => round(rand(29000000, 33900000) / 100000) * 100000,
-                'offer_price' => round(rand(3000000, 10000000) / 100000) * 100000,
+                'price' => $price,
+                'offer_price' => $offer_price,
                 'offer_start_date' => now(),
-                'offer_end_date' => '2024-07-31',
-                'sku' => 'SPS' . rand(100, 1020). rand(100, 1020),
+                'offer_end_date' => '2025-07-31',
+                'sku' => 'SPS' . rand(100, 1020) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'short_description' => '
                 <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng ' . $nameSounds . '<br>
@@ -1753,7 +1756,7 @@ class ProductSeeder extends Seeder
                 'seo_description' => '' . $nameSounds . ' mang đến âm thanh 3D sống động với chip H2, công nghệ chống ồn hiệu quả gấp đôi thế hệ trước, và kết nối Bluetooth 5.3. Được thiết kế chống nước IPX4, tai nghe lý tưởng cho mọi hoạt động. Khám phá giá và đặt hàng ngay hôm nay!',
                 'category_id' => 3,
                 'weight' => 0.5,
-                'sub_category_id' => rand(28, 33),
+                'sub_category_id' => 28,
                 'child_category_id' => rand(46, 50),
                 'created_at' => now(),
             ]);
@@ -1762,11 +1765,11 @@ class ProductSeeder extends Seeder
                 'slug' => Str::slug($nameLoa . rand(0, 990), '-'),
                 'image' => 'loa_' . rand(1, 27) . '.webp',
                 'qty' => 200,
-                'price' => round(rand(29000000, 33900000) / 100000) * 100000,
-                'offer_price' => round(rand(3000000, 10000000) / 100000) * 100000,
+                'price' => $price,
+                    'offer_price' => $offer_price,
                 'offer_start_date' => now(),
-                'offer_end_date' => '2024-07-31',
-                'sku' => 'SPL' . rand(100, 1020). rand(100, 1020),
+                'offer_end_date' => '2025-07-31',
+                'sku' => 'SPL' . rand(100, 1020) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'short_description' => '
                 <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng ' . $nameLoa . '<br>
@@ -1903,7 +1906,7 @@ class ProductSeeder extends Seeder
                 'seo_description' => '' . $nameLoa  . ' mang đến âm thanh 3D sống động với chip H2, công nghệ chống ồn hiệu quả gấp đôi thế hệ trước, và kết nối Bluetooth 5.3. Được thiết kế chống nước IPX4, tai nghe lý tưởng cho mọi hoạt động. Khám phá giá và đặt hàng ngay hôm nay!',
                 'category_id' => 3,
                 'weight' => 0.5,
-                'sub_category_id' => rand(28, 33),
+                'sub_category_id' => 28,
                 'child_category_id' => rand(46, 50),
                 'created_at' => now(),
             ]);
@@ -1914,11 +1917,11 @@ class ProductSeeder extends Seeder
                     "slug" => Str::slug($nameSmartPhone . rand(0, 990), '-'),
                     "image" =>  'dongho_' . rand(1, 17) . '.webp',
                     'qty' => 200,
-                    'price' => round(rand(29000000, 33900000) / 10000) * 10000,
-                    'offer_price' => round(rand(15900000, 2900000) / 10000) * 10000,
+                    'price' => $price,
+                    'offer_price' => $offer_price,
                     'offer_start_date' => now(),
-                    'offer_end_date' => '2024-07-31',
-                    'sku' => 'SPMSI' . rand(120, 140) . rand(100, 1020),              
+                    'offer_end_date' => '2025-07-31',
+                    'sku' => 'SPMSI' . rand(120, 140) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'long_description' => '
                     <div id="cpsContent" class="cps-block-content"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Thực hiện cuộc thông thường hay video call với sim 4G</li><li>Nút liên lạc khẩn cấp tự động gửi vị trí cùng một bản ghi âm 30 giây tới các số được lưu sẵn</li><li>Ghi lại lịch sử di chuyển với định vị GPS</li><li>Thao tác thuận tiện với màng hình 1.3 inch</li><li>Không ngại mưa rơi hay nước bắn với kháng nước chuẩn IP67</li></ul></div></div> <div><h2><strong>Vì sao nên mua ' . $nameSmartPhone . '</strong></h2> <p>Chiếc đồng hồ này có trọng lượng rất nhẹ, chỉ khoảng 53 gam, kết hợp với dây đeo cao cấp, đem lại cảm giác đeo thoải mái cả ngày dài. Đặc biệt, sản phẩm đạt tiêu chuẩn kháng nước và bụi bẩn IP67, giúp bảo vệ thiết bị trong những trường hợp bé đi dưới mưa hoặc bị bắn nước trong lúc rửa tay.&nbsp;Ngoài ra, Myalo KidsPhone K84 cho phép người dùng liên lạc hai chiều, hỗ trợ phụ huynh gọi video cho bé trong lúc đi xa rất dễ dàng.&nbsp;</p> <p><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Watch/Myalo/dong-ho-thong-minh-tre-em-k84-6.jpg" alt="Vì sao nên mua ' . $nameSmartPhone . '" loading="lazy"></p> <h2 style="text-align: justify;"><strong>Myalo KidsPhone K84 - Đồng hồ chứa đựng đầy đủ tiện ích cần thiết cho bé</strong></h2> <p style="text-align: justify;">Các bậc phụ huynh đang tìm kiếm món phụ kiện cho con em mình hãy tham khảo ngay&nbsp;<strong>đồng hồ trẻ em myAlo KidsPhone K84</strong>. Đây là chiếc đồng hồ không chỉ xinh xắn bên ngoài, mà còn chứa đựng nhiều tiện ích hữu dụng cho bé khi cần thiết.</p> <h3 style="text-align: justify;"><strong>Kiểu dáng xinh xắn, dây đeo êm ái, kháng nước chuẩn IP67</strong></h3> <p style="text-align: justify;">Đồng hồ myAlo KidsPhone K84 mang kiểu dáng xinh xắn, thiết kế năng động với màu xanh biển sẽ phù hợp với cả bé trai lẫn bé gái.&nbsp;Dây đeo được làm từ chất liệu đàn hồi, cùng với trọng lượng nhẹ nhàng của đồng hồ giúp đảm bảo êm ái và thoải mái trên da tay bé khi đeo dài lâu.</p> <p style="text-align: justify;"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Watch/Myalo/dong-ho-thong-minh-tre-em-k84-5.jpg" alt="Kiểu dáng xinh xắn, dây đeo êm ái, kháng nước chuẩn IP67" loading="lazy"></p> <p style="text-align: justify;">MyAlo KidsPhone K84 còn đảm bảo kháng thấm nước với tiêu chuẩn IP67, giúp bé tha hồ tham gia các hoạt động bơi lội hoặc đi biển mà không lo đồng hồ bị hỏng.&nbsp;Ngoài ra, đồng hồ thông minh trẻ em myAlo KidsPhone K84 còn cho phép bé chụp ảnh và chia sẻ ảnh với bố mẹ về những khoảnh khắc đáng nhớ của bé trong chuyến đi chơi.</p> <h3 style="text-align: justify;"><strong>Tính năng liên lạc khẩn cấp, thiết lập vùng an toàn giúp giám sát bé hiệu quả</strong></h3> <p style="text-align: justify;">Các bậc phụ huynh thường hay lo lắng khi con em mình tham gia khu vui chơi, giờ đây sẽ không phải lo lắng với đồng hồ thông minh myAlo KidsPhone K84.</p> <p style="text-align: justify;">Chiếc đồng hồ được trang bị tính năng liên lạc khẩn cấp SOS, cho phép bé lưu lại số điện thoại của bố mẹ hoặc người thân và thực hiện cuộc gọi SOS ngay khi có tai nạn hoặc sự cố nguy hiểm xảy ra.</p> <p style="text-align: justify;"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Watch/Myalo/dong-ho-thong-minh-tre-em-k84-1.jpg" alt="Tính năng liên lạc khẩn cấp, thiết lập vùng an toàn giúp giám sát bé hiệu quả" loading="lazy"></p> <p style="text-align: justify;">Ngoài ra, bố mẹ còn có thể thiết lập vùng an toàn cho bé trên <a href="https://cellphones.com.vn/do-choi-cong-nghe/dong-ho-dinh-vi-tre-em.html" target="_blank">đồng hồ trẻ em</a> myAlo KidsPhone K84. Bé sẽ an tâm chơi đùa trong khu vực phạm vi đã được thiết lập sẵn, và đồng hồ sẽ báo hiệu chuông lớn mỗi khi có ai đưa bé ra ngoài phạm vi ấy.</p> <p style="text-align: justify;">Những tiện ích khác trên đồng hồ myAlo KidsPhone K84 gồm có: máy ghi âm, theo dõi vận động, đồng hồ bấm giờ, máy tính, dự báo thời tiết, nghe nhạc MP3, và cảm biến phát hiện đòng hồ rơi khỏi cổ tay bé.</p> <h2><strong>Hướng dẫn sử dụng đồng hồ thông minh trẻ em Myalo KidsPhone K84 chi tiết</strong></h2> <p>Sau đây, CellphoneS sẽ hướng dẫn sử dụng chiếc đồng hồ thông minh trẻ em Myalo KidsPhone K84 một cách chi tiết nhất, giúp mọi người làm quen thiết bị nhanh chóng.&nbsp;</p> <h3><strong>Hướng dẫn kích hoạt đồng hồ thông minh trẻ em Myalo KidsPhone K84&nbsp;</strong></h3> <p>Đây là dòng đồng hồ thông minh trẻ em, nên việc kích hoạt sản phẩm này chỉ cần vài thao tác đơn giản như sau.</p> <p>Bước 1: Sạc đầy thiết bị khoảng 2 - 3 tiếng, và đang ở trong tình trạng tắt nguồn.&nbsp;</p> <p>Bước 2: Lắp thẻ SIM đã được kích hoạt GPRS vào sản phẩm.</p> <p>Bước 3: Ấn và nhấn giữ 3 giây để bật nguồn đồng hồ.&nbsp;</p> <p><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Watch/Myalo/dong-ho-thong-minh-tre-em-k84-2.jpg" alt="Hướng dẫn kích hoạt đồng hồ thông minh trẻ em Myalo KidsPhone K84 " loading="lazy"></p> <h3><strong>Hướng dẫn ghép nối ' . $nameSmartPhone . ' với điện thoại</strong></h3> <p>Các bước kích hoạt chiếc đồng hồ này khá đơn giản, các bạn hãy làm theo các bước phía dưới đây.</p> <p>Bước 1: Tải ứng dụng myAlo myKids vào trên điện thoại → Mở app và nhấn Đăng ký</p> <p>Bước 2: Khai báo thông tin cá nhân, rồi tiếp tục nhấn Đăng ký. Sau đó, đồng ý với Điều khoản sử dụng và Chính sách quyền riêng tư của myAlo myKids.</p> <p>Bước 3: Vào Cài đặt → Nhấn Thêm thiết bị và đợi bắt đầu ghép nối&nbsp;</p> <p>Bước 4: Mở đồng hồ và vào mục Mã ràng buộc → Dùng điện thoại để quét mã QR Code → Nhập thông tin cá nhân cho bé.</p> <p><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Watch/Myalo/dong-ho-thong-minh-tre-em-k84-4.jpg" alt="Hướng dẫn ghép nối ' . $nameSmartPhone . ' với điện thoại" loading="lazy"></p> <p>Bước 5: Khi đã nhập xong thông tin, nhấn Hoàn thành để kết thúc quá trình ghép nối.&nbsp;</p> <h2 style="text-align: left;"><strong>Sở hữu đồng hồ trẻ em myAlo KidsPhone K84 giá rẻ, chất lượng tại&nbsp;</strong><strong>CellphoneS</strong></h2> <p align="center" style="text-align: justify;">Các bậc phụ huynh giờ đây có thể sắm cho con mình chiếc đồng hồ <strong>myAlo KidsPhone K84 chính hãng</strong> với giá tốt tại hệ thống CellphoneS. Với chuỗi cửa hàng có mặt ở Hà Nội và TP. HCM.&nbsp;</p></div></div> 
@@ -2055,7 +2058,7 @@ class ProductSeeder extends Seeder
                     'seo_description' => 'Khám phá ' . $nameSmartPhone . ' với CPU Intel Core i5-12450H, GPU RTX 4050 và màn hình 15.6 inch Full HD 144Hz. Hiệu năng vượt trội cho game thủ, lưu trữ rộng rãi với 512GB SSD và RAM DDR5 8GB. Mua ngay tại Cybermart với giá ưu đãi và dịch vụ tốt nhất.',
                     'category_id' => 4,
                     'weight' => 3,
-                    'sub_category_id' => rand(34, 37),
+                    'sub_category_id' => 34,
                     'child_category_id' => rand(51, 53),
                     'created_at' => now(),
                     "status" => 1
@@ -2068,11 +2071,11 @@ class ProductSeeder extends Seeder
                     "slug" => Str::slug($nameNoiChien . rand(0, 990), '-'),
                     "image" =>  'noichien_' . rand(1, 30) . '.webp',
                     'qty' => 200,
-                    'price' => round(rand(29000000, 33900000) / 10000) * 10000,
-                    'offer_price' => round(rand(15900000, 3900000) / 10000) * 10000,
+                    'price' => $price,
+                    'offer_price' => $offer_price,
                     'offer_start_date' => now(),
                     'offer_end_date' => '2025-07-31',
-                    'sku' => 'SPNC' . rand(120, 140). rand(100, 1020), 
+                    'sku' => 'SPNC' . rand(120, 140) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'long_description' => '
                              <div id="cpsContent" class="cps-block-content" style="max-height: 100000px;"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Tiết kiệm điện năng, thời gian chế biến với công suất 1700W</li><li>Dung tích lớn lên đến&nbsp;6.5L yên tâm nướng gà nguyên con</li><li>Tích hợp rất nhiều chức năng chiên nấu trên một sản phẩm</li><li>Thiết kế trong suốt dễ dàng quan sát tình trạng thức ăn</li></ul></div></div> <div><p style="text-align: justify;">' . $nameNoiChien . ' sở hữu công suất 1700W kết hợp công nghệ chiên đối lưu không khí, giúp nấu ăn nhanh chóng và lành mạnh hơn. Dung tích lớn 6.5 lít và nhiều chế độ chiên, nấu cho phép nồi đáp ứng nhu cầu ẩm thực phong phú của gia đình. Bên cạnh đó, sản phẩm <a href="https://cybermart.io.vn/product/gia-dung-smarthome/noi-chien-khong-dau" title="Nồi chiên không dầu Sunhouse"><strong>nồi chiên không dầu Sunhouse</strong></a> có thiết kế tối giản với cửa sổ khoang chiên ốp kính trong suốt dễ dàng quan sát.</p> <h2 style="text-align: justify;"><strong>Vì sao nên mua ' . $nameNoiChien . '?</strong></h2> <p style="text-align: justify;">' . $nameNoiChien . ' hứa hẹn sẽ là giải pháp nấu nướng tốt nhờ vào:</p> <p><span style="text-align: justify;">- Công suất 1700W: Chiên, nấu nhanh chóng và hiệu quả.</span><br><span style="text-align: justify;"></span></p> <p><span style="text-align: justify;">- Công nghệ tiên tiến Rapid Air: Tiết kiệm dầu, làm thức ăn trở nên dinh dưỡng hơn.</span><br><span style="text-align: justify;"></span></p> <p><span style="text-align: justify;">- Dung tích 6.5 lít: Chế biến một lượng lớn thực phẩm trong mỗi lần sử dụng, phù hợp cho cả gia đình.</span></p> <p style="text-align: justify;"><img src="https://cdn.tgdd.vn/Products/Images/9418/240313/ava-kdf-593d-0-600x600-1.jpg" alt="Vì sao nên mua ' . $nameNoiChien . '?" loading="lazy"></p> <p><span style="text-align: justify;">- Hỗ trợ nhiều chế độ nấu khác nhau: Đáp ứng nhu cầu ẩm thực đa dạng.</span><br><span style="text-align: justify;"></span></p> <p><span style="text-align: justify;">- Cửa sổ khoang chiên ốp kính trong suốt: Dễ dàng theo dõi quá trình chiên nấu.</span></p> <h2 style="text-align: justify;"><strong>' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn</strong></h2> <p style="text-align: justify;">' . $nameNoiChien . ' đáp ứng tốt nhu cầu chiên nấu thực phẩm của nhiều gia đình với công suất mạnh mẽ và dung tích lớn. Thiết bị có kết cấu cao cấp, vẻ ngoài sang trọng đảm bảo bền đẹp theo thời gian.</p> <p style="text-align: justify;">Bên cạnh đó nếu bạn đang có nhu cầu chọn nồi chiên Sunhouse có dung tích lớn hơn thì có thể khám phá mẫu&nbsp;<a href="https://cybermart.io.vn/product/gia-dung-smarthome/noi-chien-khong-dau" title="SHD4037" target="_blank"><strong>SHD4037</strong></a> được bán tại CellphoneS với đầy đủ ưu điểm vượt trội được bán chính hãng, giao hàng hỏa tốc nhanh. Khám phá ngay nhé!</p> <h3 style="text-align: justify;"><strong>Công suất mạnh mẽ 1700W&nbsp;</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' có công suất mạnh mẽ 1700W, giúp nấu chín thực phẩm nhanh chóng và đều hơn. Công suất cao kết hợp với khả năng gia nhiệt vượt trội giúp nồi chiên Sunhouse SHD4030 hoạt động hiệu quả, tiết kiệm thời gian nấu nướng mà vẫn đảm bảo chất lượng món ăn.</p> <p style="text-align: justify;"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fkingshop.vn%2Fsan-pham%2Fnoi-chien-khong-dau-nineshield-kb-5005m-24444.html&psig=AOvVaw3zaimhvOrXKEHqKCJxF1BR&ust=1722133190097000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCLCaoZ2UxocDFQAAAAAdAAAAABAJ" alt="' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn" loading="lazy"></p> <p style="text-align: justify;">Sunhouse SHD4030 6.5L sử dụng công nghệ chiên không dầu Rapid Air sử dụng luồng khí nóng lưu thông nhanh để làm chín thực phẩm thay vì dầu mỡ truyền thống. Nhờ vậy, món ăn không chỉ giữ được hương vị tự nhiên mà còn giảm lượng chất béo đáng kể, tốt cho sức khỏe.</p> <h3 style="text-align: justify;"><strong>Dung tích 6.5L đủ không gian nấu nướng cho gà nguyên con&nbsp;</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' với dung tích lớn 6.5 lít. Đây lựa chọn lý tưởng cho các gia đình đông thành viên hoặc khi cần nấu lượng thực phẩm lớn.&nbsp;</p> <p style="text-align: justify;"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Do-gia-dung/Noi-chien-khong-dau/Sunhouse/noi-chien-khong-dau-sunhouse-shd4030-6-5l-3.jpg" alt="' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn" loading="lazy"></p> <p style="text-align: justify;">Dung tích này cho phép bạn dễ dàng chế biến một con gà nguyên con, một lượng lớn khoai tây chiên, hoặc nhiều loại thực phẩm khác trong một lần nấu. Với khả năng phục vụ từ 4-6 người, nồi chiên này đáp ứng tốt các bữa ăn gia đình hoặc các buổi tụ họp nhỏ. Dung tích lớn giúp tiết kiệm thời gian nấu nướng và đảm bảo tất cả mọi người đều có phần ăn nóng hổi, ngon miệng.&nbsp;</p> <p style="text-align: justify;">Đặc biệt, ' . $nameNoiChien . ' được trang bị nhiều chức năng chiên nướng đa dạng, bao gồm các chế độ dành riêng cho khoai tây, tôm, thịt bò, cánh gà, pizza…</p> <h3 style="text-align: justify;"><strong>Kiểu dáng hiện đại&nbsp;</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' sở hữu thiết kế hiện đại với gam màu trung tính, dễ dàng hòa hợp với mọi không gian bếp. Vỏ nồi được làm từ chất liệu nhựa cao cấp, giúp nồi chịu nhiệt tốt và dễ dàng vệ sinh sau khi sử dụng.&nbsp;</p> <p style="text-align: justify;"><img src="https://bizweb.dktcdn.net/100/435/504/products/nichienkhongdudachcnang10lrole.jpg?v=1667787763040" alt="' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn" loading="lazy"></p> <p style="text-align: justify;">Đặc biệt, cửa sổ khoang chiên ốp kính trong suốt, cho phép bạn quan sát quá trình nấu nướng mà không cần mở nắp. Thiết kế tối giản nhưng tinh tế của nồi chiên Sunhouse SHD4030 vừa nâng cao tính thẩm mỹ, vừa mang lại sự tiện lợi và hiệu quả trong quá trình sử dụng.</p> <h3 style="text-align: justify;"><strong>Điều khiển núm xoay, tích hợp hẹn giờ 60 phút</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' được trang bị bảng điều khiển núm xoay đơn giản và dễ sử dụng. Nhờ đó, người dùng có thể cài nhiệt độ, cũng như các chương trình nấu trong tíc tắc.&nbsp;</p> <p style="text-align: justify;"><img src="https://s.meta.com.vn/Data/image/2019/10/26/noi-chien-khong-dau-rapido-raf4-0mh-1.jpg" alt="Điều khiển núm xoay, tích hợp hẹn giờ 60 phút" loading="lazy"></p> <p style="text-align: justify;">Trên bảng điều khiển sẽ có tính năng hẹn giờ thông minh cho phép bạn cài đặt thời gian nấu lên đến 60 phút.&nbsp;</p> <h2 style="text-align: justify;"><strong>Mua ' . $nameNoiChien . ' chính hãng, giá tốt tại Cybermart</strong></h2> <p style="text-align: justify;">Nếu bạn đang tìm kiếm sản phẩm ' . $nameNoiChien . ' chính hãng với giá tốt, thì Cybermart là điểm đến lý tưởng. Tại của hàng, bạn sẽ được đảm bảo với bảo hành từ nhà sản xuất Sunhouse.</p> <p style="text-align: justify;">Ngoài ra, bạn sẽ có cơ hội nhận được các ưu đãi khi sắm ' . $nameNoiChien . ' trong các dịp lễ 8/3, 20/10, Black Friday… Hãy ghé thăm Cybermart ngay hôm nay để sở hữu ngay Sunhouse SHD4030 6.5L với giá ưu đãi nhất!</p></div> </div>
@@ -2142,11 +2145,11 @@ class ProductSeeder extends Seeder
                     "slug" => Str::slug($nameOplung . rand(0, 990), '-'),
                     "image" =>  'oplung_' . rand(1, 19) . '.webp',
                     'qty' => 200,
-                    'offer_price' => round(rand(3000000, 7000000) / 10000) * 10000,
-                    'price' => round(rand(9000000, 15000000) / 10000) * 10000,
+                    'price' => $price,
+                    'offer_price' => $offer_price,
                     'offer_start_date' => now(),
                     'offer_end_date' => '2025-07-31',
-                    'sku' => 'SPNC' . rand(120, 140). rand(100, 1020),
+                    'sku' => 'SPNC' . rand(120, 140) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'long_description' => '
                              <div id="cpsContent" class="cps-block-content" style="max-height: 100000px;"><!----> <div><h2 style="text-align: justify;"><strong>' . $nameOplung . ' - Giải pháp bảo vệ tối ưu cho series iPhone 14</strong></h2> <p style="text-align: justify;">' . $nameOplung . ' thuộc bộ sưu tập phụ kiện cao cấp do chính Apple sản xuất dành cho series iPhone 14 mới được ra mắt gần đây. Sản phẩm <a href="https://cybermart.io.vn/product/phu-kien/op-lung-bao-da" title="' . $nameOplung . '" target="_blank"><strong>' . $nameOplung . '</strong></a> gây ấn tượng bởi mặt lưng mềm mại và gam màu rực rỡ, cùng với đó là hiệu quả bảo vệ tối ưu.</p> <h3 style="text-align: justify;"><strong>Thiết kế bắt mắt, mềm mại cùng khả năng sạc không dây hữu ích</strong></h3> <p style="text-align: justify;">Ốp lưng mang gam màu sắc trẻ trung, hiện đại và đặc biệt phù hợp với thiết kế của bộ sưu tập iPhone 14. Ngoài ra ốp còn được chế tác từ chất liệu silicone mềm mại mang đến trải nghiệm cầm nắm thoải mái, cũng như tháo lắp dễ dàng cho người dùng.</p> <p style="text-align: justify;">Đặc biệt hơn, sản phẩm cũng tương thích với hai tiêu chuẩn sạc không dây hiện nay của iPhone là MagSafe và Qi. Nhờ đó trong mỗi lần sạc thiết bị bạn sẽ không phải tốn công tháo ốp lưng khỏi máy.</p> <p style="text-align: justify;"><img src="https://phukienre.com.vn/wp-content/uploads/2021/01/cach-lam-op-lung-dien-thoai-bang-vai-ni-sieu-xinh-2.jpg" alt="Đánh giá thiết kế ' . $nameOplung . '" loading="lazy"></p> <h3 style="text-align: justify;"><strong>Cấu trúc hai lớp cho khả năng bảo vệ toàn diện</strong></h3> <p style="text-align: justify;">Ở mặt ngoài ốp lưng được trang bị lớp silicone mềm mịn, có khả năng chống trầy xước, bụi bẩn và dấu vân tay rất tốt. Mặt trong của sản phẩm có thêm một lớp đệm, mang đến khả năng chống sốc hiệu quả khi không may xảy ra va đập giúp thiết bị của bạn được bảo vệ toàn diện.</p> <p style="text-align: justify;"><img src="https://bloganchoi.com/wp-content/uploads/2020/04/op-lung-dep-1.jpg" alt="Cấu trúc hai lớp cho khả năng bảo vệ toàn diện" loading="lazy"></p> <h2 style="text-align: justify;"><strong>Mua ngay </strong><strong></strong><strong>' . $nameOplung . ' chính hãng tại Cybermart</strong></h2> <p style="text-align: justify;">Nếu bạn muốn mang đến cho chiếc iPhone 14 của mình một ngoại hình bắt mắt, cũng như khả năng chống chịu tốt trước những nguy cơ hư hỏng thì hãy sở hữu ngay ' . $nameOplung . '. Để được mua ốp lưng chính hãng của Apple với giá hấp dẫn, đừng quên ghé đến Hệ thống bán lẻ công nghệ Cybermart bạn nhé. Tại đây, khách hàng có thể mua ốp lưng chính hãng Apple với lãi suất cực thấp cùng với đó là nhiều ưu đãi khác dành cho khách hàng thành viên. Đặc biệt, ốp lưng chính hãng còn được bảo hành khi gặp lỗi về&nbsp;<span>MagSafe do dỗi nhà sản xuất trong thời gian 12 tháng tại trung tâm bảo hành ủy quyền chính hãng Cybermart.</span></p></div> </div>
@@ -2216,11 +2219,11 @@ class ProductSeeder extends Seeder
                     "slug" => Str::slug($nameManHinhMsi . rand(0, 990), '-'),
                     "image" =>  'manhinhmsi_' . rand(1, 15) . '.webp',
                     'qty' => 200,
-                    'offer_price' => round(rand(3000000, 7000000) / 10000) * 10000,
-                    'price' => round(rand(9000000, 15000000) / 10000) * 10000,
+                    'price' => $price,
+                    'offer_price' => $offer_price,
                     'offer_start_date' => now(),
                     'offer_end_date' => '2025-07-31',
-                    'sku' => 'SPMHMSI' . rand(120, 140). rand(100, 1020),
+                    'sku' => 'SPMHMSI' . rand(120, 140) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'long_description' => '
                              <div id="cpsContent" class="cps-block-content"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Tận hưởng trải nghiệm mượt mà với tần số quét cao lên đến 100Hz và thời gian phản hồi siêu nhanh chỉ 1ms, giúp giảm hiện tượng nhòe hình và giảm độ trễ</li> <li>Thưởng thức hình ảnh sắc nét và màu sắc chân thực với độ phân giải Full HD 1920 x 1080 và tấm nền IPS cung cấp góc nhìn rộng lên đến 178°</li> <li>Đảm bảo màu sắc chính xác với không gian màu sRGB 99%, mang lại trải nghiệm xem hình ảnh và video chân thực nhất</li></ul></div></div> <div><p style="text-align: justify;"><strong>' . $nameManHinhMsi . '</strong> với tần số quét màn hình <strong>100Hz</strong> mượt mà cùng tấm nền IPS cho góc nhìn rộng 178 độ. Màn hình với <strong>công nghệ EyesErgo</strong> hỗ trợ nâng cao chất lượng hình ảnh, hỗ trợ bảo vệ mắt người dùng. Màn hình máy tính này còn sở hữu tốc độ phản hồi 1ms cùng thiết kế công thái học.</p> <h2 style="text-align: justify;">' . $nameManHinhMsi . ' – Hiển thị chất lượng, thiết kế sang trọng</h2> <p style="text-align: justify;">' . $nameManHinhMsi . ' là <a href="https://cybermart.io.vn/product/pc-man-hinh/msi" title="Màn hình MSI chính hãng" target="_blank"><strong>màn hình MSI</strong></a> chất lượng với thiết kế viền siêu mỏng cùng khả năng hiển thị sống động. Cùng với đó, màn hình còn được trang bị nhiều công nghệ hỗ trợ bảo vệ đôi mắt người dùng.</p> <h3 style="text-align: justify;"><strong> Màn hình FHD hiển thị vượt trội cùng tần số quét 1ms </strong></h3> <p style="text-align: justify;">' . $nameManHinhMsi . ' với tấm nền IPS cùng với độ phân giải FHD nhờ đó mang lại khả năng hiển thị vượt trội. Màn hình với độ phân giải 1920x1080 cùng với dải màu rộng tới 16,7 triệu màu mang lại khả năng hiển thị hình ảnh sống động.</p> <p style="text-align: justify;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTnK057B2kD-lB4Gv8XbnaujMJho09D74u1g&s" alt="Chất lượng ' . $nameManHinhMsi . '" loading="lazy"></p> <p style="text-align: justify;">Cùng với đó, <a href="https://cybermart.io.vn/product/pc-man-hinh/msi" title="' . $nameManHinhMsi . '" target="_blank"><strong>' . $nameManHinhMsi . '</strong></a> này còn sở hữu tần số quét 100Hz mang lại các trải nghiệm hình ảnh mượt mà. Cùng với đó màn hình với tốc độ đáp ứng 1ms mang lại khả năng phản hồi nhanh. Màn hình còn sở hữu độ sáng cao lên đến 300 nits hỗ trợ khả năng hiển thị rõ nét trong nhiều điều kiện ánh sáng.</p> <h3 style="text-align: justify;"><strong> Thiết kế công thái học, điều chỉnh độ nghiêng dễ dàng </strong></h3> <p style="text-align: justify;"><strong>' . $nameManHinhMsi . '</strong> được trang bị một thiết kế công thái học mang lại cho người dùng những trải nghiệm sử dụng thoải mái. Với thiết kế này, người dùng có thể thoải mái điều chỉnh độ nghiêng theo dáng ngồi của từng người dùng.</p> <p style="text-align: justify;"><img src="https://product.hstatic.net/200000722513/product/1024_8bf3c33a323543328886f8e0c5209f5b_1024x1024.png" alt="Thiết kế ' . $nameManHinhMsi . '" loading="lazy"></p> <p style="text-align: justify;">Ngoài ra, <a href="https://cybermart.io.vn/product/pc-man-hinh/msi" title="màn hình 100hz" target="_blank"><strong>màn hình 100hz</strong></a> MSI này với tấm nền IPS nhờ đó hỗ trợ mang lại góc nhìn rộng đến 178 độ. Với góc nhìn rộng, người dùng có thể thoải mái sử dụng cũng như trao đổi thông tin. Màn hình IPS còn mang lại khả năng hiển thị màu sắc sống động, phù hợp với nhiều nhu cầu công việc.</p> <p style="text-align: justify;"><img src="https://i0.wp.com/it.networkhub.vn/wp-content/uploads/2024/02/Man-Hinh-Cong-MSI-Optix-G32CQ4-E2-170Hz-songphuong.vn-01.jpg" alt="Thiết kế ' . $nameManHinhMsi . '" loading="lazy"></p> <p style="text-align: justify;"><a href="https://cybermart.io.vn/product/pc-man-hinh/msi" title="màn hình văn phòng" target="_blank">Màn hình văn phòng</a> này với thiết kế khung viền siêu mỏng nhờ đó mang lại một không gian hiển thị vượt trội. Cùng với đó là hệ thống khe phụ kiện đa dạng, cổng kết nối tiện dụng từ HDMI đến D-Sub(VGA).</p> <h3 style="text-align: justify;"><strong> Công nghệ MSI EyesErgo hỗ trợ bảo vệ đôi mắt người dùng </strong></h3> <p style="text-align: justify;">MSI Pro MP275 27 inch được trang bị công nghệ MSI EyesErgo và công nghệ chống chớp nhờ đó hỗ trợ giảm thiểu được các tình trạng mỏi mắt khi sử dụng trong thời gian dài. Đặc biệt, màn hình còn được trang bị MSI Eye-Q Check giúp người dùng có thể tự kiểm tra mắt tiện lợi.</p> <p style="text-align: justify;"><img src="https://maytinhgiaphat.vn/wp-content/uploads/2022/03/6.png" alt="Công nghệ  ' . $nameManHinhMsi . '" loading="lazy"></p> <h2 style="text-align: justify;"><strong> Mua ngay ' . $nameManHinhMsi . ' chính hãng tại Cybermart </strong></h2> <p style="text-align: justify;">' . $nameManHinhMsi . ' với thiết kế tiện dụng phù hợp cho nhiều đối tượng người dùng. Hiện mẫu màn hình máy tính chất lượng này được bán chính hãng tại Cybermart với giá bán ưu đãi cùng nhiều khuyến mãi hấp dẫn. Tại đây, khách mua hàng sẽ nhận được nhiều ưu đãi hấp dẫn, đặc biệt là khách hàng thành viên cũng như học sinh – sinh viên. Tại đây hệ thống còn hỗ trợ người dùng mua trả góp ' . $nameManHinhMsi . ' với mức lãi suất thấp.</p></div> </div>
@@ -2289,11 +2292,11 @@ class ProductSeeder extends Seeder
                     "slug" => Str::slug($nameTiVi32 . rand(0, 990), '-'),
                     "image" =>  'tivi_' . rand(1, 30) . '.webp',
                     'qty' => 200,
-                    'offer_price' => round(rand(10000000, 29000000) / 10000) * 10000,
-                    'price' => round(rand(9000000, 29000000) / 10000) * 10000,
+                    'price' => $price,
+                    'offer_price' => $offer_price,
                     'offer_start_date' => now(),
-                     'offer_end_date' => '2025-07-31',
-                    'sku' => 'SPTV' . rand(120, 140). rand(100, 1020), 
+                    'offer_end_date' => '2025-07-31',
+                    'sku' => 'SPTV' . rand(120, 140) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'long_description' => '<div id="cpsContent" class="cps-block-content" style="max-height: 100000px;"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Thiết kế tinh giản với màn hình phẳng viền mỏng 3 cạnh nâng cao thẩm mỹ của không gian</li><li>Kích thước 55 inch và dộ phân giải 4K tạo nên không gian rõ nét với màu sắc chân thực</li><li>Tổng công suất loa 20W cùng công nghệ Q-Symphony cho trải nghiệm âm thanh sống động</li><li>Hệ điều hành Tizen trực quan, dễ hiểu, dễ thao tác, tích hợp kho ứng dụng phong phú</li><li>Ứng dụng SmartThings cho phép sử dụng điện thoại để điều khiển tivi từ xa tiện lợi</li></ul></div></div> <div><p style="text-align: justify;"><strong>' . $nameTiVi32 . '</strong> là chiếc tivi thông minh truyền tải hình ảnh chân thực với khung hình rộng lớn. Người dùng sẽ có cảm nhận sâu sắc khi xem nội dung qua màn ảnh <a href="https://cybermart.io.vn/product/tivi/samsung/32-inch.html" title="Tivi 55 inch chính hãng" target="_blank"><strong>tivi 55 inch</strong></a> chất lượng này. Hãy xem đoạn mô tả dưới đây để biết ưu điểm của chiếc TV Samsung UA55AU7002 này.</p> <h2><strong>' . $nameTiVi32 . ' - Hình ảnh đẹp chuẩn 4K</strong></h2> <h3 style="text-align: justify;"><strong>Hiển thị màu sắc choáng ngợp, nội dung chuẩn 4K</strong></h3> <p style="text-align: justify;">Tivi 55AU7002 được tích hợp công nghệ PurColor mang đến dải màu sắc rộng lớn. Bạn có thể đắm chìm trong từng chi tiết của khung hình bởi sự sống động y như thật của hình ảnh.</p> <p style="text-align: justify;">Tivi Samsung mới này có khả năng cung cấp hình ảnh chuẩn 4K, nâng cấp mọi nội dung bạn yêu thích lên tầm cao mới. Công nghệ Color Mapping mang đến màu sắc khác biệt cho bạn chiêm ngưỡng thỏa thích.</p> <p style="text-align: justify;"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fmediamart.vn%2Ftivi%2Fsmart-tivi-samsung-4k-65-inch-65bu8000-crystal-uhd&psig=AOvVaw2GmTe3uKuffADjsXV4AR9_&ust=1722390372309000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCMC-kajSzYcDFQAAAAAdAAAAABAE" alt="Đánh giá màn hình Smart tivi Samsung 4K 55 inch UA55AU7002" loading="lazy"></p> <p style="text-align: justify;">&gt;&gt;&gt; Xem thêm <strong><a href="https://cybermart.io.vn/product/tivi/samsung/32-inch.html" target="_blank">Tivi Samsung 43AU7002</a></strong> mới giá cực tốt tại Cybermart.</p> <h3 style="text-align: justify;"><strong>Khung hình mượt mà, kết nối đa thiết bị</strong></h3> <p style="text-align: justify;">' . $nameTiVi32 . ' được trang bị công nghệ Motion Xcelerator xóa bỏ hiện tượng bóng ma trên màn hình. Công nghệ này giúp hình ảnh rõ nét từng chi tiết, chuyển cảnh không bị ảnh hưởng mờ nhòe.</p> <p style="text-align: justify;">Tivi có thể kết nối từ xa với PC, laptop, thiết bị di động giúp bạn tận hưởng tiện ích của thiết bị. Bạn có thể xem các chương trình yêu thích trên tivi, kết nối dễ dàng với các thiết bị thông minh chỉ cần có kết nối Internet trên tivi UA55AU7002.</p> <p style="text-align: justify;"><img src="https://dienmaycongthanh.vn/Upload/Products/smart-tivi-samsung-4k-50-inch-50au7700kxxv/50AU7700KXXV_2.jpg" alt="Đánh giá khả năng hiển thị" loading="lazy"></p> <h2 style="text-align: justify;"><strong>Mua ' . $nameTiVi32 . ' giá rẻ, chất lượng tại Cybermart</strong></h2> <p style="text-align: justify;"><strong>Smart ' . $nameTiVi32 . ' chính hãng</strong> có giá bán cực tốt tại cửa hàng Cybermart, được bảo hành đầy đủ. Gọi ngay cho chúng tôi nếu bạn muốn trang bị chiếc tivi này cho phòng khách nhà mình.</p></div> </div>         
                           ',
