@@ -65,7 +65,6 @@ class PostsSeeder extends Seeder
                 "updated_at" => NULL,
                 "deleted_at" => NULL,
             ],
-
             [
                 "category_id" => 1,
                 "type" => 0,
@@ -81,8 +80,14 @@ class PostsSeeder extends Seeder
                 "created_at" => now(),
                 "updated_at" => NULL,
                 "deleted_at" => NULL,
-            ]
-
+            ],
+            // [
+            //     "category_id" => 2,
+            //     "type" => 1,
+            //     "user_id" => 1,
+            //     "image" => "anhcuataocamxoaok.webp",
+            //     "title" => "Cách tìm vị trí quét chip NFC trên điện thoại chưa đầy một phút",
+            // ]
 
         ]);
     }

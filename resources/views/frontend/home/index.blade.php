@@ -23,9 +23,6 @@
             <div class="section-category-product">
                 @include('frontend.home.partials.productByCategory')
             </div>
-            <div class="scroll_animation section-banner_new pt-5">
-                @include('frontend.home.partials.banner')
-            </div>
             <div class="scroll_animation select-news ">
                 @include('frontend.home.partials.news')
             </div>
