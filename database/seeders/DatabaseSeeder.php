@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             PostCategoriesSeeder::class,
             PostsSeeder::class,
             PageCategorySeeder::class,
-            // PageSeeder::class,
+            PageSeeder::class,
             ProductSeeder::class,
             VariantSeeder::class,
             VariantItemTableSeeder::class,
