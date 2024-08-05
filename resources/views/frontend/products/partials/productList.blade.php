@@ -11,6 +11,7 @@
                     </span>
                     <div class="product-thumbnail">
                         <a class="image_thumb scale_hover" href="/san-pham/{{ $pro->category->slug }}/{{ $pro->subcategory->slug }}/{{ $pro->childcategory->slug }}/{{ $pro->slug }}.html" title="{{ $pro->name }}">
+                            
                             <img class="lazyload duration-300 loaded" src="{{ asset('uploads/products/' . $pro->image) }}">
                         </a>
                     </div>

@@ -70,7 +70,7 @@ class Helper
     public static function randOrderCode()
     {
         do {
-            $orderCode = "ĐH-" . Str::random(10); // Tạo một chuỗi ngẫu nhiên dài 10 ký tự
+            $orderCode = "ĐH" . Str::random(10); // Tạo một chuỗi ngẫu nhiên dài 10 ký tự
         } while (Order::where('order_code', $orderCode)->exists());
 
         return $orderCode;

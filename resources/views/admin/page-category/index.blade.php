@@ -32,10 +32,10 @@
                             </div>
                         </form>
                     </div>
-                    <a href="{{ route('admin.information.index') }}" class="me-2 btn btn-success float-end ms-2"><i
+                    <a href="{{ route('admin.page-category.index') }}" class="me-2 btn btn-success float-end ms-2"><i
                             class="fa-solid fa-rotate-left fs-6"></i>Làm Mới</a>
                 </div>
-                <a href="{{ route('admin.information.create') }}" class="me-2 btn btn-primary float-end"><i
+                <a href="{{ route('admin.page-category.create') }}" class="me-2 btn btn-primary float-end"><i
                         class="fa-solid fa-plus text-light fs-6"></i>Thêm Mới Danh Mục</a>
             </div>
             <div class="card-body">
@@ -59,8 +59,10 @@
                         <div class="col">
                             <select class="form-select" name="check_status">
                                 <option value>Trạng thái</option>
-                                <option {{ Request::get('check_status') == '1' ? 'selected' : '' }} value="1">Đang hoạt động</option>
-                                <option {{ Request::get('check_status') == '0' ? 'selected' : '' }} value="0">Không hoạt động</option>
+                                <option {{ Request::get('check_status') == '1' ? 'selected' : '' }} value="1">Đang hoạt
+                                    động</option>
+                                <option {{ Request::get('check_status') == '0' ? 'selected' : '' }} value="0">Không
+                                    hoạt động</option>
                             </select>
                         </div>
                         <div class="col">
@@ -90,30 +92,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($information as $infor)
+                            @forelse ($pageCategories as $pageCate)
                                 <tr>
-                                    <td>{{ $infor->id }}</td>
-                                    <td>{{ $infor->name }}</td>
-                                    <td>{{ $infor->slug }}</td>
+                                    <td>{{ $pageCate->id }}</td>
+                                    <td>{{ $pageCate->name }}</td>
+                                    <td>{{ $pageCate->slug }}</td>
                                     <td>
-                                        {{ $infor->rank }}
+                                        {{ $pageCate->rank }}
                                     </td>
                                     <td>
                                         <div class="form-check form-switch form-check-success">
-                                            @if ($infor->status == 1)
+                                            @if ($pageCate->status == 1)
                                                 <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                    data-id="{{ $infor->id }}" id="flexSwitchCheckSuccess" checked>
-                                            @elseif($infor->status == 0)
+                                                    data-id="{{ $pageCate->id }}" id="flexSwitchCheckSuccess" checked>
+                                            @elseif($pageCate->status == 0)
                                                 <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                    data-id="{{ $infor->id }}" id="flexSwitchCheckSuccess">
+                                                    data-id="{{ $pageCate->id }}" id="flexSwitchCheckSuccess">
                                             @endif
                                         </div>
                                     <td class="text-end">
                                         <a class="btn btn-primary"
-                                            href="{{ route('admin.information.edit', $infor->id) }}"><i
+                                            href="{{ route('admin.page-category.edit', $pageCate->id) }}"><i
                                                 class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
                                         <a class="btn btn-danger delete-item"
-                                            href="{{ route('admin.information.destroy', $infor->id) }}"><i
+                                            href="{{ route('admin.page-category.destroy', $pageCate->id) }}"><i
                                                 class="fa-solid fa-trash fs-6"></i>Xóa bỏ</a>
                                     </td>
                                 </tr>
@@ -124,7 +126,7 @@
                             @endforelse
                         </tbody>
                     </table>
-                    {{ $information->links() }}
+                    {{ $pageCategories->links() }}
                 </div>
             </div>
         </div>
@@ -140,7 +142,7 @@
 
                 $.ajax({
                     method: "PUT",
-                    url: "{{ route('admin.information.change-status') }}",
+                    url: "{{ route('admin.pageCategories.change-status') }}",
                     data: {
                         status: isChecked,
                         id: id

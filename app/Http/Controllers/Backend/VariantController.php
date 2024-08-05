@@ -12,8 +12,6 @@ use Illuminate\Http\Request;
 class VariantController extends Controller
 {
 
-
-
     /**
      * Display a listing of the resource.
      *
@@ -72,7 +70,6 @@ class VariantController extends Controller
 
     public function index()
     {
-
     }
 
 
@@ -80,7 +77,6 @@ class VariantController extends Controller
 
     public function show($id)
     {
-
     }
 
     /**
@@ -104,12 +100,14 @@ class VariantController extends Controller
         $request->validate([
             'product_id' => ['required', 'numeric'],
             'name' => ['required', 'max:200', 'unique:sub_categories,name'],
+            'type' => ['required'],
             'status' => ['required']
         ]);
 
         $variant = new variant();
         $variant->product_id = $request->product_id;
         $variant->name = $request->name;
+        $variant->type = $request->type;
         $variant->status = $request->status;
         $variant->save();
 
@@ -144,11 +142,13 @@ class VariantController extends Controller
     {
         $request->validate([
             'name' => ['required', 'max:200', 'unique:sub_categories,name,' . $id],
+            'type' => ['required'],
             'status' => ['required']
         ]);
 
         $variant = Variant::findOrFail($id);
         $variant->name = $request->name;
+        $variant->type = $request->type;
         $variant->status = $request->status;
         $variant->save();
 
@@ -179,5 +179,4 @@ class VariantController extends Controller
         $variant->save();
         return response(['message' => 'Trạng thái đã được cập nhật']);
     }
-
 }

@@ -50,17 +50,6 @@
                                     lọc</span> </label>
                         </div>
                         <div class="col">
-                            <select class="form-select" name="sort_price">
-                                <option value>Giá</option>
-                                <option {{ Request::get('sort_price') == 'asc' ? 'selected' : '' }} value="asc">Giá tăng
-                                    dần
-                                </option>
-                                <option {{ Request::get('sort_price') == 'desc' ? 'selected' : '' }} value="desc">Giá giảm
-                                    dần
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col">
                             <select class="form-select" name="check_status">
                                 <option value>Trạng thái</option>
                                 <option {{ Request::get('check_status') == '1' ? 'selected' : '' }} value="1">Đang hoạt
@@ -91,9 +80,7 @@
                                 <th>Hình ảnh</th>
                                 <th>Kiểu</th>
                                 <th>Tiêu đề</th>
-                                <th>Giá</th>
                                 <th>Đường dẫn</th>
-                                <th>Số seri</th>
                                 <th>Trạng thái</th>
                                 <th>Hành động</th>
                             </tr>
@@ -108,9 +95,7 @@
                                     </td>
                                     <td>{{ $slider->type }}</td>
                                     <td>{{ $slider->title }}</td>
-                                    <td>{{ number_format($slider->starting_price) }} </td>
                                     <td>{{ $slider->btn_url }}</td>
-                                    <td>{{ $slider->serial }}</td>
                                     <td>
                                         <div class="form-check form-switch form-check-success">
                                             @if ($slider->status == 1)

@@ -35,11 +35,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="promotion-content">
-                    <div class="line-clamp-2-new" title="Thu cũ đổi mới: Thu giá cao trợ giá đến 90%">
-                        <p>Thu cũ đổi mới: Thu giá cao trợ giá đến 90%</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

@@ -18,7 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
             $table->string('name');
-            $table->string('status');
+            $table->boolean('type');
+            $table->boolean('status');
             $table->timestamps();
             $table->softDeletes();
         });

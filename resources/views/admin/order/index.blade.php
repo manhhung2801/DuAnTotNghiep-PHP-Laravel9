@@ -46,7 +46,7 @@
                     <table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>Mã ĐH</th>
                                 <th>Thông tin khách hàng</th>
                                 <th>Tổng tiền</th>
                                 <th>Phương thức thanh toán</th>
@@ -60,7 +60,7 @@
                         <tbody>
                             @forelse ($getOrders as $order)
                                 <tr>
-                                    <td>#{{ $order->id }}</td>
+                                    <td>{{ $order->order_code }}</td>
                                     <td>
                                         <div class="info_customer_order">
                                             <div class="order_name">
@@ -79,7 +79,12 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td><strong>{{ number_format($order->total) }} VNĐ</strong></td>
+                                    <td>
+                                        <strong>{{ number_format($order->total) }} VNĐ</strong>
+                                        @if ($order->ship_money != null)
+                                            <p>+ {{ number_format($order->ship_money) }} VNĐ</p>
+                                        @endif
+                                    </td>
 
                                     {{-- Phương thức thanh toán --}}
                                     <td>
@@ -190,7 +195,7 @@
                                                     <a id="accept_ghtk"
                                                         data-url="{{ route('admin.ghtk.post-order', $order->id) }}"
                                                         class="btn btn-outline-primary px-4 py-1 my-1">Xác nhận</a>
-                                                    <a id="change-status-order"
+                                                    <a id="status-order-cancel"
                                                         data-url="{{ route('admin.order.update', $order->id) }}"
                                                         data-val="-1" class="btn btn-outline-danger px-2 py-1">Hủy</a>
                                                 @else
@@ -257,7 +262,17 @@
 @push('scripts')
     <script>
         $(document).ready(() => {
-            //
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
             $('body').off('change', '#vnp_refund_status').on('change', '#vnp_refund_status', function() {
                 var order_id = $(this).attr('data-orderid');
                 var vnp_refund_status = $(this).val();
@@ -362,10 +377,7 @@
                 })
             });
 
-            $('body').off('click', '#change-status-order').on('click', '#change-status-order', function() {
-                var orderStatus = $(this).attr('data-val');
-                var url = $(this).attr('data-url')
-                console.log(url);
+            function changeStatus(url, orderStatus) {
                 $.ajax({
                     type: 'PATCH',
                     url: url,
@@ -374,19 +386,13 @@
                     },
                     success: function(data) {
                         if (data.status == true) {
-                            const Toast = Swal.mixin({
-                                toast: true,
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 1000,
-                                timerProgressBar: true,
-                                didOpen: (toast) => {
-                                    toast.onmouseenter = Swal.stopTimer;
-                                    toast.onmouseleave = Swal.resumeTimer;
-                                }
-                            });
                             Toast.fire({
                                 icon: "success",
+                                title: data.message
+                            });
+                        } else {
+                            Toast.fire({
+                                icon: "error",
                                 title: data.message
                             });
                         }
@@ -395,7 +401,19 @@
                         console.log(error);
                     }
                 })
+            }
+            $('body').off('change', '#change-status-order').on('change', '#change-status-order', function() {
+                var orderStatus = $('#change-status-order').val();
+                var url = $(this).attr('data-url')
+                changeStatus(url, orderStatus)
             })
+
+            $('body').off('click', '#status-order-cancel').on('click', '#status-order-cancel', function() {
+                var orderStatus = $(this).attr('data-val');
+                var url = $(this).attr('data-url')
+                changeStatus(url, orderStatus)
+            })
+
             $('body').off('click', '.change-admin-note').on('click', '.change-admin-note', function() {
                 var container = $(this).closest('td')
                 var adminNote = container.find('#admin_note__input').val()

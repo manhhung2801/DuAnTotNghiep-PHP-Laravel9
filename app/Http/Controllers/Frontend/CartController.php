@@ -21,7 +21,7 @@ class CartController extends Controller
             $getProduct = Product::findOrFail($cart->id);
 
             //Kiểm tra xem sản phẩm đó lỡ ẩn đi nếu sản phẩm còn trong cart
-            if($getProduct->status === 0) {
+            if ($getProduct->status === 0) {
                 \Cart::remove($cart->id);
             }
 
@@ -34,7 +34,7 @@ class CartController extends Controller
             }
             \Cart::update($cart->id, [
                 'associatedModel' => $getProduct,
-            ]); 
+            ]);
         }
         return view('frontend.cart.index', compact('getCart', 'subTotal'));
     }
@@ -47,7 +47,7 @@ class CartController extends Controller
     {
         try {
             $id = $request->id;
-            $product = Product::getProductItem($id); 
+            $product = Product::getProductItem($id);
             // Nếu sản phẩm có tồn tại
             if ($product) {
                 $qtyProduct = $request->qty ??  1;
@@ -59,7 +59,7 @@ class CartController extends Controller
                     if ($product->id == $item->id) {
                         $qtyAdd = $item->quantity + $qtyProduct;
                         if ($product->qty <  $qtyAdd) {
-                            return response()->json(['status' => false, 'message' => 'Trong kho không còn đủ sản phẩm!']);
+                            return response()->json(['status' => false, 'message' => 'Bạn đã mua vượt quá số sản phẩm trong kho!']);
                         }
                     }
                 }
@@ -94,7 +94,7 @@ class CartController extends Controller
             }
             return response()->json(['status' => false, 'message' => 'Sản phẩm không tồn tại!'], 404);
         } catch (Exception $e) {
-            return response()->json(['status' => false, 'message' => 'Có lỗi khi thêm vào giỏ hàng. Vui lòng liên hệ cho chúng tôi']);
+            return response()->json(['status' => false, 'message' => 'Đã xảy ra lỗi vui lòng thử lại sau!']);
         }
     }
 

@@ -6,7 +6,6 @@ use App\Http\Controllers\Frontend\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Frontend\InformationController;
 use App\Http\Controllers\Frontend\AddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -16,6 +15,7 @@ use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\GHTKController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\CommentsController;
+use App\Http\Controllers\Frontend\PageController;
 use \App\Http\Controllers\VNPAYController;
 /*
 |--------------------------------------------------------------------------
@@ -92,7 +92,7 @@ Route::resource('order', OrderController::class)->middleware('checkLogin');
 
 
 /** các trang thông tin */
-Route::get('information/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");
+Route::get('trang/{slug1?}/{slug2?}', [PageController::class, 'showPages'])->name("showPages");
 
 /** trang search  */
 
@@ -108,8 +108,11 @@ Route::fallback(function () {
 
 
 
-/** Tính phí ship (calculateShipping) */
+/** GHTK*/
+/**  Tính phí ship (calculateShipping)  */
 Route::get("/calculateShipping", [GHTKController::class, 'calculateShipping'])->name('calculateShipping');
+/**Kiểm tra đơn hàng */
+Route::get('/statusOrder/{tracking_id?}', [GHTKController::class, 'statusOrder'])->name('statusOrder');
 
 
 /** VNPAY */

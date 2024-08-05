@@ -24,8 +24,6 @@ class VariantItemTableSeeder extends Seeder
                     VariantItem::create([
                         'product_variant_id' => $variant->id,
                         'name' => $color,
-                        'price' => round(rand(29000000, 33900000)),
-                        'is_default' => 1,
                         'status' => 1,
                     ]);
                 }
@@ -36,8 +34,6 @@ class VariantItemTableSeeder extends Seeder
                     VariantItem::create([
                         'product_variant_id' => $variant->id,
                         'name' => $ram,
-                        'price' => round(rand(29000000, 33900000)),
-                        'is_default' => 1,
                         'status' => 1,
                     ]);
                 }

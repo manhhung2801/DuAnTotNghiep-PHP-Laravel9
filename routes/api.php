@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\APIController;
+use App\Http\Controllers\Frontend\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 /** Lấy tất cả các cửa hàng show ra checkout (Get Store Address)*/
 Route::get('getStoreAddress', [APIController::class, 'getStoreAddress'])->name('api.getStoreAddress');
+
+// routes/api.php
+
 
