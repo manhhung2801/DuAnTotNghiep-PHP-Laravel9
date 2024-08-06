@@ -7,16 +7,24 @@ use App\Models\Slider;
 use App\Models\Product;
 use App\Models\Post;
 use App\Http\Controllers\Controller;
+use App\Models\Coupons;
+use Carbon\Carbon;
 use GuzzleHttp\Handler\Proxy;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $now = Carbon::now();
         // category show menu
         $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
         $slides = Slider::where("status", "=", 1)->take(3)->get();
-
+        //Lấy ra coupon
+        $getCoupon = Coupons::where('status', 1)
+                            ->where('end_date', '>', $now)
+                            ->where('quantity', '>', 0)
+                            ->orderBy('created_at', 'desc')
+                            ->take(4)->get();
         // Show danh mục nổi bật
         $categoryHot = $categories->take(6);
         $bannerHero = Post::getBanner()->take(1)->get();
@@ -33,6 +41,6 @@ class HomeController extends Controller
             ];
             $getProducts[] = $product;
         }
-        return view('frontend.home.index', compact('slides', 'categoryHot', 'getProducts', 'getPosts', 'bannerHero'));
+        return view('frontend.home.index', compact('slides', 'categoryHot', 'getProducts', 'getPosts', 'bannerHero', 'getCoupon'));
     }
 }
