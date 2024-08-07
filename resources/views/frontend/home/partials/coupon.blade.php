@@ -1,10 +1,13 @@
 <style>
     .coupon_card {
         border-radius: 5px;
-        box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 6px 0px rgba(50, 50, 93, 0.15), 1px 1px 5px rgba(0, 0, 0, 0.05);
         background-color: #fff;
         padding: 10px 10px;
         position: relative;
+    }
+    .coupon_card:hover{
+        
     }
 
     .coupon_item,
