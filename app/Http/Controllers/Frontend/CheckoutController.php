@@ -141,7 +141,7 @@ class CheckoutController extends Controller
         //Check lượt sử dụng
         $checkMaxUse = Order::where('user_id', $userId)->where('coupon', $coupon_code)->exists();
         if($checkMaxUse) {
-            return response()->json(['status' => false, 'message' => 'Bạn đã sử dụng tối đa lượt giảm giá']);
+            return response()->json(['status' => false, 'message' => 'Bạn đã sử dụng hết lượt mã giảm giá này!']);
         }
 
         Session::forget('coupon_code');
