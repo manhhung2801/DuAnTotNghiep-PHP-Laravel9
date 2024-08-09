@@ -135,7 +135,14 @@ class CheckoutController extends Controller
 
     function applyCouponCode(Request $request)
     {
+        $userId = \Auth::id();
         $coupon_code = $request->coupon_code;
+
+        //Check lượt sử dụng
+        $checkMaxUse = Order::where('user_id', $userId)->where('coupon', $coupon_code)->exists();
+        if($checkMaxUse) {
+            return response()->json(['status' => false, 'message' => 'Bạn đã sử dụng hết lượt mã giảm giá này!']);
+        }
 
         Session::forget('coupon_code');
         Session::forget('discount_amount');
@@ -176,7 +183,7 @@ class CheckoutController extends Controller
 
             //Kiểm tra ngày đã đến ngày chưa hay đã hết hạn
             if ($couponCode->end_date <= $currentDate || $couponCode->start_date >= $currentDate) {
-                return 1;
+                return 0;
             }
             // // kiểm tra số lượng
             if ($couponCode->quantity <= 0) {
