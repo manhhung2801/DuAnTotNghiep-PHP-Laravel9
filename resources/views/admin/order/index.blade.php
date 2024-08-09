@@ -95,7 +95,7 @@
                                         @endif
 
                                         @if ($order->payment_method == 1 && $order->payment_status == 0)
-                                            <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}" alt=""
+                                            <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}" alt="cybermart"
                                                     width="60px" height="13px"></p>
                                             <p class="m-0 badge text-bg-danger"><em>Chưa thanh toán</em></p>
                                         @elseif($order->payment_method == 1 && $order->payment_status == 1)
@@ -105,7 +105,7 @@
                                                         $order->vnp_refund_status == 'Processing' ||
                                                         $order->vnp_refund_status == 'Refund_Failed')
                                                     <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}"
-                                                            alt="" width="60px" height="13px"></p>
+                                                            alt="cybermart" width="60px" height="13px"></p>
                                                     <span id="{{ $order->id }}">
                                                         <p class="m-0 badge text-bg-success"><em
                                                                 style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã
@@ -113,11 +113,11 @@
                                                     </span>
                                                 @elseif($order->vnp_refund_status == 'Refunded')
                                                     <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}"
-                                                            alt="" width="60px" height="13px"></p>
+                                                            alt="cybermart" width="60px" height="13px"></p>
                                                 @endif
                                             @else
                                                 <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}"
-                                                        alt="" width="60px" height="13px"></p>
+                                                        alt="cybermart" width="60px" height="13px"></p>
                                                 <p class="m-0 badge text-bg-success"><em>Đã thanh toán</em></p>
                                             @endif
 
@@ -151,7 +151,7 @@
                                                 </div>
                                             @endif
                                         @elseif($order->payment_method == 1 && $order->payment_status == 2)
-                                            <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}" alt=""
+                                            <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}" alt="cybermart"
                                                     width="60px" height="13px"></p>
                                             <p class="m-0 badge text-bg-warning"><em>Thanh toán thất bại / lỗi</em></p>
                                         @endif
