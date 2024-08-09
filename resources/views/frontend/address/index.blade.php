@@ -1,113 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title', 'Địa chỉ cửa hàng - Hệ thống thương mại điện tử hàng đầu Việt Nam')
-@section('description', 'Danh sách các địa chỉ cửa hàng. Hệ thống thương mại điện tử hàng đầu Việt Nam liên hệ ngay để
-    đặt hàng!!!.')
-@section('schema')
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@graph": [{
-                    "@type": "WebPage",
-                    "@id": "{{ url('/') }}",
-                    "url": "{{ url('/') }}",
-                    "name": "Thương Mại Điện Tử CyberMart",
-                    "isPartOf": {
-                        "@id": "{{ url('/') }}#website"
-                    },
-                    "about": {
-                        "@id": "{{ url('/') }}#organization"
-                    },
-                    "primaryImageOfPage": {
-                        "@id": "{{ url('/') }}#primaryimage"
-                    },
-                    "thumbnailUrl": "{{ asset('uploads/logo/cybermart7x4.png') }}",
-                    "datePublished": "2024-08-05T12:01:44+00:00",
-                    "dateModified": "2024-08-06T16:54:25+00:00",
-                    "description": "CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop, smartwatch, gia dụng, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.",
-                    "breadcrumb": {
-                        "@id": "{{ url('/') }}#breadcrumb"
-                    },
-                    "inLanguage": "vi",
-                    "potentialAction": [{
-                        "@type": "ReadAction",
-                        "target": [
-                            "{{ url('/') }}"
-                        ]
-                    }]
-                },
-                {
-                    "@type": "ImageObject",
-                    "inLanguage": "vi",
-                    "@id": "{{ url('/') }}#primaryimage",
-                    "url": "{{ asset('uploads/logo/cybermart7x4.png') }}",
-                    "width": 700,
-                    "height": 400
-                },
-                {
-                    "@type": "BreadcrumbList",
-                    "@id": "{{ url('/') }}#breadcrumb",
-                    "itemListElement": [
-                    {
-                        "@type": "ListItem",
-                        "position": "1",
-                        "item": {
-                            "@id": "{{ url('/') }}",
-                            "name": "Trang chủ"
-                        }
-                    },
-                    {
-                        "@type": "ListItem",
-                        "position": "2",
-                        "item": {
-                            "@id": "{{ url('/address') }}",
-                            "name": "Đia chỉ"
-                        }
-                    }]
-                },
-                {
-                    "@type": "WebSite",
-                    "@id": "{{ url('/') }}#website",
-                    "url": "{{ url('/') }}",
-                    "name": "Thương Mại Điện Tử CyberMart",
-                    "description": "Hệ thống thương mại điện tử CyberMart Việt Nam",
-                    "publisher": {
-                        "@id": "{{ url('/') }}#organization"
-                    },
-                    "potentialAction": [{
-                        "@type": "SearchAction",
-                        "target": {
-                            "@type": "EntryPoint",
-                            "urlTemplate": "{{ url('/') }}/search?search={search_term_string}"
-                        },
-                        "query-input": {
-                            "@type": "PropertyValueSpecification",
-                            "valueRequired": "http://schema.org/True",
-                            "valueName": "search_term_string"
-                        }
-                    }],
-                    "inLanguage": "vi"
-                },
-                {
-                    "@type": "Organization",
-                    "@id": "{{ url('/') }}#organization",
-                    "name": "Thương Mại Điện Tử CyberMart",
-                    "url": "{{ url('/') }}",
-                    "logo": {
-                        "@type": "ImageObject",
-                        "inLanguage": "vi",
-                        "@id": "{{ url('/') }}#logo",
-                        "url": "{{ asset('uploads/logo/cybermart7x4.png') }}",
-                        "contentUrl": "{{ asset('uploads/logo/cybermart7x4.png') }}",
-                        "width": 700,
-                        "height": 400,
-                        "caption": "Thương Mại Điện Tử CyberMart"
-                    }
-                }
-            ]
-        }
-    </script>
-@endsection
-
+@section('title', 'Địa chỉ cửa hàng')
 @section('content')
     <section class="bread-crumb">
         <section class="bread-crumb ">
@@ -126,7 +18,6 @@
         <main>
             <div class="layout-contact">
                 <div class="container">
-                    <h1 class="d-none">Địa chỉ cửa hàng - Hệ thống thương mại điện tử hàng đầu Việt Nam</h1>
                     @foreach ($storeAddress as $item)
                         <div class="row">
                             <div class="col-lg-5 col-12 col-md-5">
@@ -136,8 +27,7 @@
                                         <h4 class="d-md-none text-center mb-2 ">{{ $item->store_name }}</h4>
                                     </div>
                                     <div class="des_foo mb-3">
-                                        Hệ thống cửa hàng <b>CYBERMART</b> chuyên bán lẻ điện thoại, máy tính laptop,
-                                        smartwatch, smarthome, phụ kiện chính hãng - Giá tốt, giao miễn phí.
+                                        {{ $item->description }}
                                     </div>
                                     <div class="address fw-bold">
                                         {{ $item->province }}

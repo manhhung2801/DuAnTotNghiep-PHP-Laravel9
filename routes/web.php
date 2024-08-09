@@ -33,7 +33,7 @@ use \App\Http\Controllers\VNPAYController;
 Route::get("/", [HomeController::class, 'index'])->name("home");
 /** Home */
 /** Addresss */
-Route::get('/address', [AddressController::class, 'index'])->name('address');
+Route::get('/dia-chi', [AddressController::class, 'index'])->name('address');
 /** End Addresss */
 
 Route::get('/lien-he', [ContactController::class, 'index'])->name('contact');
