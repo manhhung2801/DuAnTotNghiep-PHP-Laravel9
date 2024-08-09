@@ -90,7 +90,7 @@
                                 <tr>
                                     <td>{{ $slider->id }}</td>
                                     <td>
-                                        <img src="{{ asset('uploads/slider') }}/{{ $slider->banner }}" alt=""
+                                        <img src="{{ asset('uploads/slider') }}/{{ $slider->banner }}" alt="{{ $slider->title }}"
                                             width="50px">
                                     </td>
                                     <td>{{ $slider->type }}</td>

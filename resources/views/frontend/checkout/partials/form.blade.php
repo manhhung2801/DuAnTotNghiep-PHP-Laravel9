@@ -12,7 +12,7 @@
         value="{{ old('phone') }}" required>
     <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
         aria-expanded="false"><img src="https://img.icons8.com/?size=100&id=60257&format=png&color=000000"
-            alt="" style="width: 30px;"></button>
+            alt="cybermart" style="width: 30px;"></button>
     <ul class="dropdown-menu dropdown-menu-end">
         <li><a class="dropdown-item" href="#">Zambia (+260)</a></li>
         <li><a class="dropdown-item" href="#">Yemen (+967)</a></li>
