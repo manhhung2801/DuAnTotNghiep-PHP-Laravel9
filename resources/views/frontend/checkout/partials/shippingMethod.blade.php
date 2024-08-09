@@ -11,16 +11,16 @@
                     <span>Nhận tại cửa hàng</span>
                 </span>
                 <span class="radio__label__accessory">
-                    <span class="content-box__emphasis price ">
-                        <i class="fas fa-money-bill-wave fs-4 mx-3" style="color: #74C0FC;"></i>
+                    <span class="content-box__emphasis price me-2">
+                        <img src="{{ asset('uploads/logo/cybermart_logo_text.png') }}" alt="cybermart" width="80px">
                     </span>
                 </span>
             </label>
         </div>
-        <div id="pick_address_store" class="d-none mt-2">
-            {{-- <label class="form-label" for="">Chọn địa chỉ cửa hàng: </label> --}}
-            {{-- <select id="pick_address_store_select" class="w-100 py-2 " name="pick_address_store">
-            </select> --}}
+        <div  class=" mt-2">
+            <ul id="pick_address_store" class="d-none">
+
+            </ul>
         </div>
     </div>
 </div>
@@ -33,13 +33,13 @@
                         checked>
                 </div>
             </div>
-            <label for="ghtk" class="radio__label">
+            <label for="ghtk" class="radio__label pb-2">
                 <span class="radio__label__primary">
                     <span>Giao hàng tiết kiệm</span>
                 </span>
                 <span class="radio__label__accessory">
-                    <span class="content-box__emphasis price ">
-                        <i class="fas fa-money-bill-wave fs-4 mx-3" style="color: #74C0FC;"></i>
+                    <span class="content-box__emphasis price me-2">
+                        <img src="{{ asset('uploads/072024/Logo-GHTK-H.webp') }}" alt="GHTK_icon" width="80px">
                     </span>
                 </span>
             </label>

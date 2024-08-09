@@ -93,7 +93,6 @@ class CheckoutController extends Controller
                 $order->order_email = trim($request->email);
                 $order->order_address = json_encode($order_address);
                 $order->ship_money = $request->input('shipping_money') ?? 0;
-                $order->store_address = $request->store_address ?? '';
                 $order->total = $total;
                 $order->qty_total = \Cart::getTotalQuantity();
                 // thanh toán
