@@ -181,5 +181,4 @@ Route::post('contact/feedback', [ContactController::class, "feedback"])->name('c
 Route::post('/ghtk-post-order/{id?}', [GHTKController::class, 'postOrder'])->name('ghtk.post-order');
 
 //GHTK Cancel Order
-Route::post('/ghtk-cancel-order/{tracking_id}', [GHTKController::class, 'cancelOrder'])->name('ghtk.cancel-order');
 Route::post('/updateShipment/{tracking_id?}', [GHTKController::class, 'updateShipment'])->name('updateShipment');

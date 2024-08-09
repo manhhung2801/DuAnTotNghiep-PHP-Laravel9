@@ -202,10 +202,11 @@ class GHTKController extends Controller
             $order = Order::where('tracking_id', $tracking_id)->first();
             $order->order_status = $response->order->status;
             $order->save();
-
+            //Khắc phục lỗi GHTK trả về text đã tiếp nhận
+            $status_text = $response->order->status != -1 ? $response->order->status_text : 'Đơn hàng đã hủy';
             return response()->json([
                 'status' => true, 
-                'status_text' => $response->order->status_text,
+                'status_text' => $status_text,
                 'modified' => $response->order->modified,
                 'deliver_date' => $response->order->deliver_date,
             ]);

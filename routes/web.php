@@ -113,6 +113,8 @@ Route::fallback(function () {
 Route::get("/calculateShipping", [GHTKController::class, 'calculateShipping'])->name('calculateShipping');
 /**Kiểm tra đơn hàng */
 Route::get('/statusOrder/{tracking_id?}', [GHTKController::class, 'statusOrder'])->name('statusOrder');
+/** Hủy đơn hàng */
+Route::post('/ghtk-cancel-order/{tracking_id}', [GHTKController::class, 'cancelOrder'])->name('ghtk.cancel-order');
 
 
 /** VNPAY */

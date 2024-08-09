@@ -61,7 +61,7 @@
                             @forelse ($getOrders as $order)
                                 <tr>
                                     <td>{{ $order->order_code }}</td>
-                                    
+
                                     <td>
                                         <div class="info_customer_order">
                                             <div class="order_name">
@@ -197,17 +197,30 @@
                                                 </select>
                                             @else
                                                 @if ($order->order_status == 0)
-                                                    <a id="accept_ghtk"
-                                                        data-url="{{ route('admin.ghtk.post-order', $order->id) }}"
-                                                        class="btn btn-outline-primary px-4 py-1 my-1">Xác nhận</a>
-                                                    <a id="status-order-cancel"
-                                                        data-url="{{ route('admin.order.update', $order->id) }}"
-                                                        data-val="-1" class="btn btn-outline-danger px-2 py-1">Hủy</a>
+                                                    @if ($order->payment_method == 1)
+                                                        <a id="accept_ghtk"
+                                                            data-url="{{ route('admin.ghtk.post-order', $order->id) }}"
+                                                            class="btn btn-outline-primary px-4 py-1 my-1{{ $order->vnp_transaction_id == null ? ' disabled' : '' }}">Xác
+                                                            nhận</a>
+                                                        @if ($order->vnp_transaction_id == null)
+                                                            <a id="status-order-cancel"
+                                                                data-url="{{ route('admin.order.update', $order->id) }}"
+                                                                data-val="-1"
+                                                                class="btn btn-outline-danger px-2 py-1">Hủy</a> <br>
+                                                                <em class="text-danger">Đơn hàng chưa thanh toán</em>
+                                                        @endif
+                                                    @else
+                                                        <a id="accept_ghtk"
+                                                            data-url="{{ route('admin.ghtk.post-order', $order->id) }}"
+                                                            class="btn btn-outline-primary px-4 py-1 my-1">Xác nhận</a>
+                                                            <a id="status-order-cancel"
+                                                                data-url="{{ route('admin.order.update', $order->id) }}"
+                                                                data-val="-1"
+                                                                class="btn btn-outline-danger px-2 py-1">Hủy</a>
+                                                    @endif
+
                                                 @else
                                                     <p class="p-2 badge text-bg-primary">Đã chuyển đơn cho GHTK</p>
-                                                @endif
-                                                @if ($order->order_status == 1 || $order->order_status == 2)
-                                                    <a id="cancel_ghtk" data-url="{{ route('admin.ghtk.cancel-order', $order->tracking_id) }}" class="btn btn-outline-danger px-2 py-1">Hủy</a>
                                                 @endif
                                             @endif
                                         @endif
@@ -505,59 +518,6 @@
                             })
                         }
                     });
-            })
-            $('body').off('click', '#cancel_ghtk').on('click', '#cancel_ghtk', function() {
-                Swal.fire({
-                    title: "Bạn có chắc chắn hủy?",
-                    text: "Thực hiện lệnh hủy đơn hàng đến ĐVVC!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Đồng ý",
-                    cancelButtonText: "Hủy",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Vui lòng chờ...',
-                            html: 'Đang xử lý...',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            didOpen: () => {
-                                Swal.showLoading()
-                            }
-                        });
-                        $.ajax({
-                            type: 'post',
-                            url: $(this).attr('data-url'),
-                            success: function(res) {
-                                console.log(res);
-                                if (res.success == true) {
-                                    Swal.fire({
-                                        title: "Yêu cầu thành công!",
-                                        text: res.message,
-                                        icon: "success"
-                                    });
-                                }
-                                //Hủy thất bại
-                                if (res.success == false) {
-                                    Swal.fire({
-                                        title: "Yêu cầu thất bại!",
-                                        text: res.message + '. Mã lỗi: ' + res
-                                            .error_code + '. Log: ' + res
-                                            .log_id,
-                                        icon: "error"
-                                    });
-                                }
-                            },
-                            error: function(xhr, status, error) {
-                                Swal.close()
-                                const response = JSON.parse(xhr.responseText);
-                                alert("Lỗi: " + response.message);
-                            }
-                        })
-                    }
-                });
             })
         })
     </script>
