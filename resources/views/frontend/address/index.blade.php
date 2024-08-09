@@ -6,7 +6,7 @@
             <div class="container ">
                 <ul class="breadcrumb d-flex ">
                     <li class="home">
-                        <a href="#" title="Trang chủ"><span>Trang chủ</span></a>
+                        <a href="/" title="Trang chủ"><span>Trang chủ</span></a>
                         <span class="mr_lr mx-1"><i class="fas fa-angle-right"></i></span>
                         <strong>
                             <span> @yield('title')</span>
@@ -18,13 +18,14 @@
         <main>
             <div class="layout-contact">
                 <div class="container">
+                    <h1 class="visually-hidden">Địa chỉ CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam</h1>
                     @foreach ($storeAddress as $item)
                         <div class="row">
                             <div class="col-lg-5 col-12 col-md-5">
                                 <div class="contact">
                                     <div class="name_address">
-                                        <h4 class="d-none d-md-block  ">{{ $item->store_name }}</h4>
-                                        <h4 class="d-md-none text-center mb-2 ">{{ $item->store_name }}</h4>
+                                        <h2 class="d-none d-md-block fs-4">{{ $item->store_name }}</h2>
+                                        <h2 class="d-md-none text-center mb-2 fs-4">{{ $item->store_name }}</h2>
                                     </div>
                                     <div class="des_foo mb-3">
                                         {{ $item->description }}
