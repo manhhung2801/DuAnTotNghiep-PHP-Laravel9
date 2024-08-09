@@ -1,6 +1,6 @@
 @if (!empty($product->long_description))
     <div class="product-content block-content">
-        <div class="title">Thông tin sản phẩm</div>
+        <h1 class="title">Thông tin sản phẩm</h1>
         <div class="product-review-content">
             <div class="ba-text-fpt has-height">
                 {!! $product->long_description !!}

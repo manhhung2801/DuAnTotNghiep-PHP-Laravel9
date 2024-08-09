@@ -1,4 +1,5 @@
 @forelse ($bannerHero as $banner)
+    <h1 class="visually-hidden">Danh mục banner CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam</h1>
     <div class="bg-banner overflow-hidden"
         style="background: url('{{ asset('uploads/post_gallery/' . $banner->post_image_galleries->first()->image) }}') center/cover no-repeat;">
         <div class="container">
@@ -28,5 +29,4 @@
         </div>
     </div>
 @empty
-   
 @endforelse

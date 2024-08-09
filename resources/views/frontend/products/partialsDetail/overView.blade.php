@@ -87,9 +87,9 @@
         @endforeach
     </div>
     <div class="product-summary mt-3">
-        <div class="rte ">
+        <h2 class="rte fs-6">
             {!! $product->short_description !!}
-        </div>
+        </h2>
     </div>
     <div class="boz-form mb-3">
         <div class="flex-quantity">

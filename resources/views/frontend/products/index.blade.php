@@ -22,15 +22,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-title text-center mb-1">
-                    <h2 class="fs-3">
+                    <h2 class="fs-3 text-uppercase">
                         {{ $category->name ?? ($subCategory->name ?? ($childCategory->name ?? ($product->name ?? ''))) }}
                     </h2>
                 </div>
                 <div class="col-md-12 col-title text-center mb-1">
-                    <h1 class="fs-3 d-none">CyberMart - Sản thường mại điển tử lớn nhất Việt Nam -Nhiều Ưu đãi háo dẫn!
-                    </h1>
+                    <h1 class="fs-3 d-none">CyberMart - Sản thường mại điển tử lớn nhất Việt Nam -Nhiều Ưu đãi háo dẫn!</h1>
                 </div>
-
                 <div class="banner_product col-md-12 ">
                     <a href="#" title="click xem ngay">
                         <img alt="Banner {{ $category->name ?? ($subCategory->name ?? ($childCategory->name ?? ($product->name ?? 'Sản phẩm'))) }}"
