@@ -15,7 +15,7 @@
 
 <!-- chứa các ajax -->
 @include('frontend.layouts.ajax')
-
+@stack('script_lib-js')
 
 <script>
     $(document).ready(function() {

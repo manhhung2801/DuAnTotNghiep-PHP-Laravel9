@@ -84,6 +84,8 @@ class OrderController extends Controller
             } else {
                 return view('404');
             }
+        }else {
+            $getOrders->orderBy('created_at', 'desc');
         }
 
         // Lấy kết quả và phân trang
