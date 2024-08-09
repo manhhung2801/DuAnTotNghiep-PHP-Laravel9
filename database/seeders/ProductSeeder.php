@@ -28,8 +28,12 @@ class ProductSeeder extends Seeder
             $nameIP13 = 'iPhone 13 SERIES' . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
             $nameIP14 = 'iPhone 14 SERIES' . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
             $nameIP15 = 'iPhone 15 SERIES' . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
-            // End  Điện thoại-Tablet iphone
-            $nameOP = 'OPPO' . collect(['Reno12 ', ' Reno11 ', ' A18 ', ' A79 ', ' Reno10 ', ' A77s ', ' A78 ', ' Reno7 '])->random() . collect([' ', ' F ', ' X5 ', ' Pro ', ' Plus ', ' N3 ', ' T '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
+            // Điện thoại-Tablet samsung 
+            $nameSamsung = 'Samsung Galaxy' . collect(['Z ', ' S24 ', ' S23 ', ' M55 ', ' M34 ', ' A77s ', ' A78 ', ' Reno7 '])->random() . collect([' ', ' Fold6 ', ' Utra ', ' Lte ', ' Plus ', ' N3 ', ' T '])->random();
+             // Điện thoại-Tablet xiaomi 
+             $nameXiaomi = 'Xiaomi' . collect([' Redmi ', ' POCO ', ' 13T ', ' 14 ', ' M34 ', ' A77s ', ' A78 ', ' 16 '])->random() . collect([' ', ' Fold6 ', ' Utra ', ' Lte ', ' Plus ', ' N3 ', ' Note '])->random(). collect([' ', ' M5 ', ' X5 ', ' M6 ', ' 13 ', ' N3 ', ' T '])->random(). collect([' ', ' 4G ', ' 5G ', ' 7G ', ' 8G ', ' 2G ', ' 3G '])->random() ;
+            // End  Điện thoại-Tablet 
+            $nameOP = 'OPPO' . collect(['Reno12 ', ' Reno11 ', ' A18 ', ' A79 ', ' Reno10 ', ' A77s ', ' A78 ', ' Reno7 '])->random() . collect([' ', ' F ', ' X5 ', ' Pro ', ' Plus ', ' N3 ', ' T '])->random() ;
             $nameMac = 'Oppo Macbook' . collect([' ', ' Air ', ' Pro ', ' Plus '])->random() . collect([' ', ' 14 ', ' 15 ', ' 16 '])->random()  . collect([' ', ' M1 ', ' M2 ', ' M3 '])->random() . collect([' 2019 ', ' 2020 ', ' 2021 ', ' 2022 ', ' 2023 '])->random() . collect([' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
             $nameMSI = 'Laptop' . collect([' ', ' Gaming ', ' MSI '])->random() . collect([' ', ' Modern ', ' Pulse ', ' Crosshair ', ' Prestige ', ' Katana ', ' Cyborg ', ' Crosshair ', ' Bravo '])->random() . collect([' ', ' 15 ', ' GF63 ', ' 14 '])->random()  . collect([' ', ' A12VE-412VN ', ' 11UC-1228VN ', ' 13VE-452VN ', ' A15VE-412VN ', ' 10UC-1228VN ', ' 13VE-454VN '])->random();
             $nameSounds = 'Tai nghe Bluetooth  ' . collect([' ', ' Apple ', ' True '])->random() . collect([' ', ' Chụp tai Edifier ', ' AirPods Pro ', ' Wireless HUAWEI ', ' Wireless Samsung Galaxy Buds ', ' Wireless Anker Soundcore R50i ', ' Wireless Samsung Galaxy Buds2 ', ' Wireless Havit ', ' Bravo '])->random() . collect([' ', ' A3949 ', ' 2 ', ' 3 ', ' FreeClip ', ' Pro ', ' 2022 ', ' TW969 ', ' Air '])->random();
@@ -71,7 +75,7 @@ class ProductSeeder extends Seeder
 <tbody>
 <tr>
 	<td>Hãng sản xuất</td>
-	<td>Oppo</td>
+	<td>' . $nameIP11 . '</td>
 </tr>
 <tr>
 	<td>Kích thước màn hình</td>
@@ -91,11 +95,11 @@ class ProductSeeder extends Seeder
 </tr>
 <tr>
 	<td>Chipset</td>
-	<td>Oppo A16 Bionic</td>
+	<td>' . $nameIP11 . '</td>
 </tr>
 <tr>
 	<td>CPU</td>
-	<td>Oppo A16 Bionic&nbsp;120Hz</td>
+	<td>' . $nameIP11 . '&nbsp;120Hz</td>
 </tr>
 <tr>
 	<td>GPU</td>
@@ -221,7 +225,7 @@ class ProductSeeder extends Seeder
 <tbody>
 <tr>
 	<td>Hãng sản xuất</td>
-	<td>Oppo</td>
+	<td>' . $nameIP12 . '</td>
 </tr>
 <tr>
 	<td>Kích thước màn hình</td>
@@ -241,11 +245,11 @@ class ProductSeeder extends Seeder
 </tr>
 <tr>
 	<td>Chipset</td>
-	<td>Oppo A16 Bionic</td>
+	<td>' . $nameIP12 . '</td>
 </tr>
 <tr>
 	<td>CPU</td>
-	<td>Oppo A16 Bionic&nbsp;120Hz</td>
+	<td>' . $nameIP12 . '&nbsp;120Hz</td>
 </tr>
 <tr>
 	<td>GPU</td>
@@ -371,7 +375,7 @@ class ProductSeeder extends Seeder
 <tbody>
 <tr>
 	<td>Hãng sản xuất</td>
-	<td>Oppo</td>
+	<td>' . $nameIP15 . '</td>
 </tr>
 <tr>
 	<td>Kích thước màn hình</td>
@@ -391,11 +395,11 @@ class ProductSeeder extends Seeder
 </tr>
 <tr>
 	<td>Chipset</td>
-	<td>Oppo A16 Bionic</td>
+	<td>' . $nameIP15 . '</td>
 </tr>
 <tr>
 	<td>CPU</td>
-	<td>Oppo A16 Bionic&nbsp;120Hz</td>
+	<td>' . $nameIP15 . '&nbsp;120Hz</td>
 </tr>
 <tr>
 	<td>GPU</td>
@@ -521,7 +525,7 @@ class ProductSeeder extends Seeder
 <tbody>
 <tr>
 	<td>Hãng sản xuất</td>
-	<td>Oppo</td>
+	<td>' . $nameIP13 . '</td>
 </tr>
 <tr>
 	<td>Kích thước màn hình</td>
@@ -541,11 +545,11 @@ class ProductSeeder extends Seeder
 </tr>
 <tr>
 	<td>Chipset</td>
-	<td>Oppo A16 Bionic</td>
+	<td>' . $nameIP13 . '</td>
 </tr>
 <tr>
 	<td>CPU</td>
-	<td>Oppo A16 Bionic&nbsp;120Hz</td>
+	<td>' . $nameIP13 . '&nbsp;120Hz</td>
 </tr>
 <tr>
 	<td>GPU</td>
@@ -671,7 +675,7 @@ class ProductSeeder extends Seeder
 <tbody>
 <tr>
 	<td>Hãng sản xuất</td>
-	<td>Oppo</td>
+	<td>' . $nameIP14 . '</td>
 </tr>
 <tr>
 	<td>Kích thước màn hình</td>
@@ -691,11 +695,11 @@ class ProductSeeder extends Seeder
 </tr>
 <tr>
 	<td>Chipset</td>
-	<td>Oppo A16 Bionic</td>
+	<td>' . $nameIP14 . '</td>
 </tr>
 <tr>
 	<td>CPU</td>
-	<td>Oppo A16 Bionic&nbsp;120Hz</td>
+	<td>' . $nameIP14 . '&nbsp;120Hz</td>
 </tr>
 <tr>
 	<td>GPU</td>
@@ -803,7 +807,7 @@ class ProductSeeder extends Seeder
             DB::table('products')->insert([
                 'name' => $nameMac,
                 'slug' => Str::slug($nameMac . rand(0, 990), '-'),
-                'image' => 'mac_' . rand(1, 12) . '.webp',
+                'image' => 'xiaomi_' . rand(1, 35) . '.webp',
                 'qty' => 200,
                 'price' => $price,
                 'offer_price' => $offer_price,
@@ -1327,6 +1331,523 @@ class ProductSeeder extends Seeder
     <tbody>
     <tr>
         <td>Hãng sản xuất</td>
+        <td>'. $nameOP .'</td>
+    </tr>
+    <tr>
+        <td>Kích thước màn hình</td>
+        <td>6.7&nbsp;inches</td>
+    </tr>
+    <tr>
+        <td>Độ phân giải màn hình</td>
+        <td>2796&nbsp;x 1290&nbsp;pixels</td>
+    </tr>
+    <tr>
+        <td>Loại màn hình</td>
+        <td>OLED LPTS</td>
+    </tr>
+    <tr>
+        <td>Bộ nhớ trong</td>
+        <td>1TB</td>
+    </tr>
+    <tr>
+        <td>Chipset</td>
+        <td>'. $nameOP .'</td>
+    </tr>
+    <tr>
+        <td>CPU</td>
+        <td>'. $nameOP .'&nbsp;120Hz</td>
+    </tr>
+    <tr>
+        <td>GPU</td>
+        <td>Oppo GPU (5 lõi)</td>
+    </tr>
+    <tr>
+        <td>Kích thước</td>
+        <td>160.7 x 77.6 x 7.9 mm</td>
+    </tr>
+    <tr>
+        <td>Trọng lượng</td>
+        <td>240 g</td>
+    </tr>
+    <tr>
+        <td>Camera sau</td>
+        <td>Camera chính: 48MP<br>
+        Camera góc siêu rộng: 12MP<br>
+        Camera tele: 12MP</td>
+    </tr>
+    <tr>
+        <td>Camera trước</td>
+        <td>12 MP</td>
+    </tr>
+    <tr>
+        <td>Quay video</td>
+        <td>4K @24 fps, 25 fps, 30 fps, 60 fps<br>
+        1080p @25 fps, 30 fps, 60 fps<br>
+        720p @30 fps<br>
+        4K HDR @30 fps<br>
+        2.8K @ 60 fps<br>
+        HDR với Dolby Vision @60 fps<br>
+        ProRes 4K @30fps<br>
+        Chuyển động chậm 1080p @ 120fps, 240 fps</td>
+    </tr>
+    <tr>
+        <td>Pin</td>
+        <td>Li - Ion, Không thể thay thế</td>
+    </tr>
+    <tr>
+        <td>Cổng sạc</td>
+        <td>Lightning</td>
+    </tr>
+    <tr>
+        <td>Loại SIM</td>
+        <td>Nano SIM, eSIM</td>
+    </tr>
+    <tr>
+        <td>Hệ điều hành</td>
+        <td>iOS</td>
+    </tr>
+    <tr>
+        <td>Phiên bản hệ điều hành</td>
+        <td>iOS 16.2</td>
+    </tr>
+    <tr>
+        <td>Khe cắm thẻ nhớ</td>
+        <td>Không</td>
+    </tr>
+    <tr>
+        <td>3G</td>
+        <td>HSPA 42.2/5.76 Mbps, EV-DO Rev.A 3.1 Mbps</td>
+    </tr>
+    <tr>
+        <td>4G</td>
+        <td>LTE-A (4CA) Cat16 1024/150 Mbps</td>
+    </tr>
+    <tr>
+        <td>5G</td>
+        <td>mmWave, Sub-6 GHz</td>
+    </tr>
+    <tr>
+        <td>WLAN</td>
+        <td>Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot</td>
+    </tr>
+    <tr>
+        <td>Bluetooth</td>
+        <td>Bluetooth 5.3</td>
+    </tr>
+    <tr>
+        <td>GPS</td>
+        <td>A-GPS, GLONASS, GALILEO, QZSS</td>
+    </tr>
+    <tr>
+        <td>NFC</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Cảm biến</td>
+        <td>Cảm biến gia tốc, Cảm biến tiệm cận, Cảm biến ánh sáng, La bàn, Con quay hồi chuyển, Cảm biến áp kế</td>
+    </tr>
+    </tbody></table>
+                       ',
+                'product_type' => 'new',
+                'seo_title' => 'Đánh giá chi tiết điện thoại ' . $nameOP . ': Thiết kế, hiệu năng, camera, pin',
+                'promotion' => $pro,
+                'seo_description' => 'Điện thoại ' . $nameOP . ' là sản phẩm mới với màn hình lớn 6.72 inch, chip Dimensity 6020, RAM 8GB, camera sau 50MP, pin 5000mAh và hỗ trợ sạc nhanh 33W. Xem ngay đánh giá chi tiết về thiết kế, hiệu năng, camera và pin để chọn mua điện thoại phù hợp nhất với nhu cầu của bạn.',
+                'category_id' => 1,
+                'weight' => 0.5,
+                'sub_category_id' => 4,
+                'child_category_id' => rand(18, 20),
+                'created_at' => now(),
+                "status" => 1
+
+            ]);
+            
+             // Thêm tên sản phẩm ĐIỆN THOAỊ SAMSUNG  
+             DB::table('products')->insert([
+
+                "name" => $nameSamsung,
+                "slug" => Str::slug($nameSamsung . rand(0, 990), '-'),
+                "image" =>  'samsung_' . rand(1, 30) . '.webp',
+                'qty' => 200,
+                'price' => $price,
+                'offer_price' => $offer_price,
+                'offer_start_date' => now(),
+                'offer_end_date' => '2025-07-31',
+                'sku' => 'SPSS' . rand(120, 140) . rand(100, 1020),
+                'video_link' => 'https://youtube.com',
+                'long_description' => '
+                       <div class="ksp-content p-2 mb-2" style="-webkit-text-stroke-width:0px;background-color:rgb(242, 242, 242);border-radius:0.5rem;box-sizing:inherit;color:rgb(74, 74, 74);font-size:16px;font-style:normal;font-weight:400;letter-spacing:normal;margin:auto;orphans:2;padding:0.5rem !important;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;width:800px;word-spacing:0px;">
+        <h2 class="ksp-title has-text-centered" style="color:rgb(215, 0, 24);font-size:18px;margin:0px;padding:0px;text-align:center !important;">
+            <strong>ĐẶC ĐIỂM NỔI BẬT</strong>
+        </h2>
+        <div style="box-sizing:inherit;">
+            <ul style="box-sizing:inherit;list-style:none;margin-bottom:0px;margin-right:0px;margin-top:0px;overflow-y:auto;padding:0px;scrollbar-width:none;">
+                <li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+                    <p style="margin-left:0px;">
+                        Trải nghiệm hình ảnh mượt mà và sống động với màn hình 90Hz, cho bạn những thao tác vuốt chạm và chơi game mượt mà hơn.
+                    </p>
+                </li>
+                <li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+                    <p style="margin-left:0px;">
+                        Tận hưởng tốc độ internet siêu nhanh và ổn định với kết nối 5G, cho bạn tải xuống, xem video và chơi game online mượt mà hơn.
+                    </p>
+                </li>
+                <li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+                    <p style="margin-left:0px;">
+                        Lưu trữ thoải mái với bộ nhớ lớn 8GB RAM + 128GB ROM, cho bạn đa nhiệm mượt mà và lưu trữ nhiều ứng dụng, hình ảnh và video.
+                    </p>
+                </li>
+                <li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:0px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+                    <p style="margin-left:0px;">
+                        Sử dụng thoải mái cả ngày dài với pin 5000mAh và sạc nhanh 33W, cho bạn sạc đầy pin nhanh chóng để tiếp tục sử dụng.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div style="-webkit-text-stroke-width:0px;box-sizing:inherit;color:rgb(74, 74, 74);font-family:Roboto, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
+        <blockquote style="box-sizing:inherit;color:rgb(100, 100, 100);margin:0px;padding:0px 0px 0px 20px;position:relative;">
+            <p style="box-sizing:inherit;color:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+                <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">' . $nameSamsung . '</strong> <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">5G</strong> cung cấp trải nghiệm hình ảnh sắc nét tới từng chi tiết nhờ sở hữu<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> màn hình hiển thị LCD 6.72 inch Full HD+</strong> cùng tần số quét<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> 90Hz</strong> hiện đại. Sức mạnh bên trong của máy đến từ chipset<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> Dimensity 6020</strong>, <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">8GB RAM </strong>và bộ nhớ <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">256GB</strong>, hỗ trợ đáp ứng được mượt mà hầu hết các yêu cầu sử dụng hàng ngày. Ngoài ra, thế hệ OPPO smartphone này còn đi kèm với <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">cảm biến camera 50MP</strong> hiện đại cùng viên <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">pin 5,000 mAh</strong> và hỗ trợ <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">sạc nhanh 33W</strong>, đảm bảo nâng cấp vượt trội trải nghiệm quay chụp và thời lượng sử dụng.
+            </p>
+        </blockquote>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://i0.wp.com/hapigo.vn/wp-content/uploads/2022/04/Optimized-dien-thoai-oppo-moi-nhat-5.jpg?w=1864&ssl=1" alt="màn hình ' . $nameSamsung . ' hiển thị lớn với màn hình LCD 6.72 inch " loading="lazy" title="Đánh giá chi tiết điện thoại ' . $nameSamsung . '" width="810" height="372">
+        </p>
+        <h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Vì sao nên mua điện thoại ' . $nameSamsung . '?</strong>
+        </h2>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+            ' . $nameSamsung . ' là lựa chọn tuyệt vời cho người dùng tìm kiếm một chiếc điện thoại hiện đại, mạnh mẽ và thời trang. Với thiết kế lông vũ tỏa sáng, máy không chỉ thu hút ánh nhìn mà còn mang đến cảm giác sang trọng, tinh tế. Dưới đây là những điểm nổi bật nhất của ' . $nameSamsung . ':
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">- Màn hình FHD+ siêu sáng 6.72 inch</strong>: Đem lại trải nghiệm hình ảnh sắc nét và sống động, ngay cả dưới ánh nắng mạnh với độ sáng tối đa lên đến 680 nits.<br>
+            &nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">- Sạc nhanh SUPERVOOC 33W</strong>: Giúp nạp đầy pin một cách nhanh chóng, đảm bảo thiết bị luôn sẵn sàng sử dụng mọi lúc, mọi nơi.<br>
+            &nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">- Camera AI 50MP</strong>: Ghi lại mọi khoảnh khắc với độ phân giải cao và chi tiết sắc nét, đồng thời chế độ chân dung giúp nâng tầm nhiếp ảnh của bạn.<br>
+            &nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">- Pin 5000mAh</strong>: Dung lượng pin lớn cùng các chế độ tiết kiệm năng lượng giúp bạn sử dụng cả ngày dài mà không cần lo lắng về việc sạc pin.
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Những điểm nổi bật này không chỉ nâng cao trải nghiệm người dùng mà còn làm cho ' . $nameSamsung . ' trở thành sự lựa chọn hoàn hảo trong tầm giá.
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://i.ytimg.com/vi/3JY-28gldwk/maxresdefault.jpg" alt="Vì sao nên mua điện thoại ' . $nameSamsung . '?" loading="lazy" width="810" height="456">
+        </p>
+        <h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">So sánh điện thoại ' . $nameSamsung . ' với Oppo A58</strong>
+        </h2>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Khi chọn mua một chiếc smartphone, người dùng thường cân nhắc giữa nhiều dòng sản phẩm để tìm ra thiết bị phù hợp nhất với nhu cầu của mình. OPPO với nhiều dòng sản phẩm đa dạng, luôn là một trong những lựa chọn hàng đầu của người tiêu dùng. Hai sản phẩm nổi bật trong dòng A series là ' . $nameSamsung . ' và OPPO A58 đều sở hữu những đặc điểm riêng biệt về thiết kế, hiệu năng và tính năng. Xem ngay bảng so sánh sau đây để xem A79 có điểm gì nổi trội hơn so với A58 nhé!
+        </p>
+        <figure class="table" style="width:800px;">
+            <table class="table table-bordered" style="background-color:rgb(255, 255, 255);border-collapse:collapse;border-spacing:0px;border:1px solid rgb(211, 211, 211);box-sizing:inherit;color:rgb(54, 54, 54);margin-bottom:1.5rem;">
+                <tbody style="background-color:transparent;box-sizing:inherit;">
+                    <tr class="success" style="background-color:rgb(223, 240, 216);box-sizing:inherit;color:rgb(61, 102, 17);font-size:12px;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Thông số</strong>
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">OPPO&nbsp;A79 5G</strong>
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">OPPO A58</strong>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Màn hình&nbsp;
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                6.72 inch&nbsp;&nbsp;LCD (LTPS)
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                6.72 inch LCD (LTPS)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Độ phân giải
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                FHD+ (2400x1080)
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                FHD+ (2400×1080)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Màu sắc
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Đen, Tím
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Đen, Xanh
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Chip
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                MediaTek Dimensity 6020
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                MediaTek Helio G85
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                RAM
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                8GB
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                6GB
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Bộ nhớ trong
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                256GB
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                128GB
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Camera sau
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                50MP + 2MP
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                50MP + 2MP
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Camera trước
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                8MP
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                8MP
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Dung lượng pin
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                5000mAh
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                5000mAh
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Cổng sạc
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                USB Type-C
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                USB Type-C
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:0px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Trọng lượng
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:0px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                khoảng&nbsp;193g
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:0px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Khoảng 192g
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </figure>
+        <h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Điện thoại ' . $nameSamsung . ' có gì mới so với thế hệ trước</strong>
+        </h2>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Tháng 10 vừa rồi, thị trường smartphone lại chứng kiến thêm một sự ra mắt đầy ấn tượng của một ấn phẩm điện thoại mới mang tên <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">' . $nameSamsung . '</strong> <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">5G</strong>. Nổi bật với thiết kế mỏng nhẹ, tinh tế cùng màn hình lớn, chipset Dimensity mạnh mẽ, máy hứa hẹn cung cấp trải nghiệm siêu mượt mà, đa nhiệm ổn định trong các tác vụ hàng ngày. Dưới đây là một vài điểm nhấn trên thông số kỹ thuật của điện thoại OPPO phiên bản A79 mà bạn có thể tìm hiểu thêm nhé!
+        </p>
+        <h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">A79 OPPO sở hữu chipset Dimensity thế hệ mới</strong>
+        </h3>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Ưu điểm nổi bật nhận được nhiều sự quan tâm của người dùng trên ' . $nameSamsung . ' là sức mạnh xử lý mạnh mẽ với cấu hình đỉnh cao. Cụ thể, máy sẽ được trang bị bộ vi xử lý <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">MediaTek Dimensity 6020</strong>, <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">RAM 8 GB</strong> và bộ nhớ trong lên đến<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> 256 GB</strong>. Thông qua ưu điểm ấn tượng này, máy dễ dàng đem lại những trải nghiệm mượt mà và nhanh chóng cho người dùng trong những tác vụ thông thường.&nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://specificationsplus.com/wp-content/uploads/2022/08/Oppo-A18-Specifications-Plus.jpg" alt="A79 OPPO sở hữu hiệu năng vượt trội MediaTek Dimensity 602" loading="lazy" title="Điện thoại ' . $nameSamsung . ' sở hữu hiệu năng vượt trội với chipset Dimensity thế hệ mới" width="810" height="456">
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Bên cạnh đó, điện thoại ' . $nameSamsung . ' còn được ưu ái vận hành trên <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">nền hệ điều hành ColorOS</strong>&nbsp;dựa trên nền tảng <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Android</strong>. Qua đó, nó mang đến trải nghiệm sử dụng cực kỳ thú vị và mượt mà cho người dùng, cũng như sẵn sàng đối mặt với nhiều tác vụ đòi hỏi hiệu suất cao.
+        </p>
+        <h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Cụm camera ' . $nameSamsung . ' sở hữu độ phẩn giải 50MP</strong>
+        </h3>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Về khả năng chụp ảnh, ghi hình, A79 5G cũng được đánh giá là không hề thua kém bất kỳ dòng máy nào cùng tầm giá hiện nay. Theo đó, máy sẽ được đi kèm với cụm camera sau kép sử dụng cảm biến chính <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">50MP</strong> và camera chân dung<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> 2MP</strong>, cung cấp chất lượng hình ảnh cực đỉnh.&nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://www.oppo.com/content/dam/oppo/product-asset-library/a/a98-5g/v1/assets/images-kv-mo-phones-1-100.png.webp" alt="Camera điện thoại ' . $nameSamsung . ' trang bị nhiều tính năng tiện ích" loading="lazy" title="Camera điện thoại ' . $nameSamsung . ' trang bị nhiều tính năng tiện ích" width="810" height="456">
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Ở phía mặt trước, ' . $nameSamsung . ' sẽ được trang bị<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> camera selfie đơn 8MP</strong> và được tích hợp kèm các tính năng chụp ảnh hiện đại. Nhờ đó mà mọi bức hình selfie hay là cuộc gọi video trên dòng máy OPPO A này cũng đều sẽ được thể hiện với chất lượng cao, mang lại trải nghiệm nhiếp ảnh trên cả tuyệt vời.
+        </p>
+        <h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Thoải mái xử lý công việc, giải trí suốt ngày dài với dung lượng pin lớn</strong>
+        </h3>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            So với nhiều dòng máy OPPO A Series khác thì A79 OPPO dường như có sự nâng cấp về thời lượng sử dụng nhờ được trang bị viên<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> pin 5.000 mAh </strong>cùng chip xử lý tiết kiệm năng lượng. Nhờ đó, nó cung cấp khả năng sử dụng lâu dài, hỗ trợ mọi hoạt động hàng ngày cho người dùng mà không cần lo lắng về việc sạc pin thường xuyên.&nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cf.shopee.co.th/file/67095c6c07eb80e11cae1d5310d603b1" alt="Điện thoại ' . $nameSamsung . ' có dung lượng pin lớn" loading="lazy" title="Điện thoại ' . $nameSamsung . ' có dung lượng pin lớn" width="810" height="456">
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Chưa hết, máy còn sở hữu khả năng<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> sạc nhanh 33W</strong>, hỗ trợ nạp đầy pin chỉ trong thời gian ngắn. Qua đó, bạn sẽ có thể thoải mái làm việc, chơi game giải trí trên ' . $nameSamsung . ' mà không lo bị gián đoạn trải nghiệm nữa rồi nhé!&nbsp;
+        </p>
+        <h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Chất lượng hình ảnh rõ nét và chân thực hơn trên tấm nền LCD hiện đại</strong>
+        </h3>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Bên cạnh những điểm nhấn ấn tượng về hiệu năng, camera và pin trên thì khả năng hiển thị của ' . $nameSamsung . ' cũng được đánh giá cực kỳ cao. Cụ thể, máy sẽ sở hữu <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">màn hình LCD 6.72 inch</strong> với độ phân giải <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Full HD+</strong>. Tấm nền này sẽ đi kèm với tốc độ lấy mẫu cảm ứng <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">180Hz</strong> và tốc độ làm mới <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">90Hz</strong>, cung cấp một trải nghiệm mượt mà và hiển thị rõ ràng ở mọi tiêu chí sử dụng.
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://i.ytimg.com/vi/Gn3bNZajf2c/maxresdefault.jpg" alt="Màn hình điện thoại ' . $nameSamsung . ' có chất lượng rõ nét" loading="lazy" title="Màn hình điện thoại ' . $nameSamsung . ' có chất lượng rõ nét" width="810" height="456">
+        </p>
+        <h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Điện thoại ' . $nameSamsung . ' khi nào ra mắt?</strong>
+        </h2>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Trong cuối tháng 10 năm 2023</strong>, điện thoại ' . $nameSamsung . ' đã chính thức được ra mắt, tạo ra sự chú ý lớn trong ngành công nghiệp di động. Sự kiện này được đánh giá là một bước tiến quan trọng của OPPO, đưa sản phẩm hãng đến với người dùng với những cải tiến và tính năng mới đáng chú ý.&nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://www.techyloud.com/wp-content/uploads/2022/09/Oppo-A17-1024x640.jpg" alt="Điện thoại ' . $nameSamsung . ' khi nào ra mắt" loading="lazy" title="Điện thoại ' . $nameSamsung . ' khi nào ra mắt?" width="810" height="456">
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Với việc cung cấp các thông số kỹ thuật mạnh mẽ, ' . $nameSamsung . ' hứa hẹn mang đến trải nghiệm hoàn hảo với màn hình lớn, camera tiên tiến và nhiều tính năng hấp dẫn khác. Sự ra mắt của ' . $nameSamsung . ' đã thu hút sự quan tâm lớn từ người tiêu dùng và chắc chắn là một trong những sản phẩm được mong đợi trong thị trường di động thời gian tới đây.&nbsp;
+        </p>
+        <h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Điện thoại ' . $nameSamsung . ' giá bao nhiêu?</strong>
+        </h2>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Điện thoại ' . $nameSamsung . ' đã chính thức ra mắt tại thị trường Ấn Độ với hai tùy chọn màu sắc rất hấp dẫn, bao gồm Xanh phát sáng và Đen huyền bí. Máy hiện đang nằm trong tầm giá chỉ từ<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> 19,999 INR</strong>, tương đương với <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">khoảng 5.9 triệu đồng</strong> Việt Nam.&nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cf.shopee.co.th/file/55a8d9a18de642e547899425d5a4bbeb" alt="Điện thoại ' . $nameSamsung . ' giá bao nhiêu" loading="lazy" title="Điện thoại ' . $nameSamsung . ' giá bao nhiêu" width="810" height="456">
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Mức giá này của ' . $nameSamsung . ' được đánh giá là khá hợp lý so với các tính năng mạnh mẽ và thiết kế thu hút của sản phẩm. Nó không chỉ đáp ứng được nhu cầu về hiệu suất mà còn mang đến sự lựa chọn về màu sắc phù hợp với sở thích cá nhân của người tiêu dùng.
+        </p>
+        <h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Mua ' . $nameSamsung . ' chính hãng, giá hấp dẫn tại Cybermart</strong>
+        </h2>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Để mua sắm <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">điện thoại ' . $nameSamsung . '</strong> chính hãng với mức giá thành hấp dẫn thì <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Cybermart</strong>là một trong những địa điểm đáng tin cậy mà bạn có thể xem xét. Với uy tín đã được thị trường công nhận, Cybermart cung cấp các sản phẩm chất lượng và dịch vụ hậu mãi tốt. Nơi đây cung cấp một loạt các sản phẩm điện thoại di động từ các nhãn hiệu hàng đầu, đảm bảo rằng bạn sẽ có cơ hội sở hữu chiếc điện thoại ' . $nameSamsung . ' với giá cạnh tranh và chất lượng đảm bảo.&nbsp;Kết nối tới<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> hotline 1800 2097</strong> của <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Cybermart </strong>để nhận ngay báo giá tốt và được hỗ trợ đặt mua dòng điện thoại OPPO mới này ngay bạn nhé!&nbsp;
+        </p>
+    </div>
+                        ',
+                'short_description' => '
+                        <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Oppo<br>
+                        ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
+                        ✔️Bảo hành chính hãng Oppo 12 tháng</p>',
+                'specifications' => '
+            <table id="tskt" class="table table-striped">
+    <tbody>
+    <tr>
+        <td>Hãng sản xuất</td>
         <td>Oppo</td>
     </tr>
     <tr>
@@ -1445,13 +1966,529 @@ class ProductSeeder extends Seeder
     </tbody></table>
                        ',
                 'product_type' => 'new',
-                'seo_title' => 'Đánh giá chi tiết điện thoại ' . $nameOP . ': Thiết kế, hiệu năng, camera, pin',
+                'seo_title' => 'Đánh giá chi tiết điện thoại ' . $nameSamsung . ': Thiết kế, hiệu năng, camera, pin',
                 'promotion' => $pro,
-                'seo_description' => 'Điện thoại ' . $nameOP . ' là sản phẩm mới với màn hình lớn 6.72 inch, chip Dimensity 6020, RAM 8GB, camera sau 50MP, pin 5000mAh và hỗ trợ sạc nhanh 33W. Xem ngay đánh giá chi tiết về thiết kế, hiệu năng, camera và pin để chọn mua điện thoại phù hợp nhất với nhu cầu của bạn.',
+                'seo_description' => 'Điện thoại ' . $nameSamsung . ' là sản phẩm mới với màn hình lớn 6.72 inch, chip Dimensity 6020, RAM 8GB, camera sau 50MP, pin 5000mAh và hỗ trợ sạc nhanh 33W. Xem ngay đánh giá chi tiết về thiết kế, hiệu năng, camera và pin để chọn mua điện thoại phù hợp nhất với nhu cầu của bạn.',
                 'category_id' => 1,
                 'weight' => 0.5,
-                'sub_category_id' => 4,
-                'child_category_id' => rand(18, 20),
+                'sub_category_id' => 2,
+                'child_category_id' => rand(6, 9),
+                'created_at' => now(),
+                "status" => 1
+
+            ]);
+             // Thêm tên sản phẩm ĐIỆN THOAỊ Xiaomi 
+             DB::table('products')->insert([
+
+                "name" => $nameXiaomi,
+                "slug" => Str::slug($nameXiaomi . rand(0, 990), '-'),
+                "image" =>  'samsung_' . rand(1, 30) . '.webp',
+                'qty' => 200,
+                'price' => $price,
+                'offer_price' => $offer_price,
+                'offer_start_date' => now(),
+                'offer_end_date' => '2025-07-31',
+                'sku' => 'SPXAM' . rand(120, 140) . rand(100, 1020),
+                'video_link' => 'https://youtube.com',
+                'long_description' => '
+                       <div class="ksp-content p-2 mb-2" style="-webkit-text-stroke-width:0px;background-color:rgb(242, 242, 242);border-radius:0.5rem;box-sizing:inherit;color:rgb(74, 74, 74);font-size:16px;font-style:normal;font-weight:400;letter-spacing:normal;margin:auto;orphans:2;padding:0.5rem !important;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;width:800px;word-spacing:0px;">
+        <h2 class="ksp-title has-text-centered" style="color:rgb(215, 0, 24);font-size:18px;margin:0px;padding:0px;text-align:center !important;">
+            <strong>ĐẶC ĐIỂM NỔI BẬT</strong>
+        </h2>
+        <div style="box-sizing:inherit;">
+            <ul style="box-sizing:inherit;list-style:none;margin-bottom:0px;margin-right:0px;margin-top:0px;overflow-y:auto;padding:0px;scrollbar-width:none;">
+                <li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+                    <p style="margin-left:0px;">
+                        Trải nghiệm hình ảnh mượt mà và sống động với màn hình 90Hz, cho bạn những thao tác vuốt chạm và chơi game mượt mà hơn.
+                    </p>
+                </li>
+                <li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+                    <p style="margin-left:0px;">
+                        Tận hưởng tốc độ internet siêu nhanh và ổn định với kết nối 5G, cho bạn tải xuống, xem video và chơi game online mượt mà hơn.
+                    </p>
+                </li>
+                <li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+                    <p style="margin-left:0px;">
+                        Lưu trữ thoải mái với bộ nhớ lớn 8GB RAM + 128GB ROM, cho bạn đa nhiệm mượt mà và lưu trữ nhiều ứng dụng, hình ảnh và video.
+                    </p>
+                </li>
+                <li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:0px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+                    <p style="margin-left:0px;">
+                        Sử dụng thoải mái cả ngày dài với pin 5000mAh và sạc nhanh 33W, cho bạn sạc đầy pin nhanh chóng để tiếp tục sử dụng.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div style="-webkit-text-stroke-width:0px;box-sizing:inherit;color:rgb(74, 74, 74);font-family:Roboto, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
+        <blockquote style="box-sizing:inherit;color:rgb(100, 100, 100);margin:0px;padding:0px 0px 0px 20px;position:relative;">
+            <p style="box-sizing:inherit;color:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+                <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">' . $nameXiaomi . '</strong> <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">5G</strong> cung cấp trải nghiệm hình ảnh sắc nét tới từng chi tiết nhờ sở hữu<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> màn hình hiển thị LCD 6.72 inch Full HD+</strong> cùng tần số quét<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> 90Hz</strong> hiện đại. Sức mạnh bên trong của máy đến từ chipset<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> Dimensity 6020</strong>, <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">8GB RAM </strong>và bộ nhớ <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">256GB</strong>, hỗ trợ đáp ứng được mượt mà hầu hết các yêu cầu sử dụng hàng ngày. Ngoài ra, thế hệ OPPO smartphone này còn đi kèm với <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">cảm biến camera 50MP</strong> hiện đại cùng viên <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">pin 5,000 mAh</strong> và hỗ trợ <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">sạc nhanh 33W</strong>, đảm bảo nâng cấp vượt trội trải nghiệm quay chụp và thời lượng sử dụng.
+            </p>
+        </blockquote>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://i0.wp.com/hapigo.vn/wp-content/uploads/2022/04/Optimized-dien-thoai-oppo-moi-nhat-5.jpg?w=1864&ssl=1" alt="màn hình ' . $nameXiaomi . ' hiển thị lớn với màn hình LCD 6.72 inch " loading="lazy" title="Đánh giá chi tiết điện thoại ' . $nameXiaomi . '" width="810" height="372">
+        </p>
+        <h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Vì sao nên mua điện thoại ' . $nameXiaomi . '?</strong>
+        </h2>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+            ' . $nameXiaomi . ' là lựa chọn tuyệt vời cho người dùng tìm kiếm một chiếc điện thoại hiện đại, mạnh mẽ và thời trang. Với thiết kế lông vũ tỏa sáng, máy không chỉ thu hút ánh nhìn mà còn mang đến cảm giác sang trọng, tinh tế. Dưới đây là những điểm nổi bật nhất của ' . $nameXiaomi . ':
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">- Màn hình FHD+ siêu sáng 6.72 inch</strong>: Đem lại trải nghiệm hình ảnh sắc nét và sống động, ngay cả dưới ánh nắng mạnh với độ sáng tối đa lên đến 680 nits.<br>
+            &nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">- Sạc nhanh SUPERVOOC 33W</strong>: Giúp nạp đầy pin một cách nhanh chóng, đảm bảo thiết bị luôn sẵn sàng sử dụng mọi lúc, mọi nơi.<br>
+            &nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">- Camera AI 50MP</strong>: Ghi lại mọi khoảnh khắc với độ phân giải cao và chi tiết sắc nét, đồng thời chế độ chân dung giúp nâng tầm nhiếp ảnh của bạn.<br>
+            &nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">- Pin 5000mAh</strong>: Dung lượng pin lớn cùng các chế độ tiết kiệm năng lượng giúp bạn sử dụng cả ngày dài mà không cần lo lắng về việc sạc pin.
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Những điểm nổi bật này không chỉ nâng cao trải nghiệm người dùng mà còn làm cho ' . $nameXiaomi . ' trở thành sự lựa chọn hoàn hảo trong tầm giá.
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://i.ytimg.com/vi/3JY-28gldwk/maxresdefault.jpg" alt="Vì sao nên mua điện thoại ' . $nameXiaomi . '?" loading="lazy" width="810" height="456">
+        </p>
+        <h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">So sánh điện thoại ' . $nameXiaomi . ' với Oppo A58</strong>
+        </h2>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Khi chọn mua một chiếc smartphone, người dùng thường cân nhắc giữa nhiều dòng sản phẩm để tìm ra thiết bị phù hợp nhất với nhu cầu của mình. OPPO với nhiều dòng sản phẩm đa dạng, luôn là một trong những lựa chọn hàng đầu của người tiêu dùng. Hai sản phẩm nổi bật trong dòng A series là ' . $nameXiaomi . ' và OPPO A58 đều sở hữu những đặc điểm riêng biệt về thiết kế, hiệu năng và tính năng. Xem ngay bảng so sánh sau đây để xem A79 có điểm gì nổi trội hơn so với A58 nhé!
+        </p>
+        <figure class="table" style="width:800px;">
+            <table class="table table-bordered" style="background-color:rgb(255, 255, 255);border-collapse:collapse;border-spacing:0px;border:1px solid rgb(211, 211, 211);box-sizing:inherit;color:rgb(54, 54, 54);margin-bottom:1.5rem;">
+                <tbody style="background-color:transparent;box-sizing:inherit;">
+                    <tr class="success" style="background-color:rgb(223, 240, 216);box-sizing:inherit;color:rgb(61, 102, 17);font-size:12px;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Thông số</strong>
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">OPPO&nbsp;A79 5G</strong>
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">OPPO A58</strong>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Màn hình&nbsp;
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                6.72 inch&nbsp;&nbsp;LCD (LTPS)
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                6.72 inch LCD (LTPS)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Độ phân giải
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                FHD+ (2400x1080)
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                FHD+ (2400×1080)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Màu sắc
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Đen, Tím
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Đen, Xanh
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Chip
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                MediaTek Dimensity 6020
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                MediaTek Helio G85
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                RAM
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                8GB
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                6GB
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Bộ nhớ trong
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                256GB
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                128GB
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Camera sau
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                50MP + 2MP
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                50MP + 2MP
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Camera trước
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                8MP
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                8MP
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Dung lượng pin
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                5000mAh
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                5000mAh
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Cổng sạc
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                USB Type-C
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:1px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                USB Type-C
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing:inherit;">
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:0px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Trọng lượng
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:0px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                khoảng&nbsp;193g
+                            </p>
+                        </td>
+                        <td style="border-bottom-color:rgb(219, 219, 219);border-bottom-width:0px;border-image:initial;border-left-color:rgb(211, 211, 211);border-left-width:1px;border-right-color:rgb(211, 211, 211);border-right-width:1px;border-style:solid;border-top-color:rgb(219, 219, 219);border-top-width:0px;box-sizing:inherit;padding:0.5em 0.75em 0.5em 5px;text-align:center;vertical-align:top;">
+                            <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;">
+                                Khoảng 192g
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </figure>
+        <h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Điện thoại ' . $nameXiaomi . ' có gì mới so với thế hệ trước</strong>
+        </h2>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Tháng 10 vừa rồi, thị trường smartphone lại chứng kiến thêm một sự ra mắt đầy ấn tượng của một ấn phẩm điện thoại mới mang tên <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">' . $nameXiaomi . '</strong> <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">5G</strong>. Nổi bật với thiết kế mỏng nhẹ, tinh tế cùng màn hình lớn, chipset Dimensity mạnh mẽ, máy hứa hẹn cung cấp trải nghiệm siêu mượt mà, đa nhiệm ổn định trong các tác vụ hàng ngày. Dưới đây là một vài điểm nhấn trên thông số kỹ thuật của điện thoại OPPO phiên bản A79 mà bạn có thể tìm hiểu thêm nhé!
+        </p>
+        <h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">A79 OPPO sở hữu chipset Dimensity thế hệ mới</strong>
+        </h3>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Ưu điểm nổi bật nhận được nhiều sự quan tâm của người dùng trên ' . $nameXiaomi . ' là sức mạnh xử lý mạnh mẽ với cấu hình đỉnh cao. Cụ thể, máy sẽ được trang bị bộ vi xử lý <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">MediaTek Dimensity 6020</strong>, <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">RAM 8 GB</strong> và bộ nhớ trong lên đến<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> 256 GB</strong>. Thông qua ưu điểm ấn tượng này, máy dễ dàng đem lại những trải nghiệm mượt mà và nhanh chóng cho người dùng trong những tác vụ thông thường.&nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://specificationsplus.com/wp-content/uploads/2022/08/Oppo-A18-Specifications-Plus.jpg" alt="A79 OPPO sở hữu hiệu năng vượt trội MediaTek Dimensity 602" loading="lazy" title="Điện thoại ' . $nameXiaomi . ' sở hữu hiệu năng vượt trội với chipset Dimensity thế hệ mới" width="810" height="456">
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Bên cạnh đó, điện thoại ' . $nameXiaomi . ' còn được ưu ái vận hành trên <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">nền hệ điều hành ColorOS</strong>&nbsp;dựa trên nền tảng <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Android</strong>. Qua đó, nó mang đến trải nghiệm sử dụng cực kỳ thú vị và mượt mà cho người dùng, cũng như sẵn sàng đối mặt với nhiều tác vụ đòi hỏi hiệu suất cao.
+        </p>
+        <h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Cụm camera ' . $nameXiaomi . ' sở hữu độ phẩn giải 50MP</strong>
+        </h3>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Về khả năng chụp ảnh, ghi hình, A79 5G cũng được đánh giá là không hề thua kém bất kỳ dòng máy nào cùng tầm giá hiện nay. Theo đó, máy sẽ được đi kèm với cụm camera sau kép sử dụng cảm biến chính <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">50MP</strong> và camera chân dung<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> 2MP</strong>, cung cấp chất lượng hình ảnh cực đỉnh.&nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://www.oppo.com/content/dam/oppo/product-asset-library/a/a98-5g/v1/assets/images-kv-mo-phones-1-100.png.webp" alt="Camera điện thoại ' . $nameXiaomi . ' trang bị nhiều tính năng tiện ích" loading="lazy" title="Camera điện thoại ' . $nameXiaomi . ' trang bị nhiều tính năng tiện ích" width="810" height="456">
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Ở phía mặt trước, ' . $nameXiaomi . ' sẽ được trang bị<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> camera selfie đơn 8MP</strong> và được tích hợp kèm các tính năng chụp ảnh hiện đại. Nhờ đó mà mọi bức hình selfie hay là cuộc gọi video trên dòng máy OPPO A này cũng đều sẽ được thể hiện với chất lượng cao, mang lại trải nghiệm nhiếp ảnh trên cả tuyệt vời.
+        </p>
+        <h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Thoải mái xử lý công việc, giải trí suốt ngày dài với dung lượng pin lớn</strong>
+        </h3>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            So với nhiều dòng máy OPPO A Series khác thì A79 OPPO dường như có sự nâng cấp về thời lượng sử dụng nhờ được trang bị viên<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> pin 5.000 mAh </strong>cùng chip xử lý tiết kiệm năng lượng. Nhờ đó, nó cung cấp khả năng sử dụng lâu dài, hỗ trợ mọi hoạt động hàng ngày cho người dùng mà không cần lo lắng về việc sạc pin thường xuyên.&nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cf.shopee.co.th/file/67095c6c07eb80e11cae1d5310d603b1" alt="Điện thoại ' . $nameXiaomi . ' có dung lượng pin lớn" loading="lazy" title="Điện thoại ' . $nameXiaomi . ' có dung lượng pin lớn" width="810" height="456">
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Chưa hết, máy còn sở hữu khả năng<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> sạc nhanh 33W</strong>, hỗ trợ nạp đầy pin chỉ trong thời gian ngắn. Qua đó, bạn sẽ có thể thoải mái làm việc, chơi game giải trí trên ' . $nameXiaomi . ' mà không lo bị gián đoạn trải nghiệm nữa rồi nhé!&nbsp;
+        </p>
+        <h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Chất lượng hình ảnh rõ nét và chân thực hơn trên tấm nền LCD hiện đại</strong>
+        </h3>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Bên cạnh những điểm nhấn ấn tượng về hiệu năng, camera và pin trên thì khả năng hiển thị của ' . $nameXiaomi . ' cũng được đánh giá cực kỳ cao. Cụ thể, máy sẽ sở hữu <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">màn hình LCD 6.72 inch</strong> với độ phân giải <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Full HD+</strong>. Tấm nền này sẽ đi kèm với tốc độ lấy mẫu cảm ứng <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">180Hz</strong> và tốc độ làm mới <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">90Hz</strong>, cung cấp một trải nghiệm mượt mà và hiển thị rõ ràng ở mọi tiêu chí sử dụng.
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://i.ytimg.com/vi/Gn3bNZajf2c/maxresdefault.jpg" alt="Màn hình điện thoại ' . $nameXiaomi . ' có chất lượng rõ nét" loading="lazy" title="Màn hình điện thoại ' . $nameXiaomi . ' có chất lượng rõ nét" width="810" height="456">
+        </p>
+        <h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Điện thoại ' . $nameXiaomi . ' khi nào ra mắt?</strong>
+        </h2>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Trong cuối tháng 10 năm 2023</strong>, điện thoại ' . $nameXiaomi . ' đã chính thức được ra mắt, tạo ra sự chú ý lớn trong ngành công nghiệp di động. Sự kiện này được đánh giá là một bước tiến quan trọng của OPPO, đưa sản phẩm hãng đến với người dùng với những cải tiến và tính năng mới đáng chú ý.&nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://www.techyloud.com/wp-content/uploads/2022/09/Oppo-A17-1024x640.jpg" alt="Điện thoại ' . $nameXiaomi . ' khi nào ra mắt" loading="lazy" title="Điện thoại ' . $nameXiaomi . ' khi nào ra mắt?" width="810" height="456">
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Với việc cung cấp các thông số kỹ thuật mạnh mẽ, ' . $nameXiaomi . ' hứa hẹn mang đến trải nghiệm hoàn hảo với màn hình lớn, camera tiên tiến và nhiều tính năng hấp dẫn khác. Sự ra mắt của ' . $nameXiaomi . ' đã thu hút sự quan tâm lớn từ người tiêu dùng và chắc chắn là một trong những sản phẩm được mong đợi trong thị trường di động thời gian tới đây.&nbsp;
+        </p>
+        <h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Điện thoại ' . $nameXiaomi . ' giá bao nhiêu?</strong>
+        </h2>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Điện thoại ' . $nameXiaomi . ' đã chính thức ra mắt tại thị trường Ấn Độ với hai tùy chọn màu sắc rất hấp dẫn, bao gồm Xanh phát sáng và Đen huyền bí. Máy hiện đang nằm trong tầm giá chỉ từ<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> 19,999 INR</strong>, tương đương với <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">khoảng 5.9 triệu đồng</strong> Việt Nam.&nbsp;
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cf.shopee.co.th/file/55a8d9a18de642e547899425d5a4bbeb" alt="Điện thoại ' . $nameXiaomi . ' giá bao nhiêu" loading="lazy" title="Điện thoại ' . $nameXiaomi . ' giá bao nhiêu" width="810" height="456">
+        </p>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Mức giá này của ' . $nameXiaomi . ' được đánh giá là khá hợp lý so với các tính năng mạnh mẽ và thiết kế thu hút của sản phẩm. Nó không chỉ đáp ứng được nhu cầu về hiệu suất mà còn mang đến sự lựa chọn về màu sắc phù hợp với sở thích cá nhân của người tiêu dùng.
+        </p>
+        <h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+            <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Mua ' . $nameXiaomi . ' chính hãng, giá hấp dẫn tại Cybermart</strong>
+        </h2>
+        <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+            Để mua sắm <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">điện thoại ' . $nameXiaomi . '</strong> chính hãng với mức giá thành hấp dẫn thì <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Cybermart</strong>là một trong những địa điểm đáng tin cậy mà bạn có thể xem xét. Với uy tín đã được thị trường công nhận, Cybermart cung cấp các sản phẩm chất lượng và dịch vụ hậu mãi tốt. Nơi đây cung cấp một loạt các sản phẩm điện thoại di động từ các nhãn hiệu hàng đầu, đảm bảo rằng bạn sẽ có cơ hội sở hữu chiếc điện thoại ' . $nameXiaomi . ' với giá cạnh tranh và chất lượng đảm bảo.&nbsp;Kết nối tới<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"> hotline 1800 2097</strong> của <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Cybermart </strong>để nhận ngay báo giá tốt và được hỗ trợ đặt mua dòng điện thoại OPPO mới này ngay bạn nhé!&nbsp;
+        </p>
+    </div>
+                        ',
+                'short_description' => '
+                        <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Oppo<br>
+                        ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
+                        ✔️Bảo hành chính hãng Oppo 12 tháng</p>',
+                'specifications' => '
+            <table id="tskt" class="table table-striped">
+    <tbody>
+    <tr>
+        <td>Hãng sản xuất</td>
+        <td> '. $nameXiaomi .'</td>
+    </tr>
+    <tr>
+        <td>Kích thước màn hình</td>
+        <td>6.7&nbsp;inches</td>
+    </tr>
+    <tr>
+        <td>Độ phân giải màn hình</td>
+        <td>2796&nbsp;x 1290&nbsp;pixels</td>
+    </tr>
+    <tr>
+        <td>Loại màn hình</td>
+        <td>OLED LPTS</td>
+    </tr>
+    <tr>
+        <td>Bộ nhớ trong</td>
+        <td>1TB</td>
+    </tr>
+    <tr>
+        <td>Chipset</td>
+        <td>'. $nameXiaomi .'</td>
+    </tr>
+    <tr>
+        <td>CPU</td>
+        <td>'. $nameXiaomi .'&nbsp;120Hz</td>
+    </tr>
+    <tr>
+        <td>GPU</td>
+        <td>Oppo GPU (5 lõi)</td>
+    </tr>
+    <tr>
+        <td>Kích thước</td>
+        <td>160.7 x 77.6 x 7.9 mm</td>
+    </tr>
+    <tr>
+        <td>Trọng lượng</td>
+        <td>240 g</td>
+    </tr>
+    <tr>
+        <td>Camera sau</td>
+        <td>Camera chính: 48MP<br>
+        Camera góc siêu rộng: 12MP<br>
+        Camera tele: 12MP</td>
+    </tr>
+    <tr>
+        <td>Camera trước</td>
+        <td>12 MP</td>
+    </tr>
+    <tr>
+        <td>Quay video</td>
+        <td>4K @24 fps, 25 fps, 30 fps, 60 fps<br>
+        1080p @25 fps, 30 fps, 60 fps<br>
+        720p @30 fps<br>
+        4K HDR @30 fps<br>
+        2.8K @ 60 fps<br>
+        HDR với Dolby Vision @60 fps<br>
+        ProRes 4K @30fps<br>
+        Chuyển động chậm 1080p @ 120fps, 240 fps</td>
+    </tr>
+    <tr>
+        <td>Pin</td>
+        <td>Li - Ion, Không thể thay thế</td>
+    </tr>
+    <tr>
+        <td>Cổng sạc</td>
+        <td>Lightning</td>
+    </tr>
+    <tr>
+        <td>Loại SIM</td>
+        <td>Nano SIM, eSIM</td>
+    </tr>
+    <tr>
+        <td>Hệ điều hành</td>
+        <td>iOS</td>
+    </tr>
+    <tr>
+        <td>Phiên bản hệ điều hành</td>
+        <td>iOS 16.2</td>
+    </tr>
+    <tr>
+        <td>Khe cắm thẻ nhớ</td>
+        <td>Không</td>
+    </tr>
+    <tr>
+        <td>3G</td>
+        <td>HSPA 42.2/5.76 Mbps, EV-DO Rev.A 3.1 Mbps</td>
+    </tr>
+    <tr>
+        <td>4G</td>
+        <td>LTE-A (4CA) Cat16 1024/150 Mbps</td>
+    </tr>
+    <tr>
+        <td>5G</td>
+        <td>mmWave, Sub-6 GHz</td>
+    </tr>
+    <tr>
+        <td>WLAN</td>
+        <td>Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot</td>
+    </tr>
+    <tr>
+        <td>Bluetooth</td>
+        <td>Bluetooth 5.3</td>
+    </tr>
+    <tr>
+        <td>GPS</td>
+        <td>A-GPS, GLONASS, GALILEO, QZSS</td>
+    </tr>
+    <tr>
+        <td>NFC</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Cảm biến</td>
+        <td>Cảm biến gia tốc, Cảm biến tiệm cận, Cảm biến ánh sáng, La bàn, Con quay hồi chuyển, Cảm biến áp kế</td>
+    </tr>
+    </tbody></table>
+                       ',
+                'product_type' => 'new',
+                'seo_title' => 'Đánh giá chi tiết điện thoại ' . $nameXiaomi . ': Thiết kế, hiệu năng, camera, pin',
+                'promotion' => $pro,
+                'seo_description' => 'Điện thoại ' . $nameXiaomi . ' là sản phẩm mới với màn hình lớn 6.72 inch, chip Dimensity 6020, RAM 8GB, camera sau 50MP, pin 5000mAh và hỗ trợ sạc nhanh 33W. Xem ngay đánh giá chi tiết về thiết kế, hiệu năng, camera và pin để chọn mua điện thoại phù hợp nhất với nhu cầu của bạn.',
+                'category_id' => 1,
+                'weight' => 0.5,
+                'sub_category_id' => 3,
+                'child_category_id' => rand(10, 16),
                 'created_at' => now(),
                 "status" => 1
 

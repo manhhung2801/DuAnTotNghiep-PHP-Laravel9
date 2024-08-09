@@ -13,7 +13,7 @@ class AddressController extends Controller
 
     public function index(){
 
-        $storeAddress = StoreAddress::where("status", "=",1)->orderBy("id","asc")->limit(1)->get();
+        $storeAddress = StoreAddress::where("status", "=",1)->orderBy("id","asc")->get();
         
         return view('frontend.address.index',compact('storeAddress'));
     }

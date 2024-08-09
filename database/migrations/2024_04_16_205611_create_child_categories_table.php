@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('sub_category_id');
             $table->string('name');
-            $table->string('image')->nullable();
+            $table->string('image',255)->nullable();
             $table->string('slug');
             $table->boolean('status');
             $table->softDeletes('deleted_at');
