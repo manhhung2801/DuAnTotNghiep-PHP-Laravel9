@@ -200,10 +200,9 @@
                             $('#pick_address_store').empty();
                             $.each(data.storeAdress, function(index, value) {
                                 $('#pick_address_store').append(`
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="store_address" id="store_address_${index}" value="${value}" checked>
-                                <label class="form-check-label lable_store_address" for="store_address_${index}">${value}</label>
-                            </div>
+
+                                <li class="form-check-label lable_store_address">${value}</li>
+                         
                         `);
                             });
                         } else {

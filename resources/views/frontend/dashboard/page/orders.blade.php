@@ -183,7 +183,6 @@
                                                     <p class="mb-1 text-dark"><strong>Vận chuyển:</strong>
                                                         @if ($order->shipping_method == 0)
                                                             <span class="small">Nhận tại cửa hàng</span>
-                                                            <p class="small">{{ $order->store_address ?? '' }}</p>
                                                         @elseif($order->shipping_method == 1)
                                                             <span class="small"><img
                                                                     src="https://cdn.haitrieu.com/wp-content/uploads/2022/05/Logo-GHTK-H.png"
