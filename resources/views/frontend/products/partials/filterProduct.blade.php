@@ -12,33 +12,33 @@
             </svg>
             Xếp theo
         </h3>
-        <ul style="margin-bottom: 0px;padding-left: 0px" class="sort-options p-0 d-flex align-items-center">
-            <li class="btn-quick-sort alpha-asc list-group-item p-0">
+        <ul style="margin-bottom: 0px;padding-left: 0px" class="sort-options mt-3">
+            <li class="btn-quick-sort alpha-asc list-group-item ">
                 <a href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'az'])) }}"
                     class="text-decoration-none">Tên
                     A-Z</a>
             </li>
-            <li class="btn-quick-sort alpha-asc list-group-item p-0">
+            <li class="btn-quick-sort alpha-asc list-group-item ">
                 <a class="text-decoration-none"
                     href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'za'])) }}">Tên
                     Z-A</a>
             </li>
-            <li class="btn-quick-sort price-asc list-group-item p-0">
+            <li class="btn-quick-sort price-asc list-group-item ">
                 <a class="text-decoration-none"
                     href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'price_low_high'])) }}">Giá
                     thấp đến cao</a>
             </li>
-            <li class="btn-quick-sort price-asc list-group-item p-0">
+            <li class="btn-quick-sort price-asc list-group-item ">
                 <a class="text-decoration-none"
                     href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'price_high_low'])) }}">Giá
                     cao xuống thấp</a>
             </li>
             <li class=" btn-quick-sort price-asc list-group-item ">
-                <div class="col-12 value-display position-relative flex-column">
+                <div class="col-12 value-display position-relative flex-column" style="margin-top: -16px;">
                     <div class="">
                         <span class="">
                             <a id="submitFindPrice" class="btn py-0 m-1"
-                                href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => floor($products->min('price'))])) }}">Lọc
+                                href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => floor($products->min('offer_price'))])) }}">Lọc
                                 giá</a>
                         </span>
                         <span>Từ <span id="minPrice">0</span><sup>đ</sup> đến </span>
@@ -51,9 +51,9 @@
                     </div>
                     <div class="">
                         <input type="range" class="form-range border border-secondary-subtle p-1 rounded-pill"
-                            id="customRange1" value="{{ floor($products->min('price')) }}"
-                            min="{{ empty(floor($products->min('price'))) ? 0 : floor($products->min('price')) }}"
-                            max="{{ floor($products->max('price') * 2) }}"
+                            id="customRange1" value="{{ floor($products->min('offer_price')) }}"
+                            min="{{ empty(floor($products->min('offer_price'))) ? 0 : floor($products->min('offer_price')) }}"
+                            max="{{ floor($products->max('offer_price') * 2) }}"
                         >
                     </div>
                 </div>
@@ -92,8 +92,8 @@
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    minPrice.textContent = formatNumber({{ empty(floor($products->min('price'))) ? 0 : floor($products->min('price')) }});
-    valueDisplay.textContent = formatNumber({{ floor($products->max('price') * 2) }});
+    minPrice.textContent = formatNumber({{ empty(floor($products->min('offer_price'))) ? 0 : floor($products->min('offer_price')) }});
+    valueDisplay.textContent = formatNumber({{ floor($products->max('offer_price') * 2) }});
 
     function getPriceWhereUrl() {
         if (currentURL.searchParams.get('sort')) {

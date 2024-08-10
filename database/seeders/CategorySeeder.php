@@ -16,13 +16,15 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $cagtegories = [
+            // id 1
             [
-                "name"=> "Điện thoại, Tablet",
-                "slug" => "dien-thoai-tablet",
+                "name"=> "Điện thoại",
+                "slug" => "dien-thoai",
                 "image" => "cate_dienthoai.webp",
                 "rank" => 1,
                 "status" => 1
             ],
+            // id 2
             [
                 "name"=> "Laptop",
                 "slug" => "laptop",
@@ -30,6 +32,7 @@ class CategorySeeder extends Seeder
                 "rank" => 2,
                 "status" => 1
             ],
+            // id 3
             [
                 "name"=> "Âm thanh",
                 "slug" => "am-thanh",
@@ -37,6 +40,7 @@ class CategorySeeder extends Seeder
                 "rank" => 3,
                 "status" => 1
             ],
+            // id 4
             [
                 "name"=> "Đồng Hồ",
                 "slug" => "dong-ho",
@@ -44,13 +48,15 @@ class CategorySeeder extends Seeder
                 "rank" => 4,
                 "status" => 1
             ],
+            // id 5
             [
-                "name"=> "Gia Dụng, Smarthome",
-                "slug" => "gia-dung-smarthome",
+                "name"=> "Gia Dụng",
+                "slug" => "gia-dung",
                 "image" => "cate_giadung.webp",
                 "rank" => 5,
                 "status" => 1
             ],
+             // id 6 
             [
                 "name"=> "Phụ Kiện",
                 "slug" => "phu-kien",
@@ -58,15 +64,15 @@ class CategorySeeder extends Seeder
                 "rank" => 6,
                 "status" => 1
             ],
-            // c
+            // id 7 
             [
-                "name"=> "PC, Màn Hình",
-                "slug" => "pc-man-hinh",
+                "name"=> "Màn Hình",
+                "slug" => "man-hinh",
                 "image" => "cate_pc.webp",
                 "rank" => 7,
                 "status" => 1
             ],
-            // c
+            // id 8 
             [
                 "name"=> "Tivi",
                 "slug" => "tivi",

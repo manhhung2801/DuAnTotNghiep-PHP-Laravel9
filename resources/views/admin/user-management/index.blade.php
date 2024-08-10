@@ -87,7 +87,7 @@
                                             <img src="{{ asset('uploads/' . $user->image) }}" alt="{{ $user->name }}"
                                                 style="width: 50px; height: 50px; object-fit: cover;">
                                         @else
-                                            <img src="{{ asset('uploads/avatar-user.jpeg') }}" alt="" width="50px"
+                                            <img src="{{ asset('uploads/avatar-user.jpeg') }}" alt="avt_user" width="50px"
                                                 height="50px">
                                         @endif
                                     </td>

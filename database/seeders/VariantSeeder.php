@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Product;
 use App\Models\Variant;
 
 class VariantSeeder extends Seeder
@@ -15,24 +16,25 @@ class VariantSeeder extends Seeder
      */
     public function run()
     {
-        for ($index = 1; $index < 50; $index++) {
-            Variant::create([
-                'product_id' => $index,
-                'name' => 'Variant A' . $index,
-                'status' => 'active'
-            ]);
-        }
+        $numberProductsId = Product::count();
+        for ($index = 1; $index <= $numberProductsId; $index++) {
+            if (Product::where('id', $index)->exists()) {
+                Variant::create([
+                    'product_id' => $index,
+                    'name' => 'color',
+                    'type' => 1,
+                    'status' => 1,
+                ]);
 
-        $existingVariant = Variant::where('product_id', 2)
-                            ->where('name', 'Variant C')
-                            ->first();
-
-        if (!$existingVariant) {
-            Variant::create([
-                'product_id' => 2,
-                'name' => 'Variant C',
-                'status' => 'inactive'
-            ]);
+                Variant::create([
+                    'product_id' => $index,
+                    'name' => 'ram',
+                    'type' => 0,
+                    'status' => 1,
+                ]);
+            } else {
+                error_log("Không tìm thấy sản phẩm với id = $index");
+            }
         }
     }
 }

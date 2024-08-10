@@ -12,7 +12,7 @@
                 </span>
                 <span class="radio__label__accessory">
                     <span class="content-box__emphasis price ">
-                        <i class="fas fa-money-bill-wave fs-4 mx-3" style="color: #74C0FC;"></i>
+                        <i class="fas fa-money-bill-wave fs-4 mx-3" style="color: #000;"></i>
                     </span>
                 </span>
             </label>
@@ -36,35 +36,6 @@
                 </span>
             </label>
         </div>
-
-{{--        <div class="collapse mt-2" id="collapseExample">--}}
-{{--            <div class="card card-body">--}}
-{{--                <div class="d-flex">--}}
-{{--                    <div class="col-3">--}}
-{{--                        <button class="border-0">--}}
-{{--                            <img class="border"--}}
-{{--                                src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805"--}}
-{{--                                alt="">--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-3">--}}
-{{--                        <button class="border-0">--}}
-{{--                            <img class="border"--}}
-{{--                                src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805"--}}
-{{--                                alt="">--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-3">--}}
-{{--                        <button class="border-0">--}}
-{{--                            <img class="border"--}}
-{{--                                src="https://bizweb.dktcdn.net/100/480/632/themes/900313/assets/payment_1.svg?1712897547805"--}}
-{{--                                alt="">--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
     </div>
 </div>
 

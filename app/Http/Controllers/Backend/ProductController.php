@@ -38,7 +38,7 @@ class ProductController extends Controller
         // tìm kiếm sản phẩm theo tên
         if (!empty(Request()->get('keyword'))) {
             $keyword = trim(Request()->get('keyword'));
-            $getProduct->where('name', 'like', '%' . $keyword . '%');
+            $getProduct->where('name', 'LIKE', '%' . $keyword . '%');
         }
 
         // lọc theo danh mục
@@ -84,15 +84,8 @@ class ProductController extends Controller
         $getProduct = $getProduct->paginate(15)->appends(request()->query());
         // appends(request()->query())  tự động thêm các tham số truy vấn hiện tại vào các liên kết phân trang
 
-        $list = Product::get();
-        // đường dẫn tới public json_file
-        $productsJson = $list->toJson();
-        $path = public_path("json/");
-        if (!is_dir($path)) {
-            mkdir($path, 0777, true);
-        }
-        File::put($path . 'products.json', $productsJson);
-        return view('admin.product.index', compact('getProduct', 'list', 'category'));
+
+        return view('admin.product.index', compact('getProduct', 'category'));
         // return view('admin.product.index', compact('getProduct'));
     }
 

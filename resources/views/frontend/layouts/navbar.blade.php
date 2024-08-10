@@ -8,7 +8,7 @@
 
                 <li class="nav-item nav_item_cate px-2">
                     <a class="nav-link text-white"
-                        href="{{ route('showPages', ['slug1' => 'gioi-thieu', 'slug2' => 'gioi-thieu']) }}">Giới
+                        href="{{ route('showPages', ['slug1' => 'gioi-thieu', 'slug2' => 'gioi-thieu-ve-CyberMart']) }}">Giới
                         thiệu</a>
                 </li>
                 <li class="nav-item nav_item_cate px-2 dropdown">
@@ -32,9 +32,9 @@
                                         <span class="float-end ms-5"><i class="fa-solid fa-chevron-right"></i></span>
                                     @endif
                                 </a>
-                                @if ($category->subCategories->count() > 0)
+                                @if ($category->subCategories->where('status', 1)->count() > 0)
                                     <ul class="bg-white dropdown-menu dropdown-submenu p-0">
-                                        @foreach ($category->subCategories as $subCategory)
+                                        @foreach ($category->subCategories->where('status', 1) as $subCategory)
                                             <li class="list-group-item">
                                                 <a class="dropdown-item py-2 item_child_nav"
                                                     href="{{ url('/san-pham/' . $category->slug . '/' . $subCategory->slug) }}">
@@ -70,14 +70,13 @@
                     </a>
                     <ul class="dropdown-menu mt-1 nav_sub_dropdown p-0">
                         @if (!empty(Auth::check()))
-                            <li><a class="dropdown-item py-2"
-                                    href="{{ route('dashboard') }}">Tài khoản của tôi</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('dashboard') }}">Tài khoản của tôi</a>
+                            </li>
                             <li>
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <a class="dropdown-item py-2"
-                                        href="{{ route('logout') }}"
+                                    <a class="dropdown-item py-2" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                     this.closest('form').submit();">Đăng
                                         xuất
@@ -85,10 +84,8 @@
                                 </form>
                             </li>
                         @else
-                            <li><a class="dropdown-item py-2"
-                                    href="{{ route('login') }}">Đăng nhập</a></li>
-                            <li><a class="dropdown-item py-2"
-                                    href="{{ route('register') }}">Đăng ký</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('login') }}">Đăng nhập</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('register') }}">Đăng ký</a></li>
                         @endif
 
                         <li><a class="dropdown-item py-2" href="{{ url('/order') }}">Đơn
@@ -102,8 +99,7 @@
 </nav>
 
 <style>
-
-.dropdown-item.item_nav_name {
+    .dropdown-item.item_nav_name {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -133,6 +129,7 @@
     .navbar-nav .dropdown-menu>li:hover>.dropdown-submenu {
         display: block;
     }
+
     @media (max-width: 991.98px) {
         .navbar-nav {
             justify-content: flex-start;

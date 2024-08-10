@@ -6,7 +6,6 @@ use App\Http\Controllers\Frontend\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Frontend\InformationController;
 use App\Http\Controllers\Frontend\AddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -16,6 +15,7 @@ use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\GHTKController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\CommentsController;
+use App\Http\Controllers\Frontend\PageController;
 use \App\Http\Controllers\VNPAYController;
 /*
 |--------------------------------------------------------------------------
@@ -33,11 +33,11 @@ use \App\Http\Controllers\VNPAYController;
 Route::get("/", [HomeController::class, 'index'])->name("home");
 /** Home */
 /** Addresss */
-Route::get('/address', [AddressController::class, 'index'])->name('address');
+Route::get('/dia-chi', [AddressController::class, 'index'])->name('address');
 /** End Addresss */
 
-Route::get('/lien-he', [ContactController::class,'index'])->name('contact');
-Route::post('/lien-he/gui', [ContactController::class,'contact'])->name('contactContact');
+Route::get('/lien-he', [ContactController::class, 'index'])->name('contact');
+Route::post('/lien-he/gui', [ContactController::class, 'contact'])->name('contactContact');
 
 
 
@@ -92,20 +92,29 @@ Route::resource('order', OrderController::class)->middleware('checkLogin');
 
 
 /** các trang thông tin */
-Route::get('information/{slug1?}/{slug2?}', [InformationController::class, 'showPages'])->name("showPages");
+Route::get('trang/{slug1?}/{slug2?}', [PageController::class, 'showPages'])->name("showPages");
 
 /** trang search  */
 
-Route::get("/search", [ProductController::class, 'search'])->name("search");
+Route::get('/search', [ProductController::class, 'search'])->name('search');
+
+
+// web.phpq
+// web.php
 
 Route::fallback(function () {
     return view("404");
 });
 
-Route::get("/search", [ProductController::class,'search'])->name("search");
 
-/** Tính phí ship (calculateShipping) */
+
+/** GHTK*/
+/**  Tính phí ship (calculateShipping)  */
 Route::get("/calculateShipping", [GHTKController::class, 'calculateShipping'])->name('calculateShipping');
+/**Kiểm tra đơn hàng */
+Route::get('/statusOrder/{tracking_id?}', [GHTKController::class, 'statusOrder'])->name('statusOrder');
+/** Hủy đơn hàng */
+Route::post('/ghtk-cancel-order/{tracking_id}', [GHTKController::class, 'cancelOrder'])->name('ghtk.cancel-order');
 
 
 /** VNPAY */
@@ -113,11 +122,10 @@ Route::get('vnpay-return', [VNPAYController::class, 'vnpay_return']);
 
 Route::post('retry-payment', [VNPAYController::class, 'retry_payment'])->name("retry-payment");
 
-Route::get('/thankyou', function() {
+Route::get('/thankyou', function () {
     return view('frontend.thankyou.index');
 })->name('thankyou');
 
 // Comment sản phẩm
 Route::get('/comments/{id}', [CommentsController::class, 'getComments'])->name("commentProductId");
 Route::post('/comment-post', [CommentsController::class, 'commentPost'])->name("commentPost");
-

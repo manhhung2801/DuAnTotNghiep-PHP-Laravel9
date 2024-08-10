@@ -84,6 +84,8 @@ class OrderController extends Controller
             } else {
                 return view('404');
             }
+        }else {
+            $getOrders->orderBy('created_at', 'desc');
         }
 
         // Lấy kết quả và phân trang
@@ -161,6 +163,7 @@ class OrderController extends Controller
             $admin_note = $order->admin_note;
             return response()->json(['status' => true, 'message' => 'Cập nhập thành công', 'adminNote' => $admin_note]);
         }
+        return response()->json(['status' => false, 'message' => 'Cập nhập thất bại!' . $request->orderStatus]);
     }
 
     /**

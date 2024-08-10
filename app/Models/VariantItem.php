@@ -4,21 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class VariantItem extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $table = 'variant_items';
     public $primaryKey = 'id';
     protected $fillable = [
-        'id',
         'product_variant_id',
         'name',
         'price',
         'is_default',
         'status',
+        'created_at', 'updated_at'
     ];
 
     protected $casts = [

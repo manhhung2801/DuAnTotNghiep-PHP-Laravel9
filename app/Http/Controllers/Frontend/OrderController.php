@@ -19,7 +19,7 @@ class OrderController extends Controller
     public function index()
     {
         $idUser = \Auth::user()->id;
-        $getOrders = Order::getOrderUser($idUser)->paginate(10);
+        $getOrders = Order::getOrderUser($idUser)->orderBy('created_at', 'desc')->paginate(10);
         return view('frontend.dashboard.page.orders', compact('getOrders'));
     }
 
@@ -53,9 +53,9 @@ class OrderController extends Controller
     public function show($id)
     {
         $getOrderDetail = OrderDetail::where('order_id', '=', $id)->get();
-        $orderDetail = Order::getOrder($id);
-        $getCoupon = Coupons::where('code', $orderDetail->coupon)->first();
-        return view('frontend.dashboard.page.order-detail', compact('getOrderDetail', 'orderDetail', 'getCoupon'));
+        $getOrder = Order::getOrder($id);
+        $getCoupon = Coupons::where('code', $getOrder->coupon)->first();
+        return view('frontend.dashboard.page.order-detail', compact('getOrderDetail', 'getOrder', 'getCoupon'));
     }
 
     /**

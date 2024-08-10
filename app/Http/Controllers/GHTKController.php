@@ -32,10 +32,10 @@ class GHTKController extends Controller
                 "pick_address" => $getStore->address ?? '',
                 "province" => $request->province,
                 "district" => $request->district,
-                "ward" =>  $request->wards,
+                "ward" =>  $request->ward,
                 "address" => $request->adress,
                 "transport" => "road",
-                "weight" => $weight,
+                "weight" => $weight* 1000,
                 "value" => 1000,
                 "deliver_option" => "none",
                 "tags" => [1]
@@ -55,7 +55,7 @@ class GHTKController extends Controller
 
             // Chuyển json thành mảng
             $jsonData = json_decode($response);
-            $shipMoney = $jsonData->fee->options->shipMoney;
+            $shipMoney = $jsonData->fee->fee;
             return response()->json(['status' => true, 'shipMoney' => $shipMoney]);
         } catch (\Exception $e) {
             return response()->json(['status' => false, 'Đã xảy ra lỗi' . $e]);
@@ -88,6 +88,10 @@ class GHTKController extends Controller
                 ];
                 $products[] = $product;
             }
+            
+            //Kiểm tra đã đã thanh toán thì cod = 0
+            $pick_money = $getOrder->payment_status == 1 ? 0 : $getOrder->total;
+
             //Dữ liệu gửi lên API
             $order = [
                 "products" => $products,
@@ -107,7 +111,7 @@ class GHTKController extends Controller
                     "ward" => $orderAddress->ward,
                     "hamlet" => "Khác",
                     "is_freeship" => 1,
-                    "pick_money" => $getOrder->total,
+                    "pick_money" => $pick_money,
                     "transport" => "road",
                     "value" => 1000,
                     "tags" => [1]
@@ -154,7 +158,7 @@ class GHTKController extends Controller
             if ($checkOrder) {
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
-                    CURLOPT_URL => "https://services-staging.ghtklab.com/services/shipment/cancel/".$tracking_id,
+                    CURLOPT_URL => "https://services-staging.ghtklab.com/services/shipment/cancel/" . $tracking_id,
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_CUSTOMREQUEST => "POST",
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
@@ -176,6 +180,38 @@ class GHTKController extends Controller
             return response(['status' => false, 'message' => "Đơn hàng không tồn tại"]);
         } catch (Exception $e) {
             return response(['status' => false, 'Đã xảy ra lỗi' . $e]);
+        }
+    }
+
+    public function statusOrder($tracking_id)
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://services-staging.ghtklab.com/services/shipment/v2/" . $tracking_id,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_HTTPHEADER => array(
+                "Token: fb71dfceab53db26cb2406e24025261368caca75",
+            ),
+        ));
+
+        $response = json_decode(curl_exec($curl));
+        curl_close($curl);
+        if($response->success == true) {
+            //Update trạng thái vào database
+            $order = Order::where('tracking_id', $tracking_id)->first();
+            $order->order_status = $response->order->status;
+            $order->save();
+            //Khắc phục lỗi GHTK trả về text đã tiếp nhận
+            $status_text = $response->order->status != -1 ? $response->order->status_text : 'Đơn hàng đã hủy';
+            return response()->json([
+                'status' => true, 
+                'status_text' => $status_text,
+                'modified' => $response->order->modified,
+                'deliver_date' => $response->order->deliver_date,
+            ]);
+        }else {
+            return response('Xảy ra lỗi vui lòng thử lại sau!');
         }
     }
 }

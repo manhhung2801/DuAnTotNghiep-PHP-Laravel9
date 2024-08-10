@@ -18,31 +18,75 @@
                 <ul class="navbar-nav me-auto mb-lg-0">
                     <li class="nav-item ms-5">
                         <style>
-                            ul#result {
+                            #search-result {
                                 position: absolute;
                                 z-index: 9999;
                                 background: #1b2d3c;
-                                width: 27.5%;
+                                width: 420px;
+                                top: 55px;
+                                box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
+                            }
 
+                            .autocomplete-item {
+                                display: flex;
+                                align-items: center;
+                                padding: 10px;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                            }
+
+                            .autocomplete-item img {
+                                width: 30px;
+                                height: 30px;
+                                margin-right: 10px;
+                                flex-shrink: 0;
+                            }
+
+                            .autocomplete-item div {
+                                overflow: hidden;
+                            }
+
+                            .autocomplete-item:hover {
+                                background-color: #f0f0f0;
+                            }
+
+                            .header-search .header-search-wrapper.show {
+                                display: flex;
+                                width: 410px;
+                            }
+
+                            .viewed {
+                                background: #f5f5f5;
+                                font-size: 13px;
+                                color: #666;
+                                padding: 5px;
                             }
                         </style>
                         <div class="d-flex mt-1">
                             <form action="{{ route('search') }}" method="GET" class="d-flex">
-                                <input class="form-control text-secondary text-opacity-50 input-search me-2"
-                                    id="timkiem" type="text" placeholder="Tìm Sản Phẩm..." name="search">
-                                <button class="btn" style="margin-left: -50px" type="submit"><i
-                                        class="fa-light fa-magnifying-glass fa-lg text-secondary text-opacity-75"></i></button>
+                                <input type="text"
+                                    class="form-control text-secondary text-opacity-50 input-search me-2"
+                                    id="product-search" placeholder="Tìm kiếm sản phẩm..." required name="query">
+                                <button class="btn" style="margin-left: -50px" type="submit">
+                                    <i class="fa-light fa-magnifying-glass fa-lg text-secondary text-opacity-75"></i>
+                                </button>
                             </form>
                         </div>
-
-                        <ul class="list-group  " id="result" style="display:none "></ul>
+                        <div id="search-result">
+                            <ul class="list-group list-group-flush " id="result">
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item ms-5 shadow bg-body bg-secondary bg-opacity-25 rounded-1" style="height: 50px;">
-                        <p class="float-start pb-5 px-1">
-                            <i class="float-start fa-light fa-location-dot fa-2xl mt-4" style="color: #ffffff;"></i>
-                            <span class="text-white ps-2 pt-1 fs-navbar-1">Hệ thống cửa hàng</span><br />
-                            <span class="text-white ps-2 fs-navbar-2 fs-navbar-2">7 cửa hàng</span>
-                        </p>
+                        <a href="{{route('address')}}">
+                            <p class="float-start pb-5 px-1">
+                                <i class="float-start fa-light fa-location-dot fa-2xl mt-4" style="color: #ffffff;"></i>
+                                <span class="text-white ps-2 pt-1 fs-navbar-1">Hệ thống cửa hàng</span><br />
+                                <span class="text-white ps-2 fs-navbar-2 fs-navbar-2">{{ $countAddress }} cửa
+                                    hàng</span>
+                            </p>
+                        </a>
                     </li>
                     <li class="nav-item ms-3" style="height: 50px;">
                         <p class="float-start pb-5 px-1">
@@ -104,4 +148,5 @@
     </nav>
     <hr class="m-0 text-white hr-line">
     @include('frontend.layouts.navbar')
+
 </header>

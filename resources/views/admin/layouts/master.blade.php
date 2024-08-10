@@ -48,7 +48,7 @@
             console.log(deleteUrl);
             Swal.fire({
                 title: "Bạn có chắc không?",
-                text: "You won't be able to revert this!",
+                text: "Bạn sẽ không thể hoàn nguyên điều này!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -63,7 +63,7 @@
                         success: function(data) {
                             if (data.status == 'success') {
                                 Swal.fire(
-                                    "Deleted!",
+                                    "Xoá!",
                                     data.message,
                                     'success'
                                 );
@@ -95,13 +95,13 @@
             // $(this) là thẻ con td closest('tr') có nhiệm vụ lấy thẻ cha gần nhất điều kiện là thẻ tr
             let row = $(this).closest('tr');
             Swal.fire({
-                title: "Are you sure?",
-                text: "Do you want to restore?",
+                title: "Bạn có chắc không?",
+                text: "Bạn sẽ không thể hoàn nguyên điều này!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, Resore it!"
+                confirmButtonText: "Có xoá nó đi!"
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
@@ -110,14 +110,14 @@
                         success: function(data) {
                             if (data.status == 'success') {
                                 Swal.fire(
-                                    "Restored success!",
+                                    "Khôi phục thành công!",
                                     data.message,
                                     'success'
                                 );
                                 row.remove();
                             } else if (data.status == 'error') {
                                 Swal.fire(
-                                    "Can't Delete",
+                                    "Không thể xóa",
                                     data.message,
                                     'error'
                                 );

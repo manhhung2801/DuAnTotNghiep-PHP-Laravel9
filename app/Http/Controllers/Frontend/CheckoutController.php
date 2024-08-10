@@ -29,7 +29,8 @@ class CheckoutController extends Controller
         // Update giá khi có sự thay đổi giá
         foreach ($getCart as $cart) {
             $getProduct = Product::findOrFail($cart->id);
-            $productPrice = $getProduct->offer_price ?? $getProduct->price;
+            //Kiem tra update gia
+            $productPrice = Helper::getProductPrice($getProduct);
             if ($cart->price != $productPrice) {
                 \Cart::update($cart->id, [
                     'price' => $productPrice,
@@ -92,7 +93,6 @@ class CheckoutController extends Controller
                 $order->order_email = trim($request->email);
                 $order->order_address = json_encode($order_address);
                 $order->ship_money = $request->input('shipping_money') ?? 0;
-                $order->store_address = $request->store_address ?? '';
                 $order->total = $total;
                 $order->qty_total = \Cart::getTotalQuantity();
                 // thanh toán
@@ -134,7 +134,14 @@ class CheckoutController extends Controller
 
     function applyCouponCode(Request $request)
     {
+        $userId = \Auth::id();
         $coupon_code = $request->coupon_code;
+
+        //Check lượt sử dụng
+        $checkMaxUse = Order::where('user_id', $userId)->where('coupon', $coupon_code)->exists();
+        if($checkMaxUse) {
+            return response()->json(['status' => false, 'message' => 'Bạn đã sử dụng hết lượt mã giảm giá này!']);
+        }
 
         Session::forget('coupon_code');
         Session::forget('discount_amount');
@@ -175,7 +182,7 @@ class CheckoutController extends Controller
 
             //Kiểm tra ngày đã đến ngày chưa hay đã hết hạn
             if ($couponCode->end_date <= $currentDate || $couponCode->start_date >= $currentDate) {
-                return 1;
+                return 0;
             }
             // // kiểm tra số lượng
             if ($couponCode->quantity <= 0) {

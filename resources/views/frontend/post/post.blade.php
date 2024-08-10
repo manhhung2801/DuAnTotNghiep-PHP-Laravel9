@@ -1,5 +1,9 @@
 @extends('frontend.layouts.master')
-@section('title', 'Bài viết')
+@section('title', $newsdetai->seo_title ?? $newsdetai->title)
+@section('description', $newsdetai->seo_description ?? $newsdetai->description)
+@section('schema')
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"{{ url('/') }}/#website","url":"{{ url('/') }}","name":"{{ config('app.name') ?? 'Cybermart' }}","alternateName":"CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop.","publisher":{"@id":"{{ url('/') }}/#organization"},"inLanguage":"vi"},{"@type":"ImageObject","@id":"{{ asset('uploads/logo/cybermart7x4.png') }}","url":"{{ asset('uploads/logo/cybermart7x4.png') }}","width":"700","height":"400","caption":"CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop.","inLanguage":"vi"},{"@type":"BreadcrumbList","@id":"{{ url('/') }}/tin-tuc/{{ $newsdetai->Post_categories->slug}}/{{ $newsdetai->slug }}/#breadcrumb","itemListElement":[{"@type":"ListItem","position":"1","item":{"@id":"{{ url('/') }}","name":"Trang chủ"}},{"@type":"ListItem","position":"2","item":{"@id":"{{ url('/') }}/tin-tuc","name":"Tin tức"}},{"@type":"ListItem","position":"3","item":{"@id":"{{ url('/') }}/tin-tuc/{{ $newsdetai->Post_categories->slug}}","name":"{{ $newsdetai->Post_categories->name}}"}},{"@type":"ListItem","position":"4","item":{"@id":"{{ url('/') }}/tin-tuc/{{ $newsdetai->Post_categories->slug}}/{{ $newsdetai->slug }}","name":"{{ $newsdetai->title }}"}}]},{"@type":"WebPage","@id":"{{ url('/') }}/tin-tuc/{{ $newsdetai->Post_categories->slug}}/{{ $newsdetai->slug }}/#webpage","url":"{{ url('/') }}/tin-tuc/{{ $newsdetai->Post_categories->slug}}/{{ $newsdetai->slug }}","name":"Tin tức mới nhất về Thương Mại Điện Tử CyberMart cập nhật những thông tin bổ ích!","datePublished":"{{ $newsdetai->created_at ?? '' }}","dateModified":"{{ $newsdetai->updated_at ?? '' }}","isPartOf":{"@id":"{{ url('/') }}/#website"},"primaryImageOfPage":{"@id":"{{ asset('uploads/post/'. $newsdetai->image) }}"},"inLanguage":"vi","breadcrumb":{"@id":"{{ url('/') }}/tin-tuc/{{ $newsdetai->Post_categories->slug}}/{{ $newsdetai->slug }}/#breadcrumb"}},{"@type":"Article","headline":"{{ $newsdetai->title }}","datePublished":"{{ $newsdetai->created_at ?? '' }}","dateModified":"{{ $newsdetai->updated_at ?? '' }}","publisher":{"@id":"{{ url('/') }}/#organization"},"description":"{{ $newsdetai->seo_description ?? $newsdetai->description }}","name":"{{ $newsdetai->title }}","@id":"{{ url('/') }}/tin-tuc/{{ $newsdetai->Post_categories->slug}}/{{ $newsdetai->slug }}/#richSnippet","isPartOf":{"@id":"{{ url('/') }}/tin-tuc/{{ $newsdetai->Post_categories->slug}}/{{ $newsdetai->slug }}/#webpage"},"image":"{{ asset('uploads/post/'. $newsdetai->image) }}","inLanguage":"vi","mainEntityOfPage":{"@id":"{{url('/')}}/tin-tuc/{{ $newsdetai->Post_categories->slug}}/{{ $newsdetai->slug }}/#webpage"}},{"@type":"Organization","@id":"{{ url('/') }}/#organization","name":"Cybermart","url":"{{ url('/') }}","logo":{"@type":"ImageObject","@id":"{{ asset('uploads/logo/cybermart7x4.png') }}","url":"{{ asset('uploads/logo/cybermart7x4.png') }}","width":"700","height":"400","caption":"Logo của CyberMart"}}]}</script>
+@endsection
 
 @section('content')
     <style>
@@ -21,7 +25,7 @@
             <div class="container ">
                 <ul class="breadcrumb d-flex ">
                     <li class="home">
-                        <a href="#" title="Trang chủ"><span>Trang chủ</span></a>
+                        <a href="/" title="Trang chủ"><span>Trang chủ</span></a>
                         <span class="mr_lr mx-2"><i class="fas fa-angle-right"></i></span>
                         <span> {{ $newsdetai->Post_categories->name }}</span>
                         <span class="mr_lr"><i class="fas fa-angle-right"></i></span>
@@ -34,13 +38,13 @@
         </section>
         <section class="blogpage">
             <div class="container layout-article">
+                <h1 class="d-none">Tin tức công nghệ từ hệ thống cybermart lớn nhất Việt Nam</h1>
                 <div class="bg_blog">
                     <article class="article-main">
                         <div class="row d-flex">
                             <div class="right-content col-lg-12 col-12">
                                 <div class="article-details clearfix">
-                                    <p class="article-title fs-3" style="text-align: center; "><b
-                                            style="font-size: 27px;">{{ $newsdetai->title }}</b></p>
+                                    <h2 style="font-size: 27px;" class="text-center">{{ $newsdetai->title }}</h2>
                                     <div class="posts d-flex mb-3">
                                         <div class="time-post ">
                                             <i class="fa-regular fa-clock"></i>
@@ -102,7 +106,6 @@
                                         </div>
                                     </div>
                                 @endif
-
                             </div>
                             <div class="blog_left_base col-lg-3 col-12 ">
                                 <div class="side-right-stick ">

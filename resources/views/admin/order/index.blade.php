@@ -46,7 +46,7 @@
                     <table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>Mã ĐH</th>
                                 <th>Thông tin khách hàng</th>
                                 <th>Tổng tiền</th>
                                 <th>Phương thức thanh toán</th>
@@ -60,7 +60,8 @@
                         <tbody>
                             @forelse ($getOrders as $order)
                                 <tr>
-                                    <td>#{{ $order->id }}</td>
+                                    <td>{{ $order->order_code }}</td>
+
                                     <td>
                                         <div class="info_customer_order">
                                             <div class="order_name">
@@ -79,7 +80,13 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td><strong>{{ number_format($order->total) }} VNĐ</strong></td>
+
+                                    <td>
+                                        <strong>{{ number_format($order->total) }} VNĐ</strong>
+                                        @if ($order->ship_money != null)
+                                            <p>+ {{ number_format($order->ship_money) }} VNĐ</p>
+                                        @endif
+                                    </td>
 
                                     {{-- Phương thức thanh toán --}}
                                     <td>
@@ -88,7 +95,7 @@
                                         @endif
 
                                         @if ($order->payment_method == 1 && $order->payment_status == 0)
-                                            <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}" alt=""
+                                            <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}" alt="cybermart"
                                                     width="60px" height="13px"></p>
                                             <p class="m-0 badge text-bg-danger"><em>Chưa thanh toán</em></p>
                                         @elseif($order->payment_method == 1 && $order->payment_status == 1)
@@ -98,7 +105,7 @@
                                                         $order->vnp_refund_status == 'Processing' ||
                                                         $order->vnp_refund_status == 'Refund_Failed')
                                                     <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}"
-                                                            alt="" width="60px" height="13px"></p>
+                                                            alt="cybermart" width="60px" height="13px"></p>
                                                     <span id="{{ $order->id }}">
                                                         <p class="m-0 badge text-bg-success"><em
                                                                 style="text-decoration: line-through #dc3545; text-decoration-thickness: 2px;">Đã
@@ -106,11 +113,11 @@
                                                     </span>
                                                 @elseif($order->vnp_refund_status == 'Refunded')
                                                     <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}"
-                                                            alt="" width="60px" height="13px"></p>
+                                                            alt="cybermart" width="60px" height="13px"></p>
                                                 @endif
                                             @else
                                                 <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}"
-                                                        alt="" width="60px" height="13px"></p>
+                                                        alt="cybermart" width="60px" height="13px"></p>
                                                 <p class="m-0 badge text-bg-success"><em>Đã thanh toán</em></p>
                                             @endif
 
@@ -144,7 +151,7 @@
                                                 </div>
                                             @endif
                                         @elseif($order->payment_method == 1 && $order->payment_status == 2)
-                                            <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}" alt=""
+                                            <p class="mb-1"><img src="{{ asset('uploads/vnpay.png') }}" alt="cybermart"
                                                     width="60px" height="13px"></p>
                                             <p class="m-0 badge text-bg-warning"><em>Thanh toán thất bại / lỗi</em></p>
                                         @endif
@@ -163,10 +170,13 @@
                                     </td>
 
                                     {{-- Trạng thái đơn hàng --}}
-                                    <td>
+                                    <td id="container_statusOrder">
+                                        @php
+                                            $arr_success = [92, 6, 5, 45];
+                                        @endphp
                                         @if ($order->order_status == -1)
                                             <p class="p-2 badge text-bg-danger">Đã hủy</p>
-                                        @elseif($order->order_status == 92 || $order->order_status == 6 || $order->order_status == 5)
+                                        @elseif(in_array($order->order_status, $arr_success))
                                             <p class="p-2 badge text-bg-success">Đã hoàn thành</p>
                                         @else
                                             @if ($order->shipping_method == 0)
@@ -187,19 +197,30 @@
                                                 </select>
                                             @else
                                                 @if ($order->order_status == 0)
-                                                    <a id="accept_ghtk"
-                                                        data-url="{{ route('admin.ghtk.post-order', $order->id) }}"
-                                                        class="btn btn-outline-primary px-4 py-1 my-1">Xác nhận</a>
-                                                    <a id="change-status-order"
-                                                        data-url="{{ route('admin.order.update', $order->id) }}"
-                                                        data-val="-1" class="btn btn-outline-danger px-2 py-1">Hủy</a>
+                                                    @if ($order->payment_method == 1)
+                                                        <a id="accept_ghtk"
+                                                            data-url="{{ route('admin.ghtk.post-order', $order->id) }}"
+                                                            class="btn btn-outline-primary px-4 py-1 my-1{{ $order->vnp_transaction_id == null ? ' disabled' : '' }}">Xác
+                                                            nhận</a>
+                                                        @if ($order->vnp_transaction_id == null)
+                                                            <a id="status-order-cancel"
+                                                                data-url="{{ route('admin.order.update', $order->id) }}"
+                                                                data-val="-1"
+                                                                class="btn btn-outline-danger px-2 py-1">Hủy</a> <br>
+                                                                <em class="text-danger">Đơn hàng chưa thanh toán</em>
+                                                        @endif
+                                                    @else
+                                                        <a id="accept_ghtk"
+                                                            data-url="{{ route('admin.ghtk.post-order', $order->id) }}"
+                                                            class="btn btn-outline-primary px-4 py-1 my-1">Xác nhận</a>
+                                                            <a id="status-order-cancel"
+                                                                data-url="{{ route('admin.order.update', $order->id) }}"
+                                                                data-val="-1"
+                                                                class="btn btn-outline-danger px-2 py-1">Hủy</a>
+                                                    @endif
+
                                                 @else
                                                     <p class="p-2 badge text-bg-primary">Đã chuyển đơn cho GHTK</p>
-                                                @endif
-                                                @if ($order->order_status == 1 || $order->order_status == 2)
-                                                    <a id="cancel_ghtk"
-                                                        data-url="{{ route('admin.ghtk.cancel-order', $order->tracking_id) }}"
-                                                        class="btn btn-outline-danger px-2 py-1">Hủy</a>
                                                 @endif
                                             @endif
                                         @endif
@@ -257,7 +278,17 @@
 @push('scripts')
     <script>
         $(document).ready(() => {
-            //
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
             $('body').off('change', '#vnp_refund_status').on('change', '#vnp_refund_status', function() {
                 var order_id = $(this).attr('data-orderid');
                 var vnp_refund_status = $(this).val();
@@ -362,10 +393,7 @@
                 })
             });
 
-            $('body').off('click', '#change-status-order').on('click', '#change-status-order', function() {
-                var orderStatus = $(this).attr('data-val');
-                var url = $(this).attr('data-url')
-                console.log(url);
+            function changeStatus(url, orderStatus) {
                 $.ajax({
                     type: 'PATCH',
                     url: url,
@@ -374,19 +402,13 @@
                     },
                     success: function(data) {
                         if (data.status == true) {
-                            const Toast = Swal.mixin({
-                                toast: true,
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 1000,
-                                timerProgressBar: true,
-                                didOpen: (toast) => {
-                                    toast.onmouseenter = Swal.stopTimer;
-                                    toast.onmouseleave = Swal.resumeTimer;
-                                }
-                            });
                             Toast.fire({
                                 icon: "success",
+                                title: data.message
+                            });
+                        } else {
+                            Toast.fire({
+                                icon: "error",
                                 title: data.message
                             });
                         }
@@ -395,7 +417,19 @@
                         console.log(error);
                     }
                 })
+            }
+            $('body').off('change', '#change-status-order').on('change', '#change-status-order', function() {
+                var orderStatus = $('#change-status-order').val();
+                var url = $(this).attr('data-url')
+                changeStatus(url, orderStatus)
             })
+
+            $('body').off('click', '#status-order-cancel').on('click', '#status-order-cancel', function() {
+                var orderStatus = $(this).attr('data-val');
+                var url = $(this).attr('data-url')
+                changeStatus(url, orderStatus)
+            })
+
             $('body').off('click', '.change-admin-note').on('click', '.change-admin-note', function() {
                 var container = $(this).closest('td')
                 var adminNote = container.find('#admin_note__input').val()
@@ -417,6 +451,7 @@
             })
             $('body').off('click', '#accept_ghtk').on('click', '#accept_ghtk', function() {
                 var url = $(this).attr('data-url');
+                var container_status = $(this).closest('tr').find('#container_statusOrder')
                 Swal.fire({
                         title: "Bạn có chắc chắn?",
                         text: "Thực hiện chuyển đơn hàng cho ĐVVC!",
@@ -458,6 +493,10 @@
                                         `,
                                                 icon: "success"
                                             });
+                                            container_status.empty();
+                                            container_status.append(`
+                                            <p class="p-2 badge text-bg-primary">Đã chuyển đơn cho GHTK</p>
+                                            `)
                                         }
                                         //Đơn hàng lỗi
                                         if (res.status == false) {
@@ -479,59 +518,6 @@
                             })
                         }
                     });
-            })
-            $('body').off('click', '#cancel_ghtk').on('click', '#cancel_ghtk', function() {
-                Swal.fire({
-                    title: "Bạn có chắc chắn hủy?",
-                    text: "Thực hiện lệnh hủy đơn hàng đến ĐVVC!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Đồng ý",
-                    cancelButtonText: "Hủy",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Vui lòng chờ...',
-                            html: 'Đang xử lý...',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            didOpen: () => {
-                                Swal.showLoading()
-                            }
-                        });
-                        $.ajax({
-                            type: 'post',
-                            url: $(this).attr('data-url'),
-                            success: function(res) {
-                                console.log(res);
-                                if (res.success == true) {
-                                    Swal.fire({
-                                        title: "Yêu cầu thành công!",
-                                        text: res.message,
-                                        icon: "success"
-                                    });
-                                }
-                                //Hủy thất bại
-                                if (res.success == false) {
-                                    Swal.fire({
-                                        title: "Yêu cầu thất bại!",
-                                        text: res.message + '. Mã lỗi: ' + res
-                                            .error_code + '. Log: ' + res
-                                            .log_id,
-                                        icon: "error"
-                                    });
-                                }
-                            },
-                            error: function(xhr, status, error) {
-                                Swal.close()
-                                const response = JSON.parse(xhr.responseText);
-                                alert("Lỗi: " + response.message);
-                            }
-                        })
-                    }
-                });
             })
         })
     </script>

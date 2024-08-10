@@ -9,32 +9,40 @@ class Helper
     public static function CouponsPrice($offer_start_date, $offer_end_date,  $price,  $offer_price)
     {
         $now = Carbon::now();
-        $formattedDate = $now->format('Y-m-d');
-        if ($offer_start_date >= $formattedDate && ($offer_end_date >= $formattedDate || empty($offer_end_date))) {
-            echo  '<div class="price-box"><span class="price ">' . number_format($offer_price, 0, '.', '.') . '<i
-                class="fa-solid fa-dong-sign"></i></span></div>';
-            echo ' <div class="price-box mx-1">
-                                <span class="compare-price ">' . number_format($price, 0, '.', '.') . '<i
-                                        class="fa-regular fa-dong-sign"></i></span>
-                            </div>';
+
+
+        $startCarbon = Carbon::parse($offer_start_date);
+        $endCarbon = Carbon::parse($offer_end_date);
+        $price_new = 0;
+        $price_old = 0;
+
+        if ($now->between($startCarbon, $endCarbon)) {
+            $price_new = number_format($price, 0, '.', '.');
+            $price_old = number_format($offer_price, 0, '.', '.');
         } else {
-            echo     ' <div class="price-box"><span class="price ">' . number_format($price, 0, '.', '.') . '<i
-                                        class="fa-regular fa-dong-sign"></i></span>
-                            </div>';
+            $price_new = number_format($price, 0, '.', '.');
         }
+        return ['price_new' => $price_new, 'price_old' => $price_old];
     }
-    public static function sale($offer_start_date, $offer_end_date,  $price,  $offer_price)
+
+
+
+
+    public static function discount($offer_start_date, $offer_end_date,  $price,  $offer_price)
     {
         $now = Carbon::now();
         $formattedDate = $now->format('Y-m-d');
-
-        if ($offer_price !== null && $offer_start_date >= $formattedDate && ($offer_end_date >= $formattedDate || empty($offer_end_date))) {
-            $discountPercentage =  '<span class="flash-sale">Giảm ' . number_format((($price - $offer_price) / $price) * 100, 0) . '%' . '</span>';
-            echo $discountPercentage;
+        $startCarbon = Carbon::parse($offer_start_date);
+        $endCarbon = Carbon::parse($offer_end_date);
+        $discount = 0;
+        if ($now->between($startCarbon, $endCarbon) && (!empty($offer_end_date))) {
+            $discount = number_format((($price - $offer_price) / $price) * 100, 0);
         } else {
-            //   echo "0%";
+            $discount = 0;
         }
+        return   $discount;
     }
+
 
     public static function getProductPrice($product)
     {
@@ -56,14 +64,13 @@ class Helper
         if ($productPrice === null) {
             $productPrice = $product->price;
         }
-
         return (int) $productPrice;
     }
-
     public static function randOrderCode()
     {
         do {
-            $orderCode = Str::random(10); // Tạo một chuỗi ngẫu nhiên dài 10 ký tự
+            // intval(substr(strval(microtime(true) * 100000), -6));
+            $orderCode = "ĐH" . Str::random(10); // Tạo một chuỗi ngẫu nhiên dài 10 ký tự
         } while (Order::where('order_code', $orderCode)->exists());
 
         return $orderCode;

@@ -31,9 +31,11 @@ class DatabaseSeeder extends Seeder
             // CouponsSeeder::class,
             PostCategoriesSeeder::class,
             PostsSeeder::class,
-            InformationSeeder::class,
+            PageCategorySeeder::class,
             PageSeeder::class,
             ProductSeeder::class,
+            VariantSeeder::class,
+            VariantItemTableSeeder::class,
         ]);
     }
 }

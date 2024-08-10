@@ -11,18 +11,11 @@
 <!-- Alert Sweet -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.1/dist/sweetalert2.all.min.js"></script>
 
-@stack('script_lib-js')
+@yield('script')
 
 <!-- chứa các ajax -->
 @include('frontend.layouts.ajax')
-
-<script>
-    // Loading
-    window.addEventListener("load", () => {
-        const preloader = document.querySelector(".loader-container");
-        preloader.classList.add("unactive")
-    })
-</script>
+@stack('script_lib-js')
 
 <script>
     $(document).ready(function() {
@@ -167,7 +160,7 @@
             // Hiển thị giá trị ban đầu khi trang tải xong
             var ramValue = document.querySelector('input[name="selectInputRam"]:checked');
             if (ramValue) {
-                // valueRamElement.textContent = ramValue.value;
+                valueRamElement.textContent = ramValue.value;
 
                 // Đảm bảo nhãn của radio button được chọn có lớp 'selected-label'
                 var checkedLabel = document.querySelector('label[for="' + ramValue.id + '"]');
@@ -178,73 +171,121 @@
         })
     });
 </script>
-{{-- search sản phẩm --}}
+
+
 <script>
-    $(document).ready(function() {
-        var timeoutId;
+    var flash_sales = document.querySelectorAll(".flash-sales");
+    var flash_sale = document.querySelectorAll(".flash-sale");
+    var compare_price = document.querySelectorAll(".CouponsPrice_old");
+    var compare_price_old1 = document.querySelectorAll(".CouponsPrice_new1");
+    var compare_price_old2 = document.querySelectorAll(".CouponsPrice_new2");
+    for (var i = 0; i < flash_sale.length; i++) {
+        if (flash_sales[i].textContent.trim() == "0") {
+            flash_sale[i].style.display = "none";
+            if (compare_price[i]) {
+                compare_price[i].style.display = "none";
+                compare_price_old1[i].style.display = "none";
 
-        $('#timkiem').keyup(function() {
-            clearTimeout(timeoutId);
-            timeoutId = setTimeout(function() {
-                searchProducts();
-            }, 500); // Chờ 500ms sau khi ngừng gõ để bắt đầu tìm kiếm
-        });
+            }
 
-        function searchProducts() {
-            $('#result').html('');
-            var search = $('#timkiem').val().trim();
-            if (search !== '') {
-                $('#result').css('display', 'inherit');
-                var expression = new RegExp(search, "i");
-                $.getJSON('/json/products.json', function(data) {
-                    // Sắp xếp dữ liệu theo thời gian tạo mới nhất
-                    data.sort(function(a, b) {
-                        return new Date(b.created_at) - new Date(a.created_at);
-                    });
-                    // Mảng để lưu các sản phẩm thỏa mãn điều kiện tìm kiếm
-                    var results = [];
-                    // Lặp qua các sản phẩm và lưu vào mảng results nếu thỏa mãn điều kiện
-                    $.each(data, function(key, value) {
-                        if (value.name.search(expression) != -1) {
-                            results.push(value);
-                        }
-                    });
-                    // Hiển thị tối đa 10 sản phẩm đầu tiên trong mảng results
-                    for (var i = 0; i < Math.min(results.length, 7); i++) {
-                        var product = results[i];
-                        $('#result').append(
-                            '<li style="cursor:pointer;" class="list-group-item link-class d-flex"><img src="{{ asset('uploads/products') }}/' +
-                            product.image +
-                            '" width="30" height="30"/><div class="mx-2"><h4 style="font-size: 12px">' +
-                            product.name +
-                            '</h4> <span class="d-none">|</span><div class="d-flex" style="font-size: 10px; gap:5px"> <p>' +
-                            parseFloat(product.offer_price).toLocaleString(
-                                'vi-VN', {
-                                    style: 'currency',
-                                    currency: 'VND'
-                                }).replace(/\u200B/g, '') +
-                            '</p><p class="text-decoration-line-through text-danger">' +
-                            parseFloat(product.price)
-                            .toLocaleString( //chuyển đổi số thành chuỗi ngôn ngữ vn và định dạng tiền tệ
-                                'vi-VN', {
-                                    style: 'currency',
-                                    currency: 'VND'
-                                }).replace(/\u200B/g, '') +
-                            '</p></div> </div> </li>'
-                        );
-                    }
-
-                });
-            } else {
-                $('#result').css('display', 'none');
+        } else {
+            flash_sale[i].style.display = "block";
+            if (compare_price[i]) {
+                compare_price[i].style.display = "block";
+                compare_price_old2[i].style.display = "none";
+                compare_price_old1[i].style.display = "block";
             }
         }
+    }
+</script>
+<script>
+    $(document).ready(function() {
+        let timeout;
+        $('#product-search').on('input', function() {
+            let query = $(this).val();
+            clearTimeout(timeout);
+            timeout = setTimeout(function() {
+                if (query.length >= 2) {
+                    $.ajax({
+                        method: "GET",
+                        url: "{{ route('search') }}",
+                        data: {
+                            query: query
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            let results = $('#result');
+                            var categoryHTML = "";
+                            // var subCategoryHTML = "";
+                            var productHTML = "";
+                            results.empty();
 
-        $('#result').on('click', 'li', function() {
-            var click_text = $(this).text().split('|');
-            $('#timkiem').val($.trim(click_text[0]));
-            $('#result').html('');
-            $('#result').css('display', 'none');
+                            if (response.products && response.products.length > 0) {
+                                response.categories.forEach(function(category) {
+                                    categoryHTML += `<li class="list-group-item"> 
+                                                    <a href="{{ url('/san-pham/${category.slug}') }}" class="text-decoration-none" style="font-size:13px">
+                                                       ${category.name}
+                                                    </a>
+                                                </li>`;
+                                });
+                                categoryHTML =
+                                    `<div class="ttitle"><div class="viewed">Có phải bạn muốn tìm</div></div>
+                                    ${categoryHTML}`;
+                                //
+                                // response.sub_categories.forEach(function(
+                                //     sub_Category) {
+                                //     subCategoryHTML += `<li class="list-group-item"> 
+                                //                     <a href="{{ url('/san-pham/${sub_Category.slug_category}/${sub_Category.slug}') }}" class="text-decoration-none" style="font-size:13px">
+                                //                        ${sub_Category.name}
+                                //                     </a>
+                                //                 </li>`;
+                                // });
+
+                                // subCategoryHTML =
+                                //     `<div class="ttitle"><div class="viewed">Danh mục loại sản phẩm</div></div>
+                                //     ${subCategoryHTML}`;
+
+
+                                response.products.forEach(function(product) {
+                                    productHTML += `
+                                    <li class="list-group-item autocomplete-item" data-id="${product.id}">
+                                        <img src="{{ asset('uploads/products/${product.image}') }}" alt="${product.name}">
+                                        <div>
+                                            <h3 class="pt-1"><a style="font-size: 12px;" class="text-decoration-none " href="{{ url('/san-pham/${product.category.slug}/${product.sub_category.slug}/${product.child_category.slug}/${product.slug}.html') }}">${product.name}</a></h3>
+                                        </div>
+                                    </li>`;
+                                });
+
+                                productHTML =
+                                    `<div class="ttitle"><div class="viewed">Sản phẩm gợi ý</div></div>
+                                    ${productHTML}`;
+
+                                results.append(categoryHTML +
+                                    productHTML);
+
+                                results.addClass('show');
+                            } else {
+                                $('#result').empty().removeClass('show');
+                                results.append(
+                                    '<span class="pt-2 text-center text-danger ">Sản phẩm đang cập nhật. Vui lòng quay lại sau</span>'
+                                );
+                                results.addClass('show');
+                            }
+                        },
+                        error: function(xhr) {
+                            console.error(xhr.responseText);
+                        }
+                    });
+                } else {
+                    $('#result').empty().removeClass('show');
+                }
+            }, 250);
+        });
+        // nhấp chuột ra ngoài thì #result ẩn đi
+        $(document).on('click', function(event) {
+            if (!$(event.target).closest('#product-search, #result').length) {
+                $('#result').empty().removeClass('show');
+            }
         });
     });
 </script>

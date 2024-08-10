@@ -20,7 +20,7 @@ class PageSeeder extends Seeder
             [
                 'name' => 'Chính sách mua hàng',
                 'slug' => Str::slug('Chính sách mua hàng', '-'),
-                'information_id' => 1,
+                'page_category_id' => 1,
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont,;" segoe="" color="" ui="">
     <strong style="box-sizing:border-box;font-weight:bolder;">Chính sách thanh toán:</strong>
@@ -86,7 +86,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Chính sách đổi trả',
                 'slug' => Str::slug('Chính sách đổi trả', '-'),
-                'information_id' => 1,
+                'page_category_id' => 1,
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     - Quý khách sử dụng gói bảo hành nào sẽ được hỗ trợ theo chính sách của gói đó, bảo hành áp dụng cho các lỗi từ nhà sản xuất (Là các lỗi hư hỏng về linh kiện, không phải các lỗi về ứng dụng hay tính năng)<br>
@@ -117,7 +117,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Chính sách vận chuyển',
                 'slug' => Str::slug('Chính sách vận chuyển', '-'),
-                'information_id' => 1,
+                'page_category_id' => 1,
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     <strong style="box-sizing:border-box;font-weight:bolder;">I. HÌNH THỨC VẬN CHUYỂN &amp; GIAO NHẬN HÀNG HÓA</strong>
@@ -150,10 +150,9 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Chính sách bảo mật',
                 'slug' => Str::slug('Chính sách bảo mật', '-'),
-                'information_id' => 1,
-
-                'long_description' => '
-<p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
+                'page_category_id' => 1,
+                'long_description' =>
+                '<p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     Cám ơn quý khách đã quan tâm và truy cập vào website. Chúng tôi tôn trọng và cam kết sẽ bảo mật những thông tin mang tính riêng tư của Quý khách.
 </p>
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
@@ -220,8 +219,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Cam kết cửa hàng',
                 'slug' => Str::slug('Cam kết cửa hàng', '-'),
-                'information_id' => 1,
-
+                'page_category_id' => 1,
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     CyberMart cam kết tất cả các sản phẩm bán ra tại CyberMart đều là sản phẩm chính hãng, và nhận được các chế độ bảo hành chính hãng.
@@ -240,8 +238,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Hướng dẫn mua hàng',
                 'slug' => Str::slug('Hướng dẫn mua hàng', '-'),
-                'information_id' => 2,
-
+                'page_category_id' => 2,
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     <strong style="box-sizing:border-box;font-weight:bolder;">Bước 1</strong>: Truy cập website và lựa chọn sản phẩm cần mua để mua hàng
@@ -289,8 +286,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Hướng dẫn đổi trả',
                 'slug' => Str::slug('Hướng dẫn đổi trả', '-'),
-                'information_id' => 2,
-
+                'page_category_id' => 2,
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     <strong style="box-sizing:border-box;font-weight:bolder;">Bước 1</strong>: Truy cập website và lựa chọn sản phẩm cần mua để mua hàng
@@ -338,8 +334,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Hướng dẫn trả góp',
                 'slug' => Str::slug('Hướng dẫn trả góp', '-'),
-                'information_id' => 2,
-
+                'page_category_id' => 2,
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     Để thuận tiện và dễ dàng hơn cho khách hàng khi mua hàng online, CyberMart tích hợp hình thức trả góp với sự đa dạng về cổng thanh toán, kỳ hạn, lãi suất ưu đãi đi kè với nhiều chương trình hấp dẫn.
@@ -383,8 +378,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Hướng dẫn chuyển khoản',
                 'slug' => Str::slug('Hướng dẫn chuyển khoản', '-'),
-                'information_id' => 2,
-
+                'page_category_id' => 2,
                 'long_description' => '
 <p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
     <strong style="box-sizing:border-box;font-weight:bolder;">Khách hàng thanh toán trực tiếp tại cửa hàng&nbsp;</strong><br>
@@ -410,8 +404,7 @@ class PageSeeder extends Seeder
             ], [
                 'name' => 'Hướng dẫn hoàn hàng',
                 'slug' => Str::slug('Hướng dẫn hoàn hàng', '-'),
-                'information_id' => 2,
-
+                'page_category_id' => 2,
                 'long_description' => '
 <p>
     <span style="background-color:rgb(255,255,255);color:rgb(51,51,51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;"><span style="-webkit-text-stroke-width:0px;display:inline !important;float:none;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">- Trả máy trong 7 ngày đầu trừ phí 10% (Giá thu lại tính theo giá máy đã qua sử dụng tại thời điểm trả máy, với điều kiện tình trạng và ngoại hình máy phải như ban đầu).</span></span><br>
@@ -423,18 +416,78 @@ class PageSeeder extends Seeder
                 'status' => 1,
                 'created_at' => now(),
             ], [
-                'name' => 'Giới thiệu',
-                'slug' => Str::slug('Giới thiệu', '-'),
-                'information_id' => 3,
+                'name' => 'Giới thiệu về CyberMart',
+                'slug' => Str::slug('giới thiệu về CyberMart', '-'),
+                'page_category_id' => 3,
                 'long_description' => '
-<p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
-    <strong style="box-sizing:border-box;font-weight:bolder;">CyberMart</strong>&nbsp;nhà bán lẻ hàng đầu, chuyên cung cấp các sản phẩm điện thoại,&nbsp;công nghệ chính hãng tại thị trường Việt Nam. Năm 2023, <strong style="box-sizing:border-box;font-weight:bolder;">CyberMart</strong> được thành lập, từng bước trở thành địa chỉ đáng tin cậy của người tiêu dùng Việt.&nbsp;Chúng tôi đã, đang và sẽ tiếp tục nỗ lực đem đến các sản phẩm công nghệ chính hãng đa dạng, phong phú đi kèm mức giá tốt nhất phục vụ nhu cầu của quý khách hàng.&nbsp;
+<figure class="image image_resized text-center" >
+    <img  src="https://cybermart.io.vn/uploads/logo/cybermart_logo_1x1.png" width="251" height="251" uploadprocessed="true">
+</figure>
+<p>
+    <strong>Chào mừng đến với CyberMart - Điểm đến hàng đầu cho các sản phẩm công nghệ và điện tử!</strong>
 </p>
-<p style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);box-sizing:border-box;color:rgb(51, 51, 51);font-family:Nunito, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 15px;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
-    <strong style="box-sizing:border-box;font-weight:bolder;">CyberMart&nbsp;</strong>hiện&nbsp;đã trở thành cái tên không còn xa lạ với người tiêu dùng trong nước. Hiện nay chúng tôi đang sở hữu mạng lưới hơn 7chi nhánh phủ trên khắp cả nước, trong đó bao gồm hai trung tâm bảo hành tại Hà Nội và một trung tâm bảo hành tại thành phố Hồ Chí Minh. Đến với chuỗi cửa hàng của <strong style="box-sizing:border-box;font-weight:bolder;">CyberMart</strong>, quý khách có thể hoàn toàn yên tâm về uy tín, chất lượng sản phẩm với mức giá rẻ hơn khoảng 15-20% so với giá bán trên thị trường. Song song với đó, chúng tôi cũng luôn nỗ lực phục vụ đem đến trải nghiệm dịch vụ tốt nhất cho khách hàng.
+<p>
+    Tại CyberMart, chúng tôi cam kết mang đến cho bạn những sản phẩm công nghệ tiên tiến nhất với chất lượng dịch vụ tốt nhất. Với một đội ngũ chuyên gia dày dạn kinh nghiệm và sự am hiểu sâu rộng về thị trường công nghệ, chúng tôi tự hào cung cấp cho bạn một trải nghiệm mua sắm trực tuyến tuyệt vời.
+</p>
+<h4>
+    <strong>Tại sao chọn CyberMart?</strong>
+</h4>
+<ul>
+    <li>
+        <strong>Sản phẩm Đa dạng và Chính hãng:</strong> Chúng tôi cung cấp một loạt các sản phẩm từ các thương hiệu nổi tiếng nhất, bao gồm điện thoại thông minh, laptop, thiết bị chơi game, và phụ kiện công nghệ. Tất cả các sản phẩm đều được đảm bảo chính hãng và có chất lượng tốt nhất.
+    </li>
+    <li>
+        <strong>Giá Cả Cạnh Tranh:</strong> Tại CyberMart, bạn sẽ tìm thấy các sản phẩm với giá cả hợp lý và các chương trình khuyến mãi hấp dẫn. Chúng tôi luôn nỗ lực để bạn có thể sở hữu các sản phẩm công nghệ mới nhất với mức giá tốt nhất.
+    </li>
+    <li>
+        <p>
+            <strong>Dịch Vụ Khách Hàng Tận Tâm:</strong> Đội ngũ hỗ trợ khách hàng của chúng tôi luôn sẵn sàng giúp đỡ bạn với bất kỳ câu hỏi nào hoặc vấn đề nào bạn gặp phải. Chúng tôi cam kết mang lại sự hài lòng tuyệt đối cho mỗi khách hàng.
+        </p>
+        <figure class="image text-center">
+            <img class="img-fluid"  src="http://scholding.com.vn/wp-content/uploads/2016/03/cach-cham-soc-khach-hang-chuyen-nghiep-va-hieu-qua-1.png" width="1000" height="533">
+        </figure>
+    </li>
+    <li>
+        <p>
+            <strong>Giao Hàng Nhanh Chóng:</strong> Chúng tôi hiểu rằng thời gian là quan trọng, vì vậy chúng tôi đảm bảo giao hàng nhanh chóng và đúng hạn. Bạn có thể yên tâm rằng đơn hàng của bạn sẽ được xử lý và vận chuyển trong thời gian ngắn nhất.
+        </p>
+        <figure class="image image-style-align-left text-center">
+            <img class="img-fluid"  src="https://cdn.tgdd.vn/Files/2022/02/09/1414528/cach-tra-cuu-van-don-giao-hang-nhanh-don-gian-202202091118290950.jpg" width="1000" height="533">
+        </figure>
+    </li>
+    <li>
+        <p>
+            <strong>Đảm Bảo Đổi Trả Dễ Dàng:</strong> Nếu bạn không hài lòng với sản phẩm hoặc gặp vấn đề với đơn hàng, chúng tôi cung cấp chính sách đổi trả dễ dàng và thuận tiện.
+        </p>
+        <figure class="image text-center">
+            <img class="img-fluid" class="img-fluid"  src="https://daphuquy.com/wp-content/uploads/2024/01/chinh-sach-doi-tra.png" width="1000" height="533">
+        </figure>
+    </li>
+</ul>
+<h4>
+    <strong>Khám Phá Các Danh Mục Sản Phẩm Của Chúng Tôi</strong>
+</h4>
+<ul>
+    <li>
+        <a class="text-decoration-none text-danger" href="https://cyberMart.io.vn/product/dien-thoai-tablet"><strong>Điện thoại thông minh</strong></a><strong>:</strong> Cập nhật các mẫu điện thoại mới nhất với công nghệ tiên tiến.
+    </li>
+    <li>
+        <a class="text-decoration-none text-danger" href="https://cyberMart.io.vn/product/laptop"><strong>Laptop và Máy tính để bàn</strong></a><strong>:</strong> Tìm kiếm các lựa chọn phù hợp cho công việc, học tập hoặc giải trí.
+    </li>
+    <li>
+        <a class="text-decoration-none text-danger" href="https://cyberMart.io.vn/product/dong-ho"><strong>Đồng hồ thông minh</strong></a><strong>:</strong> Theo Dõi Sức Khỏe, Kết Nối Thông Minh, và Hỗ Trợ Công Việc Hàng Ngày.
+    </li>
+    <li>
+        <p>
+            <a class="text-decoration-none text-danger" href="https://CyberMart.io.vn/product/phu-kien"><strong>Phụ kiện công nghệ</strong></a><strong>:</strong> Từ tai nghe đến ổ cứng di động, chúng tôi có đầy đủ các phụ kiện cần thiết.
+        </p>
+    </li>
+</ul>
+<p>
+    <strong>Hãy bắt đầu hành trình mua sắm của bạn tại CyberMart ngay hôm nay và trải nghiệm sự khác biệt!</strong>
 </p>',
-                'seo_title' => 'Giới thiệu CyberMart - Nhà bán lẻ hàng đầu sản phẩm công nghệ chính hãng',
-                'seo_description' => 'CyberMart - nhà bán lẻ hàng đầu cung cấp các sản phẩm điện thoại, công nghệ chính hãng tại Việt Nam. Với mạng lưới hơn 7 chi nhánh và trung tâm bảo hành tại Hà Nội và TP.HCM, chúng tôi cam kết mang đến sản phẩm chất lượng, giá cả cạnh tranh và dịch vụ tận tâm nhất cho quý khách hàng.',
+                'seo_title' => 'CyberMart - Điểm Đến Hàng Đầu Cho Điện Thoại, Laptop, Đồng Hồ Thông Minh & Phụ Kiện Công Nghệ',
+                'seo_description' => 'CyberMart là điểm đến lý tưởng cho các sản phẩm công nghệ tiên tiến như điện thoại, laptop, và đồng hồ thông minh. Tận hưởng giá cả hợp lý, dịch vụ khách hàng chu đáo, giao hàng nhanh chóng và chính sách đổi trả thuận tiện. Bắt đầu mua sắm tại CyberMart ngay hôm nay!',
                 'status' => 1,
                 'created_at' => now(),
             ]

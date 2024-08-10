@@ -21,17 +21,24 @@
         <div class="card">
             <div class="card-header">
                 <h6 class="mt-2 mb-0 text-uppercase float-start">Thêm mới biến thể</h6>
-                <a href="{{ route("admin.product.index") }}" class="btn btn-primary float-end">Quay lại</a>
+                <a href="{{ route('admin.product.index') }}" class="btn btn-primary float-end">Quay lại</a>
             </div>
             <div class="card-body">
-                <form class="row g-3" action="{{ route("admin.variant.store") }}" method="POST">
+                <form class="row g-3" action="{{ route('admin.variant.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="input1" class="form-label">Tên</label>
                         <input type="text" class="form-control" id="input1" name="name" placeholder="Name">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <label for="input10" class="form-label">Kiểu</label>
+                        <select id="input10" class="form-select" name="type">
+                            <option value="1">Màu sắc</option>
+                            <option value="0">Mặc định</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
                         <label for="input9" class="form-label">Trạng thái</label>
                         <select id="input9" class="form-select" name="status">
                             <option value="1">Hoạt động</option>
@@ -63,8 +70,8 @@
                             </div>
                         </form>
                     </div>
-                    <a href="{{ route("admin.product.variant", $product->id) }}" class="me-2 btn btn-success float-end ms-2"><i
-                            class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
+                    <a href="{{ route('admin.product.variant', $product->id) }}"
+                        class="me-2 btn btn-success float-end ms-2"><i class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
                 </div>
             </div>
             <div class="card-body">
@@ -74,38 +81,44 @@
                             <tr>
                                 <th width="100">Id</th>
                                 <th width="200">Tên</th>
+                                <th width="200">Kiểu</th>
                                 <th width="150">Trạng thái</th>
                                 <th width="150">Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ( $variant as $variant )
-                            <tr>
-                                <td>{{ $variant->id }}</td>
-                                <td>{{ $variant->name }}</td>
-                                <td>
-                                    <div class="form-check form-switch form-check-success">
-                                        @if ($variant->status == 1)
-                                            <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess" checked>
-                                        @elseif($variant->status == 0)
-                                            <input class="form-check-input change-status" type="checkbox" role="switch"
-                                                data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess">
-                                        @endif
-                                    </div>
-                                <td class="text-center">
-                                    <a class="btn btn-warning btn-sm" href="{{ route("admin.product.variant.variant-item", $variant->id) }}"><i class="fa-solid fa-wand-magic-sparkles fs-6"></i>Biến Thể Con</a>
-                                    <a class="btn btn-primary" href="{{ route('admin.variant.edit', $variant->id) }}"><i
-                                            class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
-                                    <a class="btn btn-danger delete-item"
-                                        href="{{ route('admin.variant.destroy', $variant->id) }}"><i
-                                            class="fa-solid fa-trash fs-6"></i>Xóa</a>
-                                </td>
-                            </tr>
+                            @forelse ($variant as $variant)
+                                <tr>
+                                    <td>{{ $variant->id }}</td>
+                                    <td>{{ $variant->name }}</td>
+                                    <td>{{ $variant->type == 0 ? 'Mặc định' : 'Màu sắc' }}</td>
+                                    <td>
+                                        <div class="form-check form-switch form-check-success">
+                                            @if ($variant->status == 1)
+                                                <input class="form-check-input change-status" type="checkbox" role="switch"
+                                                    data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess" checked>
+                                            @elseif($variant->status == 0)
+                                                <input class="form-check-input change-status" type="checkbox" role="switch"
+                                                    data-id="{{ $variant->id }}" id="flexSwitchCheckSuccess">
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <a class="btn btn-warning btn-sm"
+                                            href="{{ route('admin.product.variant.variant-item', $variant->id) }}"><i
+                                                class="fa-solid fa-wand-magic-sparkles fs-6"></i>Biến Thể Con</a>
+                                        <a class="btn btn-primary"
+                                            href="{{ route('admin.variant.edit', $variant->id) }}"><i
+                                                class="fa-solid fa-pen fs-6 text-light"></i>Chỉnh sửa</a>
+                                        <a class="btn btn-danger delete-item"
+                                            href="{{ route('admin.variant.destroy', $variant->id) }}"><i
+                                                class="fa-solid fa-trash fs-6"></i>Xóa</a>
+                                    </td>
+                                </tr>
                             @empty
-                            <tr>
-                                <td colspan="12">Không có dữ liệu biến thể</td>
-                            </tr>
+                                <tr>
+                                    <td colspan="12">Không có dữ liệu biến thể</td>
+                                </tr>
                             @endforelse
                         </tbody>
                         <tfoot>
