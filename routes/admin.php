@@ -28,6 +28,9 @@ use App\Http\Controllers\GHTKController;
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
 Route::post('/dashboards', [AdminController::class, 'dashboards'])->name('dashboard.pots');
+Route::post('/dashboard/chart/pie', [AdminController::class, 'chartPie'])->name('dashboard.chartPie');
+Route::post('/dashboard/chart/pie/date', [AdminController::class, 'chartPieDate'])->name('dashboard.chartPie.date');
+Route::post('/dashboard/chart/count/date', [AdminController::class, 'chartCountDate'])->name('dashboard.chartCount.date');
 
 
 // Route::post('/dashboard', [AdminController::class, 'piechart'])->name('piechart');
@@ -167,7 +170,7 @@ Route::fallback(function () {
 });
 
 // Liên Hệ
-Route::get('contact/trash-list', [ContactController::class, 'showTrash'])->name('coupons.trash-list');
+Route::get('contact/trash-list', [ContactController::class, 'showTrash'])->name('contact.trash-list');
 Route::DELETE('contact/destroy-trash/{id?}', [ContactController::class, 'destroyTrash'])->name('contact.destroy-trash');
 Route::PATCH('contact/restore-trash/{id?}', [ContactController::class, 'restoreTrash'])->name('contact.restore-trash');
 

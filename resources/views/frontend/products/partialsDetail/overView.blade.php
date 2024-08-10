@@ -46,11 +46,17 @@
 
 <div class="form-product ">
     <div class="select-swatch ">
-        @foreach ($product->variant->where('status', 1) as $variant)
+        @php
+            $hasColor = false;
+        @endphp
+        @foreach ($product->variant as $variant)
+            @php
+                $hasColor = true;
+            @endphp
             @if ($variant->type == 1)
                 <div class="header">Màu sắc: <span class="value-properties">{{ $variant->name }}</span></div>
                 <div class="swatch d-flex mt-2">
-                    @foreach ($variant->variantItem->where('status', 1) as $i)
+                    @foreach ($variant->variantItem as $i)
                         <div data-value="{{ $i->name }}" title="{{ $i->name }}" class="swatch-element color"
                             onclick="changeColor(this)">
                             <div class="tooltip d-none">{{ $i->name }}</div>
@@ -63,11 +69,12 @@
                 </div>
             @endif
         @endforeach
-        @foreach ($product->variant->where('status', 1) as $variant)
-            @if ($variant->type == 0)
+
+        @foreach ($product->variant as $variant)
+            @if ($variant->type == 0 && !$hasColor)
                 <div class="header">Dung lượng: <span class="value-ram"></span></div>
                 <div class="swatch d-flex mt-2">
-                    @foreach ($variant->variantItem->where('status', 1) as $i)
+                    @foreach ($variant->variantItem as $i)
                         <div id="ram-options">
                             <input id="{{ $i->name }}" type="radio" class="d-none button_ram"
                                 name="selectInputRam" data-id="{{ $i->id }}" value="{{ $i->name }}"
