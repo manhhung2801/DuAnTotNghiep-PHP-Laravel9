@@ -33,7 +33,7 @@ use \App\Http\Controllers\VNPAYController;
 Route::get("/", [HomeController::class, 'index'])->name("home");
 /** Home */
 /** Addresss */
-Route::get('/address', [AddressController::class, 'index'])->name('address');
+Route::get('/dia-chi', [AddressController::class, 'index'])->name('address');
 /** End Addresss */
 
 Route::get('/lien-he', [ContactController::class, 'index'])->name('contact');
@@ -113,6 +113,8 @@ Route::fallback(function () {
 Route::get("/calculateShipping", [GHTKController::class, 'calculateShipping'])->name('calculateShipping');
 /**Kiểm tra đơn hàng */
 Route::get('/statusOrder/{tracking_id?}', [GHTKController::class, 'statusOrder'])->name('statusOrder');
+/** Hủy đơn hàng */
+Route::post('/ghtk-cancel-order/{tracking_id}', [GHTKController::class, 'cancelOrder'])->name('ghtk.cancel-order');
 
 
 /** VNPAY */

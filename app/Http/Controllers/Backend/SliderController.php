@@ -17,7 +17,8 @@ class SliderController extends Controller
         $sortBy = $request->query('sort');
         // search tìm kiếm theo type
         if (!empty($request->get('keyword'))) {
-            $sliders = Slider::where('type', 'like', '%' . $request->get('keyword') . '%')->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
+            $sliders = Slider::where('type', 'like', '%' . $request->get('keyword') . '%')
+            ->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
         }
         // Sắp xếp theo trạng thái
         if ($request->filled('check_status')) {
@@ -28,7 +29,6 @@ class SliderController extends Controller
                 $sliders = $sliders->where('status', 0);
             }
         }
-
         // Sắp xếp theo ngày tạo
         if ($request->filled('sort_date')) {
             $sort_date = $request->get('sort_date');
@@ -86,9 +86,7 @@ class SliderController extends Controller
     }
 
 
-    public function show($id)
-    {
-    }
+    public function show($id) {}
 
 
     public function edit($id)

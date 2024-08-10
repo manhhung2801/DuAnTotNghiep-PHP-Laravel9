@@ -1,5 +1,7 @@
 @if ($slides->isNotEmpty())
+    <h1 class="visually-hidden">Danh sách các hình ảnh nổi bật CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam</h1>
     <div id="carouselExampleDark" class="carousel carousel-dark slide">
+        <h2 class="visually-hidden">Trình chiếu</h2>
         <div class="carousel-indicators">
             @foreach ($slides as $index => $slide)
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{ $index }}"
@@ -29,4 +31,3 @@
         </button>
     </div>
 @endif
-    

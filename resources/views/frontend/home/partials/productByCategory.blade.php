@@ -1,11 +1,13 @@
-<div class="catalog-product-list container">
-    @foreach ($getProducts as $index => $getProduct)
+<div class="catalog-product-list">
+    <h1 class="visually-hidden">Danh mục sản phẩm CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam</h1>
+    @forelse ($getProducts as $index => $getProduct)
         @foreach ($getProduct as $category_name => $product)
             <div class="container">
                 <div class="scroll_animation section_title text-center mb-3 pt-5">
                     <h2 class="text-uppercase fs-4">{{ $category_name }}</h2>
                 </div>
-                <div class="scroll_animation row  ">
+                {{-- Box product --}}
+                <div class="scroll_animation row">
                     @foreach ($product as $pro)
                         <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-6 ">
                             <div class="item_product_main ">
@@ -56,14 +58,6 @@
                                                             <i class='fa-solid fa-dong-sign'></i> </span>
                                                     </div>
                                                 </div>
-                                                {{-- <form class="formCart" method="post">
-                                            <input class="productId" type="hidden" value="{{ $pro->id }}">
-                                    <div class="product-button ">
-                                        <button class="btn-addToCart btn-cart btn-views rounded border-0 px-2" title="Mua ngay" type="button">
-                                            <i class="fa-sharp fa-regular fa-cart-shopping"></i>
-                                        </button>
-                                    </div>
-                                    </form> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -78,19 +72,18 @@
                     @endforeach
                 </div>
             </div>
+
             <div class="scroll_animation show-all text-center mt-2">
                 <a class="px-5 py-2 btn btn-outline-dark " href="/san-pham/{{ $pro->category->slug }}">Xem tất cả
                     <i class="fa-regular fa-chevron-right"></i></a>
             </div>
+            {{-- Show banner --}}
+            @if ($index == 1)
+                <div class="scroll_animation section-banner_new pt-5">
+                    @include('frontend.home.partials.banner')
+                </div>
+            @endif
         @endforeach
-    @endforeach
-</div>
-
-
-@if ($index == 1)
-    <div class="scroll_animation section-banner_new pt-5">
-        @include('frontend.home.partials.banner')
-    </div>
-@endif
-
+    @empty
+    @endforelse
 </div>

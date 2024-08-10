@@ -1,9 +1,9 @@
 <div class="menu-list d-flex justify-content-between ">
 
 
-    @if (isset($category) && $category->subCategories->count() > 0)
+    @if (isset($category) && $category->subCategories->where('status', 1)->count() > 0)
 
-        @foreach ($category->subCategories as $item)
+        @foreach ($category->subCategories->where('status', 1) as $item)
             <a class="cate-item text-decoration-none text-center flex-grow-0 flex-shrink-0 flex-basis-auto"
                 href="/san-pham/{{ $category->slug }}/{{ $item->slug }}">
                 <div class="cate-img ">
@@ -16,8 +16,8 @@
 
     @endif
 
-    @if (isset($subCategory) && $subCategory->childCategory->count() > 0)
-        @foreach ($subCategory->childCategory as $item)
+    @if (isset($subCategory) && $subCategory->childCategory->where('status', 1)->count() > 0)
+        @foreach ($subCategory->childCategory->where('status', 1) as $item)
             <a class="cate-item text-decoration-none text-center flex-grow-0 flex-shrink-0 flex-basis-auto"
                 href="/san-pham/{{ $subCategory->category->slug }}/{{ $subCategory->slug }}/{{ $item->slug }}">
                 <div class="cate-img ">
@@ -30,8 +30,8 @@
     @endif
 
 
-    @if (isset($categories))
-        @foreach ($categories as $item)
+    @if (isset($categories) && $categories->where('status', 1)->count() > 0)
+        @foreach ($categories->where('status', 1) as $item)
             <a class="cate-item text-decoration-none text-center flex-grow-0 flex-shrink-0 flex-basis-auto"
                 href="/san-pham/{{ $item->slug }}/">
                 <div class="cate-img ">

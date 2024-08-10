@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-12 text-center my-3">
                 <div class="page-title mt-1" style="font-size: 2rem;">
-                    <img src="https://shopdunk.com/images/uploaded-source/bn_404.png" alt="" class="img-fluid">
+                    <img src="https://shopdunk.com/images/uploaded-source/bn_404.png" alt="image 404" class="img-fluid">
                     <h1 class="fs-4">Oops! Trang bạn tìm kiếm không tồn tại.</h1>
                 </div>
                 <div class="page-body">

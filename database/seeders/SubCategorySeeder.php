@@ -50,77 +50,77 @@ class SubCategorySeeder extends Seeder
                 "name" => "realme",
                 "slug" => "realme",
                 "image" => "sub_realme.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 1,
                 "name" => "vivo",
                 "slug" => "vivo",
                 "image" => "sub_vivo.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 1,
                 "name" => "ASUS",
                 "slug" => "asus",
                 "image" => "sub_asus.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 1,
                 "name" => "Infinix",
                 "slug" => "infinix",
                 "image" => "sub_infinix.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 1,
                 "name" => "Nokia",
                 "slug" => "nokia",
                 "image" => "sub_nokia.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 1,
                 "name" => "TECNO",
                 "slug" => "tecno",
                 "image" => "sub_tecno.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 1,
                 "name" => "Nubia, ZTE",
                 "slug" => "nubia-zte",
                 "image" => "sub_nubia.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 1,
                 "name" => "OnePlus",
                 "slug" => "oneplus",
                 "image" => "sub_oneplus.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 1,
                 "name" => "Benco",
                 "slug" => "benco",
                 "image" => "sub_benco.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 1,
                 "name" => "Masstel",
                 "slug" => "masstel",
                 "image" => "sub_masstel.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 1,
                 "name" => "Itel",
                 "slug" => "itel",
                 "image" => "sub_itel.webp",
-                "status" => 1
+                "status" => 0
             ],
             // Điện thoại, Tablet id = 1
 
@@ -144,7 +144,7 @@ class SubCategorySeeder extends Seeder
                 "name" => "Lenovo",
                 "slug" => "lenovo",
                 "image" => "sub_lenova.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 2,
@@ -158,28 +158,28 @@ class SubCategorySeeder extends Seeder
                 "name" => "HP",
                 "slug" => "hp",
                 "image" => "sub_hp.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 2,
                 "name" => "Acer",
                 "slug" => "acer",
                 "image" => "sub_acer.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 2,
                 "name" => "LG",
                 "slug" => "lg",
                 "image" => "sub_lg.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 2,
                 "name" => "Huawei",
                 "slug" => "huawei",
                 "image" => "sub_huawei.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 2,
@@ -193,21 +193,21 @@ class SubCategorySeeder extends Seeder
                 "name" => "Gigabyte",
                 "slug" => "gigabyte",
                 "image" => "sub_gigabyte.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 2,
                 "name" => "Vaio",
                 "slug" => "vaio",
                 "image" => "sub_vaio.webp",
-                "status" => 1
+                "status" => 0
             ],
             [
                 "category_id" => 2,
                 "name" => "Microsoft Surface",
                 "slug" => "microsoft-surface",
                 "image" => "sub_microsoft.webp",
-                "status" => 1
+                "status" => 0
             ],
             // Laptop id = 2
 

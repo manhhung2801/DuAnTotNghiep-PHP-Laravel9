@@ -1,10 +1,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-{{-- SEO bt sauhv --}}
+{{-- SEO by sauhv --}}
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="{{ url('/') }}/xmlrpc.php" />
 <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="32x32">
 <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png" sizes="192x192">
-<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<meta name='robots' content='follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large' />
 <title>@yield('title', 'CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam')</title>
 <meta name="description" content="@yield('description', 'CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop, smartwatch, gia dụng, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.')" />
 <link rel="canonical" href="{{ url()->current() }}" />
@@ -16,12 +18,14 @@
 <meta property="og:site_name" content="CyberMart" />
 <meta property="article:published_time" content="2024-07-23T16:02:33+07:00" />
 <meta property="article:modified_time" content="2024-07-23T16:02:33+07:00" />
-<meta property="og:image" content="{{ asset('uploads/logo/cybermart_logo_1x1.png') }}" />
-<meta property="og:image:secure_url" content="{{ asset('uploads/logo/cybermart_logo_1x1.png') }}" />
-<meta property="og:image:width" content="250" />
-<meta property="og:image:height" content="250" />
+<meta property="og:image" content="{{ asset('uploads/logo/cybermart7x4.png') }}" />
+<meta property="og:image:secure_url" content="{{ asset('uploads/logo/cybermart7x4.png') }}" />
+<meta property="og:image:width" content="700" />
+<meta property="og:image:height" content="400" />
+<meta property="og:image:alt" content="logocybermart" />
+<meta property="og:image:type" content="image/webp" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="{{ asset('uploads/logo/cybermart_logo_1x1.png') }}" />
+<meta name="twitter:image" content="{{ asset('uploads/logo/cybermart7x4.png') }}" />
 <meta name="twitter:title" content="@yield('title', 'CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam')" />
 <meta name="twitter:description" content="@yield('description', 'CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop, smartwatch, gia dụng, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.')" />
 @yield('schema')

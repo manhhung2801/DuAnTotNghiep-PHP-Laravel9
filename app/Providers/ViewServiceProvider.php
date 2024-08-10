@@ -35,13 +35,15 @@ class ViewServiceProvider extends ServiceProvider
             $categories = Category::where('status', 1)->orderBy('rank', 'asc')->get();
             $storeAddress = StoreAddress::where("status", "=", 1)->limit(1)->get();
             $ListPageCategories = PageCategory::where('id', '!=', 3)->get();
+            $countAddress = StoreAddress::where("status", "=", 1)->count();
             $qtyCart = \Cart::getTotalQuantity();
             $ListPage = Page::where("status", "=", 1)->get();
             $view->with('categories', $categories)
                 ->with('storeAddress', $storeAddress)
                 ->with('ListPageCategories', $ListPageCategories)
                 ->with('ListPage', $ListPage)
-                ->with('qtyCart', $qtyCart);
+                ->with('qtyCart', $qtyCart)
+                ->with('countAddress', $countAddress);
         });
     }
 }

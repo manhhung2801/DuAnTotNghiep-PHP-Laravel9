@@ -26,6 +26,7 @@
                                 top: 55px;
                                 box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
                             }
+
                             .autocomplete-item {
                                 display: flex;
                                 align-items: center;
@@ -67,7 +68,7 @@
                                 <input type="text"
                                     class="form-control text-secondary text-opacity-50 input-search me-2"
                                     id="product-search" placeholder="Tìm kiếm sản phẩm..." required name="query">
-                                <button class="btn" style="margin-left: -50px" type="submit" >
+                                <button class="btn" style="margin-left: -50px" type="submit">
                                     <i class="fa-light fa-magnifying-glass fa-lg text-secondary text-opacity-75"></i>
                                 </button>
                             </form>
@@ -78,11 +79,14 @@
                         </div>
                     </li>
                     <li class="nav-item ms-5 shadow bg-body bg-secondary bg-opacity-25 rounded-1" style="height: 50px;">
-                        <p class="float-start pb-5 px-1">
-                            <i class="float-start fa-light fa-location-dot fa-2xl mt-4" style="color: #ffffff;"></i>
-                            <span class="text-white ps-2 pt-1 fs-navbar-1">Hệ thống cửa hàng</span><br />
-                            <span class="text-white ps-2 fs-navbar-2 fs-navbar-2">7 cửa hàng</span>
-                        </p>
+                        <a href="{{route('address')}}">
+                            <p class="float-start pb-5 px-1">
+                                <i class="float-start fa-light fa-location-dot fa-2xl mt-4" style="color: #ffffff;"></i>
+                                <span class="text-white ps-2 pt-1 fs-navbar-1">Hệ thống cửa hàng</span><br />
+                                <span class="text-white ps-2 fs-navbar-2 fs-navbar-2">{{ $countAddress }} cửa
+                                    hàng</span>
+                            </p>
+                        </a>
                     </li>
                     <li class="nav-item ms-3" style="height: 50px;">
                         <p class="float-start pb-5 px-1">

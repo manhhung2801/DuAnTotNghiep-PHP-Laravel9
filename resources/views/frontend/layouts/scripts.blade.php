@@ -11,18 +11,11 @@
 <!-- Alert Sweet -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.1/dist/sweetalert2.all.min.js"></script>
 
-@stack('script_lib-js')
+@yield('script')
 
 <!-- chứa các ajax -->
 @include('frontend.layouts.ajax')
-
-<script>
-    // Loading
-    window.addEventListener("load", () => {
-        const preloader = document.querySelector(".loader-container");
-        preloader.classList.add("unactive")
-    })
-</script>
+@stack('script_lib-js')
 
 <script>
     $(document).ready(function() {

@@ -14,14 +14,12 @@ class PagesController extends Controller
 
     public function index(Request $request)
     {
-        $pages = Page::query(); // Start with a clean query builder
+        $pages = Page::query(); 
 
         if (!empty($request->get('keyword'))) {
 
             $pages = $pages->where('name', 'like', '%' . $request->get('keyword') . '%');
         }
-
-        // Sắp xếp theo trạng thái
         if ($request->filled('check_status')) {
             $check_status = $request->get('check_status');
             if ($check_status == '1') {
@@ -30,18 +28,12 @@ class PagesController extends Controller
                 $pages = $pages->where('status', 0);
             }
         }
-
-        // Sắp xếp theo ngày tạo
         if ($request->filled('sort_date')) {
             $sort_date = $request->get('sort_date');
             if ($sort_date === 'asc' || $sort_date === 'desc') {
                 $pages->orderBy('created_at', $sort_date);
             }
         }
-
-
-
-        // Paginate with 10 items per page
         $pages = $pages->paginate(15)->appends(request()->query());
 
         return view("admin.pages.index", compact('pages'));
