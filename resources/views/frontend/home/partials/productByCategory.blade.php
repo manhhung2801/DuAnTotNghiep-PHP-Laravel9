@@ -77,7 +77,6 @@
                 <a class="px-5 py-2 btn btn-outline-dark " href="/san-pham/{{ $pro->category->slug }}">Xem tất cả
                     <i class="fa-regular fa-chevron-right"></i></a>
             </div>
-
             {{-- Show banner --}}
             @if ($index == 1)
                 <div class="scroll_animation section-banner_new pt-5">

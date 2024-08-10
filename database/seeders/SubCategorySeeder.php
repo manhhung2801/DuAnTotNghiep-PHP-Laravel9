@@ -137,7 +137,7 @@ class SubCategorySeeder extends Seeder
                 "name" => "ASUS",
                 "slug" => "asus-laptop",
                 "image" => "sub_asus.webp",
-                "status" => 0
+                "status" => 1
             ],
             [
                 "category_id" => 2,
@@ -151,7 +151,7 @@ class SubCategorySeeder extends Seeder
                 "name" => "Dell",
                 "slug" => "dell",
                 "image" => "sub_dell.webp",
-                "status" => 0
+                "status" => 1
             ],
             [
                 "category_id" => 2,

@@ -1,4 +1,4 @@
-<article>
+{{-- <article>
     <div class="section-form_email pt-3 mb-2">
         <div class=" col-12 text-center py-3" style="background: #F2F2F2; color: #515154;">
             <h3>Đăng kí nhận tin từ CyBerMart</h3>
@@ -9,4 +9,4 @@
             </div>
         </div>
     </div>
-</article>
+</article> --}}

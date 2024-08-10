@@ -17,8 +17,8 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-
-        for ($i = 0; $i < 50; $i++) {
+        // điện thoại iphone
+        for ($i = 0; $i <= 20; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -28,24 +28,6 @@ class ProductSeeder extends Seeder
             $nameIP13 = 'iPhone 13 SERIES' . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
             $nameIP14 = 'iPhone 14 SERIES' . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
             $nameIP15 = 'iPhone 15 SERIES' . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
-            // Điện thoại-Tablet samsung 
-            $nameSamsung = 'Samsung Galaxy' . collect(['Z ', ' S24 ', ' S23 ', ' M55 ', ' M34 ', ' A77s ', ' A78 ', ' Reno7 '])->random() . collect([' ', ' Fold6 ', ' Utra ', ' Lte ', ' Plus ', ' N3 ', ' T '])->random();
-             // Điện thoại-Tablet xiaomi 
-             $nameXiaomi = 'Xiaomi' . collect([' Redmi ', ' POCO ', ' 13T ', ' 14 ', ' M34 ', ' A77s ', ' A78 ', ' 16 '])->random() . collect([' ', ' Fold6 ', ' Utra ', ' Lte ', ' Plus ', ' N3 ', ' Note '])->random(). collect([' ', ' M5 ', ' X5 ', ' M6 ', ' 13 ', ' N3 ', ' T '])->random(). collect([' ', ' 4G ', ' 5G ', ' 7G ', ' 8G ', ' 2G ', ' 3G '])->random() ;
-            // End  Điện thoại-Tablet 
-            $nameOP = 'OPPO' . collect(['Reno12 ', ' Reno11 ', ' A18 ', ' A79 ', ' Reno10 ', ' A77s ', ' A78 ', ' Reno7 '])->random() . collect([' ', ' F ', ' X5 ', ' Pro ', ' Plus ', ' N3 ', ' T '])->random() ;
-            $nameMac = 'Oppo Macbook' . collect([' ', ' Air ', ' Pro ', ' Plus '])->random() . collect([' ', ' 14 ', ' 15 ', ' 16 '])->random()  . collect([' ', ' M1 ', ' M2 ', ' M3 '])->random() . collect([' 2019 ', ' 2020 ', ' 2021 ', ' 2022 ', ' 2023 '])->random() . collect([' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
-            $nameMSI = 'Laptop' . collect([' ', ' Gaming ', ' MSI '])->random() . collect([' ', ' Modern ', ' Pulse ', ' Crosshair ', ' Prestige ', ' Katana ', ' Cyborg ', ' Crosshair ', ' Bravo '])->random() . collect([' ', ' 15 ', ' GF63 ', ' 14 '])->random()  . collect([' ', ' A12VE-412VN ', ' 11UC-1228VN ', ' 13VE-452VN ', ' A15VE-412VN ', ' 10UC-1228VN ', ' 13VE-454VN '])->random();
-            $nameSounds = 'Tai nghe Bluetooth  ' . collect([' ', ' Apple ', ' True '])->random() . collect([' ', ' Chụp tai Edifier ', ' AirPods Pro ', ' Wireless HUAWEI ', ' Wireless Samsung Galaxy Buds ', ' Wireless Anker Soundcore R50i ', ' Wireless Samsung Galaxy Buds2 ', ' Wireless Havit ', ' Bravo '])->random() . collect([' ', ' A3949 ', ' 2 ', ' 3 ', ' FreeClip ', ' Pro ', ' 2022 ', ' TW969 ', ' Air '])->random();
-            $nameLoa = 'Loa Bluetooth' . collect([' ', ' Edifier ', ' JBL ', ' Marshall ', ' Sony ', ' Alpha ', ' Robot ', ' Harman ', ' Tronsmart ', ' Partybox '])->random() . collect([' ', ' Kardon ', ' Encore ', ' T7 ', ' Boombox ', ' Willen ', ' Acton ', ' SRS-XB100 ', ' Works AW-W88 '])->random() . collect([' ', ' A3949 ', ' 2 ', ' 3 ', ' III ', ' Pro ', ' 2022 ', ' TW969 ', ' Air '])->random();
-            $nameSmartPhone = 'Đồng hồ' . collect([' thông minh', ' định vị'])->random() . collect([' Huawei', ' SamSung', ' Galaxy', ' Garmin', ' Xiaomi', ' CorosPace', ' Garmin Forerunner', ' Watch'])->random() . collect([' 165', ' 40mm', ' 2', ' 965', ' 2022', ' 3', ' Air'])->random() . collect([' Pro', ' Bluetooth', ' 4G', ' 5G', ' dây cao su', ' dây da', ' 3S', ' Edge'])->random();
-            $nameNoiChien = 'Nồi chiên không dầu' . collect([' ', ' Xiaomi ', ' Kalite ', ' Bear ', ' Gaabor ', ' Philips ', ' SHARP ', ' BlueStone ', ' Cuckoo ', ' Kangaroo ', ' Sunhouse '])->random() . collect([' ', ' Smart Air Fryer Pro ', ' Q6 ', ' QZG-E12H9 ', ' Q10 ', ' GA-M4A01 ', ' HD9257/80 ', ' HD9200/90 ', ' KF-AF70EV-BK ', ' HD9285/90 ', ' Smart Air Fryer  ', ' QZG-F15G1 ', ' KG55AF1A '])->random() . collect([' ', ' 5L ', ' 6L ', ' 7L ', ' 8L ', ' 9L ', ' 10L ', ' 11L ', ' 12L ', ' 13L ', ' 14L ', ' 15L ', ' 16L ', ' 17L ', ' 18L '])->random();
-            $nameOplung = 'Ốp lưng Iphone' . rand(11, 15) . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' Silicone ', ' Wiwu ', ' Leather ', ' Q10 ', ' GA-M4A01 ', ' HD9257/80 ', ' HD9200/90 ', ' KF-AF70EV-BK ', ' HD9285/90 ', ' Smart Air Fryer  ', ' QZG-F15G1 ', ' KG55AF1A '])->random() . collect([' ', ' Hỗ trợ sạc Magsafe ', ' Chính hãng ', ' Quốc tế ', ' Nội địa ', ' Japan ', ' Việt Name ', ' Chine ', ' USA '])->random();
-            $nameManHinhMsi = 'Màn hình' . collect([' ', ' di động MSI ', ' Gaming MSI ', ' MSI ', ' văn phòng MSI '])->random() . collect([' ', ' Pro ', ' Plus ', ' Modern '])->random() . collect([' ', ' MP161 ', ' G225F ', ' G255F ', ' G63S ', ' G100 ', ' G3 ', ' G9 ', ' G20 '])->random() . collect([' ', ' 25 inch ', ' 26 inch ', ' 21 inch ', ' 22 inch ', ' 15 inch '])->random();
-            // tivi category 8
-            $nameTiVi32 = collect(['Xiaomi Smart', 'Smart', 'Google'])->random() . collect([' Tivi ', ' Tivi QNED '])->random() . collect([' Samsung ', ' Samsung QLED'])->random() . collect([' ', ' 4K ', ' 47LMHD456 ', ' 5K '])->random() . ' 32 INCH ';
-            //End tivi category 8
-            $nameTiVi = collect(['Xiaomi Smart', 'Smart', 'Google'])->random() . collect([' Tivi ', ' Tivi QNED '])->random() . collect([' ', ' LG ', ' Samsung ', ' TCL ', ' Samsung QLED'])->random() . collect([' ', ' 4K ', ' 47LMHD456 ', ' 5K '])->random() . collect([' ', ' 25 inch ', ' 26 inch ', ' 21 inch ', ' 22 inch ', ' 15 inch '])->random();
             // 
             $price = round(rand(29000000, 33900000) / 100000) * 100000;
             $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
@@ -72,8 +54,8 @@ class ProductSeeder extends Seeder
                 ',
                     'specifications' => '
                <table id="tskt" class="table table-striped">
-<tbody>
-<tr>
+    <tbody>
+    <tr>
 	<td>Hãng sản xuất</td>
 	<td>' . $nameIP11 . '</td>
 </tr>
@@ -201,7 +183,8 @@ class ProductSeeder extends Seeder
                     'sub_category_id' => 1,
                     'child_category_id' => 5,
                     'created_at' => now(),
-                ], [
+                ],
+                [
                     'name' => $nameIP12,
                     'slug' => Str::slug($nameIP12 . rand(0, 990), '-'),
                     'image' => 'iphone_' . rand(1, 30) . '.webp',
@@ -351,7 +334,8 @@ class ProductSeeder extends Seeder
                     'sub_category_id' => 1,
                     'child_category_id' => 4,
                     'created_at' => now(),
-                ], [
+                ],
+                [
                     'name' => $nameIP15,
                     'slug' => Str::slug($nameIP15 . rand(0, 990), '-'),
                     'image' => 'iphone_' . rand(1, 30) . '.webp',
@@ -501,7 +485,8 @@ class ProductSeeder extends Seeder
                     'sub_category_id' => 1,
                     'child_category_id' => 1,
                     'created_at' => now(),
-                ], [
+                ],
+                [
                     'name' => $nameIP13,
                     'slug' => Str::slug($nameIP13 . rand(0, 990), '-'),
                     'image' => 'iphone_' . rand(1, 30) . '.webp',
@@ -651,7 +636,8 @@ class ProductSeeder extends Seeder
                     'sub_category_id' => 1,
                     'child_category_id' => 3,
                     'created_at' => now(),
-                ], [
+                ],
+                [
                     'name' => $nameIP14,
                     'slug' => Str::slug($nameIP14 . rand(0, 990), '-'),
                     'image' => 'iphone_' . rand(1, 30) . '.webp',
@@ -803,11 +789,105 @@ class ProductSeeder extends Seeder
                     'created_at' => now(),
                 ],
             ]);
-            // Thêm tên sản phẩm vào mảng Mac
+        }
+        // Thêm tên sản phẩm nồi chiên không dầu
+        for ($i = 0; $i <= 20; $i++) {
+            // Dùng chung promotion
+            $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
+            // end promotion
+            $nameNoiChien = 'Nồi chiên không dầu' . collect([' ', ' Xiaomi ', ' Kalite ', ' Bear ', ' Gaabor ', ' Philips ', ' SHARP ', ' BlueStone ', ' Cuckoo ', ' Kangaroo ', ' Sunhouse '])->random() . collect([' ', ' Smart Air Fryer Pro ', ' Q6 ', ' QZG-E12H9 ', ' Q10 ', ' GA-M4A01 ', ' HD9257/80 ', ' HD9200/90 ', ' KF-AF70EV-BK ', ' HD9285/90 ', ' Smart Air Fryer  ', ' QZG-F15G1 ', ' KG55AF1A '])->random() . collect([' ', ' 5L ', ' 6L ', ' 7L ', ' 8L ', ' 9L ', ' 10L ', ' 11L ', ' 12L ', ' 13L ', ' 14L ', ' 15L ', ' 16L ', ' 17L ', ' 18L '])->random();
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
+
+
+            DB::table('products')->insert([
+                [
+                    "name" => $nameNoiChien,
+                    "slug" => Str::slug($nameNoiChien . rand(0, 990), '-'),
+                    "image" =>  'noichien_' . rand(1, 30) . '.webp',
+                    'qty' => 200,
+                    'price' => $price,
+                    'offer_price' => $offer_price,
+                    'offer_start_date' => now(),
+                    'offer_end_date' => '2025-07-31',
+                    'sku' => 'SPNC' . rand(120, 140) . rand(100, 1020),
+                    'video_link' => 'https://youtube.com',
+                    'long_description' => '
+                             <div id="cpsContent" class="cps-block-content" style="max-height: 100000px;"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Tiết kiệm điện năng, thời gian chế biến với công suất 1700W</li><li>Dung tích lớn lên đến&nbsp;6.5L yên tâm nướng gà nguyên con</li><li>Tích hợp rất nhiều chức năng chiên nấu trên một sản phẩm</li><li>Thiết kế trong suốt dễ dàng quan sát tình trạng thức ăn</li></ul></div></div> <div><p style="text-align: justify;">' . $nameNoiChien . ' sở hữu công suất 1700W kết hợp công nghệ chiên đối lưu không khí, giúp nấu ăn nhanh chóng và lành mạnh hơn. Dung tích lớn 6.5 lít và nhiều chế độ chiên, nấu cho phép nồi đáp ứng nhu cầu ẩm thực phong phú của gia đình. Bên cạnh đó, sản phẩm <a href="https://cybermart.io.vn/product/gia-dung-smarthome/noi-chien-khong-dau" title="Nồi chiên không dầu Sunhouse"><strong>nồi chiên không dầu Sunhouse</strong></a> có thiết kế tối giản với cửa sổ khoang chiên ốp kính trong suốt dễ dàng quan sát.</p> <h2 style="text-align: justify;"><strong>Vì sao nên mua ' . $nameNoiChien . '?</strong></h2> <p style="text-align: justify;">' . $nameNoiChien . ' hứa hẹn sẽ là giải pháp nấu nướng tốt nhờ vào:</p> <p><span style="text-align: justify;">- Công suất 1700W: Chiên, nấu nhanh chóng và hiệu quả.</span><br><span style="text-align: justify;"></span></p> <p><span style="text-align: justify;">- Công nghệ tiên tiến Rapid Air: Tiết kiệm dầu, làm thức ăn trở nên dinh dưỡng hơn.</span><br><span style="text-align: justify;"></span></p> <p><span style="text-align: justify;">- Dung tích 6.5 lít: Chế biến một lượng lớn thực phẩm trong mỗi lần sử dụng, phù hợp cho cả gia đình.</span></p> <p style="text-align: justify;"><img src="https://cdn.tgdd.vn/Products/Images/9418/240313/ava-kdf-593d-0-600x600-1.jpg" alt="Vì sao nên mua ' . $nameNoiChien . '?" loading="lazy"></p> <p><span style="text-align: justify;">- Hỗ trợ nhiều chế độ nấu khác nhau: Đáp ứng nhu cầu ẩm thực đa dạng.</span><br><span style="text-align: justify;"></span></p> <p><span style="text-align: justify;">- Cửa sổ khoang chiên ốp kính trong suốt: Dễ dàng theo dõi quá trình chiên nấu.</span></p> <h2 style="text-align: justify;"><strong>' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn</strong></h2> <p style="text-align: justify;">' . $nameNoiChien . ' đáp ứng tốt nhu cầu chiên nấu thực phẩm của nhiều gia đình với công suất mạnh mẽ và dung tích lớn. Thiết bị có kết cấu cao cấp, vẻ ngoài sang trọng đảm bảo bền đẹp theo thời gian.</p> <p style="text-align: justify;">Bên cạnh đó nếu bạn đang có nhu cầu chọn nồi chiên Sunhouse có dung tích lớn hơn thì có thể khám phá mẫu&nbsp;<a href="https://cybermart.io.vn/product/gia-dung-smarthome/noi-chien-khong-dau" title="SHD4037" target="_blank"><strong>SHD4037</strong></a> được bán tại CellphoneS với đầy đủ ưu điểm vượt trội được bán chính hãng, giao hàng hỏa tốc nhanh. Khám phá ngay nhé!</p> <h3 style="text-align: justify;"><strong>Công suất mạnh mẽ 1700W&nbsp;</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' có công suất mạnh mẽ 1700W, giúp nấu chín thực phẩm nhanh chóng và đều hơn. Công suất cao kết hợp với khả năng gia nhiệt vượt trội giúp nồi chiên Sunhouse SHD4030 hoạt động hiệu quả, tiết kiệm thời gian nấu nướng mà vẫn đảm bảo chất lượng món ăn.</p> <p style="text-align: justify;"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fkingshop.vn%2Fsan-pham%2Fnoi-chien-khong-dau-nineshield-kb-5005m-24444.html&psig=AOvVaw3zaimhvOrXKEHqKCJxF1BR&ust=1722133190097000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCLCaoZ2UxocDFQAAAAAdAAAAABAJ" alt="' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn" loading="lazy"></p> <p style="text-align: justify;">Sunhouse SHD4030 6.5L sử dụng công nghệ chiên không dầu Rapid Air sử dụng luồng khí nóng lưu thông nhanh để làm chín thực phẩm thay vì dầu mỡ truyền thống. Nhờ vậy, món ăn không chỉ giữ được hương vị tự nhiên mà còn giảm lượng chất béo đáng kể, tốt cho sức khỏe.</p> <h3 style="text-align: justify;"><strong>Dung tích 6.5L đủ không gian nấu nướng cho gà nguyên con&nbsp;</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' với dung tích lớn 6.5 lít. Đây lựa chọn lý tưởng cho các gia đình đông thành viên hoặc khi cần nấu lượng thực phẩm lớn.&nbsp;</p> <p style="text-align: justify;"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Do-gia-dung/Noi-chien-khong-dau/Sunhouse/noi-chien-khong-dau-sunhouse-shd4030-6-5l-3.jpg" alt="' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn" loading="lazy"></p> <p style="text-align: justify;">Dung tích này cho phép bạn dễ dàng chế biến một con gà nguyên con, một lượng lớn khoai tây chiên, hoặc nhiều loại thực phẩm khác trong một lần nấu. Với khả năng phục vụ từ 4-6 người, nồi chiên này đáp ứng tốt các bữa ăn gia đình hoặc các buổi tụ họp nhỏ. Dung tích lớn giúp tiết kiệm thời gian nấu nướng và đảm bảo tất cả mọi người đều có phần ăn nóng hổi, ngon miệng.&nbsp;</p> <p style="text-align: justify;">Đặc biệt, ' . $nameNoiChien . ' được trang bị nhiều chức năng chiên nướng đa dạng, bao gồm các chế độ dành riêng cho khoai tây, tôm, thịt bò, cánh gà, pizza…</p> <h3 style="text-align: justify;"><strong>Kiểu dáng hiện đại&nbsp;</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' sở hữu thiết kế hiện đại với gam màu trung tính, dễ dàng hòa hợp với mọi không gian bếp. Vỏ nồi được làm từ chất liệu nhựa cao cấp, giúp nồi chịu nhiệt tốt và dễ dàng vệ sinh sau khi sử dụng.&nbsp;</p> <p style="text-align: justify;"><img src="https://bizweb.dktcdn.net/100/435/504/products/nichienkhongdudachcnang10lrole.jpg?v=1667787763040" alt="' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn" loading="lazy"></p> <p style="text-align: justify;">Đặc biệt, cửa sổ khoang chiên ốp kính trong suốt, cho phép bạn quan sát quá trình nấu nướng mà không cần mở nắp. Thiết kế tối giản nhưng tinh tế của nồi chiên Sunhouse SHD4030 vừa nâng cao tính thẩm mỹ, vừa mang lại sự tiện lợi và hiệu quả trong quá trình sử dụng.</p> <h3 style="text-align: justify;"><strong>Điều khiển núm xoay, tích hợp hẹn giờ 60 phút</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' được trang bị bảng điều khiển núm xoay đơn giản và dễ sử dụng. Nhờ đó, người dùng có thể cài nhiệt độ, cũng như các chương trình nấu trong tíc tắc.&nbsp;</p> <p style="text-align: justify;"><img src="https://s.meta.com.vn/Data/image/2019/10/26/noi-chien-khong-dau-rapido-raf4-0mh-1.jpg" alt="Điều khiển núm xoay, tích hợp hẹn giờ 60 phút" loading="lazy"></p> <p style="text-align: justify;">Trên bảng điều khiển sẽ có tính năng hẹn giờ thông minh cho phép bạn cài đặt thời gian nấu lên đến 60 phút.&nbsp;</p> <h2 style="text-align: justify;"><strong>Mua ' . $nameNoiChien . ' chính hãng, giá tốt tại Cybermart</strong></h2> <p style="text-align: justify;">Nếu bạn đang tìm kiếm sản phẩm ' . $nameNoiChien . ' chính hãng với giá tốt, thì Cybermart là điểm đến lý tưởng. Tại của hàng, bạn sẽ được đảm bảo với bảo hành từ nhà sản xuất Sunhouse.</p> <p style="text-align: justify;">Ngoài ra, bạn sẽ có cơ hội nhận được các ưu đãi khi sắm ' . $nameNoiChien . ' trong các dịp lễ 8/3, 20/10, Black Friday… Hãy ghé thăm Cybermart ngay hôm nay để sở hữu ngay Sunhouse SHD4030 6.5L với giá ưu đãi nhất!</p></div> </div>
+                          ',
+                    'short_description' => '
+                                <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng ' . $nameNoiChien . '<br>
+                                ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
+                                ✔️Bảo hành chính hãng ' . $nameNoiChien . ' 12 tháng</p>',
+                    'specifications' => '
+                    <table id="tskt" class="table table-striped">
+            <tbody>
+            <tr>
+                <td>Chất liệu nồi</td>
+                <td>Vỏ ngoài: Nhựa PP cao cấp
+        Khay chiên: Thép sơn phủ chống dính</td>
+            </tr>
+            <tr>
+                <td>Công suất</td>
+                <td>1700W</td>
+            </tr>
+            <tr>
+                <td>Điện áp</td>
+                <td>220V - 50Hz</td>
+            </tr>
+            <tr>
+                <td>Hẹn giờ</td>
+                <td>0 - 60 phút</td>
+            </tr>
+            <tr>
+                <td>Bảng điều khiển</td>
+                <td>Núm vặn</td>
+            </tr>
+            <tr>
+                <td>Công nghệ</td>
+                <td>Rapid Air</td>
+            </tr>
+            <tr>
+                <td>Chế độ</td>
+                <td>Nướng, Chiên</td>
+            </tr>
+            <tr>
+                <td>Tiện ích</td>
+                <td>Tay cầm cách nhiệt, Tự động ngắt khi quá nhiệt</td>
+            </tr>
+            <tr>
+                <td>Loại gia dụng</td>
+                <td>Nồi chiên không dầu</td>
+            </tr>
+            </tbody></table>
+                               ',
+                    'product_type' => 'new',
+                    'seo_title' => '' . $nameNoiChien . ' - Công Suất 1700W, Tiết Kiệm Dầu, Thiết Kế Hiện Đại',
+                    'promotion' => $pro,
+                    'seo_description' => 'Khám phá ' . $nameNoiChien . ' với công suất 1700W, giúp nấu ăn nhanh chóng và lành mạnh. Dung tích lớn 6.5L phù hợp cho cả gia đình, tích hợp nhiều chức năng chiên nấu và thiết kế cửa sổ kính trong suốt. Mua chính hãng tại Cybermart với giá ưu đãi!',
+                    'category_id' => 5,
+                    'weight' => 0.5,
+                    'sub_category_id' => 38,
+                    'child_category_id' => rand(54, 59),
+                    'created_at' => now(),
+                    "status" => 1
+                ],
+            ]);
+        }
+        // Thêm tên sản phẩm vào mảng Mac
+        for ($i = 0; $i <= 20; $i++) {
+            // Dùng chung promotion
+            $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
+            // end promotion
+            $nameMac = 'Oppo Macbook' . collect([' ', ' Air ', ' Pro ', ' Plus '])->random() . collect([' ', ' 14 ', ' 15 ', ' 16 '])->random()  . collect([' ', ' M1 ', ' M2 ', ' M3 '])->random() . collect([' 2019 ', ' 2020 ', ' 2021 ', ' 2022 ', ' 2023 '])->random() . collect([' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
             DB::table('products')->insert([
                 'name' => $nameMac,
                 'slug' => Str::slug($nameMac . rand(0, 990), '-'),
-                'image' => 'xiaomi_' . rand(1, 35) . '.webp',
+                'image' => 'mac_' . rand(1, 12) . '.webp',
                 'qty' => 200,
                 'price' => $price,
                 'offer_price' => $offer_price,
@@ -816,124 +896,124 @@ class ProductSeeder extends Seeder
                 'sku' => 'SPMCB' . rand(120, 140) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'long_description' => '<div class="ksp-content p-2 mb-2" style="-webkit-text-stroke-width:0px;background-color:rgb(242, 242, 242);border-radius:0.5rem;box-sizing:inherit;color:rgb(74, 74, 74);font-family:Roboto, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:auto;orphans:2;padding:0.5rem !important;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;width:800px;word-spacing:0px;">
-    <h2 class="ksp-title has-text-centered" style="box-sizing:inherit;color:rgb(215, 0, 24);font-size:18px;margin:0px;padding:0px;text-align:center !important;">
-        <strong>ĐẶC ĐIỂM NỔI BẬT</strong>
-    </h2>
-    <div style="box-sizing:inherit;">
-        <ul style="box-sizing:inherit;list-style:none;margin-bottom:0px;margin-right:0px;margin-top:0px;overflow-y:auto;padding:0px;scrollbar-width:none;">
-            <li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
-                <p style="margin-left:0px;">
-                    Hiệu năng hàng đầu với chip M2 - mạnh mẽ hơn 1.4 lần so với thế hệ trước giúp nâng cao hiệu suất làm việc
-                </p>
-            </li>
-            <li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
-                <p style="margin-left:0px;">
-                    Mở ra không gian giải trí chân thật với màn hình Retina sắc nét
-                </p>
-            </li>
-            <li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
-                <p style="margin-left:0px;">
-                    Trải nghiệm gõ thoải mái với bàn phím Apple Magic, mở khoá 1 chạm bằng Touch ID
-                </p>
-            </li>
-            <li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:0px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
-                <p style="margin-left:0px;">
-                    Trang bị cổng thunderbolt thế hệ mới cho phép bạn truyền dữ liệu nhanh hơn bao giờ hết
-                </p>
-            </li>
-        </ul>
-    </div>
+<h2 class="ksp-title has-text-centered" style="box-sizing:inherit;color:rgb(215, 0, 24);font-size:18px;margin:0px;padding:0px;text-align:center !important;">
+<strong>ĐẶC ĐIỂM NỔI BẬT</strong>
+</h2>
+<div style="box-sizing:inherit;">
+<ul style="box-sizing:inherit;list-style:none;margin-bottom:0px;margin-right:0px;margin-top:0px;overflow-y:auto;padding:0px;scrollbar-width:none;">
+<li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+    <p style="margin-left:0px;">
+        Hiệu năng hàng đầu với chip M2 - mạnh mẽ hơn 1.4 lần so với thế hệ trước giúp nâng cao hiệu suất làm việc
+    </p>
+</li>
+<li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+    <p style="margin-left:0px;">
+        Mở ra không gian giải trí chân thật với màn hình Retina sắc nét
+    </p>
+</li>
+<li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+    <p style="margin-left:0px;">
+        Trải nghiệm gõ thoải mái với bàn phím Apple Magic, mở khoá 1 chạm bằng Touch ID
+    </p>
+</li>
+<li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:0px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+    <p style="margin-left:0px;">
+        Trang bị cổng thunderbolt thế hệ mới cho phép bạn truyền dữ liệu nhanh hơn bao giờ hết
+    </p>
+</li>
+</ul>
+</div>
 </div>
 <div style="-webkit-text-stroke-width:0px;box-sizing:inherit;color:rgb(74, 74, 74);font-family:Roboto, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        <strong style="box-sizing:inherit;color:rgb(54, 54, 54);"><img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:810:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/MacBook-Air-15-inch-M2-14.jpg" alt="Đánh giá ' . $nameMac . '" width="810" loading="lazy"></strong>
-    </p>
-    <h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
-        <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">' . $nameMac . ' - Màn hình cỡ lớn, cấu hình cực khủng</strong>
-    </h2>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Macbook Air 15 M2 inch 2023 </strong>thể hiện sự đột phá trên thị trường laptop khi sở hữu hiệu năng vượt trội tới từ chipset Apple M2 cùng màn hình cỡ lớn 15 inch. Máy được tích hợp viên pin Lithium-Polymer 66.5Wh kết hợp với công nghệ sạc công suất lên tới 70W, đem lại thời lượng sử dụng suốt ngày dài chỉ sau 1 lần sạc. Với nhiều cải tiến vượt trội so với các thế hệ tiền nhiệm, đây sẽ là sản phẩm <a style="box-sizing:inherit;color:rgb(215, 0, 24);cursor:pointer;text-decoration:none;" href="https://cybermart.io.vn/" title="Macbook Air chính hãng" target="_blank"><strong style="box-sizing:inherit;color:currentcolor;">Macbook Air</strong></a> hiện đại mà bạn rất nên trải nghiệm.
-    </p>
-    <h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
-        <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Thiết kế thân thiện với môi trường, đa dạng phiên bản màu sắc</strong>
-    </h3>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        ' . $nameMac . ' nổi bật với tạo hình siêu mỏng nhẹ cùng độ bền bỉ tuyệt vời. Sở hữu độ dày thân máy chỉ khoảng nửa inch, Macbook Air 2023 15 inch có thể dễ dàng được bạn cất gọn và mang theo tới mọi nơi.&nbsp;
-    </p>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-8.jpg" alt="Thiết kế ' . $nameMac . '" loading="lazy" width="810" height="456">
-    </p>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        Thế hệ <a style="box-sizing:inherit;color:rgb(215, 0, 24);cursor:pointer;text-decoration:none;" href="https://cybermart.io.vn/" target="_blank"><strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Mac Air 15 inch</strong></a> mới trong năm 2023 này của Apple sẽ có sự góp mặt của 4 phiên bản màu sắc đặc biệt là Silver, Starlight, Space Gray, Midnight. Đây đều là những tuỳ chọn màu sắc hết sức đều hết sức rực rỡ. Nó không chỉ tôn lên vẻ đẹp của chiếc laptop mà còn mang tới cho bạn cảm giác sang trọng, chuyên nghiệp mỗi khi sử dụng.
-    </p>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-4.png" alt="Thiết kế ' . $nameMac . '" loading="lazy" width="810" height="456">
-    </p>
-    <h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
-        <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Chip Apple M2 mạnh mẽ, cho hiệu năng vượt trội và tiết kiệm năng lượng</strong>
-    </h3>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        ' . $nameMac . ' mang lại cho người dùng hiệu suất xử lý đỉnh cao khi được tích hợp chipset Apple M2 siêu mạnh mẽ. Nhờ đó mà các tác vụ chỉnh sửa video, lướt web thậm chí là chơi game đồ hoạ cũng có thể được xử lý hết sức mượt mà trên Macbook Air 2023 mới.
-    </p>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-2.jpg" alt="Hiệu năng ' . $nameMac . '" loading="lazy" width="810" height="456">
-    </p>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        Bên cạnh đó, so với các dòng PC sở hữu chip Intel Core i7 thì thế hệ Macbook Air 2023 này thậm chí có thể đem lại hiệu suất nhanh hơn gấp 2 lần với khả năng duyệt web tốc độ cao nhanh hơn 50% cùng thời lượng sử dụng lên tới hơn 18 giờ đồng hồ.
-    </p>
-    <h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
-        <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Màn hình hiển thị sắc nét cùng hệ thống âm thanh và camera cao cấp</strong>
-    </h3>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        Điểm nhấn đáng chú ý trên <a style="box-sizing:inherit;color:rgb(215, 0, 24);cursor:pointer;text-decoration:none;" href="https://cybermart.io.vn/" target="_blank"><strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Mac Air M2</strong></a> là màn hình hiển thị Liquid Retina siêu sống động với khả năng hiển thị trên 1 tỷ màu. So với các dòng laptop và PC khác thì Macbook Air 2023 có khả năng thể hiện hình ảnh với độ phân giải cao gấp 2 lần. Nhờ đó mà các tác vụ về hình ảnh, video trên máy luôn nổi bật với độ tương phản cực kỳ phong phú và chi tiết về màu sắc.
-    </p>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-6.jpg" alt="Màn hình ' . $nameMac . '" loading="lazy" width="810" height="456">
-    </p>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        Ngoài ra, thế hệ Macbook Air 2023 mới này còn sở hữu máy ảnh với độ phân giải lên tới 1080p. Ưu điểm này của máy giúp bạn luôn đẹp tự nhiên trong các cuộc gọi FaceTime HD với bạn bè, người thân của mình.
-    </p>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-9.png" alt="Màn hình ' . $nameMac . '" loading="lazy" width="810" height="456">
-    </p>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        Chưa hết, hệ thống âm thanh trên Macbook Air 2023 này còn được đánh giá rất cao về độ sống động, chân thực. Với công nghệ Spatial Audio kết hợp với Dolby Atmos, bạn có thể thoải mái tận hưởng âm thanh 3 chiều trong quá trình xem phim, nghe nhạc của mình nhé!
-    </p>
-    <h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
-        <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Bàn phím Magic siêu êm ái cùng tính năng bảo mật Touch ID hiện đại</strong>
-    </h3>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        Một điểm cộng khác của ' . $nameMac . ' tới từ bàn phím Magic thế hệ mới với cơ chế gõ vô cùng linh hoạt và khả năng thích nghi bất kỳ kiểu gõ nào. Đồng thời, hệ thống gõ nhập trên dòng Mac Air mới này còn được trang bị đèn nền thông minh, giúp cho việc trải nghiệm của người dùng trong môi trường ánh sáng yếu trở nên cực kỳ dễ dàng.&nbsp;
-    </p>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-5.png" alt="Bàn phím ' . $nameMac . '" loading="lazy" width="810" height="456">
-    </p>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        Ngoài ra, máy cũng đặc biệt được chú ý tới tính năng bảo mật Touch ID thế hệ mới. Nó không chỉ giúp nâng cao khả năng bảo mật mà còn hỗ trợ người dùng mở khoá, đăng nhập chỉ với 1 chạm đơn giản.
-    </p>
-    <h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
-        <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Đa dạng cổng kết nối, hỗ trợ truyền dữ liệu tốc độ cao</strong>
-    </h3>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        ' . $nameMac . ' cũng sẽ sở hữu 1 cổng sạc Magsafe, 2 cổng Thunderbolt, 1 jack 3.5 để cắm tai nghe tương tự như thế hệ Mac Air 2022 trước đó nhưng được cải tiến về mặt thông số và tốc độ truyền.&nbsp;
-    </p>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        <img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-3.png" alt="Cổng kết nối trên ' . $nameMac . '" loading="lazy" width="810" height="456">
-    </p>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        Cụ thể, 2 cổng Thunderbolt cho phép bạn sạc máy với công suất 70W hoặc dễ dàng kết nối với màn hình 6K. Đồng thời, giắc cắm tai nghe 3.5mm của Mac Air 15 inch năm 2023 cũng được nâng cấp với độ trở kháng tốt hơn, nâng cao trải nghiệm nghe nhạc người dùng.&nbsp;
-    </p>
-    <h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
-        <strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Mua Macbook Air M2 15 inch 2023 chính hãng tại Cybermart</strong>
-    </h2>
-    <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
-        Cybermart hiện đang cung cấp ' . $nameMac . ' chính hãng với mức giá hợp lý cùng nhiều chương trình khuyến mãi siêu hấp dẫn. Với hệ thống cửa hàng trải dài toàn quốc, Cybermart là một thương hiệu phân phối đồ công nghệ uy tín và hoàn toàn xứng đáng để bạn tin tưởng và đặt mua Macbook Air 15" chính hãng.&nbsp;Hãy nhanh tay gọi điện tới hotline 1800 2097 để đặt hàng sản phẩm với giá ưu đãi bạn nhé!
-    </p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"><img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:810:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/MacBook-Air-15-inch-M2-14.jpg" alt="Đánh giá ' . $nameMac . '" width="810" loading="lazy"></strong>
+</p>
+<h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">' . $nameMac . ' - Màn hình cỡ lớn, cấu hình cực khủng</strong>
+</h2>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Macbook Air 15 M2 inch 2023 </strong>thể hiện sự đột phá trên thị trường laptop khi sở hữu hiệu năng vượt trội tới từ chipset Apple M2 cùng màn hình cỡ lớn 15 inch. Máy được tích hợp viên pin Lithium-Polymer 66.5Wh kết hợp với công nghệ sạc công suất lên tới 70W, đem lại thời lượng sử dụng suốt ngày dài chỉ sau 1 lần sạc. Với nhiều cải tiến vượt trội so với các thế hệ tiền nhiệm, đây sẽ là sản phẩm <a style="box-sizing:inherit;color:rgb(215, 0, 24);cursor:pointer;text-decoration:none;" href="https://cybermart.io.vn/" title="Macbook Air chính hãng" target="_blank"><strong style="box-sizing:inherit;color:currentcolor;">Macbook Air</strong></a> hiện đại mà bạn rất nên trải nghiệm.
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Thiết kế thân thiện với môi trường, đa dạng phiên bản màu sắc</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+' . $nameMac . ' nổi bật với tạo hình siêu mỏng nhẹ cùng độ bền bỉ tuyệt vời. Sở hữu độ dày thân máy chỉ khoảng nửa inch, Macbook Air 2023 15 inch có thể dễ dàng được bạn cất gọn và mang theo tới mọi nơi.&nbsp;
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-8.jpg" alt="Thiết kế ' . $nameMac . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Thế hệ <a style="box-sizing:inherit;color:rgb(215, 0, 24);cursor:pointer;text-decoration:none;" href="https://cybermart.io.vn/" target="_blank"><strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Mac Air 15 inch</strong></a> mới trong năm 2023 này của Apple sẽ có sự góp mặt của 4 phiên bản màu sắc đặc biệt là Silver, Starlight, Space Gray, Midnight. Đây đều là những tuỳ chọn màu sắc hết sức đều hết sức rực rỡ. Nó không chỉ tôn lên vẻ đẹp của chiếc laptop mà còn mang tới cho bạn cảm giác sang trọng, chuyên nghiệp mỗi khi sử dụng.
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-4.png" alt="Thiết kế ' . $nameMac . '" loading="lazy" width="810" height="456">
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Chip Apple M2 mạnh mẽ, cho hiệu năng vượt trội và tiết kiệm năng lượng</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+' . $nameMac . ' mang lại cho người dùng hiệu suất xử lý đỉnh cao khi được tích hợp chipset Apple M2 siêu mạnh mẽ. Nhờ đó mà các tác vụ chỉnh sửa video, lướt web thậm chí là chơi game đồ hoạ cũng có thể được xử lý hết sức mượt mà trên Macbook Air 2023 mới.
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-2.jpg" alt="Hiệu năng ' . $nameMac . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Bên cạnh đó, so với các dòng PC sở hữu chip Intel Core i7 thì thế hệ Macbook Air 2023 này thậm chí có thể đem lại hiệu suất nhanh hơn gấp 2 lần với khả năng duyệt web tốc độ cao nhanh hơn 50% cùng thời lượng sử dụng lên tới hơn 18 giờ đồng hồ.
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Màn hình hiển thị sắc nét cùng hệ thống âm thanh và camera cao cấp</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Điểm nhấn đáng chú ý trên <a style="box-sizing:inherit;color:rgb(215, 0, 24);cursor:pointer;text-decoration:none;" href="https://cybermart.io.vn/" target="_blank"><strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Mac Air M2</strong></a> là màn hình hiển thị Liquid Retina siêu sống động với khả năng hiển thị trên 1 tỷ màu. So với các dòng laptop và PC khác thì Macbook Air 2023 có khả năng thể hiện hình ảnh với độ phân giải cao gấp 2 lần. Nhờ đó mà các tác vụ về hình ảnh, video trên máy luôn nổi bật với độ tương phản cực kỳ phong phú và chi tiết về màu sắc.
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-6.jpg" alt="Màn hình ' . $nameMac . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Ngoài ra, thế hệ Macbook Air 2023 mới này còn sở hữu máy ảnh với độ phân giải lên tới 1080p. Ưu điểm này của máy giúp bạn luôn đẹp tự nhiên trong các cuộc gọi FaceTime HD với bạn bè, người thân của mình.
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-9.png" alt="Màn hình ' . $nameMac . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Chưa hết, hệ thống âm thanh trên Macbook Air 2023 này còn được đánh giá rất cao về độ sống động, chân thực. Với công nghệ Spatial Audio kết hợp với Dolby Atmos, bạn có thể thoải mái tận hưởng âm thanh 3 chiều trong quá trình xem phim, nghe nhạc của mình nhé!
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Bàn phím Magic siêu êm ái cùng tính năng bảo mật Touch ID hiện đại</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Một điểm cộng khác của ' . $nameMac . ' tới từ bàn phím Magic thế hệ mới với cơ chế gõ vô cùng linh hoạt và khả năng thích nghi bất kỳ kiểu gõ nào. Đồng thời, hệ thống gõ nhập trên dòng Mac Air mới này còn được trang bị đèn nền thông minh, giúp cho việc trải nghiệm của người dùng trong môi trường ánh sáng yếu trở nên cực kỳ dễ dàng.&nbsp;
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-5.png" alt="Bàn phím ' . $nameMac . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Ngoài ra, máy cũng đặc biệt được chú ý tới tính năng bảo mật Touch ID thế hệ mới. Nó không chỉ giúp nâng cao khả năng bảo mật mà còn hỗ trợ người dùng mở khoá, đăng nhập chỉ với 1 chạm đơn giản.
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Đa dạng cổng kết nối, hỗ trợ truyền dữ liệu tốc độ cao</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+' . $nameMac . ' cũng sẽ sở hữu 1 cổng sạc Magsafe, 2 cổng Thunderbolt, 1 jack 3.5 để cắm tai nghe tương tự như thế hệ Mac Air 2022 trước đó nhưng được cải tiến về mặt thông số và tốc độ truyền.&nbsp;
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-3.png" alt="Cổng kết nối trên ' . $nameMac . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Cụ thể, 2 cổng Thunderbolt cho phép bạn sạc máy với công suất 70W hoặc dễ dàng kết nối với màn hình 6K. Đồng thời, giắc cắm tai nghe 3.5mm của Mac Air 15 inch năm 2023 cũng được nâng cấp với độ trở kháng tốt hơn, nâng cao trải nghiệm nghe nhạc người dùng.&nbsp;
+</p>
+<h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Mua Macbook Air M2 15 inch 2023 chính hãng tại Cybermart</strong>
+</h2>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Cybermart hiện đang cung cấp ' . $nameMac . ' chính hãng với mức giá hợp lý cùng nhiều chương trình khuyến mãi siêu hấp dẫn. Với hệ thống cửa hàng trải dài toàn quốc, Cybermart là một thương hiệu phân phối đồ công nghệ uy tín và hoàn toàn xứng đáng để bạn tin tưởng và đặt mua Macbook Air 15" chính hãng.&nbsp;Hãy nhanh tay gọi điện tới hotline 1800 2097 để đặt hàng sản phẩm với giá ưu đãi bạn nhé!
+</p>
 </div>',
                 'short_description' => '
-                    <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
-                    ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
-                    ✔️Bảo hành chính hãng Apple 12 tháng</p>',
+        <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
+        ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
+        ✔️Bảo hành chính hãng Apple 12 tháng</p>',
                 'product_type' => 'new',
                 'seo_title' => '' . $nameMac . '- Chip M2, Màn hình Retina, Hiệu Năng Vượt Trội',
                 'promotion' => $pro,
@@ -944,7 +1024,17 @@ class ProductSeeder extends Seeder
                 'child_category_id' => rand(21, 25),
                 'created_at' => now(),
             ]);
-            // Thêm tên sản phẩm OPPO 
+        }
+        // Thêm tên sản phẩm OPPO
+        for ($i = 0; $i <= 20; $i++) {
+            // Dùng chung promotion
+            $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
+            // end promotion
+            $nameOP = 'OPPO' . collect(['Reno12 ', ' Reno11 ', ' A18 ', ' A79 ', ' Reno10 ', ' A77s ', ' A78 ', ' Reno7 '])->random() . collect([' ', ' F ', ' X5 ', ' Pro ', ' Plus ', ' N3 ', ' T '])->random();
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
+
             DB::table('products')->insert([
 
                 "name" => $nameOP,
@@ -1331,7 +1421,7 @@ class ProductSeeder extends Seeder
     <tbody>
     <tr>
         <td>Hãng sản xuất</td>
-        <td>'. $nameOP .'</td>
+        <td>' . $nameOP . '</td>
     </tr>
     <tr>
         <td>Kích thước màn hình</td>
@@ -1351,11 +1441,11 @@ class ProductSeeder extends Seeder
     </tr>
     <tr>
         <td>Chipset</td>
-        <td>'. $nameOP .'</td>
+        <td>' . $nameOP . '</td>
     </tr>
     <tr>
         <td>CPU</td>
-        <td>'. $nameOP .'&nbsp;120Hz</td>
+        <td>' . $nameOP . '&nbsp;120Hz</td>
     </tr>
     <tr>
         <td>GPU</td>
@@ -1460,9 +1550,19 @@ class ProductSeeder extends Seeder
                 "status" => 1
 
             ]);
-            
-             // Thêm tên sản phẩm ĐIỆN THOAỊ SAMSUNG  
-             DB::table('products')->insert([
+        }
+        // Thêm tên sản phẩm ĐIỆN THOAỊ SAMSUNG 
+        for ($i = 0; $i <= 20; $i++) {
+            // Dùng chung promotion
+            $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
+            // end promotion
+            $nameSamsung = 'Samsung Galaxy' . collect(['Z ', ' S24 ', ' S23 ', ' M55 ', ' M34 ', ' A77s ', ' A78 ', ' Reno7 '])->random() . collect([' ', ' Fold6 ', ' Utra ', ' Lte ', ' Plus ', ' N3 ', ' T '])->random();
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
+
+
+            DB::table('products')->insert([
 
                 "name" => $nameSamsung,
                 "slug" => Str::slug($nameSamsung . rand(0, 990), '-'),
@@ -1977,9 +2077,19 @@ class ProductSeeder extends Seeder
                 "status" => 1
 
             ]);
-             // Thêm tên sản phẩm ĐIỆN THOAỊ Xiaomi 
-             DB::table('products')->insert([
+        }
+        // Thêm tên sản phẩm ĐIỆN THOAỊ Xiaomi
+        for ($i = 0; $i <= 20; $i++) {
+            // Dùng chung promotion
+            $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
+            // end promotion
+            $nameXiaomi = 'Xiaomi' . collect([' Redmi ', ' POCO ', ' 13T ', ' 14 ', ' M34 ', ' A77s ', ' A78 ', ' 16 '])->random() . collect([' ', ' Fold6 ', ' Utra ', ' Lte ', ' Plus ', ' N3 ', ' Note '])->random() . collect([' ', ' M5 ', ' X5 ', ' M6 ', ' 13 ', ' N3 ', ' T '])->random() . collect([' ', ' 4G ', ' 5G ', ' 7G ', ' 8G ', ' 2G ', ' 3G '])->random();
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
 
+
+            DB::table('products')->insert([
                 "name" => $nameXiaomi,
                 "slug" => Str::slug($nameXiaomi . rand(0, 990), '-'),
                 "image" =>  'samsung_' . rand(1, 30) . '.webp',
@@ -2364,7 +2474,7 @@ class ProductSeeder extends Seeder
     <tbody>
     <tr>
         <td>Hãng sản xuất</td>
-        <td> '. $nameXiaomi .'</td>
+        <td> ' . $nameXiaomi . '</td>
     </tr>
     <tr>
         <td>Kích thước màn hình</td>
@@ -2384,11 +2494,11 @@ class ProductSeeder extends Seeder
     </tr>
     <tr>
         <td>Chipset</td>
-        <td>'. $nameXiaomi .'</td>
+        <td>' . $nameXiaomi . '</td>
     </tr>
     <tr>
         <td>CPU</td>
-        <td>'. $nameXiaomi .'&nbsp;120Hz</td>
+        <td>' . $nameXiaomi . '&nbsp;120Hz</td>
     </tr>
     <tr>
         <td>GPU</td>
@@ -2493,7 +2603,18 @@ class ProductSeeder extends Seeder
                 "status" => 1
 
             ]);
-            // Thêm tên sản phẩm Laptop MSi
+        }
+        // Thêm tên sản phẩm Laptop MSi
+        for ($i = 0; $i <= 20; $i++) {
+            // Dùng chung promotion
+            $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
+            // end promotion
+            $nameMSI = 'Laptop' . collect([' ', ' Gaming ', ' MSI '])->random() . collect([' ', ' Modern ', ' Pulse ', ' Crosshair ', ' Prestige ', ' Katana ', ' Cyborg ', ' Crosshair ', ' Bravo '])->random() . collect([' ', ' 15 ', ' GF63 ', ' 14 '])->random()  . collect([' ', ' A12VE-412VN ', ' 11UC-1228VN ', ' 13VE-452VN ', ' A15VE-412VN ', ' 10UC-1228VN ', ' 13VE-454VN '])->random();
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
+
+
             DB::table('products')->insert([
                 "name" => $nameMSI,
                 "slug" => Str::slug($nameMSI . rand(0, 990), '-'),
@@ -2646,7 +2767,18 @@ class ProductSeeder extends Seeder
                 "status" => 1
 
             ]);
-            // thêm sản phẩm vào mảng âm thanh
+        }
+        // thêm sản phẩm vào mảng âm thanh
+        for ($i = 0; $i <= 20; $i++) {
+            // Dùng chung promotion
+            $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
+            // end promotion
+            $nameSounds = 'Tai nghe Bluetooth  ' . collect([' ', ' Apple ', ' True '])->random() . collect([' ', ' Chụp tai Edifier ', ' AirPods Pro ', ' Wireless HUAWEI ', ' Wireless Samsung Galaxy Buds ', ' Wireless Anker Soundcore R50i ', ' Wireless Samsung Galaxy Buds2 ', ' Wireless Havit ', ' Bravo '])->random() . collect([' ', ' A3949 ', ' 2 ', ' 3 ', ' FreeClip ', ' Pro ', ' 2022 ', ' TW969 ', ' Air '])->random();
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
+
+
             DB::table('products')->insert([
                 'name' => $nameSounds,
                 'slug' => Str::slug($nameSounds . rand(0, 990), '-'),
@@ -2797,146 +2929,157 @@ class ProductSeeder extends Seeder
                 'child_category_id' => rand(46, 50),
                 'created_at' => now(),
             ]);
+        }
+        //nameLoa
+        for ($i = 0; $i <= 20; $i++) {
+            // Dùng chung promotion
+            $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
+            // end promotion
+            $nameLoa = 'Loa Bluetooth' . collect([' ', ' Edifier ', ' JBL ', ' Marshall ', ' Sony ', ' Alpha ', ' Robot ', ' Harman ', ' Tronsmart ', ' Partybox '])->random() . collect([' ', ' Kardon ', ' Encore ', ' T7 ', ' Boombox ', ' Willen ', ' Acton ', ' SRS-XB100 ', ' Works AW-W88 '])->random() . collect([' ', ' A3949 ', ' 2 ', ' 3 ', ' III ', ' Pro ', ' 2022 ', ' TW969 ', ' Air '])->random();
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
+
             DB::table('products')->insert([
                 'name' => $nameLoa,
                 'slug' => Str::slug($nameLoa . rand(0, 990), '-'),
                 'image' => 'loa_' . rand(1, 27) . '.webp',
                 'qty' => 200,
                 'price' => $price,
-                    'offer_price' => $offer_price,
+                'offer_price' => $offer_price,
                 'offer_start_date' => now(),
                 'offer_end_date' => '2025-07-31',
                 'sku' => 'SPL' . rand(100, 1020) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'short_description' => '
-                <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng ' . $nameLoa . '<br>
-                ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
-                ✔️Bảo hành chính hãng ' . $nameLoa . ' 12 tháng</p>',
+    <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng ' . $nameLoa . '<br>
+    ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
+    ✔️Bảo hành chính hãng ' . $nameLoa . ' 12 tháng</p>',
                 'long_description' => '
-                <div id="cpsContent" class="cps-block-content"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Tích hợp chip Apple H2 mang đến chất âm sống động cùng khả năng tái tạo âm thanh 3 chiều vượt trội</li><li>Công nghệ Bluetooth 5.3 kết nối ổn định, mượt mà, tiêu thụ năng lượng thấp, giúp tiết kiệm pin đáng kể</li><li>Chống ồn chủ động loại bỏ tiếng ồn hiệu quả gấp đôi thế hệ trước, giúp nâng cao trải nghiệm nghe nhạc</li><li>Chống nước chuẩn IPX4 trên tai nghe và hộp sạc, giúp bạn thỏa sức tập luyện không cần lo thấm mồ hôi</li></ul></div></div> <div><p style="text-align: justify;">Tại sự kiện ra mắt iPhone 14 series, Apple đã giới thiệu nhiều sản phẩm trong đó có tai nghe&nbsp;AirPods Pro thế hệ mới. Vậy&nbsp;Apple AirPods Pro 2 có gì nổi bật về thiết kế, chất âm ra sao? Có nên mua tai nghe AirPod Pro 2022 không?</p> <h2><strong><span><span><span>So sánh chi tiết&nbsp;<span>' . $nameLoa  . ' với&nbsp;<span>' . $nameLoa  . '</span></span></span></span></span></strong></h2> <p>So với thế hệ&nbsp;<span>' . $nameLoa  . ' Magsafe được ra mắt trước đó thì&nbsp;<span>' . $nameLoa  . ' có gì nâng cấp. cùng tìm hiểu chi tiết qua bảng so sánh sau.</span></span></p> <table class="table table-bordered"><tbody><tr class="success"><td></td> <td style="text-align: center;"><strong>' . $nameLoa  . '</strong></td> <td style="text-align: center;"><strong>' . $nameLoa  . '</strong></td></tr> <tr><td><p>Màu sắc</p></td> <td style="text-align: center;"><p>Trắng</p></td> <td style="text-align: center;"><p>Trắng</p></td></tr> <tr><td><p><span>Chống nước</span></p></td> <td style="text-align: center;"><p><span>Chống mồ hôi và nước (IPX4)</span></p></td> <td style="text-align: center;"><p><span>IPX4</span></p></td></tr> <tr><td><p><span>Phương thức điều khiển</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Chạm, cảm ứng</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Cảm ứng chạm</span></p></td></tr> <tr><td><p><span>Bluetooth</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Bluetooth 5.3</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span><span>Bluetooth&nbsp;</span>5.0</span></p></td></tr> <tr><td><p><span>Công nghệ âm thanh</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Chống ồn chủ động 2X</span><br><span>Spatial Audio</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Chống ồn chủ động</span><br><span>Xuyên âm</span></p></td></tr> <tr><td><p><span>Số thiết bị kết nối cùng lúc</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>2</span></p></td> <td style="text-align: center;"><p style="text-align: center;">1</p></td></tr> <tr><td><p><span>Thơi lượng pin</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>6 giờ</span></p> <p style="text-align: center;"><span>30 giờ kèm hộp sạc</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Tai nghe : 4.5 giờ</span></p> <p style="text-align: center;"><span>Hộp sạc : 24 giờ</span></p></td></tr> <tr><td><p>Chip</p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Apple H2</span></p> <p style="text-align: center;"><span><span>Apple U1</span></span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Apple H1</span></p></td></tr> <tr><td><p>Cổng kết nối</p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Lightning</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Lightning</span></p></td></tr></tbody></table> <h2 style="text-align: justify;"><strong>Tai nghe Apple AirPods Pro 2 - Thiết kế không đổi, pin cải thiện</strong></h2> <p style="text-align: justify;">Sau thế hệ&nbsp;AirPods Pro được ra mắt năm 2021, Apple tiếp tục cho ra mắt phiên bản <strong><a href="https://cybermart.io.vn/product/am-thanh" target="_blank">tai nghe</a></strong> mới trong sự kiện ra mắt iPhone 14 series mang tên&nbsp;Apple AirPods Pro thế hệ thứ 2. Tuy&nbsp;Apple AirPods Pro 2 không có quá nhiều đổi mới trong thiết kế nhưng cấu hình cùng chất âm trên thiết bị sẽ được cải thiện đáng kể.</p> <h3 style="text-align: justify;"><strong>Thiết kế không đổi, sử dụng vật liệu tái chế thân thiện môi trường</strong></h3> <p style="text-align: justify;">Tương tự như trên các dòng iPhone, Apple cũng sử dụng chung thiết kế cho nhiều dòng AirPods của mình. Thế hệ AirPods mới này sẽ tiếp tục sở hữu thiết kế của người tiền nhiệm khi ngoại hình thiết bị không có quá nhiều thay đổi. Tai nghe vẫn sở hữu màu trắng quen thuộc và sẽ không có phiên bản màu khác cho người dùng lựa chọn.</p> <p style="text-align: justify;"><img src="https://dareu.com.vn/wp-content/uploads/2021/04/tai-nghe-gaming-dareu-eh416-rgb-01.png" alt="Đánh giá thiết kế ' . $nameLoa  . '" loading="lazy"></p> <p style="text-align: justify;">Về thiết kế hộp sạc, Apple sử dụng 100% nguyên vật liệu tái chế cho hộp sạc, với mục đích bảo vệ môi trường. Có một thay đổi nhỏ trong thiết kế AirPods Pro 2 đó chính là Apple trang bị thêm loa ở cạnh dưới để người dùng có thể dễ dàng tìm kiếm thiết bị, định vị vị trí thông qua tính năng Find My.</p> <p style="text-align: justify;">Tai nghe AirPods Pro 2 vẫn được trang bị đuôi nhắn cùng housing nghiêng góc. Người dùng sẽ có bốn đầu tips để sử dụng cho từng kích thước tai.</p> <p style="text-align: justify;"><img src="https://hanoicomputercdn.com/media/lib/45444_tai-nghe-dareu-eh925s-rgb-black-red.jpg" alt="Đánh giá thiết kế ' . $nameLoa  . '" loading="lazy"></p> <p style="text-align: justify;">Ngoài ra, cả tai nghe và hộp sạc AirPods Pro 2022 đều được Apple trang bị chuẩn kháng nước và bụi bẩn IPX4</p> <p style="text-align: justify;">Xem thêm mẫu tai nghe <strong><a href="https://cybermart.io.vn/product/am-thanh" target="_blank">Airpods Pro 2</a></strong> USB-C mới đang có giá cực tốt.</p> <h3 style="text-align: justify;"><strong>Chip H2 mạnh mẽ, khả năng chống ồn gấp đôi</strong></h3> <p style="text-align: justify;">AirPod Pro 2 được trang bị chip H2, con chip mới được nghiên cứu và phát triển giúp cải thiện chất lượng âm thanh trên thiết bị, cho phép giảm thiểu tình trạng méo tiếng mang lại âm trầm sâu cùng âm cao rõ nét.</p> <p style="text-align: justify;"><img src="https://ben.com.vn/tin-tuc/wp-content/uploads/2020/06/phan_loai_tai_nghe_co_ban___bencomputer1.jpg" alt="Đánh giá cấu hình ' . $nameLoa  . '" loading="lazy"></p> <p style="text-align: justify;">Khả năng chống ồn chủ động trên AirPods Pro 2 cũng được cải thiện đáng kể. Cụ thể khả năng chống ồn chủ động ANC với thuật toán cùng phần cứng mới đã được cải thiện gấp 2 lần so với AirPods Pro đời đầu.</p> <p style="text-align: justify;">Ngoài ra, thiết bị còn được trang bị chế độ thích ứng thông minh cho phép loại bỏ âm thanh từ môi trường khi người dùng đi qua khu vực âm thanh lớn, bảo vệ đôi tai người dùng.</p> <p style="text-align: justify;"><img src="https://phukiengiare.com/images/detailed/63/tai-nghe-bluetooth-baseus-w04-pro-1.jpg" alt="Đánh giá khả năng chống ồn" loading="lazy"></p> <p style="text-align: justify;">Tai nghe AirPods Pro 2 được trang bị micro với thiết kế hướng vào trong kết hợp với các thuật toán nâng cao giúp thiết bị có thể nhận dạng giọn nói của người dùng giúp đem lại chất lượng các cuộc gọi rõ nét hơn.</p> <h3 style="text-align: justify;"><strong>Điều khiển cảm ứng tiện lợi, dung lượng pin được cải thiện</strong></h3> <p style="text-align: justify;">Trên đuôi tai nghe, tính năng cảm ứng lực và cảm ứng điện dung cũng được Apple nâng cấp cho phép người dùng có thể điều hướng một cách dễ dàng.</p> <p style="text-align: justify;">Cụ thể, người dùng thực hiện:</p> <ul style="text-align: justify;"><li>-&nbsp; &nbsp; &nbsp;Vuốt lên hoặc xuống: điều chỉnh âm lượng</li> <li><span>-&nbsp; &nbsp; &nbsp;</span>Nhấn: Phát – tạm dừng phát nhạc, trả lời hoặc kết thúc cuộc gọi</li> <li><span>-&nbsp; &nbsp; &nbsp;</span>Giữ: Chuyển đổi tính năng chống ồn chủ động hoặc thích ứng</li></ul> <p style="text-align: justify;"><img src="https://cf.shopee.vn/file/d1d8b2b17d753059452f1e8ffcfcdd08" alt="Điều khiển cảm ứng tiện lợi" loading="lazy"></p> <p style="text-align: justify;">Về thời lượng sử dụng, AirPods Pro 2 này cho thời gian sử dụng tới 6 giờ khi sử dụng kèm tính năng chống ồn, và tắt ANC thì thời gian có thể lên tới 30 giờ. Người dùng có thể sử dụng bộ sạc MagSafe&nbsp;hoặc đầu nối Lightning để bổ sung năng lượng cho thiết bị nhanh chóng.</p> <p style="text-align: justify;"><img src="https://fptshop.com.vn/Uploads/Originals/2022/8/8/637955569082653401_HASP-TAINGHE-SOUNDMAX-AH335-AVT.jpg" alt="dung lượng pin được cải thiện" loading="lazy"></p> <h2 style="text-align: justify;"><strong>Giá AirPods Pro 2 bao nhiêu tiền? Ra mắt khi nào?</strong></h2> <p style="text-align: justify;">Tai nghe không dây AirPods Pro 2022 đã chính thức được Apple giới thiệu trong sự kiện ra mắt iPhone 14 Series, diễn ra vào khuya 7/9 theo giờ Mỹ.</p> <p style="text-align: justify;">Về giá bán, tai nghe có có giá khởi điểm là 249 USD – tương đương 5.9 triệu đồng. Khi về chính hãng tại Việt Nam, tai nghe có giá bán dự kiến trong đợt mở bán đầu tiên khoảng 6.99 triệu đồng.</p> <p style="text-align: justify;"><img src="https://cdn.tgdd.vn/Files/2022/01/30/1413644/cac-thuong-hieu-tai-nghe-tot-va-duoc-ua-chuong-nha.jpg" alt=" Giá bán và ngày ra mắt của tai nghe ' . $nameLoa  . '" loading="lazy"></p> <h2 style="text-align: justify;"><strong>Đặt trước AirPod Pro 2 giá tốt, ưu đãi hấp dẫn tại Cybermart</strong></h2> <p style="text-align: justify;">Hệ thống Cybermart cập nhật các sản phẩm mới từ Apple và phân phối đến cho các tín đồ công nghệ Việt trong đó có cả tai nghe AirPods Pro 2022. Sản phẩm được bán chính hãng tại hệ thống Cybermart với giá bán ưu đãi. Cùng với đó, hệ thống cũng hỗ trợ khách hàng mua trả góp tai nghe&nbsp;AirPods với lãi suất từ 0%. Trong suốt thời gian 12 tháng kể từ ngày mua hàng, sản phẩm sẽ được bảo hành theo chính sách từ hãng nếu có phát sinh lỗi từ nhà sản xuất tại trung tâm bảo hành ủy quyền Cybermart.</p></div> </div> 
-                ',
+    <div id="cpsContent" class="cps-block-content"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Tích hợp chip Apple H2 mang đến chất âm sống động cùng khả năng tái tạo âm thanh 3 chiều vượt trội</li><li>Công nghệ Bluetooth 5.3 kết nối ổn định, mượt mà, tiêu thụ năng lượng thấp, giúp tiết kiệm pin đáng kể</li><li>Chống ồn chủ động loại bỏ tiếng ồn hiệu quả gấp đôi thế hệ trước, giúp nâng cao trải nghiệm nghe nhạc</li><li>Chống nước chuẩn IPX4 trên tai nghe và hộp sạc, giúp bạn thỏa sức tập luyện không cần lo thấm mồ hôi</li></ul></div></div> <div><p style="text-align: justify;">Tại sự kiện ra mắt iPhone 14 series, Apple đã giới thiệu nhiều sản phẩm trong đó có tai nghe&nbsp;AirPods Pro thế hệ mới. Vậy&nbsp;Apple AirPods Pro 2 có gì nổi bật về thiết kế, chất âm ra sao? Có nên mua tai nghe AirPod Pro 2022 không?</p> <h2><strong><span><span><span>So sánh chi tiết&nbsp;<span>' . $nameLoa  . ' với&nbsp;<span>' . $nameLoa  . '</span></span></span></span></span></strong></h2> <p>So với thế hệ&nbsp;<span>' . $nameLoa  . ' Magsafe được ra mắt trước đó thì&nbsp;<span>' . $nameLoa  . ' có gì nâng cấp. cùng tìm hiểu chi tiết qua bảng so sánh sau.</span></span></p> <table class="table table-bordered"><tbody><tr class="success"><td></td> <td style="text-align: center;"><strong>' . $nameLoa  . '</strong></td> <td style="text-align: center;"><strong>' . $nameLoa  . '</strong></td></tr> <tr><td><p>Màu sắc</p></td> <td style="text-align: center;"><p>Trắng</p></td> <td style="text-align: center;"><p>Trắng</p></td></tr> <tr><td><p><span>Chống nước</span></p></td> <td style="text-align: center;"><p><span>Chống mồ hôi và nước (IPX4)</span></p></td> <td style="text-align: center;"><p><span>IPX4</span></p></td></tr> <tr><td><p><span>Phương thức điều khiển</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Chạm, cảm ứng</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Cảm ứng chạm</span></p></td></tr> <tr><td><p><span>Bluetooth</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Bluetooth 5.3</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span><span>Bluetooth&nbsp;</span>5.0</span></p></td></tr> <tr><td><p><span>Công nghệ âm thanh</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Chống ồn chủ động 2X</span><br><span>Spatial Audio</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Chống ồn chủ động</span><br><span>Xuyên âm</span></p></td></tr> <tr><td><p><span>Số thiết bị kết nối cùng lúc</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>2</span></p></td> <td style="text-align: center;"><p style="text-align: center;">1</p></td></tr> <tr><td><p><span>Thơi lượng pin</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>6 giờ</span></p> <p style="text-align: center;"><span>30 giờ kèm hộp sạc</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Tai nghe : 4.5 giờ</span></p> <p style="text-align: center;"><span>Hộp sạc : 24 giờ</span></p></td></tr> <tr><td><p>Chip</p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Apple H2</span></p> <p style="text-align: center;"><span><span>Apple U1</span></span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Apple H1</span></p></td></tr> <tr><td><p>Cổng kết nối</p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Lightning</span></p></td> <td style="text-align: center;"><p style="text-align: center;"><span>Lightning</span></p></td></tr></tbody></table> <h2 style="text-align: justify;"><strong>Tai nghe Apple AirPods Pro 2 - Thiết kế không đổi, pin cải thiện</strong></h2> <p style="text-align: justify;">Sau thế hệ&nbsp;AirPods Pro được ra mắt năm 2021, Apple tiếp tục cho ra mắt phiên bản <strong><a href="https://cybermart.io.vn/product/am-thanh" target="_blank">tai nghe</a></strong> mới trong sự kiện ra mắt iPhone 14 series mang tên&nbsp;Apple AirPods Pro thế hệ thứ 2. Tuy&nbsp;Apple AirPods Pro 2 không có quá nhiều đổi mới trong thiết kế nhưng cấu hình cùng chất âm trên thiết bị sẽ được cải thiện đáng kể.</p> <h3 style="text-align: justify;"><strong>Thiết kế không đổi, sử dụng vật liệu tái chế thân thiện môi trường</strong></h3> <p style="text-align: justify;">Tương tự như trên các dòng iPhone, Apple cũng sử dụng chung thiết kế cho nhiều dòng AirPods của mình. Thế hệ AirPods mới này sẽ tiếp tục sở hữu thiết kế của người tiền nhiệm khi ngoại hình thiết bị không có quá nhiều thay đổi. Tai nghe vẫn sở hữu màu trắng quen thuộc và sẽ không có phiên bản màu khác cho người dùng lựa chọn.</p> <p style="text-align: justify;"><img src="https://dareu.com.vn/wp-content/uploads/2021/04/tai-nghe-gaming-dareu-eh416-rgb-01.png" alt="Đánh giá thiết kế ' . $nameLoa  . '" loading="lazy"></p> <p style="text-align: justify;">Về thiết kế hộp sạc, Apple sử dụng 100% nguyên vật liệu tái chế cho hộp sạc, với mục đích bảo vệ môi trường. Có một thay đổi nhỏ trong thiết kế AirPods Pro 2 đó chính là Apple trang bị thêm loa ở cạnh dưới để người dùng có thể dễ dàng tìm kiếm thiết bị, định vị vị trí thông qua tính năng Find My.</p> <p style="text-align: justify;">Tai nghe AirPods Pro 2 vẫn được trang bị đuôi nhắn cùng housing nghiêng góc. Người dùng sẽ có bốn đầu tips để sử dụng cho từng kích thước tai.</p> <p style="text-align: justify;"><img src="https://hanoicomputercdn.com/media/lib/45444_tai-nghe-dareu-eh925s-rgb-black-red.jpg" alt="Đánh giá thiết kế ' . $nameLoa  . '" loading="lazy"></p> <p style="text-align: justify;">Ngoài ra, cả tai nghe và hộp sạc AirPods Pro 2022 đều được Apple trang bị chuẩn kháng nước và bụi bẩn IPX4</p> <p style="text-align: justify;">Xem thêm mẫu tai nghe <strong><a href="https://cybermart.io.vn/product/am-thanh" target="_blank">Airpods Pro 2</a></strong> USB-C mới đang có giá cực tốt.</p> <h3 style="text-align: justify;"><strong>Chip H2 mạnh mẽ, khả năng chống ồn gấp đôi</strong></h3> <p style="text-align: justify;">AirPod Pro 2 được trang bị chip H2, con chip mới được nghiên cứu và phát triển giúp cải thiện chất lượng âm thanh trên thiết bị, cho phép giảm thiểu tình trạng méo tiếng mang lại âm trầm sâu cùng âm cao rõ nét.</p> <p style="text-align: justify;"><img src="https://ben.com.vn/tin-tuc/wp-content/uploads/2020/06/phan_loai_tai_nghe_co_ban___bencomputer1.jpg" alt="Đánh giá cấu hình ' . $nameLoa  . '" loading="lazy"></p> <p style="text-align: justify;">Khả năng chống ồn chủ động trên AirPods Pro 2 cũng được cải thiện đáng kể. Cụ thể khả năng chống ồn chủ động ANC với thuật toán cùng phần cứng mới đã được cải thiện gấp 2 lần so với AirPods Pro đời đầu.</p> <p style="text-align: justify;">Ngoài ra, thiết bị còn được trang bị chế độ thích ứng thông minh cho phép loại bỏ âm thanh từ môi trường khi người dùng đi qua khu vực âm thanh lớn, bảo vệ đôi tai người dùng.</p> <p style="text-align: justify;"><img src="https://phukiengiare.com/images/detailed/63/tai-nghe-bluetooth-baseus-w04-pro-1.jpg" alt="Đánh giá khả năng chống ồn" loading="lazy"></p> <p style="text-align: justify;">Tai nghe AirPods Pro 2 được trang bị micro với thiết kế hướng vào trong kết hợp với các thuật toán nâng cao giúp thiết bị có thể nhận dạng giọn nói của người dùng giúp đem lại chất lượng các cuộc gọi rõ nét hơn.</p> <h3 style="text-align: justify;"><strong>Điều khiển cảm ứng tiện lợi, dung lượng pin được cải thiện</strong></h3> <p style="text-align: justify;">Trên đuôi tai nghe, tính năng cảm ứng lực và cảm ứng điện dung cũng được Apple nâng cấp cho phép người dùng có thể điều hướng một cách dễ dàng.</p> <p style="text-align: justify;">Cụ thể, người dùng thực hiện:</p> <ul style="text-align: justify;"><li>-&nbsp; &nbsp; &nbsp;Vuốt lên hoặc xuống: điều chỉnh âm lượng</li> <li><span>-&nbsp; &nbsp; &nbsp;</span>Nhấn: Phát – tạm dừng phát nhạc, trả lời hoặc kết thúc cuộc gọi</li> <li><span>-&nbsp; &nbsp; &nbsp;</span>Giữ: Chuyển đổi tính năng chống ồn chủ động hoặc thích ứng</li></ul> <p style="text-align: justify;"><img src="https://cf.shopee.vn/file/d1d8b2b17d753059452f1e8ffcfcdd08" alt="Điều khiển cảm ứng tiện lợi" loading="lazy"></p> <p style="text-align: justify;">Về thời lượng sử dụng, AirPods Pro 2 này cho thời gian sử dụng tới 6 giờ khi sử dụng kèm tính năng chống ồn, và tắt ANC thì thời gian có thể lên tới 30 giờ. Người dùng có thể sử dụng bộ sạc MagSafe&nbsp;hoặc đầu nối Lightning để bổ sung năng lượng cho thiết bị nhanh chóng.</p> <p style="text-align: justify;"><img src="https://fptshop.com.vn/Uploads/Originals/2022/8/8/637955569082653401_HASP-TAINGHE-SOUNDMAX-AH335-AVT.jpg" alt="dung lượng pin được cải thiện" loading="lazy"></p> <h2 style="text-align: justify;"><strong>Giá AirPods Pro 2 bao nhiêu tiền? Ra mắt khi nào?</strong></h2> <p style="text-align: justify;">Tai nghe không dây AirPods Pro 2022 đã chính thức được Apple giới thiệu trong sự kiện ra mắt iPhone 14 Series, diễn ra vào khuya 7/9 theo giờ Mỹ.</p> <p style="text-align: justify;">Về giá bán, tai nghe có có giá khởi điểm là 249 USD – tương đương 5.9 triệu đồng. Khi về chính hãng tại Việt Nam, tai nghe có giá bán dự kiến trong đợt mở bán đầu tiên khoảng 6.99 triệu đồng.</p> <p style="text-align: justify;"><img src="https://cdn.tgdd.vn/Files/2022/01/30/1413644/cac-thuong-hieu-tai-nghe-tot-va-duoc-ua-chuong-nha.jpg" alt=" Giá bán và ngày ra mắt của tai nghe ' . $nameLoa  . '" loading="lazy"></p> <h2 style="text-align: justify;"><strong>Đặt trước AirPod Pro 2 giá tốt, ưu đãi hấp dẫn tại Cybermart</strong></h2> <p style="text-align: justify;">Hệ thống Cybermart cập nhật các sản phẩm mới từ Apple và phân phối đến cho các tín đồ công nghệ Việt trong đó có cả tai nghe AirPods Pro 2022. Sản phẩm được bán chính hãng tại hệ thống Cybermart với giá bán ưu đãi. Cùng với đó, hệ thống cũng hỗ trợ khách hàng mua trả góp tai nghe&nbsp;AirPods với lãi suất từ 0%. Trong suốt thời gian 12 tháng kể từ ngày mua hàng, sản phẩm sẽ được bảo hành theo chính sách từ hãng nếu có phát sinh lỗi từ nhà sản xuất tại trung tâm bảo hành ủy quyền Cybermart.</p></div> </div> 
+    ',
                 'specifications' => '
-               <table id="tskt" class="table table-striped">
+   <table id="tskt" class="table table-striped">
 <tbody>
 <tr>
-	<td>Hãng sản xuất</td>
-	<td>Sounds</td>
+<td>Hãng sản xuất</td>
+<td>Sounds</td>
 </tr>
 <tr>
-	<td>Kích thước màn hình</td>
-	<td>6.7&nbsp;inches</td>
+<td>Kích thước màn hình</td>
+<td>6.7&nbsp;inches</td>
 </tr>
 <tr>
-	<td>Độ phân giải màn hình</td>
-	<td>2796&nbsp;x 1290&nbsp;pixels</td>
+<td>Độ phân giải màn hình</td>
+<td>2796&nbsp;x 1290&nbsp;pixels</td>
 </tr>
 <tr>
-	<td>Loại màn hình</td>
-	<td>OLED LPTS</td>
+<td>Loại màn hình</td>
+<td>OLED LPTS</td>
 </tr>
 <tr>
-	<td>Bộ nhớ trong</td>
-	<td>1TB</td>
+<td>Bộ nhớ trong</td>
+<td>1TB</td>
 </tr>
 <tr>
-	<td>Chipset</td>
-	<td>Oppo A16 Bionic</td>
+<td>Chipset</td>
+<td>Oppo A16 Bionic</td>
 </tr>
 <tr>
-	<td>CPU</td>
-	<td>Oppo A16 Bionic&nbsp;120Hz</td>
+<td>CPU</td>
+<td>Oppo A16 Bionic&nbsp;120Hz</td>
 </tr>
 <tr>
-	<td>GPU</td>
-	<td>Oppo GPU (5 lõi)</td>
+<td>GPU</td>
+<td>Oppo GPU (5 lõi)</td>
 </tr>
 <tr>
-	<td>Kích thước</td>
-	<td>160.7 x 77.6 x 7.9 mm</td>
+<td>Kích thước</td>
+<td>160.7 x 77.6 x 7.9 mm</td>
 </tr>
 <tr>
-	<td>Trọng lượng</td>
-	<td>240 g</td>
+<td>Trọng lượng</td>
+<td>240 g</td>
 </tr>
 <tr>
-	<td>Camera sau</td>
-	<td>Camera chính: 48MP<br>
-	Camera góc siêu rộng: 12MP<br>
-	Camera tele: 12MP</td>
+<td>Camera sau</td>
+<td>Camera chính: 48MP<br>
+Camera góc siêu rộng: 12MP<br>
+Camera tele: 12MP</td>
 </tr>
 <tr>
-	<td>Camera trước</td>
-	<td>12 MP</td>
+<td>Camera trước</td>
+<td>12 MP</td>
 </tr>
 <tr>
-	<td>Quay video</td>
-	<td>4K @24 fps, 25 fps, 30 fps, 60 fps<br>
-	1080p @25 fps, 30 fps, 60 fps<br>
-	720p @30 fps<br>
-	4K HDR @30 fps<br>
-	2.8K @ 60 fps<br>
-	HDR với Dolby Vision @60 fps<br>
-	ProRes 4K @30fps<br>
-	Chuyển động chậm 1080p @ 120fps, 240 fps</td>
+<td>Quay video</td>
+<td>4K @24 fps, 25 fps, 30 fps, 60 fps<br>
+1080p @25 fps, 30 fps, 60 fps<br>
+720p @30 fps<br>
+4K HDR @30 fps<br>
+2.8K @ 60 fps<br>
+HDR với Dolby Vision @60 fps<br>
+ProRes 4K @30fps<br>
+Chuyển động chậm 1080p @ 120fps, 240 fps</td>
 </tr>
 <tr>
-	<td>Pin</td>
-	<td>Li - Ion, Không thể thay thế</td>
+<td>Pin</td>
+<td>Li - Ion, Không thể thay thế</td>
 </tr>
 <tr>
-	<td>Cổng sạc</td>
-	<td>Lightning</td>
+<td>Cổng sạc</td>
+<td>Lightning</td>
 </tr>
 <tr>
-	<td>Loại SIM</td>
-	<td>Nano SIM, eSIM</td>
+<td>Loại SIM</td>
+<td>Nano SIM, eSIM</td>
 </tr>
 <tr>
-	<td>Hệ điều hành</td>
-	<td>iOS</td>
+<td>Hệ điều hành</td>
+<td>iOS</td>
 </tr>
 <tr>
-	<td>Phiên bản hệ điều hành</td>
-	<td>iOS 16.2</td>
+<td>Phiên bản hệ điều hành</td>
+<td>iOS 16.2</td>
 </tr>
 <tr>
-	<td>Khe cắm thẻ nhớ</td>
-	<td>Không</td>
+<td>Khe cắm thẻ nhớ</td>
+<td>Không</td>
 </tr>
 <tr>
-	<td>3G</td>
-	<td>HSPA 42.2/5.76 Mbps, EV-DO Rev.A 3.1 Mbps</td>
+<td>3G</td>
+<td>HSPA 42.2/5.76 Mbps, EV-DO Rev.A 3.1 Mbps</td>
 </tr>
 <tr>
-	<td>4G</td>
-	<td>LTE-A (4CA) Cat16 1024/150 Mbps</td>
+<td>4G</td>
+<td>LTE-A (4CA) Cat16 1024/150 Mbps</td>
 </tr>
 <tr>
-	<td>5G</td>
-	<td>mmWave, Sub-6 GHz</td>
+<td>5G</td>
+<td>mmWave, Sub-6 GHz</td>
 </tr>
 <tr>
-	<td>WLAN</td>
-	<td>Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot</td>
+<td>WLAN</td>
+<td>Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot</td>
 </tr>
 <tr>
-	<td>Bluetooth</td>
-	<td>Bluetooth 5.3</td>
+<td>Bluetooth</td>
+<td>Bluetooth 5.3</td>
 </tr>
 <tr>
-	<td>GPS</td>
-	<td>A-GPS, GLONASS, GALILEO, QZSS</td>
+<td>GPS</td>
+<td>A-GPS, GLONASS, GALILEO, QZSS</td>
 </tr>
 <tr>
-	<td>NFC</td>
-	<td>Yes</td>
+<td>NFC</td>
+<td>Yes</td>
 </tr>
 <tr>
-	<td>Cảm biến</td>
-	<td>Cảm biến gia tốc, Cảm biến tiệm cận, Cảm biến ánh sáng, La bàn, Con quay hồi chuyển, Cảm biến áp kế</td>
+<td>Cảm biến</td>
+<td>Cảm biến gia tốc, Cảm biến tiệm cận, Cảm biến ánh sáng, La bàn, Con quay hồi chuyển, Cảm biến áp kế</td>
 </tr>
 </tbody></table>
-                ',
+    ',
                 'product_type' => 'new',
                 'seo_title' => '' . $nameLoa  . ': Chống ồn, Âm Thanh Vượt Trội & Thiết Kế Bền Bỉ',
                 'promotion' => $pro,
@@ -2947,7 +3090,18 @@ class ProductSeeder extends Seeder
                 'child_category_id' => rand(46, 50),
                 'created_at' => now(),
             ]);
-            // Thêm tên sản phẩm đồng hồ thông minh
+        }
+        // Thêm tên sản phẩm đồng hồ thông minh
+        for ($i = 0; $i <= 20; $i++) {
+            // Dùng chung promotion
+            $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
+            // end promotion
+            $nameSmartPhone = 'Đồng hồ' . collect([' thông minh', ' định vị'])->random() . collect([' Huawei', ' SamSung', ' Galaxy', ' Garmin', ' Xiaomi', ' CorosPace', ' Garmin Forerunner', ' Watch'])->random() . collect([' 165', ' 40mm', ' 2', ' 965', ' 2022', ' 3', ' Air'])->random() . collect([' Pro', ' Bluetooth', ' 4G', ' 5G', ' dây cao su', ' dây da', ' 3S', ' Edge'])->random();
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
+
+
             DB::table('products')->insert([
                 [
                     "name" => $nameSmartPhone,
@@ -3101,81 +3255,17 @@ class ProductSeeder extends Seeder
                     "status" => 1
                 ],
             ]);
-            // Thêm tên sản phẩm nồi chiên không dầu
-            DB::table('products')->insert([
-                [
-                    "name" => $nameNoiChien,
-                    "slug" => Str::slug($nameNoiChien . rand(0, 990), '-'),
-                    "image" =>  'noichien_' . rand(1, 30) . '.webp',
-                    'qty' => 200,
-                    'price' => $price,
-                    'offer_price' => $offer_price,
-                    'offer_start_date' => now(),
-                    'offer_end_date' => '2025-07-31',
-                    'sku' => 'SPNC' . rand(120, 140) . rand(100, 1020),
-                    'video_link' => 'https://youtube.com',
-                    'long_description' => '
-                             <div id="cpsContent" class="cps-block-content" style="max-height: 100000px;"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Tiết kiệm điện năng, thời gian chế biến với công suất 1700W</li><li>Dung tích lớn lên đến&nbsp;6.5L yên tâm nướng gà nguyên con</li><li>Tích hợp rất nhiều chức năng chiên nấu trên một sản phẩm</li><li>Thiết kế trong suốt dễ dàng quan sát tình trạng thức ăn</li></ul></div></div> <div><p style="text-align: justify;">' . $nameNoiChien . ' sở hữu công suất 1700W kết hợp công nghệ chiên đối lưu không khí, giúp nấu ăn nhanh chóng và lành mạnh hơn. Dung tích lớn 6.5 lít và nhiều chế độ chiên, nấu cho phép nồi đáp ứng nhu cầu ẩm thực phong phú của gia đình. Bên cạnh đó, sản phẩm <a href="https://cybermart.io.vn/product/gia-dung-smarthome/noi-chien-khong-dau" title="Nồi chiên không dầu Sunhouse"><strong>nồi chiên không dầu Sunhouse</strong></a> có thiết kế tối giản với cửa sổ khoang chiên ốp kính trong suốt dễ dàng quan sát.</p> <h2 style="text-align: justify;"><strong>Vì sao nên mua ' . $nameNoiChien . '?</strong></h2> <p style="text-align: justify;">' . $nameNoiChien . ' hứa hẹn sẽ là giải pháp nấu nướng tốt nhờ vào:</p> <p><span style="text-align: justify;">- Công suất 1700W: Chiên, nấu nhanh chóng và hiệu quả.</span><br><span style="text-align: justify;"></span></p> <p><span style="text-align: justify;">- Công nghệ tiên tiến Rapid Air: Tiết kiệm dầu, làm thức ăn trở nên dinh dưỡng hơn.</span><br><span style="text-align: justify;"></span></p> <p><span style="text-align: justify;">- Dung tích 6.5 lít: Chế biến một lượng lớn thực phẩm trong mỗi lần sử dụng, phù hợp cho cả gia đình.</span></p> <p style="text-align: justify;"><img src="https://cdn.tgdd.vn/Products/Images/9418/240313/ava-kdf-593d-0-600x600-1.jpg" alt="Vì sao nên mua ' . $nameNoiChien . '?" loading="lazy"></p> <p><span style="text-align: justify;">- Hỗ trợ nhiều chế độ nấu khác nhau: Đáp ứng nhu cầu ẩm thực đa dạng.</span><br><span style="text-align: justify;"></span></p> <p><span style="text-align: justify;">- Cửa sổ khoang chiên ốp kính trong suốt: Dễ dàng theo dõi quá trình chiên nấu.</span></p> <h2 style="text-align: justify;"><strong>' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn</strong></h2> <p style="text-align: justify;">' . $nameNoiChien . ' đáp ứng tốt nhu cầu chiên nấu thực phẩm của nhiều gia đình với công suất mạnh mẽ và dung tích lớn. Thiết bị có kết cấu cao cấp, vẻ ngoài sang trọng đảm bảo bền đẹp theo thời gian.</p> <p style="text-align: justify;">Bên cạnh đó nếu bạn đang có nhu cầu chọn nồi chiên Sunhouse có dung tích lớn hơn thì có thể khám phá mẫu&nbsp;<a href="https://cybermart.io.vn/product/gia-dung-smarthome/noi-chien-khong-dau" title="SHD4037" target="_blank"><strong>SHD4037</strong></a> được bán tại CellphoneS với đầy đủ ưu điểm vượt trội được bán chính hãng, giao hàng hỏa tốc nhanh. Khám phá ngay nhé!</p> <h3 style="text-align: justify;"><strong>Công suất mạnh mẽ 1700W&nbsp;</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' có công suất mạnh mẽ 1700W, giúp nấu chín thực phẩm nhanh chóng và đều hơn. Công suất cao kết hợp với khả năng gia nhiệt vượt trội giúp nồi chiên Sunhouse SHD4030 hoạt động hiệu quả, tiết kiệm thời gian nấu nướng mà vẫn đảm bảo chất lượng món ăn.</p> <p style="text-align: justify;"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fkingshop.vn%2Fsan-pham%2Fnoi-chien-khong-dau-nineshield-kb-5005m-24444.html&psig=AOvVaw3zaimhvOrXKEHqKCJxF1BR&ust=1722133190097000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCLCaoZ2UxocDFQAAAAAdAAAAABAJ" alt="' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn" loading="lazy"></p> <p style="text-align: justify;">Sunhouse SHD4030 6.5L sử dụng công nghệ chiên không dầu Rapid Air sử dụng luồng khí nóng lưu thông nhanh để làm chín thực phẩm thay vì dầu mỡ truyền thống. Nhờ vậy, món ăn không chỉ giữ được hương vị tự nhiên mà còn giảm lượng chất béo đáng kể, tốt cho sức khỏe.</p> <h3 style="text-align: justify;"><strong>Dung tích 6.5L đủ không gian nấu nướng cho gà nguyên con&nbsp;</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' với dung tích lớn 6.5 lít. Đây lựa chọn lý tưởng cho các gia đình đông thành viên hoặc khi cần nấu lượng thực phẩm lớn.&nbsp;</p> <p style="text-align: justify;"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Do-gia-dung/Noi-chien-khong-dau/Sunhouse/noi-chien-khong-dau-sunhouse-shd4030-6-5l-3.jpg" alt="' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn" loading="lazy"></p> <p style="text-align: justify;">Dung tích này cho phép bạn dễ dàng chế biến một con gà nguyên con, một lượng lớn khoai tây chiên, hoặc nhiều loại thực phẩm khác trong một lần nấu. Với khả năng phục vụ từ 4-6 người, nồi chiên này đáp ứng tốt các bữa ăn gia đình hoặc các buổi tụ họp nhỏ. Dung tích lớn giúp tiết kiệm thời gian nấu nướng và đảm bảo tất cả mọi người đều có phần ăn nóng hổi, ngon miệng.&nbsp;</p> <p style="text-align: justify;">Đặc biệt, ' . $nameNoiChien . ' được trang bị nhiều chức năng chiên nướng đa dạng, bao gồm các chế độ dành riêng cho khoai tây, tôm, thịt bò, cánh gà, pizza…</p> <h3 style="text-align: justify;"><strong>Kiểu dáng hiện đại&nbsp;</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' sở hữu thiết kế hiện đại với gam màu trung tính, dễ dàng hòa hợp với mọi không gian bếp. Vỏ nồi được làm từ chất liệu nhựa cao cấp, giúp nồi chịu nhiệt tốt và dễ dàng vệ sinh sau khi sử dụng.&nbsp;</p> <p style="text-align: justify;"><img src="https://bizweb.dktcdn.net/100/435/504/products/nichienkhongdudachcnang10lrole.jpg?v=1667787763040" alt="' . $nameNoiChien . ' - Thiết kế thời thượng, dung tích lớn" loading="lazy"></p> <p style="text-align: justify;">Đặc biệt, cửa sổ khoang chiên ốp kính trong suốt, cho phép bạn quan sát quá trình nấu nướng mà không cần mở nắp. Thiết kế tối giản nhưng tinh tế của nồi chiên Sunhouse SHD4030 vừa nâng cao tính thẩm mỹ, vừa mang lại sự tiện lợi và hiệu quả trong quá trình sử dụng.</p> <h3 style="text-align: justify;"><strong>Điều khiển núm xoay, tích hợp hẹn giờ 60 phút</strong></h3> <p style="text-align: justify;">' . $nameNoiChien . ' được trang bị bảng điều khiển núm xoay đơn giản và dễ sử dụng. Nhờ đó, người dùng có thể cài nhiệt độ, cũng như các chương trình nấu trong tíc tắc.&nbsp;</p> <p style="text-align: justify;"><img src="https://s.meta.com.vn/Data/image/2019/10/26/noi-chien-khong-dau-rapido-raf4-0mh-1.jpg" alt="Điều khiển núm xoay, tích hợp hẹn giờ 60 phút" loading="lazy"></p> <p style="text-align: justify;">Trên bảng điều khiển sẽ có tính năng hẹn giờ thông minh cho phép bạn cài đặt thời gian nấu lên đến 60 phút.&nbsp;</p> <h2 style="text-align: justify;"><strong>Mua ' . $nameNoiChien . ' chính hãng, giá tốt tại Cybermart</strong></h2> <p style="text-align: justify;">Nếu bạn đang tìm kiếm sản phẩm ' . $nameNoiChien . ' chính hãng với giá tốt, thì Cybermart là điểm đến lý tưởng. Tại của hàng, bạn sẽ được đảm bảo với bảo hành từ nhà sản xuất Sunhouse.</p> <p style="text-align: justify;">Ngoài ra, bạn sẽ có cơ hội nhận được các ưu đãi khi sắm ' . $nameNoiChien . ' trong các dịp lễ 8/3, 20/10, Black Friday… Hãy ghé thăm Cybermart ngay hôm nay để sở hữu ngay Sunhouse SHD4030 6.5L với giá ưu đãi nhất!</p></div> </div>
-                          ',
-                    'short_description' => '
-                                <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng ' . $nameNoiChien . '<br>
-                                ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
-                                ✔️Bảo hành chính hãng ' . $nameNoiChien . ' 12 tháng</p>',
-                    'specifications' => '
-                    <table id="tskt" class="table table-striped">
-            <tbody>
-            <tr>
-                <td>Chất liệu nồi</td>
-                <td>Vỏ ngoài: Nhựa PP cao cấp
-        Khay chiên: Thép sơn phủ chống dính</td>
-            </tr>
-            <tr>
-                <td>Công suất</td>
-                <td>1700W</td>
-            </tr>
-            <tr>
-                <td>Điện áp</td>
-                <td>220V - 50Hz</td>
-            </tr>
-            <tr>
-                <td>Hẹn giờ</td>
-                <td>0 - 60 phút</td>
-            </tr>
-            <tr>
-                <td>Bảng điều khiển</td>
-                <td>Núm vặn</td>
-            </tr>
-            <tr>
-                <td>Công nghệ</td>
-                <td>Rapid Air</td>
-            </tr>
-            <tr>
-                <td>Chế độ</td>
-                <td>Nướng, Chiên</td>
-            </tr>
-            <tr>
-                <td>Tiện ích</td>
-                <td>Tay cầm cách nhiệt, Tự động ngắt khi quá nhiệt</td>
-            </tr>
-            <tr>
-                <td>Loại gia dụng</td>
-                <td>Nồi chiên không dầu</td>
-            </tr>
-            </tbody></table>
-                               ',
-                    'product_type' => 'new',
-                    'seo_title' => '' . $nameNoiChien . ' - Công Suất 1700W, Tiết Kiệm Dầu, Thiết Kế Hiện Đại',
-                    'promotion' => $pro,
-                    'seo_description' => 'Khám phá ' . $nameNoiChien . ' với công suất 1700W, giúp nấu ăn nhanh chóng và lành mạnh. Dung tích lớn 6.5L phù hợp cho cả gia đình, tích hợp nhiều chức năng chiên nấu và thiết kế cửa sổ kính trong suốt. Mua chính hãng tại Cybermart với giá ưu đãi!',
-                    'category_id' => 5,
-                    'weight' => 0.5,
-                    'sub_category_id' => 38,
-                    'child_category_id' => rand(54, 59),
-                    'created_at' => now(),
-                    "status" => 1
-                ],
-            ]);
-            // Thêm tên sản phẩm ốp lưng
+        }
+
+        // Thêm tên sản phẩm ốp lưng
+        for ($i = 0; $i <= 20; $i++) {
+            // Dùng chung promotion
+            $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
+            // end promotion
+            $nameOplung = 'Ốp lưng Iphone' . rand(11, 15) . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' Silicone ', ' Wiwu ', ' Leather ', ' Q10 ', ' GA-M4A01 ', ' HD9257/80 ', ' HD9200/90 ', ' KF-AF70EV-BK ', ' HD9285/90 ', ' Smart Air Fryer  ', ' QZG-F15G1 ', ' KG55AF1A '])->random() . collect([' ', ' Hỗ trợ sạc Magsafe ', ' Chính hãng ', ' Quốc tế ', ' Nội địa ', ' Japan ', ' Việt Name ', ' Chine ', ' USA '])->random();
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
             DB::table('products')->insert([
                 [
                     "name" => $nameOplung,
@@ -3249,7 +3339,18 @@ class ProductSeeder extends Seeder
                     "status" => 1
                 ],
             ]);
-            // Thêm tên sản phẩm màn hình msi
+        }
+        // Thêm tên sản phẩm màn hình msi
+        for ($i = 0; $i <= 20; $i++) {
+            // Dùng chung promotion
+            $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
+            // end promotion
+            $nameManHinhMsi = 'Màn hình' . collect([' ', ' di động MSI ', ' Gaming MSI ', ' MSI ', ' văn phòng MSI '])->random() . collect([' ', ' Pro ', ' Plus ', ' Modern '])->random() . collect([' ', ' MP161 ', ' G225F ', ' G255F ', ' G63S ', ' G100 ', ' G3 ', ' G9 ', ' G20 '])->random() . collect([' ', ' 25 inch ', ' 26 inch ', ' 21 inch ', ' 22 inch ', ' 15 inch '])->random();
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
+
+
             DB::table('products')->insert([
                 [
                     "name" => $nameManHinhMsi,
@@ -3322,7 +3423,17 @@ class ProductSeeder extends Seeder
                     "status" => 1
                 ],
             ]);
-            // Thêm tên sản phẩm tivi category 8
+        }
+        // Thêm tên sản phẩm tivi category 8
+        for ($i = 0; $i <= 20; $i++) {
+            // Dùng chung promotion
+            $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
+            // end promotion
+            $nameTiVi32 = collect(['Xiaomi Smart', 'Smart', 'Google'])->random() . collect([' Tivi ', ' Tivi QNED '])->random() . collect([' Samsung ', ' Samsung QLED'])->random() . collect([' ', ' 4K ', ' 47LMHD456 ', ' 5K '])->random() . ' 32 INCH ';
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
+
             DB::table('products')->insert([
                 [
                     "name" => $nameTiVi32,
@@ -3393,6 +3504,306 @@ class ProductSeeder extends Seeder
                     'created_at' => now(),
                     "status" => 1
                 ],
+            ]);
+        }
+        // Thêm tên sản phẩm vào ASUS
+        for ($i = 0; $i <= 20; $i++) {
+            // Dùng chung promotion
+            $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
+            // end promotion
+            $nameASUS = 'Laptop ASUS' . collect([' ', ' Air ', ' Pro ', ' Plus '])->random() . collect([' ', ' 14 ', ' 15 ', ' 16 '])->random()  . collect([' ', ' M1 ', ' M2 ', ' M3 '])->random() . collect([' 2019 ', ' 2020 ', ' 2021 ', ' 2022 ', ' 2023 '])->random() . collect([' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
+            DB::table('products')->insert([
+                'name' => $nameASUS,
+                'slug' => Str::slug($nameASUS . rand(0, 990), '-'),
+                'image' => 'asus_' . rand(1, 17) . '.webp',
+                'qty' => 200,
+                'price' => $price,
+                'offer_price' => $offer_price,
+                'offer_start_date' => now(),
+                'offer_end_date' => '2025-07-31',
+                'sku' => 'SPMCB' . rand(120, 140) . rand(100, 1020),
+                'video_link' => 'https://youtube.com',
+                'long_description' => '<div class="ksp-content p-2 mb-2" style="-webkit-text-stroke-width:0px;background-color:rgb(242, 242, 242);border-radius:0.5rem;box-sizing:inherit;color:rgb(74, 74, 74);font-family:Roboto, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:auto;orphans:2;padding:0.5rem !important;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;width:800px;word-spacing:0px;">
+<h2 class="ksp-title has-text-centered" style="box-sizing:inherit;color:rgb(215, 0, 24);font-size:18px;margin:0px;padding:0px;text-align:center !important;">
+<strong>ĐẶC ĐIỂM NỔI BẬT</strong>
+</h2>
+<div style="box-sizing:inherit;">
+<ul style="box-sizing:inherit;list-style:none;margin-bottom:0px;margin-right:0px;margin-top:0px;overflow-y:auto;padding:0px;scrollbar-width:none;">
+<li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+    <p style="margin-left:0px;">
+        Hiệu năng hàng đầu với chip M2 - mạnh mẽ hơn 1.4 lần so với thế hệ trước giúp nâng cao hiệu suất làm việc
+    </p>
+</li>
+<li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+    <p style="margin-left:0px;">
+        Mở ra không gian giải trí chân thật với màn hình Retina sắc nét
+    </p>
+</li>
+<li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+    <p style="margin-left:0px;">
+        Trải nghiệm gõ thoải mái với bàn phím Apple Magic, mở khoá 1 chạm bằng Touch ID
+    </p>
+</li>
+<li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:0px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+    <p style="margin-left:0px;">
+        Trang bị cổng thunderbolt thế hệ mới cho phép bạn truyền dữ liệu nhanh hơn bao giờ hết
+    </p>
+</li>
+</ul>
+</div>
+</div>
+<div style="-webkit-text-stroke-width:0px;box-sizing:inherit;color:rgb(74, 74, 74);font-family:Roboto, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"><img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:810:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/MacBook-Air-15-inch-M2-14.jpg" alt="Đánh giá ' . $nameASUS . '" width="810" loading="lazy"></strong>
+</p>
+<h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">' . $nameASUS . ' - Màn hình cỡ lớn, cấu hình cực khủng</strong>
+</h2>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Macbook Air 15 M2 inch 2023 </strong>thể hiện sự đột phá trên thị trường laptop khi sở hữu hiệu năng vượt trội tới từ chipset Apple M2 cùng màn hình cỡ lớn 15 inch. Máy được tích hợp viên pin Lithium-Polymer 66.5Wh kết hợp với công nghệ sạc công suất lên tới 70W, đem lại thời lượng sử dụng suốt ngày dài chỉ sau 1 lần sạc. Với nhiều cải tiến vượt trội so với các thế hệ tiền nhiệm, đây sẽ là sản phẩm <a style="box-sizing:inherit;color:rgb(215, 0, 24);cursor:pointer;text-decoration:none;" href="https://cybermart.io.vn/" title="Macbook Air chính hãng" target="_blank"><strong style="box-sizing:inherit;color:currentcolor;">Macbook Air</strong></a> hiện đại mà bạn rất nên trải nghiệm.
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Thiết kế thân thiện với môi trường, đa dạng phiên bản màu sắc</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+' . $nameASUS . ' nổi bật với tạo hình siêu mỏng nhẹ cùng độ bền bỉ tuyệt vời. Sở hữu độ dày thân máy chỉ khoảng nửa inch, Macbook Air 2023 15 inch có thể dễ dàng được bạn cất gọn và mang theo tới mọi nơi.&nbsp;
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-8.jpg" alt="Thiết kế ' . $nameASUS . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Thế hệ <a style="box-sizing:inherit;color:rgb(215, 0, 24);cursor:pointer;text-decoration:none;" href="https://cybermart.io.vn/" target="_blank"><strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Mac Air 15 inch</strong></a> mới trong năm 2023 này của Apple sẽ có sự góp mặt của 4 phiên bản màu sắc đặc biệt là Silver, Starlight, Space Gray, Midnight. Đây đều là những tuỳ chọn màu sắc hết sức đều hết sức rực rỡ. Nó không chỉ tôn lên vẻ đẹp của chiếc laptop mà còn mang tới cho bạn cảm giác sang trọng, chuyên nghiệp mỗi khi sử dụng.
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-4.png" alt="Thiết kế ' . $nameASUS . '" loading="lazy" width="810" height="456">
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Chip Apple M2 mạnh mẽ, cho hiệu năng vượt trội và tiết kiệm năng lượng</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+' . $nameASUS . ' mang lại cho người dùng hiệu suất xử lý đỉnh cao khi được tích hợp chipset Apple M2 siêu mạnh mẽ. Nhờ đó mà các tác vụ chỉnh sửa video, lướt web thậm chí là chơi game đồ hoạ cũng có thể được xử lý hết sức mượt mà trên Macbook Air 2023 mới.
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-2.jpg" alt="Hiệu năng ' . $nameASUS . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Bên cạnh đó, so với các dòng PC sở hữu chip Intel Core i7 thì thế hệ Macbook Air 2023 này thậm chí có thể đem lại hiệu suất nhanh hơn gấp 2 lần với khả năng duyệt web tốc độ cao nhanh hơn 50% cùng thời lượng sử dụng lên tới hơn 18 giờ đồng hồ.
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Màn hình hiển thị sắc nét cùng hệ thống âm thanh và camera cao cấp</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Điểm nhấn đáng chú ý trên <a style="box-sizing:inherit;color:rgb(215, 0, 24);cursor:pointer;text-decoration:none;" href="https://cybermart.io.vn/" target="_blank"><strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Mac Air M2</strong></a> là màn hình hiển thị Liquid Retina siêu sống động với khả năng hiển thị trên 1 tỷ màu. So với các dòng laptop và PC khác thì Macbook Air 2023 có khả năng thể hiện hình ảnh với độ phân giải cao gấp 2 lần. Nhờ đó mà các tác vụ về hình ảnh, video trên máy luôn nổi bật với độ tương phản cực kỳ phong phú và chi tiết về màu sắc.
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-6.jpg" alt="Màn hình ' . $nameASUS . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Ngoài ra, thế hệ Macbook Air 2023 mới này còn sở hữu máy ảnh với độ phân giải lên tới 1080p. Ưu điểm này của máy giúp bạn luôn đẹp tự nhiên trong các cuộc gọi FaceTime HD với bạn bè, người thân của mình.
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-9.png" alt="Màn hình ' . $nameASUS . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Chưa hết, hệ thống âm thanh trên Macbook Air 2023 này còn được đánh giá rất cao về độ sống động, chân thực. Với công nghệ Spatial Audio kết hợp với Dolby Atmos, bạn có thể thoải mái tận hưởng âm thanh 3 chiều trong quá trình xem phim, nghe nhạc của mình nhé!
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Bàn phím Magic siêu êm ái cùng tính năng bảo mật Touch ID hiện đại</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Một điểm cộng khác của ' . $nameASUS . ' tới từ bàn phím Magic thế hệ mới với cơ chế gõ vô cùng linh hoạt và khả năng thích nghi bất kỳ kiểu gõ nào. Đồng thời, hệ thống gõ nhập trên dòng Mac Air mới này còn được trang bị đèn nền thông minh, giúp cho việc trải nghiệm của người dùng trong môi trường ánh sáng yếu trở nên cực kỳ dễ dàng.&nbsp;
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-5.png" alt="Bàn phím ' . $nameASUS . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Ngoài ra, máy cũng đặc biệt được chú ý tới tính năng bảo mật Touch ID thế hệ mới. Nó không chỉ giúp nâng cao khả năng bảo mật mà còn hỗ trợ người dùng mở khoá, đăng nhập chỉ với 1 chạm đơn giản.
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Đa dạng cổng kết nối, hỗ trợ truyền dữ liệu tốc độ cao</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+' . $nameASUS . ' cũng sẽ sở hữu 1 cổng sạc Magsafe, 2 cổng Thunderbolt, 1 jack 3.5 để cắm tai nghe tương tự như thế hệ Mac Air 2022 trước đó nhưng được cải tiến về mặt thông số và tốc độ truyền.&nbsp;
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-3.png" alt="Cổng kết nối trên ' . $nameASUS . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Cụ thể, 2 cổng Thunderbolt cho phép bạn sạc máy với công suất 70W hoặc dễ dàng kết nối với màn hình 6K. Đồng thời, giắc cắm tai nghe 3.5mm của Mac Air 15 inch năm 2023 cũng được nâng cấp với độ trở kháng tốt hơn, nâng cao trải nghiệm nghe nhạc người dùng.&nbsp;
+</p>
+<h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Mua Macbook Air M2 15 inch 2023 chính hãng tại Cybermart</strong>
+</h2>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Cybermart hiện đang cung cấp ' . $nameASUS . ' chính hãng với mức giá hợp lý cùng nhiều chương trình khuyến mãi siêu hấp dẫn. Với hệ thống cửa hàng trải dài toàn quốc, Cybermart là một thương hiệu phân phối đồ công nghệ uy tín và hoàn toàn xứng đáng để bạn tin tưởng và đặt mua Macbook Air 15" chính hãng.&nbsp;Hãy nhanh tay gọi điện tới hotline 1800 2097 để đặt hàng sản phẩm với giá ưu đãi bạn nhé!
+</p>
+</div>',
+                'short_description' => '
+        <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
+        ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
+        ✔️Bảo hành chính hãng Apple 12 tháng</p>',
+                'product_type' => 'new',
+                'seo_title' => '' . $nameASUS . '- Chip M2, Màn hình Retina, Hiệu Năng Vượt Trội',
+                'promotion' => $pro,
+                'seo_description' => 'Khám phá ' . $nameASUS . ' với chip M2 mạnh mẽ, màn hình Retina sắc nét và thiết kế siêu mỏng. Hiệu năng vượt trội cho công việc và giải trí.',
+                'category_id' => 2,
+                'weight' => 0.8,
+                'sub_category_id' => 17,
+                'child_category_id' => rand(26, 29),
+                'created_at' => now(),
+            ]);
+        }
+        // Thêm tên sản phẩm vào DELL
+        for ($i = 0; $i <= 20; $i++) {
+            // Dùng chung promotion
+            $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
+            // end promotion
+            $nameDELL = 'Laptop Dell' . collect([' ', ' Air ', ' Pro ', ' Plus '])->random() . collect([' ', ' 14 ', ' 15 ', ' 16 '])->random()  . collect([' ', ' M1 ', ' M2 ', ' M3 '])->random() . collect([' 2019 ', ' 2020 ', ' 2021 ', ' 2022 ', ' 2023 '])->random() . collect([' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
+            // 
+            $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
+            DB::table('products')->insert([
+                'name' => $nameDELL,
+                'slug' => Str::slug($nameDELL . rand(0, 990), '-'),
+                'image' => 'dell_' . rand(1, 22) . '.webp',
+                'qty' => 200,
+                'price' => $price,
+                'offer_price' => $offer_price,
+                'offer_start_date' => now(),
+                'offer_end_date' => '2025-07-31',
+                'sku' => 'SPMCB' . rand(120, 140) . rand(100, 1020),
+                'video_link' => 'https://youtube.com',
+                'long_description' => '<div class="ksp-content p-2 mb-2" style="-webkit-text-stroke-width:0px;background-color:rgb(242, 242, 242);border-radius:0.5rem;box-sizing:inherit;color:rgb(74, 74, 74);font-family:Roboto, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:auto;orphans:2;padding:0.5rem !important;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;width:800px;word-spacing:0px;">
+<h2 class="ksp-title has-text-centered" style="box-sizing:inherit;color:rgb(215, 0, 24);font-size:18px;margin:0px;padding:0px;text-align:center !important;">
+<strong>ĐẶC ĐIỂM NỔI BẬT</strong>
+</h2>
+<div style="box-sizing:inherit;">
+<ul style="box-sizing:inherit;list-style:none;margin-bottom:0px;margin-right:0px;margin-top:0px;overflow-y:auto;padding:0px;scrollbar-width:none;">
+<li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+    <p style="margin-left:0px;">
+        Hiệu năng hàng đầu với chip M2 - mạnh mẽ hơn 1.4 lần so với thế hệ trước giúp nâng cao hiệu suất làm việc
+    </p>
+</li>
+<li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+    <p style="margin-left:0px;">
+        Mở ra không gian giải trí chân thật với màn hình Retina sắc nét
+    </p>
+</li>
+<li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:5px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+    <p style="margin-left:0px;">
+        Trải nghiệm gõ thoải mái với bàn phím Apple Magic, mở khoá 1 chạm bằng Touch ID
+    </p>
+</li>
+<li style="box-sizing:inherit;display:flex;font-size:14px;line-height:1.45;margin-bottom:0px;margin-right:0px;margin-top:0px;padding:0px;text-align:left;">
+    <p style="margin-left:0px;">
+        Trang bị cổng thunderbolt thế hệ mới cho phép bạn truyền dữ liệu nhanh hơn bao giờ hết
+    </p>
+</li>
+</ul>
+</div>
+</div>
+<div style="-webkit-text-stroke-width:0px;box-sizing:inherit;color:rgb(74, 74, 74);font-family:Roboto, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);"><img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:810:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/MacBook-Air-15-inch-M2-14.jpg" alt="Đánh giá ' . $nameDELL . '" width="810" loading="lazy"></strong>
+</p>
+<h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">' . $nameDELL . ' - Màn hình cỡ lớn, cấu hình cực khủng</strong>
+</h2>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Macbook Air 15 M2 inch 2023 </strong>thể hiện sự đột phá trên thị trường laptop khi sở hữu hiệu năng vượt trội tới từ chipset Apple M2 cùng màn hình cỡ lớn 15 inch. Máy được tích hợp viên pin Lithium-Polymer 66.5Wh kết hợp với công nghệ sạc công suất lên tới 70W, đem lại thời lượng sử dụng suốt ngày dài chỉ sau 1 lần sạc. Với nhiều cải tiến vượt trội so với các thế hệ tiền nhiệm, đây sẽ là sản phẩm <a style="box-sizing:inherit;color:rgb(215, 0, 24);cursor:pointer;text-decoration:none;" href="https://cybermart.io.vn/" title="Macbook Air chính hãng" target="_blank"><strong style="box-sizing:inherit;color:currentcolor;">Macbook Air</strong></a> hiện đại mà bạn rất nên trải nghiệm.
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Thiết kế thân thiện với môi trường, đa dạng phiên bản màu sắc</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+' . $nameDELL . ' nổi bật với tạo hình siêu mỏng nhẹ cùng độ bền bỉ tuyệt vời. Sở hữu độ dày thân máy chỉ khoảng nửa inch, Macbook Air 2023 15 inch có thể dễ dàng được bạn cất gọn và mang theo tới mọi nơi.&nbsp;
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-8.jpg" alt="Thiết kế ' . $nameDELL . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Thế hệ <a style="box-sizing:inherit;color:rgb(215, 0, 24);cursor:pointer;text-decoration:none;" href="https://cybermart.io.vn/" target="_blank"><strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Mac Air 15 inch</strong></a> mới trong năm 2023 này của Apple sẽ có sự góp mặt của 4 phiên bản màu sắc đặc biệt là Silver, Starlight, Space Gray, Midnight. Đây đều là những tuỳ chọn màu sắc hết sức đều hết sức rực rỡ. Nó không chỉ tôn lên vẻ đẹp của chiếc laptop mà còn mang tới cho bạn cảm giác sang trọng, chuyên nghiệp mỗi khi sử dụng.
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-4.png" alt="Thiết kế ' . $nameDELL . '" loading="lazy" width="810" height="456">
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Chip Apple M2 mạnh mẽ, cho hiệu năng vượt trội và tiết kiệm năng lượng</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+' . $nameDELL . ' mang lại cho người dùng hiệu suất xử lý đỉnh cao khi được tích hợp chipset Apple M2 siêu mạnh mẽ. Nhờ đó mà các tác vụ chỉnh sửa video, lướt web thậm chí là chơi game đồ hoạ cũng có thể được xử lý hết sức mượt mà trên Macbook Air 2023 mới.
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-2.jpg" alt="Hiệu năng ' . $nameDELL . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Bên cạnh đó, so với các dòng PC sở hữu chip Intel Core i7 thì thế hệ Macbook Air 2023 này thậm chí có thể đem lại hiệu suất nhanh hơn gấp 2 lần với khả năng duyệt web tốc độ cao nhanh hơn 50% cùng thời lượng sử dụng lên tới hơn 18 giờ đồng hồ.
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Màn hình hiển thị sắc nét cùng hệ thống âm thanh và camera cao cấp</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Điểm nhấn đáng chú ý trên <a style="box-sizing:inherit;color:rgb(215, 0, 24);cursor:pointer;text-decoration:none;" href="https://cybermart.io.vn/" target="_blank"><strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Mac Air M2</strong></a> là màn hình hiển thị Liquid Retina siêu sống động với khả năng hiển thị trên 1 tỷ màu. So với các dòng laptop và PC khác thì Macbook Air 2023 có khả năng thể hiện hình ảnh với độ phân giải cao gấp 2 lần. Nhờ đó mà các tác vụ về hình ảnh, video trên máy luôn nổi bật với độ tương phản cực kỳ phong phú và chi tiết về màu sắc.
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-6.jpg" alt="Màn hình ' . $nameDELL . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Ngoài ra, thế hệ Macbook Air 2023 mới này còn sở hữu máy ảnh với độ phân giải lên tới 1080p. Ưu điểm này của máy giúp bạn luôn đẹp tự nhiên trong các cuộc gọi FaceTime HD với bạn bè, người thân của mình.
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-9.png" alt="Màn hình ' . $nameDELL . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Chưa hết, hệ thống âm thanh trên Macbook Air 2023 này còn được đánh giá rất cao về độ sống động, chân thực. Với công nghệ Spatial Audio kết hợp với Dolby Atmos, bạn có thể thoải mái tận hưởng âm thanh 3 chiều trong quá trình xem phim, nghe nhạc của mình nhé!
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Bàn phím Magic siêu êm ái cùng tính năng bảo mật Touch ID hiện đại</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Một điểm cộng khác của ' . $nameDELL . ' tới từ bàn phím Magic thế hệ mới với cơ chế gõ vô cùng linh hoạt và khả năng thích nghi bất kỳ kiểu gõ nào. Đồng thời, hệ thống gõ nhập trên dòng Mac Air mới này còn được trang bị đèn nền thông minh, giúp cho việc trải nghiệm của người dùng trong môi trường ánh sáng yếu trở nên cực kỳ dễ dàng.&nbsp;
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-5.png" alt="Bàn phím ' . $nameDELL . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Ngoài ra, máy cũng đặc biệt được chú ý tới tính năng bảo mật Touch ID thế hệ mới. Nó không chỉ giúp nâng cao khả năng bảo mật mà còn hỗ trợ người dùng mở khoá, đăng nhập chỉ với 1 chạm đơn giản.
+</p>
+<h3 style="box-sizing:inherit;font-size:16px;margin:0px;padding:8px 0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Đa dạng cổng kết nối, hỗ trợ truyền dữ liệu tốc độ cao</strong>
+</h3>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+' . $nameDELL . ' cũng sẽ sở hữu 1 cổng sạc Magsafe, 2 cổng Thunderbolt, 1 jack 3.5 để cắm tai nghe tương tự như thế hệ Mac Air 2022 trước đó nhưng được cải tiến về mặt thông số và tốc độ truyền.&nbsp;
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+<img style="box-sizing:inherit;height:auto;max-width:100%;" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/laptop/macbook/Air/M2-2023/mac-studio-m2-max-2023-3.png" alt="Cổng kết nối trên ' . $nameDELL . '" loading="lazy" width="810" height="456">
+</p>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Cụ thể, 2 cổng Thunderbolt cho phép bạn sạc máy với công suất 70W hoặc dễ dàng kết nối với màn hình 6K. Đồng thời, giắc cắm tai nghe 3.5mm của Mac Air 15 inch năm 2023 cũng được nâng cấp với độ trở kháng tốt hơn, nâng cao trải nghiệm nghe nhạc người dùng.&nbsp;
+</p>
+<h2 style="box-sizing:inherit;font-size:21px;font-weight:400;margin:0px;padding:0px;text-align:justify;">
+<strong style="box-sizing:inherit;color:rgb(54, 54, 54);">Mua Macbook Air M2 15 inch 2023 chính hãng tại Cybermart</strong>
+</h2>
+<p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
+Cybermart hiện đang cung cấp ' . $nameDELL . ' chính hãng với mức giá hợp lý cùng nhiều chương trình khuyến mãi siêu hấp dẫn. Với hệ thống cửa hàng trải dài toàn quốc, Cybermart là một thương hiệu phân phối đồ công nghệ uy tín và hoàn toàn xứng đáng để bạn tin tưởng và đặt mua Macbook Air 15" chính hãng.&nbsp;Hãy nhanh tay gọi điện tới hotline 1800 2097 để đặt hàng sản phẩm với giá ưu đãi bạn nhé!
+</p>
+</div>',
+                'short_description' => '
+        <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
+        ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
+        ✔️Bảo hành chính hãng Apple 12 tháng</p>',
+                'product_type' => 'new',
+                'seo_title' => '' . $nameDELL . '- Chip M2, Màn hình Retina, Hiệu Năng Vượt Trội',
+                'promotion' => $pro,
+                'seo_description' => 'Khám phá ' . $nameDELL . ' với chip M2 mạnh mẽ, màn hình Retina sắc nét và thiết kế siêu mỏng. Hiệu năng vượt trội cho công việc và giải trí.',
+                'category_id' => 2,
+                'weight' => 0.8,
+                'sub_category_id' => 19,
+                'child_category_id' => rand(37, 41),
+                'created_at' => now(),
             ]);
         }
     }

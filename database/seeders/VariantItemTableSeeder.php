@@ -18,6 +18,7 @@ class VariantItemTableSeeder extends Seeder
         $variants = Variant::whereIn('type', [0, 1])->get();
         $colors = ['yellow', 'red', 'black', 'orange', 'blue', 'gray'];
         $rams = ['64 GB', '100 GB', '1 TB', '256 GB', '375 GB', '2 TB'];
+        $capacitys = ['10L', '20L', '255L', '300L', '30L', '2 TB'];
         foreach ($variants as $variant) {
             if ($variant->type == 1) {
                 foreach ($colors as $color) {
@@ -27,16 +28,17 @@ class VariantItemTableSeeder extends Seeder
                         'status' => 1,
                     ]);
                 }
-            } 
-            // if ($variant->type == 0) {
-            //     foreach ($rams as $ram) {
-            //         VariantItem::create([
-            //             'product_variant_id' => $variant->id,
-            //             'name' => $ram,
-            //             'status' => 1,
-            //         ]);
-            //     }
-            // }
+            }
+            if ($variant->type == 0 ) {
+                foreach ($rams as $ram) {
+                    VariantItem::create([
+                        'product_variant_id' => $variant->id,
+                        'name' => $ram,
+                        'status' => 1,
+                    ]);
+                }
+            }
+            
         }
     }
 }
