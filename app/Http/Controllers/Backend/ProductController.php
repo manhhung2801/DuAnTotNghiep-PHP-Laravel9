@@ -36,9 +36,8 @@ class ProductController extends Controller
 
         $category = Category::all();
         // tìm kiếm sản phẩm theo tên
-        if (!empty(Request()->get('keyword'))) {
-            $keyword = trim(Request()->get('keyword'));
-            $getProduct->where('name', 'LIKE', '%' . $keyword . '%');
+        if (!empty($request->get('keyword'))) {
+            $getProduct->where('name', 'like', '%' . $request->get('keyword') . '%');
         }
 
         // lọc theo danh mục

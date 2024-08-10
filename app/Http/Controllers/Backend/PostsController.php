@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post_categories;
 use App\Models\Post;
 use App\Models\User;
-use App\Models\Post_image_galleries;
+use Exception;
 use Illuminate\Validation\ValidationException;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Str;
@@ -34,23 +34,42 @@ class PostsController extends Controller
      */
 
 
+    public function showTrash(Request $request)
+    {
+        $getPost = Post::onlyTrashed()->latest();
 
+        $getPost = $getPost->paginate(15);
+
+        return view('admin.post.trash-list', compact('getPost'));
+    }
     public function restore($id)
     {
-        $post = Post::withTrashed()->findOrFail($id);
-        if (!empty($post)) {
-            $post->restore();
+        try {
+            Post::restoreTrashed($id);
+            return response(['status' => 'success', 'Khôi phục thành công!']);
+        } catch (Exception $e) {
+            return response(['status' => 'error', 'message' => 'Khôi phục thất bại ' . $e . '']);
         }
-        return redirect()->route('admin.post.index')->with('success', 'Đã khôi phục bài viết thành công');
     }
 
-    public function deleteVariant($id)
+    public function delete($id)
     {
-        $post = Post::withTrashed()->findOrFail($id);
-        if (!empty($post)) {
-            $post->forceDelete();
+        try {
+            $post = Post::withTrashed()->findOrFail($id);
+
+            if (File::exists(public_path("uploads/post/{$post->image}"))) {
+                File::delete(public_path("uploads/post/{$post->image}"));
+            }
+            if (File::exists(public_path("uploads/image_banner/{$post->image_banner}"))) {
+                File::delete(public_path("uploads/image_banner/{$post->image_banner}"));
+            }
+
+            Post::destroyTrashedItem($id);
+
+            return response(['status' => 'success', 'Xóa vĩnh viễn thành công!']);
+        } catch (Exception $e) {
+            return response(['status' => 'error', 'Xóa vĩnh viễn thất bại! ' . $e . '']);
         }
-        return redirect()->route('admin.post.index')->with('success', 'Đã xóa bài viết thành công');
     }
 
 
@@ -68,32 +87,32 @@ class PostsController extends Controller
 
 
 
-    public function show($id)
-    {
-    }
+    public function show($id) {}
 
-   
+
     public function create()
     {
-        $user = User::where('role','admin')->get();
+        $user = User::where('role', 'admin')->get();
         $post_categories = Post_categories::all();
         return view('admin.post.create', compact('post_categories', 'user'));
     }
-  
+
     public function store(Request $request)
     {
         $request->validate(
             [
                 'category_id' => ['required'],
                 'user_id' => ['required'],
-                'title' => ['required','max:255'],
+                'title' => ['required', 'max:255'],
                 'description' => ['required'],
                 'content' => ['required'],
-                'image' => ['required','image','mimes:jpeg,jpg,png,gif,webp','max:10240'],
+                'image' => ['image', 'mimes:jpeg,jpg,png,gif,webp', 'max:10240'],
+                'image_banner' => ['image', 'mimes:jpeg,jpg,png,gif,webp', 'max:10240'],
                 'seo_description' => ['required'],
                 'seo_title' => ['required'],
                 'type' => ['required'],
-            ],[
+            ],
+            [
                 'category_id.required' => "Danh mục bài đăng không được để trống. ",
                 'user_id.required' => "Tên người đăng bài không được để trống. ",
                 'title.required' => "Tiêu đề không được để trống. ",
@@ -102,40 +121,49 @@ class PostsController extends Controller
                 'seo_description.required' => "Mô tả SEO không được để trống. ",
                 'seo_title.required' => "Tiêu đề SEO không được để trống. ",
                 'description.required' => "Nội dung bài viết không được để trống. ",
-                'image.required' => 'Hình ảnh không được để trống.',
                 'image.image' => 'Định dạng không hợp lệ. Yêu cầu Hình ảnh.',
                 'image.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
                 'image.max' => 'Hình ảnh không thể vượt quá 2048 kilobytes.',
             ]
         );
 
-        $post = new Post();
+        $post = new Post;
         $post->category_id = $request->category_id;
         $post->user_id = $request->user_id;
-        $post->image = $this->uploadFile($request,'image','/post');
-        $post->image_banner = $this->uploadFile($request,'image_banner','/image_banner');
         $post->title = $request->title;
         $post->content = $request->content;
         $post->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->title, '-');
-
         $post->description = $request->description;
         $post->seo_title = $request->seo_title;
         $post->seo_description = $request->seo_description;
         $post->type = $request->type;
         $post->status = $request->status;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = 'post_' . time() . '.' . $image->extension();
+            $image->move(public_path('uploads/post'), $imageName);
+            $post->image = $imageName;
+        }
+
+        if ($request->hasFile('image_banner')) {
+            $image = $request->file('image_banner');
+            $imageName = 'image_banner_' . time() . '.' . $image->extension();
+            $image->move(public_path('uploads/image_banner'), $imageName);
+            $post->image_banner = $imageName;
+        }
+
         $post->save();
         toastr()->success("Thêm " . $request->name . " Thành công");
-        return redirect()->back(); 
+        return redirect()->back();
     }
 
-   
     public function edit($id)
-    {   
-        $gallery = Post_image_galleries::where('post_id', $id)->get('image');
+    {
         $post = Post::findOrFail($id);
-        $user = User::where('role','admin')->get();
+        $user = User::where('role', 'admin')->get();
         $post_categories = Post_categories::all();
-        return view('admin.post.edit', compact('post', 'user', 'post_categories','gallery'));
+        return view('admin.post.edit', compact('post', 'user', 'post_categories'));
     }
     /**
      * Update the specified resource in storage.
@@ -151,14 +179,14 @@ class PostsController extends Controller
             [
                 'category_id' => ['required'],
                 'user_id' => ['required'],
-                'title' => ['required','max:255'],
+                'title' => ['required', 'max:255'],
                 'description' => ['required'],
                 'content' => ['required'],
-                'image' => ['image','mimes:jpeg,jpg,png,gif,webp','max:10240'],
                 'seo_description' => ['required'],
                 'seo_title' => ['required'],
                 'type' => ['required'],
-            ],[
+            ],
+            [
                 'category_id.required' => "Danh mục bài đăng không được để trống. ",
                 'user_id.required' => "Tên người đăng bài không được để trống. ",
                 'title.required' => "Tiêu đề không được để trống. ",
@@ -167,7 +195,6 @@ class PostsController extends Controller
                 'seo_description.required' => "Mô tả SEO không được để trống. ",
                 'seo_title.required' => "Tiêu đề SEO không được để trống. ",
                 'description.required' => "Nội dung bài viết không được để trống. ",
-                'image.required' => 'Hình ảnh không được để trống.',
                 'image.image' => 'Định dạng không hợp lệ. Yêu cầu Hình ảnh.',
                 'image.mimes' => 'Hình ảnh phải là một trong các định dạng sau: jpeg, png, jpg, gif, svg.',
                 'image.max' => 'Hình ảnh không thể vượt quá 2048 kilobytes.',
@@ -180,27 +207,29 @@ class PostsController extends Controller
         $post->title = $request->title;
         $post->content = $request->content;
         $post->slug = !empty(Str::slug($request->slug, '-')) ? Str::slug($request->slug, '-') : Str::slug($request->title, '-');
-
         $post->description = $request->description;
         $post->seo_title = $request->seo_title;
         $post->seo_description = $request->seo_description;
         $post->type = $request->type;
         $post->status = $request->status;
-
         if ($request->hasFile('image')) {
-            $post->image = $this->uploadFile($request, 'image','/post');
-            $post->image_banner = $this->uploadFile($request, 'image_banner','/image_banner');
-            //Xóa file ảnh cũ
-            if (File::exists(public_path('uploads/post/' . $request->image_old))) {
-                File::delete(public_path('uploads/post/' . $request->image_old));
+            if (File::exists(public_path("uploads/post/{$post->image}"))) {
+                File::delete(public_path("uploads/post/{$post->image}"));
             }
-            if (File::exists(public_path('uploads/image_banner/' . $request->image_old))) {
-                File::delete(public_path('uploads/image_banner/' . $request->image_old));
+            $image = $request->file('image');
+            $imageName  = 'post_' . time() . '.' . $image->extension();
+            $image->move(public_path('uploads/post'), $imageName);
+            $post->image = $imageName;
+        }
+
+        if ($request->hasFile('image_banner')) {
+            if (File::exists(public_path("uploads/post/{$post->image_banner}"))) {
+                File::delete(public_path("uploads/post/{$post->image_banner}"));
             }
-        } else {
-            // Giữ nguyên ảnh cũ
-            $post->image_banner =$request->image_old;
-            $post->image = $request->image_old;
+            $image = $request->file('image_banner');
+            $imageName  = 'image_banner_' . time() . '.' . $image->extension();
+            $image->move(public_path('uploads/image_banner'), $imageName);
+            $post->image_banner = $imageName;
         }
         $post->save();
         toastr('Cập nhật thành công!', 'success');

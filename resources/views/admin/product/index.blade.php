@@ -23,8 +23,8 @@
             <div class="card-header">
                 <div class="action_start float-start d-flex">
                     <h6 class="mt-2 mb-0 text-uppercase float-start">Danh sách sản phẩm</h6>
-                    <div class="form-search ms-2">
-                        <form action="" method="get">
+                    <form action="" method="get">
+                        <div class="form-search ms-2">
                             <div class="input-group">
                                 <input value="{{ Request::get('keyword') }}" type="text" name="keyword"
                                     class="form-control rounded-start-5 focus-ring focus-ring-light querySearch"
@@ -32,8 +32,8 @@
                                 <button class="btn btn-outline-primary rounded-end-5 buttonSearch" type="submit"><i
                                         class="fa-solid fa-magnifying-glass"></i></button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                     <a href="{{ route('admin.product.index') }}" class="me-2 btn btn-success ms-2"><i
                             class="fa-solid fa-rotate-left fs-6"></i> Làm mới</a>
                 </div>
