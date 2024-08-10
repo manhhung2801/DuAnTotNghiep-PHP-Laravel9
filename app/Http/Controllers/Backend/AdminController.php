@@ -28,7 +28,7 @@ class AdminController extends Controller
     {
         $totalRevenue = 0;
         foreach ($coutOrder as $value) {
-            $totalRevenue = $value->total * $value->qty_total;
+            $totalRevenue += $value->total;
         }
         return $totalRevenue;
     }
@@ -37,7 +37,7 @@ class AdminController extends Controller
         foreach ($Orders as $order) {
             $orderDetails = OrderDetail::where('order_id', $order->id)->get();
             $productNames = $orderDetails->pluck('product_name')->toArray();
-        
+
             $order->product_names = $productNames;
         }
 
@@ -79,19 +79,22 @@ class AdminController extends Controller
     public function dashboard()
     {
 
-        $countUser = User::get()->count();
-        $countProuduct = User::get()->count();
-        $countCoupon = Coupons::get()->count();
-        $countSlider = Slider::get()->count();
-        $countOrder = Order::where('payment_status', 1)->where('order_status', 92)->count();
-        $countCategory = Category::get()->count();
-        $countPost = Post::get()->count();
-        $countProductComments = ProductComments::get()->count();
+        $countUser = User::count();
+        $countProuduct = User::count();
+        $countCoupon = Coupons::count();
+        $countSlider = Slider::count();
+        $countOrder = Order::count();
+        $countCategory = Category::count();
+        $countPost = Post::count();
+        $countProductComments = ProductComments::count();
         $countContact = contact::get()->count();
 
-        $countRevenue = Order::where('payment_status', 1)->get();
+        $countRevenue = Order::where('order_status', 92)
+            ->where('payment_status', 1)
+            ->orWhere('payment_status', 0)
+            ->whereIn('shipping_method', [0, 1])->get();
         $Order = Order::where('payment_status', 1)->where('payment_status', 1)
-        ->orWhere('payment_status', 0)->get();
+            ->orWhere('payment_status', 0)->get();
 
         // tông đơn hàng chưa thanh toán 
         $unpaidOrders = Order::where('payment_status', 0)->where('order_status', 0)->count();
@@ -113,7 +116,7 @@ class AdminController extends Controller
             'countContact' => $countContact,
             'unpaidOrders' => $unpaidOrders,
             'cancelOrders' => $cancelOrders,
-            'data' => $data,
+            // 'data' => $data,
         ]);
     }
 
@@ -126,7 +129,7 @@ class AdminController extends Controller
         $start_date_order = date('Y-m-d', strtotime($start_date));
         $end_date_order = date('Y-m-d', strtotime($end_date));
 
-        $Orderss= Order::where('order_status', 92)
+        $Orderss = Order::where('order_status', 92)
             ->where('payment_status', 1)
             ->orWhere('payment_status', 0)
             ->whereIn('shipping_method', [0, 1])
@@ -135,7 +138,7 @@ class AdminController extends Controller
 
 
 
-        $unpaidOrdersCharts= Order::where(function ($query) {
+        $unpaidOrdersCharts = Order::where(function ($query) {
             $query->where('order_status', -1)
                 ->where('payment_status', 0);
         })
@@ -147,5 +150,83 @@ class AdminController extends Controller
         $unpaidOrdersChart = $this->chartArea($unpaidOrdersCharts);
 
         return response()->json(['Orders' => $Orders, 'unpaidOrdersChart' => $unpaidOrdersChart]);
+    }
+
+
+    public function chartPie(Request $request)
+    {
+
+        $startDate_piecharts = $request->input('startDate_piecharts');
+        $endDate_piecharts = $request->input('endDate_piecharts');
+
+        $Order = Order::where('order_status', 92)
+            ->where('payment_status', 1)
+            ->orWhere('payment_status', 0)
+            ->whereIn('shipping_method', [0, 1])
+            ->whereBetween('created_at', [$startDate_piecharts, $endDate_piecharts])
+            ->get();
+        $datas = $this->chartCircle($Order);
+
+        return response()->json(['datas' => $datas]);
+    }
+
+
+    public function chartPieDate(Request $request)
+    {
+        $startDate_piecharts = $request->startDate_piecharts;
+        $endDate_piecharts = $request->endDate_piecharts;
+        $Order = Order::where('order_status', 92)
+            ->where('payment_status', 1)
+            ->orWhere('payment_status', 0)
+            ->whereIn('shipping_method', [0, 1])
+            ->whereBetween('created_at', [$startDate_piecharts, $endDate_piecharts])
+            ->get();
+        $datas = $this->chartCircle($Order);
+
+        return response()->json(['datas' => $datas]);
+    }
+
+    public function chartCountDate(Request $request)
+    {
+
+
+        $startDate_countCharts = $request->input('startDate_countCharts');
+        $endDate_countCharts = $request->input('endDate_countCharts');
+
+        $countOrder = Order::whereBetween('created_at', [$startDate_countCharts, $endDate_countCharts])->count();
+        $unpaidOrders = Order::where('payment_status', 0)->where('order_status', 0)->whereBetween('created_at', [$startDate_countCharts, $endDate_countCharts])->count();
+        $cancelOrders = Order::where(function ($query) {
+            $query->where('order_status', -1)
+                ->where('payment_status', 0);
+        })
+            ->whereBetween('created_at', [$endDate_countCharts, $startDate_countCharts])->count();
+
+        $countRevenue = Order::where('order_status', 92)
+            ->where('payment_status', 1)
+            ->orWhere('payment_status', 0)
+            ->whereIn('shipping_method', [0, 1])->whereBetween('created_at', [$startDate_countCharts, $endDate_countCharts])->get();
+
+        $totalRevenue = $this->totalRevenue($countRevenue);
+        $countCoupon = Coupons::whereBetween('created_at', [$startDate_countCharts, $endDate_countCharts])->count();
+
+        $countUser = User::whereBetween('email_verified_at', [$startDate_countCharts, $endDate_countCharts])->count();
+        // $countCategory = Category::whereBetween('created_at', [$startDate_countCharts, $endDate_countCharts])->count();
+        $countPost = Post::whereBetween('created_at', [$startDate_countCharts, $endDate_countCharts])->count();
+        $countProductComments = ProductComments::whereBetween('created_at', [$startDate_countCharts, $endDate_countCharts])->count();
+        $countContact = contact::whereBetween('created_at', [$startDate_countCharts, $endDate_countCharts])->count();
+
+        $datas = [
+            'countOrder' => $countOrder,
+            'unpaidOrders' => $unpaidOrders,
+            'cancelOrders' => $cancelOrders,
+            'totalRevenue' => $totalRevenue,
+            'countCoupon' => $countCoupon,
+            'countUser' => $countUser,
+            // 'countCategory' => $countCategory,
+            'countPost' => $countPost,
+            'countProductComments' => $countProductComments,
+            'countContact' => $countContact,
+        ];
+        return response()->json(['datas' => $datas]);
     }
 }

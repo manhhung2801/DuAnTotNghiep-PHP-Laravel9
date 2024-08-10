@@ -4,19 +4,35 @@
 
 @section('content')
 <style>
-    circle{
-        r:10;
+    circle {
+        r: 10;
     }
 </style>
 <div class="page-content">
+    <div class="col-lg-12 mt-4 mb-5">
+        <form method="post" class="row justify-content-end" id="date_chartCount">
+            <div class="col-lg-2">
+                <label for="start_date__chartCount">Bắt đầu</label>
+                <input type="date" id="start_date__chartCount" value="2013-01-01">
+            </div>
+            <div class="col-lg-2">
+                <label for="end_date_chartCount">Kết thúc</label>
+                <input type="date" id="end_date_chartCount" value="2015-01-01">
+            </div>
+            <div class="col-lg-2">
+                <input type="submit" value="lọc" id="date_chartCount_submit" style="padding: 0.9px; width: 150px;border-radius: 5px;border: 1px solid #14abef;background-color: #14abef;color: azure;">
+            </div>
+        </form>
+    </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+
         <div class="col">
             <div class="card radius-10 border-start border-0 border-4 border-info">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Tổng đơn hàng</p>
-                            <h4 class="my-1 text-info">{{$countOrder}}</h4>
+                            <h4 class="my-1 text-info"><span class="countOrder">{{$countOrder}}</span></h4>
                             <!-- <p class="mb-0 font-13">+2.5% from last week</p> -->
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-blues text-white ms-auto"><i class="bx bxs-cart"></i>
@@ -31,7 +47,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Tổng đơn chờ thang toán</p>
-                            <h4 class="my-1 text-info">{{$unpaidOrders}}</h4>
+                            <h4 class="my-1 text-info"><span class="unpaidOrders">{{$unpaidOrders}}</span></h4>
                             <!-- <p class="mb-0 font-13">+2.5% from last week</p> -->
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-blues text-white ms-auto"><i class="bx bxs-cart"></i>
@@ -46,7 +62,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Tổng đơn hàng hủy</p>
-                            <h4 class="my-1 text-info">{{$cancelOrders}}</h4>
+                            <h4 class="my-1 text-info"><span class="cancelOrders">{{$cancelOrders}}</span></h4>
                             <!-- <p class="mb-0 font-13">+2.5% from last week</p> -->
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-blues text-white ms-auto"><i class="bx bxs-cart"></i>
@@ -61,7 +77,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Tổng doanh thu</p>
-                            <h4 class="my-1 text-danger">{{number_format($totalRevenue,0,",",".")}} VND</h4>
+                            <h4 class="my-1 text-danger"><span class="totalRevenue">{{number_format($totalRevenue,0,",",".")}}</span> VND</h4>
                             <!-- <p class="mb-0 font-13">+5.4% from last week</p> -->
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-burning text-white ms-auto"><i class="bx bxs-wallet"></i>
@@ -76,7 +92,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Tổng Phiếu giảm</p>
-                            <h4 class="my-1 text-success">{{$countCoupon}}</h4>
+                            <h4 class="my-1 text-success"><span class="countCoupon">{{$countCoupon}}</span></h4>
                             <!-- <p class="mb-0 font-13">-4.5% from last week</p> -->
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class="bx bxs-bar-chart-alt-2"></i>
@@ -91,7 +107,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Tổng số khách hàng</p>
-                            <h4 class="my-1 text-warning">{{$countUser}}</h4>
+                            <h4 class="my-1 text-warning"><span class="countUser">{{$countUser}}</span></h4>
                             <!-- <p class="mb-0 font-13">+8.4% from last week</p> -->
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-orange text-white ms-auto"><i class="bx bxs-group"></i>
@@ -106,7 +122,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Tổng số lượng loại sản phẩm</p>
-                            <h4 class="my-1 text-warning">{{$countCategory}}</h4>
+                            <h4 class="my-1 text-warning"><span class="countCategory">{{$countCategory}}</span></h4>
                             <!-- <p class="mb-0 font-13">+8.4% from last week</p> -->
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-orange text-white ms-auto"><i class="bx bxs-binoculars"></i>
@@ -121,7 +137,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Tổng bài viết</p>
-                            <h4 class="my-1 text-success">{{$countPost}}</h4>
+                            <h4 class="my-1 text-success"><span class="countPost">{{$countPost}}</span></h4>
                             <!-- <p class="mb-0 font-13">-4.5% from last week</p> -->
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class="bx bxs-bar-chart-alt-2"></i>
@@ -137,7 +153,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Tổng bình luận sản phẩm</p>
-                            <h4 class="my-1 text-success">{{$countProductComments}}</h4>
+                            <h4 class="my-1 text-success"> <span class="countProductComments">{{$countProductComments}}</span></h4>
                             <!-- <p class="mb-0 font-13">-4.5% from last week</p> -->
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class="bx bx-comment-detail"></i>
@@ -154,7 +170,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Tổng số lượng liên hệ</p>
-                            <h4 class="my-1 text-success">{{$countContact}}</h4>
+                            <h4 class="my-1 text-success"><span class="countContact">{{$countContact}}</span></h4>
                             <!-- <p class="mb-0 font-13">-4.5% from last week</p> -->
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-primary bg-gradient text-white ms-auto"><i class="lni lni-envelope"></i>
@@ -229,12 +245,12 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <div>
-                            <h6 class="mb-0">Biểu đồ thống kê tổng số lượng bán ra</h6>
+                            <h6 class="mb-0">Biểu đồ thống kê loại sản phẩm bán ra</h6>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class=" col-4  ">
+                    <div class=" col-lg-12  ">
 
                         <head>
                             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -244,25 +260,30 @@
                                 google.charts.load('current', {
                                     'packages': ['corechart']
                                 });
-                                google.charts.setOnLoadCallback(drawChart);
+                                google.charts.setOnLoadCallback(drawChartPie);
 
-                                function drawChart() {
+                                function drawChartPie(response) {
+                                    // Create the data table.
+                                    var data = new google.visualization.DataTable();
+                                    data.addColumn('string', 'Category');
+                                    data.addColumn('number', 'Quantity');
+                                    var hasData = false;
 
-                                    var data = google.visualization.arrayToDataTable([
-                                        ['Task', 'Hours per Day'],
-                                        <?php
-                                        // ['Work', 40],
-                                        foreach ($data as $key => $item) {
-                                            echo "['" . $item['category_name'] . "', " . $item['qty_total'] . "],";
+                                    // Add rows to the data table
+                                    response.datas.forEach(item => {
+                                        if (item.qty_total > 0) {
+                                            data.addRow([item.category_name, item.qty_total]);
+                                            // hasData = true;
                                         }
-                                        ?>
-                                    ]);
-
-
-
+                                    });
+                                    // if (hasData) {
+                                    //     data.addRow(['Không có dữ liệu', 0]);
+                                    // }
                                     var options = {
-                                        title: 'Doanh số bán ra'
+                                        title: 'Doanh số bán ra',
+                                        pieHole: 0.4, // For a donut chart, if desired
                                     };
+
                                     var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
                                     chart.draw(data, options);
@@ -271,23 +292,39 @@
                         </head>
 
                         <body>
-                            <div class="row">
-                                <!-- <form method="get" id="Pie_chart">
-                                    <div class="col-lg-12 ">
-                                        <label for="start_date">bất đầu</label>
-                                        <input type="date" id="start_date" value="">
-                                    </div>
-                                    <div class="col-lg-12 mt-2 ">
-                                        <label for="end_date">kết thúc</label>
-                                        <input type="date" id="end_date" value="">
-                                    </div>
-                                    <div>
-                                        <input type="submit" value="Kết quả" id="result_Pie_chart">
+                            <div class="row ">
+                                <div class="col-lg-11">
+                                    <form method="post" class="row justify-content-end" id="date_piechart">
+                                        <div class="col-lg-2">
+                                            <label for="start_date_piechart">Bắt đầu</label>
+                                            <input type="date" id="start_date_piechart" value="2013-01-01">
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <label for="end_date_piechart">Kết thúc</label>
+                                            <input type="date" id="end_date_piechart" value="2015-01-01">
+                                        </div>
+                                        <div class="col-lg-2 align-items-end d-flex">
+                                            <input type="submit" value="lọc" id="date_piechart_submit" style="padding: 0.9px; width: 150px;border-radius: 5px;border: 1px solid #14abef;background-color: #14abef;color: azure;">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-lg-1 ">
+                                    <form method="post" class="row justify-content-end">
+                                        <div class="col-lg-12">
+                                            <label for="piechart_time">lọc theo:</label>
+                                            <select name="piechart_time" id="piechart_time">
+                                                <option value="">Lọc</option>
+                                                <!-- <option value="day_piechart">Ngày</option> -->
+                                                <option value="week_piechart">Tuần</option>
+                                                <option value="month_piechart">Tháng</option>
+                                                <option value="year_piechart">Năm</option>
+                                            </select>
+                                        </div>
 
-                                    </div> -->
-                                <!-- </form> -->
+                                    </form>
+                                </div>
 
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div id="piechart" style="width: 900px; height: 500px;"></div>
                                 </div>
 
@@ -295,8 +332,6 @@
                             </div>
 
                         </body>
-
-                        </html>
 
                     </div>
                 </div>
@@ -317,11 +352,11 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class=" col-lg-12  ">
+                    <div class=" col-lg-12 ">
 
                         <div class="row">
-                            <div class="col-lg-12">
-                                <form method="post" class="row areachart_chart">
+                            <div class="col-lg-12 ">
+                                <form method="post" class="row areachart_chart justify-content-end">
                                     <div class="col-lg-2">
                                         <label for="start_date">Bắt đầu</label>
                                         <input type="date" id="start_date" value="2013-01-01">
@@ -338,7 +373,7 @@
                                 </form>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 ">
                                 <div id="areachart" style="width: 1300px; height: 500px;"></div>
 
 
@@ -508,7 +543,7 @@
                             success: function(response) {
                                 if (response.Orders.length > 0 || response.unpaidOrdersChart.length > 0) {
                                     drawChart(response);
-                              
+
                                     handleOrderDetails(response);
                                     successfulOrder.classList.remove('d-none');
                                     failedOrder.classList.remove('d-none');
@@ -528,6 +563,151 @@
                 $('#failedOrder').click(function() {
                     showOrderDetails('unpaidOrdersChart');
                 });
+
+                // circle chart
+                $('#piechart_time').change(function(e) {
+                    var piechart_time = $(this).val();
+                    var today = new Date();
+                    var startDate_piechart, endDate_piechart;
+
+                    if (piechart_time == 'day_piechart') {
+                        startDate_piechart = new Date(today.setHours(0, 0, 0, 0));
+                        endDate_piechart = new Date(today.setHours(23, 59, 59, 999));
+
+                    } else if (piechart_time == 'week_piechart') {
+                        var firstDayOfWeek = today.getDate() - today.getDay() + 1;
+                        var lastDayOfWeek = firstDayOfWeek + 6;
+                        startDate_piechart = new Date(today.setDate(firstDayOfWeek));
+                        startDate_piechart.setHours(0, 0, 0, 0);
+
+                        endDate_piechart = new Date(today.setDate(lastDayOfWeek));
+                        endDate_piechart.setHours(23, 59, 59, 999);
+
+                    } else if (piechart_time === 'year_piechart') {
+                        startDate_piechart = new Date(today.getFullYear(), 0, 1);
+                        endDate_piechart = new Date(today.getFullYear(), 11, 31);
+                        endDate_piechart.setHours(23, 59, 59, 999);
+                    }
+
+                    let url = "{{route('admin.dashboard.chartPie')}}";
+                    if (startDate_piechart && endDate_piechart) {
+                        var formattedStartDate = startDate_piechart.toISOString().split('T')[0];
+                        var formattedEndDate = endDate_piechart.toISOString().split('T')[0];
+
+                        $.ajax({
+                            method: "POST",
+                            url: url,
+                            dataType: "json",
+                            data: {
+                                startDate_piecharts: formattedStartDate,
+                                endDate_piecharts: formattedEndDate,
+                            },
+                            success: function(response) {
+                                drawChartPie(response);
+
+
+                            }
+                        });
+                    }
+                });
+
+                $('#date_piechart_submit').click(function(e) {
+                    var start_date_piechart = $(this).closest('#date_piechart').find('#start_date_piechart').val()
+                    var end_date_piechart = $(this).closest('#date_piechart').find('#end_date_piechart').val()
+
+                    e.preventDefault();
+                    if (!start_date_piechart || !end_date_piechart || end_date_piechart <= start_date_piechart) {
+                        alert('Lỗi: ngày bắt đầu không được lớn hơn ngày kết thúc hoặc ngày không hợp lệ');
+                    } else {
+                        let urls = "{{route('admin.dashboard.chartPie.date')}}";
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        $.ajax({
+                            method: "POST",
+                            url: urls,
+                            dataType: "json",
+                            data: {
+                                startDate_piecharts: start_date_piechart,
+                                endDate_piecharts: end_date_piechart,
+                            },
+                            success: function(response) {
+                                if (response.datas.length > 0) {
+                                    drawChartPie(response);
+
+
+                                } else {
+                                    alert('Không có đơn hàng nào trong khoảng thời gian này.');
+                                }
+                            }
+                        });
+
+
+
+                    }
+                })
+
+                var countUser = document.querySelector('.countUser')
+                var countOrder = document.querySelector('.countOrder')
+                var unpaidOrders = document.querySelector('.unpaidOrders')
+                var cancelOrders = document.querySelector('.cancelOrders')
+                var totalRevenue = document.querySelector('.totalRevenue')
+                var countCoupon = document.querySelector('.countCoupon')
+                var countPost = document.querySelector('.countPost')
+                var countProductComments = document.querySelector('.countProductComments')
+                var countContact = document.querySelector('.countContact')
+
+                $('#date_chartCount_submit').click(function(e) {
+                    var start_date__chartCount = $(this).closest('#date_chartCount').find('#start_date__chartCount').val()
+                    var end_date_chartCount = $(this).closest('#date_chartCount').find('#end_date_chartCount').val()
+
+
+
+
+                    e.preventDefault();
+                    if (!start_date__chartCount || !end_date_chartCount || end_date_chartCount <= start_date__chartCount) {
+                        alert('Lỗi: ngày bắt đầu không được lớn hơn ngày kết thúc hoặc ngày không hợp lệ');
+                    } else {
+                        let urls = "{{route('admin.dashboard.chartCount.date')}}";
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        $.ajax({
+                            method: "POST",
+                            url: urls,
+                            dataType: "json",
+                            data: {
+                                startDate_countCharts: start_date__chartCount,
+                                endDate_countCharts: end_date_chartCount,
+                            },
+                            success: function(response) {
+                                console.log(response);
+
+                                // for (let i = 0; i < response.datas.length; i++) {
+                                countUser.textContent = response.datas.countUser;
+                                countOrder.textContent = response.datas.countOrder;
+                                unpaidOrders.textContent = response.datas.unpaidOrders;
+                                cancelOrders.textContent = response.datas.cancelOrders;
+                                totalRevenue.textContent = response.datas.totalRevenue;
+                                countCoupon.textContent = response.datas.countCoupon;
+                                countPost.textContent = response.datas.countPost;
+                                countProductComments.textContent = response.datas.countProductComments;
+                                countContact.textContent = response.datas.countContact;
+                                // }
+
+
+                            }
+                        });
+
+
+
+                    }
+                })
+
             });
 
             function handleOrderDetails(response) {
