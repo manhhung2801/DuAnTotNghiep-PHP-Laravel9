@@ -33,6 +33,14 @@ class Post extends Model
     {
         return self::withTrashed()->where('id', $id)->restore();
     }
+    static function getPost()
+    {
+        return self::where('status', '=', 1)->where('type', '=', 0)->orderBy('created_at', 'desc');
+    }
+    static function getBanner()
+    {
+        return self::where('status', '=', 1)->where('type', '=', 1)->orderBy('created_at', 'desc');
+    }
     static public function destroyTrashedItem($id)
     {
         return self::withTrashed()->where('id', $id)->forceDelete();
