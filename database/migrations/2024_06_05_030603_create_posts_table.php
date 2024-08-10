@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->text('image');
-            $table->text('image_banner');
+            $table->text('image_banner')->nullable();
             $table->longText('title');
             $table->longText('content');
             $table->string('slug', 255);
