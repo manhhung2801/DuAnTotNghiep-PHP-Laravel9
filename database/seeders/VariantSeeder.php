@@ -30,7 +30,7 @@ class VariantSeeder extends Seeder
                     'product_id' => $index,
                     'name' => 'ram',
                     'type' => 0,
-                    'status' => 0,
+                    'status' => 1,
                 ]);
             } else {
                 error_log("Không tìm thấy sản phẩm với id = $index");

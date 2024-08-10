@@ -19,15 +19,13 @@ class PageCategoryController extends Controller
             $pageCategories = $pageCategories->where('name', 'like', '%' . $request->get('keyword') . '%');
         }
 
-        // Sắp xếp theo rank tăng hoặc giảm 
         if ($request->filled('sort_rank')) {
             $sort_rank = $request->get('sort_rank');
             if ($sort_rank === 'asc' || $sort_rank === 'desc') {
                 $pageCategories->orderBy('rank', $sort_rank);
             }
         }
-
-        // Sắp xếp theo trạng thái
+        
         if ($request->filled('check_status')) {
             $check_status = $request->get('check_status');
             if ($check_status == '1') {
@@ -36,19 +34,13 @@ class PageCategoryController extends Controller
                 $pageCategories = $pageCategories->where('status', 0);
             }
         }
-
-        // Sắp xếp theo ngày tạo
+       
         if ($request->filled('sort_date')) {
             $sort_date = $request->get('sort_date');
             if ($sort_date === 'asc' || $sort_date === 'desc') {
                 $pageCategories->orderBy('created_at', $sort_date);
             }
         }
-
-
-
-
-        // Paginate with 10 items per page
         $pageCategories = $pageCategories->paginate(15)->appends(request()->query());
 
         return view("admin.page-category.index", compact('pageCategories'));

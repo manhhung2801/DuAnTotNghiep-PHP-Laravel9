@@ -30,7 +30,7 @@
         color: #fff;
     }
 </style>
-    <div class="pagination">
+    <div class="pagination mb-3">
         @if ($products->lastPage() > 1)
             @if ($products->currentPage() > 1)
                 <a href="{{ $products->appends(['query' => request()->query('query')])->previousPageUrl() }}"

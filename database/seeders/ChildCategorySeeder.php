@@ -240,7 +240,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 17,
                 "name" => "VIVOBOOK",
                 "slug" => "vivobook",
-                "image" => NULL,
+              "image" => 'vivobook.webp',
                 "status" => 1
             ],
             [
@@ -248,7 +248,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 17,
                 "name" => "GAMING",
                 "slug" => "gaming",
-                "image" => NULL,
+              "image" => 'gaming1.webp',
                 "status" => 1
             ],
             [
@@ -256,7 +256,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 17,
                 "name" => "ZENBOOK",
                 "slug" => "zenbook",
-                "image" => NULL,
+              "image" => 'zenbook.webp',
                 "status" => 1
             ],
             [
@@ -264,7 +264,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 17,
                 "name" => "EXPERTBOOK",
                 "slug" => "expertbook",
-                "image" => NULL,
+              "image" => 'expertbook.webp',
                 "status" => 1
             ],
             //categories id = 2, sub_categories ASUS id = 17
@@ -329,7 +329,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 19,
                 "name" => "INSPIRON",
                 "slug" => "inspiron",
-                "image" => NULL,
+                "image" => 'inspiron.webp',
                 "status" => 1
             ],
             [
@@ -337,7 +337,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 19,
                 "name" => "VOSTRO",
                 "slug" => "vostro",
-                "image" => NULL,
+                "image" => 'vostro.webp',
                 "status" => 1
             ],
             [
@@ -345,7 +345,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 19,
                 "name" => "XPS",
                 "slug" => "xps",
-                "image" => NULL,
+                "image" => 'imac.webp',
                 "status" => 1
             ],
             [
@@ -353,7 +353,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 19,
                 "name" => "GAMING",
                 "slug" => "gaming",
-                "image" => NULL,
+                "image" => 'gaming2.webp',
                 "status" => 1
             ],
             [
@@ -361,7 +361,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 19,
                 "name" => "LATITUDE",
                 "slug" => "latitude",
-                "image" => NULL,
+                "image" => 'latitude.webp',
                 "status" => 1
             ],
             [
@@ -369,7 +369,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 19,
                 "name" => "ALIENWARE",
                 "slug" => "alienware",
-                "image" => NULL,
+                "image" => 'alienware.webp',
                 "status" => 1
             ], [
                 "category_id" => 2,
@@ -399,7 +399,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 28,
                 "name" => "Sony",
                 "slug" => "sony",
-                "image" => NULL,
+                "image" => 'sony.webp',
                 "status" => 1
             ],
             [
@@ -407,7 +407,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 28,
                 "name" => "JBL",
                 "slug" => "jbl",
-                "image" => NULL,
+                "image" => 'jbl.webp',
                 "status" => 1
             ],
             [
@@ -415,7 +415,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 28,
                 "name" => "Soundpeats",
                 "slug" => "soundpeats",
-                "image" => NULL,
+                "image" => 'soundpeats.webp',
                 "status" => 1
             ],
             [
@@ -423,7 +423,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 28,
                 "name" => "Havit",
                 "slug" => "havit",
-                "image" => NULL,
+                "image" => 'havit.webp',
                 "status" => 1
             ],
             [
@@ -431,7 +431,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 28,
                 "name" => "Samsung",
                 "slug" => "samsung",
-                "image" => NULL,
+                "image" => 'samsung.webp',
                 "status" => 1
             ],
             //categories id = 4, sub_categories Đồng hồ thông minh id = 34
@@ -440,21 +440,21 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 34,
                 "name" => "SamSung",
                 "slug" => "sam-sung",
-                "image" => NULL,
+                "image" => 'sam-sung.webp',
                 "status" => 1
             ], [
                 "category_id" => 4,
                 "sub_category_id" => 34,
                 "name" => "Xiaomi",
                 "slug" => "xiaomi",
-                "image" => NULL,
+                "image" => 'xiaomi1.webp',
                 "status" => 1
             ], [
                 "category_id" => 4,
                 "sub_category_id" => 34,
                 "name" => "Oppo",
                 "slug" => "oppo",
-                "image" => NULL,
+                "image" => 'oppo1.webp',
                 "status" => 1
             ],
             //categories id = 5, sub_categories Nồi chiên không dầu id = 38
@@ -463,42 +463,42 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 38,
                 "name" => "Philips",
                 "slug" => "philips",
-                "image" => NULL,
+                  "image" => 'philips.webp',
                 "status" => 1
             ], [
                 "category_id" => 5,
                 "sub_category_id" => 38,
                 "name" => "Sharp",
                 "slug" => "sharp",
-                "image" => NULL,
+                  "image" => 'sharp.webp',
                 "status" => 1
             ], [
                 "category_id" => 5,
                 "sub_category_id" => 38,
                 "name" => "Boar",
                 "slug" => "boar",
-                "image" => NULL,
+                  "image" => 'boar.webp',
                 "status" => 1
             ], [
                 "category_id" => 5,
                 "sub_category_id" => 38,
-                "name" => "Xiaomi",
-                "slug" => "xiaomi",
-                "image" => NULL,
+                "name" => "Kangaroo",
+                "slug" => "kangaroo",
+                  "image" => 'kangaroo.webp',
                 "status" => 1
             ], [
                 "category_id" => 5,
                 "sub_category_id" => 38,
                 "name" => "Kilite",
                 "slug" => "kalite",
-                "image" => NULL,
+                  "image" => 'kalite.webp',
                 "status" => 1
             ], [
                 "category_id" => 5,
                 "sub_category_id" => 38,
                 "name" => "BlueStone",
                 "slug" => "bluestone",
-                "image" => NULL,
+                  "image" => 'bluestone.webp',
                 "status" => 1
             ],
             //categories id = 6, sub_categories Phụ kiện Apple id = 50
@@ -507,35 +507,35 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 50,
                 "name" => "Cáp, sạc",
                 "slug" => "cap-sac",
-                "image" => NULL,
+                  "image" => 'cap-sac.webp',
                 "status" => 1
             ], [
                 "category_id" => 6,
                 "sub_category_id" => 50,
                 "name" => "Ốp lưng, bao da",
                 "slug" => "op-lung",
-                "image" => NULL,
+                  "image" => 'op-lung.webp',
                 "status" => 1
             ], [
                 "category_id" => 6,
                 "sub_category_id" => 50,
                 "name" => "Tai nghe",
                 "slug" => "tai-nghe",
-                "image" => NULL,
+                  "image" => 'tai-nghe.webp',
                 "status" => 1
             ], [
                 "category_id" => 6,
                 "sub_category_id" => 50,
                 "name" => "Bàn phím",
                 "slug" => "ban-phim",
-                "image" => NULL,
+                  "image" => 'ban-phim.webp',
                 "status" => 1
             ], [
                 "category_id" => 6,
                 "sub_category_id" => 50,
                 "name" => "Dây đeo Apple Watch",
-                "slug" => "op-lung",
-                "image" => NULL,
+                "slug" => "day-deo-apple-watch",
+                  "image" => 'day-deo-apple-watch.webp',
                 "status" => 1
             ],
             //categories id = 7, sub_categories Phụ kiện Apple id = 60
@@ -544,7 +544,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 64,
                 "name" => "Gaming",
                 "slug" => "gaming",
-                "image" => NULL,
+                "image" => 'gaming3.webp',
                 "status" => 1
             ],
             //categories id = 8, sub_categories samsung id = 70
@@ -553,7 +553,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 70,
                 "name" => "32 INCH",
                 "slug" => "32-inch",
-                "image" => NULL,
+                  "image" => '32-inch.webp',
                 "status" => 1
             ],
             [
@@ -561,14 +561,14 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 70,
                 "name" => "43 INCH",
                 "slug" => "43-inch",
-                "image" => NULL,
+                  "image" => '43-inch.webp',
                 "status" => 1
             ], [
                 "category_id" => 8,
                 "sub_category_id" => 70,
                 "name" => "50 INCH",
                 "slug" => "50-inch",
-                "image" => NULL,
+                  "image" => '50-inch.webp',
                 "status" => 1
             ],
             [
@@ -576,7 +576,7 @@ class ChildCategorySeeder extends Seeder
                 "sub_category_id" => 70,
                 "name" => "55 INCH",
                 "slug" => "55-inch",
-                "image" => NULL,
+                  "image" => '55-inch.webp',
                 "status" => 1
             ],
         ];

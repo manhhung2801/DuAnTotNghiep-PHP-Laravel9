@@ -38,7 +38,7 @@ class ProductController extends Controller
         // tìm kiếm sản phẩm theo tên
         if (!empty(Request()->get('keyword'))) {
             $keyword = trim(Request()->get('keyword'));
-            $getProduct->where('name', 'like', '%' . $keyword . '%');
+            $getProduct->where('name', 'LIKE', '%' . $keyword . '%');
         }
 
         // lọc theo danh mục
