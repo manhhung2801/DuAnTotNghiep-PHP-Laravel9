@@ -245,6 +245,23 @@ class PostsSeeder extends Seeder
                 "updated_at" => NULL,
                 "deleted_at" => NULL,
             ],
+            [
+                "category_id" => 3,
+                "type" => 1,
+                "user_id" => 1,
+                "image" => "media_66b6deba31175.jpg",
+                "banner" => "media_66b6deba31175.jpg",
+                "title" => "",
+                "content" => "",
+                "slug" => "",
+                "description" => "Bí kíp viết khóa luận cho sinh viên nhanh gấp 69 lần với bàn phím không dây giá rẻ bất ngờ",
+                "seo_description" => "Bí kíp viết khóa luận cho sinh viên nhanh gấp 69 lần với bàn phím không dây giá rẻ bất ngờ",
+                "seo_title" => "Bí kíp viết khóa luận cho sinh viên nhanh gấp 69 lần với bàn phím không dây giá rẻ bất ngờ",
+                "status" => "1",
+                "created_at" => now(),
+                "updated_at" => NULL,
+                "deleted_at" => NULL,
+            ],
         ]);
     }
 }
