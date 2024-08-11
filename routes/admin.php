@@ -143,10 +143,11 @@ Route::resource('/post-category', PostCategoriesController::class);
 
 /** post */
 Route::put('/post/change-status', [PostsController::class, 'changeStatus'])->name('post.change-status');
-Route::get('/post/trashed-post', [PostsController::class, 'trashedPost'])->name('post.trashed-post');
-Route::get('/post/restore/{id}', [PostsController::class, 'restore'])->name('post.restore-post');
-Route::get('/post/deleted/{id}', [PostsController::class, 'delete'])->name('post.deleted-post');
+Route::get('/post/trashed-post', [PostsController::class, 'showTrash'])->name('post.trashed-post');
+Route::DELETE('/post/deleted/{id}', [PostsController::class, 'delete'])->name('post.deleted-post');
+Route::PATCH('/post/restore/{id}', [PostsController::class, 'restore'])->name('post.restore-post');
 Route::resource('/post', PostsController::class);
+
 
 /** Comment */
 Route::get('comment/trash-list', [CommentsController::class, 'showTrash'])->name('comment.trash-list');
