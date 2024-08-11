@@ -263,8 +263,8 @@ class PostsSeeder extends Seeder
                 "category_id" => 3,
                 "type" => 1,
                 "user_id" => 1,
-                "image" => "media_66b6deba31175.jpg",
-                "banner" => "media_66b6deba31175.jpg",
+                "image" => "media_66b02e1963d74.webp",
+                "image_banner" => "banner_hero.webp",
                 "title" => "iPhone 15 - 15 Pro Max",
                 "seo_title" => "iPhone 15 Pro Max đột phá thiết kế mới, điểm nhấn hiện đại bật nhất.",
                 "content" => "Đánh giá iPhone 15 Pro Max chi tiết - những cải tiến nổi bật
@@ -283,6 +283,8 @@ class PostsSeeder extends Seeder
                 "slug" => "iphone-15-15-pro-max",
                 "status" => "1",
                 "created_at" => now(),
+                "updated_at" => NULL,
+                "deleted_at" => NULL,
             ],
         ]);
     }
