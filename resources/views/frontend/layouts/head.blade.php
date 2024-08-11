@@ -39,3 +39,14 @@
 
 <!-- Alert Sweet CDN -->
 <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.1/dist/sweetalert2.min.css" rel="stylesheet">
+
+<!--Google console-->
+<meta name="google-site-verification" content="e-6p4AzRMui1XPqm2pUBi9NBQl9SkwsHLryEPmY10uA" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ENLB7VQ8WJ"></script>
+<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-ENLB7VQ8WJ');</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ENLB7VQ8WJ"></script>
+<!--- Bing --->
+<meta name="msvalidate.01" content="B7D892E9ED4DEFB49A871C34160F7278" />

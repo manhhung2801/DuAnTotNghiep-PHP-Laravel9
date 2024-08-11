@@ -1,11 +1,2 @@
 User-agent: *
-User-agent: Googlebot
-Disallow:
-User-agent: Googlebot-image
-Disallow:
 Sitemap: https://cybermart.io.vn/sitemap.xml
-Disallow: /admin/
-Disallow: /checkout/
-Disallow: /cart/
-Disallow: /api/
-Disallow: /phpinfo.php

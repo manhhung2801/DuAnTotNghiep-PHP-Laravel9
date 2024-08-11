@@ -16,6 +16,7 @@ use App\Http\Controllers\GHTKController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\CommentsController;
 use App\Http\Controllers\Frontend\PageController;
+use App\Http\Controllers\SitemapController;
 use \App\Http\Controllers\VNPAYController;
 /*
 |--------------------------------------------------------------------------
@@ -129,3 +130,12 @@ Route::get('/thankyou', function () {
 // Comment sản phẩm
 Route::get('/comments/{id}', [CommentsController::class, 'getComments'])->name("commentProductId");
 Route::post('/comment-post', [CommentsController::class, 'commentPost'])->name("commentPost");
+
+
+//sitemap
+
+Route::get('generateSitemap', [
+    SitemapController::class, 
+    'generateSitemap'
+]);
+

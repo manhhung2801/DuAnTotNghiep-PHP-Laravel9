@@ -185,6 +185,8 @@ return [
         /*
          * Package Service Providers...
          */
+        // Sitemap
+        Spatie\Sitemap\SitemapServiceProvider::class,
         // Cart
         Darryldecode\Cart\CartServiceProvider::class,
 
