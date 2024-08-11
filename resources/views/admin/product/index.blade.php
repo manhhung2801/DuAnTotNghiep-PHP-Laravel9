@@ -52,7 +52,7 @@
                         </div>
                         <div class="col">
                             <select class="form-select" name="category_id">
-                                <option>Chọn danh mục</option>
+                                <option value="">Chọn danh mục</option>
                                 @foreach ($category as $cate)
                                     <option value="{{ $cate->id }}"
                                         {{ Request::get('category_id') == $cate->id ? 'selected' : '' }}>{{ $cate->name }}
