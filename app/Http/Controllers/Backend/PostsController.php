@@ -223,8 +223,8 @@ class PostsController extends Controller
         }
 
         if ($request->hasFile('image_banner')) {
-            if (File::exists(public_path("uploads/post/{$post->image_banner}"))) {
-                File::delete(public_path("uploads/post/{$post->image_banner}"));
+            if (File::exists(public_path("uploads/image_banner/{$post->image_banner}"))) {
+                File::delete(public_path("uploads/image_banner/{$post->image_banner}"));
             }
             $image = $request->file('image_banner');
             $imageName  = 'image_banner_' . time() . '.' . $image->extension();
