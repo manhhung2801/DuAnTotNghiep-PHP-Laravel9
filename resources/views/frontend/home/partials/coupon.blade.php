@@ -65,7 +65,6 @@
     }
 </style>
 <div class="container pt-5">
-    <h1 class="visually-hidden">Danh sách phiếu giảm giá CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam</h1>
     <div class="row">
         @forelse ($getCoupon as $coupon)
             <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-3 px-1">
