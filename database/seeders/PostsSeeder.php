@@ -265,16 +265,24 @@ class PostsSeeder extends Seeder
                 "user_id" => 1,
                 "image" => "media_66b6deba31175.jpg",
                 "banner" => "media_66b6deba31175.jpg",
-                "title" => "",
-                "content" => "",
-                "slug" => "",
-                "description" => "Bí kíp viết khóa luận cho sinh viên nhanh gấp 69 lần với bàn phím không dây giá rẻ bất ngờ",
-                "seo_description" => "Bí kíp viết khóa luận cho sinh viên nhanh gấp 69 lần với bàn phím không dây giá rẻ bất ngờ",
-                "seo_title" => "Bí kíp viết khóa luận cho sinh viên nhanh gấp 69 lần với bàn phím không dây giá rẻ bất ngờ",
+                "title" => "iPhone 15 - 15 Pro Max",
+                "seo_title" => "iPhone 15 Pro Max đột phá thiết kế mới, điểm nhấn hiện đại bật nhất.",
+                "content" => "Đánh giá iPhone 15 Pro Max chi tiết - những cải tiến nổi bật
+                    iPhone 15 Pro Max không chỉ ghi điểm với cấu hình mạnh mẽ mà còn gây ấn tượng với nhiều tính năng mới đáng chú ý. Từ thiết kế khung titan cho tới hiệu năng đột phá, tất cả đều được nâng cấp để mang tới cho người dùng trải nghiệm smartphone tuyệt vời chưa từng có. Những tính năng này sẽ được trình bày chi tiết hơn trong các phần bài viết dưới đây, giúp bạn có cái nhìn toàn diện về sự đột phá của iPhone 15 ProMax.
+
+                    Kiểu dáng sang trọng, thiết kế Titan thời thượng
+                    Thiết kế titan dễ dàng thể hiện được nét đẳng cấp và sự tinh tế ngay từ vẻ bề ngoài của iPhone 15 Pro Max. Khung viền titan bóng bẩy của máy, được chế tác qua nhiều quy trình gia công cơ khí, chà nhám và đánh bóng, mang lại vẻ đẹp sang trọng và độ bền tuyệt vời. Với khung viền uốn cong và kiểu dáng siêu mỏng, thế hệ iPhone này đem lại trải nghiệm cầm nắm khá thoải mái.
+                    Tấm nền Super Retina XDR hiển thị mượt mà và sắc nét
+                    Mượt mà, sắc nét trong từng điểm ảnh là những gì smartphone iPhone 15 Pro Max thể hiện được về khả năng hiển thị. Theo đó, Super Retina XDR 6.7 inch OLED tái hiện hình ảnh với độ sống động đáng kinh ngạc ở độ phân giải 
+                    2796x1290 pixel. Đồng thời, các thao tác vuốt, chạm trên màn hình iPhone 15 ProMax cũng vô cùng luôn nhạy bén, thông qua công nghệ ProMotion 120Hz, đảm bảo tiết kiệm pin ấn tượng.",
+                "slug" => "iphone-15-15-pro-max",
+
+                "description" => "Theo Apple Insider, dựa trên những bản CAD (thiết kế có sự hỗ trợ của máy tính) rò rỉ gần đây, iPhone 15 Pro Max có thể dày hơn iPhone 14 Pro Max, mặc dù phần lồi camera nhỏ hơn một chút. Thông tin mới nhất từ chuyên gia rò rỉ Ice Universe tiết lộ kích thước 1,55 mm của phần khung viền trên iPhone 15 Pro Max sẽ phá kỷ lục trước đó được thiết lập bởi Xiaomi 13 là 1,81mm.",
+                "slug" => "iphone-15-15-pro-max",
+                "seo_description" => "Theo Apple Insider, dựa trên những bản CAD (thiết kế có sự hỗ trợ của máy tính) rò rỉ gần đây, iPhone 15 Pro Max có thể dày hơn iPhone 14 Pro Max, mặc dù phần lồi camera nhỏ hơn một chút. Thông tin mới nhất từ chuyên gia rò rỉ Ice Universe tiết lộ kích thước 1,55 mm của phần khung viền trên iPhone 15 Pro Max sẽ phá kỷ lục trước đó được thiết lập bởi Xiaomi 13 là 1,81mm.",
+                "slug" => "iphone-15-15-pro-max",
                 "status" => "1",
                 "created_at" => now(),
-                "updated_at" => NULL,
-                "deleted_at" => NULL,
             ],
         ]);
     }
