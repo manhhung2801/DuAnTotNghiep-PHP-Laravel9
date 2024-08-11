@@ -76,12 +76,37 @@ class PostsController extends Controller
     public function index(Request $request)
     {
         $post = Post::latest();
+        $post_categories = Post_categories::all();
+
         if (!empty($request->get('keyword'))) {
             $post = Post::where('title', 'like', '%' . $request->get('keyword') . '%');
         }
+        //lọc theo danh mục
+        if ($request->filled('category_id')) {
+            $category_id = $request->get('category_id');
+            $post = Post::where('category_id', $category_id);
+        }
+        // Sắp xếp theo trạng thái
+        if ($request->filled('check_status')) {
+            $check_status = $request->get('check_status');
+            if ($check_status == '1') {
+                $post = $post->where('status', 1);
+            } elseif ($check_status == '0') {
+                $post = $post->where('status', 0);
+            }
+        }
+        // Sắp xếp theo kiểu
+        if ($request->filled('check_type')) {
+            $check_type = $request->get('check_type');
+            if ($check_type == '1') {
+                $post = $post->where('type', 1);
+            } elseif ($check_type == '0') {
+                $post = $post->where('type', 0);
+            }
+        }
 
-        $post = $post->paginate(15);
-        return view('admin.post.index', compact('post'));
+        $post = $post->paginate(15)->appends(request()->query());
+        return view('admin.post.index', compact('post', 'post_categories'));
     }
 
 

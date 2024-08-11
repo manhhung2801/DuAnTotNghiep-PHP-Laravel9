@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
+
 use App\Http\Controllers\Controller;
 use App\Models\Post_categories;
 use GuzzleHttp\Handler\Proxy;
@@ -9,27 +10,37 @@ use Illuminate\Http\Request;
 
 class PostCategoriesController extends Controller
 {
-
-
-
-     public function index(Request $request)
+    public function index(Request $request)
     {
         $post_categories = Post_categories::latest();
-        if(!empty($request->get('keyword'))) {
-            $post_categories = Post_categories::where('name', 'like', '%'.$request->get('keyword').'%');
+        if (!empty($request->get('keyword'))) {
+            $post_categories = Post_categories::where('name', 'like', '%' . $request->get('keyword') . '%');
+        }
+        // Sắp xếp theo trạng thái
+        if ($request->filled('check_status')) {
+            $check_status = $request->get('check_status');
+            if ($check_status == '1') {
+                $post_categories = $post_categories->where('status', 1);
+            } elseif ($check_status == '0') {
+                $post_categories = $post_categories->where('status', 0);
+            }
+        }
+        // Sắp xếp theo ngày tạo
+        if ($request->filled('sort_date')) {
+            $sort_date = $request->get('sort_date');
+            if ($sort_date === 'asc' || $sort_date === 'desc') {
+                $post_categories->orderBy('created_at', $sort_date);
+            }
         }
 
-        $post_categories = $post_categories->paginate(15);
-        return view('admin.post-category.index',compact('post_categories'));
+        $post_categories = $post_categories->paginate(15)->appends(request()->query());
+        return view('admin.post-category.index', compact('post_categories'));
     }
 
 
 
 
-    public function show($id)
-    {
-
-    }
+    public function show($id) {}
 
     /**
      * Show the form for creating a new resource.
@@ -39,7 +50,7 @@ class PostCategoriesController extends Controller
     public function create()
     {
         $post_categories = Post_categories::all();
-        return view('admin.post-category.create',compact('post_categories'));
+        return view('admin.post-category.create', compact('post_categories'));
     }
     /**
      * Store a newly created resource in storage.
@@ -65,7 +76,7 @@ class PostCategoriesController extends Controller
         return redirect()->route('admin.post-category.index');
     }
 
-     /**
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -96,7 +107,7 @@ class PostCategoriesController extends Controller
         return redirect()->route('admin.post-category.index');
     }
 
-     /**
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -106,20 +117,21 @@ class PostCategoriesController extends Controller
     {
         $post_categories = Post_categories::findOrFail($id);
         $post_categories->delete();
-       return response(['status' => 'success', 'message' => 'Đã xoá thành công!']);
+        return response(['status' => 'success', 'message' => 'Đã xoá thành công!']);
     }
 
 
-    public function changeStatus(Request $request){
+    public function changeStatus(Request $request)
+    {
 
         $post_categories = Post_categories::findOrFail($request->id);
         $post_categories->status = $request->status == 'true' ? 1 : 0;
         $post_categories->save();
-        return response(['message' =>'Trạng thái đã được cập nhật']);
+        return response(['message' => 'Trạng thái đã được cập nhật']);
     }
     public function trashedPostcate(Request $request)
     {
-          $post_categories = Post_categories::onlyTrashed()->latest();
+        $post_categories = Post_categories::onlyTrashed()->latest();
 
         // Nếu có keyword trong request, thêm điều kiện tìm kiếm
         if (!empty($request->get('keyword'))) {
@@ -131,27 +143,24 @@ class PostCategoriesController extends Controller
         $post_categories = $post_categories->get();
 
         // Lấy danh sách các category đã bị xóa và áp dụng điều kiện tìm kiếm nếu có
-        return view('admin.post-category.trashlist',compact('post_categories'));
+        return view('admin.post-category.trashlist', compact('post_categories'));
     }
 
     public function restore($id)
     {
-         $post_categories = Post_categories::withTrashed()->findOrFail($id);
-         if(!empty($post_categories))
-         {
+        $post_categories = Post_categories::withTrashed()->findOrFail($id);
+        if (!empty($post_categories)) {
             $post_categories->restore();
-         }
-         return redirect()->route('admin.post-category.index')->with('success','Danh mục bài đăng được khôi phục thành công');
+        }
+        return redirect()->route('admin.post-category.index')->with('success', 'Danh mục bài đăng được khôi phục thành công');
     }
 
     public function deleteVariant($id)
     {
-         $post_categories = Post_categories::withTrashed()->findOrFail($id);
-         if(!empty($post_categories))
-         {
+        $post_categories = Post_categories::withTrashed()->findOrFail($id);
+        if (!empty($post_categories)) {
             $post_categories->forceDelete();
-         }
-         return redirect()->route('admin.post-category.index')->with('success','Danh mục bài viết đã được xóa thành công');
+        }
+        return redirect()->route('admin.post-category.index')->with('success', 'Danh mục bài viết đã được xóa thành công');
     }
-
 }
