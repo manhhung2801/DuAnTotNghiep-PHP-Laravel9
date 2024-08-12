@@ -1,4 +1,4 @@
-<div class=" bg-dark mt-5">
+<div class=" bg-dark ">
     <div class="container ">
         <footer class="py-5">
             <div class="row col">
@@ -35,8 +35,6 @@
                         </ul>
                     </div>
                 @endforeach
-
-
                 <div class="col-lg-2 col-sm-12 col-md-4 p-0 m-0 footer-item">
                     <ul class="row itemCard p-0 m-0">
                         <li class="mb-3">

@@ -1,6 +1,5 @@
 @if ($getPosts == true)
     <div class="container mb-4">
-        <h1 class="visually-hidden">Danh sách tin tức CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam</h1>
         <div class="section_title text-center mb-3">
             <h2 class="text-uppercase fs-4">Tin tức công nghệ</h2>
         </div>

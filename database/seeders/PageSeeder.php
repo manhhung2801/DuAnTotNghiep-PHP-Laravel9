@@ -83,7 +83,8 @@ class PageSeeder extends Seeder
                 'seo_description' => 'Khám phá chính sách mua hàng, thanh toán và vận chuyển của chúng tôi. Bao gồm các hình thức thanh toán đa dạng, chính sách xử lý khiếu nại nhanh chóng và chi tiết về thời gian giao hàng. Đảm bảo độ chính xác và thỏa thuận với khách hàng, với cam kết kinh doanh minh bạch và hợp pháp.',
                 'status' => 1,
                 'created_at' => now(),
-            ], [
+            ],
+            [
                 'name' => 'Chính sách đổi trả',
                 'slug' => Str::slug('Chính sách đổi trả', '-'),
                 'page_category_id' => 1,
@@ -114,7 +115,8 @@ class PageSeeder extends Seeder
                 'seo_description' => 'Tìm hiểu chính sách đổi trả sản phẩm của CyberMart, bao gồm các điều kiện bảo hành, từ chối trường hợp như rơi vỡ, ẩm ướt, sọc màn hình và các yêu cầu đổi trả linh kiện. Đảm bảo quyền lợi của khách hàng với các điều khoản rõ ràng và minh bạch từ CyberMart.',
                 'status' => 1,
                 'created_at' => now(),
-            ], [
+            ],
+            [
                 'name' => 'Chính sách vận chuyển',
                 'slug' => Str::slug('Chính sách vận chuyển', '-'),
                 'page_category_id' => 1,
@@ -147,7 +149,8 @@ class PageSeeder extends Seeder
                 'seo_description' => 'Khám phá các hình thức vận chuyển và giao nhận hàng hóa tại CyberMart, bao gồm giao hàng tận nơi miễn phí trong bán kính 300km và sự lựa chọn các nhà cung cấp dịch vụ chuyển phát. Đảm bảo thời gian giao hàng và sự thuận tiện cho khách hàng khi nhận hàng.',
                 'status' => 1,
                 'created_at' => now(),
-            ], [
+            ],
+            [
                 'name' => 'Chính sách bảo mật',
                 'slug' => Str::slug('Chính sách bảo mật', '-'),
                 'page_category_id' => 1,
@@ -216,7 +219,8 @@ class PageSeeder extends Seeder
                 'seo_description' => 'Khám phá chính sách bảo mật của CyberMart, cam kết bảo vệ thông tin cá nhân của khách hàng và giải thích cách chúng tôi thu thập, sử dụng và bảo mật thông tin cá nhân. Quý khách có quyền yêu cầu truy cập, sửa đổi hoặc ngừng sử dụng dữ liệu cá nhân một cách dễ dàng và minh bạch.',
                 'status' => 1,
                 'created_at' => now(),
-            ], [
+            ],
+            [
                 'name' => 'Cam kết cửa hàng',
                 'slug' => Str::slug('Cam kết cửa hàng', '-'),
                 'page_category_id' => 1,
@@ -235,7 +239,8 @@ class PageSeeder extends Seeder
                 'seo_description' => 'CyberMart cam kết bán các sản phẩm chính hãng và áp dụng chế độ bảo hành chính hãng đầy đủ. Thời gian bảo hành cho sản phẩm mới là 12 tháng và sản phẩm cũ là 6 tháng. Khách hàng có thể đến trực tiếp các trung tâm bảo hành chính hãng hoặc cửa hàng CyberMart gần nhất để được hỗ trợ.',
                 'status' => 1,
                 'created_at' => now(),
-            ], [
+            ],
+            [
                 'name' => 'Hướng dẫn mua hàng',
                 'slug' => Str::slug('Hướng dẫn mua hàng', '-'),
                 'page_category_id' => 2,
@@ -283,7 +288,8 @@ class PageSeeder extends Seeder
                 'seo_description' => 'Hướng dẫn chi tiết từ việc lựa chọn sản phẩm đến thanh toán và gửi đơn hàng tại CyberMart. Đăng nhập tài khoản để dễ dàng quản lý đơn hàng hoặc mua hàng nhanh chóng không cần tài khoản. Xem lại và xác nhận thông tin đơn hàng trước khi gửi đi.',
                 'status' => 1,
                 'created_at' => now(),
-            ], [
+            ],
+            [
                 'name' => 'Hướng dẫn đổi trả',
                 'slug' => Str::slug('Hướng dẫn đổi trả', '-'),
                 'page_category_id' => 2,
@@ -331,7 +337,8 @@ class PageSeeder extends Seeder
                 'seo_description' => 'Hướng dẫn chi tiết từ việc chọn sản phẩm đến quy trình đổi trả tại CyberMart. Đăng nhập tài khoản để dễ dàng quản lý đơn hàng hoặc mua hàng nhanh chóng không cần tài khoản. Xem lại và xác nhận thông tin đơn hàng trước khi gửi đi.',
                 'status' => 1,
                 'created_at' => now(),
-            ], [
+            ],
+            [
                 'name' => 'Hướng dẫn trả góp',
                 'slug' => Str::slug('Hướng dẫn trả góp', '-'),
                 'page_category_id' => 2,
@@ -375,7 +382,8 @@ class PageSeeder extends Seeder
                 'seo_description' => 'Hướng dẫn chi tiết cách trả góp khi mua hàng tại CyberMart qua các công ty tài chính như Home Credit, FE Credit và các cổng thanh toán thẻ tín dụng như OnePay, Kredivo, Alepay. Tận dụng các ưu đãi lãi suất và điều kiện thanh toán linh hoạt. Xem thêm thể lệ và điều kiện áp dụng trước khi đăng ký.',
                 'status' => 1,
                 'created_at' => now(),
-            ], [
+            ],
+            [
                 'name' => 'Hướng dẫn chuyển khoản',
                 'slug' => Str::slug('Hướng dẫn chuyển khoản', '-'),
                 'page_category_id' => 2,
@@ -401,7 +409,8 @@ class PageSeeder extends Seeder
                 'seo_description' => 'Hướng dẫn chi tiết các phương thức thanh toán tại CyberMart bao gồm thanh toán trực tiếp tại cửa hàng để nhận ưu đãi và quà tặng, cũng như thanh toán online qua chuyển khoản trước khi nhận hàng để được hưởng quà tặng kèm. Liên hệ Hotline 1900 6750 để được hỗ trợ đổi trả sản phẩm do lỗi của Dola.',
                 'status' => 1,
                 'created_at' => now(),
-            ], [
+            ],
+            [
                 'name' => 'Hướng dẫn hoàn hàng',
                 'slug' => Str::slug('Hướng dẫn hoàn hàng', '-'),
                 'page_category_id' => 2,
@@ -415,7 +424,8 @@ class PageSeeder extends Seeder
                 'seo_description' => 'Hướng dẫn chi tiết các điều kiện và chi phí khi hoàn hàng tại CyberMart, bao gồm trả máy trong 7 ngày đầu với phí 10%, sau đó tính giá thu máy thông thường. Gói bảo hành chỉ áp dụng hoàn trả 50% trong 7 ngày đầu, sau đó không hỗ trợ hoàn lại sản phẩm.',
                 'status' => 1,
                 'created_at' => now(),
-            ], [
+            ],
+            [
                 'name' => 'Giới thiệu về CyberMart',
                 'slug' => Str::slug('giới thiệu về CyberMart', '-'),
                 'page_category_id' => 3,
@@ -469,17 +479,17 @@ class PageSeeder extends Seeder
 </h4>
 <ul>
     <li>
-        <a class="text-decoration-none text-danger" href="https://cyberMart.io.vn/product/dien-thoai-tablet"><strong>Điện thoại thông minh</strong></a><strong>:</strong> Cập nhật các mẫu điện thoại mới nhất với công nghệ tiên tiến.
+        <a class="text-decoration-none text-danger" href="https://cybermart.io.vn/san-pham/dien-thoai"><strong>Điện thoại thông minh</strong></a><strong>:</strong> Cập nhật các mẫu điện thoại mới nhất với công nghệ tiên tiến.
     </li>
     <li>
-        <a class="text-decoration-none text-danger" href="https://cyberMart.io.vn/product/laptop"><strong>Laptop và Máy tính để bàn</strong></a><strong>:</strong> Tìm kiếm các lựa chọn phù hợp cho công việc, học tập hoặc giải trí.
+        <a class="text-decoration-none text-danger" href="https://cybermart.io.vn/san-pham/laptop"><strong>Laptop và Máy tính để bàn</strong></a><strong>:</strong> Tìm kiếm các lựa chọn phù hợp cho công việc, học tập hoặc giải trí.
     </li>
     <li>
-        <a class="text-decoration-none text-danger" href="https://cyberMart.io.vn/product/dong-ho"><strong>Đồng hồ thông minh</strong></a><strong>:</strong> Theo Dõi Sức Khỏe, Kết Nối Thông Minh, và Hỗ Trợ Công Việc Hàng Ngày.
+        <a class="text-decoration-none text-danger" href="https://cybermart.io.vn/san-pham/dong-ho"><strong>Đồng hồ thông minh</strong></a><strong>:</strong> Theo Dõi Sức Khỏe, Kết Nối Thông Minh, và Hỗ Trợ Công Việc Hàng Ngày.
     </li>
     <li>
         <p>
-            <a class="text-decoration-none text-danger" href="https://CyberMart.io.vn/product/phu-kien"><strong>Phụ kiện công nghệ</strong></a><strong>:</strong> Từ tai nghe đến ổ cứng di động, chúng tôi có đầy đủ các phụ kiện cần thiết.
+            <a class="text-decoration-none text-danger" href="https://cybermart.io.vn/san-pham/phu-kien"><strong>Phụ kiện công nghệ</strong></a><strong>:</strong> Từ tai nghe đến ổ cứng di động, chúng tôi có đầy đủ các phụ kiện cần thiết.
         </p>
     </li>
 </ul>

@@ -1,5 +1,4 @@
 <div class="catalog-product-list">
-    <h1 class="visually-hidden">Danh mục sản phẩm CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam</h1>
     @forelse ($getProducts as $index => $getProduct)
         @foreach ($getProduct as $category_name => $product)
             <div class="container">

@@ -9,8 +9,7 @@
 @endsection
 @section('content')
     <div class="wrapper-post_page container">
-        <h1 class="visually-hidden">Tin tức CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam</h1>
-        <div class="page-body sales-body row py-4 mt-5">
+        <div class="page-body sales-body row py-4 ">
             <div class="sale-sidebar col-lg-3 col-sm-12">
                 <nav class="navbar navbar-expand-lg">
                     <div class="container-fluid p-0">
@@ -30,9 +29,9 @@
                 </nav>
             </div>
             <div class="post-content col-lg-9 col-sm-12 mt-sm-4">
-                <div class="content_head-page row mb-5">
+                <div class="content_head-page row mb-2">
                     <div class="col-lg-8 col-sm-12 text-center text-lg-start">
-                        <h2>{{ $newCatefind->name }}</h2>
+                        <h1 class="fs-2">{{ $newCatefind->name }}</h1>
                     </div>
                 </div>
                 <div class="post-list row">

@@ -33,7 +33,7 @@
     }
 </style>
 
-<div class="col-8 mt-5 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+<div class=" mt-2 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
     <h4 class="text-left pb-4">Hỏi và đáp</h4>
     <div class="d-flex justify-content-center row">
         <div class="">

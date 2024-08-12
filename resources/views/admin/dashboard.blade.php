@@ -46,7 +46,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-secondary">Tổng đơn chờ thang toán</p>
+                            <p class="mb-0 text-secondary">Tổng đơn chờ thanh toán</p>
                             <h4 class="my-1 text-info"><span class="unpaidOrders">{{$unpaidOrders}}</span></h4>
                             <!-- <p class="mb-0 font-13">+2.5% from last week</p> -->
                         </div>
