@@ -109,7 +109,7 @@
                             </div>
                             <div class="blog_left_base col-lg-3 col-12 ">
                                 <div class="side-right-stick ">
-                                    @include('frontend.post.partialsPost.sideBar')
+                                    <!-- @include('frontend.post.partialsPost.sideBar') -->
                                 </div>
                             </div>
                         </div>
