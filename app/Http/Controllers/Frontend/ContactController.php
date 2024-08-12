@@ -23,7 +23,7 @@ class ContactController extends Controller
         $email = $request->input('email');
         $content = $request->input('content');
 
- 
+
 
 
         if (Auth::check()) {

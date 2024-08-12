@@ -1,6 +1,7 @@
 <div class="block-policy">
     <div class="heading-policy">
-        <i class="far fa-check-circle"></i> <h1 class="fs-6">Chính sách hỗ trợ</h1>
+        <i class="far fa-check-circle"></i>
+        <h2 class="fs-6 mt-2">Chính sách hỗ trợ</h2>
     </div>
     <div class="policy-content row">
         <div class="col-lg-12 col-md-6 col-sm-6 col-12">

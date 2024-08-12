@@ -38,13 +38,12 @@
         </section>
         <section class="blogpage">
             <div class="container layout-article">
-                <h1 class="d-none">Tin tức công nghệ từ hệ thống cybermart lớn nhất Việt Nam</h1>
                 <div class="bg_blog">
                     <article class="article-main">
                         <div class="row d-flex">
                             <div class="right-content col-lg-12 col-12">
                                 <div class="article-details clearfix">
-                                    <h2 style="font-size: 27px;" class="text-center">{{ $newsdetai->title }}</h2>
+                                    <h1 style="font-size: 25px;" class="text-center">{{ $newsdetai->title }}</h1>
                                     <div class="posts d-flex mb-3">
                                         <div class="time-post ">
                                             <i class="fa-regular fa-clock"></i>
@@ -106,11 +105,6 @@
                                         </div>
                                     </div>
                                 @endif
-                            </div>
-                            <div class="blog_left_base col-lg-3 col-12 ">
-                                <div class="side-right-stick ">
-                                    <!-- @include('frontend.post.partialsPost.sideBar') -->
-                                </div>
                             </div>
                         </div>
                     </article>

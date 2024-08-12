@@ -1,5 +1,4 @@
 <div class="container">
-    <h1 class="visually-hidden">Dịch vụ của CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam</h1>
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-3 px-1">
             <div class="card border-0 rounded-4">

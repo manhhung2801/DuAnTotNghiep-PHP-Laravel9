@@ -34,14 +34,12 @@
             <main>
                 <div class="layout-contact">
                     <div class="container">
-                        <h1 class="d-none">Liên Hệ CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam</h1>
                         @foreach ($storeAddress as $item)
                             <div class="row">
                                 <div class="col-lg-6 col-12 col-md-6">
                                     <div class="contact">
                                         <div class="name_address">
-                                            <h4 class="d-none d-md-block  ">{{ $item->store_name }}</h4>
-                                            <h4 class="d-md-none text-center mb-2 ">{{ $item->store_name }}</h4>
+                                            <h1 class="fs-4">{{ $item->store_name }}</h1>
                                         </div>
                                         <div class="des_foo mb-3">
                                             <h2 class="fs-6"> {{ $item->description }}</h2>

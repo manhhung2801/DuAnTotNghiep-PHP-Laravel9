@@ -1,6 +1,7 @@
 @extends('frontend.layouts.master')
 @section('title', 'Tin tức - Cybermart cập nhập tin tức công nghệ')
-@section('description', 'Cybermart, hệ thống bán lẻ điện thoại, máy tính và thiết bị công nghệ hàng đầu tại Việt Nam,
+@section('description',
+    'Cybermart, hệ thống bán lẻ điện thoại, máy tính và thiết bị công nghệ hàng đầu tại Việt Nam,
     chúng tôi luôn cập nhật những tin tức công nghệ mới nhất và đáng chú ý nhất.')
 @section('schema')
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"{{ url('/') }}/#website","url":"{{ url('/') }}","name":"{{ config('app.name') ?? 'Cybermart' }}","alternateName":"CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop.","publisher":{"@id":"{{ url('/') }}/#organization"},"inLanguage":"vi"},{"@type":"ImageObject","@id":"{{ asset('uploads/logo/cybermart7x4.png') }}","url":"{{ asset('uploads/logo/cybermart7x4.png') }}","width":"700","height":"400","caption":"CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop.","inLanguage":"vi"},{"@type":"BreadcrumbList","@id":"{{ url()->current() }}/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"{{ url('/') }}","name":"Trang chủ"}},{"@type":"ListItem","position":2,"item":{"@id":"{{ url()->current() }}","name":"Tin tức"}}]},{"@type":"WebPage","@id":"{{ url()->current() }}/#webpage","url":"{{ url()->current() }}","name":"Tin tức mới nhất về Thương Mại Điện Tử CyberMart cập nhật những thông tin bổ ích!","datePublished":"2024-07-10T15:26:47+07:00","dateModified":"2024-07-15T15:26:47+07:00","isPartOf":{"@id":"{{ url('/') }}/#website"},"primaryImageOfPage":{"@id":"{{ asset('uploads/logo/cybermart7x4.png') }}"},"inLanguage":"vi","breadcrumb":{"@id":"{{ url()->current() }}/#breadcrumb"}},{"@type":"Article","headline":"Tin tức mới nhất về Thương Mại Điện Tử CyberMart cập nhật những thông tin bổ ích!","datePublished":"2024-07-10T15:26:47+07:00","dateModified":"2024-07-15T15:26:47+07:00","publisher":{"@id":"{{ url('/') }}/#organization"},"description":"Cybermart - Cập nhật những tin tức, tin tức mới nhất về Thương Mại Điện Tử CyberMart cập nhật những thông tin bổ ích!","name":"Tin tức mới nhất về Thương Mại Điện Tử CyberMart cập nhật những thông tin bổ ích!","@id":"{{ url()->current() }}/#richSnippet","isPartOf":{"@id":"{{ url()->current() }}/#webpage"},"image":"{{ asset('uploads/logo/cybermart7x4.png') }}","inLanguage":"vi","mainEntityOfPage":{"@id":"{{ url()->current() }}/#webpage"}},{"@type":"Organization","@id":"{{ url('/') }}/#organization","name":"{{ config('app.name') ?? 'Cybermart' }}","url":"{{ url('/') }}","logo":{"@id":"{{ asset('uploads/logo/cybermart7x4.png') }}"}}]}</script>
@@ -9,7 +10,6 @@
 
 @section('content')
     <div class="container-fluid m-0 p-0">
-        <h1 class="visually-hidden">Tin tức CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam</h1>
         <section class="bread-crumb">
             <div class="container ">
                 <ul class="breadcrumb d-flex ">
@@ -24,7 +24,7 @@
             </div>
         </section>
         <div class="w-100" style="margin: 20px 0px;">
-            <h2 class="text-center w-100 mt-2 ">Tất cả bài viết</h2>
+            <h1 class="text-center w-100 mt-2 fs-3">Tất cả bài viết</h1>
         </div>
         <div class="container">
             <!-- slide  -->
