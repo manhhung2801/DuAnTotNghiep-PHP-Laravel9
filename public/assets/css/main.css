@@ -114,9 +114,9 @@
  }
  
  .item_product_main .product-action .product-info .product-price-cart .price-box {
-     display: flex;
+     /* display: flex;
      align-items: center;
-     flex-wrap: wrap;
+     flex-wrap: wrap; */
  }
  
  .compare-price {
@@ -603,9 +603,10 @@
          -webkit-box-orient: vertical;
      }
      .item_product_main .product-action .product-info .product-price-cart .price-box .price {
-         font-size: 0.95rem;
+         font-size: 0.9rem;
          font-weight: 600;
      }
+
      .layout-collection .sort-cate .sort-cate-right {
          position: relative;
      }
