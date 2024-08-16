@@ -149,6 +149,7 @@ class ProductController extends Controller
 
 
                 $variants = $product->variant();
+
                 $relatedProductIds = Product::where('category_id', $product->category_id)
                     ->where('sub_category_id', $product->sub_category_id)
                     ->where('child_category_id', $product->child_category_id)
@@ -156,8 +157,9 @@ class ProductController extends Controller
                     ->pluck('id');
                 $relatedProducts = Product::whereIn('id', $relatedProductIds)
                     ->orderBy('created_at', 'desc')
-                    ->limit(4)
+                    ->take(4)
                     ->get();
+
                 return view('frontend.products.detail', compact("product", "variants", "ProductImageGalleries", "products", "relatedProducts", "comments", "getQtyCart"));
             default:
                 $categories = Category::get();
@@ -217,7 +219,7 @@ class ProductController extends Controller
     }
     public function ProductView($productId)
     {
-
         Product::where('id', $productId)->increment('views');
     }
+    
 }

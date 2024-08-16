@@ -33,15 +33,20 @@ class ViewServiceProvider extends ServiceProvider
         // Compose the navbar view with categories and store address
         View::composer('frontend.layouts.master', function ($view) {
             $categories = Category::where('status', 1)->orderBy('rank', 'asc')->get();
-            $storeAddress = StoreAddress::where("status", "=", 1)->limit(1)->get();
+            $storeAddress = StoreAddress::where("status", 1)->where("pick_store", 1)->orderBy('updated_at', 'desc')->limit(1)->get();
             $ListPageCategories = PageCategory::where('id', '!=', 3)->get();
+            foreach ($ListPageCategories as $ListPages) {
+                $ListPages->pages = Page::where('status', 1)
+                    ->where('page_category_id', $ListPages->id)
+                    ->orderBy('created_at', 'desc')
+                    ->take(5)
+                    ->get();
+            }
             $countAddress = StoreAddress::where("status", "=", 1)->count();
             $qtyCart = \Cart::getTotalQuantity();
-            $ListPage = Page::where("status", "=", 1)->get();
             $view->with('categories', $categories)
                 ->with('storeAddress', $storeAddress)
                 ->with('ListPageCategories', $ListPageCategories)
-                ->with('ListPage', $ListPage)
                 ->with('qtyCart', $qtyCart)
                 ->with('countAddress', $countAddress);
         });

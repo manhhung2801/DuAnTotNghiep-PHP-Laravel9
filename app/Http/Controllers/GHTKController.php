@@ -35,7 +35,7 @@ class GHTKController extends Controller
                 "ward" =>  $request->ward,
                 "address" => $request->adress,
                 "transport" => "road",
-                "weight" => $weight* 1000,
+                "weight" => $weight * 1000,
                 "value" => 1000,
                 "deliver_option" => "none",
                 "tags" => [1]
@@ -51,12 +51,15 @@ class GHTKController extends Controller
                 ),
             ));
             $response = curl_exec($curl);
+            
             curl_close($curl);
-
+            
             // Chuyển json thành mảng
             $jsonData = json_decode($response);
             $shipMoney = $jsonData->fee->fee;
+           
             return response()->json(['status' => true, 'shipMoney' => $shipMoney]);
+            
         } catch (\Exception $e) {
             return response()->json(['status' => false, 'Đã xảy ra lỗi' . $e]);
         }
@@ -88,7 +91,7 @@ class GHTKController extends Controller
                 ];
                 $products[] = $product;
             }
-            
+
             //Kiểm tra đã đã thanh toán thì cod = 0
             $pick_money = $getOrder->payment_status == 1 ? 0 : $getOrder->total;
 
@@ -140,7 +143,6 @@ class GHTKController extends Controller
                 $getOrder->tracking_id = $response->order->tracking_id;
                 $getOrder->order_status = $response->order->status_id;
                 $getOrder->save();
-
                 //return giá trị
                 return response()->json(['status' => true, 'order' => $response->order]);
             }
@@ -197,7 +199,7 @@ class GHTKController extends Controller
 
         $response = json_decode(curl_exec($curl));
         curl_close($curl);
-        if($response->success == true) {
+        if ($response->success == true) {
             //Update trạng thái vào database
             $order = Order::where('tracking_id', $tracking_id)->first();
             $order->order_status = $response->order->status;
@@ -205,12 +207,12 @@ class GHTKController extends Controller
             //Khắc phục lỗi GHTK trả về text đã tiếp nhận
             $status_text = $response->order->status != -1 ? $response->order->status_text : 'Đơn hàng đã hủy';
             return response()->json([
-                'status' => true, 
+                'status' => true,
                 'status_text' => $status_text,
                 'modified' => $response->order->modified,
                 'deliver_date' => $response->order->deliver_date,
             ]);
-        }else {
+        } else {
             return response('Xảy ra lỗi vui lòng thử lại sau!');
         }
     }
