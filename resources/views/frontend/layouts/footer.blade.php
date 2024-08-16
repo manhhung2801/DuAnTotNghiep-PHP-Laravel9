@@ -1,63 +1,61 @@
-<div class=" bg-dark ">
-    <div class="container ">
+<div class="bg-dark text-light">
+    <div class="container">
         <footer class="py-5">
-            <div class="row col">
-                <div class="col-lg-5 col-sm-12 col-md-12 footer-item mb-2">
+            <div class="row">
+                <!-- Thông tin cửa hàng -->
+                <div class="col-lg-5 col-md-12 mb-4">
                     <h5 class="mb-3">CYBERMART</h5>
                     @foreach ($storeAddress as $item)
-                        <ul class="nav flex-column ">
+                        <ul class="nav flex-column">
                             <li class="nav-item mb-2">{!! $item->description !!}</li>
-                            <li class="nav-item mb-2"><b>Địa chỉ:</b> {{ $item->address }}, {{ $item->ward }},
+                            <li class="nav-item mb-2"><strong>Địa chỉ:</strong> {{ $item->address }},
+                                {{ $item->ward }},
                                 {{ $item->district }}, {{ $item->province }}</li>
-                            <li class="nav-item mb-2 "><b>Điện thoại:</b> <a class="text-decoration-none"
-                                    href="#">{{ $item->phone }}</a></li>
-                            <li class="nav-item mb-2"><b>Email:</b> <a class="text-decoration-none"
-                                    href="#">{{ $item->email }}</a></li>
+                            <li class="nav-item mb-2 "><strong>Điện thoại:</strong> <a
+                                    class="text-light text-decoration-none "
+                                    href="tel:{{ $item->phone }}">{{ $item->phone }}</a></li>
+                            <li class="nav-item mb-2"><strong>Email:</strong> <a class="text-light text-decoration-none"
+                                    href="mailto:{{ $item->email }}">{{ $item->email }}</a></li>
                         </ul>
                     @endforeach
                 </div>
+      
                 @foreach ($ListPageCategories as $itemPageCategory)
-                    <div class="col-lg-2 col-sm-12 col-md-4 footer-item mb-3">
-                        <div class="col-10 mb-4">
-                            <h5 class="mb-0 text-uppercase" style="font-size: 16px">{{ $itemPageCategory->name }}</h5>
-                        </div>
-                        <ul class="nav flex-column itemCard">
-                            @foreach ($ListPage as $itemPage)
-                                @if ($itemPageCategory->id == $itemPage->page_category_id)
-                                    <li class="nav-item mb-2 text-light">
-                                        <a
-                                            href="{{ route('showPages', ['slug1' => $itemPage->pageCategory->slug, 'slug2' => $itemPage->slug]) }}">
-                                            {{ $itemPage->name }}
-                                        </a>
-                                    </li>
-                                @endif
-                            @endforeach
+                    <div class="col-lg-2 col-md-4 mb-4">
+                        <h5 class="text-uppercase" style="font-size: 16px">{{ $itemPageCategory->name }}</h5>
+                        <ul class="nav flex-column">
+                            @forelse ($itemPageCategory->pages as $itemPage)
+                                <li class="nav-item mb-2">
+                                    <a class="text-light text-decoration-none"
+                                        href="{{ route('showPages', ['slug1' => $itemPage->pageCategory->slug, 'slug2' => $itemPage->slug]) }}">
+                                        {{ $itemPage->name }}
+                                    </a>
+                                </li>
+                            @empty
+                                <li class="nav-item mb-2">Trang không có dữ liệu!!!</li>
+                            @endforelse
                         </ul>
                     </div>
                 @endforeach
-                <div class="col-lg-2 col-sm-12 col-md-4 p-0 m-0 footer-item">
-                    <ul class="row itemCard p-0 m-0">
-                        <li class="mb-3">
-                            <h5 style="font-size: 16px">KẾT NỐI VỚI CHÚNG TÔI</h5>
-                        </li>
-                        <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2 ">
-                            <a href="https://www.facebook.com/cybermart.508367/"><img
-                                    src="{{ asset('images/logo/facebook_2.svg') }}" alt=""></a>
-                        </li>
-                        <li class="nav-item mb-2 mx-2 col-lg-2  col-sm-2 col-2 ">
-                            <a href=""><img src="{{ asset('images/logo/instagram_1.svg') }}" alt=""></a>
-                        </li>
-                    </ul>
-                    <ul class="row itemCard p-0 m-0">
-                        <li class="mb-3 mt-3">
-                            <h5 style="font-size: 16px">HỖ TRỢ THANH TOÁN</h5>
-                        </li>
-                        <li class="nav-item mb-2 col-lg-2 col-sm-2 col-2 mx-2">
-                            <a href=""><img class="border-0"
-                                    src="{{asset('images/logo/payment_3.svg')}}"
-                                    alt=""></a>
-                        </li>
-                    </ul>
+
+                <!-- Kết nối và hỗ trợ thanh toán -->
+                <div class="col-lg-3 col-md-12 mb-4">
+                    <h5 class="text-uppercase" style="font-size: 16px">KẾT NỐI VỚI CHÚNG TÔI</h5>
+                    <div class="d-flex flex-wrap">
+                        <a href="https://www.facebook.com/cybermart.508367/" class="me-2 mb-2">
+                            <img src="{{ asset('images/logo/facebook_2.svg') }}" alt="Facebook" class="img-fluid">
+                        </a>
+                        <a href="" class="me-2 mb-2">
+                            <img src="{{ asset('images/logo/instagram_1.svg') }}" alt="Instagram" class="img-fluid">
+                        </a>
+                    </div>
+
+                    <h5 class="mt-4 text-uppercase" style="font-size: 16px">HỖ TRỢ THANH TOÁN</h5>
+                    <div class="d-flex flex-wrap">
+                        <a href="" class="me-2 mb-2">
+                            <img src="{{ asset('images/logo/payment_3.svg') }}" alt="Thanh toán" class="img-fluid">
+                        </a>
+                    </div>
                 </div>
             </div>
         </footer>

@@ -17,7 +17,7 @@
             <div class="scroll_animation section_services">
                 @include('frontend.home.partials.services')
             </div>
-            <div class="section-categories-hot pt-5">
+            <div class="section-categories-hot mt-1">
                 @include('frontend.home.partials.categoryHot')
             </div>
             <div class="section-category-product">

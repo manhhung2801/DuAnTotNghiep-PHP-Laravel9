@@ -13,7 +13,6 @@ class PasswordController extends Controller
 {
     public function formUpdate()
     {
-
         return view('frontend.dashboard.page.changePass');
     }
 

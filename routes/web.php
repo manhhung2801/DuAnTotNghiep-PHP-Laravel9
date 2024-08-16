@@ -98,6 +98,8 @@ Route::get('trang/{slug1?}/{slug2?}', [PageController::class, 'showPages'])->nam
 /** trang search  */
 
 Route::get('/search', [ProductController::class, 'search'])->name('search');
+// routes/web.php
+
 
 
 // web.phpq
@@ -135,7 +137,7 @@ Route::post('/comment-post', [CommentsController::class, 'commentPost'])->name("
 //sitemap
 
 Route::get('generateSitemap', [
-    SitemapController::class, 
+    SitemapController::class,
     'generateSitemap'
 ]);
 

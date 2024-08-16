@@ -5,17 +5,12 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\PageCategory;
-use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function showPages($slug1 = null, $slug2 = null)
     {
-        try {
-
-            $ListPageCategories = PageCategory::all();
-            $listPages = Page::all();
-
+        try {          
             // Check điều kiện $slug1 and $slug2 
             if ($slug1 && $slug2) {
                 // Check nếu không có $slug1 thì thoát ra trang 404
@@ -34,8 +29,6 @@ class PageController extends Controller
                 }
 
                 return view("frontend.pages.index", [
-                    'ListPageCategories' => $ListPageCategories,
-                    'listPages' => $listPages,
                     'PagesDetail' => $PagesDetail,
                     'checkedPageCategories' => $checkedPageCategories->id,
                 ]);

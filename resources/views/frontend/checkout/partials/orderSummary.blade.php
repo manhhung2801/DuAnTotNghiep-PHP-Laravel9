@@ -55,6 +55,7 @@
                             </tr>
                         @empty
                         @endforelse
+                        
                     </tbody>
                 </table>
             </div>
@@ -93,6 +94,7 @@
                             <input id="shipping_value" type="hidden" value="0" name="shipping_money">
                         </tr>
                     </tbody>
+                   
                     <tfoot class="total-line">
                         <tr>
                             <th>Tổng cộng</th>
