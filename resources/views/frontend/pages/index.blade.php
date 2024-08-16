@@ -35,9 +35,9 @@
                 <div class="container">
                     <div class="row">
                         <h1 class="fs-3 text-decoration-none">{{ $PagesDetail->name }}</h1>
-                        <h2 class="fs-6">
+                        <p class="fs-6">
                             {!! $PagesDetail->long_description !!}
-                        </h2>
+                        </p>
                     </div>
                 </div>
             </div>

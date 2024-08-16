@@ -234,7 +234,9 @@
                         .fail(function() {
                             alert('Đã có lỗi vui lòng thử lại sau!');
                         });
+                       
                 }
+                
             });
 
             // Áp dụng mã giảm giá

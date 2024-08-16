@@ -255,30 +255,6 @@
      }
  }
  /*------------------------------------ End Icon fixed ------------------------------------- */
- /* ------------------------------------ Footer ------------------------------------- */
- 
- .footer-item {
-     color: white;
- }
- 
- .footer-item>ul>li>a {
-     color: white;
- }
- 
- .footer-item>ul>li>a:hover {
-     color: rgb(226, 17, 17);
- }
- 
- .itemCard>li {
-     list-style-type: none;
-     color: white;
- }
- 
- .itemCard>li>a {
-     text-decoration: none;
-     color: black;
- }
- /*------------------------------------ End Footer ------------------------------------- */
  /*------------------------ Home Page ---------------------------*/
  
  .services-info h3 {
@@ -1262,3 +1238,75 @@
      }
  }
  /*------------------------End Cart Page---------------------------*/
+ /*------------------------CLOCK---------------------------*/
+ /* .clock {
+     top: inherit;
+     bottom: 10%;
+     left: 10px;
+ }
+ 
+ .endtime {
+     color: #fff;
+     margin-left: 2px;
+     display: inline-block;
+ }
+ 
+ .endtime .title-end {
+     color: #FFFFFF;
+ }
+ 
+ .endtime .title-end {
+     font-size: 20px;
+     line-height: 24px;
+     color: black;
+ }
+ 
+ .countdown-timer label {
+     background-color: #000000;
+     color: #FFFFFF;
+     border: 1px solid #fff;
+ }
+ 
+ .countdown-timer label {
+     font-size: 22px;
+     line-height: 27px;
+     border-radius: 9px;
+     color: #fff;
+     background-color: #ffcc18;
+     min-width: 36px;
+ }
+ 
+ .countdown-timer label {
+     padding: 5px;
+     margin: 0 5px;
+     color: #fff;
+     background: #000;
+     border-radius: 8px;
+     min-width: 30px;
+     display: inline-block;
+     text-align: center;
+     position: relative;
+ }
+ 
+ .countdown-timer label {
+     padding: 5px;
+     margin: 0 5px;
+     color: #fff;
+     background: #000;
+     border-radius: 8px;
+     min-width: 30px;
+     display: inline-block;
+     text-align: center;
+     position: relative;
+ }
+ 
+ label#hour::after,
+ label#minute::after {
+     content: ":";
+     position: absolute;
+     right: -9px;
+     font-size: 18px;
+     color: black;
+     font-weight: bold
+ } */
+ /*------------------------End CLOCK---------------------------*/

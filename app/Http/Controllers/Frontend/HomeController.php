@@ -18,13 +18,13 @@ class HomeController extends Controller
         $now = Carbon::now();
         // category show menu
         $categories = Category::where("status", "=", 1)->orderBy("rank", "asc")->get();
-        $slides = Slider::where("status", "=", 1)->take(3)->get();
+        $slides = Slider::where("status", "=", 1)->orderBy("created_at", "desc")->take(3)->get();
         //Lấy ra coupon
         $getCoupon = Coupons::where('status', 1)
-                            ->where('end_date', '>', $now)
-                            ->where('quantity', '>', 0)
-                            ->orderBy('created_at', 'desc')
-                            ->take(4)->get();
+            ->where('end_date', '>', $now)
+            ->where('quantity', '>', 0)
+            ->orderBy('created_at', 'desc')
+            ->take(4)->get();
         // Show danh mục nổi bật
         $categoryHot = $categories->take(6);
         $bannerHero = Post::getBanner()->take(1)->get();

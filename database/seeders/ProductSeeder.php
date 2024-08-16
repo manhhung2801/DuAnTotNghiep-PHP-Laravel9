@@ -3641,6 +3641,128 @@ Cụ thể, 2 cổng Thunderbolt cho phép bạn sạc máy với công suất 7
 Cybermart hiện đang cung cấp ' . $nameASUS . ' chính hãng với mức giá hợp lý cùng nhiều chương trình khuyến mãi siêu hấp dẫn. Với hệ thống cửa hàng trải dài toàn quốc, Cybermart là một thương hiệu phân phối đồ công nghệ uy tín và hoàn toàn xứng đáng để bạn tin tưởng và đặt mua Macbook Air 15" chính hãng.&nbsp;Hãy nhanh tay gọi điện tới hotline 1800 2097 để đặt hàng sản phẩm với giá ưu đãi bạn nhé!
 </p>
 </div>',
+                'specifications' => '
+            <table id="tskt" class="table table-striped">
+    <tbody>
+    <tr>
+        <td>Hãng sản xuất</td>
+        <td>Laptop</td>
+    </tr>
+    <tr>
+        <td>Loại card đồ họa</td>
+        <td>NVIDIA GeForce RTX 4050 6GB 40W</td>
+    </tr>
+    <tr>
+        <td>Độ phân giải màn hình</td>
+        <td>2796&nbsp;x 1290&nbsp;pixels</td>
+    </tr>
+    <tr>
+        <td>Loại màn hình</td>
+        <td>OLED LPTS</td>
+    </tr>
+    <tr>
+        <td>Bộ nhớ trong</td>
+        <td>1TB</td>
+    </tr>
+    <tr>
+        <td>Chipset</td>
+        <td>' . $nameASUS . ' A16 Bionic</td>
+    </tr>
+    <tr>
+        <td>CPU</td>
+        <td>' . $nameASUS . ' A16 Bionic&nbsp;120Hz</td>
+    </tr>
+    <tr>
+        <td>GPU</td>
+        <td>' . $nameASUS . ' GPU (5 lõi)</td>
+    </tr>
+    <tr>
+        <td>Kích thước</td>
+        <td>160.7 x 77.6 x 7.9 mm</td>
+    </tr>
+    <tr>
+        <td>Trọng lượng</td>
+        <td>240 g</td>
+    </tr>
+    <tr>
+        <td>Camera sau</td>
+        <td>Camera chính: 48MP<br>
+        Camera góc siêu rộng: 12MP<br>
+        Camera tele: 12MP</td>
+    </tr>
+    <tr>
+        <td>Camera trước</td>
+        <td>12 MP</td>
+    </tr>
+    <tr>
+        <td>Quay video</td>
+        <td>4K @24 fps, 25 fps, 30 fps, 60 fps<br>
+        1080p @25 fps, 30 fps, 60 fps<br>
+        720p @30 fps<br>
+        4K HDR @30 fps<br>
+        2.8K @ 60 fps<br>
+        HDR với Dolby Vision @60 fps<br>
+        ProRes 4K @30fps<br>
+        Chuyển động chậm 1080p @ 120fps, 240 fps</td>
+    </tr>
+    <tr>
+        <td>Pin</td>
+        <td>Li - Ion, Không thể thay thế</td>
+    </tr>
+    <tr>
+        <td>Cổng sạc</td>
+        <td>Lightning</td>
+    </tr>
+    <tr>
+        <td>Loại SIM</td>
+        <td>Nano SIM, eSIM</td>
+    </tr>
+    <tr>
+        <td>Hệ điều hành</td>
+        <td>iOS</td>
+    </tr>
+    <tr>
+        <td>Phiên bản hệ điều hành</td>
+        <td>iOS 16.2</td>
+    </tr>
+    <tr>
+        <td>Khe cắm thẻ nhớ</td>
+        <td>Không</td>
+    </tr>
+    <tr>
+        <td>3G</td>
+        <td>HSPA 42.2/5.76 Mbps, EV-DO Rev.A 3.1 Mbps</td>
+    </tr>
+    <tr>
+        <td>4G</td>
+        <td>LTE-A (4CA) Cat16 1024/150 Mbps</td>
+    </tr>
+    <tr>
+        <td>5G</td>
+        <td>mmWave, Sub-6 GHz</td>
+    </tr>
+    <tr>
+        <td>WLAN</td>
+        <td>Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot</td>
+    </tr>
+    <tr>
+        <td>Bluetooth</td>
+        <td>Bluetooth 5.3</td>
+    </tr>
+    <tr>
+        <td>GPS</td>
+        <td>A-GPS, GLONASS, GALILEO, QZSS</td>
+    </tr>
+    <tr>
+        <td>NFC</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Cảm biến</td>
+        <td>Cảm biến gia tốc, Cảm biến tiệm cận, Cảm biến ánh sáng, La bàn, Con quay hồi chuyển, Cảm biến áp kế</td>
+    </tr>
+    </tbody></table>
+                       ',
                 'short_description' => '
         <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
         ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
@@ -3790,7 +3912,128 @@ Cụ thể, 2 cổng Thunderbolt cho phép bạn sạc máy với công suất 7
 <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
 Cybermart hiện đang cung cấp ' . $nameDELL . ' chính hãng với mức giá hợp lý cùng nhiều chương trình khuyến mãi siêu hấp dẫn. Với hệ thống cửa hàng trải dài toàn quốc, Cybermart là một thương hiệu phân phối đồ công nghệ uy tín và hoàn toàn xứng đáng để bạn tin tưởng và đặt mua Macbook Air 15" chính hãng.&nbsp;Hãy nhanh tay gọi điện tới hotline 1800 2097 để đặt hàng sản phẩm với giá ưu đãi bạn nhé!
 </p>
-</div>',
+</div>','specifications' => '
+            <table id="tskt" class="table table-striped">
+    <tbody>
+    <tr>
+        <td>Hãng sản xuất</td>
+        <td>Laptop</td>
+    </tr>
+    <tr>
+        <td>Loại card đồ họa</td>
+        <td>NVIDIA GeForce RTX 4050 6GB 40W</td>
+    </tr>
+    <tr>
+        <td>Độ phân giải màn hình</td>
+        <td>2796&nbsp;x 1290&nbsp;pixels</td>
+    </tr>
+    <tr>
+        <td>Loại màn hình</td>
+        <td>OLED LPTS</td>
+    </tr>
+    <tr>
+        <td>Bộ nhớ trong</td>
+        <td>1TB</td>
+    </tr>
+    <tr>
+        <td>Chipset</td>
+        <td>' . $nameDELL . ' A16 Bionic</td>
+    </tr>
+    <tr>
+        <td>CPU</td>
+        <td>' . $nameDELL . ' A16 Bionic&nbsp;120Hz</td>
+    </tr>
+    <tr>
+        <td>GPU</td>
+        <td>' . $nameDELL . ' GPU (5 lõi)</td>
+    </tr>
+    <tr>
+        <td>Kích thước</td>
+        <td>160.7 x 77.6 x 7.9 mm</td>
+    </tr>
+    <tr>
+        <td>Trọng lượng</td>
+        <td>240 g</td>
+    </tr>
+    <tr>
+        <td>Camera sau</td>
+        <td>Camera chính: 48MP<br>
+        Camera góc siêu rộng: 12MP<br>
+        Camera tele: 12MP</td>
+    </tr>
+    <tr>
+        <td>Camera trước</td>
+        <td>12 MP</td>
+    </tr>
+    <tr>
+        <td>Quay video</td>
+        <td>4K @24 fps, 25 fps, 30 fps, 60 fps<br>
+        1080p @25 fps, 30 fps, 60 fps<br>
+        720p @30 fps<br>
+        4K HDR @30 fps<br>
+        2.8K @ 60 fps<br>
+        HDR với Dolby Vision @60 fps<br>
+        ProRes 4K @30fps<br>
+        Chuyển động chậm 1080p @ 120fps, 240 fps</td>
+    </tr>
+    <tr>
+        <td>Pin</td>
+        <td>Li - Ion, Không thể thay thế</td>
+    </tr>
+    <tr>
+        <td>Cổng sạc</td>
+        <td>Lightning</td>
+    </tr>
+    <tr>
+        <td>Loại SIM</td>
+        <td>Nano SIM, eSIM</td>
+    </tr>
+    <tr>
+        <td>Hệ điều hành</td>
+        <td>iOS</td>
+    </tr>
+    <tr>
+        <td>Phiên bản hệ điều hành</td>
+        <td>iOS 16.2</td>
+    </tr>
+    <tr>
+        <td>Khe cắm thẻ nhớ</td>
+        <td>Không</td>
+    </tr>
+    <tr>
+        <td>3G</td>
+        <td>HSPA 42.2/5.76 Mbps, EV-DO Rev.A 3.1 Mbps</td>
+    </tr>
+    <tr>
+        <td>4G</td>
+        <td>LTE-A (4CA) Cat16 1024/150 Mbps</td>
+    </tr>
+    <tr>
+        <td>5G</td>
+        <td>mmWave, Sub-6 GHz</td>
+    </tr>
+    <tr>
+        <td>WLAN</td>
+        <td>Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot</td>
+    </tr>
+    <tr>
+        <td>Bluetooth</td>
+        <td>Bluetooth 5.3</td>
+    </tr>
+    <tr>
+        <td>GPS</td>
+        <td>A-GPS, GLONASS, GALILEO, QZSS</td>
+    </tr>
+    <tr>
+        <td>NFC</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Cảm biến</td>
+        <td>Cảm biến gia tốc, Cảm biến tiệm cận, Cảm biến ánh sáng, La bàn, Con quay hồi chuyển, Cảm biến áp kế</td>
+    </tr>
+    </tbody></table>
+                       ',
                 'short_description' => '
         <p>✔️Máy mới Fullbox 100% - Chưa Active - Chính Hãng Apple<br>
         ✔️Được hỗ trợ 1 đổi 1 trong 30 ngày nếu có lỗi từ nhà sản xuất<br>
