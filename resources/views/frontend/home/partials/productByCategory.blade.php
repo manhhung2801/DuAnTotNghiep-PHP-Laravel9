@@ -45,17 +45,11 @@
                                                         $pro->offer_price,
                                                     );
                                                 @endphp
-                                                <div class="price-box">
-                                                    <span class="price CouponsPrice_new2 ">{{ $prices['price_new'] }}
-                                                        <i class='fa-solid fa-dong-sign'></i> </span>
-                                                    <div class="d-flex align-items-center" style="gap: 4px">
-                                                        <span class=" price CouponsPrice_new1">
-                                                            {{ $prices['price_old'] }}
-                                                            <i class="fa-regular fa-dong-sign "></i></span>
-                                                        <span
-                                                            class="compare-price  CouponsPrice_old">{{ $prices['price_new'] }}
-                                                            <i class='fa-solid fa-dong-sign'></i> </span>
-                                                    </div>
+                                                <span class="price CouponsPrice_new2">{{ $prices['price_new'] }}
+                                                    <i class='fa-solid fa-dong-sign'></i> </span>
+                                                <div><span class="compare-price CouponsPrice_old">{{ $prices['price_new'] }}₫</span></div>
+                                                <div>
+                                                    <span class=" price CouponsPrice_new1"> {{ $prices['price_old'] }}₫</span>
                                                 </div>
                                             </div>
                                         </div>
