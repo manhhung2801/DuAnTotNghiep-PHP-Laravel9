@@ -18,7 +18,7 @@ class ProductSeeder extends Seeder
     public function run()
     {
         // điện thoại iphone
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -791,7 +791,7 @@ class ProductSeeder extends Seeder
             ]);
         }
         // Thêm tên sản phẩm nồi chiên không dầu
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -876,7 +876,7 @@ class ProductSeeder extends Seeder
             ]);
         }
         // Thêm tên sản phẩm vào mảng Mac
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -1026,7 +1026,7 @@ Cybermart hiện đang cung cấp ' . $nameMac . ' chính hãng với mức giá
             ]);
         }
         // Thêm tên sản phẩm OPPO
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -1552,7 +1552,7 @@ Cybermart hiện đang cung cấp ' . $nameMac . ' chính hãng với mức giá
             ]);
         }
         // Thêm tên sản phẩm ĐIỆN THOAỊ SAMSUNG 
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -2079,7 +2079,7 @@ Cybermart hiện đang cung cấp ' . $nameMac . ' chính hãng với mức giá
             ]);
         }
         // Thêm tên sản phẩm ĐIỆN THOAỊ Xiaomi
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -2605,7 +2605,7 @@ Cybermart hiện đang cung cấp ' . $nameMac . ' chính hãng với mức giá
             ]);
         }
         // Thêm tên sản phẩm Laptop MSi
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -2769,7 +2769,7 @@ Cybermart hiện đang cung cấp ' . $nameMac . ' chính hãng với mức giá
             ]);
         }
         // thêm sản phẩm vào mảng âm thanh
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -2931,7 +2931,7 @@ Cybermart hiện đang cung cấp ' . $nameMac . ' chính hãng với mức giá
             ]);
         }
         //nameLoa
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -3092,7 +3092,7 @@ Chuyển động chậm 1080p @ 120fps, 240 fps</td>
             ]);
         }
         // Thêm tên sản phẩm đồng hồ thông minh
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -3258,7 +3258,7 @@ Chuyển động chậm 1080p @ 120fps, 240 fps</td>
         }
 
         // Thêm tên sản phẩm ốp lưng
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -3341,7 +3341,7 @@ Chuyển động chậm 1080p @ 120fps, 240 fps</td>
             ]);
         }
         // Thêm tên sản phẩm màn hình msi
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -3425,7 +3425,7 @@ Chuyển động chậm 1080p @ 120fps, 240 fps</td>
             ]);
         }
         // Thêm tên sản phẩm tivi category 8
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -3507,7 +3507,7 @@ Chuyển động chậm 1080p @ 120fps, 240 fps</td>
             ]);
         }
         // Thêm tên sản phẩm vào ASUS
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion
@@ -3779,7 +3779,7 @@ Cybermart hiện đang cung cấp ' . $nameASUS . ' chính hãng với mức gi�
             ]);
         }
         // Thêm tên sản phẩm vào DELL
-        for ($i = 0; $i <= 20; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             // Dùng chung promotion
             $pro = collect(['Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng', ' Giảm ngay 600K cho Buds 3 và 800K cho Buds pro khi mua kèm điện thoại Samsung Fold6/ Flip6/ S23 Series/ S24 series/ A35/ A55 (Không áp dụng chung CT giảm 500K qua Gift code)  ', ' ĐẶT MUA NGAY qua Hotline để nhận GIÁ TỐT NHẤT cho khách hàng thành viên  '])->random();
             // end promotion

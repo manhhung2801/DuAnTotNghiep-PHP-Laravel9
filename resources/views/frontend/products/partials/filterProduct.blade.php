@@ -43,8 +43,7 @@
                         </span>
                         <span>Từ <span id="minPrice">0</span><sup>đ</sup> đến </span>
                         <span class="">
-                            <span
-                                id="value-display">0</span><span><sup>đ</sup></span>
+                            <span id="value-display">0</span><span><sup>đ</sup></span>
                             {{-- </span>
                         <span class="px-4"> --}}
                         </span>
@@ -53,8 +52,7 @@
                         <input type="range" class="form-range border border-secondary-subtle p-1 rounded-pill"
                             id="customRange1" value="{{ floor($products->min('offer_price')) }}"
                             min="{{ empty(floor($products->min('offer_price'))) ? 0 : floor($products->min('offer_price')) }}"
-                            max="{{ floor($products->max('offer_price') * 2) }}"
-                        >
+                            max="{{ floor($products->max('offer_price') * 2) }}">
                     </div>
                 </div>
             </li>
@@ -92,7 +90,8 @@
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    minPrice.textContent = formatNumber({{ empty(floor($products->min('offer_price'))) ? 0 : floor($products->min('offer_price')) }});
+    minPrice.textContent = formatNumber(
+        {{ empty(floor($products->min('offer_price'))) ? 0 : floor($products->min('offer_price')) }});
     valueDisplay.textContent = formatNumber({{ floor($products->max('offer_price') * 2) }});
 
     function getPriceWhereUrl() {
