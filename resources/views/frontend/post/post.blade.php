@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="article-image " style="text-align: center;">
                                         <img class="img-fluid loaded"
-                                            style="width: 100%; border-radius: 16px;max-height: 415px;object-fit: cover;"
+                                            style="width: 100%; border-radius: 16px;max-height: 415px;object-fit: contain;"
                                             src="{{ asset('uploads/post') }}/{{ $newsdetai->image }}">
                                     </div>
                                     <div class="rte w-100 d-block mt-5 eidt-description">
@@ -72,7 +72,8 @@
                                                 @if ($itemNew->id != $newsdetai->id)
                                                     <div class="col-lg-3 col-md-3 col-ms-6 col-6 mb-4">
                                                         <div class="news-item">
-                                                            <a href="#" class="list-group-item">
+                                                            <a href="{{ route('news.details', ['slugs_cate' => $itemNew->Post_categories->slug, 'slugs' => $itemNew->slug]) }}"
+                                                                class="list-group-item">
                                                                 <div class="card border-0">
                                                                     <div style="height: 200px;">
 

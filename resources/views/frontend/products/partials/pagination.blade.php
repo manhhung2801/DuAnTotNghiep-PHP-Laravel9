@@ -39,8 +39,9 @@
 
 <div class="pagination flex-wrap mb-3">
     @if ($products->lastPage() > 1)
+       
         @if ($products->currentPage() > 1)
-            <a href="{{ $products->appends(['query' => request()->query('query')])->previousPageUrl() }}" class="prev">
+            <a href="{{ $products->appends(request()->except('page'))->previousPageUrl() }}" class="prev">
                 &laquo;
             </a>
         @else
@@ -49,55 +50,39 @@
             </a>
         @endif
 
-            @for ($l = 1; $l < $lengthPage + 1; $l++)
-                @if ($l == $products->currentPage())
-                    <a href="#" class="active">{{ $l }}</a>
-                @else
-                    <a
-                        href="{{ $products->appends(['query' => request()->query('query')])->url($l) }}">{{ $l }}</a>
-                @endif
-            @endfor
-            @if ($products->currentPage() > $lengthPage * 2)
-                <a href="{{ $products->appends(['query' => request()->query('query')])->previousPageUrl() }}">...</a>
-            @endif
+      
+        @php
+            $start = max(1, $products->currentPage() - $lengthPage);
+            $end = min($products->lastPage(), $products->currentPage() + $lengthPage);
+        @endphp
 
-        @for ($i = $lengthPage + 1; $i <= $products->lastPage() - $lengthPage; $i++)
+      
+        @if ($start > 1)
+            <a href="{{ $products->appends(request()->except('page'))->url(1) }}">1</a>
+            @if ($start > 2)
+                <a href="#">...</a>
+            @endif
+        @endif
+
+        @for ($i = $start; $i <= $end; $i++)
             @if ($i == $products->currentPage())
                 <a href="#" class="active">{{ $i }}</a>
             @else
-                @if ($products->currentPage() - $lengthPage < $i && $products->currentPage() > $i)
-                    @if ($i < $lengthPage && $products->currentPage() < $lengthPage)
-                        @continue
-                    @endif
-                    <a
-                        href="{{ $products->appends(['query' => request()->query('query')])->url($i) }}">{{ $i }}</a>
-                @endif
-
-                @if ($products->currentPage() + $lengthPage > $i && $products->currentPage() < $i)
-                    @if ($products->currentPage() < $products->lastPage() - $lengthPage)
-                        <a
-                            href="{{ $products->appends(['query' => request()->query('query')])->url($i) }}">{{ $i }}</a>
-                    @endif
-                @endif
+                <a href="{{ $products->appends(request()->except('page'))->url($i) }}">{{ $i }}</a>
             @endif
         @endfor
 
-        @if ($products->lastPage() - $lengthPage >= $products->currentPage() + $lengthPage)
-            <a href="{{ $products->appends(['query' => request()->query('query')])->nextPageUrl() }}" class="next">
-                ...
-            </a>
+       
+        @if ($end < $products->lastPage())
+            @if ($end < $products->lastPage() - 1)
+                <a href="#">...</a>
+            @endif
+            <a
+                href="{{ $products->appends(request()->except('page'))->url($products->lastPage()) }}">{{ $products->lastPage() }}</a>
         @endif
-        @for ($l = 1; $l <= $lengthPage; $l++)
-            @if ($products->lastPage() - ($lengthPage - $l) == $products->currentPage())
-                <a href="#" class="active">{{ $products->lastPage() - ($lengthPage - $l) }}</a>
-            @else
-                <a
-                    href="{{ $products->appends(['query' => request()->query('query')])->url($products->lastPage() - ($lengthPage - $l)) }}">{{ $products->lastPage() - ($lengthPage - $l) }}</a>
-            @endif
-        @endfor
 
         @if ($products->currentPage() < $products->lastPage())
-            <a href="{{ $products->appends(['query' => request()->query('query')])->nextPageUrl() }}" class="next">
+            <a href="{{ $products->appends(request()->except('page'))->nextPageUrl() }}" class="next">
                 &raquo;
             </a>
         @else

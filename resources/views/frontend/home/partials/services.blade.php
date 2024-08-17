@@ -8,9 +8,10 @@
                             <img alt="image_services" alt="Vận chuyển miễn phí"
                                 src="//bizweb.dktcdn.net/100/480/632/themes/900313/assets/ser_1.svg?1712897547805">
                         </div>
-                        <div class="col-lg-8 text-start col-md-12 col-sm-12 col-12 services-info px-0">
-                            <h3>Vận chuyển miễn phí</h3>
-                            <span>Hóa đơn trên 5 triệu</span>
+                        <div
+                            class="col-lg-8 col-md-12 col-sm-12 col-12 services-info px-0 d-flex flex-column ">
+                            <h3 class="text-md-start text-center">Vận chuyển miễn phí</h3>
+                            <span class="text-md-start text-center">Hóa đơn trên 5 triệu</span>
                         </div>
                     </div>
                 </div>
@@ -24,9 +25,9 @@
                             <img alt="image_services" alt="Quà tặng hấp dẫn"
                                 src="//bizweb.dktcdn.net/100/480/632/themes/900313/assets/ser_2.svg?1712897547805">
                         </div>
-                        <div class="col-lg-8 text-start col-md-12 col-sm-12 col-12 services-info px-0">
-                            <h3>Quà tặng hấp dẫn</h3>
-                            <span>Hóa đơn trên 10 triệu</span>
+                        <div class="col-lg-8 col-md-12 col-sm-12 col-12 services-info px-0 d-flex flex-column">
+                            <h3 class="text-md-start text-center">Quà tặng hấp dẫn</h3>
+                            <span class="text-md-start text-center">Hóa đơn trên 10 triệu</span>
                         </div>
                     </div>
                 </div>
@@ -40,9 +41,9 @@
                             <img alt="image_services" alt="Quà tặng hấp dẫn"
                                 src="//bizweb.dktcdn.net/100/480/632/themes/900313/assets/ser_3.svg?1712897547805">
                         </div>
-                        <div class="col-lg-8 text-start col-md-12 col-sm-12 col-12 services-info px-0">
-                            <h3>Chứng nhận chất lượng</h3>
-                            <span>Sản phẩm chính hãng</span>
+                        <div class="col-lg-8 col-md-12 col-sm-12 col-12 services-info px-0 d-flex flex-column">
+                            <h3 class="text-md-start text-center">Chứng nhận chất lượng</h3>
+                            <span class="text-md-start text-center">Sản phẩm chính hãng</span>
                         </div>
                     </div>
                 </div>
@@ -56,9 +57,9 @@
                             <img alt="image_services" alt="Quà tặng hấp dẫn"
                                 src="//bizweb.dktcdn.net/100/480/632/themes/900313/assets/ser_4.svg?1712897547805">
                         </div>
-                        <div class="col-lg-8 text-start col-md-12 col-sm-12 col-12 services-info px-0">
-                            <h3>Hotline: <a href="#" class="text-decoration-none">1900 6767</a></h3>
-                            <span>Hỗ trợ 24/7</span>
+                        <div class="col-lg-8 col-md-12 col-sm-12 col-12 services-info px-0 d-flex flex-column">
+                            <h3 class="text-md-start text-center">Hotline: <a href="#" class="text-decoration-none">1900 6767</a></h3>
+                            <span class="text-md-start text-center">Hỗ trợ 24/7</span>
                         </div>
                     </div>
                 </div>

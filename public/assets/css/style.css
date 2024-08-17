@@ -13,12 +13,10 @@ body {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
-
 html {
     scroll-behavior: smooth;
     font-family: "Poppins", sans-serif;
 }
-
 
 
 /* pagination */
@@ -27,7 +25,9 @@ html {
     margin-right: 5px;
 }
 
+
 /* Loader */
+
 .loader-container.unactive {
     opacity: 0;
     pointer-events: none;
@@ -45,22 +45,23 @@ html {
     z-index: 9999;
     background: rgba(255, 255, 255, 0.506);
 }
-.loader>i {
-    font-size:  5rem;
-}
 
+.loader>i {
+    font-size: 5rem;
+}
 
 @keyframes spin {
     from {
         transform: rotate(0);
     }
-
     to {
         transform: rotate(360deg);
     }
 }
 
+
 /* End loader */
+
 
 /* bỏ dâu tăng số */
 
@@ -242,32 +243,27 @@ label.luu_y {
     font-size: 12px;
 }
 
-.text-price__cart, .text-variant__cart {
+.text-price__cart,
+.text-variant__cart {
     font-size: 12px;
 }
-
 
 
 /* Extra small devices (phones, 600px and down) */
 
 @media only screen and (max-width: 480px) {
-
     .image_product_cart {
         width: 100%;
     }
-
     .icon-cart {
         margin-top: -7px;
     }
-
     .hr-line {
         display: none;
     }
-
     .menu-mobile {
         margin-top: -10px;
     }
-
     .cart-count-mobile {
         position: absolute;
         top: 10px;
@@ -287,7 +283,6 @@ label.luu_y {
     .image_product_cart {
         width: 80%;
     }
-
     /* .icon-menu {
         margin-top: -10px;
     }
@@ -298,15 +293,12 @@ label.luu_y {
     .icon-cart {
         margin-top: -7px;
     }
-
     .hr-line {
         display: none;
     }
-
     .menu-mobile {
         margin-top: -10px;
     }
-
     .cart-count-mobile {
         position: absolute;
         top: 10px;
@@ -317,7 +309,6 @@ label.luu_y {
         padding: 2px 2px;
         font-size: 10px;
     }
-
     .navbar-nav .mxc {
         float: left;
     }
@@ -327,7 +318,6 @@ label.luu_y {
 /* Small devices (portrait tablets and large phones, 600px and up) */
 
 @media only screen and (min-width: 600px) {
-
     /* .icon-menu {
         margin-top: -10px;
     }
@@ -337,19 +327,15 @@ label.luu_y {
     .icon-cart {
         margin-top: -7px;
     }
-
     .hr-line {
         display: none;
     }
-
     .menu-mobile {
         margin-top: -10px;
     }
-
     .input-search-mobile input {
         width: 400px;
     }
-
     .cart-count-mobile {
         position: absolute;
         top: 10px;
@@ -366,7 +352,6 @@ label.luu_y {
 /* Medium devices (landscape tablets, 768px and up) */
 
 @media only screen and (min-width: 768px) {
-
     /* .icon-menu {
         margin-top: -10px;
     }
@@ -377,15 +362,12 @@ label.luu_y {
     .icon-cart {
         margin-top: -7px;
     }
-
     .hr-line {
         display: none;
     }
-
     .menu-mobile {
         margin-top: -10px;
     }
-
     .cart-count-mobile {
         position: absolute;
         top: 10px;
@@ -405,7 +387,6 @@ label.luu_y {
     .icon-menu {
         margin-top: -10px;
     }
-
     /* .logo a img{
         margin-left: 0px;
         margin-top: -5px;
@@ -414,17 +395,14 @@ label.luu_y {
     .icon-cart {
         margin-top: -7px;
     }
-
     .hr-line {
         display: block;
     }
-
     .input-search {
         margin-left: -50px;
         width: 160px;
         margin-right: -21px;
     }
-
     .menu-mobile {
         margin-left: 0px;
         margin-top: 0px;
@@ -438,7 +416,6 @@ label.luu_y {
     .icon-menu {
         margin-top: 0px;
     }
-
     /* .logo a img{
         margin-left: 67px;
     } */
@@ -446,20 +423,16 @@ label.luu_y {
         margin-left: 0px;
         width: 420px;
     }
-
     .hr-line {
         display: block;
     }
-
     .menu-mobile {
         margin-top: 0px;
     }
-
     .mxc {
         margin-right: 25px;
         margin-right: 25px;
     }
-
     .item-cart {
         margin-left: -15px;
         margin-top: -0px;
@@ -682,7 +655,6 @@ label.luu_y {
 .details-pro .select-swatch .swatch #ram-options label {
     min-width: 70px;
     height: 30px;
-    /* display: inline-flex; */
     align-items: center;
     justify-content: center;
     border: 1px solid #ebebeb;
