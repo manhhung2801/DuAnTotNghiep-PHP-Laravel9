@@ -10,7 +10,7 @@
 </style>
 <div class="page-content">
     <div class="col-lg-12 mt-4 mb-5">
-        <form method="post" class="row justify-content-end" id="date_chartCount">
+        <form method="post" class="row  justify-content-end align-items-end" id="date_chartCount">
             <div class="col-lg-2">
                 <label for="start_date__chartCount">Bắt đầu</label>
                 <input type="date" id="start_date__chartCount" value="2013-01-01">
@@ -292,8 +292,8 @@
                         </head>
 
                         <body>
-                            <div class="row ">
-                                <div class="col-lg-11">
+                            <div class="row justify-content-end align-items-end">
+                                <div class="col-lg-9">
                                     <form method="post" class="row justify-content-end" id="date_piechart">
                                         <div class="col-lg-2">
                                             <label for="start_date_piechart">Bắt đầu</label>
@@ -308,9 +308,9 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="col-lg-1 ">
-                                    <form method="post" class="row justify-content-end">
-                                        <div class="col-lg-12">
+                                <div class="col-lg-3 ">
+                                    <form method="post" class="row justify-content-end align-items-end">
+                                        <div class="w-100 d-flex justify-content-end align-items-end">
                                             <label for="piechart_time">lọc theo:</label>
                                             <select name="piechart_time" id="piechart_time">
                                                 <option value="">Lọc</option>
