@@ -148,15 +148,13 @@ option,
 .no-data,
 .info {
     font-size: 14px;
-    font-family: 'Arial';
     color: #777;
 }
 
-.fieldset select {
+/* .fieldset select {
     font-size: 14px;
-    font-family: 'Arial';
     color: #777;
-}
+} */
 
 
 /* changepassword */
@@ -505,22 +503,6 @@ label.luu_y {
     line-height: 21px;
     min-width: 140px;
     padding: 10px 30px;
-}
-
-.fieldset input,
-span,
-option,
-.no-data,
-.info {
-    font-size: 14px;
-    font-family: 'Arial';
-    color: #777;
-}
-
-.fieldset select {
-    font-size: 14px;
-    font-family: 'Arial';
-    color: #777;
 }
 
 
