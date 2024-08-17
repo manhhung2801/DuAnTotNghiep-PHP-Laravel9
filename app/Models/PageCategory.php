@@ -9,7 +9,7 @@ class PageCategory extends Model
 {
     use HasFactory;
     protected $table = 'page_categories';
-    public function page()
+    public function pages()
     {
         return $this->hasMany(Page::class);
     }

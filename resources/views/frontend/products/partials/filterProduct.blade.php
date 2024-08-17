@@ -28,13 +28,13 @@
                     href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'price_low_high'])) }}">Giá
                     thấp đến cao</a>
             </li>
-            <li class="btn-quick-sort price-asc list-group-item ">
+            <li class="btn-quick-sort price-asc list-group-item mb-4">
                 <a class="text-decoration-none"
                     href="{{ url()->current() }}?{{ http_build_query(array_merge(Request::query(), ['sort' => 'price_high_low'])) }}">Giá
                     cao xuống thấp</a>
             </li>
             <li class=" btn-quick-sort price-asc list-group-item ">
-                <div class="col-12 value-display position-relative flex-column" style="margin-top: -16px;">
+                <div class="col-md-12  value-display position-relative flex-column" style="margin-top: -16px;">
                     <div class="">
                         <span class="">
                             <a id="submitFindPrice" class="btn py-0 m-1"

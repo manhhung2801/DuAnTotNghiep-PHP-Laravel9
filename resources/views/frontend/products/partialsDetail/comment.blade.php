@@ -38,10 +38,10 @@
     <div class="d-flex justify-content-center row">
         <div class="">
             <div class="d-flex flex-column comment-section">
-                <form class="comment_form row pb-4" method="POST" class="bg-light p-2"
+                <form class="comment_form row d-flex flex-wrap pb-4" method="POST" class="bg-light p-2"
                     onsubmit="return validateAndSubmitComment(event)">
                     @csrf
-                    <div class="col-10">
+                    <div class="col-md-10 col-12">
                         <input type="hidden" name="user_id" value="{{ auth()->id() }}" class="user_id">
                         <input type="hidden" name="product_id" value="{{ $product->id }}" class="product_id">
                         <div class="d-flex flex-row align-items-center"><img class="rounded-circle px-1"
@@ -51,7 +51,7 @@
                                 placeholder="Bình luận của bạn về sản phẩm"></textarea>
                         </div>
                     </div>
-                    <div class="col-2 mt-2 text-center">
+                    <div class="col-md-2 col-12 mt-2 text-center">
                         <button class="btn btn-primary btn-sm shadow-none comment_submit_btn">Bình
                             luận</button>
                     </div>

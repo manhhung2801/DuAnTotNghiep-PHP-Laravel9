@@ -2,7 +2,7 @@
     @forelse ($getProducts as $index => $getProduct)
         @foreach ($getProduct as $category_name => $product)
             <div class="container">
-                <div class="scroll_animation section_title text-center mb-3 pt-5">
+                <div class="scroll_animation section_title text-center mb-3 pt-3">
                     <h2 class="text-uppercase fs-4">{{ $category_name }}</h2>
                 </div>
                 {{-- Box product --}}

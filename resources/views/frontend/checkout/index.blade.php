@@ -128,22 +128,22 @@
         <div class="container mt-5">
             <form action="{{ route('checkout.store') }}" method="post" class="needs-validation" novalidate>
                 @csrf @method('POST')
-                <div class="row ">
-                    <div class="col-md-4 order-1 order-md-1 mb-3">
-                        <h4><i class="fas fa-user-alt d-md-none"></i>Thông tin nhận hàng</h4>
+                <div class="row">
+                    <div class="col-md-4 order-1 order-md-1 mb-4">
+                        <h5><i class="fas fa-user-alt d-md-none me-2"></i>Thông tin nhận hàng</h5>
                         @include('frontend.checkout.partials.form')
                     </div>
-                    <div class="col-md-4 order-2 order-md-2 mb-3">
-                        <div class="payment_method">
-                            <h4><i class="fas fa-shuttle-van d-md-none mb-3"></i>Phương thức thanh toán</h4>
+                    <div class="col-md-4 order-2 order-md-2 mb-2">
+                        <div class="payment_method mb-4">
+                            <h5><i class="fa-solid fa-credit-card d-md-none me-2"></i>Phương thức thanh toán</h5>
                             @include('frontend.checkout.partials.paymentMethod')
                         </div>
-                        <div class="shipping_method mt-3">
-                            <h4><i class="fas fa-shuttle-van d-md-none "></i>Phương thức vận chuyển</h4>
+                        <div class="shipping_method mb-4">
+                            <h5><i class="fas fa-shuttle-van d-md-none me-2"></i>Phương thức vận chuyển</h5>
                             @include('frontend.checkout.partials.shippingMethod')
                         </div>
                     </div>
-                    <div class="col-md-4  order-3 order-md-3 mb-3">
+                    <div class="col-md-4 order-3 order-md-3 mb-3">
                         <div class="ws">
                             @include('frontend.checkout.partials.orderSummary')
                         </div>
@@ -234,7 +234,9 @@
                         .fail(function() {
                             alert('Đã có lỗi vui lòng thử lại sau!');
                         });
+                       
                 }
+                
             });
 
             // Áp dụng mã giảm giá
