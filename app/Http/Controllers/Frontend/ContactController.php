@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactEmail;
 use App\Models\Contact; // Ensure this is correctly imported
 use App\Models\StoreAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -18,27 +20,38 @@ class ContactController extends Controller
 
     public function contact(Request $request)
     {
-        $name = $request->input('name');
-        $phone = $request->input('phone');
-        $email = $request->input('email');
-        $content = $request->input('content');
-
-
-
+        $request->validate([
+            'name'  => ['required', 'max:20'],
+            'phone' => ['required', 'max:10'],
+            'email' => ['required', 'email'],
+            'content' => ['required', 'max:200'],
+        ], [
+            'name.required' => 'Tên không được để trống',
+            'phone.required' => 'Điện thoại không được để trống',
+            'phone.max' => 'Điện thoại không được quá 10 ký tự',
+            'email.required' => 'Email không được để trống',
+            'email.email' => 'Email không hợp lệ',
+            'content.required' => 'Nội dung không được để trống',
+            'content.max' => 'Nội dung không được quá 200 ký tự',
+        ]);
 
         if (Auth::check()) {
             $data = array();
             $data['user_id'] = Auth::id();
-            $data['name'] = $name;
-            $data['phone'] = $phone;
-            $data['email'] = $email;
-            $data['content'] = $content; // Corrected variable name
+            $data['name'] = $request->input('name');
+            $data['phone'] = $request->input('phone');
+            $data['email'] = $request->input('email');
+            $data['content'] = $request->input('content');
+            // gửi địa chỉ email 
 
-            Contact::create($data);
-
-            return response()->json(['status' => true, 'message' => "đã gửi thành công"]);
+            try {
+                Mail::to('nguyenkhanhhuy1229@gmail.com')->send(new ContactEmail($data));
+                return response()->json(['status' => true, 'message' => "Đã gửi thành công"]);
+            } catch (\Exception $e) {
+                return response()->json(['status' => false, 'message' => "Đã xảy ra lỗi khi gửi email"]);
+            }
         } else {
-            return response()->json(['status' => false, 'message' => "Đăng nhập trước khi liên hệ với chúng rôi "]);
+            return response()->json(['status' => false, 'message' => "Đăng nhập trước khi liên hệ với chúng tôi"]);
         }
     }
 }

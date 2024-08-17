@@ -48,33 +48,29 @@ class CouponsController extends Controller
      */
     public function store(Request $request)
     {
-        $Coupons = new Coupons;
         $request->validate([
             'name' => ['required', 'max:20'],
-            'code' => ['required', 'max:10'],
+            'code' => ['required', 'max:10', 'unique:coupons,code'], 
             'quantity' => ['required', 'numeric'],
             'start_date' => ['required'],
             'end_date' => ['required'],
             'coupon_type' => ['required'],
             'precent_amount' => ['required', 'numeric'],
-
             'status' => ['required'],
-
         ], [
             'name.required' => 'Tên không được để trống.',
             'name.max' => 'Không vượt quá 20 ký tự.',
             'code.required' => 'Mã giảm giá không được để trống.',
             'code.max' => 'Không vượt quá 10 ký tự.',
-
+            'code.unique' => 'Mã giảm giá đã tồn tại.', 
             'quantity.required' => 'Số lượng không được để trống.',
             'start_date.required' => 'Ngày bắt đầu không được để trống.',
             'end_date.required' => 'Ngày cuối không được để trống.',
-            'end_date.required' => 'Ngày cuối không được để trống.',
             'coupon_type.required' => 'Loại giảm giá không được để trống.',
             'precent_amount.required' => 'Giảm giá không được để trống.',
-
-
         ]);
+    
+        $Coupons = new Coupons;
         $Coupons->name = $request->name;
         $Coupons->code = $request->code;
         $Coupons->quantity = $request->quantity;
