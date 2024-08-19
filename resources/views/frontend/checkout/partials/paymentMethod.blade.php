@@ -12,7 +12,7 @@
                 </span>
                 <span class="radio__label__accessory">
                     <span class="content-box__emphasis price ">
-                        <img src="{{asset("uploads/072024/cash-on-delivery.png")}}"/>
+                        <img src="{{asset("uploads/072024/delivery_payment.png")}}" width="24px" class="me-4"/>
                     </span>
                 </span>
             </label>

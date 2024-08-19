@@ -114,6 +114,6 @@
             hàng</a>
     </div>
     <div class="col-12 col-md-6 order-1 order-md-2 mb-2">
-        <button type="submit" class="btn btn-dark w-100 rounded-1 p-2 border">Tiến hành đặt hàng</button>
+        <button id="action__checkout" type="submit" class="btn btn-dark w-100 rounded-1 p-2 border">Tiến hành đặt hàng</button>
     </div>
 </div>
