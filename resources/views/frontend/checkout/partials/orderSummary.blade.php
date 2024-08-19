@@ -1,5 +1,5 @@
 <div class="sidebar__header">
-    <h2 class="sidebar__title fs-4">
+    <h2 class="sidebar__title fs-5">
         Đơn hàng ({{ $getTotalQuantity }} sản phẩm)
     </h2>
 </div>
@@ -62,14 +62,12 @@
             <hr>
             <div class="order-summary__section">
                 <div class="edit_checkout animate-floating-labels d-flex">
-                    <div class="form-group col-md-9 w-75">
-                        <input id="coupon_code_input" type="text" class="field__input"
+                    <div class="input-group md-3">
+                        <input id="coupon_code_input" type="text" class="form-control"
                             placeholder="Nhập mã khuyến mãi">
                         <input id="coupon_code_value" type="hidden" name="coupon_value" value="0">
+                        <button id="apply_coupon_code" class="btn btn-primary" type="button">Áp dụng</button>
                     </div>
-                    <button id="apply_coupon_code" class="btn btn-primary ms-2" type="button">
-                        Áp dụng
-                    </button>
                 </div>
                 <div id="tag_coupon" class="mt-2">
                    
@@ -116,6 +114,6 @@
             hàng</a>
     </div>
     <div class="col-12 col-md-6 order-1 order-md-2 mb-2">
-        <button type="submit" class="btn btn-dark w-100 rounded-1 p-2 border">Tiến hành đặt hàng</button>
+        <button id="action__checkout" type="submit" class="btn btn-dark w-100 rounded-1 p-2 border">Tiến hành đặt hàng</button>
     </div>
 </div>

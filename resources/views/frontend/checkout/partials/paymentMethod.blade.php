@@ -1,6 +1,6 @@
 <div class="form-group rounded-1 border p-1 align-content-center mt-3">
     <div class="custom-control custom-radio mt-2 ms-2">
-        <div class="radio-wrapper ">
+        <div class="radio-wrapper pb-2">
             <div class="mt-0">
                 <div class="radio__input">
                     <input type="radio" name="payment_method" value="0" class="input-radio" id="flexRadioDefault1" checked>
@@ -12,7 +12,7 @@
                 </span>
                 <span class="radio__label__accessory">
                     <span class="content-box__emphasis price ">
-                        <i class="fas fa-money-bill-wave fs-4 mx-3" style="color: #000;"></i>
+                        <img src="{{asset("uploads/072024/delivery_payment.png")}}" width="24px" class="me-4"/>
                     </span>
                 </span>
             </label>
@@ -21,7 +21,7 @@
 </div>
 <div class="form-group rounded-1 border p-1 mt-2">
     <div class="radio-wrapper  ">
-        <div class="custom-control custom-radio mt-2 ms-2 d-flex" data-bs-toggle="collapse" href="#collapseExample">
+        <div class="custom-control custom-radio mt-2 ms-2 d-flex pb-2" data-bs-toggle="collapse" href="#collapseExample">
             <div class="radio__input">
                 <input type="radio" class="input-radio" value="1" name="payment_method" id="method_bank">
             </div>

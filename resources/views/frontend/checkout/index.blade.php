@@ -154,17 +154,59 @@
     </div>
     <script>
         (() => {
-            const forms = document.querySelectorAll('.needs-validation')
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
+            'use strict';
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation');
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach((form) => {
+                    form.addEventListener('submit', (event) => {
+
+                        // Hàm kiểm tra tính hợp lệ của email
+                        function validateEmails(email) {
+                            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            return emailPattern.test(email);
+                        }
+
+                        // Hàm kiểm tra tính hợp lệ của số điện thoại
+                        function validatePhone(number) {
+                            return /(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b/.test(number);
+                        }
+
+                        // Xử lý sự kiện khi người dùng nhấp vào nút action__checkout
+                        var email = document.getElementById('email_checkout').value;
+                        var phone = document.getElementById('phone_checkout').value;
+
+                        // Kiểm tra tính hợp lệ của email
+                        if (!validateEmails(email)) {
+                            var invalid_email = document.querySelector('.invalid-email')
+                            invalid_email.classList.add('d-block');
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+
+                        // Kiểm tra tính hợp lệ của số điện thoại
+                        if (!validatePhone(phone)) {
+                            var invalid_phone = document.querySelector('.invalid-phone')
+                            console.log(invalid_phone);
+                            
+                            invalid_phone.classList.add('d-block');
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+
+                        if (!form.checkValidity()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        event.preventDefault();
+                        event.stopPropagation();
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+        })();
     </script>
 @endsection
 @push('script_lib-js')
@@ -173,6 +215,35 @@
 @push('ajax')
     <script type="text/javascript">
         $(document).ready(() => {
+            // function validateEmails(email) {
+            //     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            //     return emailPattern.test(email);
+            // }
+
+            // function validatePhone(number) {
+            //     return /(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b/.test(number);
+            // }
+
+            // $('#action__checkout').off('click').on('click', function(e) {
+            //     var message = $('.message_error_checkout');
+            //     var email = $('#email_checkout').val();
+            //     message.html(''); // Xóa nội dung hiện tại của message
+            //     var phone = $('#phone_checkout').val()
+            //     if (!validateEmails(email)) {
+            //         message.append('<li class="text-danger">* Email không hợp lệ</li>');
+            //         event.preventDefault();
+            //         event.stopPropagation();
+            //     }
+            //     if (!validatePhone(phone)) {
+            //         message.append('<li class="text-danger">* Số điện không hợp lệ</li>');
+            //         event.preventDefault();
+            //         event.stopPropagation();
+            //     }
+
+            // });
+
+
+
             // Hàm tính tổng tiền
             function calculateTotal() {
                 const totalCart = parseInt($('#total_price_hidden').val());
@@ -234,9 +305,9 @@
                         .fail(function() {
                             alert('Đã có lỗi vui lòng thử lại sau!');
                         });
-                       
+
                 }
-                
+
             });
 
             // Áp dụng mã giảm giá
