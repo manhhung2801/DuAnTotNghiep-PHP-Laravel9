@@ -10,14 +10,6 @@
 <div class="input-group my-3">
     <input type="text" class="form-control" placeholder="Số điện thoại (tùy chọn)" name="phone"
         value="{{ old('phone') }}" required>
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-        aria-expanded="false"><img src="https://img.icons8.com/?size=100&id=60257&format=png&color=000000"
-            alt="cybermart" style="width: 30px;"></button>
-    <ul class="dropdown-menu dropdown-menu-end">
-        <li><a class="dropdown-item" href="#">Zambia (+260)</a></li>
-        <li><a class="dropdown-item" href="#">Yemen (+967)</a></li>
-        <li><a class="dropdown-item" href="#">Taiwan (+886)</a></li>
-    </ul>
     <div class="invalid-feedback">* Bạn chưa nhập số điện thoại!!! </div>
 </div>
 <div class="form-group my-3">

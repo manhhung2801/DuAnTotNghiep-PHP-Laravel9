@@ -140,3 +140,4 @@
     });
 </script>
 @stack('scripts')
+

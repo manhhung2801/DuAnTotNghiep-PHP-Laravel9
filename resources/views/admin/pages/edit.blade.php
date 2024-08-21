@@ -27,52 +27,97 @@
                 <form class="row g-3" action="{{ route('admin.pages.update', $pages->id) }}" method="POST">
                     @csrf
                     @method('PUT')
+
                     <div class="col-md-6">
                         <label for="input1" class="form-label">Tên trang</label>
-                        <input type="text" class="form-control" id="input1" name="name"
-                            value="{{ $pages->name }}">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="input1"
+                            name="name" value="{{ old('name', $pages->name) }}">
+                        @error('name')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
-                    <div class="col-md-6 ">
+
+                    <div class="col-md-6">
                         <label for="input2" class="form-label">Danh mục trang</label>
-                        <select id="input2" class="form-select main-information" name="page_category_id">
-                            <option>Chọn danh mục</option>
+                        <select id="input2" class="form-select @error('page_category_id') is-invalid @enderror"
+                            name="page_category_id">
+                            <option value="">Chọn danh mục</option>
                             @foreach ($pageCategories as $item)
                                 <option value="{{ $item->id }}"
-                                    {{ $item->id == $pages->page_category_id ? 'selected' : '' }}>{{ $item->name }}
+                                    {{ old('page_category_id', $pages->page_category_id) == $item->id ? 'selected' : '' }}>
+                                    {{ $item->name }}
                                 </option>
                             @endforeach
                         </select>
-                        </select>
+                        @error('page_category_id')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
+
                     <div class="row mt-3">
                         <div class="col-lg-6 mb-3">
                             <label for="seotitle" class="form-label">Nội dung SEO</label>
-                            <input type="text" class="form-control" id="seotitle" name="seo_title"
-                                value="{{ $pages->seo_title }}">
+                            <input type="text" class="form-control @error('seo_title') is-invalid @enderror"
+                                id="seotitle" name="seo_title" value="{{ old('seo_title', $pages->seo_title) }}">
+                            @error('seo_title')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
+
                         <div class="col-md-6">
                             <label for="input7" class="form-label">Trạng thái</label>
-                            <select id="input7" class="form-select" name="status">
-                                <option {{ $pages->status == 1 ? 'selected' : '' }} value="1">Hoạt động</option>
-                                <option {{ $pages->status == 0 ? 'selected' : '' }} value="0">Không hoạt động</option>
+                            <select id="input7" class="form-select @error('status') is-invalid @enderror" name="status">
+                                <option value="1" {{ old('status', $pages->status) == 1 ? 'selected' : '' }}>Hoạt động
+                                </option>
+                                <option value="0" {{ old('status', $pages->status) == 0 ? 'selected' : '' }}>Không
+                                    hoạt động</option>
                             </select>
+                            @error('status')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                     </div>
+
                     <div class="col-lg-12 mb-3">
-                        <label for="seodesc" class="form-label"> Mô tả SEO</label>
-                        <input type="text" class="form-control" id="seodesc" name="seo_description"
-                            value="{{ $pages->seo_description }}">
+                        <label for="seodesc" class="form-label">Mô tả SEO</label>
+                        <input type="text" class="form-control @error('seo_description') is-invalid @enderror"
+                            id="seodesc" name="seo_description"
+                            value="{{ old('seo_description', $pages->seo_description) }}">
+                        @error('seo_description')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
+
                     <div class="col-md-12 mb-3">
                         <label for="editor" class="form-label">Mô tả</label>
-                        <textarea class="form-control description" name="long_description" id="editor">{!! $pages->long_description !!}</textarea>
+                        <textarea class="form-control description @error('long_description') is-invalid @enderror" name="long_description"
+                            id="editor">
+                            {{ old('long_description', $pages->long_description) }}
+                        </textarea>
+                        @error('long_description')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
+
                     <div class="col-md-2">
                         <div class="d-grid align-items-center gap-3">
                             <button type="submit" class="btn btn-primary px-4">Cập nhật</button>
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

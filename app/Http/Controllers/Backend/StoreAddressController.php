@@ -16,7 +16,7 @@ class StoreAddressController extends Controller
         if (!empty($request->get('keyword'))) {
             $storeAddress = StoreAddress::where('store_name', 'like', '%' . $request->get('keyword') . '%')->orWhere('phone', 'like', '%' . $request->get('keyword') . '%');
         }
-        
+
         // Sắp xếp theo trạng thái
         if ($request->filled('check_status')) {
             $check_status = $request->get('check_status');
@@ -58,7 +58,7 @@ class StoreAddressController extends Controller
             'province' => ['required'],
             'description' => ['required'],
             'email' => ['required', 'email'],
-            'phone' => ['required', 'min:10',],
+            'phone' => ['required', 'max:10', 'regex:/^0[3-9][0-9]{8}$/'],
             'status' => ['required'],
             'pick_store' => ['required'],
         ], [
@@ -71,8 +71,8 @@ class StoreAddressController extends Controller
             'description.required' => 'Mô tả không được để trống',
             'phone.required' => 'Số điện thoại không được để trống',
             'pick_store.required' => 'Cửa hàng không được để trống',
-            // 'phone.regex' => 'Số điện thoại bắt đầu bằng 0',
-            'phone.min' => 'Số điện thoại tối thiểu 11 số',
+            'phone.regex' => 'Điện thoại phải bắt đầu bằng số 0 ',
+            'phone.max' => 'Số điện thoại tối thiểu 10 số',
 
         ]);
         $storeAddress->store_name = $request->store_name;
@@ -86,7 +86,7 @@ class StoreAddressController extends Controller
         $storeAddress->status = $request->status;
         $storeAddress->pick_store = $request->pick_store;
         $storeAddress->save();
-        // Set a success toast, with a title
+      
         toastr()->success('Thêm địa chỉ cửa hàng thành công!', 'Thành Công');
         return redirect()->back();
     }
@@ -116,7 +116,7 @@ class StoreAddressController extends Controller
             'description' => ['required'],
             'email' => ['required', 'email'],
             'description.required' => 'Mô tả không được để trống',
-            'phone' => ['required', 'min:10'],
+            'phone' => ['required', 'max:10', 'regex:/^0[3-9][0-9]{8}$/'],
             'status' => ['required'],
             'pick_store' => ['required'],
         ], [
@@ -127,8 +127,8 @@ class StoreAddressController extends Controller
             'province.required' => 'Tỉnh, thành phố không được để trống',
             'email.required' => 'Email không được để trống',
             'phone.required' => 'Số điện thoại không được để trống',
-            // 'phone.regex' => 'Số điện thoại bắt đầu bằng 0',
-            'phone.min' => 'Số điện thoại tối thiểu 10 số',
+            'phone.regex' => 'Số điện thoại bắt đầu bằng 0',
+            'phone.max' => 'Số điện thoại tối thiểu 10 số',
             'pick_store.required' => 'Cửa hàng không được để trống',
 
         ]);

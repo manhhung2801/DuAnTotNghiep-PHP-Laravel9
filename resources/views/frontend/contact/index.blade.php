@@ -2,10 +2,10 @@
 
 @section('title', 'Liên Hệ CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam')
 @section('description',
-'Liên hệ ngay để được tư vấn mua điện thoại, máy tính laptop, smartwatch, gia dụng, thiết
-bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí ngay!!!.')
+    'Liên hệ ngay để được tư vấn mua điện thoại, máy tính laptop, smartwatch, gia dụng, thiết
+    bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí ngay!!!.')
 @section('schema')
-<script type="application/ld+json">
+    <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@graph": [{
@@ -102,153 +102,131 @@ bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí
 @endsection
 
 @section('content')
-<style>
-    .frame-contact {
-        padding: 15px 20px;
-        border-radius: 12px;
-        background-color: #f5f5f5;
-    }
-</style>
-<div class="wrapper-contact_page layout-collection">
-    <section class="bread-crumb">
-        <section class="bread-crumb ">
-            <div class="container ">
-                <ul class="breadcrumb d-flex ">
-                    <li class="home">
-                        <a href="/" title="Trang chủ"><span>Trang chủ</span></a>
-                        <span class="mr_lr mx-1"><i class="fas fa-angle-right"></i></span>
-                        <strong>
-                            <span> @yield('title')</span>
-                        </strong>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <main>
-            <div class="layout-contact">
-                <div class="container">
-                    @foreach ($storeAddress as $item)
-                    <div class="row">
-                        <div class="col-lg-6 col-12 col-md-6">
-                            <div class="contact">
-                                <div class="name_address">
-                                    <h1 class="fs-4">{{ $item->store_name }}</h1>
-                                </div>
-                                <div class="des_foo mb-3">
-                                    <h2 class="fs-6"> {{ $item->description }}</h2>
-                                </div>
-                                <div class="address fw-bold">
-                                    {{ $item->province }}
-                                </div>
-                                <div class="time_work">
-                                    <div class=" mb-1 ">
-                                        <div><b class="font-weight-light">Địa chỉ:</b> {{ $item->address }},
-                                            {{ $item->ward }}, {{ $item->district }}, {{ $item->province }}
+    <style>
+        .frame-contact {
+            padding: 15px 20px;
+            border-radius: 12px;
+            background-color: #f5f5f5;
+        }
+    </style>
+    <div class="wrapper-contact_page layout-collection">
+        <section class="bread-crumb">
+            <section class="bread-crumb ">
+                <div class="container ">
+                    <ul class="breadcrumb d-flex ">
+                        <li class="home">
+                            <a href="/" title="Trang chủ"><span>Trang chủ</span></a>
+                            <span class="mr_lr mx-1"><i class="fas fa-angle-right"></i></span>
+                            <strong>
+                                <span> @yield('title')</span>
+                            </strong>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <main>
+                <div class="layout-contact">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 col-12 col-md-6">
+                                @foreach ($storeAddress as $item)
+                                    <div class="col-lg-12 col-12 col-md-12 ">
+                                        <div class="contact ">
+                                            <div class="name_address">
+                                                <h2 class="d-none d-md-block fs-4">{{ $item->store_name }}</h2>
+                                                <h2 class="d-md-none text-center mb-2 fs-4">{{ $item->store_name }}</h2>
+                                            </div>
+                                            <div class="des_foo mb-3">
+                                                {{ $item->description }}
+                                            </div>
+                                            <div class="address fw-bold">
+                                                {{ $item->province }}
+                                            </div>
+                                            <div class="time_work">
+                                                <div class=" mb-1 ">
+                                                    <div><b class="font-weight-light">Địa chỉ:</b> {{ $item->address }},
+                                                        {{ $item->ward }}, {{ $item->district }}, {{ $item->province }}
+                                                    </div>
+                                                </div>
+                                                <div class=" mb-1">
+                                                    <div><b>Hotline:</b>
+                                                        <a class="fone text-decoration-none text-danger hover-text-dark"
+                                                            href="tel:{{ $item->province }}">{{ $item->phone }}</a>
+                                                    </div>
+                                                </div>
+                                                <div class=" mb-1">
+                                                    <div> <b>Email:</b> <a href="mailto:{{ $item->email }}"
+                                                            title="{{ $item->email }}"
+                                                            class="text-decoration-none  text-danger font-weight-light">{{ $item->email }}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class=" mb-1">
-                                        <div><b>Hotline:</b>
-                                            <a class="fone text-decoration-none text-danger hover-text-dark"
-                                                href="tel:{{ $item->province }}">{{ $item->phone }}</a>
-                                        </div>
+                                    <hr>
+                                @endforeach
+                            </div>
+                            <div class="col-lg-6 col-12 col-md-6">
+                                <form class="mx-auto formContact row frame-contact" method="post">
+                                    <h4 class="text-center col-lg-12"><b>LIÊN HỆ VỚI CHÚNG TÔI</b></h4>
+
+                                    <div class="mb-3 text-start col-lg-6">
+                                        <input name="name" type="text" class="form-control name-contact"
+                                            placeholder="Họ và tên">
                                     </div>
-                                    <div class=" mb-1">
-                                        <div> <b>Email:</b> <a href="mailto:{{ $item->email }}"
-                                                title="{{ $item->email }}"
-                                                class="text-decoration-none  text-danger font-weight-light">{{ $item->email }}</a>
-                                        </div>
+                                    <div class="mb-3 text-start col-lg-6">
+                                        <input name="email" type="email" class="form-control email-contact"
+                                            placeholder="Email">
                                     </div>
-                                </div>
+                                    <div class="mb-3 text-start col-lg-12">
+                                        <input name="phone" type="number" class="form-control phone-contact"
+                                            placeholder="Điện thoại">
+                                    </div>
+                                    <div class="mb-3 text-start col-lg-12">
+                                        <textarea name="content" class="form-control conten-contact" id="exampleFormControlTextarea1" rows="2"
+                                            placeholder="Nội dung"></textarea>
+                                    </div>
+                                    <div class="col-lg-12">
+
+                                        <button type="submit" class="btn btn-dark click-submit-contact">Gửi tin nhắn <i
+                                                class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-12 col-md-6 mt-2">
-                            <form class="mx-auto formContact row frame-contact" method="post">
-                                <h4 class="text-center mt-2 col-lg-12"><b>LIÊN HỆ VỚI CHÚNG TÔI</b></h4>
-
-                                <div class="mb-3 text-start col-lg-6">
-                                    <input name="name" type="text" class="form-control name-contact"
-                                        placeholder="Họ và tên">
-                                </div>
-                                <div class="mb-3 text-start col-lg-6">
-                                    <input name="email" type="email" class="form-control email-contact"
-                                        placeholder="Email">
-                                </div>
-                                <div class="mb-3 text-start col-lg-12">
-                                    <input name="phone" type="number" class="form-control phone-contact"
-                                        placeholder="Điện thoại">
-                                </div>
-                                <div class="mb-3 text-start col-lg-12">
-                                    <textarea name="content" class="form-control conten-contact" id="exampleFormControlTextarea1" rows="3"
-                                        placeholder="Nội dung"></textarea>
-                                </div>
-                                <div class="col-lg-12">
-
-                                    <button type="submit" class="btn btn-dark click-submit-contact">Gửi tin nhắn <i
-                                            class="fa-solid fa-chevron-right"></i></button>
-                                </div>
-                            </form>
-                        </div>
                     </div>
-                    <hr>
-                    @endforeach
                 </div>
-            </div>
-        </main>
-    </section>
+            </main>
+        </section>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-        crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function() {
-            $('.click-submit-contact').click(function(e) {
-                e.preventDefault();
-                var name = $(this).closest('.formContact').find('.name-contact').val();
-                var email = $(this).closest('.formContact').find('.email-contact').val();
-                var phone = $(this).closest('.formContact').find('.phone-contact').val();
-                var content = $(this).closest('.formContact').find('.conten-contact').val();
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function() {
+                $('.click-submit-contact').click(function(e) {
+                    e.preventDefault();
+                    var name = $(this).closest('.formContact').find('.name-contact').val();
+                    var email = $(this).closest('.formContact').find('.email-contact').val();
+                    var phone = $(this).closest('.formContact').find('.phone-contact').val();
+                    var content = $(this).closest('.formContact').find('.conten-contact').val();
 
-                var csrfToken = $('meta[name="csrf-token"]').attr('content');
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken
-                    }
-                });
-
-                $.ajax({
-                    method: 'POST',
-                    url: "{{ route('contactContact') }}",
-                    data: {
-                        'name': name,
-                        'email': email,
-                        'phone': phone,
-                        'content': content,
-                    },
-                    success: function(data) {
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2000,
-                            timerProgressBar: true,
-                        });
-
-                        if (data.status) {
-                            Toast.fire({
-                                icon: "success",
-                                title: data.message || "Đã gửi thành công"
-                            });
-                        } else {
-                            Toast.fire({
-                                icon: "error",
-                                title: data.message || "Gửi không thành công"
-                            });
+                    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken
                         }
-                    },
-                    error: function(response) {
-                        console.log(response);
+                    });
 
-                        if (response.status === 422) {
-                            var errors = response.responseJSON.errors;
+                    $.ajax({
+                        method: 'POST',
+                        url: "{{ route('contactContact') }}",
+                        data: {
+                            'name': name,
+                            'email': email,
+                            'phone': phone,
+                            'content': content,
+                        },
+                        success: function(data) {
                             const Toast = Swal.mixin({
                                 toast: true,
                                 position: "top-end",
@@ -256,39 +234,64 @@ bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí
                                 timer: 2000,
                                 timerProgressBar: true,
                             });
-                            if (errors.name) {
+
+                            if (data.status) {
+                                Toast.fire({
+                                    icon: "success",
+                                    title: data.message || "Đã gửi thành công"
+                                });
+                            } else {
                                 Toast.fire({
                                     icon: "error",
-                                    title: errors.name[0]
+                                    title: data.message || "Gửi không thành công"
                                 });
                             }
-                            if (errors.email) {
-                                Toast.fire({
-                                    icon: "error",
-                                    title: errors.email[0]
+                        },
+                        error: function(response) {
+                            console.log(response);
+
+                            if (response.status === 422) {
+                                var errors = response.responseJSON.errors;
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: "top-end",
+                                    showConfirmButton: false,
+                                    timer: 2000,
+                                    timerProgressBar: true,
                                 });
+                                if (errors.name) {
+                                    Toast.fire({
+                                        icon: "error",
+                                        title: errors.name[0]
+                                    });
+                                }
+                                if (errors.email) {
+                                    Toast.fire({
+                                        icon: "error",
+                                        title: errors.email[0]
+                                    });
+                                }
+                                if (errors.phone) {
+                                    Toast.fire({
+                                        icon: "error",
+                                        title: errors.phone[0]
+                                    });
+                                }
+                                if (errors.content) {
+                                    Toast.fire({
+                                        icon: "error",
+                                        title: errors.content[0]
+                                    });
+                                }
+                            } else {
+                                alert('Đã xảy ra lỗi. Vui lòng thử lại.');
                             }
-                            if (errors.phone) {
-                                Toast.fire({
-                                    icon: "error",
-                                    title: errors.phone[0]
-                                });
-                            }
-                            if (errors.content) {
-                                Toast.fire({
-                                    icon: "error",
-                                    title: errors.content[0]
-                                });
-                            }
-                        } else {
-                            alert('Đã xảy ra lỗi. Vui lòng thử lại.');
                         }
-                    }
+                    })
                 })
+
+
             })
-
-
-        })
-    </script>
-</div>
+        </script>
+    </div>
 @endsection
