@@ -1,18 +1,18 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Người Dùng')
+@section('title', 'Tài khoản')
 
 @section('content')
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Người Dùng</div>
+            <div class="breadcrumb-title pe-3">Tài khoản</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Danh Sách Người Dùng</li>
+                        <li class="breadcrumb-item active" aria-current="page">Danh Sách Tài Khoản</li>
                     </ol>
                 </nav>
             </div>
@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="action_start float-start d-flex">
-                    <h6 class="mt-2 mb-0 text-uppercase float-start">Danh Sách Người Dùng</h6>
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">Danh Sách Tài Khoản</h6>
                     <div class="form-search ms-2">
                         <form action="" method="get">
                             <div class="input-group">
@@ -114,7 +114,7 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td>
+                                    <td class="text-end">
                                         <a class="btn btn-primary" href=""><i
                                                 class="fa-solid fa-pen fs-6 text-light"></i>Chi Tiết</a>
                                         <a class="btn btn-danger delete-item"

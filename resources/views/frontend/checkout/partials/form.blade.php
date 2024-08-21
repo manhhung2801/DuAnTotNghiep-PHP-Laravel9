@@ -1,7 +1,6 @@
-
 <div class="form-group my-3">
-    <input id="email_checkout" type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required>
-    <div class="invalid-feedback invalid-email">* Email không hợp lệ!</div>
+    <input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required>
+    <div class="invalid-feedback">* Email không hợp lệ!</div>
 </div>
 <div class="form-group my-3">
     <input type="text" class="form-control" placeholder="Họ và tên" name="name" value="{{ old('name') }}"
@@ -9,17 +8,9 @@
     <div class="invalid-feedback">* Bạn chưa nhập tên !!!</div>
 </div>
 <div class="input-group my-3">
-    <input id="phone_checkout" type="text" class="form-control" placeholder="Số điện thoại (tùy chọn)" name="phone"
+    <input type="text" class="form-control" placeholder="Số điện thoại (tùy chọn)" name="phone"
         value="{{ old('phone') }}" required>
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-        aria-expanded="false"><img src="https://img.icons8.com/?size=100&id=60257&format=png&color=000000"
-            alt="cybermart" style="width: 30px;"></button>
-    <ul class="dropdown-menu dropdown-menu-end">
-        <li><a class="dropdown-item" href="#">Zambia (+260)</a></li>
-        <li><a class="dropdown-item" href="#">Yemen (+967)</a></li>
-        <li><a class="dropdown-item" href="#">Taiwan (+886)</a></li>
-    </ul>
-    <div class="invalid-feedback invalid-phone">* Bạn chưa nhập số điện thoại!!! </div>
+    <div class="invalid-feedback">* Bạn chưa nhập số điện thoại!!! </div>
 </div>
 <div class="form-group my-3">
     <input id="address" type="text" class="form-control" placeholder="Địa chỉ (tùy chọn)" name="address"
@@ -47,4 +38,3 @@
     <textarea class="form-control" name="user_note" value="{{ old('note_user') }}" rows="3"
         placeholder="Ghi chú (tùy chọn)" formnovalidate></textarea>
 </div>
-

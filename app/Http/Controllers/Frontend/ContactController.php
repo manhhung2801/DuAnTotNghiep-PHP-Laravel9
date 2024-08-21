@@ -22,13 +22,14 @@ class ContactController extends Controller
     {
         $request->validate([
             'name'  => ['required', 'max:20'],
-            'phone' => ['required', 'max:10'],
+            'phone' => ['required', 'max:10', 'regex:/^0[3-9][0-9]{8}$/'],
             'email' => ['required', 'email'],
             'content' => ['required', 'max:200'],
         ], [
             'name.required' => 'Tên không được để trống',
             'phone.required' => 'Điện thoại không được để trống',
             'phone.max' => 'Điện thoại không được quá 10 ký tự',
+            'phone.regex' => 'Điện thoại phải bắt đầu bằng số 0 và đủ 10 chữ số',
             'email.required' => 'Email không được để trống',
             'email.email' => 'Email không hợp lệ',
             'content.required' => 'Nội dung không được để trống',
@@ -43,7 +44,6 @@ class ContactController extends Controller
             $data['email'] = $request->input('email');
             $data['content'] = $request->input('content');
             // gửi địa chỉ email 
-
             try {
                 Mail::to('nguyenkhanhhuy1229@gmail.com')->send(new ContactEmail($data));
                 return response()->json(['status' => true, 'message' => "Đã gửi thành công"]);

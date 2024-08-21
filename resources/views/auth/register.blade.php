@@ -20,13 +20,6 @@
                         <div class="mb-3">
                             <label for="name" class="form-label p-0">Họ, tên:</label>
                             <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control" id="name">
-                            @if ($errors->any())
-                                <span class="text-danger">
-                                    @error('name')
-                                        {{ $message }}
-                                    @enderror
-                                </span>
-                            @endif
                         </div>
                         <!-- Email Address -->
                         <div class="mb-3">
@@ -51,7 +44,6 @@
                                     @enderror
                                 </span>
                             @endif
-
                             <div id="passwordHelpBlock" class="form-text">
                                 Lưu ý: Mật khẩu phải có tối thiểu 8 ký tự bao gồm chữ, số và các ký tự đặc biệt
                             </div>

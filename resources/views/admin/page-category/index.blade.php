@@ -12,7 +12,7 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Danh Sách Trang</li>
+                        <li class="breadcrumb-item active" aria-current="page">Danh mục trang</li>
                     </ol>
                 </nav>
             </div>
@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="action_start float-start d-flex">
-                    <h6 class="mt-2 mb-0 text-uppercase float-start">Danh Sách Trang</h6>
+                    <h6 class="mt-2 mb-0 text-uppercase float-start">Danh mục trang</h6>
                     <div class="form-search ms-2">
                         <form action="" method="get">
                             <div class="input-group">
@@ -35,6 +35,8 @@
                     <a href="{{ route('admin.page-category.index') }}" class="me-2 btn btn-success float-end ms-2"><i
                             class="fa-solid fa-rotate-left fs-6"></i>Làm Mới</a>
                 </div>
+                <a href="{{ route('admin.pageCategories.trash-list') }}" class="btn btn-danger float-end"><i
+                        class="fa-solid fa-trash-can fs-6"></i></i>Thùng rác</a>
                 <a href="{{ route('admin.page-category.create') }}" class="me-2 btn btn-primary float-end"><i
                         class="fa-solid fa-plus text-light fs-6"></i>Thêm Mới Danh Mục</a>
             </div>

@@ -18,7 +18,7 @@ class SliderController extends Controller
         // search tìm kiếm theo type
         if (!empty($request->get('keyword'))) {
             $sliders = Slider::where('type', 'like', '%' . $request->get('keyword') . '%')
-            ->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
+                ->orWhere('title', 'like', '%' . $request->get('keyword') . '%');
         }
         // Sắp xếp theo trạng thái
         if ($request->filled('check_status')) {
@@ -52,7 +52,9 @@ class SliderController extends Controller
         $request->validate([
             'type' => ['required', 'string', 'max:200'],
             'title' => ['required', 'string', 'max:200'],
-            'btn_url' => ['required',],
+            'btn_url' => [
+                'required',
+            ],
             'status' => ['required'],
             'banner' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048']
         ], [
@@ -80,7 +82,6 @@ class SliderController extends Controller
         }
 
         $slider->save();
-        // Set a success toast, with a title
         toastr()->success('Thêm Thanh trượt thành công!', 'Thành Công');
         return redirect()->back();
     }

@@ -18,7 +18,7 @@ class NewsController extends Controller
         $newsCate = Post_categories::all();
 
         $newsDetail = [];
-        $slideposts = Post::where('status', 1)->orderBy('id','ASC')->take(4)->get();
+        $slideposts = Post::where('status', 1)->orderBy('id', 'ASC')->take(4)->get();
         foreach ($newsCate as $cate) {
             $posts = Post::where('status', 1)->where('category_id', $cate->id)->take(4)->get();
             $newsDetail[$cate->id] = $posts;
@@ -51,14 +51,17 @@ class NewsController extends Controller
 
     public function details($slugs_cate, $lugs)
     {
-
-
         $newsCate = Post_categories::all();
         $newsdetai = Post::where("slug", $lugs)->first();
         // lấy id bài viết của bài viết liên quan trừ id bào viết ban đầu
         $list_related_id = Post::where('category_id', $newsdetai->category_id)->where('id', '!=', $newsdetai->id)->pluck('id');
         // lấy bài viết liên quan theo id đã lấy
         $list_related_news = Post::whereIn('id', $list_related_id)->take(4)->get();
+
+
+        if (auth()->check()) {
+            $this->PostView($newsdetai->id);
+        }
 
         if ($newsdetai) {
             return view('frontend.post.post', [
@@ -69,5 +72,9 @@ class NewsController extends Controller
         } else {
             return view(404);
         }
+    }
+    public function PostView($postId)
+    {
+        Post::where('id', $postId)->increment('post_views');
     }
 }

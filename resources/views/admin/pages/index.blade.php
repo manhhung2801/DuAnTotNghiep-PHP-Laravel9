@@ -36,6 +36,8 @@
                     <a href="{{ route('admin.pages.index') }}" class="me-2 btn btn-success float-end ms-2"><i
                             class="fa-solid fa-rotate-left fs-6"></i>Làm mới</a>
                 </div>
+                <a href="{{ route('admin.pages.trash-list') }}" class="btn btn-danger float-end"><i
+                        class="fa-solid fa-trash-can fs-6"></i></i>Thùng rác</a>
                 <a href="{{ route('admin.pages.create') }}" class="btn btn-primary float-end me-2"><i
                         class="fa-solid fa-plus text-light fs-6"></i>Thêm mới</a>
             </div>
