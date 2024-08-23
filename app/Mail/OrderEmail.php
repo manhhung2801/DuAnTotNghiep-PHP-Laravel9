@@ -20,10 +20,12 @@ class OrderEmail extends Mailable
      */
     public $getCart;
     public $order;
-    public function __construct($getCart, $order)
+    public $getCoupon;
+    public function __construct($getCart, $order, $getCoupon)
     {
         $this->getCart = $getCart;
         $this->order = $order;
+        $this->getCoupon = $getCoupon;
     }
 
     /**
@@ -51,6 +53,7 @@ class OrderEmail extends Mailable
             with: [
                 'getCart' => $this->getCart,
                 'order' => $this->order,
+                'getCoupon' => $this->getCoupon,
             ]
         );
     }

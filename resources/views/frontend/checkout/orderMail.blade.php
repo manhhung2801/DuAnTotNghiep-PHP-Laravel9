@@ -95,12 +95,22 @@
                 <ul>
                     @foreach ($getCart as $item)
                         <li>{{ $item->name }}: {{ $item->quantity }} x <span
-                                style="color: red;">{{ number_format($item->price, 0, '', '.') }}</span> VND
+                                style="color: red;">{{ number_format($item->price, 0, '', '.') }}</span> VND|
                         </li>
                     @endforeach
                 </ul>
                 <p><strong>Tổng tiền:</strong> <span
                         style="color: red;">{{ number_format($order->total, 0, '', '.') }}</span> VND</p>
+                <p>
+                    <span style="color: red;">
+                        @isset($getCoupon)
+                            <p class="text-muted mb-0"><span class="fw-bold">Giảm giá: </span>
+                                {{ $getCoupon->precent_amount }}
+                                {{ $getCoupon->coupon_type == 'precent' ? '%' : 'VND' }}
+                            </p>
+                        @endisset
+                    </span>
+                </p>
                 <p><strong>Phí giao hàng:</strong>
                     <span style="color: red;">
                         @isset($order->ship_money)
