@@ -46,13 +46,7 @@
 
 <div class="form-product ">
     <div class="select-swatch ">
-        @php
-            $hasColor = false;
-        @endphp
         @foreach ($product->variant as $variant)
-            @php
-                $hasColor = true;
-            @endphp
             @if ($variant->type == 1)
                 <div class="header">Màu sắc: <span class="value-properties">{{ $variant->name }}</span></div>
                 <div class="swatch d-flex mt-2">
@@ -71,7 +65,7 @@
         @endforeach
 
         @foreach ($product->variant as $variant)
-            @if ($variant->type == 0 && !$hasColor)
+            @if ($variant->type == 0)
                 <div class="header">Dung lượng: <span class="value-ram"></span></div>
                 <div class="swatch d-flex mt-2">
                     @foreach ($variant->variantItem as $i)
