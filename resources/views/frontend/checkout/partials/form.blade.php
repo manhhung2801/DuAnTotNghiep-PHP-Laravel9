@@ -10,7 +10,7 @@
 <div class="input-group my-3">
     <input type="text" class="form-control" placeholder="Số điện thoại (tùy chọn)" name="phone"
         value="{{ old('phone') }}" required>
-    <div class="invalid-feedback">* Bạn chưa nhập số điện thoại!!! </div>
+    <div class="invalid-feedback invalid-phone">* Bạn chưa nhập số điện thoại!!! </div>
 </div>
 <div class="form-group my-3">
     <input id="address" type="text" class="form-control" placeholder="Địa chỉ (tùy chọn)" name="address"

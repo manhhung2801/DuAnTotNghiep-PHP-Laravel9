@@ -218,7 +218,7 @@
                                             </span>{{ number_format($getOrder->total, 0, '', '.') }}VNĐ</p>
                                         @isset($getCoupon)
                                             <p class="text-muted mb-0"><span class="fw-bold">Giảm giá: </span>
-                                                {{ $getCoupon->precent_amount }}
+                                                {{ number_format($getCoupon->precent_amount,0, '', '.') }}
                                                 {{ $getCoupon->coupon_type == 'precent' ? '%' : 'VND' }}
                                             </p>
                                         @endisset

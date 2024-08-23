@@ -24,7 +24,7 @@ class CheckoutController extends Controller
     {
         // kiểm tra đơn hàng trống
         if (\Cart::isEmpty()) {
-            return redirect()->back()->with(['error' => 'Đơn hàng không được để trống!']);
+            return redirect()->back();
         }
 
         $getCart = \Cart::getContent();
@@ -120,6 +120,7 @@ class CheckoutController extends Controller
                     $order_detail->save();
                 }
 
+
                try {
                     $orderEmail = new OrderEmail($getCart, $order, $getCoupon ?? null);
                     Mail::to($request->email)->send($orderEmail);
@@ -133,6 +134,10 @@ class CheckoutController extends Controller
                     $vnpayService = new VNPayService();
                     return $vnpayService->vnpayCreatePayment($order->vnp_order_code, $order->total);
                 }
+
+                //Xóa session coupon trước đó
+                Session::forget('coupon_code');
+
                 return view('frontend.thankyou.index');
             }
             return redirect()->back()->with(['error' => 'Không tìm thấy sản phẩm trong giỏ hàng!']);

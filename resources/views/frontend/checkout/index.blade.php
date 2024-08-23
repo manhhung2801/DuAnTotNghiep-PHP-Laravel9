@@ -180,29 +180,31 @@
                         var phone = document.getElementById('phone_checkout').value;
 
                         // Kiểm tra tính hợp lệ của email
+                        var invalid_email = document.querySelector('.invalid-email')
                         if (!validateEmails(email)) {
-                            var invalid_email = document.querySelector('.invalid-email')
                             invalid_email.classList.add('d-block');
                             event.preventDefault();
                             event.stopPropagation();
+                        }else {
+                            invalid_email.classList.remove('d-block');
                         }
 
                         // Kiểm tra tính hợp lệ của số điện thoại
+                        var invalid_phone = document.querySelector('.invalid-phone')
                         if (!validatePhone(phone)) {
-                            var invalid_phone = document.querySelector('.invalid-phone')
-                            console.log(invalid_phone);
-                            
                             invalid_phone.classList.add('d-block');
                             event.preventDefault();
                             event.stopPropagation();
+                        }else {
+                            invalid_phone.classList.remove('d-block');
                         }
 
                         if (!form.checkValidity()) {
                             event.preventDefault();
                             event.stopPropagation();
                         }
-                        event.preventDefault();
-                        event.stopPropagation();
+                        // event.preventDefault();
+                        // event.stopPropagation();
                         form.classList.add('was-validated');
                     }, false);
                 });
