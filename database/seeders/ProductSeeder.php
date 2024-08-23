@@ -30,6 +30,7 @@ class ProductSeeder extends Seeder
             $nameIP15 = 'iPhone 15 SERIES' . collect([' ', ' Pro ', ' Pro Max ', ' Plus '])->random() . collect([' ', ' 64GB ', ' 128GB ', ' 256GB ', ' 512GB ', ' 1TB '])->random();
             // 
             $price = round(rand(29000000, 33900000) / 100000) * 100000;
+            $views = rand(100, 1000);
             $offer_price = round(rand(15900000, $price - 100000) / 100000) * 100000;
             // Thêm tên sản phẩm vào mảng Iphone
             DB::table('products')->insert([
@@ -42,6 +43,7 @@ class ProductSeeder extends Seeder
                     'offer_price' => $offer_price,
                     'offer_start_date' => now(),
                     'offer_end_date' => '2025-07-31',
+                    'views' => $views,
                     'sku' => 'SPIP' . rand(100, 1020) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -193,6 +195,7 @@ class ProductSeeder extends Seeder
                     'offer_price' => $offer_price,
                     'offer_start_date' => now(),
                     'offer_end_date' => '2025-07-31',
+                    'views'=>$views,
                     'sku' => 'SPIP' . rand(100, 1020) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -344,6 +347,7 @@ class ProductSeeder extends Seeder
                     'offer_price' => $offer_price,
                     'offer_start_date' => now(),
                     'offer_end_date' => '2025-07-31',
+                    'views'=>$views,
                     'sku' => 'SPIP' . rand(100, 1020) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -495,6 +499,7 @@ class ProductSeeder extends Seeder
                     'offer_price' => $offer_price,
                     'offer_start_date' => now(),
                     'offer_end_date' => '2025-07-31',
+                    'views'=>$views,
                     'sku' => 'SPIP' . rand(100, 1020) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -646,6 +651,7 @@ class ProductSeeder extends Seeder
                     'offer_price' => $offer_price,
                     'offer_start_date' => now(),
                     'offer_end_date' => '2025-07-31',
+                    'views'=>$views,
                     'sku' => 'SPIP' . rand(100, 1020) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'short_description' => '
@@ -811,6 +817,7 @@ class ProductSeeder extends Seeder
                     'offer_price' => $offer_price,
                     'offer_start_date' => now(),
                     'offer_end_date' => '2025-07-31',
+                    'views'=>$views,
                     'sku' => 'SPNC' . rand(120, 140) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'long_description' => '
@@ -893,6 +900,7 @@ class ProductSeeder extends Seeder
                 'offer_price' => $offer_price,
                 'offer_start_date' => now(),
                 'offer_end_date' => '2025-07-31',
+                'views'=>$views,
                 'sku' => 'SPMCB' . rand(120, 140) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'long_description' => '<div class="ksp-content p-2 mb-2" style="-webkit-text-stroke-width:0px;background-color:rgb(242, 242, 242);border-radius:0.5rem;box-sizing:inherit;color:rgb(74, 74, 74);font-family:Roboto, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:auto;orphans:2;padding:0.5rem !important;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;width:800px;word-spacing:0px;">
@@ -1045,6 +1053,7 @@ Cybermart hiện đang cung cấp ' . $nameMac . ' chính hãng với mức giá
                 'offer_price' => $offer_price,
                 'offer_start_date' => now(),
                 'offer_end_date' => '2025-07-31',
+                'views'=>$views,
                 'sku' => 'SPOP' . rand(120, 140) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'long_description' => '
@@ -1572,6 +1581,7 @@ Cybermart hiện đang cung cấp ' . $nameMac . ' chính hãng với mức giá
                 'offer_price' => $offer_price,
                 'offer_start_date' => now(),
                 'offer_end_date' => '2025-07-31',
+                'views'=>$views,
                 'sku' => 'SPSS' . rand(120, 140) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'long_description' => '
@@ -2098,6 +2108,7 @@ Cybermart hiện đang cung cấp ' . $nameMac . ' chính hãng với mức giá
                 'offer_price' => $offer_price,
                 'offer_start_date' => now(),
                 'offer_end_date' => '2025-07-31',
+                'views'=>$views,
                 'sku' => 'SPXAM' . rand(120, 140) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'long_description' => '
@@ -2624,6 +2635,7 @@ Cybermart hiện đang cung cấp ' . $nameMac . ' chính hãng với mức giá
                 'offer_price' => $offer_price,
                 'offer_start_date' => now(),
                 'offer_end_date' => '2025-07-31',
+                'views'=>$views,
                 'sku' => 'SPMSI' . rand(120, 140) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'long_description' => '
@@ -2788,6 +2800,7 @@ Cybermart hiện đang cung cấp ' . $nameMac . ' chính hãng với mức giá
                 'offer_price' => $offer_price,
                 'offer_start_date' => now(),
                 'offer_end_date' => '2025-07-31',
+                'views'=>$views,
                 'sku' => 'SPS' . rand(100, 1020) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'short_description' => '
@@ -2949,6 +2962,7 @@ Cybermart hiện đang cung cấp ' . $nameMac . ' chính hãng với mức giá
                 'offer_price' => $offer_price,
                 'offer_start_date' => now(),
                 'offer_end_date' => '2025-07-31',
+                'views'=>$views,
                 'sku' => 'SPL' . rand(100, 1020) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'short_description' => '
@@ -3112,6 +3126,7 @@ Chuyển động chậm 1080p @ 120fps, 240 fps</td>
                     'offer_price' => $offer_price,
                     'offer_start_date' => now(),
                     'offer_end_date' => '2025-07-31',
+                    'views'=>$views,
                     'sku' => 'SPMSI' . rand(120, 140) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'long_description' => '
@@ -3276,6 +3291,7 @@ Chuyển động chậm 1080p @ 120fps, 240 fps</td>
                     'offer_price' => $offer_price,
                     'offer_start_date' => now(),
                     'offer_end_date' => '2025-07-31',
+                    'views'=>$views,
                     'sku' => 'SPNC' . rand(120, 140) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'long_description' => '
@@ -3361,6 +3377,7 @@ Chuyển động chậm 1080p @ 120fps, 240 fps</td>
                     'offer_price' => $offer_price,
                     'offer_start_date' => now(),
                     'offer_end_date' => '2025-07-31',
+                    'views'=>$views,
                     'sku' => 'SPMHMSI' . rand(120, 140) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'long_description' => '
@@ -3444,6 +3461,7 @@ Chuyển động chậm 1080p @ 120fps, 240 fps</td>
                     'offer_price' => $offer_price,
                     'offer_start_date' => now(),
                     'offer_end_date' => '2025-07-31',
+                    'views'=>$views,
                     'sku' => 'SPTV' . rand(120, 140) . rand(100, 1020),
                     'video_link' => 'https://youtube.com',
                     'long_description' => '<div id="cpsContent" class="cps-block-content" style="max-height: 100000px;"><div class="ksp-content p-2 mb-2"><h2 class="ksp-title has-text-centered">ĐẶC ĐIỂM NỔI BẬT</h2> <div><ul><li>Thiết kế tinh giản với màn hình phẳng viền mỏng 3 cạnh nâng cao thẩm mỹ của không gian</li><li>Kích thước 55 inch và dộ phân giải 4K tạo nên không gian rõ nét với màu sắc chân thực</li><li>Tổng công suất loa 20W cùng công nghệ Q-Symphony cho trải nghiệm âm thanh sống động</li><li>Hệ điều hành Tizen trực quan, dễ hiểu, dễ thao tác, tích hợp kho ứng dụng phong phú</li><li>Ứng dụng SmartThings cho phép sử dụng điện thoại để điều khiển tivi từ xa tiện lợi</li></ul></div></div> <div><p style="text-align: justify;"><strong>' . $nameTiVi32 . '</strong> là chiếc tivi thông minh truyền tải hình ảnh chân thực với khung hình rộng lớn. Người dùng sẽ có cảm nhận sâu sắc khi xem nội dung qua màn ảnh <a href="https://cybermart.io.vn/product/tivi/samsung/32-inch.html" title="Tivi 55 inch chính hãng" target="_blank"><strong>tivi 55 inch</strong></a> chất lượng này. Hãy xem đoạn mô tả dưới đây để biết ưu điểm của chiếc TV Samsung UA55AU7002 này.</p> <h2><strong>' . $nameTiVi32 . ' - Hình ảnh đẹp chuẩn 4K</strong></h2> <h3 style="text-align: justify;"><strong>Hiển thị màu sắc choáng ngợp, nội dung chuẩn 4K</strong></h3> <p style="text-align: justify;">Tivi 55AU7002 được tích hợp công nghệ PurColor mang đến dải màu sắc rộng lớn. Bạn có thể đắm chìm trong từng chi tiết của khung hình bởi sự sống động y như thật của hình ảnh.</p> <p style="text-align: justify;">Tivi Samsung mới này có khả năng cung cấp hình ảnh chuẩn 4K, nâng cấp mọi nội dung bạn yêu thích lên tầm cao mới. Công nghệ Color Mapping mang đến màu sắc khác biệt cho bạn chiêm ngưỡng thỏa thích.</p> <p style="text-align: justify;"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fmediamart.vn%2Ftivi%2Fsmart-tivi-samsung-4k-65-inch-65bu8000-crystal-uhd&psig=AOvVaw2GmTe3uKuffADjsXV4AR9_&ust=1722390372309000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCMC-kajSzYcDFQAAAAAdAAAAABAE" alt="Đánh giá màn hình Smart tivi Samsung 4K 55 inch UA55AU7002" loading="lazy"></p> <p style="text-align: justify;">&gt;&gt;&gt; Xem thêm <strong><a href="https://cybermart.io.vn/product/tivi/samsung/32-inch.html" target="_blank">Tivi Samsung 43AU7002</a></strong> mới giá cực tốt tại Cybermart.</p> <h3 style="text-align: justify;"><strong>Khung hình mượt mà, kết nối đa thiết bị</strong></h3> <p style="text-align: justify;">' . $nameTiVi32 . ' được trang bị công nghệ Motion Xcelerator xóa bỏ hiện tượng bóng ma trên màn hình. Công nghệ này giúp hình ảnh rõ nét từng chi tiết, chuyển cảnh không bị ảnh hưởng mờ nhòe.</p> <p style="text-align: justify;">Tivi có thể kết nối từ xa với PC, laptop, thiết bị di động giúp bạn tận hưởng tiện ích của thiết bị. Bạn có thể xem các chương trình yêu thích trên tivi, kết nối dễ dàng với các thiết bị thông minh chỉ cần có kết nối Internet trên tivi UA55AU7002.</p> <p style="text-align: justify;"><img src="https://dienmaycongthanh.vn/Upload/Products/smart-tivi-samsung-4k-50-inch-50au7700kxxv/50AU7700KXXV_2.jpg" alt="Đánh giá khả năng hiển thị" loading="lazy"></p> <h2 style="text-align: justify;"><strong>Mua ' . $nameTiVi32 . ' giá rẻ, chất lượng tại Cybermart</strong></h2> <p style="text-align: justify;"><strong>Smart ' . $nameTiVi32 . ' chính hãng</strong> có giá bán cực tốt tại cửa hàng Cybermart, được bảo hành đầy đủ. Gọi ngay cho chúng tôi nếu bạn muốn trang bị chiếc tivi này cho phòng khách nhà mình.</p></div> </div>         
@@ -3524,6 +3542,7 @@ Chuyển động chậm 1080p @ 120fps, 240 fps</td>
                 'offer_price' => $offer_price,
                 'offer_start_date' => now(),
                 'offer_end_date' => '2025-07-31',
+                'views'=>$views,
                 'sku' => 'SPMCB' . rand(120, 140) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'long_description' => '<div class="ksp-content p-2 mb-2" style="-webkit-text-stroke-width:0px;background-color:rgb(242, 242, 242);border-radius:0.5rem;box-sizing:inherit;color:rgb(74, 74, 74);font-family:Roboto, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:auto;orphans:2;padding:0.5rem !important;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;width:800px;word-spacing:0px;">
@@ -3796,6 +3815,7 @@ Cybermart hiện đang cung cấp ' . $nameASUS . ' chính hãng với mức gi�
                 'offer_price' => $offer_price,
                 'offer_start_date' => now(),
                 'offer_end_date' => '2025-07-31',
+                'views'=>$views,
                 'sku' => 'SPMCB' . rand(120, 140) . rand(100, 1020),
                 'video_link' => 'https://youtube.com',
                 'long_description' => '<div class="ksp-content p-2 mb-2" style="-webkit-text-stroke-width:0px;background-color:rgb(242, 242, 242);border-radius:0.5rem;box-sizing:inherit;color:rgb(74, 74, 74);font-family:Roboto, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:auto;orphans:2;padding:0.5rem !important;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;width:800px;word-spacing:0px;">
@@ -3912,7 +3932,8 @@ Cụ thể, 2 cổng Thunderbolt cho phép bạn sạc máy với công suất 7
 <p style="box-sizing:inherit;font-size:15px;font-weight:500;line-height:1.5;margin:0px 0px 10px;padding:0px;text-align:justify;">
 Cybermart hiện đang cung cấp ' . $nameDELL . ' chính hãng với mức giá hợp lý cùng nhiều chương trình khuyến mãi siêu hấp dẫn. Với hệ thống cửa hàng trải dài toàn quốc, Cybermart là một thương hiệu phân phối đồ công nghệ uy tín và hoàn toàn xứng đáng để bạn tin tưởng và đặt mua Macbook Air 15" chính hãng.&nbsp;Hãy nhanh tay gọi điện tới hotline 1800 2097 để đặt hàng sản phẩm với giá ưu đãi bạn nhé!
 </p>
-</div>','specifications' => '
+</div>',
+                'specifications' => '
             <table id="tskt" class="table table-striped">
     <tbody>
     <tr>

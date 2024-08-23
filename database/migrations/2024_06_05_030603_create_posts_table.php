@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('seo_title', 255)->nullable();
             $table->boolean('type');
             $table->longText('seo_description')->nullable();
+            $table->integer('post_views')->default(0);
             $table->boolean('status');
             $table->timestamps();
             $table->softDeletes();

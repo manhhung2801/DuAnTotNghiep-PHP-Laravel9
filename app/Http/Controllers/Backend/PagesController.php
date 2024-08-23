@@ -8,13 +8,14 @@ use App\Models\Page;
 use App\Models\PageCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Exception;
 
 class PagesController extends Controller
 {
 
     public function index(Request $request)
     {
-        $pages = Page::query(); 
+        $pages = Page::query();
 
         if (!empty($request->get('keyword'))) {
 
@@ -102,7 +103,6 @@ class PagesController extends Controller
         $request->validate(
             [
                 'page_category_id' => ['required'],
-
                 'name' => ['required', 'max:255'],
                 'long_description' => ['required'],
                 'seo_title' => ['required'],
@@ -129,7 +129,6 @@ class PagesController extends Controller
         $pages->save();
 
         toastr()->success('Tạo mới thành công!', 'success');
-
         return redirect()->back();
     }
 
@@ -143,9 +142,40 @@ class PagesController extends Controller
     {
         $pages = Page::findOrFail($id);
         $pages->delete();
-
         return response(['status' => 'success', 'message' => 'Đã xoá thành công!']);
     }
+
+    public function showTrash(Request $request)
+    {
+        $getPages = Page::onlyTrashed()->latest();
+
+        if (!empty($request->get('keyword'))) {
+            $keyword = $request->get('keyword');
+            $getPages = $getPages->where('name', 'like', '%' . $request->get('keyword') . '%');
+        }
+
+        $getPages = $getPages->paginate(15);
+        return view('admin.pages.trash-list', compact('getPages'));
+    }
+    public function destroyTrash($id)
+    {
+        try {
+            Page::destroyTrashedItem($id);
+            return response(['status' => 'success', 'Xóa vĩnh viễn thành công!']);
+        } catch (Exception $e) {
+            return response(['status' => 'error', 'Xóa vĩnh viễn thất bại! ' . $e . '']);
+        }
+    }
+    public function restoreTrash($id)
+    {
+        try {
+            Page::restoreTrashed($id);
+            return response(['status' => 'success', 'Khôi phục thành công!']);
+        } catch (Exception $e) {
+            return response(['status' => 'error', 'message' => 'Khôi phục thất bại ' . $e . '']);
+        }
+    }
+
 
     public function changeStatus(Request $request)
     {
