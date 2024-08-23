@@ -121,7 +121,7 @@ class CheckoutController extends Controller
                 }
 
                 try {
-                    $orderEmail = new OrderEmail($getCart, $order);
+                    $orderEmail = new OrderEmail($getCart, $order, $getCoupon);
                     Mail::to($request->email)->send($orderEmail);
                 } catch (\Exception $e) {
                     \Log::error('Error sending order email: ' . $e->getMessage());
