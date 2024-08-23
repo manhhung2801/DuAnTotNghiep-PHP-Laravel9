@@ -45,7 +45,7 @@ class ContactController extends Controller
             $data['content'] = $request->input('content');
             // gửi địa chỉ email 
             try {
-                Mail::to('nguyenkhanhhuy1229@gmail.com')->send(new ContactEmail($data));
+                Mail::to('cybermart53@gmail.com')->send(new ContactEmail($data));
                 return response()->json(['status' => true, 'message' => "Đã gửi thành công"]);
             } catch (\Exception $e) {
                 return response()->json(['status' => false, 'message' => "Đã xảy ra lỗi khi gửi email"]);

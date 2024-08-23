@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('ward');
             $table->string('address');
             $table->longText('description');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('phone')->nullable();
             $table->tinyInteger('status')->default(0);
             //1 là địa chỉ lấy hàng| 0 không
