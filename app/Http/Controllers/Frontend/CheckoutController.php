@@ -120,8 +120,8 @@ class CheckoutController extends Controller
                     $order_detail->save();
                 }
 
-                try {
-                    $orderEmail = new OrderEmail($getCart, $order, $getCoupon);
+               try {
+                    $orderEmail = new OrderEmail($getCart, $order, $getCoupon ?? null);
                     Mail::to($request->email)->send($orderEmail);
                 } catch (\Exception $e) {
                     \Log::error('Error sending order email: ' . $e->getMessage());
@@ -129,11 +129,6 @@ class CheckoutController extends Controller
                 }
                 // xóa toàn bộ giỏ hàng
                 \Cart::clear();
-
-
-
-
-
                 if ($request->payment_method == 1) {
                     $vnpayService = new VNPayService();
                     return $vnpayService->vnpayCreatePayment($order->vnp_order_code, $order->total);
