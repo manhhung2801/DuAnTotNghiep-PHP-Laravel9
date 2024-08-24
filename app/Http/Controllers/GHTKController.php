@@ -51,15 +51,14 @@ class GHTKController extends Controller
                 ),
             ));
             $response = curl_exec($curl);
-            
+
             curl_close($curl);
-            
+
             // Chuyển json thành mảng
             $jsonData = json_decode($response);
             $shipMoney = $jsonData->fee->fee;
-           
+
             return response()->json(['status' => true, 'shipMoney' => $shipMoney]);
-            
         } catch (\Exception $e) {
             return response()->json(['status' => false, 'Đã xảy ra lỗi' . $e]);
         }
@@ -215,5 +214,51 @@ class GHTKController extends Controller
         } else {
             return response('Xảy ra lỗi vui lòng thử lại sau!');
         }
+    }
+
+    public function ghtkWebhookData(Request $request)
+    {
+
+        $status_id = $request->status_id;
+        $partner_id = $request->partner_id;
+
+        $orderStatus = [
+            -1 => "Hủy đơn hàng",
+            1 => "Chưa tiếp nhận",
+            2 => "Đã tiếp nhận",
+            3 => "Đã lấy hàng/Đã nhập kho",
+            4 => "Đã điều phối giao hàng/Đang giao hàng",
+            5 => "Đã giao hàng/Chưa đối soát",
+            6 => "Đã đối soát",
+            7 => "Không lấy được hàng",
+            8 => "Hoãn lấy hàng",
+            9 => "Không giao được hàng",
+            10 => "Delay giao hàng",
+            11 => "Đã đối soát công nợ trả hàng",
+            12 => "Đã điều phối lấy hàng/Đang lấy hàng",
+            13 => "Đơn hàng bồi hoàn",
+            20 => "Đang trả hàng (COD cầm hàng đi trả)",
+            21 => "Đã trả hàng (COD đã trả xong hàng)",
+            123 => "Shipper báo đã lấy hàng",
+            127 => "Shipper (nhân viên lấy/giao hàng) báo không lấy được hàng",
+            128 => "Shipper báo delay lấy hàng",
+            45 => "Shipper báo đã giao hàng",
+            49 => "Shipper báo không giao được giao hàng",
+            410 => "Shipper báo delay giao hàng",
+        ];
+        
+        $getOrder = Order::where('order_code', $partner_id)->first();
+
+        if($getOrder) {
+            foreach ($orderStatus as $status => $status_text) {
+                if ($status == $status_id) {
+                    $getOrder->order_status = $status;
+                    $getOrder->order_status_text = $status_text;
+                    $getOrder->save();
+                    return response()->json(['status'=> true, 'message' => 'Thành công'], 200);
+                }
+            }
+        }
+        return response()->json(['status'=> false, 'message' => 'Đã có lỗi xảy ra'], 404);
     }
 }
