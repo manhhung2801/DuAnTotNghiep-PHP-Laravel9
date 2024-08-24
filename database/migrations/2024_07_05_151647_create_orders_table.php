@@ -35,6 +35,7 @@ return new class extends Migration
             $table->text('shipping_method');
             $table->string('coupon')->nullable();
             $table->tinyInteger('order_status')->default(0);
+            $table->string('order_status_text')->nullable();
             $table->text('admin_note')->nullable();
             $table->text('user_note')->nullable();
             $table->timestamps();

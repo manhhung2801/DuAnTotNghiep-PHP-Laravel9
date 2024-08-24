@@ -8,7 +8,8 @@
             </button>
 
             <a class="navbar-brand" href="{{ route('home') }}">
-                <span class="fs-1 text-white fw-bold">CYBERMART</span>
+                {{-- <span class="fs-1 text-white fw-bold">CYBERMART</span> --}}
+                <img src="{{ asset('uploads/logo/filelogotext_white.png') }}" width="200px" alt="logo">
             </a>
             <a href="{{ route('cart.index') }}" class="navbar-toggler border-0 ps-2 icon-cart">
                 <i class="fa-solid fa-cart-shopping fa-lg mt-3" style="color: #ffffff;"></i>

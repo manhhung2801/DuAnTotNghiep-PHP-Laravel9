@@ -13,7 +13,7 @@ class Order extends Model
         'vnp_order_code', 'vnp_transaction_id', 'vnp_bank_code', 'vnp_refund_status',
         'order_code', 'order_name', 'order_phone', 'order_email', 'order_address', 'total',
         'ship_money', 'qty_total', 'payment_method', 'payment_status',
-        'shipping_method', 'coupon', 'order_status', 'admin_note', 'user_note', 'user_id',
+        'shipping_method', 'coupon', 'order_status', 'order_status_text', 'admin_note', 'user_note', 'user_id',
         'created_at', 'updated_at'
     ];
     public function orderDetail()
