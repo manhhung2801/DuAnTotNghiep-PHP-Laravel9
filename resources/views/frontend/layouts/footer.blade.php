@@ -4,7 +4,8 @@
             <div class="row">
                 <!-- Thông tin cửa hàng -->
                 <div class="col-lg-5 col-md-12 mb-4">
-                    <h5 class="mb-3">CYBERMART</h5>
+                    <h5 class="mb-3 text-center"><img src="{{ asset('uploads/logo/cybermart_logo_text.png') }}" width="80%" alt=""></h5>
+
                     @foreach ($storeAddress as $item)
                         <ul class="nav flex-column">
                             <li class="nav-item mb-2">{!! $item->description !!}</li>
