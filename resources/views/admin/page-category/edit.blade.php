@@ -18,43 +18,58 @@
             </div>
         </div>
         <!--end breadcrumb-->
-		<div class="card">
-			<div class="card-header">
-				<h6 class="mt-2 mb-0 text-uppercase float-start">Cập Nhật</h6>
-				<a href="{{ route("admin.page-category.index") }}" class="btn btn-primary float-end">Quay Lại</a>
-			</div>
-			<div class="card-body">
-				<form class="row g-3" action="{{ route("admin.page-category.update", $pageCategories->id) }}" method="POST" enctype="multipart/form-data">
-					@csrf
-					@method('PUT')
-					<div class="col-md-4">
-						<label for="input1" class="form-label">Tên trang</label>
-						<input type="text" class="form-control" id="input1" name="name" value="{{ $pageCategories->name }}" placeholder="Nhập tên trang">
-					</div>
+        <div class="card">
+            <div class="card-header">
+                <h6 class="mt-2 mb-0 text-uppercase float-start">Cập Nhật</h6>
+                <a href="{{ route('admin.page-category.index') }}" class="btn btn-primary float-end">Quay Lại</a>
+            </div>
+            <div class="card-body">
+                <form class="row g-3" action="{{ route('admin.page-category.update', $pageCategories->id) }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
 
-					<div class="col-md-4">
-						<label for="input1" class="form-label">Thứ hạng</label>
-						<input type="number" class="form-control" name="rank" placeholder="Nhập Thứ Hạng" value="{{ $pageCategories->rank }}">
-					</div>
-					<div class="col-md-4">
-						<label for="input9" class="form-label">Trạng thái</label>
-						<select id="input9" class="form-select" name="status">
-							<option {{ $pageCategories->status == 1 ? "selected" : ""  }} value="1">Hoạt động</option>
-							<option {{ $pageCategories->status == 0 ? "selected" : ""  }} value="0">Không hoạt động</option>
-						</select>
-					</div>
-					<div class="col-md-2">
-						<div class="d-grid align-items-center gap-3">
-							<button type="submit" class="btn btn-primary px-4">Cập Nhật</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
+                    <div class="col-md-4">
+                        <label for="input1" class="form-label">Tên trang</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="input1"
+                            name="name" value="{{ old('name', $pageCategories->name) }}" placeholder="Nhập tên trang">
+                        @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="input2" class="form-label">Thứ hạng</label>
+                        <input type="number" class="form-control @error('rank') is-invalid @enderror" id="input2"
+                            name="rank" placeholder="Nhập Thứ Hạng" value="{{ old('rank', $pageCategories->rank) }}">
+                        @error('rank')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="input9" class="form-label">Trạng thái</label>
+                        <select id="input9" class="form-select @error('status') is-invalid @enderror" name="status">
+                            <option {{ old('status', $pageCategories->status) == 1 ? 'selected' : '' }} value="1">Hoạt
+                                động</option>
+                            <option {{ old('status', $pageCategories->status) == 0 ? 'selected' : '' }} value="0">Không
+                                hoạt động</option>
+                        </select>
+                        @error('status')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="d-grid align-items-center gap-3">
+                            <button type="submit" class="btn btn-primary px-4">Cập Nhật</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
     </div>
     </div>
 
 @endsection
-
-
-

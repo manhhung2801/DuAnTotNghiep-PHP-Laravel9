@@ -78,14 +78,13 @@ class AdminController extends Controller
     }
     public function dashboard()
     {
-
-        $countUser = User::count();
-        $countProuduct = User::count();
-        $countCoupon = Coupons::count();
-        $countSlider = Slider::count();
-        $countOrder = Order::count();
-        $countCategory = Category::count();
+        $countProuduct = Product::count();
         $countPost = Post::count();
+        $countOrder = Order::count();
+        $countCoupon = Coupons::count();
+        $countUser = User::where('role', 'user')->count();
+        $countSlider = Slider::count();
+        $countCategory = Category::count();
         $countProductComments = ProductComments::count();
         $countContact = contact::get()->count();
 
@@ -103,6 +102,10 @@ class AdminController extends Controller
         $totalRevenue = $this->totalRevenue($countRevenue);
         $data = $this->chartCircle($Order);
 
+        // Lượt views sản phẩm và bài viết
+        $product_views = Product::orderBy('views', 'DESC')->take(21)->get();
+        $post_views = Post::orderBy('post_views', 'DESC')->take(10)->get();
+
         return view('admin.dashboard', [
             'countUser' => $countUser,
             'countProuduct' => $countProuduct,
@@ -116,7 +119,8 @@ class AdminController extends Controller
             'countContact' => $countContact,
             'unpaidOrders' => $unpaidOrders,
             'cancelOrders' => $cancelOrders,
-            // 'data' => $data,
+            'product_views' => $product_views,
+            'post_views' => $post_views,
         ]);
     }
 
@@ -140,7 +144,11 @@ class AdminController extends Controller
 
         $unpaidOrdersCharts = Order::where(function ($query) {
             $query->where('order_status', -1)
-                ->where('payment_status', 0);
+                ->where('payment_status', 0)
+                ->orWhere('payment_status', 1)
+                ->where('vnp_refund_status', 'Refunded')
+                ->where('shipping_method', 1)
+                ->orWhere('shipping_method', 0);
         })
             ->whereBetween('created_at', [$start_date_order, $end_date_order])
             ->get();

@@ -173,7 +173,7 @@ class ProductController extends Controller
         try {
             // search tìm kiếm sản phẩm theo tên
             $query = trim(strip_tags($request->query('query')));
-            $productsQuery  = Product::where('name', 'like', "%$query%")
+            $productsQuery  = Product::where('name', 'like', "%$query%")->orderBy('views', 'DESC')
                 ->get()
                 ->map(function ($product) {
                     $img = Product::where('id', $product->id)
@@ -182,19 +182,12 @@ class ProductController extends Controller
                     $product->image = $img ? $img->image : null;
                     return $product;
                 });
-            $products = $productsQuery->take(4);
+            $products = $productsQuery->take(5);
 
             if ($request->ajax()) {
                 $categories = $products->pluck('category')->unique()->values();
                 $sub_categories = $products->pluck('subCategory')->unique()->values();
                 $child_categories = $products->pluck('childCategory')->unique()->values();
-
-                // $sub_categories = $sub_categories->map(function ($subCategory) {
-                //     if ($subCategory && $subCategory->category) {
-                //         $subCategory->slug_category = $subCategory->category->slug;
-                //     }
-                //     return $subCategory;
-                // });
 
                 return response()->json([
                     'categories' => $categories,
@@ -221,5 +214,4 @@ class ProductController extends Controller
     {
         Product::where('id', $productId)->increment('views');
     }
-    
 }

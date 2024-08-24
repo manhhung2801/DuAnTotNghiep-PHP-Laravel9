@@ -66,12 +66,18 @@ Route::resource('/child-category', ChildCategoryController::class);
 
 /** pageCategories */
 Route::put('/page-category/change-status', [PageCategoryController::class, 'changeStatus'])->name('pageCategories.change-status');
+Route::get('page-category/trash-list/', [PageCategoryController::class, 'showTrash'])->name('pageCategories.trash-list');
+Route::DELETE('page-category/destroy-trash/{id?}', [PageCategoryController::class, 'destroyTrash'])->name('pageCategories.destroy-trash');
+Route::PATCH('page-category/restore-trash/{id?}', [PageCategoryController::class, 'restoreTrash'])->name('pageCategories.restore-trash');
 Route::resource('/page-category', PageCategoryController::class);
 
 
 
 /**Pages */
 Route::put('/pages/change-status', [PagesController::class, 'changeStatus'])->name('pages.change-status');
+Route::get('pages/trash-list/', [PagesController::class, 'showTrash'])->name('pages.trash-list');
+Route::DELETE('pages/destroy-trash/{id?}', [PagesController::class, 'destroyTrash'])->name('pages.destroy-trash');
+Route::PATCH('pages/restore-trash/{id?}', [PagesController::class, 'restoreTrash'])->name('pages.restore-trash');
 Route::resource('/pages', PagesController::class);
 
 /** Product */

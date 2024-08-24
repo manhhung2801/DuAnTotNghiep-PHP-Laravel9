@@ -131,12 +131,12 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
                 </div>
-                <div class="menu-title">Người Dùng</div>
+                <div class="menu-title">Tài khoản</div>
             </a>
             <ul>
                 <li>
                     <a href="{{ route('admin.user-management.index') }}"><i class='bx bx-radio-circle'></i>Danh Sách
-                        Người Dùng</a>
+                        Tài khoản</a>
                 </li>
             </ul>
         </li>
@@ -167,7 +167,7 @@
             </ul>
         </li>
 
-        <li>
+        {{-- <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="fa-regular fa-address-book"></i>
                 </div>
@@ -179,7 +179,7 @@
                         hàng liên hệ</a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 
 
     </ul>

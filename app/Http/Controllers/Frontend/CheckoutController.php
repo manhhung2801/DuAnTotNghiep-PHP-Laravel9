@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 use App\Services\VNPayService;
 use Helper;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderEmail;
 
 class CheckoutController extends Controller
 {
@@ -77,7 +79,7 @@ class CheckoutController extends Controller
                     }
                 }
 
-                
+
                 $order_address = [
                     'province' => trim($request->provinces),
                     'district' => trim($request->districts),
@@ -119,9 +121,15 @@ class CheckoutController extends Controller
                 }
 
 
+               try {
+                    $orderEmail = new OrderEmail($getCart, $order, $getCoupon ?? null);
+                    Mail::to($request->email)->send($orderEmail);
+                } catch (\Exception $e) {
+                    \Log::error('Error sending order email: ' . $e->getMessage());
+                    return redirect()->back()->with(['error' => 'Lỗi gửi email: ' . $e->getMessage()]);
+                }
                 // xóa toàn bộ giỏ hàng
                 \Cart::clear();
-
                 if ($request->payment_method == 1) {
                     $vnpayService = new VNPayService();
                     return $vnpayService->vnpayCreatePayment($order->vnp_order_code, $order->total);
@@ -145,7 +153,7 @@ class CheckoutController extends Controller
 
         //Check lượt sử dụng
         $checkMaxUse = Order::where('user_id', $userId)->where('coupon', $coupon_code)->exists();
-        if($checkMaxUse) {
+        if ($checkMaxUse) {
             return response()->json(['status' => false, 'message' => 'Bạn đã sử dụng hết lượt mã giảm giá này!']);
         }
 

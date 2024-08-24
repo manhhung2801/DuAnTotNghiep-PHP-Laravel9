@@ -1,7 +1,6 @@
-
 <div class="form-group my-3">
-    <input id="email_checkout" type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required>
-    <div class="invalid-feedback invalid-email">* Email không hợp lệ!</div>
+    <input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required>
+    <div class="invalid-feedback">* Email không hợp lệ!</div>
 </div>
 <div class="form-group my-3">
     <input type="text" class="form-control" placeholder="Họ và tên" name="name" value="{{ old('name') }}"
@@ -9,7 +8,7 @@
     <div class="invalid-feedback">* Bạn chưa nhập tên !!!</div>
 </div>
 <div class="input-group my-3">
-    <input id="phone_checkout" type="text" class="form-control" placeholder="Số điện thoại (tùy chọn)" name="phone"
+    <input type="text" class="form-control" placeholder="Số điện thoại (tùy chọn)" name="phone"
         value="{{ old('phone') }}" required>
     <div class="invalid-feedback invalid-phone">* Bạn chưa nhập số điện thoại!!! </div>
 </div>

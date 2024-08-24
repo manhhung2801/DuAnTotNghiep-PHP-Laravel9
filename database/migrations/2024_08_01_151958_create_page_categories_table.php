@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('rank')->nullable()->comment("rank = 1, 2, 3 ,4, 5");
             $table->boolean('status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
