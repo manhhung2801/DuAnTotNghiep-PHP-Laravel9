@@ -37,7 +37,6 @@ class ProductController extends Controller
     {
 
         $productsQuery = Product::query();
-
         $filters = compact('cat', 'sub', 'child', 'slug');
         $sortBy = $request->query('sort');
         $slug = str_replace('.html', '', $slug);
@@ -173,7 +172,7 @@ class ProductController extends Controller
         try {
             // search tìm kiếm sản phẩm theo tên
             $query = trim(strip_tags($request->query('query')));
-            $productsQuery  = Product::where('name', 'like', "%$query%")->orderBy('views', 'DESC')
+            $productsQuery  = Product::where('name', 'like', "%$query%")->with(['category', 'subCategory'])->orderBy('views', 'DESC')
                 ->get()
                 ->map(function ($product) {
                     $img = Product::where('id', $product->id)
@@ -186,6 +185,13 @@ class ProductController extends Controller
             if ($request->ajax()) {
                 $categories = $products->pluck('category')->unique()->values();
                 $sub_categories = $products->pluck('subCategory')->unique()->values();
+                // $sub_categories = $sub_categories->map(function ($subCategory) {
+                //     if ($subCategory && $subCategory->category) {
+                //         $subCategory->slug_category = $subCategory->category->slug;
+                //     }
+                //     return $subCategory;
+                // });
+
                 $child_categories = $products->pluck('childCategory')->unique()->values();
 
                 return response()->json([
@@ -211,6 +217,13 @@ class ProductController extends Controller
     }
     public function ProductView($productId)
     {
-        Product::where('id', $productId)->increment('views');
+
+        $viewedProducts = session()->get('viewed_products', []);
+        if (!in_array($productId, $viewedProducts)) {
+            Product::where('id', $productId)->increment('views');
+
+            $viewedProducts[] = $productId;
+            session()->put('viewed_products', $viewedProducts);
+        }
     }
 }
