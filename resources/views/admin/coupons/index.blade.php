@@ -49,6 +49,8 @@
                                 <th>Mã giảm giá</th>
                                 <th>Số lượng</th>
                                 <th>Giảm giá</th>
+                                <th>Ngày bất đầu</th>
+                                <th>Ngày kết thúc</th>
                                 <th>Trạng thái</th>
                                 <th>Hoạt động</th>
                             </tr>
@@ -62,6 +64,8 @@
                                     <td>{{ $item->code }}</td>
                                     <td>{{ $item->quantity }}</td>
                                     <td>{{ $item->precent_amount }}</td>
+                                    <td>{{ $item->start_date }}</td>
+                                    <td>{{ $item->end_date }}</td>
 
                                     <td>
                                         <div class="form-check form-switch form-check-success">

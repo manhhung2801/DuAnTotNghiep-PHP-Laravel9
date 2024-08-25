@@ -88,10 +88,10 @@ class AdminController extends Controller
         $countProductComments = ProductComments::count();
         $countContact = contact::get()->count();
 
-        $countRevenue = Order::where('order_status', 92)
-            ->where('payment_status', 1)
-            ->orWhere('payment_status', 0)
+        $countRevenue = Order::where('order_status', 92)->orWhere('order_status', 5)->orWhere('order_status', 6)
+            ->whereIn('payment_status', [0, 1])
             ->whereIn('shipping_method', [0, 1])->get();
+
         $Order = Order::where('payment_status', 1)->where('payment_status', 1)
             ->orWhere('payment_status', 0)->get();
 
@@ -133,9 +133,8 @@ class AdminController extends Controller
         $start_date_order = date('Y-m-d', strtotime($start_date));
         $end_date_order = date('Y-m-d', strtotime($end_date));
 
-        $Orderss = Order::where('order_status', 92)
-            ->where('payment_status', 1)
-            ->orWhere('payment_status', 0)
+        $Orderss =  Order::where('order_status', 92)->orWhere('order_status', 5)->orWhere('order_status', 6)
+            ->whereIn('payment_status', [0, 1])
             ->whereIn('shipping_method', [0, 1])
             ->whereBetween('created_at', [$start_date_order, $end_date_order])
             ->get();
@@ -167,10 +166,9 @@ class AdminController extends Controller
         $startDate_piecharts = $request->input('startDate_piecharts');
         $endDate_piecharts = $request->input('endDate_piecharts');
 
-        $Order = Order::where('order_status', 92)
-            ->where('payment_status', 1)
-            ->orWhere('payment_status', 0)
-            ->whereIn('shipping_method', [0, 1])
+        $Order = Order::where('order_status', 92)->orWhere('order_status', 5)->orWhere('order_status', 6)
+        ->whereIn('payment_status', [0, 1])
+        ->whereIn('shipping_method', [0, 1])
             ->whereBetween('created_at', [$startDate_piecharts, $endDate_piecharts])
             ->get();
         $datas = $this->chartCircle($Order);
@@ -183,10 +181,9 @@ class AdminController extends Controller
     {
         $startDate_piecharts = $request->startDate_piecharts;
         $endDate_piecharts = $request->endDate_piecharts;
-        $Order = Order::where('order_status', 92)
-            ->where('payment_status', 1)
-            ->orWhere('payment_status', 0)
-            ->whereIn('shipping_method', [0, 1])
+        $Order = Order::where('order_status', 92)->orWhere('order_status', 5)->orWhere('order_status', 6)
+        ->whereIn('payment_status', [0, 1])
+        ->whereIn('shipping_method', [0, 1])
             ->whereBetween('created_at', [$startDate_piecharts, $endDate_piecharts])
             ->get();
         $datas = $this->chartCircle($Order);
@@ -210,9 +207,8 @@ class AdminController extends Controller
             ->whereBetween('created_at', [$endDate_countCharts, $startDate_countCharts])->count();
 
         $countRevenue = Order::where('order_status', 92)
-            ->where('payment_status', 1)
-            ->orWhere('payment_status', 0)
-            ->whereIn('shipping_method', [0, 1])->whereBetween('created_at', [$startDate_countCharts, $endDate_countCharts])->get();
+        ->whereIn('payment_status', [0, 1])
+        ->whereIn('shipping_method', [0, 1])->whereBetween('created_at', [$startDate_countCharts, $endDate_countCharts])->get();
 
         $totalRevenue = $this->totalRevenue($countRevenue);
         $countCoupon = Coupons::whereBetween('created_at', [$startDate_countCharts, $endDate_countCharts])->count();
