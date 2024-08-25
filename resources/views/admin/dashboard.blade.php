@@ -35,7 +35,7 @@
                     <input type="date" id="end_date_chartCount" value="2025-08-01">
                 </div>
                 <div class="col-lg-2">
-                    <input type="submit" value="lọc" id="date_chartCount_submit"
+                    <input type="submit" value="Lọc" id="date_chartCount_submit"
                         style="padding: 0.9px; width: 150px;border-radius: 5px;border: 1px solid #14abef;background-color: #14abef;color: azure;">
                 </div>
             </form>
@@ -328,7 +328,7 @@
                                                 <input type="date" id="end_date_piechart" value="2025-08-01">
                                             </div>
                                             <div class="col-lg-2 align-items-end d-flex">
-                                                <input type="submit" value="lọc" id="date_piechart_submit"
+                                                <input type="submit" value="Lọc" id="date_piechart_submit"
                                                     style="padding: 0.9px; width: 150px;border-radius: 5px;border: 1px solid #14abef;background-color: #14abef;color: azure;">
                                             </div>
                                         </form>
@@ -336,7 +336,7 @@
                                     <div class="col-lg-3 ">
                                         <form method="post" class="row justify-content-end align-items-end">
                                             <div class="w-100 d-flex justify-content-end align-items-end">
-                                                <label for="piechart_time">lọc theo:</label>
+                                                <label for="piechart_time">Lọc theo:</label>
                                                 <select name="piechart_time" id="piechart_time">
                                                     <option value="">Lọc</option>
                                                     <!-- <option value="day_piechart">Ngày</option> -->
