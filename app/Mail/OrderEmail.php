@@ -18,14 +18,15 @@ class OrderEmail extends Mailable
      *
      * @return void
      */
-    public $getCart;
+    public $getProduct;
     public $order;
     public $getCoupon;
-    public function __construct($getCart, $order, $getCoupon)
+    public function __construct($getProduct, $order, $getCoupon = null, $subject = 'Đơn hàng từ Cybermart')
     {
-        $this->getCart = $getCart;
+        $this->getProduct = $getProduct;
         $this->order = $order;
         $this->getCoupon = $getCoupon;
+        $this->subject = $subject;
     }
 
     /**
@@ -36,8 +37,7 @@ class OrderEmail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Mail đơn hàng  ',
-
+            subject: '[CyberMart] ' . $this->subject,
         );
     }
 
@@ -51,7 +51,7 @@ class OrderEmail extends Mailable
         return new Content(
             view: 'frontend.checkout.orderMail',
             with: [
-                'getCart' => $this->getCart,
+                'getProduct' => $this->getProduct,
                 'order' => $this->order,
                 'getCoupon' => $this->getCoupon,
             ]

@@ -123,7 +123,9 @@ class CheckoutController extends Controller
 
 
                try {
-                    $orderEmail = new OrderEmail($getCart, $order, $getCoupon ?? null);
+                    $getOrderDetail = OrderDetail::where('order_id', $order->id)->get();
+                    $subject = 'Bạn có đơn hàng '.$order->order_code.' mới từ CyberMart';
+                    $orderEmail = new OrderEmail($getOrderDetail, $order, $getCoupon ?? null, $subject);
                     Mail::to($request->email)->send($orderEmail);
                 } catch (\Exception $e) {
                     \Log::error('Error sending order email: ' . $e->getMessage());

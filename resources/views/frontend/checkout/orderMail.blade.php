@@ -71,7 +71,6 @@
 
         .cart-items {
             max-width: 800px;
-            margin: 0 auto;
         }
 
         .cart-item:last-child {
@@ -132,52 +131,58 @@
         </tr>
         <tr>
             <th>Phương thức thanh toán</th>
-            <td colspan="3">
+            <td>
                 @if ($order->payment_method == 0)
                     <p style="color: red;">Thanh toán khi nhận hàng (COD)</p>
                 @elseif($order->payment_method == 1)
                     <p style="color: red;">Thanh toán qua VNPAY</p>
                 @endif
             </td>
+            <th>Trạng thái đơn hàng </th>
+            <td>
+                <p style="color: red;">{{ $order->order_status_text }}</p>
+            </td>
         </tr>
         <tr>
             <td colspan="4">
-                <h3 style="text-align:center">Thông tin đơn hàng</h3>
+                <h3>Thông tin đơn hàng</h3>
                 <ul class="cart-items">
-                    @foreach ($getCart as $item)
+                    @foreach ($getProduct as $item)
                         <li class="cart-item">
                             <div class="cart-item-image">
-                                <img src="{{ asset('uploads/products/' . $item->associatedModel->image) }}"
-                                    alt="{{ $item->name }}">
+                                <img src="{{ asset('uploads/products/' . $item->product->image) }}"
+                                    alt="{{ $item->product->image }}">
                             </div>
                             <div class="cart-item-details">
-                                <p class="cart-item-name">{{ $item->name }}</p>
+                                <p class="cart-item-name">{{ $item->product_name }}</p>
                                 <p class="cart-item-quantity">
-                                    Số lượng: <span style="color: red">{{ $item->quantity }}</span>
+                                    Số lượng: <span style="color: red">{{ $item->qty }}</span>
                                 </p>
                                 <p class="cart-item-price">
                                     Giá: <span style="color: red">{{ number_format($item->price, 0, '', '.') }}</span>
                                     VND
                                 </p>
-                                <div class="attributes-container">
-                                    @if ($item->attributes->count() > 0)
-                                        @foreach ($item->attributes as $key => $value)
-                                            <p class="attribute-item ">
-                                                <strong>{{ $key }}:</strong>
-                                                {{ $value }}
-                                            </p>
-                                        @endforeach
-                                    @endif
-                                </div>
+                                @if (isset($item->variants))
+                                {{-- Chuyển dổi json thành mảng --}}
+                                @php
+                                    $variants = json_decode($item->variants);
+                                @endphp
+
+                                {{-- Lặp các variant --}}
+                                @foreach ($variants as $key => $value)
+                                    <span class="text-muted mb-0 small text-capitalize">
+                                        <strong>{{ $key }}:</strong>
+                                        {{ $value }}
+                                    </span>
+                                @endforeach
+                            @endif
                             </div>
                         </li>
                     @endforeach
                 </ul>
-
-                <p style="max-width: 800px;
-            margin: 0 auto;margin-top: 10px;"><strong>Tổng tiền:</strong>
+                <h2 style="max-width: 800px; margin-top: 10px;"><strong>Tổng tiền:</strong>
                     <span style="color: red;">{{ number_format($order->total, 0, '', '.') }}</span> VND
-                </p>
+                </h2>
                 @if (isset($getCoupon) && $getCoupon->precent_amount > 0)
                     <p>
                         <span style="color: red;">
@@ -189,10 +194,9 @@
                         </span>
                     </p>
                 @endif
-                <p style="max-width: 800px;
-            margin: 0 auto;margin-top: 10px;"><strong>Phí giao
+                <p style="max-width: 800px;margin-top: 10px;"><strong>Phí giao
                         hàng:</strong>
-                    <span style="color: red;">
+                    <span>
                         @isset($order->ship_money)
                             +{{ number_format($order->ship_money, 0, ',', '.') }}
                         @else

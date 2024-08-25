@@ -8,6 +8,8 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderEmail;
 
 class OrderController extends Controller
 {
@@ -98,6 +100,18 @@ class OrderController extends Controller
                 $order->vnp_refund_status = 'Pending';
                 $order->save();
             }
+
+            //Gửi mail
+            try {
+                $getOrderDetail = OrderDetail::where('order_id', $id)->get();
+                $subject = 'Đơn hàng '.$order->order_code.' từ Cybermart đã bị hủy';
+                $orderEmail = new OrderEmail($getOrderDetail, $order, $getCoupon ?? null, $subject);
+                Mail::to($order->order_email)->send($orderEmail);
+            } catch (\Exception $e) {
+                \Log::error('Error sending order email: ' . $e->getMessage());
+                return redirect()->back()->with(['error' => 'Lỗi gửi email: ' . $e->getMessage()]);
+            }
+
 
             return response()->json(['status' => true, 'message' => 'Hủy đơn hàng thành công!']);
         }

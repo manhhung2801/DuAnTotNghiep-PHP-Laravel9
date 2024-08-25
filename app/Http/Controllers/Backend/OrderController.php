@@ -7,6 +7,8 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderEmail;
 
 class OrderController extends Controller
 {
@@ -15,22 +17,21 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function VNPRefundStatusUpdate(Request $request) {
+    public function VNPRefundStatusUpdate(Request $request)
+    {
         $order = Order::find($request->orderId);
         $order->vnp_refund_status =  $request->vnpRefundStatus;
         $order->save();
 
         $message = '';
 
-        if($order->vnp_refund_status == 'Pending') {
+        if ($order->vnp_refund_status == 'Pending') {
             $message = 'Chờ phê duyệt hoàn tiền';
-        }elseif($order->vnp_refund_status == 'Processing') {
+        } elseif ($order->vnp_refund_status == 'Processing') {
             $message = 'Đang xử lý hoàn tiền';
-        }
-        elseif($order->vnp_refund_status == 'Refunded') {
+        } elseif ($order->vnp_refund_status == 'Refunded') {
             $message = 'Đã hoàn tiền';
-        }
-        elseif($order->vnp_refund_status == 'Refund_Failed') {
+        } elseif ($order->vnp_refund_status == 'Refund_Failed') {
             $message = 'Hoàn tiền không thành công';
         }
 
@@ -41,18 +42,17 @@ class OrderController extends Controller
         $getOrders = Order::query(); // Khởi tạo query builder
 
         //tìm kiếm 
-        if(!empty(Request()->get('keyword'))){
+        if (!empty(Request()->get('keyword'))) {
             $kw = trim(Request()->get('keyword'));
-            $getOrders->where('order_code', 'like', '%'. $kw . '%')
-                      ->orWhere('order_phone', 'like', '%' . $kw . '%');
+            $getOrders->where('order_code', 'like', '%' . $kw . '%')
+                ->orWhere('order_phone', 'like', '%' . $kw . '%');
         }
         // Sắp xếp theo giá
         if (!empty(Request()->get('sort_price'))) {
             $sort_price = trim(Request()->get('sort_price'));
             if ($sort_price === 'asc' || $sort_price === 'desc') {
                 $getOrders->orderBy('total', $sort_price);
-            } 
-            else {
+            } else {
                 return view('404');
             }
         }
@@ -84,7 +84,7 @@ class OrderController extends Controller
             } else {
                 return view('404');
             }
-        }else {
+        } else {
             $getOrders->orderBy('created_at', 'desc');
         }
 
@@ -151,7 +151,7 @@ class OrderController extends Controller
         if (isset($request->orderStatus)) {
             $orderStatus  = $request->orderStatus;
             $order = Order::findOrFail($id);
-            
+
             $order_status_arr = [
                 -1 => 'Đơn hàng đã hủy',
                 0 => 'Chờ xác nhận',
@@ -159,13 +159,27 @@ class OrderController extends Controller
                 92 => 'Đã hoàn thành'
             ];
             foreach ($order_status_arr as $key => $value) {
-                if($orderStatus == $key ) {
+                if ($orderStatus == $key) {
                     $order->order_status = $key;
                     $order->order_status_text = $value;
                 }
             }
-
             $order->save();
+
+            // // Gửi mail
+            if ($orderStatus == -1 || $orderStatus == 92) {
+                try {
+                    $getOrderDetail = OrderDetail::where('order_id', $id)->get();
+                    $subject = $orderStatus == -1 ? 'Đơn hàng '.$order->order_code.' từ Cybermart đã bị hủy' : 'Hoàn thành đơn hàng '.$order->order_code.' từ Cybermart';
+                    $orderEmail = new OrderEmail($getOrderDetail, $order, $getCoupon ?? null, $subject);
+                    Mail::to($order->order_email)->send($orderEmail);
+                } catch (\Exception $e) {
+                    \Log::error('Error sending order email: ' . $e->getMessage());
+                    return redirect()->back()->with(['error' => 'Lỗi gửi email: ' . $e->getMessage()]);
+                }
+            }
+
+
             return response()->json(['status' => true, 'message' => 'Cập nhập thành công']);
         }
         if (isset($request->adminNote)) {
@@ -189,5 +203,4 @@ class OrderController extends Controller
     {
         //
     }
-
 }
