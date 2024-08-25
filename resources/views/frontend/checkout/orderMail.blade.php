@@ -33,6 +33,57 @@
             text-align: center;
             padding: 5px;
         }
+
+
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .cart-item-image img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .cart-item-details {
+            margin-left: 15px;
+        }
+
+        .cart-item-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .cart-item-quantity,
+        .cart-item-price {
+            margin: 5px 0;
+        }
+
+        .cart-items {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+
+        }
+
+
+        .attribute-item {
+            margin: 0;
+            text-transform: capitalize;
+        }
     </style>
 </head>
 
@@ -91,27 +142,56 @@
         </tr>
         <tr>
             <td colspan="4">
-                <h3>Thông tin đơn hàng</h3>
-                <ul>
+                <h3 style="text-align:center">Thông tin đơn hàng</h3>
+                <ul class="cart-items">
                     @foreach ($getCart as $item)
-                        <li>{{ $item->name }}: {{ $item->quantity }} x <span
-                                style="color: red;">{{ number_format($item->price, 0, '', '.') }}</span> VND|
+                        <li class="cart-item">
+                            <div class="cart-item-image">
+                                <img src="{{ asset('uploads/products/' . $item->associatedModel->image) }}"
+                                    alt="{{ $item->name }}">
+                            </div>
+                            <div class="cart-item-details">
+                                <p class="cart-item-name">{{ $item->name }}</p>
+                                <p class="cart-item-quantity">
+                                    Số lượng: <span style="color: red">{{ $item->quantity }}</span>
+                                </p>
+                                <p class="cart-item-price">
+                                    Giá: <span style="color: red">{{ number_format($item->price, 0, '', '.') }}</span>
+                                    VND
+                                </p>
+                                <div class="attributes-container">
+                                    @if ($item->attributes->count() > 0)
+                                        @foreach ($item->attributes as $key => $value)
+                                            <p class="attribute-item ">
+                                                <strong>{{ $key }}:</strong>
+                                                {{ $value }}
+                                            </p>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
                         </li>
                     @endforeach
                 </ul>
-                <p><strong>Tổng tiền:</strong> <span
-                        style="color: red;">{{ number_format($order->total, 0, '', '.') }}</span> VND</p>
-                <p>
-                    <span style="color: red;">
-                        @isset($getCoupon)
-                            <p class="text-muted mb-0"><span class="fw-bold">Giảm giá: </span>
-                                {{ $getCoupon->precent_amount }}
-                                {{ $getCoupon->coupon_type == 'precent' ? '%' : 'VND' }}
-                            </p>
-                        @endisset
-                    </span>
+
+                <p style="max-width: 800px;
+            margin: 0 auto;margin-top: 10px;"><strong>Tổng tiền:</strong>
+                    <span style="color: red;">{{ number_format($order->total, 0, '', '.') }}</span> VND
                 </p>
-                <p><strong>Phí giao hàng:</strong>
+                @if (isset($getCoupon) && $getCoupon->precent_amount > 0)
+                    <p>
+                        <span style="color: red;">
+                            <span class="text-muted mb-0">
+                                <span class="fw-bold">Giảm giá:</span>
+                                {{ $getCoupon->precent_amount }}
+                                {{ $getCoupon->coupon_type == 'percent' ? '%' : 'VND' }}
+                            </span>
+                        </span>
+                    </p>
+                @endif
+                <p style="max-width: 800px;
+            margin: 0 auto;margin-top: 10px;"><strong>Phí giao
+                        hàng:</strong>
                     <span style="color: red;">
                         @isset($order->ship_money)
                             +{{ number_format($order->ship_money, 0, ',', '.') }}

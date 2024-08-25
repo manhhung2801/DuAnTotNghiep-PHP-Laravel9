@@ -177,7 +177,6 @@ class ProductController extends Controller
                 ->get()
                 ->map(function ($product) {
                     $img = Product::where('id', $product->id)
-                        ->orderBy('created_at', 'asc')
                         ->first();
                     $product->image = $img ? $img->image : null;
                     return $product;
