@@ -42,7 +42,7 @@ class ViewServiceProvider extends ServiceProvider
                     ->take(5)
                     ->get();
             }
-            $countAddress = StoreAddress::where("status", "=", 1)->count();
+            $countAddress = StoreAddress::where("status", 1)->where("pick_store", 1)->count();
             $qtyCart = \Cart::getTotalQuantity();
             $view->with('categories', $categories)
                 ->with('storeAddress', $storeAddress)
