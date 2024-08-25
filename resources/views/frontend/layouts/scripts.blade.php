@@ -216,7 +216,7 @@
                             console.log(response);
                             let results = $('#result');
                             var categoryHTML = "";
-                            // var subCategoryHTML = "";
+                            var subCategoryHTML = "";
                             var productHTML = "";
                             results.empty();
 
