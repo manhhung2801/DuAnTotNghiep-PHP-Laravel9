@@ -170,7 +170,7 @@
                                     </td>
 
                                     {{-- Trạng thái đơn hàng --}}
-                                    <td id="container_statusOrder">
+                                    <td id="container_statusOrder" class="container_statusOrder">
                                         @php
                                             $arr_success = [92, 6, 5, 45];
                                         @endphp
@@ -207,20 +207,22 @@
                                                                 data-url="{{ route('admin.order.update', $order->id) }}"
                                                                 data-val="-1"
                                                                 class="btn btn-outline-danger px-2 py-1">Hủy</a> <br>
-                                                                <em class="text-danger">Đơn hàng chưa thanh toán</em>
+                                                            <em class="text-danger">Đơn hàng chưa thanh toán</em>
                                                         @endif
                                                     @else
                                                         <a id="accept_ghtk"
                                                             data-url="{{ route('admin.ghtk.post-order', $order->id) }}"
                                                             class="btn btn-outline-primary px-4 py-1 my-1">Xác nhận</a>
-                                                            <a id="status-order-cancel"
-                                                                data-url="{{ route('admin.order.update', $order->id) }}"
-                                                                data-val="-1"
-                                                                class="btn btn-outline-danger px-2 py-1">Hủy</a>
+                                                        <a id="status-order-cancel"
+                                                            data-url="{{ route('admin.order.update', $order->id) }}"
+                                                            data-val="-1"
+                                                            class="btn btn-outline-danger px-2 py-1">Hủy</a>
                                                     @endif
-
                                                 @else
-                                                    <p class="p-2 badge text-bg-primary">Đã chuyển đơn cho GHTK</p>
+                                                    <p class="p-2 badge text-bg-primary m-0">Đã chuyển đơn cho GHTK</p>
+                                                    <div class="">
+                                                        <em>{{$order->order_status_text  }}</em>
+                                                    </div>
                                                 @endif
                                             @endif
                                         @endif
@@ -393,7 +395,7 @@
                 })
             });
 
-            function changeStatus(url, orderStatus) {
+            function changeStatus(url, orderStatus, container) {
                 $.ajax({
                     type: 'PATCH',
                     url: url,
@@ -406,6 +408,17 @@
                                 icon: "success",
                                 title: data.message
                             });
+                            if (orderStatus == -1) {
+                                container.find('.container_statusOrder').empty();
+                                container.find('.container_statusOrder').append(
+                                    '<p class="p-2 badge text-bg-danger">Đã hủy</p>'
+                                );
+                            }else if (orderStatus == 92) {
+                                container.find('.container_statusOrder').empty();
+                                container.find('.container_statusOrder').append(
+                                    '<p class="p-2 badge text-bg-success">Đã hoàn thành</p>'
+                                );
+                            }
                         } else {
                             Toast.fire({
                                 icon: "error",
@@ -421,13 +434,15 @@
             $('body').off('change', '#change-status-order').on('change', '#change-status-order', function() {
                 var orderStatus = $('#change-status-order').val();
                 var url = $(this).attr('data-url')
-                changeStatus(url, orderStatus)
+                var container = $(this).closest('tr')
+                changeStatus(url, orderStatus, container)
             })
 
             $('body').off('click', '#status-order-cancel').on('click', '#status-order-cancel', function() {
                 var orderStatus = $(this).attr('data-val');
                 var url = $(this).attr('data-url')
-                changeStatus(url, orderStatus)
+                var container = $(this).closest('tr')
+                changeStatus(url, orderStatus, container)
             })
 
             $('body').off('click', '.change-admin-note').on('click', '.change-admin-note', function() {

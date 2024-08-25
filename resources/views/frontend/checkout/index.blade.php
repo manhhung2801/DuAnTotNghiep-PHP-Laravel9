@@ -163,6 +163,11 @@
             Array.prototype.slice.call(forms)
                 .forEach((form) => {
                     form.addEventListener('submit', (event) => {
+                        if (!form.checkValidity()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+
 
                         // Hàm kiểm tra tính hợp lệ của email
                         function validateEmails(email) {
@@ -176,35 +181,28 @@
                         }
 
                         // Xử lý sự kiện khi người dùng nhấp vào nút action__checkout
-                        var email = document.getElementById('email_checkout').value;
-                        var phone = document.getElementById('phone_checkout').value;
-
+                        var email = document.getElementById('email_checkout') ?? '';
+                        var phone = document.getElementById('phone_checkout') ?? '';
+                        
                         // Kiểm tra tính hợp lệ của email
                         var invalid_email = document.querySelector('.invalid-email')
-                        if (!validateEmails(email)) {
+                        if (!validateEmails(email.value)) {
                             invalid_email.classList.add('d-block');
                             event.preventDefault();
                             event.stopPropagation();
-                        }else {
+                        } else {
                             invalid_email.classList.remove('d-block');
                         }
 
-                        // Kiểm tra tính hợp lệ của số điện thoại
+                        // // Kiểm tra tính hợp lệ của số điện thoại
                         var invalid_phone = document.querySelector('.invalid-phone')
-                        if (!validatePhone(phone)) {
+                        if (!validatePhone(phone.value)) {
                             invalid_phone.classList.add('d-block');
                             event.preventDefault();
                             event.stopPropagation();
-                        }else {
+                        } else {
                             invalid_phone.classList.remove('d-block');
                         }
-
-                        if (!form.checkValidity()) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        // event.preventDefault();
-                        // event.stopPropagation();
                         form.classList.add('was-validated');
                     }, false);
                 });

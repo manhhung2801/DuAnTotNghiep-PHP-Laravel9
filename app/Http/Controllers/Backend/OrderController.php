@@ -151,7 +151,20 @@ class OrderController extends Controller
         if (isset($request->orderStatus)) {
             $orderStatus  = $request->orderStatus;
             $order = Order::findOrFail($id);
-            $order->order_status = $orderStatus;
+            
+            $order_status_arr = [
+                -1 => 'Đơn hàng đã hủy',
+                0 => 'Chờ xác nhận',
+                91 => 'Đã tiếp nhận',
+                92 => 'Đã hoàn thành'
+            ];
+            foreach ($order_status_arr as $key => $value) {
+                if($orderStatus == $key ) {
+                    $order->order_status = $key;
+                    $order->order_status_text = $value;
+                }
+            }
+
             $order->save();
             return response()->json(['status' => true, 'message' => 'Cập nhập thành công']);
         }

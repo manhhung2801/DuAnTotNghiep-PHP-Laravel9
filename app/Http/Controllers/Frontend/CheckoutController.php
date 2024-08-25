@@ -102,6 +102,7 @@ class CheckoutController extends Controller
                 $order->payment_status = 0;
                 $order->shipping_method = trim($request->shipping_method);
                 $order->order_status = 0;
+                $order->order_status_text = 'Chờ xác nhận';
                 $order->coupon = $couponCode;
                 $order->user_note = trim($request->user_note);
                 $order->user_id = \Auth::user()->id;
