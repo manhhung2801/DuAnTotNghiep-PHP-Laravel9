@@ -35,7 +35,8 @@ class HomeController extends Controller
         $getProducts = []; //mảng chưa product
         foreach ($getCategory as $cate) {
             $product = [
-                $cate->name => Product::getProduct()->where('status', '=', 1)
+                $cate->name => Product::getProduct()
+                    ->where('status', '=', 1)
                     ->where('category_id', $cate->id)
                     ->take(4)->get()
             ];

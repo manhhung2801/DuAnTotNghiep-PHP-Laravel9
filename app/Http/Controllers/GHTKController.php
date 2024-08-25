@@ -141,6 +141,8 @@ class GHTKController extends Controller
                 //Lưu trạng thái đơn hàng
                 $getOrder->tracking_id = $response->order->tracking_id;
                 $getOrder->order_status = $response->order->status_id;
+                $status_text = $response->order->status_id == 1 ? 'Chưa tiếp nhận' : 'Đã tiếp nhận';
+                $getOrder->order_status_text = $status_text;
                 $getOrder->save();
                 //return giá trị
                 return response()->json(['status' => true, 'order' => $response->order]);
@@ -173,6 +175,7 @@ class GHTKController extends Controller
 
                 if ($response->success) {
                     $checkOrder->order_status = -1;
+                    $checkOrder->order_status_text = "Đơn hàng đã hủy";
                     $checkOrder->save();
                     return response()->json($response);
                 }
@@ -202,6 +205,7 @@ class GHTKController extends Controller
             //Update trạng thái vào database
             $order = Order::where('tracking_id', $tracking_id)->first();
             $order->order_status = $response->order->status;
+            $order->order_status_text = $response->order->status_text;
             $order->save();
             //Khắc phục lỗi GHTK trả về text đã tiếp nhận
             $status_text = $response->order->status != -1 ? $response->order->status_text : 'Đơn hàng đã hủy';

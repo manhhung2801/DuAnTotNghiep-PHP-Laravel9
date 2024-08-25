@@ -85,7 +85,7 @@
             </div>
             <div class="user-box dropdown px-3">
                 <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('uploads/'.Auth::user()->image)}}" class="user-img" alt="user avatar">
+                    <img src="{{asset('uploads/'.Auth::user()->image ?? 'avatar-user.jpeg')}}" class="user-img" alt="user avatar">
                     <div class="user-info">
                         <p class="user-name mb-0">{{Auth::user()->name}}</p>
                     </div>

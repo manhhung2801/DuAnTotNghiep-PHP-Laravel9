@@ -91,6 +91,7 @@ class OrderController extends Controller
             }
 
             $order->order_status = -1;
+            $order->order_status_text = "Đơn hàng đã hủy";
             $order->save();
 
             if($order->order_status == -1 && $order->payment_method == 1 && $order->payment_status == 1 && $order->vnp_transaction_id !== null) {
