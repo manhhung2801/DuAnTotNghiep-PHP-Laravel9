@@ -75,6 +75,13 @@ class NewsController extends Controller
     }
     public function PostView($postId)
     {
-        Post::where('id', $postId)->increment('post_views');
+        $viewedPosts = session()->get('viewed_posts', []);
+
+        if (!in_array($postId, $viewedPosts)) {
+            Post::where('id', $postId)->increment('post_views');
+
+            $viewedPosts[] = $postId;
+            session()->put('viewed_posts', $viewedPosts);
+        }
     }
 }
