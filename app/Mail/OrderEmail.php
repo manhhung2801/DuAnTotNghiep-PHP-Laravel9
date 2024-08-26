@@ -21,7 +21,7 @@ class OrderEmail extends Mailable
     public $getProduct;
     public $order;
     public $getCoupon;
-    public function __construct($getProduct, $order, $getCoupon = null, $subject = 'Đơn hàng từ Cybermart')
+    public function __construct($getProduct, $order, $getCoupon = null, $subject = 'Thống báo đơn hàng từ Cybermart')
     {
         $this->getProduct = $getProduct;
         $this->order = $order;

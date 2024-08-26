@@ -170,7 +170,7 @@ class OrderController extends Controller
             if ($orderStatus == -1 || $orderStatus == 92) {
                 try {
                     $getOrderDetail = OrderDetail::where('order_id', $id)->get();
-                    $subject = $orderStatus == -1 ? 'Đơn hàng '.$order->order_code.' từ Cybermart đã bị hủy' : 'Hoàn thành đơn hàng '.$order->order_code.' từ Cybermart';
+                    $subject = $orderStatus == -1 ? 'Thông báo đơn hàng '.$order->order_code.' từ Cybermart đã bị hủy' : 'Thông báo hoàn thành đơn hàng '.$order->order_code.' từ Cybermart';
                     $orderEmail = new OrderEmail($getOrderDetail, $order, $getCoupon ?? null, $subject);
                     Mail::to($order->order_email)->send($orderEmail);
                 } catch (\Exception $e) {

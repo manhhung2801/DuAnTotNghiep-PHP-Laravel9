@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderEmail;
+use App\Models\Coupons;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\StoreAddress;
 use Illuminate\Http\Request;
 use Cart;
 use Exception;
+use Illuminate\Support\Facades\Mail;
 
 class GHTKController extends Controller
 {
@@ -144,6 +147,18 @@ class GHTKController extends Controller
                 $status_text = $response->order->status_id == 1 ? 'Chưa tiếp nhận' : 'Đã tiếp nhận';
                 $getOrder->order_status_text = $status_text;
                 $getOrder->save();
+
+                 //Gửi mail
+                 try {
+                    // Lấy các trường cần thiết
+                    $subject = 'Thông báo GHTK đã tiếp nhận đơn hàng ' . $getOrder->order_code . ' từ Cybermart có MVC ' . $response->order->tracking_id;
+                    $orderEmail = new OrderEmail($orderDetails, $getOrder, $getCoupon ?? null, $subject);
+                    Mail::to($getOrder->order_email)->send($orderEmail);
+                } catch (\Exception $e) {
+                    \Log::error('Error sending order email: ' . $e->getMessage());
+                    return redirect()->back()->with(['error' => 'Lỗi gửi email: ' . $e->getMessage()]);
+                }
+
                 //return giá trị
                 return response()->json(['status' => true, 'order' => $response->order]);
             }
@@ -177,11 +192,26 @@ class GHTKController extends Controller
                     $checkOrder->order_status = -1;
                     $checkOrder->order_status_text = "Đơn hàng đã hủy";
                     $checkOrder->save();
+
+                    //Gửi mail
+                    try {
+                        // Lấy các trường cần thiết
+                        $getOrderDetail = OrderDetail::where('order_id', $checkOrder->id)->get();
+                        $subject = 'Thông báo đơn hàng ' . $checkOrder->order_code . ' từ Cybermart đã bị hủy';
+                        $orderEmail = new OrderEmail($getOrderDetail, $checkOrder, $getCoupon ?? null, $subject);
+                        Mail::to($checkOrder->order_email)->send($orderEmail);
+                    } catch (\Exception $e) {
+                        \Log::error('Error sending order email: ' . $e->getMessage());
+                        return redirect()->back()->with(['error' => 'Lỗi gửi email: ' . $e->getMessage()]);
+                    }
                     return response()->json($response);
+
                 }
                 return response()->json($response);
+
             }
             return response(['status' => false, 'message' => "Đơn hàng không tồn tại"]);
+
         } catch (Exception $e) {
             return response(['status' => false, 'Đã xảy ra lỗi' . $e]);
         }
@@ -222,6 +252,10 @@ class GHTKController extends Controller
 
     public function ghtkWebhookData(Request $request)
     {
+        // Xác thực hash
+        // $receivedHash = $request->query('hash');
+        // $secretKey = env('GHTK_SECRET_KEY');
+        // $calculatedHash = hash_hmac('sha256', json_encode($data), $secretKey);
 
         $status_id = $request->status_id;
         $partner_id = $request->partner_id;
@@ -250,19 +284,31 @@ class GHTKController extends Controller
             49 => "Shipper báo không giao được giao hàng",
             410 => "Shipper báo delay giao hàng",
         ];
-        
+
         $getOrder = Order::where('order_code', $partner_id)->first();
 
-        if($getOrder) {
+        if ($getOrder) {
             foreach ($orderStatus as $status => $status_text) {
                 if ($status == $status_id) {
                     $getOrder->order_status = $status;
                     $getOrder->order_status_text = $status_text;
                     $getOrder->save();
-                    return response()->json(['status'=> true, 'message' => 'Thành công'], 200);
+
+                    //Gửi mail
+                    try {
+                        // Lấy các trường cần thiết
+                        $getOrderDetail = OrderDetail::where('order_id', $getOrder->id)->get();
+                        $subject = 'Thông báo đơn hàng ' . $getOrder->order_code . ' GHTK '. $status_text;
+                        $orderEmail = new OrderEmail($getOrderDetail, $getOrder, $getCoupon ?? null, $subject);
+                        Mail::to($getOrder->order_email)->send($orderEmail);
+                    } catch (\Exception $e) {
+                        \Log::error('Error sending order email: ' . $e->getMessage());
+                        return redirect()->back()->with(['error' => 'Lỗi gửi email: ' . $e->getMessage()]);
+                    }
+                    return response()->json(['status' => true, 'message' => 'success'], 200);
                 }
             }
         }
-        return response()->json(['status'=> false, 'message' => 'Đã có lỗi xảy ra'], 404);
+        return response()->json(['status' => false, 'message' => 'Đã có lỗi xảy ra'], 404);
     }
 }
