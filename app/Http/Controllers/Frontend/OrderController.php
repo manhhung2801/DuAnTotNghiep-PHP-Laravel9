@@ -104,7 +104,7 @@ class OrderController extends Controller
             //Gửi mail
             try {
                 $getOrderDetail = OrderDetail::where('order_id', $id)->get();
-                $subject = 'Đơn hàng '.$order->order_code.' từ Cybermart đã bị hủy';
+                $subject = 'Thông báo đơn hàng '.$order->order_code.' từ Cybermart đã bị hủy';
                 $orderEmail = new OrderEmail($getOrderDetail, $order, $getCoupon ?? null, $subject);
                 Mail::to($order->order_email)->send($orderEmail);
             } catch (\Exception $e) {

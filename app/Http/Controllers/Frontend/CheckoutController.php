@@ -124,7 +124,7 @@ class CheckoutController extends Controller
 
                try {
                     $getOrderDetail = OrderDetail::where('order_id', $order->id)->get();
-                    $subject = 'Bạn có đơn hàng '.$order->order_code.' mới từ CyberMart';
+                    $subject = 'Thông báo bạn có đơn hàng '.$order->order_code.' mới từ CyberMart';
                     $orderEmail = new OrderEmail($getOrderDetail, $order, $getCoupon ?? null, $subject);
                     Mail::to($request->email)->send($orderEmail);
                 } catch (\Exception $e) {
