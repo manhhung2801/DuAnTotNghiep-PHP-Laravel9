@@ -45,7 +45,8 @@ class OrderController extends Controller
         if (!empty(Request()->get('keyword'))) {
             $kw = trim(Request()->get('keyword'));
             $getOrders->where('order_code', 'like', '%' . $kw . '%')
-                ->orWhere('order_phone', 'like', '%' . $kw . '%');
+                ->orWhere('order_phone', 'like', '%' . $kw . '%')
+                ->orWhere('order_email', 'like', '%' . $kw . '%');
         }
         // Sắp xếp theo giá
         if (!empty(Request()->get('sort_price'))) {
@@ -59,9 +60,13 @@ class OrderController extends Controller
 
         // Xử lý lọc theo trạng thái đơn hàng
         $order_status = Request()->get('order_status');
-        $validStatuses = [-1, 90, 91, 92]; // Các giá trị hợp lệ
+        $validStatuses = [-1, 0, 91, 92]; // Các giá trị hợp lệ
         if ($order_status !== null && in_array($order_status, $validStatuses)) {
-            $getOrders->where('order_status', $order_status);
+            if($order_status == 92) {
+                $getOrders->where('order_status', 92)->orWhere('order_status', 5)->orWhere('order_status', 6)->orWhere('order_status', 45);
+            }else {
+                $getOrders->where('order_status', $order_status);
+            }
         } elseif ($order_status !== null) {
             return view('404'); // Trả về view lỗi nếu giá trị không hợp lệ
         }
@@ -70,7 +75,7 @@ class OrderController extends Controller
         if (!empty(Request()->get('sort_payment'))) {
             $sort_payment = (int) trim(Request()->get('sort_payment'));
             if (in_array($sort_payment, [0, 1])) {
-                $getOrders->where('payment_method', $sort_payment);
+                $getOrders->where('payment_status', $sort_payment);
             } else {
                 return view('404');
             }

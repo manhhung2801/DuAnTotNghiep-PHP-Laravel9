@@ -32,7 +32,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
 
-        $getProduct = Product::getProduct();
+        $getProduct = Product::query();
 
         $category = Category::all();
         // tìm kiếm sản phẩm theo tên
