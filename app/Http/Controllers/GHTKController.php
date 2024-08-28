@@ -127,6 +127,7 @@ class GHTKController extends Controller
 
             curl_setopt_array($curl, array(
                 CURLOPT_URL => "https://services-staging.ghtklab.com/services/shipment/order",
+                // CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/shipment/order",
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => "POST",
@@ -177,6 +178,7 @@ class GHTKController extends Controller
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
                     CURLOPT_URL => "https://services-staging.ghtklab.com/services/shipment/cancel/" . $tracking_id,
+                    // CURLOPT_URL => "https://services.giaohangtietkiem.vn /services/shipment/cancel/" . $tracking_id,
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_CUSTOMREQUEST => "POST",
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
