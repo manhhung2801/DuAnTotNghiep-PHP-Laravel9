@@ -6,7 +6,7 @@
 <link rel="pingback" href="{{ url('/') }}/xmlrpc.php" />
 <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="32x32">
 <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png" sizes="192x192">
-<meta name='robots' content='follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large' />
+<meta name='robots' content='nofollow, noindex, max-snippet:-1, max-video-preview:-1, max-image-preview:large' />
 <title>@yield('title', 'CyberMart - Hệ thống thương mại điện tử hàng đầu Việt Nam')</title>
 <meta name="description" content="@yield('description', 'CyberMart - Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop, smartwatch, gia dụng, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.')" />
 <link rel="canonical" href="{{ url()->current() }}" />
