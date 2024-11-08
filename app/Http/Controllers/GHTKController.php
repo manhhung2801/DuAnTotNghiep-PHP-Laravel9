@@ -50,7 +50,7 @@ class GHTKController extends Controller
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_HTTPHEADER => array(
-                    "Token: fb71dfceab53db26cb2406e24025261368caca75",
+                    "Token: your API",
                 ),
             ));
             $response = curl_exec($curl);
@@ -134,7 +134,7 @@ class GHTKController extends Controller
                 CURLOPT_POSTFIELDS => $jsonOrder,
                 CURLOPT_HTTPHEADER => array(
                     "Content-Type: application/json",
-                    "Token: fb71dfceab53db26cb2406e24025261368caca75",
+                    "Token: your API",
                     "Content-Length: " . strlen($jsonOrder),
                 ),
             ));
@@ -183,7 +183,7 @@ class GHTKController extends Controller
                     CURLOPT_CUSTOMREQUEST => "POST",
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_HTTPHEADER => array(
-                        "Token: fb71dfceab53db26cb2406e24025261368caca75",
+                        "Token: your API",
                     ),
                 ));
 
@@ -227,7 +227,7 @@ class GHTKController extends Controller
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_HTTPHEADER => array(
-                "Token: fb71dfceab53db26cb2406e24025261368caca75",
+                "Token: your API",
             ),
         ));
 
